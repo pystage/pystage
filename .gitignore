@@ -4,3 +4,4 @@ piptest/
 .python-version
 *.py[cod]
 __pycache__/
+*.egg-info
