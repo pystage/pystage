@@ -1,0 +1,6 @@
+dist/
+build/
+piptest/
+.python-version
+*.py[cod]
+__pycache__/

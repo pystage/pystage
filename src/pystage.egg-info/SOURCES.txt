@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/pystage/__init__.py
+src/pystage.egg-info/PKG-INFO
+src/pystage.egg-info/SOURCES.txt
+src/pystage.egg-info/dependency_links.txt
+src/pystage.egg-info/requires.txt
+src/pystage.egg-info/top_level.txt
