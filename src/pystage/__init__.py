@@ -180,6 +180,9 @@ class Sprite():
         print(f"New code block registered: {new_block.name}")
         return new_block
 
+    ##
+    # Events
+    #
 
     def when_program_is_started(self, generator, name=""):
         new_block = self._register_code_block(generator, name)
@@ -201,6 +204,32 @@ class Sprite():
             self.key_pressed_blocks[pg_key] = []
         self.key_pressed_blocks[pg_key].append(new_block.name)
         print(f"Bound to key press ({key}/{pg_key}): {new_block.name}")
+
+
+    def when_this_sprite_clicked(self, generator, name=""):
+        pass
+
+
+    def when_backdrop_switches_to(self, backdrop, generator, name=""):
+        pass
+
+    def when_loudness_greater_than(self, value, generator, name=""):
+        # Not sure if this can/should be implemented, requires microphone access.
+        pass
+
+    def when_timer_greater_than(self, value, generator, name=""):
+        # Scratch has a timer that can be reset. 
+        pass
+
+    def when_i_receive_message(self, message, generator, name=""):
+        pass
+
+    def broadcast(self, message):
+        pass
+
+    def broadcast_and_wait(self, message):
+        # waits until all receiver scripts finish. Tricky.
+        pass
 
 
 
