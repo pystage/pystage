@@ -496,6 +496,24 @@ class Sprite():
     def delete_this_clone(self):
         pass
 
+    ##
+    # Operators
+    #
+
+    # Operators are all available in python.
+    # TODO: Needs documentation
+
+    # - +-*/
+    # - pick random from range (inclusive)
+    # - < > =
+    # and / or / not
+    # join
+    # letter 1 of string
+    # length of string
+    # string contains a
+    # mod
+    # round
+    # abs/floor/ceiling/sqrt/sin/cos/tan/asin/acos/atan/ln/log/e^/10^
 
     ##
     # Variables
