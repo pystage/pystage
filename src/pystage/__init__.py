@@ -462,7 +462,8 @@ class Sprite():
 
     # Controls obviously should mostly be done in Python
     # or this would be no help in learning python.
-    
+
+    # TODO: document this
     # wait is simply yield
     # repeat is for i in range()
     # forever is while True
@@ -494,6 +495,19 @@ class Sprite():
 
     def delete_this_clone(self):
         pass
+
+
+    ##
+    # My Blocks (custom blocks)
+    #
+
+    # a custom block is simply a generator or a function (we need to distinguish here!)
+    # generators (long running blocks that need yields) are invoked with yield from 
+    # functions as usual (they block the thread).
+    # Scratch does not support custom reporters, actually, unlike Snap.
+    # Reporters would be functions, as only this way we can work with the return value
+    #
+    # TODO: document this
 
     ##
     # Pen Extension
