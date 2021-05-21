@@ -721,8 +721,8 @@ class Stage():
         self.height = height
 
 
-    def create_sprite(self):
-        sprite = Sprite(self)
+    def create_sprite(self, constructor=Sprite):
+        sprite = constructor(self)
         self.sprites.append(sprite)
         return sprite
 
