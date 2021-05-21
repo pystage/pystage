@@ -6,7 +6,7 @@ class Figur(pystage.Sprite):
     # Events
     #
 
-    def wenn_programm_started(self, generator, name=""):
+    def wenn_programm_startet(self, generator, name=""):
         self.when_program_is_started(generator, name)
 
 
