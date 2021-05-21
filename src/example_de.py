@@ -11,7 +11,7 @@ def mach_was(self):
         self.drehe_links(90)
         yield 1
 
-figur.wenn_programm_started(mach_was)
+figur.wenn_programm_startet(mach_was)
 
 
 def reagiere(self):
