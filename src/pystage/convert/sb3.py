@@ -1,6 +1,7 @@
 import argparse
 import zipfile
 import json
+import math
 
 
 from pystage.convert import CodeWriter, sb3_templates
@@ -33,6 +34,16 @@ block trees that is used in the code template functions.
 # 
 #         }
 
+class DictClass(dict):
+    '''
+    A dictionary that can be accessed via dot notation for convenience.
+    '''
+
+    def __init__(self):
+        super().__init__()
+
+    def __getattr__(self, item):
+        return self[item]
 
 def get_input_value(i):
     '''
@@ -59,7 +70,13 @@ def get_input_value(i):
         h = value.lstrip("#")
         value = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
     elif input_type in [10, 11, 12, 13]:
-        value = str(value)
+        try:
+            f = float(value)
+            if math.floor(f) == f:
+                f = int(f)
+            value = f
+        except:
+            value = f'"{value}"'
     return value
 
 
@@ -69,13 +86,14 @@ def get_block(block, blocks):
     '''
     Recursively turns the sb3 structure into our intermediate representation.
     '''
-    res = {
+    res = DictClass()
+    res.update({
             "opcode": block["opcode"],
-            "params": {},
+            "params": DictClass(),
             "next": False,
-            }
+            })
     for f in block["fields"]:
-        res["params"][f] = block["fields"][f][0]
+        res["params"][f] = f'"{block["fields"][f][0]}"'
     for i in block["inputs"]:
         value = block["inputs"][i][1]
         if isinstance(value, list):
@@ -96,15 +114,17 @@ def get_intermediate(data):
         # TODO: list all
         ]
 
-    project = {
+    project = DictClass()
+    project.update({
             "sprites": [],
-            }
+            })
 
     for target in data["targets"]:
-        sprite = {
+        sprite = DictClass()
+        sprite.update({
                 "name": target['name'],
                 "blocks": [],
-                }
+                })
         project["sprites"].append(sprite)
         blocks = target["blocks"]
         for key in blocks:
@@ -119,9 +139,11 @@ def get_intermediate(data):
 #
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+        prog="python -m pystage.convert.sb3",
+        description="Convert Scratch 3 (sb3) files to Python.")
 parser.add_argument("file", metavar="FILE", type=str)
-parser.add_argument("--intermediate", action="store_true")
+parser.add_argument("--intermediate", action="store_true", help="print intermediate code representation")
 args = parser.parse_args()
 
 archive = zipfile.ZipFile(args.file, 'r')
@@ -133,12 +155,10 @@ with archive.open("project.json") as f:
     else:
         writer = CodeWriter(project, sb3_templates) 
         writer.write("# Scratch to PySTAGE")
-        writer.newline(3)
+        writer.newline(1)
         for sprite in project["sprites"]:
             writer.set_sprite(sprite["name"])
-            writer.newline()
-            writer.write(f"# Sprite: {sprite['name']}")
-            writer.newline()
+            writer.write_line(f"# Sprite: {sprite['name']}")
             for block in sprite["blocks"]:
                 writer.ex(block)
         print(writer.getvalue())
