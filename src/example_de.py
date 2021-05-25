@@ -1,6 +1,6 @@
 from pystage.de import Buehne, Figur
 
-buehne = Buehne(500, 500)
+buehne = Buehne()
 figur = buehne.erstelle_figur()
 
 def mach_was(self):

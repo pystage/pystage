@@ -9,7 +9,7 @@ class Stage():
     sprites = []
     background_color = (255, 255, 255)
 
-    def __init__(self, width, height):
+    def __init__(self, width=480, height=360):
         pygame.init()
         self.screen = pygame.display.set_mode([width, height])
         self.clock = pygame.time.Clock()
