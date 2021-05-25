@@ -3,7 +3,7 @@ import zipfile
 import json
 
 
-from pystage.convert import CodeWriter
+from pystage.convert import CodeWriter, sb3_templates
 
 
 '''
@@ -15,6 +15,7 @@ block trees that is used in the code template functions.
 # project = {
 #         "sprites": [
 #             {
+#                 "name": "Sprite1",
 #                 "blocks": [
 #                     { # BLOCK
 #                         "opcode": "event_whenthisspriteclicked",
@@ -86,20 +87,7 @@ def get_block(block, blocks):
     return res
 
 
-
-##
-# Main
-#
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("file", metavar="FILE", type=str)
-args = parser.parse_args()
-
-archive = zipfile.ZipFile(args.file, 'r')
-with archive.open("project.json") as f:
-    data = json.loads(f.read())
-
+def get_intermediate(data):
     hat_blocks = [
         "event_whenthisspriteclicked", 
         "event_whenbroadcastreceived", 
@@ -108,12 +96,52 @@ with archive.open("project.json") as f:
         # TODO: list all
         ]
 
+    project = {
+            "sprites": [],
+            }
+
     for target in data["targets"]:
+        sprite = {
+                "name": target['name'],
+                "blocks": [],
+                }
+        project["sprites"].append(sprite)
         blocks = target["blocks"]
-        print(f"\nBlocks: {target['name']}")
         for key in blocks:
             b = blocks[key]
             if b["opcode"] in hat_blocks:
-                print("   ", b["opcode"])
                 block = get_block(b, blocks)
-                print(json.dumps(block, indent = 2))
+                sprite["blocks"].append(block)
+    return project
+
+##
+# Main
+#
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("file", metavar="FILE", type=str)
+parser.add_argument("--intermediate", action="store_true")
+args = parser.parse_args()
+
+archive = zipfile.ZipFile(args.file, 'r')
+with archive.open("project.json") as f:
+    data = json.loads(f.read())
+    project = get_intermediate(data)
+    if args.intermediate:
+        print(json.dumps(project, indent=2))
+    else:
+        writer = CodeWriter(project, sb3_templates) 
+        writer.write("# Scratch to PySTAGE")
+        writer.newline(3)
+        for sprite in project["sprites"]:
+            writer.set_sprite(sprite["name"])
+            writer.newline()
+            writer.write(f"# Sprite: {sprite['name']}")
+            writer.newline()
+            for block in sprite["blocks"]:
+                writer.ex(block)
+        print(writer.getvalue())
+
+
+
