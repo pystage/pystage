@@ -52,6 +52,13 @@ class CodeWriter(io.StringIO):
         inner.write_next_or_pass(block)
         return inner.getvalue()
 
+    def ex_or_pass(self, block):
+        if not block:
+            self.write("pass")
+            self.newline()
+        else:
+            self.ex(block)
+
     def ex(self, block):
         if not isinstance(block, dict):
             # We have a simple value
@@ -81,6 +88,12 @@ class CodeWriter(io.StringIO):
         inner = CodeWriter(self.project, self.opcode_module)
         inner.indent_level = indent
         inner.ex(block)
+        return inner.getvalue()
+
+    def get_ex_or_pass(self, block, indent=0):
+        inner = CodeWriter(self.project, self.opcode_module)
+        inner.indent_level = indent
+        inner.ex_or_pass(block)
         return inner.getvalue()
 
     def write_block(self, text:str, before=0, after=0):
