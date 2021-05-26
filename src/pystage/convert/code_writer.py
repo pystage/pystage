@@ -1,20 +1,19 @@
 import io
 import sys
 import textwrap
+import re
 
 
-class CodeWriter(io.StringIO):
+class CodeWriter():
     '''
     Helper class to write code templates
     '''
-    def __init__(self, project, opcode_module):
+    def __init__(self, project, templates):
         super().__init__()
         self.project = project
-        self.opcode_module = opcode_module
+        self.templates = templates
 
         self.comments = []
-        self.indent_level = 0
-        self.indent = 4
         self.last_id = 0
         self.current_sprite = ""
 
@@ -39,95 +38,76 @@ class CodeWriter(io.StringIO):
         self.last_id += 1
         return self.last_id
 
-    def write_next_or_pass(self, block):
-        if block["next"]:
-            self.ex(block["next"])
-        else:
-            self.write("pass")
-            self.newline()
-
-    def get_next_or_pass(self, block, indent=0):
-        inner = CodeWriter(self.project, self.opcode_module)
-        inner.indent_level = indent
-        inner.write_next_or_pass(block)
-        return inner.getvalue()
-
-    def ex_or_pass(self, block):
-        if not block:
-            self.write("pass")
-            self.newline()
-        else:
-            self.ex(block)
-
-    def ex(self, block):
-        if not isinstance(block, dict):
-            # We have a simple value
-            self.write(str(block))
-        else:
-            # Flag the block so that it does not get written twice
-            if "done" in block and block["done"]:
-                return
-            block["done"] = True
-
-            # We delegate to another block with an opcode
-            if hasattr(self.opcode_module, block["opcode"]):
-                func = getattr(self.opcode_module, block["opcode"])
-                if "comments" in block:
-                    self.comments.extend(block["comments"])
-                func(self, block)
-            else:
-                self.newline()
-                self.write(f"NOT IMPLEMENTED: {block['opcode']}")
-                for p in block['params']:
-                    self.write(f" {p}")
-                self.newline()
-            if block["next"]:
-                self.ex(block["next"])
-
-    def get_ex(self, block, indent=0):
-        inner = CodeWriter(self.project, self.opcode_module)
-        inner.indent_level = indent
-        inner.ex(block)
-        return inner.getvalue()
-
-    def get_ex_or_pass(self, block, indent=0):
-        inner = CodeWriter(self.project, self.opcode_module)
-        inner.indent_level = indent
-        inner.ex_or_pass(block)
-        return inner.getvalue()
-
-    def write_block(self, text:str, before=0, after=0):
-        for i in range(before):
-            self.newline()
-        redent = textwrap.indent(textwrap.dedent(text), " " * self.indent_level * self.indent)
-        self.write(redent)
-        if text.endswith("\n"):
-            self.write_indent()
-            self.write_comments()
-        for i in range(after):
-            self.newline()
-
-    def write_line(self, text:str, before=0, after=0):
-        for i in range(before):
-            self.newline()
-        self.write(text)
-        for i in range(after+1):
-            self.newline()
-
-    def write_comments(self):
+    def render_comments(self):
+        res = ""
         for c in self.comments:
             for line in c.split("\n"):
-                self.write(f"# {line}")
-                self.write("\n")
-                self.write_indent()
+                res += f"# {line}\n"
         self.comments.clear()
+        return res
 
-    def write_indent(self):
-        self.write(" " * self.indent_level * self.indent)
-    
-    def newline(self, after=0):
-        for i in range(after+1):
-            self.write("\n")
-            self.write_indent()
-        self.write_comments()
+    def process(self, block):
+        if not isinstance(block, dict):
+            # We have a simple value
+            return str(block)
+        else:
+            # We delegate to another block with an opcode
+            if block["opcode"] in self.templates:
+                if "comments" in block:
+                    self.comments.extend(block["comments"])
+                return self.render(block, self.templates[block["opcode"]])
+            else:
+                res = f"\n# NOT IMPLEMENTED: {block['opcode']}"
+                for p in block['params']:
+                    res += f" {p}"
+                res += "\n"
+                return res
+            # Continue with next block if not yet done
+            if block["next"] and not "{{NEXT}}" in text:
+                return self.process(block["next"])
+
+
+    def render(self, block, text):
+        current_id = None
+        indent_level = 0
+
+        def reindent(text):
+            nonlocal indent_level
+            res = []
+            for i, line in enumerate(text.split("\n")):
+                if i > 0:
+                    line = " " * 4 * indent_level + line
+                res.append(line)
+            return "\n".join(res)
+
+        def translate(match):
+            nonlocal current_id
+            token = match.group(1)
+            if token == "NEXT":
+                return reindent(self.process(block["next"]))
+            elif token =="ID":
+                if not current_id:
+                    current_id = self.get_id()
+                return str(current_id)
+            elif token == "CURRENT_SPRITE":
+                return self.get_sprite_var()
+            elif token in block["params"]:
+                return reindent(self.process(block["params"][token]))
+            else:
+                raise ValueError(f"Unknown token: {token} in {text}")
+
+        text = textwrap.dedent(text)
+        lines = text.split("\n")
+        res = []
+        for i, line in enumerate(lines):
+            indent_match = re.search(r"^[ ]*", line)
+            indent_level = int(len(indent_match.group(0)) / 4)
+            if i > 0 and len(lines) > 1:
+                c = self.render_comments()
+                if c:
+                    res.append(reindent(c))
+            line = re.sub(r"\{\{([^\}]+)\}\}", translate, line)
+            res.append(line)
+
+        return "\n".join(res)
 

@@ -153,15 +153,11 @@ with archive.open("project.json") as f:
     if args.intermediate:
         print(json.dumps(project, indent=2))
     else:
-        writer = CodeWriter(project, sb3_templates) 
-        writer.write("# Scratch to PySTAGE")
-        writer.newline(1)
+        writer = CodeWriter(project, sb3_templates.templates) 
         for sprite in project["sprites"]:
             writer.set_sprite(sprite["name"])
-            writer.write_line(f"# Sprite: {sprite['name']}")
             for block in sprite["blocks"]:
-                writer.ex(block)
-        print(writer.getvalue())
+                print(writer.process(block))
 
 
 
