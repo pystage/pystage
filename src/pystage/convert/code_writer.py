@@ -52,19 +52,23 @@ class CodeWriter():
             return str(block)
         else:
             # We delegate to another block with an opcode
+            res = ""
+            template = ""
             if block["opcode"] in self.templates:
                 if "comments" in block:
                     self.comments.extend(block["comments"])
-                return self.render(block, self.templates[block["opcode"]])
+                template = self.templates[block["opcode"]]
+                res = self.render(block, template)
             else:
-                res = f"\n# NOT IMPLEMENTED: {block['opcode']}"
+                res = f"\"NOT IMPLEMENTED: {block['opcode']}"
                 for p in block['params']:
                     res += f" {p}"
-                res += "\n"
-                return res
+                res += "\""
             # Continue with next block if not yet done
-            if block["next"] and not "{{NEXT}}" in text:
-                return self.process(block["next"])
+            if block["next"] and not "{{NEXT}}" in template:
+                res += "\n"
+                res += self.process(block["next"])
+            return res
 
 
     def render(self, block, text):

@@ -20,7 +20,7 @@ templates = {
 
                 ''',
         
-        "event_broadcast": 'broadcast({{BROADCAST_INPUT}})',
+        "event_broadcast": 'self.broadcast({{BROADCAST_INPUT}})',
         
         "event_whenbroadcastreceived": '''\
 
