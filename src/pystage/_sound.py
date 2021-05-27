@@ -28,6 +28,9 @@ class _Sound:
         self.mixer.stop()
 
     def change_sound_effect_by(self, effect, value):
+        # TODO: for pitching an paning there is no readey to use code in pygame. To do so
+        # we must operate on the audio array itself.
+
         # Similar to graphics effects
         # - pitch
         # - pan left/right
