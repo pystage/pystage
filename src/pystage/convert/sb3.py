@@ -18,6 +18,10 @@ block trees that is used in the code template functions.
 
 # Target (intermediate) structure
 # project = {
+#         "stage": {
+#               "name": "Stage",
+#               "blocks": [],
+#           }
 #         "sprites": [
 #             {
 #                 "name": "Sprite1",
@@ -130,7 +134,10 @@ def get_intermediate(data, name):
                 "name": target['name'],
                 "blocks": [],
                 })
-        project["sprites"].append(sprite)
+        if target["isStage"]:
+            project["stage"] = sprite
+        else:
+            project["sprites"].append(sprite)
         blocks = target["blocks"]
         for key in blocks:
             b = blocks[key]
@@ -143,14 +150,22 @@ def get_intermediate(data, name):
 def get_python(project):
     res = textwrap.dedent(f'''\
             # {project['name']} (pyStage, converted from Scratch 3)
-
+            
             from pystage import Sprite, Stage
-
-
-    ''')
+            
+            ''')
     writer = CodeWriter(project, sb3_templates.templates) 
+    writer.set_sprite(project["stage"]["name"]) 
+    res += textwrap.dedent(f'''\
+            {writer.get_sprite_var()} = Stage()
+            ''')
+    for block in project["stage"]["blocks"]:
+        res += writer.process(block)
     for sprite in project["sprites"]:
-        writer.set_sprite(sprite["name"])
+        writer.set_sprite(sprite["name"]) 
+        res += textwrap.dedent(f'''\
+                {writer.get_sprite_var()} = stage.create_sprite()
+                ''')
         for block in sprite["blocks"]:
             res += writer.process(block)
     return res
