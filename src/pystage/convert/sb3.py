@@ -2,6 +2,10 @@ import argparse
 import zipfile
 import json
 import math
+from pathlib import Path
+import sys
+import os
+import textwrap
 
 
 from pystage.convert import CodeWriter, sb3_templates
@@ -105,7 +109,7 @@ def get_block(block, blocks):
     return res
 
 
-def get_intermediate(data):
+def get_intermediate(data, name):
     hat_blocks = [
         "event_whenthisspriteclicked", 
         "event_whenbroadcastreceived", 
@@ -116,6 +120,7 @@ def get_intermediate(data):
 
     project = DictClass()
     project.update({
+            "name": name,
             "sprites": [],
             })
 
@@ -134,6 +139,27 @@ def get_intermediate(data):
                 sprite["blocks"].append(block)
     return project
 
+
+def get_python(project):
+    res = textwrap.dedent(f'''\
+            # {project['name']} (pyStage, converted from Scratch 3)
+
+            from pystage import Sprite, Stage
+
+
+    ''')
+    writer = CodeWriter(project, sb3_templates.templates) 
+    for sprite in project["sprites"]:
+        writer.set_sprite(sprite["name"])
+        for block in sprite["blocks"]:
+            res += writer.process(block)
+    return res
+
+
+def print_python(project):
+    print(get_python(project))
+
+
 ##
 # Main
 #
@@ -142,22 +168,42 @@ def get_intermediate(data):
 parser = argparse.ArgumentParser(
         prog="python -m pystage.convert.sb3",
         description="Convert Scratch 3 (sb3) files to Python.")
-parser.add_argument("file", metavar="FILE", type=str)
-parser.add_argument("--intermediate", action="store_true", help="print intermediate code representation")
+parser.add_argument("file", metavar="FILE", type=str, help="the sb3 file to be converted")
+parser.add_argument("-i", "--intermediate", action="store_true", help="print intermediate code representation")
+parser.add_argument("-s", "--sb3-json", action="store_true", help="print sb3 project.json")
+parser.add_argument("-p", "--python", action="store_true", help="print python code")
+parser.add_argument("-d", "--directory", metavar="DIR", type=str, help="the project directory")
 args = parser.parse_args()
+
 
 archive = zipfile.ZipFile(args.file, 'r')
 with archive.open("project.json") as f:
+    project_name = Path(args.file).stem
     data = json.loads(f.read())
-    project = get_intermediate(data)
+    project = get_intermediate(data, project_name)
     if args.intermediate:
         print(json.dumps(project, indent=2))
+    elif args.sb3_json:
+        print(json.dumps(data, indent=2))
+    elif args.python:
+        print_python(project)
     else:
-        writer = CodeWriter(project, sb3_templates.templates) 
-        for sprite in project["sprites"]:
-            writer.set_sprite(sprite["name"])
-            for block in sprite["blocks"]:
-                print(writer.process(block))
+        print(f"Creating project: {project_name}")
+        directory = project_name
+        if args.directory:
+            directory = args.directory
+        print(f"Exporting to: {directory}")
+        dp = Path(directory)
+        if dp.exists() and not dp.is_dir:
+            print("Output directory exists, but is not a directory. Use -d to specify another directory.")
+            sys.exit(1)
+        elif dp.exists() and next(dp.iterdir(), False):
+            print("Output directory is not empty. Use -d to specify another one.")
+        elif not dp.exists():
+            print(f"Creating directory: {dp}")
+            os.mkdir(dp)
+        os.mkdir(dp / "images")
+        os.mkdir(dp / "sounds")
 
 
 
