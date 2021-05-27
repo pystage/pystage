@@ -8,22 +8,22 @@ pystage.de.buehne module
 ------------------------
 
 .. automodule:: pystage.de.buehne
+   :private-members:
    :members:
    :undoc-members:
-   :show-inheritance:
 
 pystage.de.figur module
 -----------------------
 
 .. automodule:: pystage.de.figur
+   :private-members:
    :members:
    :undoc-members:
-   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: pystage.de
+   :private-members:
    :members:
    :undoc-members:
-   :show-inheritance:
