@@ -1,5 +1,6 @@
-from pygame.mixer import music
 import pygame
+from pygame.mixer import music
+import time
 
 
 class _Sound:
@@ -13,13 +14,15 @@ class _Sound:
         self.mixer = pygame.mixer
         self.mixer.init()
 
-    def start_sound(self, sound, loop=-1):
+    def start_sound(self, sound, loop=0):
         channel = self.mixer.find_channel()
         channel.play(self.mixer.Sound(sound), loop)
         return channel
 
     def play_sound_until_done(self, sound):
-        return self.start_sound(sound, 0)
+        sound = self.mixer.Sound(sound)
+        self.mixer.find_channel().play(sound, 0)
+        time.sleep(sound.get_length())
 
     def stop_all_sounds(self):
         self.mixer.stop()
@@ -40,13 +43,15 @@ class _Sound:
 
     @staticmethod
     def change_volume_by(value):
+        value *= 0.01
         actual_volume = music.get_volume()
         music.set_volume(actual_volume + value)
 
     @staticmethod
     def set_volume_to_percent(percent):
+        percent *= 0.01
         music.set_volume(percent)
 
     @staticmethod
     def get_volume():
-        return music.get_volume()
+        return music.get_volume() * 100
