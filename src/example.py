@@ -1,6 +1,6 @@
 from pystage import Sprite, Stage
 
-stage = Stage(500, 500)
+stage = Stage()
 sprite = stage.create_sprite()
 
 def do_something(self):
