@@ -73,17 +73,21 @@ templates = {
 
         "looks_switchcostumeto": "self.switch_costume_to({{COSTUME}})",
 
-        "looks_costume": "{{COSTUME}}",
+        "looks_costume": "{{COSTUME | global_costume}}",
 
         "looks_nextcostume": "self.next_costume()",
         
-        "looks_backdrops": "{{BACKDROP}}",
+        "looks_backdrops": "{{BACKDROP | global_backdrop}}",
 
         "looks_switchbackdropto": "self.stage.switch_backdrop_to({{BACKDROP}})",
 
         "looks_sayforsecs": "self.say_for_time({{SECS}}, {{MESSAGE}})",
 
         "looks_costumenumbername": "self.get_costume_{{NUMBER_NAME | replace('\"','')}}()",
+
+        "sound_playuntildone": "self.play_sound_until_done({{SOUND_MENU}})",
+
+        "sound_sounds_menu": "{{SOUND_MENU | global_sound }}",
 
                 }
 
