@@ -268,7 +268,7 @@ elif args.verbose:
 
 archive = zipfile.ZipFile(args.file, 'r')
 with archive.open("project.json") as f:
-    project_name = Path(args.file).stem
+    project_name = to_filename(Path(args.file).stem)
     data = json.loads(f.read())
     project = get_intermediate(data, project_name)
 
@@ -307,6 +307,8 @@ with archive.open("project.json") as f:
             with archive.open(f'{key}.{s["extension"]}') as infile:
                 with open(dp / "sounds" / f'{s["global_name"]}.{s["extension"]}', "wb") as outfile:
                     outfile.write(infile.read())
+        with open(dp / f'{project_name}.py', "w", encoding="utf-8") as pyfile:
+            pyfile.write(get_python(project))
 
 
 
