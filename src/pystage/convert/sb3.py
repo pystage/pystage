@@ -225,16 +225,27 @@ def get_python(project):
             ''')
     writer = CodeWriter(project, sb3_templates.templates) 
     writer.set_sprite(project["stage"]["name"]) 
+    backdrops = []
+    for bd in project["stage"]["costumes"]:
+        backdrops.append(writer.global_backdrop(bd["local_name"], False))
     res += textwrap.dedent(f'''\
-            {writer.get_sprite_var()} = Stage()
+            {writer.get_sprite_var()} = Stage({backdrops})
             ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
         writer.set_sprite(sprite["name"]) 
+        costumes = [writer.global_costume(c["local_name"], False) for c in sprite["costumes"]]
+        sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
+        backdrops.append(writer.global_backdrop(bd["local_name"], False))
         res += textwrap.dedent(f'''\
-                {writer.get_sprite_var()} = stage.create_sprite()
+                {writer.get_sprite_var()} = stage.create_sprite({costumes})
                 ''')
+        for s in sounds:
+            res += textwrap.dedent(f'''\
+                {writer.get_sprite_var()}.add_sound('{s}')
+                ''')
+
         for block in sprite["blocks"]:
             res += writer.process(block)
     return res

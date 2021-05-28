@@ -64,29 +64,32 @@ class CodeWriter():
         self.comments.clear()
         return res
 
-    def global_sound(self, name):
+    def global_sound(self, name, quoted=True):
         name = name.replace('"', '')
         sprite = self.get_sprite_or_stage()
         for sound in sprite["sounds"]:
             if sound["local_name"] == name:
-                return f'"{self.project["sounds"][sound["md5"]]["global_name"]}"'
+                q = '"' if quoted else ''
+                return f'{q}{self.project["sounds"][sound["md5"]]["global_name"]}{q}'
         raise ValueError(f"No sound with name '{name}' found for sprite '{sprite['name']}'")
         
 
-    def global_costume(self, name):
+    def global_costume(self, name, quoted=True):
         name = name.replace('"', '')
         sprite = self.get_sprite_or_stage()
         for costume in sprite["costumes"]:
             if costume["local_name"] == name:
-                return f'"{self.project["costumes"][costume["md5"]]["global_name"]}"'
+                q = '"' if quoted else ''
+                return f'{q}{self.project["costumes"][costume["md5"]]["global_name"]}{q}'
         raise ValueError(f"No costume with name '{name}' found for sprite '{sprite['name']}'")
 
-    def global_backdrop(self, name):
+    def global_backdrop(self, name, quoted=True):
         name = name.replace('"', '')
         sprite = self.project["stage"]
         for costume in sprite["costumes"]:
             if costume["local_name"] == name:
-                return f'"{self.project["costumes"][costume["md5"]]["global_name"]}"'
+                q = '"' if quoted else ''
+                return f'{q}{self.project["costumes"][costume["md5"]]["global_name"]}{q}'
         raise ValueError(f"No backdrop with name '{name}' found for stage.")
 
 
