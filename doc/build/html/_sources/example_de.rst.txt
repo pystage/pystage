@@ -1,0 +1,7 @@
+example\_de module
+==================
+
+.. automodule:: example_de
+   :members:
+   :undoc-members:
+   :show-inheritance:
