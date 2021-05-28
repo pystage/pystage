@@ -6,3 +6,4 @@ piptest/
 __pycache__/
 *.egg-info
 build.sh
+.idea/
