@@ -2,6 +2,8 @@ import io
 import sys
 import textwrap
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 
 class CodeWriter():
@@ -16,6 +18,7 @@ class CodeWriter():
         self.comments = []
         self.last_id = 0
         self.current_sprite = ""
+        logger.debug("CodeWriter created.")
 
 
     def set_sprite(self, name):
