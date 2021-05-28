@@ -8,13 +8,13 @@ Rules:
 templates = {
         "control_if": '''\
                 if {{CONDITION}}:
-                    {{SUBSTACK}}
+                    {{SUBSTACK | indent(4)}}
                 ''',
         
         "event_whenflagclicked": '''\
                 
                 def program_start_{{ID}}(self):
-                    {{NEXT}}
+                    {{NEXT | indent(4) }}
 
                 {{CURRENT_SPRITE}}.when_program_is_started(program_start_{{ID}})
 
@@ -25,7 +25,7 @@ templates = {
         "event_whenbroadcastreceived": '''\
 
                 def message_received_{{ID}}(self):
-                    {{NEXT}}
+                    {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.when_i_receive_message({{BROADCAST_OPTION}}, message_received_{{ID}})
 
@@ -39,7 +39,7 @@ templates = {
         "event_whenkeypressed": '''\
 
                 def key_pressed_{{ID}}(self):
-                    {{NEXT}}
+                    {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.when_key_is_pressed({{KEY_OPTION}}, key_pressed_{{ID}})
                 
@@ -49,12 +49,12 @@ templates = {
 
         "control_repeat_until": '''\
                 while not {{CONDITION}}:
-                    {{SUBSTACK}}
+                    {{SUBSTACK | indent(4)}}
                 ''',
 
         "control_if": '''\
                 if {{CONDITION}}:
-                    {{SUBSTACK}}
+                    {{SUBSTACK | indent(4)}}
                 ''',
 
         "operator_equals": "{{OPERAND1}} == {{OPERAND2}}",
@@ -70,6 +70,20 @@ templates = {
         "operator_subtract": "{{NUM1}} - {{NUM2}}",
 
         "operator_add": "{{NUM1}} + {{NUM2}}",
+
+        "looks_switchcostumeto": "self.switch_costume_to({{COSTUME}})",
+
+        "looks_costume": "{{COSTUME}}",
+
+        "looks_nextcostume": "self.next_costume()",
+        
+        "looks_backdrops": "{{BACKDROP}}",
+
+        "looks_switchbackdropto": "self.stage.switch_backdrop_to({{BACKDROP}})",
+
+        "looks_sayforsecs": "self.say_for_time({{SECS}}, {{MESSAGE}})",
+
+        "looks_costumenumbername": "self.get_costume_{{NUMBER_NAME | replace('\"','')}}()",
 
                 }
 

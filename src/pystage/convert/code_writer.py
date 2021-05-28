@@ -3,6 +3,7 @@ import sys
 import textwrap
 import re
 import logging
+from jinja2 import Template
 logger = logging.getLogger(__name__)
 
 
@@ -67,54 +68,22 @@ class CodeWriter():
                 for p in block['params']:
                     res += f" {p}"
                 res += "\""
-            # Continue with next block if not yet done
-            if block["next"] and not "{{NEXT}}" in template:
-                res += "\n"
-                res += self.process(block["next"])
             return res
 
 
     def render(self, block, text):
-        current_id = None
-        indent_level = 0
-
-        def reindent(text):
-            nonlocal indent_level
-            res = []
-            for i, line in enumerate(text.split("\n")):
-                if i > 0:
-                    line = " " * 4 * indent_level + line
-                res.append(line)
-            return "\n".join(res)
-
-        def translate(match):
-            nonlocal current_id
-            token = match.group(1)
-            if token == "NEXT":
-                return reindent(self.process(block["next"]))
-            elif token =="ID":
-                if not current_id:
-                    current_id = self.get_id()
-                return str(current_id)
-            elif token == "CURRENT_SPRITE":
-                return self.get_sprite_var()
-            elif token in block["params"]:
-                return reindent(self.process(block["params"][token]))
-            else:
-                raise ValueError(f"Unknown token: {token} in {text}")
-
         text = textwrap.dedent(text)
-        lines = text.split("\n")
-        res = []
-        for i, line in enumerate(lines):
-            indent_match = re.search(r"^[ ]*", line)
-            indent_level = int(len(indent_match.group(0)) / 4)
-            if i > 0 and len(lines) > 1:
-                c = self.render_comments()
-                if c:
-                    res.append(reindent(c))
-            line = re.sub(r"\{\{([^\}]+)\}\}", translate, line)
-            res.append(line)
-
-        return "\n".join(res)
+        context = {}
+        if block["next"]:
+            context["NEXT"] = self.process(block["next"])
+            if not "NEXT" in text:
+                text += "\n{{NEXT}}"
+        for param in block["params"]:
+            context[param] = self.process(block["params"][param])
+        context["CURRENT_SPRITE"] = self.get_sprite_var()
+        if "{{ID}}" in text:
+            context["ID"] = self.get_id()
+        template = Template(text)
+        text = template.render(context)
+        return text
 
