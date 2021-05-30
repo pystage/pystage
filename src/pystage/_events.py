@@ -28,7 +28,7 @@ class _Events():
         print(f"Bound to key press ({key}/{pg_key}): {new_block.name}")
 
 
-    def when_this_sprite_clicked(self, generator_function, name=""):
+    def when_clicked(self, generator_function, name=""):
         pass
 
 

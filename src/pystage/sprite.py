@@ -6,15 +6,16 @@ from pystage.code_block import CodeBlock
 # Mixins
 from pystage._events import _Events
 from pystage._motion import _Motion
-from pystage._sensing import _Sensing
-from pystage._looks import _Looks
+from pystage._sensing import _Sensing, _SensingSprite
+from pystage._looks_sprite import _LooksSprite
 from pystage._pen import _Pen
 from pystage._variables import _Variables
 from pystage._control import _Control
+from pystage._control_sprite import _ControlSprite
 from pystage._sound import _Sound
 
 
-class Sprite(_Motion, _Events, _Looks, _Sound, _Sensing, _Control, _Variables, _Pen):
+class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Variables, _Pen):
     image = pygame.image.load(pkg_resources.resource_filename(__name__, "images/zombie_idle.png"))
     x = 0.0
     y = 0.0
@@ -54,38 +55,3 @@ class Sprite(_Motion, _Events, _Looks, _Sound, _Sensing, _Control, _Variables, _
         self.code_blocks[new_block.name] = new_block
         print(f"New code block registered: {new_block.name}")
         return new_block
-
-
-
-    ##
-    # Operators
-    #
-
-    # Operators are all available in python.
-    # TODO: Needs documentation
-
-    # - +-*/
-    # - pick random from range (inclusive)
-    # - < > =
-    # and / or / not
-    # join
-    # letter 1 of string
-    # length of string
-    # string contains a
-    # mod
-    # round
-    # abs/floor/ceiling/sqrt/sin/cos/tan/asin/acos/atan/ln/log/e^/10^
-
-
-    ##
-    # My Blocks (custom blocks)
-    #
-
-    # a custom block is simply a generator or a function (we need to distinguish here!)
-    # generators (long running blocks that need yields) are invoked with yield from 
-    # functions as usual (they block the thread).
-    # Scratch does not support custom reporters, actually, unlike Snap.
-    # Reporters would be functions, as only this way we can work with the return value
-    #
-    # TODO: document this
-

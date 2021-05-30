@@ -2,12 +2,21 @@ import pygame
 
 from pystage import Sprite
 
-class Stage():
+# Mixins
+from pystage._events import _Events
+from pystage._looks_stage import _LooksStage
+from pystage._sound import _Sound
+from pystage._sensing import _Sensing
+from pystage._variables import _Variables
+from pystage._control import _Control
+
+class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
     running = False
     FPS = 60
     dt = 0
     sprites = []
     background_color = (255, 255, 255)
+
 
     def __init__(self, width=480, height=360):
         pygame.init()
@@ -22,7 +31,7 @@ class Stage():
         self.sprites.append(sprite)
         return sprite
 
-    # TODO: Implement the API for stage blocks
+
 
     def play(self):
         self.running = True
@@ -48,4 +57,3 @@ class Stage():
             dt = self.clock.tick(self.FPS) / 1000
 
         pygame.quit()
-

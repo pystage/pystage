@@ -1,4 +1,4 @@
-class _Looks():
+class _LooksSprite():
     ##
     # Looks
     #

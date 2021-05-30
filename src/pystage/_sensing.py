@@ -1,28 +1,4 @@
 class _Sensing():
-    ##
-    # Sensing
-    #
-
-    def is_touching_mouse_pointer(self):
-        pass
-
-    def is_touching_edge(self):
-        pass
-
-    def is_touching_sprite(self, sprite):
-        pass
-
-    def is_touching_color(self, color):
-        pass
-
-    def is_color_touching_color(self, sprite_color, color):
-        pass
-
-    def get_distance_to_mouse_pointer(self):
-        pass
-
-    def get_distance_to_sprite(self, sprite):
-        pass
 
     def ask_and_wait(self, question):
         # an input field, answer needs to be available somehow
@@ -42,9 +18,6 @@ class _Sensing():
         pass
 
     def get_mouse_y(self):
-        pass
-
-    def set_draggable(self, value):
         pass
 
     def get_loudness(self):
@@ -87,5 +60,31 @@ class _Sensing():
 
     def get_username(self):
         # Makes not a lot of sense, maybe for compatibility?
+        pass
+
+class _SensingSprite():
+
+    def is_touching_mouse_pointer(self):
+        pass
+
+    def is_touching_edge(self):
+        pass
+
+    def is_touching_sprite(self, sprite):
+        pass
+
+    def is_touching_color(self, color):
+        pass
+
+    def is_color_touching_color(self, sprite_color, color):
+        pass
+
+    def get_distance_to_mouse_pointer(self):
+        pass
+
+    def get_distance_to_sprite(self, sprite):
+        pass
+
+    def set_draggable(self, value):
         pass
 
