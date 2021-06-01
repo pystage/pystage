@@ -1,5 +1,4 @@
 import sphinx_rtd_theme
-import myst_parser
 
 # Configuration file for the Sphinx documentation builder.
 #
