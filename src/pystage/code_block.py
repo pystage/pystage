@@ -13,31 +13,61 @@ class CodeBlock():
     # de
     yield_funcs += ["warte"]
 
+
+    def index_ast(func_ast):
+        '''
+        Helper function to (re-)generate for each node that is in
+        a body or orelse field its parent, the field and its position 
+        in the field.
+
+        Parameters
+        ----------
+        func_ast : ast.AST
+            The AST to be indexed.
+        '''
+        
+        for node in ast.walk(func_ast):
+            for field in ["body", "orelse"]:
+                if hasattr(node, field):
+                    for index, child in enumerate(getattr(node, field)):
+                        child.parent = node
+                        child.index = index
+                        child.isin = field
+
+
     def add_yields(function):
+        '''
+        This function does the black magic and adds yields to the code so that
+        the screen can update. This creates a generator function.
+
+        Parameters
+        ----------
+        function : The function to be transformed to a generator function.
+        '''
         func_ast = ast.parse(inspect.getsource(function))
+        
         # yield at the end of the function
         func_ast.body[0].body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
 
-        # generate parent information
-        for node in ast.walk(func_ast):
-            for index, child in enumerate(ast.iter_child_nodes(node)):
-                child.parent = node
-                child.index = index
+        CodeBlock.index_ast(func_ast)
 
         for node in ast.walk(func_ast):
+            
             # yield at the end of for and while iterations
             if isinstance(node, ast.For):
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
             if isinstance(node, ast.While):
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
-            # yield after wait
+
+            # yield after certain calls defined in CodeBlock.yield_funcs
             if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
                 if node.value.func.attr in CodeBlock.yield_funcs:
-                    # Not sure if this is correct. For for loops there are two additional child nodes, Name and Call.
-                    # Therefore, we subtract 2 and then add 1 to the index.
-                    node.parent.body.insert(node.index - 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+                    getattr(node.parent, node.isin).insert(node.index + 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+                    # We need to reindex so that further yields get the right position
+                    CodeBlock.index_ast(func_ast)
 
         ast.fix_missing_locations(func_ast)
+        # print(ast.unparse(func_ast)) # outputs the transformed code
         namespace = {}
         code = compile(func_ast, "<string>", mode="exec")
         exec(code, namespace)
