@@ -7,12 +7,14 @@ class _Control():
     # or this would be no help in learning python.
 
     # TODO: document this
-    # wait is simply yield
     # repeat is for i in range()
     # forever is while True
     # if is if
     # wait until is while COND: yield
     # repeat until is while not
+
+    def wait(self, secs):
+        self.current_block.add_to_wait_time = secs
 
     def stop_all(self):
         # not only in this sprite!

@@ -29,6 +29,10 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
         # pygame.K_?: [name, ...]
         self.key_pressed_blocks = {}
         self.stage = stage
+        # Name of the code block currently executed.
+        # This way, state about the current execustion
+        # can be stored safely where it belongs
+        self.current_block : CodeBlock = None
 
 
     def _draw(self):
@@ -37,6 +41,7 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
 
     def _update(self, dt):
         for name in self.code_blocks:
+            self.current_block = self.code_blocks[name]
             self.code_blocks[name].update(dt)
 
 

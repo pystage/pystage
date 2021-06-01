@@ -11,11 +11,34 @@ class CodeBlock():
 
     def add_yields(function):
         func_ast = ast.parse(inspect.getsource(function))
+        # yield at the end of the function
+        func_ast.body[0].body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+
+        # generate parent information
+        for node in ast.walk(func_ast):
+            print(node)
+            for index, child in enumerate(ast.iter_child_nodes(node)):
+                print("  ",child, index)
+                child.parent = node
+                child.index = index
 
         for node in ast.walk(func_ast):
+            # yield at the end of for and while iterations
             if isinstance(node, ast.For):
-                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=1))))
+                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+            if isinstance(node, ast.While):
+                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+            # yield after wait
+            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
+                if node.value.func.attr=='wait':
+                    print("wait found!")
+                    print(type(node.parent.body))
+                    # Not sure if this is correct. For for loops there are two additional child nodes, Name and Call.
+                    # Therefore, we subtract 2 and then add 1 to the index.
+                    node.parent.body.insert(node.index - 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+
         ast.fix_missing_locations(func_ast)
+        print(ast.dump(func_ast, indent=2))
         namespace = {}
         code = compile(func_ast, "<string>", mode="exec")
         exec(code, namespace)
@@ -80,6 +103,7 @@ class CodeBlock():
 
         # The time until the next step is executed
         self.wait_time = 0
+        self.add_to_wait_time = 0
         # Flag indicating if the block is currently running
         self.running = False
 
@@ -125,6 +149,9 @@ class CodeBlock():
                     self.wait_time = 0
                     if isinstance(result, float) or isinstance(result, int):
                         self.wait_time = result
+                    if self.add_to_wait_time > 0:
+                        self.wait_time += self.add_to_wait_time
+                        self.add_to_wait_time = 0
                 except StopIteration:
                     print(f"CodeBlock {self.name} has finished.")
                     self.running = False
