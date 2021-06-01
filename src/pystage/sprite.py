@@ -16,19 +16,18 @@ from pystage._sound import _Sound
 
 
 class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Variables, _Pen):
-    image = pygame.image.load(pkg_resources.resource_filename(__name__, "images/zombie_idle.png"))
-    x = 0.0
-    y = 0.0
-    direction = 0
-    pen = False
-    color = (255,0,0)
-    # name: code_block
-    code_blocks = {}
-    # pygame.K_?: [name, ...]
-    key_pressed_blocks = {}
-
 
     def __init__(self, stage):
+        self.image = pygame.image.load(pkg_resources.resource_filename(__name__, "images/zombie_idle.png"))
+        self.x = 0.0
+        self.y = 0.0
+        self.direction = 0
+        self.pen = False
+        self.color = (255,0,0)
+        # name: code_block
+        self.code_blocks = {}
+        # pygame.K_?: [name, ...]
+        self.key_pressed_blocks = {}
         self.stage = stage
 
 
