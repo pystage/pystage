@@ -1,12 +1,52 @@
 import inspect
+import ast
 
 class CodeBlock():
     '''
     The CodeBlock encapsulates a generator and manages its state.
+
+    
     '''
     last_id = -1
 
-    def __init__(self, sprite_or_stage, generator_function, name=""):
+    def add_yields(function):
+        func_ast = ast.parse(inspect.getsource(function))
+
+        for node in ast.walk(func_ast):
+            if isinstance(node, ast.For):
+                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=1))))
+        ast.fix_missing_locations(func_ast)
+        namespace = {}
+        code = compile(func_ast, "<string>", mode="exec")
+        exec(code, namespace)
+        return namespace[function.__name__] 
+
+
+    def __init__(self, sprite_or_stage, generator_function, name="", no_refresh=False):
+        '''
+        Parameters
+        ----------
+        sprite_or_stage :
+            The sprite or stage instance this code block is associated with
+        generator_function : function
+            The function containing the code to be executed. It can be a generator 
+            function or a normal function which will be turned into a generator function
+            if no_refresh is set to False (default)
+        name : str, optional
+            A name postfix used to distinguish this code block from other code blocks
+            using the same function.
+        no_refresh : bool, optional
+            If set to true, the function must not be a generator function and will also
+            not turned into one. This means that the screen will not be refreshed until
+            the function returns.
+
+        Raises
+        ------
+        ValueError
+            If the function does not get a single parameter (for the reference to 
+            the sprite or stage) or if a generator function is supplied with no_refresh 
+            set to True. 
+        '''
         if len(inspect.signature(generator_function).parameters)!=1:
             raise ValueError(f"Your code block '{generator_function.__name__}' needs one parameter, usually called self.")
 
@@ -27,9 +67,17 @@ class CodeBlock():
         # The current state of a generator after it is started
         self.generator = None
         self.is_function = False
-        if not inspect.isgeneratorfunction(generator_function):
-            # We support also plain functions, i.e. without yield
-            self.is_function = True
+        self.no_refresh = no_refresh
+        if inspect.isgeneratorfunction(generator_function):
+            if no_refresh:
+                raise ValueError(f"Your code block '{generator_function.__name__}' is set to no refresh. In this case, yield must not be used.")
+        else:
+            if no_refresh:
+                # We support also plain functions, i.e. without yield
+                self.is_function = True
+            else:
+                self.generator_function = CodeBlock.add_yields(generator_function)
+
         # The time until the next step is executed
         self.wait_time = 0
         # Flag indicating if the block is currently running

@@ -50,8 +50,8 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
                 self.code_blocks[name].start_if_not_running()
 
 
-    def _register_code_block(self, generator_function, name=""):
-        new_block = CodeBlock(self, generator_function, name)
+    def _register_code_block(self, generator_function, name="", no_refresh=False):
+        new_block = CodeBlock(self, generator_function, name, no_refresh=no_refresh)
         self.code_blocks[new_block.name] = new_block
         print(f"New code block registered: {new_block.name}")
         return new_block
