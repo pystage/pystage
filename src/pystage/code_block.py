@@ -9,6 +9,10 @@ class CodeBlock():
     '''
     last_id = -1
 
+    yield_funcs = ["wait"]
+    # de
+    yield_funcs += ["warte"]
+
     def add_yields(function):
         func_ast = ast.parse(inspect.getsource(function))
         # yield at the end of the function
@@ -16,9 +20,7 @@ class CodeBlock():
 
         # generate parent information
         for node in ast.walk(func_ast):
-            print(node)
             for index, child in enumerate(ast.iter_child_nodes(node)):
-                print("  ",child, index)
                 child.parent = node
                 child.index = index
 
@@ -30,15 +32,12 @@ class CodeBlock():
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
             # yield after wait
             if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
-                if node.value.func.attr=='wait':
-                    print("wait found!")
-                    print(type(node.parent.body))
+                if node.value.func.attr in CodeBlock.yield_funcs:
                     # Not sure if this is correct. For for loops there are two additional child nodes, Name and Call.
                     # Therefore, we subtract 2 and then add 1 to the index.
                     node.parent.body.insert(node.index - 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
 
         ast.fix_missing_locations(func_ast)
-        print(ast.dump(func_ast, indent=2))
         namespace = {}
         code = compile(func_ast, "<string>", mode="exec")
         exec(code, namespace)

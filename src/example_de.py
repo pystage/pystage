@@ -1,23 +1,22 @@
 from pystage.de import Buehne, Figur
 
 buehne = Buehne()
-figur = buehne.erstelle_figur()
+zombie = buehne.erstelle_figur()
 
-def mach_was(self):
-    self.gehe_zu_x_y(250, 250)
-    yield 0
+def mach_was(zombie):
+    zombie.gehe_zu_x_y(250, 250)
     for i in range(4):
-        self.gehe(20)
-        self.drehe_links(90)
-        yield 1
+        zombie.gehe(20)
+        zombie.warte(1)
+        zombie.drehe_links(90)
+        zombie.warte(1)
 
-figur.wenn_programm_startet(mach_was)
+zombie.wenn_programm_startet(mach_was)
 
 
-def reagiere(self):
-    self.gehe(10)
-    yield
+def reagiere(zombie):
+    zombie.gehe(10)
 
-figur.wenn_taste_gedrueckt_wird(" ", reagiere)
+zombie.wenn_taste_gedrueckt_wird(" ", reagiere)
 
 buehne.spiele()

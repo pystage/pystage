@@ -31,3 +31,6 @@ class Figur(pystage.Sprite):
 
     def gehe_zu_x_y(self, x, y):
         self.go_to_x_y(x, y)
+
+    def warte(self, secs):
+        self.wait(secs)
