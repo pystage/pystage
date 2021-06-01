@@ -5,7 +5,6 @@ class CodeBlock():
     The CodeBlock encapsulates a generator and manages its state.
     '''
     last_id = -1
-    is_function = False
 
     def __init__(self, sprite_or_stage, generator_function, name=""):
         if len(inspect.signature(generator_function).parameters)!=1:
@@ -27,6 +26,7 @@ class CodeBlock():
         self.generator_function = generator_function
         # The current state of a generator after it is started
         self.generator = None
+        self.is_function = False
         if not inspect.isgeneratorfunction(generator_function):
             # We support also plain functions, i.e. without yield
             self.is_function = True
