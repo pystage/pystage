@@ -10,8 +10,6 @@ Welcome to PyStage's documentation!
    :caption: Documentation:
    :maxdepth: 2
 
-
-   readme_link
    modules
 
 

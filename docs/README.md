@@ -9,7 +9,7 @@ the documentation in html, pdf etc.
 
 1. To generate the source files run from within this directory:
 
-```sphinx-apidoc -f -P -o source ../src/pystage/ ```
+```sphinx-apidoc -f -o source ../src/pystage/ ```
 
 2. Afterwards generate the html docu by running:
 
