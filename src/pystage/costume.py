@@ -1,6 +1,11 @@
 import os
+from pystage.util import stderr_redirector
+import sys
+import io
 import pygame
 import pkg_resources
+from svglib.svglib import svg2rlg
+from reportlab.graphics import renderPM
 
 
 class Costume():
@@ -11,15 +16,24 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
-        for folder in [".", "./images", "./bilder"]:
-            for ext in ["", ".png", ".jpg", ".jpeg", ".gif"]:
-                if os.path.exists(f"{name}{ext}"):
-                    self.file = f"{name}{ext}"
+        for folder in ["", "images/", "bilder/"]:
+            for ext in ["", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
+                if os.path.exists(f"{folder}{name}{ext}"):
+                    self.file = f"{folder}{name}{ext}"
                     break
             if self.file is not None:
                 break
         if self.file is None:
             self.file = pkg_resources.resource_filename(__name__, "images/zombie_idle.png")
+        print(self.file)
+        if self.file.endswith(".svg"):
+            print(f"Converting SVG file: {self.file}")
+            with stderr_redirector(io.BytesIO()):
+                rlg = svg2rlg(self.file)
+                pil = renderPM.drawToPIL(rlg)
+                self.image = pil
+            
+            
         self.image = pygame.image.load(self.file)
         self.center_x = self.image.get_width() / 2 if center_x is None else center_x
         self.center_y = self.image.get_height() / 2 if center_y is None else center_y

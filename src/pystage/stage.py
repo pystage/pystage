@@ -29,7 +29,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.center_y = int(height / 2)
 
 
-    def create_sprite(self, constructor=Sprite, costume="default"):
+    def create_sprite(self, costume="default", constructor=Sprite):
         sprite = constructor(self, costume)
         self.sprites.append(sprite)
         return sprite

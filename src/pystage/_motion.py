@@ -71,16 +71,16 @@ class _Motion():
         pass
 
     def change_x_by(self, value):
-        pass
+        self.x += value
 
     def set_x_to(self, value):
-        pass
+        self.x = value
 
     def change_y_by(self, value):
-        pass
+        self.y += value
 
-    def set_u_to(self, value):
-        pass
+    def set_y_to(self, value):
+        self.y = value
 
     def if_on_edge_bounce(self):
         pass
@@ -92,14 +92,19 @@ class _Motion():
     # Setters and getters are questionable, but 
     # this way we would clearly adapt the Scratch API
     # We could get rid of them for a direct access 
-    # to x, y, direction and so on. Direct access if of 
+    # to x, y, direction and so on. Direct access is of 
     # course available anyway.
     def get_x_position(self):
-        pass
+        return self.x
 
     def get_y_position(self):
-        pass
+        return self.y
 
     def get_direction(self):
-        pass
+        # Scratch always keeps angles between -180 and 180
+        dir = self.direction % 360
+        if dir <= 180:
+            return dir
+        else:
+            return dir - 360
 
