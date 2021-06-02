@@ -7,6 +7,44 @@ import pkg_resources
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 
+class CostumeManager():
+    def __init__(self, owner):
+        self.owner = owner
+        self.costumes = []
+        self.current_costume = -1
+
+    def add_costume(self, name, center_x=None, center_y=None):
+        if isinstance(name, str):
+            costume = Costume(self, name, center_x, center_y)
+            self.costumes.append(costume)
+            if self.current_costume==-1:
+                self.current_costume = len(self.costumes) - 1
+        else:
+            for n in name:
+                self.add_costume(n)
+
+
+    def replace_costume(self, index, name, center_x=None, center_y=None):
+        costume = Costume(self, name, center_x, center_y)
+        del self.costumes[index]
+        self.costumes.insert(index, costume)
+
+
+    def insert_costume(self, index, name, center_x=None, center_y=None):
+        costume = Costume(self, name, center_x, center_y)
+        self.costumes.insert(index, costume)
+
+
+    def get_image(self):
+        if self.current_costume == -1:
+            return None
+        return self.costumes[self.current_costume].image
+    
+    def get_center(self):
+        if self.current_costume == -1:
+            return None, None
+        return self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y
+
 
 class Costume():
     '''
@@ -25,9 +63,11 @@ class Costume():
                 break
         if self.file is None:
             self.file = pkg_resources.resource_filename(__name__, "images/zombie_idle.png")
-        print(self.file)
         if self.file.endswith(".svg"):
             print(f"Converting SVG file: {self.file}")
+            print("\nWARNING: SVG conversion is for convenience only")
+            print("and might not work as expected. It is recommended")
+            print("to manually convert to bitmap graphics (png or jpg).\n")
             with stderr_redirector(io.BytesIO()):
                 rlg = svg2rlg(self.file)
                 pil = renderPM.drawToPIL(rlg)
@@ -41,23 +81,3 @@ class Costume():
 
     def __str__(self):
         return f"{self.name} ({self.center_x}, {self.center_y})"
-
-
-    def _draw(self):
-        sprite = self.sprite
-        stage = self.sprite.stage
-        # Rotation
-        # Scratch is clockwise with 0 upwards
-        # pyGame is counterclockwise with 0 to the right
-        transformed = pygame.transform.rotate(self.image, 90-sprite.direction)
-        # keep the center stable when the image size changes
-        # TODO: this is only correct when the rotation center is at the center
-        # This is currently always the case with Scratch
-        # Otherwise, it gets more complicated, the goal would be that the center point
-        # remains stable within the image, i.e. if we have it for instance on an eye,
-        # it remains on the eye during all transformations.
-        offset_x = (self.image.get_width() - transformed.get_width()) / 2
-        offset_y = (self.image.get_height() - transformed.get_height()) / 2
-        stage.screen.blit(transformed, (sprite.x + stage.center_x - self.center_x + offset_x, sprite.y + stage.center_y - self.center_y + offset_y))
-
-

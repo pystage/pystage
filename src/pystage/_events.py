@@ -7,7 +7,7 @@ class _Events():
     #
 
     def when_program_is_started(self, generator_function, name="", no_refresh=False):
-        new_block = self._register_code_block(generator_function, name)
+        new_block = self.code_manager.register_code_block(generator_function, name)
         print(f"Bound to start: {new_block.name}")
         new_block.start_or_restart()
 
@@ -16,15 +16,15 @@ class _Events():
         '''
         Adds the code block to the event queue for key presses.
         '''
-        new_block = self._register_code_block(generator_function, name, no_refresh)
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
         if key not in KEY_MAPPINGS:
             # TODO: implement "any" key.
             raise ValueError(f"Bad key: {key}. Only a-z, 0-9 and space are allowed.")
         pg_key = KEY_MAPPINGS[key]
         # No defaultdict so that we can easily check if a key mapping is available
-        if pg_key not in self.key_pressed_blocks:
-            self.key_pressed_blocks[pg_key] = []
-        self.key_pressed_blocks[pg_key].append(new_block.name)
+        if pg_key not in self.code_manager.key_pressed_blocks:
+            self.code_manager.key_pressed_blocks[pg_key] = []
+        self.code_manager.key_pressed_blocks[pg_key].append(new_block.name)
         print(f"Bound to key press ({key}/{pg_key}): {new_block.name}")
 
 

@@ -1,6 +1,42 @@
 import inspect
 import ast
 
+class CodeManager():
+    def __init__(self, owner):
+        # name: code_block
+        self.code_blocks = {}
+        # pygame.K_?: [name, ...]
+        self.key_pressed_blocks = {}
+        # Name of the code block currently executed.
+        # This way, state about the current execustion
+        # can be stored safely where it belongs
+        self.current_block : CodeBlock = None
+        self.owner = owner
+
+
+    def process_key_pressed(self, key):
+        # key is a pygame constant, e.g. pygame.K_a
+        # This hat block is special as it only fires again when the code block has ended. 
+        # All other hat block methods stop the current execution and restart the block.
+        if key in self.key_pressed_blocks:
+            for name in self.key_pressed_blocks[key]:
+                self.code_blocks[name].start_if_not_running()
+
+
+    def register_code_block(self, generator_function, name="", no_refresh=False):
+        new_block = CodeBlock(self.owner, generator_function, name, no_refresh=no_refresh)
+        self.code_blocks[new_block.name] = new_block
+        print(f"New code block registered: {new_block.name}")
+        return new_block
+
+
+    def _update(self, dt):
+        for name in self.code_blocks:
+            self.current_block = self.code_blocks[name]
+            self.code_blocks[name].update(dt)
+
+
+
 class CodeBlock():
     '''
     The CodeBlock encapsulates a generator and manages its state.

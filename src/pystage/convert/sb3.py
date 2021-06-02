@@ -224,6 +224,7 @@ def get_python(project):
             ''')
     writer = CodeWriter(project, sb3_templates.templates)
     writer.set_sprite(project["stage"]["name"])
+    stage = writer.get_sprite_var()
     backdrops = []
     for bd in project["stage"]["costumes"]:
         backdrops.append(writer.global_backdrop(bd["local_name"], False))
@@ -247,6 +248,10 @@ def get_python(project):
 
         for block in sprite["blocks"]:
             res += writer.process(block)
+    res += textwrap.dedent(f'''\
+            
+            {stage}.play()
+            ''')
     return res
 
 

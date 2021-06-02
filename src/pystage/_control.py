@@ -14,7 +14,7 @@ class _Control():
     # repeat until is while not
 
     def wait(self, secs):
-        self.current_block.add_to_wait_time = secs
+        self.code_manager.current_block.add_to_wait_time = secs
 
     def stop_all(self):
         # not only in this sprite!

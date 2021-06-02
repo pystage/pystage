@@ -27,6 +27,8 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.height = height
         self.center_x = int(width / 2)
         self.center_y = int(height / 2)
+        self.backdrops = []
+        self.current_backdrop = -1
 
 
     def create_sprite(self, costume="default", constructor=Sprite):
@@ -34,6 +36,27 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.sprites.append(sprite)
         return sprite
 
+
+    def add_backdrop(self, name, center_x=None, center_y=None):
+        if isinstance(name, str):
+            backdrop = Backdrop(self, name, center_x, center_y)
+            self.backdrops.append(backdrop)
+            if self.current_backdrop==-1:
+                self.current_backdrop = len(self.backdrops) - 1
+        else:
+            for n in name:
+                self.add_backdrop(n)
+
+
+    def replace_backdrop(self, index, name, center_x=None, center_y=None):
+        backdrop = Costume(self, name, center_x, center_y)
+        del self.backdrops[index]
+        self.backdrops.insert(index, backdrop)
+
+
+    def insert_backdrop(self, index, name, center_x=None, center_y=None):
+        backdrop = Costume(self, name, center_x, center_y)
+        self.backdrops.insert(index, backdrop)
 
 
     def play(self):
@@ -48,7 +71,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
                     self.running = False
                 if event.type == pygame.KEYDOWN:
                     for sprite in self.sprites:
-                        sprite._process_key_pressed(event.key)
+                        sprite.code_manager.process_key_pressed(event.key)
 
             self.screen.fill(self.background_color)
 
