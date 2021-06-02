@@ -4,7 +4,7 @@ buehne = Buehne()
 zombie = buehne.erstelle_figur()
 
 def mach_was(zombie):
-    zombie.gehe_zu_x_y(250, 250)
+    zombie.gehe_zu_x_y(0, 0)
     for i in range(4):
         zombie.gehe(20)
         zombie.warte(1)
