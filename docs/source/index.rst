@@ -6,6 +6,8 @@
 Welcome to PyStage's documentation!
 =================================================
 
+.. mdinclude:: ../../README.md
+
 .. toctree::
    :caption: Documentation:
    :maxdepth: 2
