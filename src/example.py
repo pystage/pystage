@@ -1,6 +1,7 @@
 from pystage import Sprite, Stage
 
 stage = Stage()
+stage.add_backdrop("grid")
 sprite = stage.create_sprite()
 
 def do_something(self):

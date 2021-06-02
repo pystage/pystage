@@ -54,7 +54,8 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
-        for folder in ["", "images/", "bilder/"]:
+        internal_folder = pkg_resources.resource_filename(__name__, "images/")
+        for folder in ["", "images/", "bilder/", internal_folder]:
             for ext in ["", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
                 if os.path.exists(f"{folder}{name}{ext}"):
                     self.file = f"{folder}{name}{ext}"
