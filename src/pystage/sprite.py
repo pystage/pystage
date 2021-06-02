@@ -1,7 +1,7 @@
 import pygame
-import pkg_resources
 
 from pystage.code_block import CodeBlock
+from pystage.costume import Costume
 
 # Mixins
 from pystage._events import _Events
@@ -17,11 +17,12 @@ from pystage._sound import _Sound
 
 class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Variables, _Pen):
 
-    def __init__(self, stage):
-        self.image = pygame.image.load(pkg_resources.resource_filename(__name__, "images/zombie_idle.png"))
+    def __init__(self, stage, costume="default"):
+        self.costumes = []
+        self.current_costume = -1
         self.x = 0.0
         self.y = 0.0
-        self.direction = 0
+        self.direction = 90
         self.pen = False
         self.color = (255,0,0)
         # name: code_block
@@ -33,10 +34,34 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
         # This way, state about the current execustion
         # can be stored safely where it belongs
         self.current_block : CodeBlock = None
+        self.add_costume(costume)
+
+
+    def add_costume(self, name, center_x=None, center_y=None):
+        if isinstance(name, str):
+            costume = Costume(self, name, center_x, center_y)
+            self.costumes.append(costume)
+            if self.current_costume==-1:
+                self.current_costume = len(self.costumes) - 1
+        else:
+            for n in name:
+                self.add_costume(n)
+
+
+    def replace_costume(self, index, name, center_x=None, center_y=None):
+        costume = Costume(self, name, center_x, center_y)
+        del self.costumes[index]
+        self.costumes.insert(index, costume)
+
+
+    def insert_costume(self, index, name, center_x=None, center_y=None):
+        costume = Costume(self, name, center_x, center_y)
+        self.costumes.insert(index, costume)
 
 
     def _draw(self):
-        self.stage.screen.blit(self.image, (self.x, self.y))
+        if self.current_costume > -1:
+            self.costumes[self.current_costume]._draw()
 
 
     def _update(self, dt):

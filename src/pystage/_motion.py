@@ -29,8 +29,8 @@ class _Motion():
     def move(self, steps):
         old_x = self.x
         old_y = self.y
-        self.x = self.x + steps * math.cos(_deg2rad(self.direction))
-        self.y = self.y + steps * math.sin(_deg2rad(self.direction))
+        self.x = self.x + steps * math.cos(_deg2rad(self.direction - 90))
+        self.y = self.y + steps * math.sin(_deg2rad(self.direction - 90))
 
     def go_to_random_position(self):
         pass

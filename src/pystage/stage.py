@@ -9,25 +9,28 @@ from pystage._sound import _Sound
 from pystage._sensing import _Sensing
 from pystage._variables import _Variables
 from pystage._control import _Control
+import os
 
 class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
-    running = False
-    FPS = 60
-    dt = 0
-    sprites = []
-    background_color = (255, 255, 255)
 
 
     def __init__(self, width=480, height=360):
         pygame.init()
+        self.running = False
+        self.FPS = 60
+        self.dt = 0
+        self.sprites = []
+        self.background_color = (255, 255, 255)
         self.screen = pygame.display.set_mode([width, height])
         self.clock = pygame.time.Clock()
         self.width = width
         self.height = height
+        self.center_x = int(width / 2)
+        self.center_y = int(height / 2)
 
 
-    def create_sprite(self, constructor=Sprite):
-        sprite = constructor(self)
+    def create_sprite(self, constructor=Sprite, costume="default"):
+        sprite = constructor(self, costume)
         self.sprites.append(sprite)
         return sprite
 

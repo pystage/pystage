@@ -4,8 +4,6 @@ stage = Stage()
 sprite = stage.create_sprite()
 
 def do_something(self):
-    self.x = 250
-    self.y = 250
     for i in range(4):
         self.move(20)
         self.wait(1)
