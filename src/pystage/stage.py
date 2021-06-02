@@ -16,8 +16,9 @@ import os
 class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
 
 
-    def __init__(self, width=480, height=360):
+    def __init__(self, name="Welcome to pyStage!", width=480, height=360):
         pygame.init()
+        pygame.display.set_caption(name)
         self.running = False
         self.FPS = 60
         self.dt = 0
