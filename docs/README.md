@@ -14,3 +14,14 @@ the documentation in html, pdf etc.
 2. Afterwards generate the html docu by running:
 
 ```make html```
+
+
+## Include images
+
+Images can be included using restructured Text:
+
+```.. figure:: _static/image.png```
+
+It is also possible to put the image directly in a function documentation. Therefore, put 
+the image directly in the docstring of the function. Make sure to have a blank line above and below 
+of the reST element. The path to the image must be relative to the place of the docstring.
