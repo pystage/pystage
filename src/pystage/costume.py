@@ -72,10 +72,10 @@ class Costume():
             with stderr_redirector(io.BytesIO()):
                 rlg = svg2rlg(self.file)
                 pil = renderPM.drawToPIL(rlg)
-                self.image = pil
-            
-            
-        self.image = pygame.image.load(self.file)
+                self.image = pygame.image.frombuffer(pil.tobytes(), pil.size, pil.mode)
+        else:
+            self.image = pygame.image.load(self.file)
+        self.image = self.image.subsurface(self.image.get_bounding_rect()) 
         self.center_x = self.image.get_width() / 2 if center_x is None else center_x
         self.center_y = self.image.get_height() / 2 if center_y is None else center_y
 

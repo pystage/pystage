@@ -1,7 +1,9 @@
 import pygame
+import pkg_resources
 
 from pystage.code_block import CodeBlock, CodeManager
 from pystage.costume import Costume, CostumeManager
+from pystage.gui import BubbleManager
 
 # Mixins
 from pystage._events import _Events
@@ -27,6 +29,7 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
 
         self.costume_manager = CostumeManager(self)
         self.code_manager = CodeManager(self)
+        self.bubble_manager = BubbleManager(self)
 
         self.add_costume(costume)
 
@@ -58,12 +61,16 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
         # Otherwise, it gets more complicated, the goal would be that the center point
         # remains stable within the image, i.e. if we have it for instance on an eye,
         # it remains on the eye during all transformations.
-        offset_x = (image.get_width() - transformed.get_width()) / 2
-        offset_y = (image.get_height() - transformed.get_height()) / 2
-        self.stage.screen.blit(transformed, (self.x + self.stage.center_x - center_x + offset_x, self.y + self.stage.center_y - center_y + offset_y))
+        offset_x = (image.get_width() - transformed.get_width()) / 2 - center_x
+        offset_y = (image.get_height() - transformed.get_height()) / 2 - center_y
+        self.stage.screen.blit(transformed, self._pg_pos((offset_x, offset_y)))
+        self.bubble_manager._draw()
 
 
     def _update(self, dt):
         self.code_manager._update(dt)
 
 
+    def _pg_pos(self, offset=(0,0)):
+        return (self.x + self.stage.center_x + offset[0], 
+                self.y + self.stage.center_y + offset[1])

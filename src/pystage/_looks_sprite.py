@@ -1,3 +1,4 @@
+from pystage.gui import BubbleManager
 class _LooksSprite():
     ##
     # Looks
@@ -7,14 +8,14 @@ class _LooksSprite():
 
 
     def say(self, text):
-        pass
+        self.bubble_manager.say(text)
 
 
     def think_for_time(self, text, secs):
         pass
 
     def think(self, text):
-        pass
+        self.bubble_manager.say(text, BubbleManager.THINK)
 
     def switch_costume_to(self, costume):
         # TODO: Data/class structure for costumes
