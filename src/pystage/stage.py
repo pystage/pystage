@@ -24,7 +24,11 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.dt = 0
         self.sprites = []
         self.background_color = (255, 255, 255)
-        self.screen = pygame.display.set_mode([width, height])
+        # surface is where the whole stage is rendered to
+        # it defines the in-game resolution
+        self.surface = pygame.Surface([width, height], flags=pygame.SRCALPHA)
+        # screen is the actual screen, the surface gets scaled
+        self.screen = pygame.display.set_mode([width, height], pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         self.width = width
         self.height = height
@@ -52,12 +56,13 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.costume_manager.insert_costume(index, name, center_x, center_y)
 
 
-    def _draw(self):
+    def _draw(self, surface: pygame.Surface):
+        surface.fill(self.background_color)
         image = self.costume_manager.get_image()
         if not image:
             return
         center_x, center_y = self.costume_manager.get_center()
-        self.screen.blit(image, (self.center_x - center_x, self.center_y - center_y))
+        surface.blit(image, (self.center_x - center_x, self.center_y - center_y))
 
 
     def play(self):
@@ -74,14 +79,16 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
                     for sprite in self.sprites:
                         sprite.code_manager.process_key_pressed(event.key)
 
-            self.screen.fill(self.background_color)
-            self._draw()
+            self._draw(self.surface)
 
             for sprite in self.sprites:
                 sprite._update(dt)
-                sprite._draw()
+                sprite._draw(self.surface)
 
+            scaled = pygame.transform.smoothscale(self.surface, (self.screen.get_width(), self.screen.get_height()))
+            self.screen.blit(scaled, (0,0))
             pygame.display.flip()
+
             dt = self.clock.tick(self.FPS) / 1000
 
         pygame.quit()

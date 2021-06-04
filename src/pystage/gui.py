@@ -154,7 +154,7 @@ class BubbleManager():
             self.surface = self.border.render(self.text_surface.get_width() + 26, self.text_surface.get_height() + 40)
 
 
-    def _draw(self):
+    def _draw(self, surface: pygame.Surface):
         if not self.active:
             return
         else:
@@ -173,6 +173,6 @@ class BubbleManager():
             if self.flipped:
                 transformed = pygame.transform.flip(self.surface, True, False)
 
-            self.sprite.stage.screen.blit(transformed, (x, y))
-            self.sprite.stage.screen.blit(self.text_surface, (x + 13, y + 13))
+            surface.blit(transformed, (x, y))
+            surface.blit(self.text_surface, (x + 13, y + 13))
 

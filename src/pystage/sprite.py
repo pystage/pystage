@@ -46,7 +46,7 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
         self.costume_manager.insert(index, name, center_x, center_y)
 
 
-    def _draw(self):
+    def _draw(self, surface: pygame.Surface):
         image = self.costume_manager.get_image()
         if not image:
             return
@@ -63,8 +63,8 @@ class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _
         # it remains on the eye during all transformations.
         offset_x = (image.get_width() - transformed.get_width()) / 2 - center_x
         offset_y = (image.get_height() - transformed.get_height()) / 2 - center_y
-        self.stage.screen.blit(transformed, self._pg_pos((offset_x, offset_y)))
-        self.bubble_manager._draw()
+        surface.blit(transformed, self._pg_pos((offset_x, offset_y)))
+        self.bubble_manager._draw(surface)
 
 
     def _update(self, dt):
