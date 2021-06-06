@@ -85,8 +85,14 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
                 sprite._update(dt)
                 sprite._draw(self.surface)
 
-            scaled = pygame.transform.smoothscale(self.surface, (self.screen.get_width(), self.screen.get_height()))
-            self.screen.blit(scaled, (0,0))
+            factor_x = self.screen.get_width() / self.surface.get_width()
+            factor_y = self.screen.get_height() / self.surface.get_height()
+            factor = min(factor_x, factor_y)
+            scaled = pygame.transform.smoothscale(self.surface, (int(self.surface.get_width() * factor), int(self.surface.get_height()*factor)))
+            self.screen.blit(scaled, (
+                int((self.screen.get_width() - scaled.get_width())/2),
+                int((self.screen.get_height() - scaled.get_height())/2),
+                ))
             pygame.display.flip()
 
             dt = self.clock.tick(self.FPS) / 1000
