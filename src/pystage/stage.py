@@ -34,6 +34,11 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         self.height = height
         self.center_x = int(width / 2)
         self.center_y = int(height / 2)
+        # current scale factor of the stage if the window is resized
+        self.scale_factor = 1
+        # current offset of the top left corner if the window is resized 
+        self.offset_x = 0
+        self.offset_y = 0
         self.code_manager = CodeManager(self)
         self.costume_manager = CostumeManager(self)
 
@@ -87,11 +92,15 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
 
             factor_x = self.screen.get_width() / self.surface.get_width()
             factor_y = self.screen.get_height() / self.surface.get_height()
-            factor = min(factor_x, factor_y)
-            scaled = pygame.transform.smoothscale(self.surface, (int(self.surface.get_width() * factor), int(self.surface.get_height()*factor)))
+            self.scale_factor = min(factor_x, factor_y)
+            scaled = pygame.transform.smoothscale(self.surface, (
+                int(self.surface.get_width() * self.scale_factor), 
+                int(self.surface.get_height() * self.scale_factor)))
+            self.offset_x = int((self.screen.get_width() - scaled.get_width())/2)
+            self.offset_y = int((self.screen.get_height() - scaled.get_height())/2)
             self.screen.blit(scaled, (
-                int((self.screen.get_width() - scaled.get_width())/2),
-                int((self.screen.get_height() - scaled.get_height())/2),
+                self.offset_x,
+                self.offset_y,
                 ))
             pygame.display.flip()
 

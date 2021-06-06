@@ -1,3 +1,6 @@
+import pygame
+import pystage
+
 class _Sensing():
 
     def ask_and_wait(self, question):
@@ -9,16 +12,18 @@ class _Sensing():
         pass
 
     def is_key_pressed(self, key):
-        pass
+        return pygame.key.get_pressed()[pystage.constants.KEY_MAPPINGS[key]]   
 
     def is_mouse_down(self):
-        pass
+        return any(pygame.mouse.get_pressed())
 
     def get_mouse_x(self):
-        pass
+        x = pygame.mouse.get_pos()[0]
+        return ((x - self.stage.offset_x) / self.stage.scale_factor) - self.stage.width / 2
 
     def get_mouse_y(self):
-        pass
+        y = pygame.mouse.get_pos()[1]
+        return -(y - self.stage.offset_y) / self.stage.scale_factor + self.stage.height / 2
 
     def get_loudness(self):
         # See events area, not sure if we support microphone access
