@@ -186,7 +186,10 @@ def get_intermediate(data, name):
         blocks = target["blocks"]
         for key in blocks:
             b = blocks[key]
-            if b["opcode"] in hat_blocks:
+            if isinstance(b, list):
+                # Stuff like variables, not interesting at this point
+                continue
+            if b["parent"] is None:
                 block = get_block(b, blocks)
                 sprite["blocks"].append(block)
         for c in target["costumes"]:
@@ -286,14 +289,16 @@ if __name__ == "__main__":
     with archive.open("project.json") as f:
         project_name = to_filename(Path(args.file).stem)
         data = json.loads(f.read())
+        if args.sb3_json:
+            print(json.dumps(data, indent=2))
+            sys.exit(0)
         project = get_intermediate(data, project_name)
-
         if args.intermediate:
             print(json.dumps(project, indent=2))
-        elif args.sb3_json:
-            print(json.dumps(data, indent=2))
+            sys.exit(1)
         elif args.python:
             print_python(project)
+            sys.exit(1)
         else:
             print(f"Creating project: {project_name}")
             directory = project_name
