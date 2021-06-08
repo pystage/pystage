@@ -1,7 +1,12 @@
 import pygame
 import pystage
+from pystage.core.constants import KEY_MAPPINGS
 
 class _Sensing():
+
+    def __init__(self):
+        super().__init__()
+
 
     def ask_and_wait(self, question):
         # an input field, answer needs to be available somehow
@@ -12,7 +17,7 @@ class _Sensing():
         pass
 
     def is_key_pressed(self, key):
-        return pygame.key.get_pressed()[pystage.constants.KEY_MAPPINGS[key]]   
+        return pygame.key.get_pressed()[KEY_MAPPINGS[key]]   
 
     def is_mouse_down(self):
         return any(pygame.mouse.get_pressed())

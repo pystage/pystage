@@ -1,9 +1,6 @@
 import pygame
 import pkg_resources
 
-from pystage.code_block import CodeBlock, CodeManager
-from pystage.costume import Costume, CostumeManager
-from pystage.gui import BubbleManager
 
 # Mixins
 from pystage.core._events import _Events
@@ -20,30 +17,12 @@ from pystage.core._sound import _Sound
 class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Variables, _Pen):
 
     def __init__(self, stage, costume="default"):
-        self.x = 0.0
-        self.y = 0.0
-        self.direction = 90
-        self.pen = False
-        self.color = (255,0,0)
+        super().__init__()
         self.stage = stage
 
-        self.costume_manager = CostumeManager(self)
-        self.code_manager = CodeManager(self)
-        self.bubble_manager = BubbleManager(self)
-
-        self.add_costume(costume)
+        self.pystage_addcostume(costume)
 
 
-    def add_costume(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
-
-
-    def replace_costume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def insert_costume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert(index, name, center_x, center_y)
 
 
     def _draw(self, surface: pygame.Surface):

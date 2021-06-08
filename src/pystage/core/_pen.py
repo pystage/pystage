@@ -1,7 +1,9 @@
 class _Pen():
-    ##
-    # Pen Extension
-    #
+
+    def __init__(self):
+        self.pen = False
+        self.color = (255,0,0)
+
 
     def erase_all(self):
         pass

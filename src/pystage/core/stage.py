@@ -1,8 +1,6 @@
 import pygame
 
 from pystage.core.sprite import Sprite
-from pystage.code_block import CodeManager
-from pystage.costume import CostumeManager
 
 # Mixins
 from pystage.core._events import _Events
@@ -17,6 +15,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
+        super().__init__()
         pygame.init()
         pygame.display.set_caption(name)
         self.running = False
@@ -39,8 +38,6 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         # current offset of the top left corner if the window is resized 
         self.offset_x = 0
         self.offset_y = 0
-        self.code_manager = CodeManager(self)
-        self.costume_manager = CostumeManager(self)
 
 
     def create_sprite(self, costume="default", constructor=Sprite):

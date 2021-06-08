@@ -54,7 +54,7 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
-        internal_folder = pkg_resources.resource_filename(__name__, "images/")
+        internal_folder = pkg_resources.resource_filename("pystage", "images/")
         for folder in ["", "images/", "bilder/", internal_folder]:
             for ext in ["", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
                 if os.path.exists(f"{folder}{name}{ext}"):
@@ -63,7 +63,7 @@ class Costume():
             if self.file is not None:
                 break
         if self.file is None:
-            self.file = pkg_resources.resource_filename(__name__, "images/zombie_idle.png")
+            self.file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
         if self.file.endswith(".svg"):
             print(f"Converting SVG file: {self.file}")
             print("\nWARNING: SVG conversion is for convenience only")

@@ -1,7 +1,25 @@
-from pystage.gui import BubbleManager
+from pystage.core.gui import BubbleManager
+from pystage.core.costume import CostumeManager
 
 
 class _LooksSprite():
+
+    def __init__(self):
+        self.bubble_manager = BubbleManager(self)
+        self.costume_manager = CostumeManager(self)
+
+
+    def pystage_addcostume(self, name, center_x=None, center_y=None):
+        self.costume_manager.add_costume(name, center_x, center_y)
+
+
+    def pystage_replacecostume(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.replace_costume(index, name, center_x, center_y)
+
+
+    def pystage_insertcostume(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.insert_costume(index, name, center_x, center_y)
+
 
     def looks_sayforsecs(self, text, secs):
         pass

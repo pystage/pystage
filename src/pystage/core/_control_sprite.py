@@ -1,5 +1,9 @@
 class _ControlSprite():
 
+    def __init__(self):
+        super().__init__()
+
+
     def when_i_start_as_clone(self, generator_function, name=""):
         pass
 

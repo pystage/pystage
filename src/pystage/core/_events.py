@@ -1,7 +1,12 @@
-from pystage.constants import KEY_MAPPINGS
+from pystage.core.constants import KEY_MAPPINGS
+from pystage.core.code_block import CodeBlock, CodeManager
 
 
 class _Events():
+
+    def __init__(self):
+        super().__init__()
+        self.code_manager = CodeManager(self)
     ##
     # Events
     #

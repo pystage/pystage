@@ -9,6 +9,11 @@ def _rad2deg(rad):
     return rad / (2 * math.pi) * 360
 
 class _Motion():
+    def __init__(self):
+        super().__init__()
+        self.x = 0.0
+        self.y = 0.0
+        self.direction = 90
 
     def motion_turnleft(self, deg):
         self.direction -= deg
