@@ -1,16 +1,16 @@
 import pygame
 
-from pystage import Sprite
+from pystage.core.sprite import Sprite
 from pystage.code_block import CodeManager
 from pystage.costume import CostumeManager
 
 # Mixins
-from pystage._events import _Events
-from pystage._looks_stage import _LooksStage
-from pystage._sound import _Sound
-from pystage._sensing import _Sensing
-from pystage._variables import _Variables
-from pystage._control import _Control
+from pystage.core._events import _Events
+from pystage.core._looks_stage import _LooksStage
+from pystage.core._sound import _Sound
+from pystage.core._sensing import _Sensing
+from pystage.core._variables import _Variables
+from pystage.core._control import _Control
 import os
 
 class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):

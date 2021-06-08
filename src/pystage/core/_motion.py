@@ -4,88 +4,111 @@ import math
 def _deg2rad(deg):
     return deg / 360 * 2 * math.pi
 
-    
+
 def _rad2deg(rad):
     return rad / (2 * math.pi) * 360
 
 class _Motion():
-    ##
-    # Motion
-    #
-    class RotationStyle(enum.Enum):
-        # https://en.scratch-wiki.info/wiki/Rotation_Style
-        ALL_AROUND = 1
-        LEFT_RIGHT = 2
-        DONT_ROTATE = 3
 
-    def turn_left(self, deg):
+    def motion_turnleft(self, deg):
         self.direction -= deg
 
 
-    def turn_right(self, deg):
+    def motion_turnright(self, deg):
         self.direction += deg
 
 
-    def move(self, steps):
+    def motion_movesteps(self, steps):
         old_x = self.x
         old_y = self.y
         self.x = self.x + steps * math.cos(_deg2rad(self.direction - 90))
         self.y = self.y + steps * math.sin(_deg2rad(self.direction - 90))
 
-    def go_to_random_position(self):
+
+    def motion_goto_random(self):
         pass
 
-    def go_to_mouse_pointer(self):
+    motion_goto_random.opcode = "motion_goto"
+    motion_goto_random.param = "TO"
+    motion_goto_random.value = "_random_"
+
+
+    def motion_goto_mouse(self):
         pass
 
-    def go_to_sprite(self, sprite):
+    motion_goto_mouse.opcode = "motion_goto"
+    motion_goto_mouse.param = "TO"
+    motion_goto_mouse.value = "_mouse_"
+
+
+    def motion_goto_sprite(self, sprite):
         pass
 
-    def go_to_x_y(self, x, y):
+    motion_goto_sprite.opcode = "motion_goto"
+
+
+    def motion_gotoxy(self, x, y):
         self.x = x
         self.y = y
 
-    def glide_to_random_position(self, secs):
-        # This requires special care, either this method needs to be yielded from
-        # https://docs.python.org/3/reference/expressions.html#yieldexpr
-        # Probably better: handle this in the game loop, i.e. enter a glide mode 
+
+    def motion_glideto_random(self, secs):
+        # Handle this in the game loop, i.e. enter a glide mode 
         # and only after the glide mode finished, the steps are continued.
         pass
 
-    def glide_to_mouse_pointer(self, secs):
+    motion_glideto_random.opcode = "motion_glideto"
+    motion_glideto_random.param = "TO"
+    motion_glideto_random.value = "_random_"
+
+
+    def motion_glideto_mouse(self, secs):
         pass
 
-    def glide_to_sprite(self, sprite, secs):
+    motion_glideto_mouse.opcode = "motion_glideto"
+    motion_glideto_mouse.param = "TO"
+    motion_glideto_mouse.value = "_mouse_"
+
+    def motion_glideto_sprite(self, sprite, secs):
         pass
 
-    def glide_to_x_y(self, x, y, secs):
+    motion_glideto_sprite.opcode = "motion_glideto"
+
+
+    def motion_glidesecstoxy(self, secs, x, y):
         pass
 
-    def point_in_direction(self, direction):
+    def motion_pointindirection(self, direction):
         pass
 
-    def point_towards_mouse_pointer(self):
+    def motion_pointtowards_mouse(self):
         pass
 
-    def point_towards_sprite(self, sprite):
+    motion_pointtowards_mouse.opcode = "motion_pointtowards"
+    motion_pointtowards_mouse.param = "TOWARDS"
+    motion_pointtowards_mouse.value = "_mouse_"
+
+    def motion_pointtowards_sprite(self, sprite):
         pass
 
-    def change_x_by(self, value):
+    motion_pointtowards_mouse.opcode = "motion_pointtowards"
+
+    def motion_changexby(self, value):
         self.x += value
 
-    def set_x_to(self, value):
+    def motion_setx(self, value):
         self.x = value
 
-    def change_y_by(self, value):
+    def motion_changeyby(self, value):
         self.y += value
 
-    def set_y_to(self, value):
+    def motion_sety(self, value):
         self.y = value
 
-    def if_on_edge_bounce(self):
+    def motion_ifonedgebounce(self):
         pass
 
-    def set_rotation_style(self, style):
+    def motion_setrotationstyle(self, style):
         # See Enum RotationStyle above
         pass
 
@@ -94,13 +117,13 @@ class _Motion():
     # We could get rid of them for a direct access 
     # to x, y, direction and so on. Direct access is of 
     # course available anyway.
-    def get_x_position(self):
+    def motion_xposition(self):
         return self.x
 
-    def get_y_position(self):
+    def motion_yposition(self):
         return self.y
 
-    def get_direction(self):
+    def motion_direction(self):
         # Scratch always keeps angles between -180 and 180
         dir = self.direction % 360
         if dir <= 180:
