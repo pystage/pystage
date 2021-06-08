@@ -7,9 +7,30 @@ import io
 import os, sys
 import tempfile
 
-libc = ctypes.CDLL(None)
-c_stdout = ctypes.c_void_p.in_dll(libc, 'stdout')
-c_stderr = ctypes.c_void_p.in_dll(libc, 'stderr')
+
+if os.name == "nt":
+    # DISCLAIMER: Currently not working
+    if sys.version_info < (3, 5):
+        libc = ctypes.CDLL(ctypes.util.find_library('c'))
+    else:
+        if hasattr(sys, 'gettotalrefcount'):  # debug build
+            libc = ctypes.CDLL('ucrtbased')
+        else:
+            libc = ctypes.CDLL('api-ms-win-crt-stdio-l1-1-0')
+
+    kernel32 = ctypes.WinDLL('kernel32')
+    # handle codes OSError: exception: access violation reading
+    # windows docu for GetStdHandle: https://docs.microsoft.com/en-us/windows/console/getstdhandle
+    STD_OUTPUT_HANDLE = -11
+    STD_ERROR_HANDLE = -12
+    c_stdout = kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
+    c_stderr = kernel32.GetStdHandle(STD_ERROR_HANDLE)
+
+else:
+    libc = ctypes.CDLL(None)
+    c_stdout = ctypes.c_void_p.in_dll(libc, 'stdout')
+    c_stderr = ctypes.c_void_p.in_dll(libc, 'stderr')
+
 
 @contextmanager
 def stdout_redirector(stream):
@@ -47,7 +68,7 @@ def stdout_redirector(stream):
 
 @contextmanager
 def stderr_redirector(stream):
-    # The original fd stderr points to. 
+    # The original fd stderr points to.
     original_stderr_fd = sys.stderr.fileno()
 
     def _redirect_stderr(to_fd):

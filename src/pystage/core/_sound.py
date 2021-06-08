@@ -4,58 +4,58 @@ import time
 
 
 class _Sound:
-    ##
-    # Sound
-    #
 
-# "sound_changeeffectby",
-# "sound_changevolumeby",
-# "sound_cleareffects",
-# "sound_play",
-# "sound_playuntildone",
-# "sound_seteffectto",
-# "sound_setvolumeto",
-# "sound_sounds_menu",
-# "sound_stopallsounds",
-# "sound_volume",
+    # may deleted later
 
-#        {
-#          "opcode": "sound_changeeffectby",
-#          "params": {
-#            "EFFECT": "\"PITCH\"",
-#            "VALUE": 10.0
-#          },
-#          "next": false
-#        },
-#        {
-#          "opcode": "sound_changeeffectby",
-#          "params": {
-#            "EFFECT": "\"PAN\"",
-#            "VALUE": 10.0
-#          },
-#          "next": false
-#        },
+    # "sound_changeeffectby",   : change_sound_effect_by
+    # "sound_changevolumeby",   : change_volume_by
+    # "sound_cleareffects",     : clear_sound_effects
+    # "sound_play",             : start_sound
+    # "sound_playuntildone",    : play_sound_until_done
+    # "sound_seteffectto",      : set_sound_effect_to
+    # "sound_setvolumeto",      : change_volume_by
+    # "sound_sounds_menu",      : ?
+    # "sound_stopallsounds",    : stop_all_sounds
+    # "sound_volume",           : get_volume
+
+    #        {
+    #          "opcode": "sound_changeeffectby",
+    #          "params": {
+    #            "EFFECT": "\"PITCH\"",
+    #            "VALUE": 10.0
+    #          },
+    #          "next": false
+    #        },
+    #        {
+    #          "opcode": "sound_changeeffectby",
+    #          "params": {
+    #            "EFFECT": "\"PAN\"",
+    #            "VALUE": 10.0
+    #          },
+    #          "next": false
+    #        },
+
     # Like for costumes and backdrops, we need a class structure here.
     # Plus a global sound manager.
     def __init__(self):
         self.mixer = pygame.mixer
         self.mixer.init()
 
-    def start_sound(self, sound, loop=0):
+    def sound_play(self, sound, loop=0):
         channel = self.mixer.find_channel()
         channel.play(self.mixer.Sound(sound), loop)
         return channel
 
-    def play_sound_until_done(self, sound):
+    def sound_playuntildone(self, sound):
         sound = self.mixer.Sound(sound)
         self.mixer.find_channel().play(sound, 0)
         time.sleep(sound.get_length())
 
-    def stop_all_sounds(self):
+    def sound_stopallsounds(self):
         self.mixer.stop()
 
-    def change_sound_effect_by(self, effect, value):
-        # TODO: for pitching an paning there is no readey to use code in pygame. To do so
+    def sound_changeeffectby_pitch(self, effect, value):
+        # TODO: for pitching an paning there is no ready to use code in pygame. To do so
         # we must operate on the audio array itself.
 
         # Similar to graphics effects
@@ -65,23 +65,41 @@ class _Sound:
         # it might be better to just create different methods.
         pass
 
-    def set_sound_effect_to(self, effect, value):
+    sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
+    sound_changeeffectby_pitch.param = "EFFECT"
+    sound_changeeffectby_pitch.value = "PITCH"
+
+    def sound_changeeffectby_pan(self, effect, value):
         pass
 
-    def clear_sound_effects(self):
+    sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
+    sound_changeeffectby_pitch.param = "EFFECT"
+    sound_changeeffectby_pitch.value = "PAN"
+
+    def sound_seteffectto(self, effect, value):
+        pass
+
+    def sound_cleareffects(self):
         pass
 
     @staticmethod
-    def change_volume_by(value):
+    def sound_changevolumeby(value):
         value *= 0.01
-        actual_volume = music.get_volume()
-        music.set_volume(actual_volume + value)
+        music.set_volume(music.get_volume() + value)
 
     @staticmethod
-    def set_volume_to_percent(percent):
+    def sound_setvolumeto(percent):
         percent *= 0.01
         music.set_volume(percent)
 
     @staticmethod
-    def get_volume():
+    def sound_volume():
         return music.get_volume() * 100
+
+    def sound_sounds_menu(self):
+        """
+        Toggle sound menu.
+        @return:
+        @rtype:
+        """
+        pass
