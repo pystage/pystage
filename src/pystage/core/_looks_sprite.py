@@ -1,24 +1,8 @@
 from pystage.gui import BubbleManager
+
+
 class _LooksSprite():
-# "",
-# "",
-# "",
-# "looks_cleargraphiceffects",
-# "",
-# "looks_gotofrontback",
-# "",
-# "looks_nextbackdrop",
-# "looks_nextcostume",
-# "",
-# "",
-# "",
-# "",
-# "looks_show",
-# "looks_size",
-# "looks_switchbackdropto",
-# "looks_switchcostumeto",
-# "looks_think",
-# "looks_thinkforsecs",
+
     def looks_sayforsecs(self, text, secs):
         pass
 
@@ -27,25 +11,25 @@ class _LooksSprite():
         self.bubble_manager.say(text)
 
 
-    def think_for_time(self, text, secs):
+    def looks_thinkforsecs(self, text, secs):
         pass
 
-    def think(self, text):
+    def looks_think(self, text):
         self.bubble_manager.say(text, BubbleManager.THINK)
 
-    def switch_costume_to(self, costume):
+    def looks_switchcostumeto(self, costume):
         # TODO: Data/class structure for costumes
         pass
 
-    def next_costume(self):
+    def looks_nextcostume(self):
         pass
 
-    def switch_backdrop_to(self, backdrop):
+    def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.
         # In Scratch, a sprite can change the backdrop.
         pass
 
-    def next_backdrop(self):
+    def looks_nextbackdrop(self):
         pass
 
     def looks_changesizeby(self, percent):
@@ -167,26 +151,44 @@ class _LooksSprite():
     looks_changeeffectby_ghost.value="GHOST"
     
 
-    def clear_graphic_effects(self):
+    def looks_cleargraphiceffects(self):
         pass
 
-    def show(self):
+    def looks_show(self):
         pass
 
     def looks_hide(self):
         pass
 
-    def go_to_front_layer(self, layer):
+    def looks_gotofrontback_front(self, layer):
         pass
 
-    def go_to_back_layer(self, layer):
+    looks_gotofrontback_front.opcode="looks_gotofrontback"
+    looks_gotofrontback_front.param="FRONT_BACK"
+    looks_gotofrontback_front.value="front"
+
+    
+    def looks_gotofrontback_back(self, layer):
         pass
 
-    def go_forward_layers(self, value):
+    looks_gotofrontback_back.opcode="looks_gotofrontback"
+    looks_gotofrontback_back.param="FRONT_BACK"
+    looks_gotofrontback_back.value="back"
+
+
+    def looks_goforwardbackwardlayers_forward(self, value):
         pass
 
-    def go_backward_layers(self, value):
+    looks_goforwardbackwardlayers_forward.opcode="looks_goforwardbackwardlayers"
+    looks_goforwardbackwardlayers_forward.param="FORWARD_BACKWARD"
+    looks_goforwardbackwardlayers_forward.value="forward"
+
+    def looks_goforwardbackwardlayers_backward(self, value):
         pass
+
+    looks_goforwardbackwardlayers_backward.opcode="looks_goforwardbackwardlayers"
+    looks_goforwardbackwardlayers_backward.param="FORWARD_BACKWARD"
+    looks_goforwardbackwardlayers_backward.value="backward"
 
 
     def looks_backdropnumbername_number(self):
@@ -223,7 +225,7 @@ class _LooksSprite():
     looks_costumenumbername_number.value="name"
 
 
-    def get_size(self):
+    def looks_size(self):
         # percent
         pass
 
