@@ -8,6 +8,33 @@ class _Sound:
     # Sound
     #
 
+# "sound_changeeffectby",
+# "sound_changevolumeby",
+# "sound_cleareffects",
+# "sound_play",
+# "sound_playuntildone",
+# "sound_seteffectto",
+# "sound_setvolumeto",
+# "sound_sounds_menu",
+# "sound_stopallsounds",
+# "sound_volume",
+
+#        {
+#          "opcode": "sound_changeeffectby",
+#          "params": {
+#            "EFFECT": "\"PITCH\"",
+#            "VALUE": 10.0
+#          },
+#          "next": false
+#        },
+#        {
+#          "opcode": "sound_changeeffectby",
+#          "params": {
+#            "EFFECT": "\"PAN\"",
+#            "VALUE": 10.0
+#          },
+#          "next": false
+#        },
     # Like for costumes and backdrops, we need a class structure here.
     # Plus a global sound manager.
     def __init__(self):

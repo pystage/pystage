@@ -1,13 +1,29 @@
 from pystage.gui import BubbleManager
 class _LooksSprite():
-    ##
-    # Looks
-    #
-    def say_for_time(self, text, secs):
+# "",
+# "",
+# "",
+# "looks_cleargraphiceffects",
+# "",
+# "looks_gotofrontback",
+# "",
+# "looks_nextbackdrop",
+# "looks_nextcostume",
+# "",
+# "",
+# "",
+# "",
+# "looks_show",
+# "looks_size",
+# "looks_switchbackdropto",
+# "looks_switchcostumeto",
+# "looks_think",
+# "looks_thinkforsecs",
+    def looks_sayforsecs(self, text, secs):
         pass
 
 
-    def say(self, text):
+    def looks_say(self, text):
         self.bubble_manager.say(text)
 
 
@@ -32,28 +48,124 @@ class _LooksSprite():
     def next_backdrop(self):
         pass
 
-    def change_size_by(self, percent):
+    def looks_changesizeby(self, percent):
         # this is percentage
         pass
 
-    def set_size_to_percent(self, percent):
+    def looks_setsizeto(self, percent):
         pass
 
-    def change_graphic_effect_by(self, effect, value):
-        # This is tricky, could be implemented in costumes.
-        # Question: would one method per effect better/easier?
-        # Effects: 
-        # - color (this is hue shifting)
-        # - fisheye
-        # - whirl
-        # - pixelate
-        # - mosaic
-        # - brightness
-        # - ghost (this is transparency)
+    def looks_seteffectto_color(self, value):
         pass
 
-    def set_graphic_effect_to(self, effect, value):
+    looks_seteffectto_color.opcode="looks_seteffectto"
+    looks_seteffectto_color.param="EFFECT"
+    looks_seteffectto_color.value="COLOR"
+
+
+    def looks_seteffectto_fisheye(self, value):
         pass
+    
+    looks_seteffectto_fisheye.opcode="looks_seteffectto"
+    looks_seteffectto_fisheye.param="EFFECT"
+    looks_seteffectto_fisheye.value="FISHEYE"
+
+
+    def looks_seteffectto_whirl(self, value):
+        pass
+    
+    looks_seteffectto_whirl.opcode="looks_seteffectto"
+    looks_seteffectto_whirl.param="EFFECT"
+    looks_seteffectto_whirl.value="WHIRL"
+
+
+    def looks_seteffectto_pixelate(self, value):
+        pass
+    
+    looks_seteffectto_pixelate.opcode="looks_seteffectto"
+    looks_seteffectto_pixelate.param="EFFECT"
+    looks_seteffectto_pixelate.value="PIXELATE"
+
+
+    def looks_seteffectto_mosaic(self, value):
+        pass
+    
+    looks_seteffectto_mosaic.opcode="looks_seteffectto"
+    looks_seteffectto_mosaic.param="EFFECT"
+    looks_seteffectto_mosaic.value="MOSAIC"
+    
+
+    def looks_seteffectto_brightness(self, value):
+        pass
+    
+    looks_seteffectto_brightness.opcode="looks_seteffectto"
+    looks_seteffectto_brightness.param="EFFECT"
+    looks_seteffectto_brightness.value="BRIGHTNESS"
+    
+
+    def looks_seteffectto_ghost(self, value):
+        pass
+    
+    looks_seteffectto_ghost.opcode="looks_seteffectto"
+    looks_seteffectto_ghost.param="EFFECT"
+    looks_seteffectto_ghost.value="GHOST"
+    
+
+    def looks_changeeffectby_color(self, value):
+        pass
+
+    looks_changeeffectby_color.opcode="looks_changeeffectby"
+    looks_changeeffectby_color.param="EFFECT"
+    looks_changeeffectby_color.value="COLOR"
+
+
+    def looks_changeeffectby_fisheye(self, value):
+        pass
+    
+    looks_changeeffectby_fisheye.opcode="looks_changeeffectby"
+    looks_changeeffectby_fisheye.param="EFFECT"
+    looks_changeeffectby_fisheye.value="FISHEYE"
+
+
+    def looks_changeeffectby_whirl(self, value):
+        pass
+    
+    looks_changeeffectby_whirl.opcode="looks_changeeffectby"
+    looks_changeeffectby_whirl.param="EFFECT"
+    looks_changeeffectby_whirl.value="WHIRL"
+
+
+    def looks_changeeffectby_pixelate(self, value):
+        pass
+    
+    looks_changeeffectby_pixelate.opcode="looks_changeeffectby"
+    looks_changeeffectby_pixelate.param="EFFECT"
+    looks_changeeffectby_pixelate.value="PIXELATE"
+
+
+    def looks_changeeffectby_mosaic(self, value):
+        pass
+    
+    looks_changeeffectby_mosaic.opcode="looks_changeeffectby"
+    looks_changeeffectby_mosaic.param="EFFECT"
+    looks_changeeffectby_mosaic.value="MOSAIC"
+    
+
+    def looks_changeeffectby_brightness(self, value):
+        pass
+    
+    looks_changeeffectby_brightness.opcode="looks_changeeffectby"
+    looks_changeeffectby_brightness.param="EFFECT"
+    looks_changeeffectby_brightness.value="BRIGHTNESS"
+    
+
+    def looks_changeeffectby_ghost(self, value):
+        pass
+    
+    looks_changeeffectby_ghost.opcode="looks_changeeffectby"
+    looks_changeeffectby_ghost.param="EFFECT"
+    looks_changeeffectby_ghost.value="GHOST"
+    
 
     def clear_graphic_effects(self):
         pass
@@ -61,7 +173,7 @@ class _LooksSprite():
     def show(self):
         pass
 
-    def hide(self):
+    def looks_hide(self):
         pass
 
     def go_to_front_layer(self, layer):
@@ -76,19 +188,40 @@ class _LooksSprite():
     def go_backward_layers(self, value):
         pass
 
-    def get_costume_number(self):
+
+    def looks_backdropnumbername_number(self):
         # 1-based
         pass
 
-    def get_backdrop_number(self):
-        pass
+    looks_backdropnumbername_number.opcode="looks_backdropnumbername"
+    looks_backdropnumbername_number.param="NUMBER_NAME"
+    looks_backdropnumbername_number.value="number"
 
 
-    def get_costume_name(self):
+    def looks_backdropnumbername_name(self):
         pass
 
-    def get_backdrop_name(self):
+    looks_backdropnumbername_number.opcode="looks_backdropnumbername"
+    looks_backdropnumbername_number.param="NUMBER_NAME"
+    looks_backdropnumbername_number.value="name"
+
+
+    def looks_costumenumbername_number(self):
+        # 1-based
         pass
+
+    looks_costumenumbername_number.opcode="looks_costumenumbername"
+    looks_costumenumbername_number.param="NUMBER_NAME"
+    looks_costumenumbername_number.value="number"
+
+
+    def looks_costumenumbername_name(self):
+        pass
+
+    looks_costumenumbername_number.opcode="looks_costumenumbername"
+    looks_costumenumbername_number.param="NUMBER_NAME"
+    looks_costumenumbername_number.value="name"
+
 
     def get_size(self):
         # percent
