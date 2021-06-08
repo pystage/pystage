@@ -106,12 +106,7 @@ class CodeBlock():
         ast.fix_missing_locations(func_ast)
         # print(ast.unparse(func_ast)) # outputs the transformed code
         namespace = {}
-        pystage = importlib.import_module("pystage")
-        de = importlib.import_module("pystage.de")
-        namespace["Sprite"] = pystage.Sprite
-        namespace["Stage"] = pystage.Stage
-        namespace["Figur"] = de.Figur
-        namespace["Buehne"] = de.Buehne
+        namespace.update(function.__globals__)
         code = compile(func_ast, "<string>", mode="exec")
         exec(code, namespace)
         return namespace[function.__name__] 

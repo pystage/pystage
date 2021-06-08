@@ -7,6 +7,7 @@ import re
 import sys
 import textwrap
 import zipfile
+from collections import OrderedDict
 from pathlib import Path
 
 from pystage.convert import CodeWriter, sb3_templates
@@ -45,6 +46,7 @@ block trees that is used in the code template functions.
 #                 "blocks": [
 #                     { # BLOCK
 #                         "opcode": "event_whenthisspriteclicked",
+#                         "stage": False,
 #                         "params": {
 #                             "BROADCAST_INPUT": {"start",
 #                             "COSTUME": "BLOCK"
@@ -72,7 +74,7 @@ block trees that is used in the code template functions.
 # 
 #         }
 
-class DictClass(dict):
+class DictClass(OrderedDict):
     '''
     A dictionary that can be accessed via dot notation for convenience.
     '''
@@ -119,7 +121,7 @@ def get_input_value(i):
     return value
 
 
-def get_block(block, blocks):
+def get_block(block, blocks, stage):
     '''
     Recursively turns the sb3 structure into our intermediate representation.
     '''
@@ -128,6 +130,7 @@ def get_block(block, blocks):
         "opcode": block["opcode"],
         "params": DictClass(),
         "next": False,
+        "stage": stage
     })
     for f in block["fields"]:
         res["params"][f] = f'"{block["fields"][f][0]}"'
@@ -136,9 +139,9 @@ def get_block(block, blocks):
         if isinstance(value, list):
             res["params"][i] = get_input_value(value)
         else:
-            res["params"][i] = get_block(blocks[value], blocks)
+            res["params"][i] = get_block(blocks[value], blocks, stage)
     if block["next"]:
-        res["next"] = get_block(blocks[block["next"]], blocks)
+        res["next"] = get_block(blocks[block["next"]], blocks, stage)
     return res
 
 
@@ -186,8 +189,11 @@ def get_intermediate(data, name):
         blocks = target["blocks"]
         for key in blocks:
             b = blocks[key]
-            if b["opcode"] in hat_blocks:
-                block = get_block(b, blocks)
+            if isinstance(b, list):
+                # Stuff like variables, not interesting at this point
+                continue
+            if b["parent"] is None:
+                block = get_block(b, blocks, target["isStage"])
                 sprite["blocks"].append(block)
         for c in target["costumes"]:
             if c["assetId"] not in project["costumes"]:
@@ -286,14 +292,16 @@ if __name__ == "__main__":
     with archive.open("project.json") as f:
         project_name = to_filename(Path(args.file).stem)
         data = json.loads(f.read())
+        if args.sb3_json:
+            print(json.dumps(data, indent=2))
+            sys.exit(0)
         project = get_intermediate(data, project_name)
-
         if args.intermediate:
             print(json.dumps(project, indent=2))
-        elif args.sb3_json:
-            print(json.dumps(data, indent=2))
+            sys.exit(1)
         elif args.python:
             print_python(project)
+            sys.exit(1)
         else:
             print(f"Creating project: {project_name}")
             directory = project_name

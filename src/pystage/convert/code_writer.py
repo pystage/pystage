@@ -3,8 +3,37 @@ import sys
 import textwrap
 import re
 import logging
+import inspect
+import ast
+import importlib
+import dis
 from jinja2 import Template, Environment
+from jinja2.exceptions import UndefinedError
 logger = logging.getLogger(__name__)
+
+from pystage.core.sprite import Sprite
+from pystage.core.stage import Stage
+
+
+
+def quoted(value):
+    if not isinstance(value, str):
+        return value
+    if value.startswith("\""):
+        return value
+    else:
+        return f"\"{value}\""
+
+
+def unquoted(value):
+    if not isinstance(value, str):
+        return value
+    if value.startswith("\""):
+        return value.strip("\"")
+    else:
+        return value
+
+
 
 
 class CodeWriter():
@@ -50,11 +79,98 @@ class CodeWriter():
         raise ValueError(f"No stage or sprite found with name '{name}'.")
 
     def get_id(self):
-        '''
-        Helper to create unique names
-        '''
+        """Helper to create unique names.
+
+        """
         self.last_id += 1
         return self.last_id
+
+
+    def get_opcode_function(self, block):
+        """Get core API function for a block.
+
+        Use the function metadata to determine the correct core API
+        function based on a given block, using opcode and params.
+
+        Parameters
+        ----------
+        block : dict
+            A block from the intermediate code representation.
+        """
+        cls = Stage if block["stage"] else Sprite
+        # print(f"Searching in class: {cls}")
+        elsefunc = None
+        for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
+            # print(f"Testing: {name} - {func}")
+            if name==block["opcode"]:
+                # print(f"Matching API method: {name}")
+                return func
+            if hasattr(func, "opcode"):
+                if name==func.opcode:
+                    if hasattr(func, "param"):
+                        if func.param in block["params"] and func.value==unquoted(block["params"][func.param]):
+                            # print(f"Matching API method: {name}")
+                            return func
+                    else:
+                        elsefunc = func
+        if elsefunc:
+            # print(f"Matching API method: {elsefunc}")
+            return elsefunc
+        # print(f"No API method for {block.opcode}")
+        return None
+
+
+    def get_translated_function(self, block, language):
+        """Get translated API function for a block.
+
+        Use the function metadata to determine the correct translated API
+        function based on a given block, using opcode and params.
+
+        Parameters
+        ----------
+        block : dict
+            A block from the intermediate code representation.
+        """
+        corefunc = self.get_opcode_function(block)
+        if corefunc is None:
+            return None
+        lang = importlib.import_module(f"pystage.{language}")
+        cls = lang.stage_class if block["stage"] else lang.sprite_class
+        for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
+            for i in dis.Bytecode(func):
+                if i.opname=="LOAD_METHOD" and i.argval==corefunc.__name__:
+                    # print(f"Translated: {name}")
+                    return func
+        # print(f"No translated API method found for {block.opcode}")
+        return None
+            
+        
+    def get_translated_call(self, block, language):
+        corefunc = self.get_opcode_function(block)
+        func = self.get_translated_function(block, language)
+        if func is None:
+            return quoted(f"NO TRANSLATION: {block.opcode}")
+        res = func.__name__ + "("
+        fieldname = corefunc.param if hasattr(corefunc, "param") else None
+        res += ", ".join([str(block.params[p]) for p in block.params if p != fieldname])
+        res += ")"
+        # print(res)
+        return res
+
+
+    def get_translated_template(self, block, language):
+        corefunc = self.get_opcode_function(block)
+        func = self.get_translated_function(block, language)
+        if func is None:
+            return quoted(f"NO TRANSLATION: {block.opcode}")
+        res = f"self.{func.__name__}("
+        fieldname = corefunc.param if hasattr(corefunc, "param") else None
+        res += ", ".join(["{{" + p + "}}" for p in block.params if p != fieldname])
+        res += ")"
+        # print(res)
+        return res
+
+
 
     def render_comments(self):
         res = ""
@@ -64,8 +180,9 @@ class CodeWriter():
         self.comments.clear()
         return res
 
-    def global_sound(self, name, quoted=True):
-        name = name.replace('"', '')
+
+    def global_sound(self, name: str, quoted=True):
+        name = unquoted(name)
         sprite = self.get_sprite_or_stage()
         for sound in sprite["sounds"]:
             if sound["local_name"] == name:
@@ -75,7 +192,7 @@ class CodeWriter():
         
 
     def global_costume(self, name, quoted=True):
-        name = name.replace('"', '')
+        name = unquoted(name)
         sprite = self.get_sprite_or_stage()
         for costume in sprite["costumes"]:
             if costume["local_name"] == name:
@@ -83,8 +200,9 @@ class CodeWriter():
                 return f'{q}{self.project["costumes"][costume["md5"]]["global_name"]}{q}'
         raise ValueError(f"No costume with name '{name}' found for sprite '{sprite['name']}'")
 
+
     def global_backdrop(self, name, quoted=True):
-        name = name.replace('"', '')
+        name = unquoted(name)
         sprite = self.project["stage"]
         for costume in sprite["costumes"]:
             if costume["local_name"] == name:
@@ -101,22 +219,20 @@ class CodeWriter():
             # We delegate to another block with an opcode
             res = ""
             template = ""
+            call = self.get_translated_call(block, "en")
+            default_template = self.get_translated_template(block, "en")
+            context = { "call": call, }
+            if "comments" in block:
+                self.comments.extend(block["comments"])
             if block["opcode"] in self.templates:
-                if "comments" in block:
-                    self.comments.extend(block["comments"])
                 template = self.templates[block["opcode"]]
-                res = self.render(block, template)
+                return self.render(block, template, context)
             else:
-                res = f"\"NOT IMPLEMENTED: {block['opcode']}"
-                for p in block['params']:
-                    res += f" {p}"
-                res += "\""
-            return res
+                return self.render(block, default_template, context)
 
 
-    def render(self, block, text):
+    def render(self, block, text, context={}):
         text = textwrap.dedent(text)
-        context = {}
         if block["next"]:
             context["NEXT"] = self.process(block["next"])
             if not "NEXT" in text:
@@ -127,6 +243,9 @@ class CodeWriter():
         if "{{ID}}" in text:
             context["ID"] = self.get_id()
         template = self.jinja_environment.from_string(text)
-        text = template.render(context)
+        try:
+            text = template.render(context)
+        except UndefinedError as e:
+            print(f"Template variable not available: {e}")
         return text
 
