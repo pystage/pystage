@@ -33,11 +33,11 @@ def down(self: Sprite):
     self.motion_changeyby(10)
 
 def mouse(self: Sprite):
-    self.looks_say(f"Mouse pos: {self.get_mouse_x()} / {self.get_mouse_y()}")
+    self.looks_say(f"Mouse pos: {self.sensing_mousex()} / {self.sensing_mousey()}")
 
-def say_space_pressed(self):
+def say_space_pressed(self: Sprite):
     while True:
-        if self.is_key_pressed(" "):
+        if self.sensing_keypressed(" "):
             self.looks_say("Space pressed!")
 
 sprite.when_key_is_pressed("d", right)

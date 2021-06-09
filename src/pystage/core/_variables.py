@@ -1,4 +1,6 @@
-class _Variables():
+from pystage.core._base_sprite import BaseSprite
+
+class _Variables(BaseSprite):
     # Also monitors
 
     # Implementation needs to be aware of naming conflicts and raise Exceptions if a name

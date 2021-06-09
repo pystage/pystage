@@ -16,6 +16,9 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
         super().__init__()
+        # This way, code blocks can consistently refer to the stage with self.stage:
+        self.stage = self
+
         pygame.init()
         pygame.display.set_caption(name)
         self.running = False

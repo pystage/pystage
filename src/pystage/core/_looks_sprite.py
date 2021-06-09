@@ -1,10 +1,12 @@
 from pystage.core.gui import BubbleManager
 from pystage.core.costume import CostumeManager
+from pystage.core._base_sprite import BaseSprite
 
 
-class _LooksSprite():
+class _LooksSprite(BaseSprite):
 
     def __init__(self):
+        super().__init__()
         self.bubble_manager = BubbleManager(self)
         self.costume_manager = CostumeManager(self)
 
