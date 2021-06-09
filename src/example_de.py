@@ -3,7 +3,7 @@ from pystage.de import Buehne, Figur
 buehne = Buehne()
 zombie = buehne.erstelle_figur()
 
-def mach_was(zombie):
+def mach_was(zombie : Figur):
     zombie.gehe_zu_x_y(0, 0)
     for i in range(4):
         zombie.gehe(20)
