@@ -1,6 +1,8 @@
 class _Pen():
 
     def __init__(self):
+        super().__init__()
+
         self.pen = False
         self.color = (255,0,0)
 
