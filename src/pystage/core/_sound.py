@@ -40,6 +40,8 @@ class _Sound:
     def __init__(self):
         self.mixer = pygame.mixer
         self.mixer.init()
+        self.actual_pan = 0
+        self.actual_pitch = 0
 
     def sound_play(self, sound, loop=0):
         channel = self.mixer.find_channel()
@@ -69,11 +71,10 @@ class _Sound:
     sound_changeeffectby_pitch.param = "EFFECT"
     sound_changeeffectby_pitch.value = "PITCH"
 
-    def sound_changeeffectby_pan(self, channel_id, value):
-        if value > 0:
-            self.mixer.Channel(channel_id).set_volume(music.get_volume(), value)
-        else:
-            self.mixer.Channel(channel_id).set_volume(value, music.get_volume())
+    def sound_changeeffectby_pan(self, value):
+        # norm pan value from -100/100 to range 0/1
+        self.actual_pan = (value + 100) / 200
+        self._apply_pan()
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -83,17 +84,32 @@ class _Sound:
         pass
 
     def sound_cleareffects(self):
-        pass
+        self.actual_pan = 0
+        self._apply_pan()
 
-    @staticmethod
-    def sound_changevolumeby(value):
+        self.actual_pitch = 0
+        # apply pitch
+
+    def _apply_pan(self):
+        for channel_id in range(self.mixer.get_num_channels()):
+            if self.actual_pan > 0:
+                self.mixer.Channel(channel_id).set_volume(music.get_volume(), self.actual_pan)
+            else:
+                self.mixer.Channel(channel_id).set_volume(self.actual_pan, music.get_volume())
+
+    def sound_changevolumeby(self, value, channel_id=None):
         value *= 0.01
-        music.set_volume(music.get_volume() + value)
+        if channel_id is None:
+            music.set_volume(self.sound_volume() + value)
+        else:
+            self.mixer.Channel(channel_id).set_volume(self.sound_volume(channel_id) + value)
 
-    @staticmethod
-    def sound_setvolumeto(percent):
-        percent *= 0.01
-        music.set_volume(percent)
+    def sound_setvolumeto(self, value, channel_id=None):
+        value *= 0.01
+        if channel_id is None:
+            music.set_volume(value)
+        else:
+            self.mixer.Channel(channel_id).set_volume(value)
 
     def sound_volume(self, channel_id=None):
         if channel_id is None:
@@ -104,7 +120,9 @@ class _Sound:
     def sound_sounds_menu(self):
         """
         Toggle sound menu.
-        @return:
-        @rtype:
+
+        Returns
+        -------
+        None
         """
         pass
