@@ -54,8 +54,8 @@ class _Sound:
     def sound_stopallsounds(self):
         self.mixer.stop()
 
-    def sound_changeeffectby_pitch(self, effect, value):
-        # TODO: for pitching an paning there is no ready to use code in pygame. To do so
+    def sound_changeeffectby_pitch(self, value):
+        # TODO: for pitching there is no ready to use code in pygame. To do so
         # we must operate on the audio array itself.
 
         # Similar to graphics effects
@@ -69,8 +69,11 @@ class _Sound:
     sound_changeeffectby_pitch.param = "EFFECT"
     sound_changeeffectby_pitch.value = "PITCH"
 
-    def sound_changeeffectby_pan(self, effect, value):
-        pass
+    def sound_changeeffectby_pan(self, channel_id, value):
+        if value > 0:
+            self.mixer.Channel(channel_id).set_volume(music.get_volume(), value)
+        else:
+            self.mixer.Channel(channel_id).set_volume(value, music.get_volume())
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -92,9 +95,11 @@ class _Sound:
         percent *= 0.01
         music.set_volume(percent)
 
-    @staticmethod
-    def sound_volume():
-        return music.get_volume() * 100
+    def sound_volume(self, channel_id=None):
+        if channel_id is None:
+            return music.get_volume() * 100
+        else:
+            return self.mixer.Channel(channel_id).get_volume() * 100
 
     def sound_sounds_menu(self):
         """
