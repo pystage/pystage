@@ -1,23 +1,31 @@
 from pystage.core.constants import KEY_MAPPINGS
-from pystage.core.code_block import CodeBlock, CodeManager
+from pystage.core._base_sprite import BaseSprite
 
 
-class _Events():
+class _Events(BaseSprite):
 
     def __init__(self):
         super().__init__()
-        self.code_manager = CodeManager(self)
     ##
     # Events
     #
 
-    def when_program_is_started(self, generator_function, name="", no_refresh=False):
+#"",
+#"",
+#"",
+#"",
+#"",
+#"",
+#"",
+#"",
+
+    def event_whenflagclicked(self, generator_function, name="", no_refresh=False):
         new_block = self.code_manager.register_code_block(generator_function, name)
         print(f"Bound to start: {new_block.name}")
         new_block.start_or_restart()
 
 
-    def when_key_is_pressed(self, key, generator_function, name="", no_refresh=False):
+    def event_whenkeypressed(self, key, generator_function, name="", no_refresh=False):
         '''
         Adds the code block to the event queue for key presses.
         '''
@@ -33,28 +41,34 @@ class _Events():
         print(f"Bound to key press ({key}/{pg_key}): {new_block.name}")
 
 
-    def when_clicked(self, generator_function, name="", no_refresh=False):
+    def event_whenthisspriteclicked(self, generator_function, name="", no_refresh=False):
         pass
 
 
-    def when_backdrop_switches_to(self, backdrop, generator_function, name="", no_refresh=False):
+    def event_whenbackdropswitchesto(self, backdrop, generator_function, name="", no_refresh=False):
         pass
 
-    def when_loudness_greater_than(self, value, generator_function, name="", no_refresh=False):
+    def event_whengreaterthan_loudness(self, value, generator_function, name="", no_refresh=False):
         # Not sure if this can/should be implemented, requires microphone access.
         pass
+    event_whengreaterthan_loudness.opcode="event_whengreaterthan"
+    event_whengreaterthan_loudness.param="WHENGREATERTHANMENU"
+    event_whengreaterthan_loudness.value="LOUDNESS"
 
-    def when_timer_greater_than(self, value, generator_function, name="", no_refresh=False):
+    def event_whengreaterthan_timer(self, value, generator_function, name="", no_refresh=False):
         # Scratch has a timer that can be reset. 
         pass
+    event_whengreaterthan_timer.opcode="event_whengreaterthan"
+    event_whengreaterthan_timer.param="WHENGREATERTHANMENU"
+    event_whengreaterthan_timer.value="TIMER"
 
-    def when_i_receive_message(self, message, generator_function, name="", no_refresh=False):
+    def event_whenbroadcastreceived(self, message, generator_function, name="", no_refresh=False):
         pass
 
-    def broadcast(self, message):
+    def event_broadcast(self, message):
         pass
 
-    def broadcast_and_wait(self, message):
+    def event_broadcastandwait(self, message):
         # waits until all receiver scripts finish. Tricky.
         pass
 

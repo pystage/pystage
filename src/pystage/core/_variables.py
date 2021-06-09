@@ -33,3 +33,6 @@ class _Variables(BaseSprite):
 
     def pystage_makevariable(self, name, all_sprites=True):
         pass
+
+    def pystage_setmonitorposition(self, name, x, y):
+        pass

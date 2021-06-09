@@ -10,14 +10,14 @@ def do_something(self: Sprite):
     self.looks_say("Hello pyStage!")
     for i in range(4):
         self.motion_movesteps(20)
-        self.wait(1)
+        self.control_wait(1)
         self.looks_think("This is awesome!")
         self.motion_turnleft(90)
-        self.wait(1)
+        self.control_wait(1)
         self.looks_think("")
     self.looks_say("Move me around with WASD.")
 
-sprite.when_program_is_started(do_something)
+sprite.event_whenflagclicked(do_something)
 
 
 def right(self: Sprite):
@@ -40,11 +40,11 @@ def say_space_pressed(self: Sprite):
         if self.sensing_keypressed(" "):
             self.looks_say("Space pressed!")
 
-sprite.when_key_is_pressed("d", right)
-sprite.when_key_is_pressed("a", left)
-sprite.when_key_is_pressed("w", up)
-sprite.when_key_is_pressed("s", down)
-sprite.when_key_is_pressed("m", mouse)
-sprite.when_program_is_started(say_space_pressed)
+sprite.event_whenkeypressed("d", right)
+sprite.event_whenkeypressed("a", left)
+sprite.event_whenkeypressed("w", up)
+sprite.event_whenkeypressed("s", down)
+sprite.event_whenkeypressed("m", mouse)
+sprite.event_whenflagclicked(say_space_pressed)
 
 stage.play()

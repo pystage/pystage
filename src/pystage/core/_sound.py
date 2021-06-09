@@ -38,6 +38,7 @@ class _Sound:
     # Like for costumes and backdrops, we need a class structure here.
     # Plus a global sound manager.
     def __init__(self):
+        super().__init__()
         self.mixer = pygame.mixer
         self.mixer.init()
 

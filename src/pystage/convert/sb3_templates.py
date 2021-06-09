@@ -6,48 +6,74 @@ Rules:
 '''
 
 templates = {
-        "control_if": '''\
-                if {{CONDITION}}:
-                    {{SUBSTACK | indent(4)}}
-                ''',
         
         "event_whenflagclicked": '''\
                 
-                def program_start_{{ID}}(self):
+                def {{call}}_{{ID}}(self):
                     {{NEXT | indent(4) }}
 
-                {{CURRENT_SPRITE}}.when_program_is_started(program_start_{{ID}})
+                {{CURRENT_SPRITE}}.{{call}}({{call}}_{{ID}})
 
                 ''',
         
         "event_whenbroadcastreceived": '''\
 
-                def message_received_{{ID}}(self):
+                def {{call}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.when_i_receive_message({{BROADCAST_OPTION}}, message_received_{{ID}})
+                {{CURRENT_SPRITE}}.{{call}}({{BROADCAST_OPTION}}, {{call}}_{{ID}})
 
                 ''',
 
         "event_whenkeypressed": '''\
 
-                def key_pressed_{{ID}}(self):
+                def {{call}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.when_key_is_pressed({{KEY_OPTION}}, key_pressed_{{ID}})
+                {{CURRENT_SPRITE}}.{{call}}({{KEY_OPTION}}, {{call}}_{{ID}})
                 
+                ''',
+
+        "control_start_as_clone": '''\
+
+                def {{call}}_{{ID}}(self):
+                    {{NEXT | indent(4)}}
+
+                {{CURRENT_SPRITE}}.{{call}}({{KEY_OPTION}}, {{call}}_{{ID}})
+                
+                ''',
+
+        "control_forever":'''\
+                while True:
+                    {{SUBSTACK | indent(4)}}
+                ''',
+
+        "control_repeat":'''\
+                for _ in range({{TIMES}}):
+                    {{SUBSTACK | indent(4)}}
                 ''',
 
         "control_repeat_until": '''\
                 while not {{CONDITION}}:
                     {{SUBSTACK | indent(4)}}
                 ''',
+        
+        "control_wait_until": '''\
+                while not {{CONDITION}}:
+                    pass
+                ''',
 
         "control_if": '''\
                 if {{CONDITION}}:
                     {{SUBSTACK | indent(4)}}
                 ''',
 
+        "control_if_else":'''\
+                if {{CONDITION}}:
+                    {{SUBSTACK | indent(4)}}
+                else:
+                    {{SUBSTACK2 | indent(4)}}
+                ''',
 
         "operator_add": "({{NUM1}} + {{NUM2}})",
         "operator_and": "({{OPERAND1}} and {{OPERAND2}})",
@@ -67,9 +93,7 @@ templates = {
         "operator_subtract": "({{NUM1}} - {{NUM2}})",
 
         "looks_costume": "{{COSTUME | global_costume}}",
-
         "looks_backdrops": "{{BACKDROP | global_backdrop}}",
-
         "sound_sounds_menu": "{{SOUND_MENU | global_sound }}",
 
                 }
