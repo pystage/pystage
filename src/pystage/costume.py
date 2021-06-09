@@ -69,6 +69,8 @@ class Costume():
             print("\nWARNING: SVG conversion is for convenience only")
             print("and might not work as expected. It is recommended")
             print("to manually convert to bitmap graphics (png or jpg).\n")
+
+            # issue under windows, comment out this line and regarding import statement
             with stderr_redirector(io.BytesIO()):
                 rlg = svg2rlg(self.file)
                 pil = renderPM.drawToPIL(rlg)
