@@ -48,19 +48,23 @@ templates = {
                     {{SUBSTACK | indent(4)}}
                 ''',
 
-        "operator_equals": "{{OPERAND1}} == {{OPERAND2}}",
 
-        "operator_lt": "{{OPERAND1}} < {{OPERAND2}}",
-
-        "operator_gt": "{{OPERAND1}} > {{OPERAND2}}",
-
-        "operator_and": "{{OPERAND1}} and {{OPERAND2}}",
-
-        "operator_or": "{{OPERAND1}} or {{OPERAND2}}",
-
-        "operator_subtract": "{{NUM1}} - {{NUM2}}",
-
-        "operator_add": "{{NUM1}} + {{NUM2}}",
+        "operator_add": "({{NUM1}} + {{NUM2}})",
+        "operator_and": "({{OPERAND1}} and {{OPERAND2}})",
+        "operator_contains": "({{STRING2}} in {{STRING1}})",
+        "operator_divide": "({{NUM1}} / {{NUM2}})",
+        "operator_equals": "({{OPERAND1}} == {{OPERAND2}})",
+        "operator_gt": "({{OPERAND1}} > {{OPERAND2}})",
+        "operator_join": '"".join([{{STRING1}}, {{STRING2}}])',
+        "operator_length": "len({{STRING}})",
+        "operator_letter_of": "{{STRING}}[{{LETTER}}-1]",
+        "operator_lt": "({{OPERAND1}} < {{OPERAND2}})",
+        "operator_mod": "({{NUM1}} % {{NUM2}})",
+        "operator_multiply": "({{NUM1}} * {{NUM2}})",
+        "operator_not": "not ({{OPERAND}})",
+        "operator_or": "({{OPERAND1}} or {{OPERAND2}})",
+        "operator_round": "round({{NUM}})",
+        "operator_subtract": "({{NUM1}} - {{NUM2}})",
 
         "looks_costume": "{{COSTUME | global_costume}}",
 

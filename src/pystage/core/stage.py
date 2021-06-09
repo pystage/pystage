@@ -8,10 +8,11 @@ from pystage.core._looks_stage import _LooksStage
 from pystage.core._sound import _Sound
 from pystage.core._sensing import _Sensing
 from pystage.core._variables import _Variables
+from pystage.core._operators import _Operators
 from pystage.core._control import _Control
 import os
 
-class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
+class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
