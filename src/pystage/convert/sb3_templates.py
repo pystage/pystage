@@ -9,37 +9,37 @@ templates = {
         
         "event_whenflagclicked": '''\
                 
-                def {{call}}_{{ID}}(self):
+                def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4) }}
 
-                {{CURRENT_SPRITE}}.{{call}}({{call}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
 
                 ''',
         
         "event_whenbroadcastreceived": '''\
 
-                def {{call}}_{{ID}}(self):
+                def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{call}}({{BROADCAST_OPTION}}, {{call}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{BROADCAST_OPTION}}, {{func}}_{{ID}})
 
                 ''',
 
         "event_whenkeypressed": '''\
 
-                def {{call}}_{{ID}}(self):
+                def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{call}}({{KEY_OPTION}}, {{call}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
                 
                 ''',
 
         "control_start_as_clone": '''\
 
-                def {{call}}_{{ID}}(self):
+                def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{call}}({{KEY_OPTION}}, {{call}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
                 
                 ''',
 

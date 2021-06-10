@@ -132,6 +132,8 @@ class CodeWriter():
             A block from the intermediate code representation.
         """
         corefunc = self.get_opcode_function(block)
+        if language=="core":
+            return corefunc
         if corefunc is None:
             return None
         lang = importlib.import_module(f"pystage.{language}")
@@ -219,9 +221,10 @@ class CodeWriter():
             # We delegate to another block with an opcode
             res = ""
             template = ""
-            call = self.get_translated_call(block, "en")
-            default_template = self.get_translated_template(block, "en")
-            context = { "call": call, }
+            call = self.get_translated_call(block, "core")
+            func = self.get_opcode_function(block)
+            default_template = self.get_translated_template(block, "core")
+            context = { "call": call, "func": func}
             if "comments" in block:
                 self.comments.extend(block["comments"])
             if block["opcode"] in self.templates:
