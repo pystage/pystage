@@ -161,7 +161,9 @@ def get_intermediate(data, name):
         "event_whenbroadcastreceived",
         "event_whenflagclicked",
         "event_whenkeypressed",
-        # TODO: list all
+        "event_whenbackdropswitchesto",
+        "event_whengreaterthan",
+        "control_start_as_clone",
     ]
 
     project = DictClass()
@@ -192,7 +194,8 @@ def get_intermediate(data, name):
             if isinstance(b, list):
                 # Stuff like variables, not interesting at this point
                 continue
-            if b["parent"] is None:
+            # if b["parent"] is None:
+            if b["opcode"] in hat_blocks:
                 block = get_block(b, blocks, target["isStage"])
                 sprite["blocks"].append(block)
         for c in target["costumes"]:

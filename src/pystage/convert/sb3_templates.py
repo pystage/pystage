@@ -34,6 +34,15 @@ templates = {
                 
                 ''',
 
+        "event_whenthisspriteclicked": '''\
+
+                def {{func}}_{{ID}}(self):
+                    {{NEXT | indent(4)}}
+
+                {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
+                
+                ''',
+                
         "control_start_as_clone": '''\
 
                 def {{func}}_{{ID}}(self):

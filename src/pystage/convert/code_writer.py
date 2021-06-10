@@ -33,6 +33,16 @@ def unquoted(value):
     else:
         return value
 
+def resolve(value):
+    # print(f"Resolving: {value}")
+    if isinstance(value, str):
+        return value
+    for key in value["params"]:
+        res = resolve(value["params"][key])
+        # print(f"Resolved value: {res}")
+        return res
+    raise ValueError(f"No suitable value found: {value}")
+
 
 
 
@@ -97,6 +107,7 @@ class CodeWriter():
         block : dict
             A block from the intermediate code representation.
         """
+        # print("Getting function for opcode: " + block["opcode"])
         cls = Stage if block["stage"] else Sprite
         # print(f"Searching in class: {cls}")
         elsefunc = None
@@ -106,17 +117,19 @@ class CodeWriter():
                 # print(f"Matching API method: {name}")
                 return func
             if hasattr(func, "opcode"):
-                if name==func.opcode:
+                if func.opcode == block["opcode"]:
                     if hasattr(func, "param"):
-                        if func.param in block["params"] and func.value==unquoted(block["params"][func.param]):
-                            # print(f"Matching API method: {name}")
-                            return func
+                        if func.param in block["params"]:
+                            value = unquoted(resolve(block["params"][func.param]))
+                            if func.value==value:
+                                # print(f"Matching API method: {name}")
+                                return func
                     else:
                         elsefunc = func
         if elsefunc:
             # print(f"Matching API method: {elsefunc}")
             return elsefunc
-        # print(f"No API method for {block.opcode}")
+        print(f"No API method for {block.opcode}")
         return None
 
 
@@ -218,20 +231,22 @@ class CodeWriter():
             # We have a simple value
             return str(block)
         else:
-            # We delegate to another block with an opcode
-            res = ""
-            template = ""
-            call = self.get_translated_call(block, "core")
-            func = self.get_opcode_function(block)
-            default_template = self.get_translated_template(block, "core")
-            context = { "call": call, "func": func}
+            # First we add comments to the queue
             if "comments" in block:
                 self.comments.extend(block["comments"])
+            # If the block has its own template, we simply render it.
             if block["opcode"] in self.templates:
                 template = self.templates[block["opcode"]]
+                context = {}
+                # if the template needs a translated function name, we deliver it
+                if "{{func}}" in template:
+                    func = self.get_translated_function(block, "core")
+                    context["func"] = func.__name__ if func is not None else "NO_FUNCTION"
                 return self.render(block, template, context)
             else:
-                return self.render(block, default_template, context)
+                # We use the default template mechanism
+                default_template = self.get_translated_template(block, "core")
+                return self.render(block, default_template)
 
 
     def render(self, block, text, context={}):
