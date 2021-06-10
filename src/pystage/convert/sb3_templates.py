@@ -39,7 +39,7 @@ templates = {
                 def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
                 
                 ''',
                 
@@ -48,7 +48,7 @@ templates = {
                 def {{func}}_{{ID}}(self):
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
                 
                 ''',
 
