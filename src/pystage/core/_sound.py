@@ -5,42 +5,14 @@ import time
 
 class _Sound:
 
-    # may deleted later
-
-    # "sound_changeeffectby",   : change_sound_effect_by
-    # "sound_changevolumeby",   : change_volume_by
-    # "sound_cleareffects",     : clear_sound_effects
-    # "sound_play",             : start_sound
-    # "sound_playuntildone",    : play_sound_until_done
-    # "sound_seteffectto",      : set_sound_effect_to
-    # "sound_setvolumeto",      : change_volume_by
-    # "sound_sounds_menu",      : ?
-    # "sound_stopallsounds",    : stop_all_sounds
-    # "sound_volume",           : get_volume
-
-    #        {
-    #          "opcode": "sound_changeeffectby",
-    #          "params": {
-    #            "EFFECT": "\"PITCH\"",
-    #            "VALUE": 10.0
-    #          },
-    #          "next": false
-    #        },
-    #        {
-    #          "opcode": "sound_changeeffectby",
-    #          "params": {
-    #            "EFFECT": "\"PAN\"",
-    #            "VALUE": 10.0
-    #          },
-    #          "next": false
-    #        },
-
     # Like for costumes and backdrops, we need a class structure here.
     # Plus a global sound manager.
     def __init__(self):
         super().__init__()
         self.mixer = pygame.mixer
-        self.mixer.init()
+        self.mixer.init(channels=2)
+        self.actual_pan = 0
+        self.actual_pitch = 0
 
     def sound_play(self, sound, loop=0):
         channel = self.mixer.find_channel()
@@ -55,8 +27,8 @@ class _Sound:
     def sound_stopallsounds(self):
         self.mixer.stop()
 
-    def sound_changeeffectby_pitch(self, effect, value):
-        # TODO: for pitching an paning there is no ready to use code in pygame. To do so
+    def sound_changeeffectby_pitch(self, value):
+        # TODO: for pitching there is no ready to use code in pygame. To do so
         # we must operate on the audio array itself.
 
         # Similar to graphics effects
@@ -70,8 +42,10 @@ class _Sound:
     sound_changeeffectby_pitch.param = "EFFECT"
     sound_changeeffectby_pitch.value = "PITCH"
 
-    def sound_changeeffectby_pan(self, effect, value):
-        pass
+    def sound_changeeffectby_pan(self, value):
+        # norm pan value from -100/100 to range 0/1
+        self.actual_pan = (value + 100) / 200
+        self._apply_pan()
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -81,26 +55,40 @@ class _Sound:
         pass
 
     def sound_cleareffects(self):
-        pass
+        self.actual_pan = 0
+        self._apply_pan()
 
-    @staticmethod
-    def sound_changevolumeby(value):
-        value *= 0.01
-        music.set_volume(music.get_volume() + value)
+        self.actual_pitch = 0
+        # apply pitch
 
-    @staticmethod
-    def sound_setvolumeto(percent):
-        percent *= 0.01
-        music.set_volume(percent)
+    def _apply_pan(self):
+        for channel_id in range(self.mixer.get_num_channels()):
+            if self.actual_pan > 0.5:
+                self.mixer.Channel(channel_id).set_volume(1, 0)
+            else:
+                self.mixer.Channel(channel_id).set_volume(0, 1)
 
-    @staticmethod
-    def sound_volume():
-        return music.get_volume() * 100
+    def sound_changevolumeby(self, value):
+        value /= 100
+        for channel_id in range(self.mixer.get_num_channels()):
+            actual_volume = self.mixer.Channel(channel_id).get_volume()
+            self.mixer.Channel(channel_id).set_volume(actual_volume + value)
+
+    def sound_setvolumeto(self, value):
+        value /= 100
+        for channel_id in range(self.mixer.get_num_channels()):
+            self.mixer.Channel(channel_id).set_volume(value)
+
+    def sound_volume(self):
+        # as we hide the channel mechanic, we assume all channels are set to the same volume
+        return self.mixer.Channel(0).get_volume() * 100
 
     def sound_sounds_menu(self):
         """
         Toggle sound menu.
-        @return:
-        @rtype:
+
+        Returns
+        -------
+        None
         """
         pass
