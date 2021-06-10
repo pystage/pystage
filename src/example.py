@@ -4,10 +4,13 @@ from pystage.core.stage import Stage
 stage = Stage()
 stage.add_backdrop("grid")
 sprite = stage.create_sprite()
+sprite.pystage_addsound("dancehead2")
+
 
 
 def do_something(self: Sprite):
     self.looks_say("Hello pyStage!")
+    self.sound_play("dancehead2")
     for i in range(4):
         self.motion_movesteps(20)
         self.control_wait(1)

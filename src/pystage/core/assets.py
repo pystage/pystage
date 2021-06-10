@@ -83,3 +83,47 @@ class Costume():
 
     def __str__(self):
         return f"{self.name} ({self.center_x}, {self.center_y})"
+
+
+class SoundManager():
+    def __init__(self, owner):
+        self.owner = owner
+        self.sounds = {}
+
+    def add_sound(self, name):
+        if isinstance(name, str):
+            sound = Sound(self, name)
+            self.sounds[name]=sound
+        else:
+            for n in name:
+                self.add_sound(n)
+
+    def get_sound(self, name):
+        return self.sounds[name].sound
+
+
+class Sound():
+    '''
+    This class handles and manages sounds.
+    '''
+    def __init__(self, sprite, name):
+        self.name = name
+        self.sprite = sprite
+        self.file = None
+        self.sound = None
+        internal_folder = pkg_resources.resource_filename("pystage", "sounds/")
+        for folder in ["", "sounds/", "klaenge/", internal_folder]:
+            for ext in ["", ".wav", ".ogg", ".mp3"]:
+                if os.path.exists(f"{folder}{name}{ext}"):
+                    self.file = f"{folder}{name}{ext}"
+                    break
+            if self.file is not None:
+                break
+        if self.file.endswith(".mp3"):
+            print("WARNING: MP3 is not supported in pyStage. Use wav or ogg format.")
+        elif self.file is not None:
+            self.sound = pygame.mixer.Sound(self.file)
+
+
+    def __str__(self):
+        return f"{self.name}"

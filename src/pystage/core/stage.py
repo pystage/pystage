@@ -44,7 +44,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.offset_y = 0
 
 
-    def create_sprite(self, costume="default", constructor=Sprite):
+    def create_sprite(self, costume="default", constructor=Sprite) -> Sprite:
         sprite = constructor(self, costume)
         self.sprites.append(sprite)
         return sprite

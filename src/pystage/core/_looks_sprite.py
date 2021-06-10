@@ -1,5 +1,5 @@
 from pystage.core.gui import BubbleManager
-from pystage.core.costume import CostumeManager
+from pystage.core.assets import CostumeManager
 from pystage.core._base_sprite import BaseSprite
 
 

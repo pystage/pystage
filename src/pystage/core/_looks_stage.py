@@ -1,4 +1,4 @@
-from pystage.core.costume import CostumeManager
+from pystage.core.assets import CostumeManager
 
 
 class _LooksStage():
