@@ -224,14 +224,14 @@ def get_intermediate(data, name):
     return project
 
 
-def get_python(project):
+def get_python(project, language="core"):
     res = textwrap.dedent(f'''\
             # {project['name']} (pyStage, converted from Scratch 3)
             
             from pystage import Sprite, Stage
             
             ''')
-    writer = CodeWriter(project, sb3_templates.templates)
+    writer = CodeWriter(project, sb3_templates.templates, language)
     writer.set_sprite(project["stage"]["name"])
     stage = writer.get_sprite_var()
     backdrops = []
@@ -264,8 +264,8 @@ def get_python(project):
     return res
 
 
-def print_python(project):
-    print(get_python(project))
+def print_python(project, language="core"):
+    print(get_python(project, language))
 
 
 ##
@@ -281,6 +281,7 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--intermediate", action="store_true", help="print intermediate code representation")
     parser.add_argument("-s", "--sb3-json", action="store_true", help="print sb3 project.json")
     parser.add_argument("-p", "--python", action="store_true", help="print python code")
+    parser.add_argument("-l", "--language", metavar="LANG", type=str, help="API language, 2-letter ISO code, e.g. en, de, ...", nargs="?", default="core")
     parser.add_argument("-v", "--verbose", action="store_true", help="be verbose (info)")
     parser.add_argument("-vv", "--debug", action="store_true", help="print debug information")
     parser.add_argument("-d", "--directory", metavar="DIR", type=str, help="the project directory")
@@ -303,7 +304,7 @@ if __name__ == "__main__":
             print(json.dumps(project, indent=2))
             sys.exit(1)
         elif args.python:
-            print_python(project)
+            print_python(project, args.language)
             sys.exit(1)
         else:
             print(f"Creating project: {project_name}")

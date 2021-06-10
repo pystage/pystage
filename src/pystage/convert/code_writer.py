@@ -50,10 +50,11 @@ class CodeWriter():
     '''
     Helper class to write code templates
     '''
-    def __init__(self, project, templates):
+    def __init__(self, project, templates, language="core"):
         super().__init__()
         self.project = project
         self.templates = templates
+        self.language = language
 
         self.comments = []
         self.last_id = 0
@@ -240,12 +241,12 @@ class CodeWriter():
                 context = {}
                 # if the template needs a translated function name, we deliver it
                 if "{{func}}" in template:
-                    func = self.get_translated_function(block, "core")
+                    func = self.get_translated_function(block, self.language)
                     context["func"] = func.__name__ if func is not None else "NO_FUNCTION"
                 return self.render(block, template, context)
             else:
                 # We use the default template mechanism
-                default_template = self.get_translated_template(block, "core")
+                default_template = self.get_translated_template(block, self.language)
                 return self.render(block, default_template)
 
 
