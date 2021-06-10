@@ -242,7 +242,7 @@ class CodeWriter():
                 # if the template needs a translated function name, we deliver it
                 if "{{func}}" in template:
                     func = self.get_translated_function(block, self.language)
-                    context["func"] = func.__name__ if func is not None else "NO_FUNCTION"
+                    context["func"] = func.__name__ if func is not None else f"<<NO_FUNCTION-{block['opcode']}>>"
                 return self.render(block, template, context)
             else:
                 # We use the default template mechanism
