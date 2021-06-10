@@ -7,30 +7,35 @@ class Figur(pystage.core.sprite.Sprite):
     #
 
     def wenn_programm_startet(self, generator, name=""):
-        self.when_program_is_started(generator, name)
+        self.event_whenflagclicked(generator, name)
 
 
     def wenn_taste_gedrueckt_wird(self, key, generator, name=""):
-        self.when_key_is_pressed(key, generator, name)
+        self.event_whenkeypressed(key, generator, name)
 
 
+    def wenn_nachricht_kommt(self, nachricht, generator, name=""):
+        self.event_whenbroadcastreceived(nachricht, generator, name)
+
+    def wenn_das_ding_angeklickt_wird(self, generator, name=""):
+        self.event_whenthisspriteclicked(generator, name)
 
     ##
     # Motion
     #
 
     def drehe_links(self, deg):
-        self.turn_left(deg)
+        self.motion_turnleft(deg)
 
 
     def drehe_rechts(self, deg):
-        self.turn_right(deg)
+        self.motion_turnright(deg)
 
     def gehe(self, steps):
-        self.move(steps)
+        self.motion_movesteps(steps)
 
     def gehe_zu_x_y(self, x, y):
-        self.go_to_x_y(x, y)
+        self.motion_gotoxy(x, y)
 
     def warte(self, secs):
-        self.wait(secs)
+        self.control_wait(secs)
