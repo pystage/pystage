@@ -2,8 +2,8 @@ from pystage.core.sprite import Sprite
 from pystage.core.stage import Stage
 
 stage = Stage()
-stage.add_backdrop("grid")
-sprite = stage.create_sprite()
+stage.pystage_addbackdrop("grid")
+sprite = stage.pystage_createsprite()
 sprite.pystage_addsound("dancehead2")
 
 

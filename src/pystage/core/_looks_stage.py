@@ -8,6 +8,18 @@ class _LooksStage():
         self.costume_manager = CostumeManager(self)
 
 
+    def pystage_addbackdrop(self, name, center_x=None, center_y=None):
+        self.costume_manager.add_costume(name, center_x, center_y)
+
+
+    def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.replace_costume(index, name, center_x, center_y)
+
+
+    def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.insert_costume(index, name, center_x, center_y)
+
+
     def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.
         # In Scratch, a sprite can change the backdrop.

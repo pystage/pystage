@@ -1,6 +1,6 @@
-import pystage
+from pystage.core.sprite import Sprite
 
-class Figur(pystage.core.sprite.Sprite):
+class Figur(Sprite):
 
     ##
     # Events

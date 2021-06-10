@@ -44,22 +44,10 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.offset_y = 0
 
 
-    def create_sprite(self, costume="default", constructor=Sprite) -> Sprite:
+    def pystage_createsprite(self, costume="default", constructor=Sprite) -> Sprite:
         sprite = constructor(self, costume)
         self.sprites.append(sprite)
         return sprite
-
-
-    def add_backdrop(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
-
-
-    def replace_backdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def insert_backdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert_costume(index, name, center_x, center_y)
 
 
     def _draw(self, surface: pygame.Surface):
