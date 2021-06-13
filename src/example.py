@@ -50,4 +50,4 @@ sprite.event_whenkeypressed("s", down)
 sprite.event_whenkeypressed("m", mouse)
 sprite.event_whenflagclicked(say_space_pressed)
 
-stage.play()
+stage.pystage_play()

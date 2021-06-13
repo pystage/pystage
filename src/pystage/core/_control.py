@@ -33,11 +33,4 @@ class _Control(BaseSprite):
     def control_create_clone_of(self, sprite="_myself_"):
         pass
 
-    def control_delete_this_clone(self):
-        pass
-
-
-    # This is actually an event but Scratch has the hat block under "Control"
-    def control_start_as_clone(self, key, generator_function, name="", no_refresh=False):
-        pass
 

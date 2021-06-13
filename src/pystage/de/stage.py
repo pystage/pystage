@@ -8,4 +8,4 @@ class Buehne(Stage):
         return self.pystage_createsprite(costume=costume, constructor=Figur)
 
     def spiele(self):
-        self.play()
+        self.pystage_play()

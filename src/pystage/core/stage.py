@@ -59,7 +59,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         surface.blit(image, (self.center_x - center_x, self.center_y - center_y))
 
 
-    def play(self):
+    def pystage_play(self):
         self.running = True
         '''
         This runs the game loop
