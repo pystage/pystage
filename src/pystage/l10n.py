@@ -26,11 +26,12 @@ if __name__ == "__main__":
         description="Manage translations")
     parser.add_argument("-o", "--opcodes", action="store_true", help="List pyStage opcodes")
     parser.add_argument("-s", "--stage", action="store_true", help="List pyStage opcodes")
+    parser.add_argument("-l", "--language", metavar="LANG", type=str, help="API language, 2-letter ISO code, e.g. en, de, ...", nargs="?", default="en")
     args = parser.parse_args()
 
     if args.opcodes:
         cls = Stage if args.stage else Sprite
-        translations = get_translations("en")
+        translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             if name.startswith("_"):
                 continue
