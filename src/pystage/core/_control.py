@@ -15,22 +15,24 @@ class _Control(BaseSprite):
     control_stop_all.param="STOP_OPTION"
     control_stop_all.value="all"
 
-    def control_stop_this_script(self):
+    def control_stop_this(self):
         # This is equivalent to return
         pass
-    control_stop_this_script.opcode="control_stop"
-    control_stop_this_script.param="STOP_OPTION"
-    control_stop_this_script.value="this script"
+    control_stop_this.opcode="control_stop"
+    control_stop_this.param="STOP_OPTION"
+    control_stop_this.value="this script"
 
-    def control_stop_other_scripts_in_sprite(self):
+    def control_stop_other(self):
         pass
-    control_stop_other_scripts_in_sprite.opcode="control_stop"
-    control_stop_other_scripts_in_sprite.param="STOP_OPTION"
-    control_stop_other_scripts_in_sprite.value="other scripts in sprite"
+    control_stop_other.opcode="control_stop"
+    control_stop_other.param="STOP_OPTION"
+    control_stop_other.value="other scripts in sprite"
 
     # Cloning is probably tricky.  
 
     def control_create_clone_of(self, sprite="_myself_"):
         pass
+
+    control_create_clone_of.translation = "control_createcloneof"
 
 

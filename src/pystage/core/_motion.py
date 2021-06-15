@@ -38,12 +38,12 @@ class _Motion():
     motion_goto_random.value = "_random_"
 
 
-    def motion_goto_mouse(self):
+    def motion_goto_pointer(self):
         pass
 
-    motion_goto_mouse.opcode = "motion_goto"
-    motion_goto_mouse.param = "TO"
-    motion_goto_mouse.value = "_mouse_"
+    motion_goto_pointer.opcode = "motion_goto"
+    motion_goto_pointer.param = "TO"
+    motion_goto_pointer.value = "_mouse_"
 
 
     def motion_goto_sprite(self, sprite):
@@ -67,12 +67,12 @@ class _Motion():
     motion_glideto_random.value = "_random_"
 
 
-    def motion_glideto_mouse(self, secs):
+    def motion_glideto_pointer(self, secs):
         pass
 
-    motion_glideto_mouse.opcode = "motion_glideto"
-    motion_glideto_mouse.param = "TO"
-    motion_glideto_mouse.value = "_mouse_"
+    motion_glideto_pointer.opcode = "motion_glideto"
+    motion_glideto_pointer.param = "TO"
+    motion_glideto_pointer.value = "_mouse_"
 
     def motion_glideto_sprite(self, sprite, secs):
         pass
@@ -86,17 +86,17 @@ class _Motion():
     def motion_pointindirection(self, direction):
         pass
 
-    def motion_pointtowards_mouse(self):
+    def motion_pointtowards_pointer(self):
         pass
 
-    motion_pointtowards_mouse.opcode = "motion_pointtowards"
-    motion_pointtowards_mouse.param = "TOWARDS"
-    motion_pointtowards_mouse.value = "_mouse_"
+    motion_pointtowards_pointer.opcode = "motion_pointtowards"
+    motion_pointtowards_pointer.param = "TOWARDS"
+    motion_pointtowards_pointer.value = "_mouse_"
 
     def motion_pointtowards_sprite(self, sprite):
         pass
 
-    motion_pointtowards_mouse.opcode = "motion_pointtowards"
+    motion_pointtowards_sprite.opcode = "motion_pointtowards"
 
     def motion_changexby(self, value):
         self.x += value

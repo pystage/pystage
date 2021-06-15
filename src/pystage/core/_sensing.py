@@ -51,11 +51,11 @@ class _Sensing(BaseSprite):
     sensing_setdragmode_draggable.value="draggable"
 
 
-    def sensing_setdragmode_not_draggable(self, value):
+    def sensing_setdragmode_notdraggable(self, value):
         pass
-    sensing_setdragmode_draggable.opcode="sensing_setdragmode"
-    sensing_setdragmode_draggable.param="DRAG_MODE"
-    sensing_setdragmode_draggable.value="not draggable"
+    sensing_setdragmode_notdraggable.opcode="sensing_setdragmode"
+    sensing_setdragmode_notdraggable.param="DRAG_MODE"
+    sensing_setdragmode_notdraggable.value="not draggable"
 
     # Here follows the mess of our favorite block, where a lot of stuff 
     # from other sprites and the stage can be retrieved.
@@ -64,18 +64,18 @@ class _Sensing(BaseSprite):
     # explanations and examples in the documentation that show why these functions
     # should not be used.
 
-    def sensing_of_x_position(self, sprite):
+    def sensing_of_xposition(self, sprite):
         pass
-    sensing_of_x_position.opcode="sensing_of"
-    sensing_of_x_position.param="PROPERTY"
-    sensing_of_x_position.value="x position"
+    sensing_of_xposition.opcode="sensing_of"
+    sensing_of_xposition.param="PROPERTY"
+    sensing_of_xposition.value="x position"
 
 
-    def sensing_of_y_position(self, sprite):
+    def sensing_of_yposition(self, sprite):
         pass
-    sensing_of_y_position.opcode="sensing_of"
-    sensing_of_y_position.param="PROPERTY"
-    sensing_of_y_position.value="y position"
+    sensing_of_yposition.opcode="sensing_of"
+    sensing_of_yposition.param="PROPERTY"
+    sensing_of_yposition.value="y position"
 
 
     def sensing_of_direction(self, sprite):
@@ -85,18 +85,18 @@ class _Sensing(BaseSprite):
     sensing_of_direction.value="direction"
 
 
-    def sensing_of_costume_no(self, sprite):
+    def sensing_of_costumenumber(self, sprite):
         pass
-    sensing_of_costume_no.opcode="sensing_of"
-    sensing_of_costume_no.param="PROPERTY"
-    sensing_of_costume_no.value="costume #"
+    sensing_of_costumenumber.opcode="sensing_of"
+    sensing_of_costumenumber.param="PROPERTY"
+    sensing_of_costumenumber.value="costume #"
 
 
-    def sensing_of_costume_name(self, sprite):
+    def sensing_of_costumename(self, sprite):
         pass
-    sensing_of_costume_name.opcode="sensing_of"
-    sensing_of_costume_name.param="PROPERTY"
-    sensing_of_costume_name.value="costume name"
+    sensing_of_costumename.opcode="sensing_of"
+    sensing_of_costumename.param="PROPERTY"
+    sensing_of_costumename.value="costume name"
 
 
     def sensing_of_size(self, sprite):
@@ -113,23 +113,23 @@ class _Sensing(BaseSprite):
     sensing_of_volume.value="volume"
 
 
-    def sensing_of_variable(self, sprite="_stage_"):
+    def sensing_of_variable(self, variable, sprite="_stage_"):
         pass
     sensing_of_variable.opcode="sensing_of"
 
 
-    def sensing_of_backdrop_no(self, stage="_stage_"):
+    def sensing_of_backdropnumber(self, stage="_stage_"):
         pass
-    sensing_of_backdrop_no.opcode="sensing_of"
-    sensing_of_backdrop_no.param="PROPERTY"
-    sensing_of_backdrop_no.value="backdrop #"
+    sensing_of_backdropnumber.opcode="sensing_of"
+    sensing_of_backdropnumber.param="PROPERTY"
+    sensing_of_backdropnumber.value="backdrop #"
 
 
-    def sensing_of_backdrop_name(self, stage="_stage_"):
+    def sensing_of_backdropname(self, stage="_stage_"):
         pass
-    sensing_of_backdrop_name.opcode="sensing_of"
-    sensing_of_backdrop_name.param="PROPERTY"
-    sensing_of_backdrop_name.value="backdrop name"
+    sensing_of_backdropname.opcode="sensing_of"
+    sensing_of_backdropname.param="PROPERTY"
+    sensing_of_backdropname.value="backdrop name"
 
     def sensing_current_year(self):
         pass
@@ -191,11 +191,11 @@ class _SensingSprite(BaseSprite):
     def __init__(self):
         super().__init__()
 
-    def sensing_touchingobject_mouse(self):
+    def sensing_touchingobject_pointer(self):
         pass
-    sensing_touchingobject_mouse.opcode="sensing_touchingobject"
-    sensing_touchingobject_mouse.param="TOUCHINGOBJECTMENU"
-    sensing_touchingobject_mouse.value="_mouse_"
+    sensing_touchingobject_pointer.opcode="sensing_touchingobject"
+    sensing_touchingobject_pointer.param="TOUCHINGOBJECTMENU"
+    sensing_touchingobject_pointer.value="_mouse_"
 
     def sensing_touchingobject_edge(self):
         pass
@@ -203,7 +203,7 @@ class _SensingSprite(BaseSprite):
     sensing_touchingobject_edge.param="TOUCHINGOBJECTMENU"
     sensing_touchingobject_edge.value="_edge_"
 
-    def sensing_touchingobject_sprite(self):
+    def sensing_touchingobject_sprite(self, sprite):
         pass
     sensing_touchingobject_sprite.opcode="sensing_touchingobject"
 
@@ -213,11 +213,11 @@ class _SensingSprite(BaseSprite):
     def sensing_coloristouchingcolor(self, sprite_color, color):
         pass
 
-    def sensing_distanceto_mouse(self):
+    def sensing_distanceto_pointer(self):
         pass
-    sensing_distanceto_mouse.opcode="sensing_distanceto"
-    sensing_distanceto_mouse.param="DISTANCETOMENU"
-    sensing_distanceto_mouse.value="_mouse_"
+    sensing_distanceto_pointer.opcode="sensing_distanceto"
+    sensing_distanceto_pointer.param="DISTANCETOMENU"
+    sensing_distanceto_pointer.value="_mouse_"
 
     def sensing_distanceto_sprite(self):
         pass
