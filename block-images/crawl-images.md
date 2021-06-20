@@ -17,6 +17,7 @@ jupyter:
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.ui import Select
 from time import sleep
 import requests
 import os
@@ -26,33 +27,67 @@ import xml.etree.ElementTree as ET
 import copy
 from pathlib import Path
 import json
+import time
+import base64
 
-not_letters = re.compile(r"[^a-z0-9]")
+not_letters = re.compile(r"[^a-zA-Z0-9]")
 namespaces = {"svg": "http://www.w3.org/2000/svg", "xlink": "http://www.w3.org/1999/xlink" }
-
-options = Options()
-#options.add_argument('--headless')
-
-# use to set language via browser
-profile = webdriver.FirefoxProfile()
-
-# Get the scratch icons:
+# Scratch icons:
 icons = ["repeat.svg", "dropdown-arrow.svg", "rotate-left.svg", "rotate-right.svg", "green-flag.svg"]
-for i in icons:
-    data = requests.get(f"https://scratch.mit.edu/static/blocks-media/{i}").text
-    with open(f"icons/{i}", "w", encoding="utf-8") as f:
-        f.write(data)
+
 ```
 
 ```python
-def scrape_blocks(language="en"):
-    profile.set_preference('intl.accept_languages', language)
+def get_scratch_icons():
+    for i in icons:
+        data = requests.get(f"https://scratch.mit.edu/static/blocks-media/{i}").text
+        with open(f"icons/{i}", "w", encoding="utf-8") as f:
+            f.write(data)
+```
+
+```python
+def start_selenium():
+    options = Options()
+    #options.add_argument('--headless')
+    # use to set language via browser
+    profile = webdriver.FirefoxProfile()
     #profile.set_preference('intl.accept_languages', "de")
     driver = webdriver.Firefox(options=options, firefox_profile=profile)
-
-    driver.set_window_size(1080, 10000)
+    driver.set_window_size(1024, 768)
     driver.get("https://scratch.mit.edu/projects/editor/")
+    time.sleep(3)
+    return driver
+    
+```
 
+```python
+def switch_language(driver: webdriver.Firefox, language: str):
+    select : Select = Select(driver.find_element_by_css_selector(".language-selector_language-select_8Vfnm"))
+    select.select_by_value(language)
+    driver.language = language
+    time.sleep(1)
+```
+
+```python
+def activate_extension(driver: webdriver.Firefox, name : str):
+    language = None
+    if hasattr(driver, "language"):
+        language = driver.language
+    switch_language(driver, "en")
+    button = driver.find_element_by_class_name("gui_extension-button_2T7PA")
+    button.click()
+    time.sleep(1)
+    ext = driver.find_element_by_xpath(f'//span[text()="{name.capitalize()}"]')
+    ext.click()
+    time.sleep(1)
+    if language:
+        switch_language(driver, language)
+```
+
+```python
+def scrape_blocks(driver, language="en"):
+    #profile.set_preference('intl.accept_languages', language)
+    switch_language(driver, language)
     box = driver.find_element_by_class_name("blocklyFlyout")
     svg = box.get_attribute("outerHTML")
     return svg
@@ -126,6 +161,9 @@ def fix_svg_and_get_opcodes(svg):
                     c.attrib["data-category"] = "sound"
                 if c.attrib["data-category"] == "operators":
                     c.attrib["data-category"] = "operator"
+                # And for extensions they use translations... aaargh!
+                if c.attrib["data-id"].startswith("pen"):
+                    c.attrib["data-category"] = "pen"
                 # some blocks have random id parts, we need to remove these
                 parts = c.attrib["data-id"].split("_")
                 for p in parts[::-1]:
@@ -147,7 +185,7 @@ def fix_svg_and_get_opcodes(svg):
 
 ```python
 def save_blocks(opcodes, root, language):
-    Path(language).mkdir(exist_ok=True)
+    Path(f"svg/{language}").mkdir(parents=True, exist_ok=True)
     for opcode in opcodes:
         # print(opcode)
         # Create a copy for this block
@@ -161,32 +199,40 @@ def save_blocks(opcodes, root, language):
             image = imageparent.find('svg:image', namespaces)
             index = list(imageparent).index(image)
             filename = image.attrib["{http://www.w3.org/1999/xlink}href"]
-            with open(filename, "r", encoding="utf-8") as f:
-                innersvg = f.read()
-                innersvg = innersvg[innersvg.index("<svg"):]
-                newimage = ET.fromstring(f'''<g xmlns="http://www.w3.org/2000/svg">
-                    {innersvg}
-                </g>
-                ''')
-                newimage[0].attrib["width"] = image.attrib["width"]
-                newimage[0].attrib["height"] = image.attrib["height"]
-                if "transform" in image.attrib:
-                    newimage.attrib["transform"] = image.attrib["transform"]
+            # Extensions use data URIs...
+            innersvg = ""
+            if filename.startswith("data:image/svg+xml;base64,"):
+                innersvg = filename[len("data:image/svg+xml;base64"):]
+                innersvg = base64.decodebytes(innersvg.encode("utf-8")).decode("utf-8")
+            else:
+                with open(filename, "r", encoding="utf-8") as f:
+                    innersvg = f.read()
+            innersvg = innersvg[innersvg.index("<svg"):]
+            newimage = ET.fromstring(f'''<g xmlns="http://www.w3.org/2000/svg">
+                {innersvg}
+            </g>
+            ''')
+            newimage[0].attrib["width"] = image.attrib["width"]
+            newimage[0].attrib["height"] = image.attrib["height"]
+            if "transform" in image.attrib:
+                newimage.attrib["transform"] = image.attrib["transform"]
             imageparent.insert(index, newimage) 
             imageparent.remove(image)
 
         # display(SVG(ET.tostring(root2)))
         # Finally, write the SVG
-        with open(f"{language}/{opcode}.svg", "wb") as f:
+        with open(f"svg/{language}/{opcode}.svg", "wb") as f:
             f.write(ET.tostring(root2))
 ```
 
 ```python
+driver = start_selenium()
+activate_extension(driver, "pen")
 with open("langs.json", "r", encoding="utf-8") as f:
     languages = json.load(f)
     for lang in languages:
         print(f"Language {lang}")
-        svg = scrape_blocks(lang)
+        svg = scrape_blocks(driver, lang)
         opcodes, root = fix_svg_and_get_opcodes(svg)
         save_blocks(opcodes, root, lang)
 ```
