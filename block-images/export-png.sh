@@ -9,7 +9,7 @@ else
 fi
 
 
-for i in $(find svg -name *.svg)
+for i in $(find svg -name \*.svg)
 do
 	out=${i#svg}
 	out="png${density}${out%svg}png"

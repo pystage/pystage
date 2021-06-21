@@ -127,6 +127,12 @@ def fix_svg_and_get_opcodes(svg):
         font-size: 12pt;
         font-weight: 500;
     }
+    .blocklyNonEditableText > text, .blocklyEditableText > text {
+        fill: #575E75;
+    }
+    .blocklyDropdownText {
+        fill: #fff !important;
+    }
     </style>
     '''))
     # Set some smallish dimensions (will be fixed outside this script later)
