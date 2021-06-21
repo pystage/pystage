@@ -4,18 +4,18 @@ pystage.de package
 Submodules
 ----------
 
-pystage.de.buehne module
+pystage.de.sprite module
 ------------------------
 
-.. automodule:: pystage.de.buehne
+.. automodule:: pystage.de.sprite
    :members:
    :undoc-members:
    :show-inheritance:
 
-pystage.de.figur module
+pystage.de.stage module
 -----------------------
 
-.. automodule:: pystage.de.figur
+.. automodule:: pystage.de.stage
    :members:
    :undoc-members:
    :show-inheritance:

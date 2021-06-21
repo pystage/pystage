@@ -8,55 +8,17 @@ Subpackages
    :maxdepth: 4
 
    pystage.convert
+   pystage.core
    pystage.de
+   pystage.en
 
 Submodules
 ----------
 
-pystage.code\_block module
---------------------------
+pystage.l10n module
+-------------------
 
-.. automodule:: pystage.code_block
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pystage.constants module
-------------------------
-
-.. automodule:: pystage.constants
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pystage.costume module
-----------------------
-
-.. automodule:: pystage.costume
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pystage.gui module
-------------------
-
-.. automodule:: pystage.gui
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pystage.sprite module
----------------------
-
-.. automodule:: pystage.sprite
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pystage.stage module
---------------------
-
-.. automodule:: pystage.stage
+.. automodule:: pystage.l10n
    :members:
    :undoc-members:
    :show-inheritance:

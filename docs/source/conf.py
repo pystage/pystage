@@ -57,15 +57,28 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+PATCH_BLOCK_IMAGES = "/".join([html_static_path[0], "images", "blocks"])
+
 
 def autodoc_process_docstring(app, what, name, obj, options, lines):
-    if name == "pystage.de.figur.Figur.drehe_links":
-        print(app)
-        print(lines)
+    def get_block_png(lang, opcode):
+        return "/".join([PATCH_BLOCK_IMAGES, lang, opcode + ".png"])
+
+
+    if hasattr(obj, "opcode"):
+        print(name)
         print(what)
         print(name)
-        print(obj)
-        pass
+        path = get_block_png("en", obj.opcode)
+        #print(path)
+        for i in range(3):
+            lines.insert(1, "")
+        lines.insert(4, f".. figure:: {path}")
+        lines.insert(5, "    :width: 150")
+        for i in range(3):
+            lines.insert(6, "")
+
+    return lines
 
 
 def setup(app):
