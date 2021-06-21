@@ -56,3 +56,18 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+def autodoc_process_docstring(app, what, name, obj, options, lines):
+    if name == "pystage.de.figur.Figur.drehe_links":
+        print(app)
+        print(lines)
+        print(what)
+        print(name)
+        print(obj)
+        pass
+
+
+def setup(app):
+    print("Setup")
+    app.connect('autodoc-process-docstring', autodoc_process_docstring)
