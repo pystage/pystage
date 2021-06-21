@@ -4,9 +4,9 @@ import pkg_resources
 pygame.init()
 
 
-regular_font_14 = pygame.font.Font(pkg_resources.resource_filename(__name__, "fonts/roboto-regular.ttf"), 14)
-bold_font_9 = pygame.font.Font(pkg_resources.resource_filename(__name__, "fonts/roboto-bold.ttf"), 9)
-light_font_9 = pygame.font.Font(pkg_resources.resource_filename(__name__, "fonts/roboto-bold.ttf"), 9)
+regular_font_14 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-regular.ttf"), 14)
+bold_font_9 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-bold.ttf"), 9)
+light_font_9 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-bold.ttf"), 9)
 
 color1 = (87,94,117) # Text in bubbles
 # Variable name bold 9
@@ -86,6 +86,7 @@ def wrap_text(text, font, allowed_width):
                 # Check for long words
                 lw, lh = font.size(line_words[0])
                 max_lh = lh
+                max_lw = max(max_lw, lw)
                 if lw > allowed_width:
                     max_lw = allowed_width
                     cut = []
@@ -100,13 +101,13 @@ def wrap_text(text, font, allowed_width):
                 lw, lh = font.size(' '.join(line_words + words[:1]))
                 if lw > allowed_width:
                     break
-                if max_lw < allowed_width:
-                    max_lw = lw
+                max_lw = max(max_lw, lw)
 
 
         # add a line consisting of those words
         line = ' '.join(line_words)
         lines.append(line)
+        print(lines, max_lw, max_lh)
     return lines, max_lw, max_lh
 
 
@@ -123,8 +124,8 @@ def render_lines(lines, font, color, lw, lh, lh_offset):
 
 
 class BubbleManager():
-    say_file = pkg_resources.resource_filename(__name__, "images/say.png")
-    think_file = pkg_resources.resource_filename(__name__, "images/think.png")
+    say_file = pkg_resources.resource_filename("pystage", "images/say.png")
+    think_file = pkg_resources.resource_filename("pystage", "images/think.png")
     
     SAY = ResizableBorder(say_file, (18,18,154, 35))
     THINK = ResizableBorder(think_file, (18,18,154, 35))
@@ -141,6 +142,7 @@ class BubbleManager():
         self.y_offset = -0.5 # percent of sprite height based on lower right corner
 
     def say(self, text: str, border=SAY):
+        print(text)
         if text is None or text.strip() == "":
             self.active = False
             self.text = ""
@@ -150,7 +152,7 @@ class BubbleManager():
             self.border = border
             lh_offset = -1
             lines, lw, lh = wrap_text(self.text[:360], regular_font_14, 170)
-            self.text_surface = render_lines(lines, regular_font_14, color1, lw, lh, lh_offset)
+            self.text_surface = render_lines(lines, regular_font_14, color1, lw+10, lh, lh_offset)
             self.surface = self.border.render(self.text_surface.get_width() + 26, self.text_surface.get_height() + 40)
 
 
