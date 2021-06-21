@@ -130,8 +130,8 @@ def fix_svg_and_get_opcodes(svg):
     .blocklyNonEditableText > text, .blocklyEditableText > text {
         fill: #575E75;
     }
-    .blocklyDropdownText {
-        fill: #fff !important;
+    .blocklyNonEditableText > text.blocklyDropdownText, .blocklyEditableText > text.blocklyDropdownText {
+        fill: #fff;
     }
     </style>
     '''))
