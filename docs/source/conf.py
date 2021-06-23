@@ -15,6 +15,7 @@ import sys
 from tempfile import TemporaryFile
 from urllib.request import urlopen
 from zipfile import ZipFile
+import inspect
 
 sys.path.insert(0, os.path.abspath("../../src"))
 
@@ -60,39 +61,66 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 
 # doing this as example for en
-PATH_BLOCK_IMAGES = "/".join([html_static_path[0], "images", "blocks"])
-lang = "en"
-BLOCK_IMG_URL = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
+PATH_BLOCK_IMAGES = "/".join(["_static", "images", "blocks"])
+
+LOADED_LANG = []
+
 
 # download block img
-with urlopen(BLOCK_IMG_URL) as f:
-    print(f"Downloading block imgs for {lang}.")
-    html = f.read()
-    with TemporaryFile() as tmp:
-        tmp.write(html)
-        with ZipFile(tmp) as f:
-            f.extractall("/".join([PATH_BLOCK_IMAGES, lang]))
+def download_pngs(lang):
+    if lang not in LOADED_LANG:
+        block_img_url = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
+
+        with urlopen(block_img_url) as f:
+            print(f"Downloading block imgs for {lang}.")
+            html = f.read()
+
+            with TemporaryFile() as tmp:
+                tmp.write(html)
+                with ZipFile(tmp) as f:
+                    extract_path = "/".join(["source", PATH_BLOCK_IMAGES, lang])
+                    f.extractall(extract_path)
+
+                    # rename all files: add lang name in file name to avoid same file names. Sphinx will pack all pngs
+                    # in one directory
+                    for file in os.listdir(extract_path):
+                        try:
+                            os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
+                        except WindowsError:
+                            continue
+                    print("/".join([PATH_BLOCK_IMAGES, lang]))
+
+        LOADED_LANG.append(lang)
 
 
 # insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
     def get_block_png(lang, opcode):
-        return "/".join([PATH_BLOCK_IMAGES, lang, opcode + ".png"])
+        return "/".join([PATH_BLOCK_IMAGES, lang, f"{lang}_{opcode}.png"])
 
-    if hasattr(obj, "opcode"):
-        path = get_block_png(name.split(".")[1], obj.opcode)
+    try:
+        lang = name.split(".")[1]
+        if len(lang) == 2:
+            download_pngs(lang)
 
-        # insert rst figure block, care to put in empty lines above and below.
-        for i in range(3):
-            lines.insert(1, "")
-        lines.insert(4, f".. figure:: {path}")
-        lines.insert(5, "    :width: 150")
-        for i in range(3):
-            lines.insert(6, "")
+            # get opcode from wrapped function
+            opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[1]
+            # print(opcode)
+            path = get_block_png(lang, opcode)
+
+            # insert rst figure block, care to put in empty lines above and below.
+            for i in range(3):
+                lines.insert(1, "")
+            lines.insert(4, f".. figure:: {path}")
+            lines.insert(5, "    :width: 150")
+            for i in range(3):
+                lines.insert(6, "")
+
+    except IndexError:
+        return lines
 
     return lines
 
 
 def setup(app):
-    print("Setup")
     app.connect('autodoc-process-docstring', autodoc_process_docstring)
