@@ -23,6 +23,7 @@ class Sprite(Sprite):
     def turn_left(self, deg):
         """
         Turn the sprite by given angle.
+
         Parameters
         ----------
         deg : The angle in degree.

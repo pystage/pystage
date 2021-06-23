@@ -1,5 +1,3 @@
-import sphinx_rtd_theme
-
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -14,6 +12,10 @@ import sphinx_rtd_theme
 #
 import os
 import sys
+from tempfile import TemporaryFile
+from urllib.request import urlopen
+from zipfile import ZipFile
+
 sys.path.insert(0, os.path.abspath("../../src"))
 
 
@@ -57,9 +59,22 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# doing this as example for en
 PATH_BLOCK_IMAGES = "/".join([html_static_path[0], "images", "blocks"])
+lang = "en"
+BLOCK_IMG_URL = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
+
+# download block img
+with urlopen(BLOCK_IMG_URL) as f:
+    print(f"Downloading block imgs for {lang}.")
+    html = f.read()
+    with TemporaryFile() as tmp:
+        tmp.write(html)
+        with ZipFile(tmp) as f:
+            f.extractall("/".join([PATH_BLOCK_IMAGES, lang]))
 
 
+# insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
     def get_block_png(lang, opcode):
         return "/".join([PATH_BLOCK_IMAGES, lang, opcode + ".png"])
