@@ -49,5 +49,5 @@ class Sprite(Sprite):
         self.motion_gotoxy(x, y)
 
     def wait(self, secs):
-        self.wait(secs)
+        self.control_wait(secs)
 

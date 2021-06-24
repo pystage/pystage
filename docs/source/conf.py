@@ -62,7 +62,6 @@ html_static_path = ['_static']
 
 # doing this as example for en
 PATH_BLOCK_IMAGES = "/".join(["_static", "images", "blocks"])
-
 LOADED_LANG = []
 
 
@@ -95,8 +94,8 @@ def download_pngs(lang):
 
 # insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
-    def get_block_png(lang, opcode):
-        return "/".join([PATH_BLOCK_IMAGES, lang, f"{lang}_{opcode}.png"])
+    def get_block_png(lang_, opcode_):
+        return "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
 
     try:
         lang = name.split(".")[1]
@@ -112,7 +111,7 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
             for i in range(3):
                 lines.insert(1, "")
             lines.insert(4, f".. figure:: {path}")
-            lines.insert(5, "    :width: 150")
+            lines.insert(5, "    :height: 50")
             for i in range(3):
                 lines.insert(6, "")
 
