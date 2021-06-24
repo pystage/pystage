@@ -33,7 +33,10 @@ class _Sound:
         sound = self.sound_manager.get_sound(name)
         if sound is not None:
             self.mixer.find_channel().play(sound, 0)
-            time.sleep(sound.get_length())
+            # time.sleep(sound.get_length())
+            # This need to be done via wait time in code block
+            # TODO: Add this function to yield blocks.
+            self.code_manager.current_block.add_to_wait_time = sound.get_length()
 
     def sound_stopallsounds(self):
         self.mixer.stop()

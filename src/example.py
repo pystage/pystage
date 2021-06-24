@@ -10,18 +10,23 @@ sprite.pystage_addsound("dancehead2")
 
 def do_something(self: Sprite):
     self.looks_say("Hello pyStage!")
-    self.sound_play("dancehead2")
     for i in range(4):
         self.motion_movesteps(20)
         self.control_wait(1)
-        self.looks_think("This is awesome!")
+        # self.looks_think("This is awesome!")
         self.motion_turnleft(90)
         self.control_wait(1)
-        self.looks_think("")
+        # self.looks_think("")
     self.looks_say("Move me around with WASD.")
 
 sprite.event_whenflagclicked(do_something)
 
+
+def soundcheck(self:Sprite):
+    self.sound_playuntildone("dancehead2")
+    self.looks_say("Sound finished!")
+
+sprite.event_whenflagclicked(soundcheck)
 
 def right(self: Sprite):
     self.motion_changexby(10)

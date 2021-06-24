@@ -46,9 +46,9 @@ class CodeBlock():
     '''
     last_id = -1
 
-    yield_funcs = ["wait"]
+    yield_funcs = ["control_wait", "sound_playuntildone"]
     # de
-    yield_funcs += ["warte"]
+    yield_funcs += ["warte", "sound_playuntildone"]
 
 
     def index_ast(func_ast):
