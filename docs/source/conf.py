@@ -1,5 +1,3 @@
-import sphinx_rtd_theme
-
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -13,7 +11,13 @@ import sphinx_rtd_theme
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
+from tempfile import TemporaryFile
+from urllib.request import urlopen
+from zipfile import ZipFile
+import inspect
+
 sys.path.insert(0, os.path.abspath("../../src"))
 
 
@@ -56,3 +60,76 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# doing this as example for en
+PATH_BLOCK_IMAGES = "/".join(["_static", "images", "blocks"])
+LOADED_LANG = []
+
+
+# download block img
+def download_pngs(lang):
+    if lang not in LOADED_LANG:
+        # first cleanup
+        extract_path = "/".join(["source", PATH_BLOCK_IMAGES, lang])
+        if os.path.exists(extract_path):
+            shutil.rmtree(extract_path)
+
+        block_img_url = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
+
+        with urlopen(block_img_url) as f:
+            print(f"Downloading block imgs for {lang}.")
+            html = f.read()
+
+            with TemporaryFile() as tmp:
+                tmp.write(html)
+                with ZipFile(tmp) as f:
+                    f.extractall(extract_path)
+
+                    # rename all files: add lang name in file name to avoid same file names. Sphinx will pack all pngs
+                    # in one directory
+                    for file in os.listdir(extract_path):
+                        try:
+                            os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
+                        except WindowsError as e:
+                            continue
+                    print("/".join([PATH_BLOCK_IMAGES, lang]))
+
+        LOADED_LANG.append(lang)
+
+
+# insert rst block with correct image
+def autodoc_process_docstring(app, what, name, obj, options, lines):
+    def get_block_png(lang_, opcode_):
+        return "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
+
+    try:
+        lang = name.split(".")[1]
+        if len(lang) == 2:
+            download_pngs(lang)
+
+            # get opcode from wrapped function
+            opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[1]
+            # print(opcode)
+            path = get_block_png(lang, opcode)
+
+            # insert rst figure block, care to put in empty lines above and below.
+            for i in range(3):
+                lines.insert(1, "")
+            lines.insert(4, f".. figure:: {path}")
+            lines.insert(5, "    :height: 50")
+            for i in range(3):
+                lines.insert(6, "")
+
+            # add warning if png not found. This may have several reasons.
+            if not os.path.exists(os.path.join("source", path)):
+                lines.insert(7, "Image not found. Maybe function is not yet implemented for this language.\n If "
+                                "this error keeps existing check if this function is really a scratch block.")
+
+    except IndexError:
+        return lines
+
+    return lines
+
+
+def setup(app):
+    app.connect('autodoc-process-docstring', autodoc_process_docstring)

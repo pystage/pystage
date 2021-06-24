@@ -1,6 +1,7 @@
-import pystage
+from pystage.core.sprite import Sprite
 
-class Sprite(pystage.core.sprite.Sprite):
+
+class Sprite(Sprite):
 
     ##
     # Events
@@ -20,7 +21,20 @@ class Sprite(pystage.core.sprite.Sprite):
     #
 
     def turn_left(self, deg):
+        """
+        Turn the sprite by given angle.
+
+        Parameters
+        ----------
+        deg : The angle in degree.
+
+        Returns
+        -------
+        None
+        """
         self.motion_turnleft(deg)
+
+    turn_left.opcode = "motion_turnleft"
 
     def set_x_to(self, value):
         self.motion_setx(value)
@@ -35,5 +49,5 @@ class Sprite(pystage.core.sprite.Sprite):
         self.motion_gotoxy(x, y)
 
     def wait(self, secs):
-        self.wait(secs)
+        self.control_wait(secs)
 
