@@ -44,14 +44,14 @@ class _Sensing(BaseSprite):
         pass
 
 
-    def sensing_setdragmode_draggable(self, value):
+    def sensing_setdragmode_draggable(self):
         pass
     sensing_setdragmode_draggable.opcode="sensing_setdragmode"
     sensing_setdragmode_draggable.param="DRAG_MODE"
     sensing_setdragmode_draggable.value="draggable"
 
 
-    def sensing_setdragmode_notdraggable(self, value):
+    def sensing_setdragmode_notdraggable(self):
         pass
     sensing_setdragmode_notdraggable.opcode="sensing_setdragmode"
     sensing_setdragmode_notdraggable.param="DRAG_MODE"

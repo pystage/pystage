@@ -51,6 +51,7 @@ class _Sound:
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
     sound_changeeffectby_pitch.value = "PITCH"
+    sound_changeeffectby_pitch.translation = "sound_effects_pitch"
 
     def sound_changeeffectby_pan(self, value):
         # norm pan value from -100/100 to range 0/1
@@ -61,15 +62,17 @@ class _Sound:
     sound_changeeffectby_pan.opcode = "sound_changeeffectby"
     sound_changeeffectby_pan.param = "EFFECT"
     sound_changeeffectby_pan.value = "PAN"
+    sound_changeeffectby_pan.translation = "sound_effects_pan"
 
     def sound_seteffectto_pitch(self, value):
         # TODO: for pitching there is no ready to use code in pygame. To do so
         # we must operate on the audio array itself.
         pass
 
-    sound_seteffectto_pitch.opcode = "sound_seteffectto"
+    sound_seteffectto_pitch.opcode = "sound_seteffecto"
     sound_seteffectto_pitch.param = "EFFECT"
     sound_seteffectto_pitch.value = "PITCH"
+    sound_seteffectto_pitch.translation = "sound_effects_pitch"
 
     def sound_seteffectto_pan(self, value):
         # Values from -100 (left) to 100 (right)
@@ -77,9 +80,10 @@ class _Sound:
         self.current_pan = min(100, max(-100, self.current_pan))
         self._apply()
 
-    sound_seteffectto_pan.opcode = "sound_seteffectto"
+    sound_seteffectto_pan.opcode = "sound_seteffecto"
     sound_seteffectto_pan.param = "EFFECT"
     sound_seteffectto_pan.value = "PAN"
+    sound_seteffectto_pan.translation = "sound_effects_pan"
 
     def sound_cleareffects(self):
         self.current_pan = 0

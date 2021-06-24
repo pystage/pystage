@@ -194,7 +194,7 @@ class _LooksSprite(BaseSprite):
     def looks_hide(self):
         pass
 
-    def looks_gotofrontback_front(self, layer):
+    def looks_gotofrontback_front(self):
         pass
 
     looks_gotofrontback_front.opcode="looks_gotofrontback"
@@ -202,7 +202,7 @@ class _LooksSprite(BaseSprite):
     looks_gotofrontback_front.value="front"
 
     
-    def looks_gotofrontback_back(self, layer):
+    def looks_gotofrontback_back(self):
         pass
 
     looks_gotofrontback_back.opcode="looks_gotofrontback"
