@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
 from tempfile import TemporaryFile
 from urllib.request import urlopen
@@ -68,6 +69,11 @@ LOADED_LANG = []
 # download block img
 def download_pngs(lang):
     if lang not in LOADED_LANG:
+        # first cleanup
+        extract_path = "/".join(["source", PATH_BLOCK_IMAGES, lang])
+        if os.path.exists(extract_path):
+            shutil.rmtree(extract_path)
+
         block_img_url = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
 
         with urlopen(block_img_url) as f:
@@ -77,7 +83,6 @@ def download_pngs(lang):
             with TemporaryFile() as tmp:
                 tmp.write(html)
                 with ZipFile(tmp) as f:
-                    extract_path = "/".join(["source", PATH_BLOCK_IMAGES, lang])
                     f.extractall(extract_path)
 
                     # rename all files: add lang name in file name to avoid same file names. Sphinx will pack all pngs
@@ -85,7 +90,7 @@ def download_pngs(lang):
                     for file in os.listdir(extract_path):
                         try:
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
-                        except WindowsError:
+                        except WindowsError as e:
                             continue
                     print("/".join([PATH_BLOCK_IMAGES, lang]))
 
@@ -114,6 +119,11 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
             lines.insert(5, "    :height: 50")
             for i in range(3):
                 lines.insert(6, "")
+
+            # add warning if png not found. This may have several reasons.
+            if not os.path.exists(os.path.join("source", path)):
+                lines.insert(7, "Image not found. Maybe function is not yet implemented for this language.\n If "
+                                "this error keeps existing check if this function is really a scratch block.")
 
     except IndexError:
         return lines
