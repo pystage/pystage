@@ -10,11 +10,8 @@ class Sprite(Sprite):
     def when_program_is_started(self, generator, name=""):
         self.when_program_is_started(generator, name)
 
-
-    def when_key_is_pressed(self, key, generator, name=""):
-        self.when_key_is_pressed(key, generator, name)
-
-
+    def when_key_is_pressed(self, key):
+        self.sensing_keypressed(key)
 
     ##
     # Motion
@@ -50,4 +47,3 @@ class Sprite(Sprite):
 
     def wait(self, secs):
         self.control_wait(secs)
-

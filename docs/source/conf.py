@@ -103,27 +103,33 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
         return "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
 
     try:
-        lang = name.split(".")[1]
-        if len(lang) == 2:
-            download_pngs(lang)
+        # only insert blocks for methods
+        if what == "method":
+            lang = name.split(".")[1]
+            if len(lang) == 2:
+                download_pngs(lang)
 
-            # get opcode from wrapped function
-            opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[1]
-            # print(opcode)
-            path = get_block_png(lang, opcode)
+                # get opcode from wrapped function
+                opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[1]
+                opcode = opcode.replace("pystage_", "")
+                # print(opcode)
+                path = get_block_png(lang, opcode)
 
-            # insert rst figure block, care to put in empty lines above and below.
-            for i in range(3):
-                lines.insert(1, "")
-            lines.insert(4, f".. figure:: {path}")
-            lines.insert(5, "    :height: 50")
-            for i in range(3):
-                lines.insert(6, "")
+                # insert rst figure block, care to put in empty lines above and below.
 
-            # add warning if png not found. This may have several reasons.
-            if not os.path.exists(os.path.join("source", path)):
-                lines.insert(7, "Image not found. Maybe function is not yet implemented for this language.\n If "
-                                "this error keeps existing check if this function is really a scratch block.")
+                print(obj, what, "---", path)
+                for i in range(3):
+                    lines.insert(1, "")
+                lines.insert(4, f".. figure:: {path}")
+                lines.insert(5, "    :height: 50")
+                for i in range(3):
+                    lines.insert(6, "")
+
+                # add warning if png not found. This may have several reasons.
+                if not os.path.exists(os.path.join("source", path)):
+                    lines.insert(7, r'Image not found. Maybe function is not yet implemented for this language.'
+                                    r'Also the naming of the block may not the same as the corresponding function.\n If '
+                                    r'this error keeps existing check if this function is really a scratch block.')
 
     except IndexError:
         return lines
