@@ -167,6 +167,8 @@ def fix_svg_and_get_opcodes(svg):
                     c.attrib["data-category"] = "sound"
                 if c.attrib["data-category"] == "operators":
                     c.attrib["data-category"] = "operator"
+                if c.attrib["data-category"] == "events":
+                    c.attrib["data-category"] = "event"
                 # And for extensions they use translations... aaargh!
                 if c.attrib["data-id"].startswith("pen"):
                     c.attrib["data-category"] = "pen"
