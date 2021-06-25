@@ -117,7 +117,7 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
 
                 # insert rst figure block, care to put in empty lines above and below.
 
-                print(obj, what, "---", path)
+                # print(obj, what, "---", path)
                 for i in range(3):
                     lines.insert(1, "")
                 lines.insert(4, f".. figure:: {path}")

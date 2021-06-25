@@ -9,15 +9,17 @@ Welcome to PyStage's documentation!
 .. mdinclude:: ../../README.md
 
 .. toctree::
-   :caption: Documentation:
+   :caption: Languages:
    :maxdepth: 2
 
-   modules
+   pystage.en
+   pystage.de
 
 
 
-Indices and tables
-==================
+.. this is a comment
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
