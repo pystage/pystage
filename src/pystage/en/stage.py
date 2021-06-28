@@ -1,11 +1,16 @@
-from pystage.core.stage import Stage
-from pystage.en import Sprite
+from pystage.core.stage import CoreStage
+from pystage.en.sprite import Sprite
 
 
-class Stage(Stage):
+class Stage():
 
-    def erstelle_figur(self, costume="default"):
-        return self.pystage_createsprite(costume=costume, constructor=Sprite)
+    def __init__(self):
+        self._core = CoreStage()
+        self._core.facade = self
+        self._core.sprite_facade_class = Sprite
 
-    def spiele(self):
-        self.pystage_play()
+    def create_sprite(self, costume="default"):
+        return self._core.pystage_createsprite(costume=costume)
+
+    def play(self):
+        self._core.pystage_play()
