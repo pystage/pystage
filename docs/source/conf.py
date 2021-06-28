@@ -110,7 +110,7 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                 download_pngs(lang)
 
                 # get opcode from wrapped function
-                opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[1]
+                opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[-1]
                 opcode = opcode.replace("pystage_", "")
                 # print(opcode)
                 path = get_block_png(lang, opcode)
