@@ -11,17 +11,10 @@ Subpackages
    pystage.core
    pystage.de
    pystage.en
+   pystage.l10n
 
 Submodules
 ----------
-
-pystage.l10n module
--------------------
-
-.. automodule:: pystage.l10n
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 pystage.util module
 -------------------
