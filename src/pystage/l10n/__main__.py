@@ -4,8 +4,8 @@ import json
 import requests
 import re
 
-from pystage.core.sprite import Sprite
-from pystage.core.stage import Stage
+from pystage.core.sprite import CoreSprite
+from pystage.core.stage import CoreStage
 
 
 square_bracketed_variable = re.compile(r"\[[^\]]*\]")
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.translations:
-        cls = Stage if args.stage else Sprite
+        cls = CoreStage if args.stage else CoreSprite
         translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             if name.startswith("_"):
@@ -97,7 +97,7 @@ if __name__ == "__main__":
             trans = get_translation(func, translations, lang=args.language)
             print(f"{name}{params} - {trans}\n")
     elif args.api:
-        cls = Stage if args.stage else Sprite
+        cls = CoreStage if args.stage else CoreSprite
         translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             if name.startswith("_"):
