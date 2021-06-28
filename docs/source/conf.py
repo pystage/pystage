@@ -92,7 +92,7 @@ def download_pngs(lang):
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
                             continue
-                    print("/".join([PATH_BLOCK_IMAGES, lang]))
+                    print("/".join(["images", "blocks", lang]))
 
         LOADED_LANG.append(lang)
 
