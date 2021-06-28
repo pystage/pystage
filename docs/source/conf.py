@@ -92,7 +92,7 @@ def download_pngs(lang):
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
                             continue
-                    print("/".join(["images", "blocks", lang]))
+                    print("/".join([PATH_BLOCK_IMAGES, lang]))
 
         LOADED_LANG.append(lang)
 
@@ -100,7 +100,7 @@ def download_pngs(lang):
 # insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
     def get_block_png(lang_, opcode_):
-        return "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
+        return "/".join(["images", "blocks", lang_, f"{lang_}_{opcode_}.png"])
 
     try:
         # only insert blocks for methods
@@ -110,6 +110,7 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                 download_pngs(lang)
 
                 # get opcode from wrapped function
+                print(inspect.getsourcelines(obj))
                 opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[-1]
                 opcode = opcode.replace("pystage_", "")
                 # print(opcode)
