@@ -65,6 +65,7 @@ class _Motion():
     motion_glideto_random.opcode = "motion_glideto"
     motion_glideto_random.param = "TO"
     motion_glideto_random.value = "_random_"
+    motion_glideto_random.position = "%2"
 
 
     def motion_glideto_pointer(self, secs):
@@ -73,8 +74,9 @@ class _Motion():
     motion_glideto_pointer.opcode = "motion_glideto"
     motion_glideto_pointer.param = "TO"
     motion_glideto_pointer.value = "_mouse_"
+    motion_glideto_pointer.position = "%2"
 
-    def motion_glideto_sprite(self, sprite, secs):
+    def motion_glideto_sprite(self, secs, sprite):
         pass
 
     motion_glideto_sprite.opcode = "motion_glideto"

@@ -15,13 +15,14 @@ from pystage.core._control_sprite import _ControlSprite
 from pystage.core._sound import _Sound
 
 
-class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Operators, _Variables, _Pen):
+class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Operators, _Variables, _Pen):
 
     def __init__(self, stage, costume="default"):
         super().__init__()
         self.stage = stage
-
         self.pystage_addcostume(costume)
+        # The facade is the translated API
+        self.facade = None
 
 
 

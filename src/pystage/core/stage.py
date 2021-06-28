@@ -1,6 +1,6 @@
 import pygame
 
-from pystage.core.sprite import Sprite
+from pystage.core.sprite import CoreSprite
 
 # Mixins
 from pystage.core._events import _Events
@@ -12,13 +12,16 @@ from pystage.core._operators import _Operators
 from pystage.core._control import _Control
 import os
 
-class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
+class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
         super().__init__()
         # This way, code blocks can consistently refer to the stage with self.stage:
         self.stage = self
+        # The facade is the translated API
+        self.facade = None
+        self.sprite_facade_class : type = None
 
         pygame.init()
         pygame.display.set_caption(name)
@@ -44,10 +47,15 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.offset_y = 0
 
 
-    def pystage_createsprite(self, costume="default", constructor=Sprite) -> Sprite:
-        sprite = constructor(self, costume)
+    def pystage_createsprite(self, costume="default"):
+        sprite = CoreSprite(self, costume)
         self.sprites.append(sprite)
-        return sprite
+        if self.sprite_facade_class:
+            return self.sprite_facade_class(sprite) # pylint: disable=E1102
+            # pylint produces a false positive here
+            # https://github.com/PyCQA/pylint/issues/1493
+        else:
+            return sprite
 
 
     def _draw(self, surface: pygame.Surface):

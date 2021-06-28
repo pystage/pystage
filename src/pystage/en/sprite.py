@@ -1,17 +1,26 @@
-from pystage.core.sprite import Sprite
+from pystage.core.sprite import CoreSprite
 
 
-class Sprite(Sprite):
+class Sprite():
+    def __init__(self, core_sprite):
+        self._core : CoreSprite = core_sprite
+        self._core.facade = self
+
 
     ##
     # Events
     #
 
     def when_program_is_started(self, generator, name=""):
-        self.when_program_is_started(generator, name)
+        self._core.event_whenflagclicked(generator, name)
+
+
+    def when_key_is_pressed(self, key, generator, name=""):
+        self._core.event_whenkeypressed(key, generator, name)
+
 
     def when_key_is_pressed(self, key):
-        self.sensing_keypressed(key)
+        self._core.sensing_keypressed(key)
 
     ##
     # Motion
@@ -29,21 +38,22 @@ class Sprite(Sprite):
         -------
         None
         """
-        self.motion_turnleft(deg)
+        self._core.motion_turnleft(deg)
 
     turn_left.opcode = "motion_turnleft"
 
     def set_x_to(self, value):
-        self.motion_setx(value)
+        self._core.motion_setx(value)
 
     def turn_right(self, deg):
-        self.motion_turnright(deg)
+        self._core.motion_turnright(deg)
 
     def move(self, steps):
-        self.motion_movesteps(steps)
+        self._core.motion_movesteps(steps)
 
     def go_to_x_y(self, x, y):
-        self.motion_gotoxy(x, y)
+        self._core.motion_gotoxy(x, y)
 
     def wait(self, secs):
-        self.control_wait(secs)
+        self._core.control_wait(secs)
+

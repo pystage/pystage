@@ -1,44 +1,49 @@
-from pystage.core.sprite import Sprite
-from pystage.core.stage import Stage
+from pystage.core.sprite import CoreSprite
+from pystage.core.stage import CoreStage
 
-stage = Stage()
+stage = CoreStage()
 stage.pystage_addbackdrop("grid")
 sprite = stage.pystage_createsprite()
 sprite.pystage_addsound("dancehead2")
 
 
 
-def do_something(self: Sprite):
+def do_something(self: CoreSprite):
     self.looks_say("Hello pyStage!")
-    self.sound_play("dancehead2")
     for i in range(4):
         self.motion_movesteps(20)
         self.control_wait(1)
-        self.looks_think("This is awesome!")
+        # self.looks_think("This is awesome!")
         self.motion_turnleft(90)
         self.control_wait(1)
-        self.looks_think("")
+        # self.looks_think("")
     self.looks_say("Move me around with WASD.")
 
 sprite.event_whenflagclicked(do_something)
 
 
-def right(self: Sprite):
+def soundcheck(self: CoreSprite):
+    self.sound_playuntildone("dancehead2")
+    self.looks_say("Sound finished!")
+
+sprite.event_whenflagclicked(soundcheck)
+
+def right(self: CoreSprite):
     self.motion_changexby(10)
 
-def left(self: Sprite):
+def left(self: CoreSprite):
     self.motion_changexby(-10)
 
-def up(self: Sprite):
+def up(self: CoreSprite):
     self.motion_changeyby(-10)
 
-def down(self: Sprite):
+def down(self: CoreSprite):
     self.motion_changeyby(10)
 
-def mouse(self: Sprite):
+def mouse(self: CoreSprite):
     self.looks_say(f"Mouse pos: {self.sensing_mousex()} / {self.sensing_mousey()}")
 
-def say_space_pressed(self: Sprite):
+def say_space_pressed(self: CoreSprite):
     while True:
         if self.sensing_keypressed(" "):
             self.looks_say("Space pressed!")
