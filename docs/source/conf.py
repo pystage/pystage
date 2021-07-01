@@ -92,7 +92,6 @@ def download_pngs(lang):
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
                             continue
-                    print("/".join([PATH_BLOCK_IMAGES, lang]))
 
         LOADED_LANG.append(lang)
 
@@ -111,7 +110,9 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
 
                 # get opcode from wrapped function
                 opcode = inspect.getsourcelines(obj)[0][-1].strip(" ").split("(")[0].split(".")[-1]
-                opcode = opcode.replace("pystage_", "")
+                # opcode = opcode.replace("pystage_", "")
+                if "pystage_" in opcode:
+                    return lines
                 # print(opcode)
                 path = get_block_png(lang, opcode)
 
