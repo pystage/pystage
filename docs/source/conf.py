@@ -94,8 +94,6 @@ def download_pngs(lang):
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
                             continue
-                    print(os.getcwd(), extract_path)
-                    print(os.listdir(extract_path))
 
         LOADED_LANG.append(lang)
 
@@ -103,7 +101,11 @@ def download_pngs(lang):
 # insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
     def get_block_png(lang_, opcode_):
-        return "/".join(["source", PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
+        if "readthedocs" in os.getcwd():
+            return "/".join(["source", PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
+        else:
+            # use this path for local build
+            return "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
 
     try:
         # only insert blocks for methods
@@ -117,12 +119,9 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                 # opcode = opcode.replace("pystage_", "")
                 if "pystage_" in opcode:
                     return lines
-                # print(opcode)
                 path = get_block_png(lang, opcode)
 
                 # insert rst figure block, care to put in empty lines above and below.
-                #print(path)
-                # print(obj, what, "---", path)
                 for i in range(3):
                     lines.insert(1, "")
                 lines.insert(4, f".. figure:: {path}")
@@ -131,8 +130,8 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                     lines.insert(6, "")
 
                 # add warning if png not found. This may have several reasons.
-                #print(50*"-", os.path.join("source", path))
-                if not os.path.exists("/".join(["source", path])):
+                if not os.path.exists("/".join(["source", path])) and \
+                        not os.path.exists("/".join(["source", "source", path])):
                     lines.insert(7, r'Image not found. Maybe function is not yet implemented for this language. '
                                     r'Also the naming of the block may not the same as the corresponding function.\n If '
                                     r'this error keeps existing check if this function is really a scratch block.')
