@@ -90,6 +90,7 @@ def download_pngs(lang):
                     # rename all files: add lang name in file name to avoid same file names. Sphinx will pack all pngs
                     # in one directory
                     for file in os.listdir(extract_path):
+                        print(extract_path)
                         try:
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
