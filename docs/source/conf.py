@@ -78,9 +78,9 @@ def download_pngs(lang):
 
         block_img_url = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
 
-        with urlopen(block_img_url) as f:
+        with urlopen(block_img_url) as url:
             print(f"Downloading block imgs for {lang}.")
-            html = f.read()
+            html = url.read()
 
             with TemporaryFile() as tmp:
                 tmp.write(html)
@@ -90,11 +90,12 @@ def download_pngs(lang):
                     # rename all files: add lang name in file name to avoid same file names. Sphinx will pack all pngs
                     # in one directory
                     for file in os.listdir(extract_path):
-                        print(extract_path)
                         try:
                             os.rename("/".join([extract_path, file]), "/".join([extract_path, f"{lang}_{file}"]))
                         except WindowsError as e:
                             continue
+                    print(os.getcwd(), extract_path)
+                    print(os.listdir(extract_path))
 
         LOADED_LANG.append(lang)
 
