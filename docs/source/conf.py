@@ -103,7 +103,7 @@ def download_pngs(lang):
 # insert rst block with correct image
 def autodoc_process_docstring(app, what, name, obj, options, lines):
     def get_block_png(lang_, opcode_):
-        return "/" + "/".join([PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
+        return "/".join(["source", PATH_BLOCK_IMAGES, lang_, f"{lang_}_{opcode_}.png"])
 
     try:
         # only insert blocks for methods
