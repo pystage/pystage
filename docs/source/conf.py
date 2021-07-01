@@ -17,6 +17,8 @@ from tempfile import TemporaryFile
 from urllib.request import urlopen
 from zipfile import ZipFile
 import inspect
+from docutils.transforms import Transform
+from docutils import nodes
 
 sys.path.insert(0, os.path.abspath("../../src"))
 
@@ -117,7 +119,7 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                 path = get_block_png(lang, opcode)
 
                 # insert rst figure block, care to put in empty lines above and below.
-                print(path)
+                #print(path)
                 # print(obj, what, "---", path)
                 for i in range(3):
                     lines.insert(1, "")
@@ -127,8 +129,9 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
                     lines.insert(6, "")
 
                 # add warning if png not found. This may have several reasons.
-                if not os.path.exists(os.path.join("source", path)):
-                    lines.insert(7, r'Image not found. Maybe function is not yet implemented for this language.'
+                #print(50*"-", os.path.join("source", path))
+                if not os.path.exists("/".join(["source", path])):
+                    lines.insert(7, r'Image not found. Maybe function is not yet implemented for this language. '
                                     r'Also the naming of the block may not the same as the corresponding function.\n If '
                                     r'this error keeps existing check if this function is really a scratch block.')
 
@@ -140,3 +143,4 @@ def autodoc_process_docstring(app, what, name, obj, options, lines):
 
 def setup(app):
     app.connect('autodoc-process-docstring', autodoc_process_docstring)
+

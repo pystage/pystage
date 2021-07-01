@@ -8,6 +8,8 @@ Welcome to PyStage's documentation!
 
 .. mdinclude:: ../../README.md
 
+.. figure:: _static/logo.png
+
 .. toctree::
    :caption: Languages:
    :maxdepth: 2
