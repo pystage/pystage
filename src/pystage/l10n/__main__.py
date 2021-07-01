@@ -3,6 +3,7 @@ import inspect
 import json
 import requests
 import re
+import textwrap
 
 from pystage.core.sprite import CoreSprite
 from pystage.core.stage import CoreStage
@@ -13,6 +14,7 @@ percent_variable = re.compile(r"%[0-9]")
 to_underscore = re.compile(r"[ -:/,%]")
 to_delete = re.compile(r"[%?]")
 multiple_underscores = re.compile(r"_+")
+deleteself = re.compile(r"self[, ]*")
 
 def get_translations(lang="en"):
     blocks = json.loads(requests.get(f"https://raw.githubusercontent.com/LLK/scratch-l10n/master/editor/blocks/{lang}.json").text)
@@ -98,15 +100,67 @@ if __name__ == "__main__":
             print(f"{name}{params} - {trans}\n")
     elif args.api:
         cls = CoreStage if args.stage else CoreSprite
+        if args.stage:
+            print('''
+from pystage.core.stage import CoreStage
+from pystage.en.sprite import Sprite
+
+
+class Stage():
+
+    def __init__(self):
+        self._core = CoreStage()
+        self._core.facade = self
+        self._core.sprite_facade_class = Sprite
+
+    def create_sprite(self, costume="default"):
+        return self._core.pystage_createsprite(costume=costume)
+
+    def play(self):
+        self._core.pystage_play()
+        
+            ''')
+        else:
+            print('''
+from pystage.core.sprite import CoreSprite
+
+
+class Sprite():
+    def __init__(self, core_sprite):
+        self._core : CoreSprite = core_sprite
+        self._core.facade = self
+
+
+            ''')
         translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             if name.startswith("_"):
                 continue
-            params = [key for key in inspect.signature(func).parameters]
-            params.remove("self")
-            params = f"({', '.join(params)})"
-            trans = create_funcname(get_translation(func, translations, lang=args.language), translations)
-            print(f"{name}{params} - {trans}\n")
+            param_keys = [key for key in inspect.signature(func).parameters]
+            params = [str(inspect.signature(func).parameters[key]) for key in param_keys]
+            params_call = f"({', '.join(params)})"
+            trans_text = get_translation(func, translations, lang=args.language)
+            trans = create_funcname(trans_text, translations)
+            if not trans:
+                trans = name
+            paramdoc = "\n        ".join([f"{param} : FILL" for param in params if param != "self"])
+            print(f'''\
+    def {trans}{params_call}:
+        """{trans_text}
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        Parameters
+        ----------
+        {paramdoc}
+
+        Returns
+        -------
+
+        """
+        self._core.{name}{deleteself.sub("", params_call)}
+                ''')
 
 
 
