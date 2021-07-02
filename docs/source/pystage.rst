@@ -1,6 +1,8 @@
 pystage
 =======
 
+
+.. _pystage:
 Subpackages
 -----------
 
@@ -15,6 +17,8 @@ Subpackages
 
 
 
+pystage.util
+------------
 
 .. automodule:: pystage.util
    :members:

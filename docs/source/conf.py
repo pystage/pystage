@@ -74,7 +74,8 @@ def download_pngs(lang):
         # first cleanup
         extract_path = "/".join(["source", PATH_BLOCK_IMAGES, lang])
         if os.path.exists(extract_path):
-            shutil.rmtree(extract_path)
+            return
+            # shutil.rmtree(extract_path)
 
         block_img_url = f"http://img.pystage.org/blocks/zip/png/300/{lang}_png300.zip"
 
