@@ -8,6 +8,15 @@ Welcome to PyStage's documentation!
 
 .. mdinclude:: ../../README.md
 
+
+.. dropdown:: Click on me to see my content!
+
+    I'm the content which can be anything:
+
+    .. link-button:: https://example.com
+        :text: Like a Button
+
+
 .. figure:: logo.png
 
 .. toctree::

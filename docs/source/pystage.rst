@@ -1,5 +1,5 @@
-pystage package
-===============
+pystage
+=======
 
 Subpackages
 -----------
@@ -13,21 +13,12 @@ Subpackages
    pystage.en
    pystage.l10n
 
-Submodules
-----------
 
-pystage.util module
--------------------
+
 
 .. automodule:: pystage.util
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
 
-.. automodule:: pystage
-   :members:
-   :undoc-members:
-   :show-inheritance:
