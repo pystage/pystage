@@ -19,7 +19,7 @@
 {{- [pkgname] | join(" ") | e | heading }}
 {% endif %}
 
-{{ [".. _", pkgname, ":"] | join("")}}
+{{ [".. _", pkgname, ":"] | join("") }}
 
 {%- if modulefirst and not is_namespace %}
 {{ automodule(pkgname, automodule_options) }}
