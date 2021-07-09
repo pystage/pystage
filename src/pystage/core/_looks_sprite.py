@@ -234,6 +234,8 @@ class _LooksSprite(BaseSprite):
     looks_backdropnumbername_number.value="number"
     looks_backdropnumbername_number.translation="looks_numbername_number"
 
+    looks_backdropnumbername_number.return_type = int
+
 
     def looks_backdropnumbername_name(self):
         pass
@@ -243,6 +245,7 @@ class _LooksSprite(BaseSprite):
     looks_backdropnumbername_name.value="name"
     looks_backdropnumbername_name.translation="looks_numbername_name"
 
+    looks_backdropnumbername_name.return_type = str
 
     def looks_costumenumbername_number(self):
         # 1-based
@@ -253,6 +256,8 @@ class _LooksSprite(BaseSprite):
     looks_costumenumbername_number.value="number"
     looks_costumenumbername_number.translation="looks_numbername_number"
 
+    looks_costumenumbername_name.return_type = int
+
 
     def looks_costumenumbername_name(self):
         pass
@@ -262,8 +267,10 @@ class _LooksSprite(BaseSprite):
     looks_costumenumbername_name.value="name"
     looks_costumenumbername_name.translation="looks_numbername_name"
 
+    looks_costumenumbername_name.return_type = str
 
     def looks_size(self):
         # percent
         pass
 
+    looks_size.return_type = float

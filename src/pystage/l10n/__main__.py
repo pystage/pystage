@@ -143,7 +143,13 @@ class Sprite():
             trans = create_funcname(trans_text, translations)
             if not trans:
                 trans = name
-            paramdoc = "\n        ".join([f"{param} : FILL" for param in params if param != "self"])
+            paramdoc = "\n        ".join([f"{param.split('=')[0]} : FILL" for param in params if param != "self"])
+            if paramdoc:
+                paramdoc = f'''
+        Parameters
+        ----------
+        {paramdoc}
+        '''
             print(f'''\
     def {trans}{params_call}:
         """{trans_text}
@@ -151,8 +157,6 @@ class Sprite():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         {paramdoc}
 
         Returns

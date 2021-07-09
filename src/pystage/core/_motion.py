@@ -127,8 +127,14 @@ class _Motion():
     def motion_xposition(self):
         return self.x
 
+    motion_xposition.return_type = float
+
+
     def motion_yposition(self):
         return self.y
+
+    motion_yposition.return_type = float
+
 
     def motion_direction(self):
         # Scratch always keeps angles between -180 and 180
@@ -138,3 +144,4 @@ class _Motion():
         else:
             return dir - 360
 
+    motion_direction.return_type = float
