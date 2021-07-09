@@ -46,76 +46,6 @@ class CodeBlock():
     '''
     last_id = -1
 
-    yield_funcs = ["wait"]
-    # de
-    yield_funcs += ["warte"]
-
-
-    def index_ast(func_ast):
-        '''
-        Helper function to (re-)generate for each node that is in
-        a body or orelse field its parent, the field and its position 
-        in the field.
-
-        Parameters
-        ----------
-        func_ast : ast.AST
-            The AST to be indexed.
-        '''
-        
-        for node in ast.walk(func_ast):
-            for field in ["body", "orelse"]:
-                if hasattr(node, field):
-                    for index, child in enumerate(getattr(node, field)):
-                        child.parent = node
-                        child.index = index
-                        child.isin = field
-
-
-    def add_yields(function):
-        '''
-        This function does the black magic and adds yields to the code so that
-        the screen can update. This creates a generator function.
-
-        Parameters
-        ----------
-        function : The function to be transformed to a generator function.
-        '''
-        func_ast = ast.parse(inspect.getsource(function))
-        
-        # yield at the end of the function
-        func_ast.body[0].body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
-
-        CodeBlock.index_ast(func_ast)
-
-        for node in ast.walk(func_ast):
-            
-            # yield at the end of for and while iterations
-            if isinstance(node, ast.For):
-                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
-            if isinstance(node, ast.While):
-                node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
-
-            # yield after certain calls defined in CodeBlock.yield_funcs
-            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
-                if node.value.func.attr in CodeBlock.yield_funcs:
-                    getattr(node.parent, node.isin).insert(node.index + 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
-                    # We need to reindex so that further yields get the right position
-                    CodeBlock.index_ast(func_ast)
-
-        ast.fix_missing_locations(func_ast)
-        # print(ast.unparse(func_ast)) # outputs the transformed code
-        namespace = {}
-        pystage = importlib.import_module("pystage")
-        de = importlib.import_module("pystage.de")
-        namespace["Sprite"] = pystage.Sprite
-        namespace["Stage"] = pystage.Stage
-        namespace["Figur"] = de.Figur
-        namespace["Buehne"] = de.Buehne
-        code = compile(func_ast, "<string>", mode="exec")
-        exec(code, namespace)
-        return namespace[function.__name__] 
-
 
     def __init__(self, sprite_or_stage, generator_function, name="", no_refresh=False):
         '''
@@ -171,7 +101,7 @@ class CodeBlock():
                 # We support also plain functions, i.e. without yield
                 self.is_function = True
             else:
-                self.generator_function = CodeBlock.add_yields(generator_function)
+                self.generator_function = add_yields(generator_function)
 
         # The time until the next step is executed
         self.wait_time = 0
@@ -198,7 +128,10 @@ class CodeBlock():
         self.running = True
         self.wait_time = 0
         if not self.is_function:
-            self.generator = self.generator_function(self.sprite_or_stage)
+            target = self.sprite_or_stage
+            if self.sprite_or_stage.facade:
+                target = self.sprite_or_stage.facade
+            self.generator = self.generator_function(target)
         print(f"Start of {self.name} triggered.")
 
 
@@ -211,7 +144,10 @@ class CodeBlock():
         self.wait_time -= dt
         if self.wait_time < 0:
             if self.is_function:
-                self.generator_function(self.sprite_or_stage)
+                target = self.sprite_or_stage
+                if self.sprite_or_stage.facade:
+                    target = self.sprite_or_stage.facade
+                self.generator = self.generator_function(target)
                 print(f"CodeBlock {self.name} has finished.")
                 self.running = False
                 return
@@ -227,4 +163,72 @@ class CodeBlock():
                 except StopIteration:
                     print(f"CodeBlock {self.name} has finished.")
                     self.running = False
+
+
+# Helper functions
+
+yield_funcs = ["control_wait", "sound_playuntildone"]
+# de
+yield_funcs += ["warte", "sound_playuntildone"]
+
+
+def index_ast(func_ast):
+    '''
+    Helper function to (re-)generate for each node that is in
+    a body or orelse field its parent, the field and its position 
+    in the field.
+
+    Parameters
+    ----------
+    func_ast : ast.AST
+        The AST to be indexed.
+    '''
+    
+    for node in ast.walk(func_ast):
+        for field in ["body", "orelse"]:
+            if hasattr(node, field):
+                for index, child in enumerate(getattr(node, field)):
+                    child.parent = node
+                    child.index = index
+                    child.isin = field
+
+
+def add_yields(function):
+    '''
+    This function does the black magic and adds yields to the code so that
+    the screen can update. This creates a generator function.
+
+    Parameters
+    ----------
+    function : The function to be transformed to a generator function.
+    '''
+    func_ast = ast.parse(inspect.getsource(function))
+    
+    # yield at the end of the function
+    func_ast.body[0].body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+
+    index_ast(func_ast)
+
+    for node in ast.walk(func_ast):
+        
+        # yield at the end of for and while iterations
+        if isinstance(node, ast.For):
+            node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+        if isinstance(node, ast.While):
+            node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+
+        # yield after certain calls defined in CodeBlock.yield_funcs
+        if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
+            if node.value.func.attr in yield_funcs:
+                getattr(node.parent, node.isin).insert(node.index + 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+                # We need to reindex so that further yields get the right position
+                index_ast(func_ast)
+
+    ast.fix_missing_locations(func_ast)
+    # print(ast.unparse(func_ast)) # outputs the transformed code
+    namespace = {}
+    namespace.update(function.__globals__)
+    code = compile(func_ast, "<string>", mode="exec")
+    exec(code, namespace)
+    return namespace[function.__name__] 
 

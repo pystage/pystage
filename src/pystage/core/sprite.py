@@ -1,49 +1,30 @@
 import pygame
 import pkg_resources
 
-from pystage.code_block import CodeBlock, CodeManager
-from pystage.costume import Costume, CostumeManager
-from pystage.gui import BubbleManager
 
 # Mixins
-from pystage._events import _Events
-from pystage._motion import _Motion
-from pystage._sensing import _Sensing, _SensingSprite
-from pystage._looks_sprite import _LooksSprite
-from pystage._pen import _Pen
-from pystage._variables import _Variables
-from pystage._control import _Control
-from pystage._control_sprite import _ControlSprite
-from pystage._sound import _Sound
+from pystage.core._events import _Events
+from pystage.core._motion import _Motion
+from pystage.core._sensing import _Sensing, _SensingSprite
+from pystage.core._looks_sprite import _LooksSprite
+from pystage.core._pen import _Pen
+from pystage.core._variables import _Variables
+from pystage.core._operators import _Operators
+from pystage.core._control import _Control
+from pystage.core._control_sprite import _ControlSprite
+from pystage.core._sound import _Sound
 
 
-class Sprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Variables, _Pen):
+class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Operators, _Variables, _Pen):
 
     def __init__(self, stage, costume="default"):
-        self.x = 0.0
-        self.y = 0.0
-        self.direction = 90
-        self.pen = False
-        self.color = (255,0,0)
+        super().__init__()
         self.stage = stage
-
-        self.costume_manager = CostumeManager(self)
-        self.code_manager = CodeManager(self)
-        self.bubble_manager = BubbleManager(self)
-
-        self.add_costume(costume)
+        self.pystage_addcostume(costume)
+        # The facade is the translated API
+        self.facade = None
 
 
-    def add_costume(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
-
-
-    def replace_costume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def insert_costume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert(index, name, center_x, center_y)
 
 
     def _draw(self, surface: pygame.Surface):

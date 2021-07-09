@@ -1,49 +1,58 @@
-from pystage import Sprite, Stage
+from pystage.core.sprite import CoreSprite
+from pystage.core.stage import CoreStage
 
-stage = Stage()
-stage.add_backdrop("grid")
-zombie = stage.create_sprite()
+stage = CoreStage()
+stage.pystage_addbackdrop("grid")
+sprite = stage.pystage_createsprite()
+sprite.pystage_addsound("dancehead2")
 
 
-def do_something(zombie: Sprite):
-    zombie.say("Hello pyStage!")
+
+def do_something(self: CoreSprite):
+    self.looks_say("Hello pyStage!")
     for i in range(4):
-        zombie.move(20)
-        zombie.wait(1)
-        zombie.think("This is awesome!")
-        zombie.turn_left(90)
-        zombie.wait(1)
-        zombie.think("")
-    zombie.say("Move me around with WASD.")
+        self.motion_movesteps(20)
+        self.control_wait(1)
+        # self.looks_think("This is awesome!")
+        self.motion_turnleft(90)
+        self.control_wait(1)
+        # self.looks_think("")
+    self.looks_say("Move me around with WASD.")
 
-zombie.when_program_is_started(do_something)
+sprite.event_whenflagclicked(do_something)
 
 
-def right(zombie: Sprite):
-    zombie.change_x_by(10)
+def soundcheck(self: CoreSprite):
+    self.sound_playuntildone("dancehead2")
+    self.looks_say("Sound finished!")
 
-def left(zombie: Sprite):
-    zombie.change_x_by(-10)
+sprite.event_whenflagclicked(soundcheck)
 
-def up(zombie: Sprite):
-    zombie.change_y_by(-10)
+def right(self: CoreSprite):
+    self.motion_changexby(10)
 
-def down(zombie: Sprite):
-    zombie.change_y_by(10)
+def left(self: CoreSprite):
+    self.motion_changexby(-10)
 
-def mouse(zombie: Sprite):
-    zombie.say(f"Mouse pos: {zombie.get_mouse_x()} / {zombie.get_mouse_y()}")
+def up(self: CoreSprite):
+    self.motion_changeyby(-10)
 
-def say_space_pressed(zombie):
+def down(self: CoreSprite):
+    self.motion_changeyby(10)
+
+def mouse(self: CoreSprite):
+    self.looks_say(f"Mouse pos: {self.sensing_mousex()} / {self.sensing_mousey()}")
+
+def say_space_pressed(self: CoreSprite):
     while True:
-        if zombie.is_key_pressed(" "):
-            zombie.say("Space pressed!")
+        if self.sensing_keypressed(" "):
+            self.looks_say("Space pressed!")
 
-zombie.when_key_is_pressed("d", right)
-zombie.when_key_is_pressed("a", left)
-zombie.when_key_is_pressed("w", up)
-zombie.when_key_is_pressed("s", down)
-zombie.when_key_is_pressed("m", mouse)
-zombie.when_program_is_started(say_space_pressed)
+sprite.event_whenkeypressed("d", right)
+sprite.event_whenkeypressed("a", left)
+sprite.event_whenkeypressed("w", up)
+sprite.event_whenkeypressed("s", down)
+sprite.event_whenkeypressed("m", mouse)
+sprite.event_whenflagclicked(say_space_pressed)
 
-stage.play()
+stage.pystage_play()

@@ -1,18 +1,18 @@
-pystage.de
+pystage.en
 ==========
 
 
-.. _pystage.de:
+.. _pystage.en:
 
 
 
-.. automodule:: pystage.de.sprite
+.. automodule:: pystage.en.sprite
    :members:
    :undoc-members:
    :show-inheritance:
 
 
-.. automodule:: pystage.de.stage
+.. automodule:: pystage.en.stage
    :members:
    :undoc-members:
    :show-inheritance:

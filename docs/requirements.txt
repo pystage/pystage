@@ -3,3 +3,4 @@ myst_parser
 pygame
 svglib
 reportlab
+sphinx_panels

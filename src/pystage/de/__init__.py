@@ -1,4 +1,7 @@
-from .figur import Figur
-from .buehne import Buehne
+from .sprite import Figur
+from .stage import Bühne
 
-__all__ = ["Figur", "Buehne"]
+sprite_class = Figur
+stage_class = Bühne
+
+__all__ = ["Figur", "Bühne"]

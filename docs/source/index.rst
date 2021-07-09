@@ -8,16 +8,24 @@ Welcome to PyStage's documentation!
 
 .. mdinclude:: ../../README.md
 
+.. figure:: logo.png
+
+
+.. make hidden section for nav bar left
 .. toctree::
-   :caption: Documentation:
-   :maxdepth: 2
+    :caption: PyStage API Translations
+    :maxdepth: 2
+    :hidden:
 
-   modules
+    languages
 
 
+.. include:: languages.rst
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
+.. this is a comment
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`

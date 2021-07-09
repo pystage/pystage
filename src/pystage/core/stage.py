@@ -1,22 +1,28 @@
 import pygame
 
-from pystage import Sprite
-from pystage.code_block import CodeManager
-from pystage.costume import CostumeManager
+from pystage.core.sprite import CoreSprite
 
 # Mixins
-from pystage._events import _Events
-from pystage._looks_stage import _LooksStage
-from pystage._sound import _Sound
-from pystage._sensing import _Sensing
-from pystage._variables import _Variables
-from pystage._control import _Control
+from pystage.core._events import _Events
+from pystage.core._looks_stage import _LooksStage
+from pystage.core._sound import _Sound
+from pystage.core._sensing import _Sensing
+from pystage.core._variables import _Variables
+from pystage.core._operators import _Operators
+from pystage.core._control import _Control
 import os
 
-class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
+class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
+        super().__init__()
+        # This way, code blocks can consistently refer to the stage with self.stage:
+        self.stage = self
+        # The facade is the translated API
+        self.facade = None
+        self.sprite_facade_class : type = None
+
         pygame.init()
         pygame.display.set_caption(name)
         self.running = False
@@ -39,26 +45,17 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         # current offset of the top left corner if the window is resized 
         self.offset_x = 0
         self.offset_y = 0
-        self.code_manager = CodeManager(self)
-        self.costume_manager = CostumeManager(self)
 
 
-    def create_sprite(self, costume="default", constructor=Sprite):
-        sprite = constructor(self, costume)
+    def pystage_createsprite(self, costume="default"):
+        sprite = CoreSprite(self, costume)
         self.sprites.append(sprite)
-        return sprite
-
-
-    def add_backdrop(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
-
-
-    def replace_backdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def insert_backdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert_costume(index, name, center_x, center_y)
+        if self.sprite_facade_class:
+            return self.sprite_facade_class(sprite) # pylint: disable=E1102
+            # pylint produces a false positive here
+            # https://github.com/PyCQA/pylint/issues/1493
+        else:
+            return sprite
 
 
     def _draw(self, surface: pygame.Surface):
@@ -70,7 +67,7 @@ class Stage(_LooksStage, _Sound, _Events, _Control, _Sensing):
         surface.blit(image, (self.center_x - center_x, self.center_y - center_y))
 
 
-    def play(self):
+    def pystage_play(self):
         self.running = True
         '''
         This runs the game loop
