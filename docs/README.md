@@ -9,7 +9,9 @@ the documentation in html, pdf etc.
 
 1. To generate the source files run from within this directory:
 
-```sphinx-apidoc -f -o source ../src/pystage/ ```
+```sphinx-apidoc -f -o source ../src/pystage/ -t source/_templates -E```
+  * ```-t```: The path to the templates directory (optional)
+  * ```-E```: Exclude submodule headings (optional)
 
 2. Afterwards generate the html docu by running:
 

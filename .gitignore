@@ -10,3 +10,8 @@ build.sh
 geckodriver.log
 *.ipynb
 .ipynb_checkpoints
+
+
+# docs
+/docs/source/_static
+*.png
