@@ -256,7 +256,7 @@ class _LooksSprite(BaseSprite):
     looks_costumenumbername_number.value="number"
     looks_costumenumbername_number.translation="looks_numbername_number"
 
-    looks_costumenumbername_name.return_type = int
+    looks_costumenumbername_number.return_type = int
 
 
     def looks_costumenumbername_name(self):

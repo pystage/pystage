@@ -1,5 +1,5 @@
 import os
-from pystage.util import stderr_redirector
+# from pystage.util import stderr_redirector
 import sys
 import io
 import pygame

@@ -23,9 +23,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
-        sprite='_myself_' : FILL
+        sprite : FILL
+        
 
         Returns
         -------
@@ -39,8 +41,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -55,8 +55,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -71,8 +69,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -87,9 +83,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         secs : FILL
+        
 
         Returns
         -------
@@ -103,9 +101,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         message : FILL
+        
 
         Returns
         -------
@@ -119,9 +119,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         message : FILL
+        
 
         Returns
         -------
@@ -135,12 +137,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         backdrop : FILL
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -154,12 +158,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         message : FILL
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -173,11 +179,13 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -191,12 +199,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -210,12 +220,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -229,12 +241,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         key : FILL
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -248,11 +262,13 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         generator_function : FILL
-        name='' : FILL
-        no_refresh=False : FILL
+        name : FILL
+        no_refresh : FILL
+        
 
         Returns
         -------
@@ -266,8 +282,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -282,8 +296,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -298,9 +310,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -314,9 +328,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -330,9 +346,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -346,9 +364,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -362,9 +382,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -378,9 +400,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -394,9 +418,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -410,8 +436,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -426,8 +450,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -442,9 +464,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -458,9 +482,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -474,9 +500,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -490,9 +518,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -506,9 +536,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -522,9 +554,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -538,9 +572,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -554,9 +590,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         backdrop : FILL
+        
 
         Returns
         -------
@@ -570,9 +608,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         backdrop : FILL
+        
 
         Returns
         -------
@@ -586,10 +626,12 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         operator : FILL
         number : FILL
+        
 
         Returns
         -------
@@ -603,10 +645,12 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         start : FILL
         end : FILL
+        
 
         Returns
         -------
@@ -620,11 +664,13 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         name : FILL
-        center_x=None : FILL
-        center_y=None : FILL
+        center_x : FILL
+        center_y : FILL
+        
 
         Returns
         -------
@@ -638,9 +684,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         name : FILL
+        
 
         Returns
         -------
@@ -654,9 +702,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
-        costume='default' : FILL
+        costume : FILL
+        
 
         Returns
         -------
@@ -670,12 +720,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         index : FILL
         name : FILL
-        center_x=None : FILL
-        center_y=None : FILL
+        center_x : FILL
+        center_y : FILL
+        
 
         Returns
         -------
@@ -689,8 +741,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -705,12 +755,14 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         index : FILL
         name : FILL
-        center_x=None : FILL
-        center_y=None : FILL
+        center_x : FILL
+        center_y : FILL
+        
 
         Returns
         -------
@@ -724,8 +776,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -740,9 +790,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         question : FILL
+        
 
         Returns
         -------
@@ -756,8 +808,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -772,8 +822,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -788,8 +836,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -804,8 +850,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -820,8 +864,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -836,8 +878,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -852,8 +892,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -868,8 +906,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -884,9 +920,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         key : FILL
+        
 
         Returns
         -------
@@ -900,8 +938,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -916,8 +952,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -932,8 +966,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -948,8 +980,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -964,9 +994,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
-        stage='_stage_' : FILL
+        stage : FILL
+        
 
         Returns
         -------
@@ -980,9 +1012,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
-        stage='_stage_' : FILL
+        stage : FILL
+        
 
         Returns
         -------
@@ -996,9 +1030,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1012,9 +1048,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1028,9 +1066,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1044,9 +1084,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1060,10 +1102,12 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         variable : FILL
-        sprite='_stage_' : FILL
+        sprite : FILL
+        
 
         Returns
         -------
@@ -1077,9 +1121,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
-        sprite='_stage_' : FILL
+        sprite : FILL
+        
 
         Returns
         -------
@@ -1093,9 +1139,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1109,9 +1157,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         sprite : FILL
+        
 
         Returns
         -------
@@ -1125,8 +1175,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1141,8 +1189,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1157,8 +1203,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1173,8 +1217,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1189,8 +1231,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1205,9 +1245,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1221,9 +1263,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1237,9 +1281,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1253,8 +1299,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1269,10 +1313,12 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         name : FILL
-        loop=0 : FILL
+        loop : FILL
+        
 
         Returns
         -------
@@ -1286,9 +1332,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         name : FILL
+        
 
         Returns
         -------
@@ -1302,9 +1350,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1318,9 +1368,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1334,9 +1386,11 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
+        
         Parameters
         ----------
         value : FILL
+        
 
         Returns
         -------
@@ -1350,8 +1404,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns
@@ -1366,8 +1418,6 @@ class Stage():
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        Parameters
-        ----------
         
 
         Returns

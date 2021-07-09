@@ -1,7 +1,7 @@
 from .sprite import Figur
-from .stage import Buehne
+from .stage import Bühne
 
 sprite_class = Figur
-stage_class = Buehne
+stage_class = Bühne
 
-__all__ = ["Figur", "Buehne"]
+__all__ = ["Figur", "Bühne"]
