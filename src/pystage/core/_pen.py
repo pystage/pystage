@@ -36,6 +36,7 @@ class _Pen():
     pen_changePenColorParamBy_color.param="COLOR_PARAM"
     pen_changePenColorParamBy_color.value="color"
     pen_changePenColorParamBy_color.translation="pen_colormenu_color"
+    pen_changePenColorParamBy_color.translation_hint="Needs to be distinguished from setPenColorToColor. This is only the hue value."
     pen_changePenColorParamBy_color.outer_translation="pen_changecolorparam"
     pen_changePenColorParamBy_color.position="[COLOR_PARAM]"
 
@@ -80,6 +81,7 @@ class _Pen():
     pen_setPenColorParamTo_color.param="COLOR_PARAM"
     pen_setPenColorParamTo_color.value="color"
     pen_setPenColorParamTo_color.translation="pen_colormenu_color"
+    pen_setPenColorParamTo_color.translation_hint="Needs to be distinguished from setPenColorToColor. This is only the hue value."
     pen_setPenColorParamTo_color.outer_translation="pen_setcolorparam"
     pen_setPenColorParamTo_color.position="[COLOR_PARAM]"
 

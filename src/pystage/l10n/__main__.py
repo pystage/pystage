@@ -36,6 +36,7 @@ def get_translation(func, translations, lang="en"):
     opcode = name.upper()
     outer_key = None
     trans_key = name.upper()
+    trans_key = trans_key.replace("OPERATOR", "OPERATORS")
     if hasattr(func, "opcode"):
         opcode = func.opcode.upper()
         if name.upper() in translations:
@@ -140,6 +141,11 @@ class Sprite():
             params = [str(inspect.signature(func).parameters[key]) for key in param_keys]
             params_call = f"({', '.join(params)})"
             trans_text = get_translation(func, translations, lang=args.language)
+            trans_hint = ""
+            if hasattr(func, "translation_hint"):
+                trans_hint = f"""
+        TODO TRANSLATORS: {func.translation_hint}
+        """
             trans = create_funcname(trans_text, translations)
             if not trans:
                 trans = name
@@ -152,7 +158,7 @@ class Sprite():
         '''
             print(f'''\
     def {trans}{params_call}:
-        """{trans_text}
+        """{trans_text}{trans_hint}
 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...

@@ -104,7 +104,7 @@ class Sprite():
         """
         self._core.control_stop_this()
                 
-    def wait_seconds(self, secs):
+    def wait(self, secs):
         """wait %1 seconds
 
         Engl. Translation for your reference: ...
@@ -122,7 +122,7 @@ class Sprite():
         """
         self._core.control_wait(secs)
                 
-    def change_by(self, name, value):
+    def change_variable_by(self, name, value):
         """change %1 by %2
 
         Engl. Translation for your reference: ...
@@ -159,7 +159,7 @@ class Sprite():
         """
         self._core.data_hidevariable(name)
                 
-    def set_to(self, name, value):
+    def set_variable(self, name, value):
         """set %1 to %2
 
         Engl. Translation for your reference: ...
@@ -196,7 +196,7 @@ class Sprite():
         """
         self._core.data_showvariable(name)
                 
-    def data_variable(self, name):
+    def get_variable(self, name):
         """
 
         Engl. Translation for your reference: ...
@@ -271,7 +271,7 @@ class Sprite():
         """
         self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
                 
-    def when_i_receive(self, message, generator_function, name='', no_refresh=False):
+    def when_i_receive_message(self, message, generator_function, name='', no_refresh=False):
         """when I receive %1
 
         Engl. Translation for your reference: ...
@@ -292,7 +292,7 @@ class Sprite():
         """
         self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
                 
-    def when_GREENFLAG_clicked(self, generator_function, name='', no_refresh=False):
+    def when_program_starts(self, generator_function, name='', no_refresh=False):
         """when <greenflag> clicked
 
         Engl. Translation for your reference: ...
@@ -312,7 +312,7 @@ class Sprite():
         """
         self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
                 
-    def when_loudness_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
+    def when_loudness_greater_than(self, value, generator_function, name='', no_refresh=False):
         """when loudness <greater> %2
 
         Engl. Translation for your reference: ...
@@ -333,7 +333,7 @@ class Sprite():
         """
         self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
                 
-    def when_timer_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
+    def when_timer_greater_than(self, value, generator_function, name='', no_refresh=False):
         """when timer <greater> %2
 
         Engl. Translation for your reference: ...
@@ -609,7 +609,7 @@ class Sprite():
         """
         self._core.looks_costumenumbername_number()
                 
-    def go_backward_layers(self, value):
+    def go_backward(self, value):
         """go backward %2 layers
 
         Engl. Translation for your reference: ...
@@ -627,7 +627,7 @@ class Sprite():
         """
         self._core.looks_goforwardbackwardlayers_backward(value)
                 
-    def go_forward_layers(self, value):
+    def go_forward(self, value):
         """go forward %2 layers
 
         Engl. Translation for your reference: ...
@@ -1047,7 +1047,7 @@ class Sprite():
         """
         self._core.motion_direction()
                 
-    def glide_secs_to_x_y(self, secs, x, y):
+    def glide_to_x_y(self, secs, x, y):
         """glide %1 secs to x: %2 y: %3
 
         Engl. Translation for your reference: ...
@@ -1067,7 +1067,7 @@ class Sprite():
         """
         self._core.motion_glidesecstoxy(secs, x, y)
                 
-    def glide_secs_to_mouse_pointer(self, secs):
+    def glide_to_mouse_pointer(self, secs):
         """glide %1 secs to mouse-pointer
 
         Engl. Translation for your reference: ...
@@ -1085,7 +1085,7 @@ class Sprite():
         """
         self._core.motion_glideto_pointer(secs)
                 
-    def glide_secs_to_random_position(self, secs):
+    def glide_to_random_position(self, secs):
         """glide %1 secs to random position
 
         Engl. Translation for your reference: ...
@@ -1103,7 +1103,7 @@ class Sprite():
         """
         self._core.motion_glideto_random(secs)
                 
-    def glide_secs_to(self, secs, sprite):
+    def glide_to_sprite(self, secs, sprite):
         """glide %1 secs to %2
 
         Engl. Translation for your reference: ...
@@ -1150,7 +1150,7 @@ class Sprite():
         """
         self._core.motion_goto_random()
                 
-    def go_to(self, sprite):
+    def go_to_sprite(self, sprite):
         """go to %1
 
         Engl. Translation for your reference: ...
@@ -1201,7 +1201,7 @@ class Sprite():
         """
         self._core.motion_ifonedgebounce()
                 
-    def move_steps(self, steps):
+    def move(self, steps):
         """move %1 steps
 
         Engl. Translation for your reference: ...
@@ -1251,7 +1251,7 @@ class Sprite():
         """
         self._core.motion_pointtowards_pointer()
                 
-    def point_towards(self, sprite):
+    def point_towards_sprite(self, sprite):
         """point towards %1
 
         Engl. Translation for your reference: ...
@@ -1287,7 +1287,7 @@ class Sprite():
         """
         self._core.motion_setrotationstyle(style)
                 
-    def set_x_to(self, value):
+    def set_x(self, value):
         """set x to %1
 
         Engl. Translation for your reference: ...
@@ -1305,7 +1305,7 @@ class Sprite():
         """
         self._core.motion_setx(value)
                 
-    def set_y_to(self, value):
+    def set_y(self, value):
         """set y to %1
 
         Engl. Translation for your reference: ...
@@ -1323,7 +1323,7 @@ class Sprite():
         """
         self._core.motion_sety(value)
                 
-    def turn_left_degrees(self, deg):
+    def turn_left(self, deg):
         """turn left %2 degrees
 
         Engl. Translation for your reference: ...
@@ -1341,7 +1341,7 @@ class Sprite():
         """
         self._core.motion_turnleft(deg)
                 
-    def turn_right_degrees(self, deg):
+    def turn_right(self, deg):
         """turn right %2 degrees
 
         Engl. Translation for your reference: ...
@@ -1387,8 +1387,8 @@ class Sprite():
         """
         self._core.motion_yposition()
                 
-    def operator_mathop(self, operator, number):
-        """
+    def calculate(self, operator, number):
+        """%1 of %2
 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
@@ -1406,8 +1406,8 @@ class Sprite():
         """
         self._core.operator_mathop(operator, number)
                 
-    def operator_random(self, start, end):
-        """
+    def pick_random(self, start, end):
+        """pick random %1 to %2
 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
@@ -1443,7 +1443,7 @@ class Sprite():
         """
         self._core.pen_changePenColorParamBy_brightness(value)
                 
-    def change_pen_color_by(self, value):
+    def change_pen_hue_by(self, value):
         """change pen color by [VALUE]
 
         Engl. Translation for your reference: ...
@@ -1575,7 +1575,7 @@ class Sprite():
         """
         self._core.pen_setPenColorParamTo_brightness(value)
                 
-    def set_pen_color_to(self, value):
+    def set_pen_hue_to(self, value):
         """set pen color to [VALUE]
 
         Engl. Translation for your reference: ...
@@ -1629,7 +1629,7 @@ class Sprite():
         """
         self._core.pen_setPenColorParamTo_transparency(value)
                 
-    def set_pen_color_to(self, color):
+    def set_pen_color(self, color):
         """set pen color to [COLOR]
 
         Engl. Translation for your reference: ...
@@ -1679,7 +1679,7 @@ class Sprite():
         """
         self._core.pen_stamp()
                 
-    def pystage_addcostume(self, name, center_x=None, center_y=None):
+    def add_costume(self, name, center_x=None, center_y=None):
         """
 
         Engl. Translation for your reference: ...
@@ -1699,7 +1699,7 @@ class Sprite():
         """
         self._core.pystage_addcostume(name, center_x=None, center_y=None)
                 
-    def pystage_addsound(self, name):
+    def add_sound(self, name):
         """
 
         Engl. Translation for your reference: ...
@@ -1717,7 +1717,7 @@ class Sprite():
         """
         self._core.pystage_addsound(name)
                 
-    def pystage_insertcostume(self, index, name, center_x=None, center_y=None):
+    def insert_costume(self, index, name, center_x=None, center_y=None):
         """
 
         Engl. Translation for your reference: ...
@@ -1738,7 +1738,7 @@ class Sprite():
         """
         self._core.pystage_insertcostume(index, name, center_x=None, center_y=None)
                 
-    def pystage_makevariable(self, name, all_sprites=True):
+    def create_variable(self, name, all_sprites=True):
         """
 
         Engl. Translation for your reference: ...
@@ -1757,7 +1757,7 @@ class Sprite():
         """
         self._core.pystage_makevariable(name, all_sprites=True)
                 
-    def pystage_replacecostume(self, index, name, center_x=None, center_y=None):
+    def replace_costume(self, index, name, center_x=None, center_y=None):
         """
 
         Engl. Translation for your reference: ...
@@ -1778,7 +1778,7 @@ class Sprite():
         """
         self._core.pystage_replacecostume(index, name, center_x=None, center_y=None)
                 
-    def pystage_setmonitorposition(self, name, x, y):
+    def set_monitor_position(self, name, x, y):
         """
 
         Engl. Translation for your reference: ...
@@ -1975,7 +1975,7 @@ class Sprite():
         """
         self._core.sensing_distanceto_pointer()
                 
-    def distance_to(self):
+    def distance_to_sprite(self, sprite):
         """distance to %1
 
         Engl. Translation for your reference: ...
@@ -2171,7 +2171,7 @@ class Sprite():
         """
         self._core.sensing_of_size(sprite)
                 
-    def of(self, variable, sprite='_stage_'):
+    def get_variable_of(self, variable, sprite='_stage_'):
         """%1 of %2
 
         Engl. Translation for your reference: ...
