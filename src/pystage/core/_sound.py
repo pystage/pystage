@@ -1,10 +1,11 @@
 import pygame
 from pygame.mixer import music
 from pystage.core.assets import SoundManager
+from pystage.core._base_sprite import BaseSprite
 import time
 
 
-class _Sound:
+class _Sound(BaseSprite):
 
     # Like for costumes and backdrops, we need a class structure here.
     # Plus a global sound manager.
@@ -69,7 +70,7 @@ class _Sound:
         # we must operate on the audio array itself.
         pass
 
-    sound_seteffectto_pitch.opcode = "sound_seteffecto"
+    sound_seteffectto_pitch.opcode = "sound_seteffectto"
     sound_seteffectto_pitch.param = "EFFECT"
     sound_seteffectto_pitch.value = "PITCH"
     sound_seteffectto_pitch.translation = "sound_effects_pitch"
@@ -80,7 +81,7 @@ class _Sound:
         self.current_pan = min(100, max(-100, self.current_pan))
         self._apply()
 
-    sound_seteffectto_pan.opcode = "sound_seteffecto"
+    sound_seteffectto_pan.opcode = "sound_seteffectto"
     sound_seteffectto_pan.param = "EFFECT"
     sound_seteffectto_pan.value = "PAN"
     sound_seteffectto_pan.translation = "sound_effects_pan"

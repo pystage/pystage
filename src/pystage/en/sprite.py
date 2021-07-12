@@ -1269,24 +1269,38 @@ class Sprite():
         """
         self._core.motion_pointtowards_sprite(sprite)
                 
-    def set_rotation_style(self, style):
+
+    def set_rotation_style_none(self):
+        """set rotation style %1
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        """
+        self._core.motion_setrotationstyle_dontrotate()
+                
+    def set_rotation_style_left_right(self):
+        """set rotation style %1
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        """
+        self._core.motion_setrotationstyle_leftright()
+
+
+    def set_rotation_style_around(self):
         """set rotation style %1
 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
         
-        Parameters
-        ----------
-        style : FILL
-        
-
-        Returns
-        -------
-
         """
-        self._core.motion_setrotationstyle(style)
-                
+        self._core.motion_setrotationstyle_allaround()
+
+
     def set_x(self, value):
         """set x to %1
 
@@ -1987,7 +2001,7 @@ class Sprite():
         -------
 
         """
-        self._core.sensing_distanceto_sprite()
+        self._core.sensing_distanceto_sprite(sprite)
                 
     def key_pressed(self, key):
         """key %1 pressed?

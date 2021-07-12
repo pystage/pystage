@@ -1975,7 +1975,7 @@ class Figur():
         """
         self._core.sensing_distanceto_pointer()
                 
-    def entfernung_von(self):
+    def entfernung_von(self, sprite):
         """Entfernung von %1
 
         Engl. Translation for your reference: ...
@@ -1987,7 +1987,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_distanceto_sprite()
+        self._core.sensing_distanceto_sprite(sprite)
                 
     def taste_gedrückt(self, key):
         """Taste %1 gedrückt?

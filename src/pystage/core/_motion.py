@@ -115,9 +115,25 @@ class _Motion():
     def motion_ifonedgebounce(self):
         pass
 
-    def motion_setrotationstyle(self, style):
-        # See Enum RotationStyle above
+    def motion_setrotationstyle_leftright(self):
         pass
+
+    motion_setrotationstyle_leftright.opcode = "motion_setrotationstyle"
+    motion_setrotationstyle_leftright.param = "STYLE"
+    motion_setrotationstyle_leftright.value = "left-right"
+    motion_setrotationstyle_leftright.translation="looks_effect_brightness"
+
+    def motion_setrotationstyle_dontrotate(self):
+        pass
+    motion_setrotationstyle_dontrotate.opcode = "motion_setrotationstyle"
+    motion_setrotationstyle_dontrotate.param = "STYLE"
+    motion_setrotationstyle_dontrotate.value = "don't rotate"
+
+    def motion_setrotationstyle_allaround(self):
+        pass
+    motion_setrotationstyle_allaround.opcode = "motion_setrotationstyle"
+    motion_setrotationstyle_allaround.param = "STYLE"
+    motion_setrotationstyle_allaround.value = "all around"
 
     # Setters and getters are questionable, but 
     # this way we would clearly adapt the Scratch API

@@ -28,6 +28,8 @@ def get_translations(lang="en"):
     res["MOTION_TURNRIGHT"] = res["MOTION_TURNRIGHT"].replace("%1", res["BOOST_TILTDIRECTION_RIGHT"])
     res["EVENT_WHENFLAGCLICKED"] = res["EVENT_WHENFLAGCLICKED"].replace("%1", "<greenflag>")
     res["EVENT_WHENGREATERTHAN"] = res["EVENT_WHENGREATERTHAN"].replace(">", "<greater>")
+    # Another inconsistency where not the opcode is used (typo?)...
+    res["SOUND_SETEFFECTTO"] = res["SOUND_SETEFFECTO"]
     return res
 
 
@@ -160,6 +162,7 @@ class Sprite():
     def {trans}{params_call}:
         """{trans_text}{trans_hint}
 
+        Translation string: {trans_text}
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
