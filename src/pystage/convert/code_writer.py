@@ -11,8 +11,8 @@ from jinja2 import Template, Environment
 from jinja2.exceptions import UndefinedError
 logger = logging.getLogger(__name__)
 
-from pystage.core.sprite import Sprite
-from pystage.core.stage import Stage
+from pystage.core.sprite import CoreSprite
+from pystage.core.stage import CoreStage
 
 
 
@@ -109,7 +109,7 @@ class CodeWriter():
             A block from the intermediate code representation.
         """
         # print("Getting function for opcode: " + block["opcode"])
-        cls = Stage if block["stage"] else Sprite
+        cls = CoreStage if block["stage"] else CoreSprite
         # print(f"Searching in class: {cls}")
         elsefunc = None
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
@@ -154,7 +154,7 @@ class CodeWriter():
         cls = lang.stage_class if block["stage"] else lang.sprite_class
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             for i in dis.Bytecode(func):
-                if i.opname=="LOAD_METHOD" and i.argval==corefunc.__name__:
+                if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and i.argval==corefunc.__name__:
                     # print(f"Translated: {name}")
                     return func
         # print(f"No translated API method found for {block.opcode}")
