@@ -10,15 +10,6 @@ class _Events(BaseSprite):
     # Events
     #
 
-#"",
-#"",
-#"",
-#"",
-#"",
-#"",
-#"",
-#"",
-
     def event_whenflagclicked(self, generator_function, name="", no_refresh=False):
         new_block = self.code_manager.register_code_block(generator_function, name)
         print(f"Bound to start: {new_block.name}")
@@ -48,12 +39,14 @@ class _Events(BaseSprite):
     def event_whenbackdropswitchesto(self, backdrop, generator_function, name="", no_refresh=False):
         pass
 
+
     def event_whengreaterthan_loudness(self, value, generator_function, name="", no_refresh=False):
         # Not sure if this can/should be implemented, requires microphone access.
         pass
     event_whengreaterthan_loudness.opcode="event_whengreaterthan"
     event_whengreaterthan_loudness.param="WHENGREATERTHANMENU"
     event_whengreaterthan_loudness.value="LOUDNESS"
+
 
     def event_whengreaterthan_timer(self, value, generator_function, name="", no_refresh=False):
         # Scratch has a timer that can be reset. 
@@ -62,11 +55,22 @@ class _Events(BaseSprite):
     event_whengreaterthan_timer.param="WHENGREATERTHANMENU"
     event_whengreaterthan_timer.value="TIMER"
 
+
     def event_whenbroadcastreceived(self, message, generator_function, name="", no_refresh=False):
-        pass
+        '''
+        Adds the code block to the event queue for broadcasts.
+        '''
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
+        # No defaultdict so that we can easily check if a mapping is available
+        if message not in self.code_manager.broadcast_blocks:
+            self.code_manager.broadcast_blocks[message] = []
+        self.code_manager.broadcast_blocks[message].append(new_block.name)
+        print(f"Bound to broadcast message '{message}': {new_block.name}")
+
 
     def event_broadcast(self, message):
-        pass
+        self.stage.message_broker.broadcast(message)
+
 
     def event_broadcastandwait(self, message):
         # waits until all receiver scripts finish. Tricky.

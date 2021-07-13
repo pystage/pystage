@@ -8,6 +8,8 @@ class CodeManager():
         self.code_blocks = {}
         # pygame.K_?: [name, ...]
         self.key_pressed_blocks = {}
+        # message: [name, ...]
+        self.broadcast_blocks = {}
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
@@ -22,6 +24,12 @@ class CodeManager():
         if key in self.key_pressed_blocks:
             for name in self.key_pressed_blocks[key]:
                 self.code_blocks[name].start_if_not_running()
+
+
+    def process_broadcast(self, message):
+        if message in self.broadcast_blocks:
+            for name in self.broadcast_blocks[message]:
+                self.code_blocks[name].start_or_restart()
 
 
     def register_code_block(self, generator_function, name="", no_refresh=False):

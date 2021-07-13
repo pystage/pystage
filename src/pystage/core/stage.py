@@ -10,6 +10,7 @@ from pystage.core._sensing import _Sensing
 from pystage.core._variables import _Variables
 from pystage.core._operators import _Operators
 from pystage.core._control import _Control
+from pystage.core.messages import MessageBroker
 import os
 
 class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
@@ -23,12 +24,15 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.facade = None
         self.sprite_facade_class : type = None
 
+        self.message_broker = MessageBroker(self)
+
         pygame.init()
         pygame.display.set_caption(name)
         self.running = False
         self.FPS = 60
         self.dt = 0
-        self.sprites = []
+        # The stage is added to the sprites as it also contains code.
+        self.sprites = [self]
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
         # it defines the in-game resolution
@@ -58,6 +62,10 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
             return sprite
 
 
+    def _update(self, dt):
+        self.code_manager._update(dt)
+
+
     def _draw(self, surface: pygame.Surface):
         surface.fill(self.background_color)
         image = self.costume_manager.get_image()
@@ -80,6 +88,10 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
                 if event.type == pygame.KEYDOWN:
                     for sprite in self.sprites:
                         sprite.code_manager.process_key_pressed(event.key)
+            for message in self.message_broker.get_messages():
+                for sprite in self.sprites:
+                    sprite.code_manager.process_broadcast(message)
+            self.message_broker.mark_completed()
 
             self._draw(self.surface)
 
