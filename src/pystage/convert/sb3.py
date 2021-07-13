@@ -156,6 +156,17 @@ def to_filename(name: str):
     name = re.sub(r"_+", "_", name)
     return name
 
+# Used to check for duplicate names
+global_names = set()
+
+def unique_global_name(name, ext):
+    iname = name
+    i = 2
+    while f"{iname}.{ext}" in global_names:
+        iname = f"{name}_{i}"
+        i += 1
+    global_names.add(f"{iname}.{ext}")
+    return iname, ext
 
 def get_intermediate(data, name):
     hat_blocks = [
@@ -175,6 +186,7 @@ def get_intermediate(data, name):
         "costumes": {},
         "sounds": {},
     })
+
 
     for target in data["targets"]:
         sprite = DictClass()
@@ -202,9 +214,10 @@ def get_intermediate(data, name):
                 sprite["blocks"].append(block)
         for c in target["costumes"]:
             if c["assetId"] not in project["costumes"]:
+                name, ext = unique_global_name(to_filename(c["name"]), c["dataFormat"])
                 project["costumes"][c["assetId"]] = {
-                    "global_name": to_filename(c["name"]),
-                    "extension": c["dataFormat"],
+                    "global_name": name,
+                    "extension": ext,
                 }
             sprite["costumes"].append({
                 "md5": c["assetId"],
@@ -214,9 +227,10 @@ def get_intermediate(data, name):
             })
         for s in target["sounds"]:
             if s["assetId"] not in project["sounds"]:
+                name, ext = unique_global_name(to_filename(s["name"]), s["dataFormat"])
                 project["sounds"][s["assetId"]] = {
-                    "global_name": to_filename(s["name"]),
-                    "extension": s["dataFormat"],
+                    "global_name": name,
+                    "extension": ext,
                 }
             sprite["sounds"].append({
                 "md5": s["assetId"],
@@ -262,7 +276,7 @@ def get_python(project, language="core"):
         costumes = [writer.global_costume(c["local_name"], False) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
         res += textwrap.dedent(f'''\
-                {sprite_var} = {stage_var}.{create_sprite}()
+                {sprite_var} = {stage_var}.{create_sprite}(None)
                 ''')
         for c in costumes:
             res += textwrap.dedent(f'''\
