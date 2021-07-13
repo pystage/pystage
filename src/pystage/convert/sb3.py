@@ -282,7 +282,7 @@ def get_python(project, language="core"):
     for sprite in project["sprites"]:
         writer.set_sprite(sprite["name"])
         sprite_var = writer.get_sprite_var()
-        costumes = [writer.global_costume(c["local_name"], False) for c in sprite["costumes"]]
+        costumes = [(writer.global_costume(c["local_name"], False), c["bitmapResolution"]) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
@@ -310,8 +310,11 @@ def get_python(project, language="core"):
         if sprite["rotationStyle"] != "all around":
             print("WARNING: preset rotation styles not yet implemented!")
         for c in costumes:
+            factor = ""
+            if c[1] != 1:
+                factor=f", factor={c[1]}"
             res += textwrap.dedent(f'''\
-                {sprite_var}.{add_costume}('{c}')
+                {sprite_var}.{add_costume}('{c[0]}'{factor})
                 ''')
         if sprite["currentCostume"] != 0:
             for i in range(sprite["currentCostume"]):

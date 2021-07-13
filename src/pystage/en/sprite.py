@@ -1693,7 +1693,7 @@ class Sprite():
         """
         return self._core.pen_stamp()
                 
-    def add_costume(self, name, center_x=None, center_y=None):
+    def add_costume(self, name, center_x=None, center_y=None, factor=1):
         """
 
         Engl. Translation for your reference: ...
@@ -1705,13 +1705,14 @@ class Sprite():
         name : FILL
         center_x : FILL
         center_y : FILL
+        factor : FILL
         
 
         Returns
         -------
 
         """
-        return self._core.pystage_addcostume(name, center_x=None, center_y=None)
+        return self._core.pystage_addcostume(name, center_x, center_y, factor)
                 
     def add_sound(self, name):
         """
@@ -1731,7 +1732,7 @@ class Sprite():
         """
         return self._core.pystage_addsound(name)
                 
-    def insert_costume(self, index, name, center_x=None, center_y=None):
+    def insert_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Engl. Translation for your reference: ...
@@ -1750,7 +1751,7 @@ class Sprite():
         -------
 
         """
-        return self._core.pystage_insertcostume(index, name, center_x=None, center_y=None)
+        return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
                 
     def create_variable(self, name, all_sprites=True):
         """
@@ -1771,7 +1772,7 @@ class Sprite():
         """
         return self._core.pystage_makevariable(name, all_sprites=True)
                 
-    def replace_costume(self, index, name, center_x=None, center_y=None):
+    def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Engl. Translation for your reference: ...
@@ -1790,7 +1791,7 @@ class Sprite():
         -------
 
         """
-        return self._core.pystage_replacecostume(index, name, center_x=None, center_y=None)
+        return self._core.pystage_replacecostume(index, name, center_x, center_y, factor)
                 
     def set_monitor_position(self, name, x, y):
         """

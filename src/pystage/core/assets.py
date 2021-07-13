@@ -13,9 +13,9 @@ class CostumeManager():
         self.costumes = []
         self.current_costume = -1
 
-    def add_costume(self, name, center_x=None, center_y=None):
+    def add_costume(self, name, center_x=None, center_y=None, factor=1):
         if isinstance(name, str):
-            costume = Costume(self, name, center_x, center_y)
+            costume = Costume(self, name, center_x, center_y, factor)
             self.costumes.append(costume)
             if self.current_costume==-1:
                 self.current_costume = len(self.costumes) - 1
@@ -24,14 +24,14 @@ class CostumeManager():
                 self.add_costume(n)
 
 
-    def replace_costume(self, index, name, center_x=None, center_y=None):
-        costume = Costume(self, name, center_x, center_y)
+    def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
+        costume = Costume(self, name, center_x, center_y, factor)
         del self.costumes[index]
         self.costumes.insert(index, costume)
 
 
-    def insert_costume(self, index, name, center_x=None, center_y=None):
-        costume = Costume(self, name, center_x, center_y)
+    def insert_costume(self, index, name, center_x=None, center_y=None, factor=1):
+        costume = Costume(self, name, center_x, center_y, factor)
         self.costumes.insert(index, costume)
 
     def next_costume(self):
@@ -57,7 +57,7 @@ class Costume():
     '''
     This class handles and manages costumes and backdrops.
     '''
-    def __init__(self, sprite, name, center_x=None, center_y=None):
+    def __init__(self, sprite, name, center_x=None, center_y=None, factor=1):
         self.sprite = sprite
         self.file = None
         self.name = name
@@ -83,6 +83,8 @@ class Costume():
             self.image = pygame.image.frombuffer(pil.tobytes(), pil.size, pil.mode)
         else:
             self.image = pygame.image.load(self.file)
+        if factor!=1:
+            self.image = pygame.transform.rotozoom(self.image, 0, 1/factor)
         self.image = self.image.subsurface(self.image.get_bounding_rect()) 
         self.center_x = self.image.get_width() / 2 if center_x is None else center_x
         self.center_y = self.image.get_height() / 2 if center_y is None else center_y

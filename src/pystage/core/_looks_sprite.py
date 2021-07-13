@@ -12,17 +12,14 @@ class _LooksSprite(BaseSprite):
         self.size = 100
 
 
-    def pystage_addcostume(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
+    def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.add_costume(name, center_x, center_y, factor)
 
+    def pystage_replacecostume(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.replace_costume(index, name, center_x, center_y, factor)
 
-    def pystage_replacecostume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def pystage_insertcostume(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert_costume(index, name, center_x, center_y)
-
+    def pystage_insertcostume(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.insert_costume(index, name, center_x, center_y, factor)
 
     def looks_sayforsecs(self, text, secs):
         pass

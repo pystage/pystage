@@ -17,6 +17,7 @@ to_underscore = re.compile(r"[ -:/,%]")
 to_delete = re.compile(r"[%?]")
 multiple_underscores = re.compile(r"_+")
 deleteself = re.compile(r"self[, ]*")
+deletedefaults = re.compile(r"=[^),]+")
 
 def get_translations(lang="en"):
     blocks = json.loads(requests.get(f"https://raw.githubusercontent.com/LLK/scratch-l10n/master/editor/blocks/{lang}.json").text)
@@ -182,7 +183,7 @@ class {sprite_class}():
         -------
 
         """
-        return self._core.{name}{deleteself.sub("", params_call)}
+        return self._core.{name}{deletedefaults.sub("", deleteself.sub("", params_call))}
                 ''')
 
 

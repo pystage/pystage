@@ -34,7 +34,7 @@ class Stage():
         -------
 
         """
-        return self._core.control_create_clone_of(sprite='_my_')
+        return self._core.control_create_clone_of(sprite)
                 
     def stop_all(self):
         """stop all
@@ -158,7 +158,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name, no_refresh)
                 
     def when_i_receive(self, message, generator_function, name='', no_refresh=False):
         """when I receive %1
@@ -180,7 +180,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbroadcastreceived(message, generator_function, name, no_refresh)
                 
     def when_GREENFLAG_clicked(self, generator_function, name='', no_refresh=False):
         """when <greenflag> clicked
@@ -201,7 +201,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenflagclicked(generator_function, name, no_refresh)
                 
     def when_loudness_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """when loudness <greater> %2
@@ -223,7 +223,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_loudness(value, generator_function, name, no_refresh)
                 
     def when_timer_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """when timer <greater> %2
@@ -245,7 +245,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whengreaterthan_timer(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_timer(value, generator_function, name, no_refresh)
                 
     def when_key_pressed(self, key, generator_function, name='', no_refresh=False):
         """when %1 key pressed
@@ -267,7 +267,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whenkeypressed(key, generator_function, name='', no_refresh=False)
+        return self._core.event_whenkeypressed(key, generator_function, name, no_refresh)
                 
     def when_this_sprite_clicked(self, generator_function, name='', no_refresh=False):
         """when this sprite clicked
@@ -288,7 +288,7 @@ class Stage():
         -------
 
         """
-        return self._core.event_whenthisspriteclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenthisspriteclicked(generator_function, name, no_refresh)
                 
     def backdrop_name(self):
         """backdrop name
@@ -713,7 +713,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_addbackdrop(name, center_x=None, center_y=None)
+        return self._core.pystage_addbackdrop(name, center_x, center_y)
                 
     def pystage_addsound(self, name):
         """
@@ -751,7 +751,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_createsprite(costume='default')
+        return self._core.pystage_createsprite(costume)
                 
     def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
         """
@@ -773,7 +773,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_insertbackdrop(index, name, center_x=None, center_y=None)
+        return self._core.pystage_insertbackdrop(index, name, center_x, center_y)
                 
     def pystage_play(self):
         """
@@ -810,7 +810,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_replacebackdrop(index, name, center_x=None, center_y=None)
+        return self._core.pystage_replacebackdrop(index, name, center_x, center_y)
                 
     def answer(self):
         """answer
@@ -1062,7 +1062,7 @@ class Stage():
         -------
 
         """
-        return self._core.sensing_of_backdropname(stage='_stage_')
+        return self._core.sensing_of_backdropname(stage)
                 
     def backdrop_of(self, stage='_stage_'):
         """backdrop # of %2
@@ -1081,7 +1081,7 @@ class Stage():
         -------
 
         """
-        return self._core.sensing_of_backdropnumber(stage='_stage_')
+        return self._core.sensing_of_backdropnumber(stage)
                 
     def costume_name_of(self, sprite):
         """costume name of %2
@@ -1177,7 +1177,7 @@ class Stage():
         -------
 
         """
-        return self._core.sensing_of_variable(variable, sprite='_stage_')
+        return self._core.sensing_of_variable(variable, sprite)
                 
     def volume_of(self, sprite='_stage_'):
         """volume of %2
@@ -1196,7 +1196,7 @@ class Stage():
         -------
 
         """
-        return self._core.sensing_of_volume(sprite='_stage_')
+        return self._core.sensing_of_volume(sprite)
                 
     def x_position_of(self, sprite):
         """x position of %2
@@ -1401,7 +1401,7 @@ class Stage():
         -------
 
         """
-        return self._core.sound_play(name, loop=0)
+        return self._core.sound_play(name, loop)
                 
     def play_sound_until_done(self, name):
         """play sound %1 until done
