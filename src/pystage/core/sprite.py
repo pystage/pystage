@@ -20,7 +20,8 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
     def __init__(self, stage, costume="default"):
         super().__init__()
         self.stage = stage
-        self.pystage_addcostume(costume)
+        if costume:
+            self.pystage_addcostume(costume)
         # The facade is the translated API
         self.facade = None
 
@@ -32,10 +33,11 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
         if not image:
             return
         center_x, center_y = self.costume_manager.get_center()
+        transformed = image
         # Rotation
         # Scratch is clockwise with 0 upwards
         # pyGame is counterclockwise with 0 to the right
-        transformed = pygame.transform.rotate(image, 90-self.direction)
+        transformed = pygame.transform.rotozoom(transformed, 90-self.direction, self.size/100)
         # keep the center stable when the image size changes
         # TODO: this is only correct when the rotation center is at the center
         # This is currently always the case with Scratch

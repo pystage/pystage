@@ -9,6 +9,7 @@ class _LooksSprite(BaseSprite):
         super().__init__()
         self.bubble_manager = BubbleManager(self)
         self.costume_manager = CostumeManager(self)
+        self.size = 100
 
 
     def pystage_addcostume(self, name, center_x=None, center_y=None):
@@ -54,10 +55,10 @@ class _LooksSprite(BaseSprite):
 
     def looks_changesizeby(self, percent):
         # this is percentage
-        pass
+        self.size += percent
 
     def looks_setsizeto(self, percent):
-        pass
+        self.size = percent
 
     def looks_seteffectto_color(self, value):
         pass

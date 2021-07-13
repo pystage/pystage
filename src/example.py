@@ -11,6 +11,7 @@ sprite.pystage_addsound("dancehead2")
 def do_something(self: CoreSprite):
     self.looks_say("Hello pyStage!")
     for i in range(4):
+        self.looks_changesizeby(20)
         self.motion_movesteps(20)
         self.control_wait(1)
         # self.looks_think("This is awesome!")
