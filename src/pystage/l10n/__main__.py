@@ -4,9 +4,11 @@ import json
 import requests
 import re
 import textwrap
+import importlib
 
 from pystage.core.sprite import CoreSprite
 from pystage.core.stage import CoreStage
+from pystage.l10n.translations import trans, funcname
 
 
 square_bracketed_variable = re.compile(r"\[[^\]]*\]")
@@ -103,32 +105,40 @@ if __name__ == "__main__":
             print(f"{name}{params} - {trans}\n")
     elif args.api:
         cls = CoreStage if args.stage else CoreSprite
+        language = args.language
+        sprite_class = trans("gui.backpack.spriteLabel", language).capitalize()
+        stage_class = trans("gui.stageSelector.stage", language).capitalize()
+
+        create_sprite = funcname(trans("gui.howtos.animate-char.step_addsprite", language), language)
+        add_sound = funcname(trans("gui.howtos.animate-char.step_addsound", language), language)
+        play = funcname(trans("gui.playButton.play", language), language)
+            
         if args.stage:
-            print('''
+            print(f'''
 from pystage.core.stage import CoreStage
-from pystage.en.sprite import Sprite
+from pystage.{language}.sprite import {sprite_class}
 
 
-class Stage():
+class {stage_class}():
 
     def __init__(self):
         self._core = CoreStage()
         self._core.facade = self
-        self._core.sprite_facade_class = Sprite
+        self._core.sprite_facade_class = {sprite_class}
 
-    def create_sprite(self, costume="default"):
+    def {create_sprite}(self, costume="default"):
         return self._core.pystage_createsprite(costume=costume)
 
-    def play(self):
+    def {play}(self):
         self._core.pystage_play()
         
             ''')
         else:
-            print('''
+            print(f'''
 from pystage.core.sprite import CoreSprite
 
 
-class Sprite():
+class {sprite_class}():
     def __init__(self, core_sprite):
         self._core : CoreSprite = core_sprite
         self._core.facade = self

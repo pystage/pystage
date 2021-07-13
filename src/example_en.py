@@ -1,14 +1,14 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-zombie = stage.create_sprite()
+zombie = stage.add_a_sprite()
 
 def doit(zombie: Sprite):
     for i in range(4):
-        zombie.move_steps(10)
-        zombie.turn_left_degrees(90)
-        zombie.wait_seconds(1)
+        zombie.move(10)
+        zombie.turn_left(90)
+        zombie.wait(1)
 
-zombie.when_GREENFLAG_clicked(doit)
+zombie.when_program_starts(doit)
 
 stage.play()

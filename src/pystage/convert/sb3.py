@@ -9,6 +9,8 @@ import textwrap
 import zipfile
 from collections import OrderedDict
 from pathlib import Path
+import importlib
+from pystage.l10n.api import get_translated_function
 
 from pystage.convert import CodeWriter, sb3_templates
 
@@ -225,41 +227,57 @@ def get_intermediate(data, name):
 
 
 def get_python(project, language="core"):
+    lang_module = importlib.import_module(f"pystage.{language}")
+    sprite_class = lang_module.sprite_class.__name__
+    stage_class = lang_module.stage_class.__name__
+    add_backdrop = get_translated_function("pystage_addbackdrop", language, stage=True)
+    add_costume = get_translated_function("pystage_addcostume", language)
+    add_sound = get_translated_function("pystage_addsound", language)
+    create_sprite = get_translated_function("pystage_createsprite", language, stage=True)
+    play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
             # {project['name']} (pyStage, converted from Scratch 3)
             
-            from pystage import Sprite, Stage
+            from pystage.{language} import {sprite_class}, {stage_class}
             
             ''')
     writer = CodeWriter(project, sb3_templates.templates, language)
     writer.set_sprite(project["stage"]["name"])
-    stage = writer.get_sprite_var()
+    stage_var = writer.get_sprite_var()
     backdrops = []
     for bd in project["stage"]["costumes"]:
         backdrops.append(writer.global_backdrop(bd["local_name"], False))
     res += textwrap.dedent(f'''\
-            {writer.get_sprite_var()} = Stage({backdrops})
+            {stage_var} = {stage_class}()
             ''')
+    for bd in backdrops:
+        res += textwrap.dedent(f'''\
+                {stage_var}.{add_backdrop}('{bd}')
+                ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
         writer.set_sprite(sprite["name"])
+        sprite_var = writer.get_sprite_var()
         costumes = [writer.global_costume(c["local_name"], False) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
-        backdrops.append(writer.global_backdrop(bd["local_name"], False))
         res += textwrap.dedent(f'''\
-                {writer.get_sprite_var()} = stage.create_sprite({costumes})
+                {sprite_var} = {stage_var}.{create_sprite}()
+                ''')
+        for c in costumes:
+            res += textwrap.dedent(f'''\
+                {sprite_var}.{add_costume}('{c}')
                 ''')
         for s in sounds:
             res += textwrap.dedent(f'''\
-                {writer.get_sprite_var()}.add_sound('{s}')
+                {sprite_var}.{add_sound}('{s}')
                 ''')
 
         for block in sprite["blocks"]:
             res += writer.process(block)
     res += textwrap.dedent(f'''\
             
-            {stage}.play()
+            {stage_var}.{play}()
             ''')
     return res
 

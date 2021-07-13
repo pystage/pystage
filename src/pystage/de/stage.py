@@ -10,16 +10,17 @@ class Bühne():
         self._core.facade = self
         self._core.sprite_facade_class = Figur
 
-    def erstelle_figur(self, costume="default"):
+    def füge_eine_figur_hinzu(self, costume="default"):
         return self._core.pystage_createsprite(costume=costume)
 
-    def spiele(self):
+    def abspielen(self):
         self._core.pystage_play()
         
             
     def erzeuge_klon_von(self, sprite='_myself_'):
         """erzeuge Klon von %1
 
+        Translation string: erzeuge Klon von %1
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -38,6 +39,7 @@ class Bühne():
     def stoppe_alles(self):
         """stoppe alles
 
+        Translation string: stoppe alles
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -52,6 +54,7 @@ class Bühne():
     def stoppe_andere_skripte_der_figur(self):
         """stoppe andere Skripte der Figur
 
+        Translation string: stoppe andere Skripte der Figur
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -66,6 +69,7 @@ class Bühne():
     def stoppe_dieses_skript(self):
         """stoppe dieses Skript
 
+        Translation string: stoppe dieses Skript
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -80,6 +84,7 @@ class Bühne():
     def warte_sekunden(self, secs):
         """warte %1 Sekunden
 
+        Translation string: warte %1 Sekunden
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -98,6 +103,7 @@ class Bühne():
     def sende_an_alle(self, message):
         """sende %1 an alle
 
+        Translation string: sende %1 an alle
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -116,6 +122,7 @@ class Bühne():
     def sende_an_alle_und_warte(self, message):
         """sende %1 an alle und warte
 
+        Translation string: sende %1 an alle und warte
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -134,6 +141,7 @@ class Bühne():
     def wenn_das_bühnenbild_zu_wechselt(self, backdrop, generator_function, name='', no_refresh=False):
         """Wenn das Bühnenbild zu %1 wechselt
 
+        Translation string: Wenn das Bühnenbild zu %1 wechselt
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -155,6 +163,7 @@ class Bühne():
     def wenn_ich_empfange(self, message, generator_function, name='', no_refresh=False):
         """Wenn ich %1 empfange
 
+        Translation string: Wenn ich %1 empfange
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -176,6 +185,7 @@ class Bühne():
     def wenn_GREENFLAG_angeklickt_wird(self, generator_function, name='', no_refresh=False):
         """Wenn <greenflag> angeklickt wird
 
+        Translation string: Wenn <greenflag> angeklickt wird
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -196,6 +206,7 @@ class Bühne():
     def wenn_lautstärke_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """Wenn Lautstärke <greater> %2
 
+        Translation string: Wenn Lautstärke <greater> %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -217,6 +228,7 @@ class Bühne():
     def wenn_stoppuhr_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """Wenn Stoppuhr <greater> %2
 
+        Translation string: Wenn Stoppuhr <greater> %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -238,6 +250,7 @@ class Bühne():
     def wenn_taste_gedrückt_wird(self, key, generator_function, name='', no_refresh=False):
         """Wenn Taste %1 gedrückt wird
 
+        Translation string: Wenn Taste %1 gedrückt wird
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -259,6 +272,7 @@ class Bühne():
     def wenn_diese_figur_angeklickt_wird(self, generator_function, name='', no_refresh=False):
         """Wenn diese Figur angeklickt wird
 
+        Translation string: Wenn diese Figur angeklickt wird
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -279,6 +293,7 @@ class Bühne():
     def bühnenbild_name(self):
         """Bühnenbild Name
 
+        Translation string: Bühnenbild Name
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -293,6 +308,7 @@ class Bühne():
     def bühnenbild_nummer(self):
         """Bühnenbild Nummer
 
+        Translation string: Bühnenbild Nummer
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -307,6 +323,7 @@ class Bühne():
     def ändere_effekt_helligkeit_um(self, value):
         """ändere Effekt Helligkeit um %2
 
+        Translation string: ändere Effekt Helligkeit um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -325,6 +342,7 @@ class Bühne():
     def ändere_effekt_farbe_um(self, value):
         """ändere Effekt Farbe um %2
 
+        Translation string: ändere Effekt Farbe um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -343,6 +361,7 @@ class Bühne():
     def ändere_effekt_fischauge_um(self, value):
         """ändere Effekt Fischauge um %2
 
+        Translation string: ändere Effekt Fischauge um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -361,6 +380,7 @@ class Bühne():
     def ändere_effekt_durchsichtigkeit_um(self, value):
         """ändere Effekt Durchsichtigkeit um %2
 
+        Translation string: ändere Effekt Durchsichtigkeit um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -379,6 +399,7 @@ class Bühne():
     def ändere_effekt_mosaik_um(self, value):
         """ändere Effekt Mosaik um %2
 
+        Translation string: ändere Effekt Mosaik um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -397,6 +418,7 @@ class Bühne():
     def ändere_effekt_pixel_um(self, value):
         """ändere Effekt Pixel um %2
 
+        Translation string: ändere Effekt Pixel um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -415,6 +437,7 @@ class Bühne():
     def ändere_effekt_wirbel_um(self, value):
         """ändere Effekt Wirbel um %2
 
+        Translation string: ändere Effekt Wirbel um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -433,6 +456,7 @@ class Bühne():
     def schalte_grafikeffekte_aus(self):
         """schalte Grafikeffekte aus
 
+        Translation string: schalte Grafikeffekte aus
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -447,6 +471,7 @@ class Bühne():
     def nächstes_bühnenbild(self):
         """nächstes Bühnenbild
 
+        Translation string: nächstes Bühnenbild
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -461,6 +486,7 @@ class Bühne():
     def setze_effekt_helligkeit_auf(self, value):
         """setze Effekt Helligkeit auf %2
 
+        Translation string: setze Effekt Helligkeit auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -479,6 +505,7 @@ class Bühne():
     def setze_effekt_farbe_auf(self, value):
         """setze Effekt Farbe auf %2
 
+        Translation string: setze Effekt Farbe auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -497,6 +524,7 @@ class Bühne():
     def setze_effekt_fischauge_auf(self, value):
         """setze Effekt Fischauge auf %2
 
+        Translation string: setze Effekt Fischauge auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -515,6 +543,7 @@ class Bühne():
     def setze_effekt_durchsichtigkeit_auf(self, value):
         """setze Effekt Durchsichtigkeit auf %2
 
+        Translation string: setze Effekt Durchsichtigkeit auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -533,6 +562,7 @@ class Bühne():
     def setze_effekt_mosaik_auf(self, value):
         """setze Effekt Mosaik auf %2
 
+        Translation string: setze Effekt Mosaik auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -551,6 +581,7 @@ class Bühne():
     def setze_effekt_pixel_auf(self, value):
         """setze Effekt Pixel auf %2
 
+        Translation string: setze Effekt Pixel auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -569,6 +600,7 @@ class Bühne():
     def setze_effekt_wirbel_auf(self, value):
         """setze Effekt Wirbel auf %2
 
+        Translation string: setze Effekt Wirbel auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -587,6 +619,7 @@ class Bühne():
     def wechsle_zu_bühnenbild(self, backdrop):
         """wechsle zu Bühnenbild %1
 
+        Translation string: wechsle zu Bühnenbild %1
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -605,6 +638,7 @@ class Bühne():
     def wechsle_zu_bühnenbild_und_warte(self, backdrop):
         """wechsle zu Bühnenbild %1 und warte
 
+        Translation string: wechsle zu Bühnenbild %1 und warte
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -620,9 +654,10 @@ class Bühne():
         """
         self._core.looks_switchbackdroptoandwait(backdrop)
                 
-    def operator_mathop(self, operator, number):
-        """
+    def von(self, operator, number):
+        """%1 von %2
 
+        Translation string: %1 von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -639,9 +674,10 @@ class Bühne():
         """
         self._core.operator_mathop(operator, number)
                 
-    def operator_random(self, start, end):
-        """
+    def zufallszahl_von_bis(self, start, end):
+        """Zufallszahl von %1 bis %2
 
+        Translation string: Zufallszahl von %1 bis %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -661,6 +697,7 @@ class Bühne():
     def pystage_addbackdrop(self, name, center_x=None, center_y=None):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -681,6 +718,7 @@ class Bühne():
     def pystage_addsound(self, name):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -699,6 +737,7 @@ class Bühne():
     def pystage_createsprite(self, costume='default'):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -717,6 +756,7 @@ class Bühne():
     def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -738,6 +778,7 @@ class Bühne():
     def pystage_play(self):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -752,6 +793,7 @@ class Bühne():
     def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
         """
 
+        Translation string: 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -773,6 +815,7 @@ class Bühne():
     def antwort(self):
         """Antwort
 
+        Translation string: Antwort
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -787,6 +830,7 @@ class Bühne():
     def frage_und_warte(self, question):
         """frage %1 und warte
 
+        Translation string: frage %1 und warte
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -805,6 +849,7 @@ class Bühne():
     def datum_im_moment(self):
         """Datum im Moment
 
+        Translation string: Datum im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -819,6 +864,7 @@ class Bühne():
     def wochentag_im_moment(self):
         """Wochentag im Moment
 
+        Translation string: Wochentag im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -833,6 +879,7 @@ class Bühne():
     def stunde_im_moment(self):
         """Stunde im Moment
 
+        Translation string: Stunde im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -847,6 +894,7 @@ class Bühne():
     def minute_im_moment(self):
         """Minute im Moment
 
+        Translation string: Minute im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -861,6 +909,7 @@ class Bühne():
     def monat_im_moment(self):
         """Monat im Moment
 
+        Translation string: Monat im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -875,6 +924,7 @@ class Bühne():
     def sekunde_im_moment(self):
         """Sekunde im Moment
 
+        Translation string: Sekunde im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -889,6 +939,7 @@ class Bühne():
     def jahr_im_moment(self):
         """Jahr im Moment
 
+        Translation string: Jahr im Moment
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -903,6 +954,7 @@ class Bühne():
     def tage_seit(self):
         """Tage seit 2000
 
+        Translation string: Tage seit 2000
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -917,6 +969,7 @@ class Bühne():
     def taste_gedrückt(self, key):
         """Taste %1 gedrückt?
 
+        Translation string: Taste %1 gedrückt?
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -935,6 +988,7 @@ class Bühne():
     def lautstärke(self):
         """Lautstärke
 
+        Translation string: Lautstärke
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -949,6 +1003,7 @@ class Bühne():
     def maustaste_gedrückt(self):
         """Maustaste gedrückt?
 
+        Translation string: Maustaste gedrückt?
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -963,6 +1018,7 @@ class Bühne():
     def maus_x_position(self):
         """Maus x-Position
 
+        Translation string: Maus x-Position
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -977,6 +1033,7 @@ class Bühne():
     def maus_y_position(self):
         """Maus y-Position
 
+        Translation string: Maus y-Position
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -991,6 +1048,7 @@ class Bühne():
     def bühnenbildname_von(self, stage='_stage_'):
         """Bühnenbildname von %2
 
+        Translation string: Bühnenbildname von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1009,6 +1067,7 @@ class Bühne():
     def bühnenbildnummer_von(self, stage='_stage_'):
         """Bühnenbildnummer von %2
 
+        Translation string: Bühnenbildnummer von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1027,6 +1086,7 @@ class Bühne():
     def kostümname_von(self, sprite):
         """Kostümname von %2
 
+        Translation string: Kostümname von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1045,6 +1105,7 @@ class Bühne():
     def kostümnummer_von(self, sprite):
         """Kostümnummer von %2
 
+        Translation string: Kostümnummer von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1063,6 +1124,7 @@ class Bühne():
     def richtung_von(self, sprite):
         """Richtung von %2
 
+        Translation string: Richtung von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1081,6 +1143,7 @@ class Bühne():
     def größe_von(self, sprite):
         """Größe von %2
 
+        Translation string: Größe von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1099,6 +1162,7 @@ class Bühne():
     def von(self, variable, sprite='_stage_'):
         """%1 von %2
 
+        Translation string: %1 von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1118,6 +1182,7 @@ class Bühne():
     def lautstärke_von(self, sprite='_stage_'):
         """Lautstärke von %2
 
+        Translation string: Lautstärke von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1136,6 +1201,7 @@ class Bühne():
     def x_position_von(self, sprite):
         """x-Position von %2
 
+        Translation string: x-Position von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1154,6 +1220,7 @@ class Bühne():
     def y_position_von(self, sprite):
         """y-Position von %2
 
+        Translation string: y-Position von %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1172,6 +1239,7 @@ class Bühne():
     def setze_stoppuhr_zurück(self):
         """setze Stoppuhr zurück
 
+        Translation string: setze Stoppuhr zurück
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1186,6 +1254,7 @@ class Bühne():
     def setze_ziehbarkeit_auf_ziehbar(self):
         """setze Ziehbarkeit auf ziehbar
 
+        Translation string: setze Ziehbarkeit auf ziehbar
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1200,6 +1269,7 @@ class Bühne():
     def setze_ziehbarkeit_auf_nicht_ziehbar(self):
         """setze Ziehbarkeit auf nicht ziehbar
 
+        Translation string: setze Ziehbarkeit auf nicht ziehbar
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1214,6 +1284,7 @@ class Bühne():
     def stoppuhr(self):
         """Stoppuhr
 
+        Translation string: Stoppuhr
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1228,6 +1299,7 @@ class Bühne():
     def benutzername(self):
         """Benutzername
 
+        Translation string: Benutzername
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1242,6 +1314,7 @@ class Bühne():
     def ändere_effekt_aussteuern_links_rechts_um(self, value):
         """ändere Effekt Aussteuern links/rechts um %2
 
+        Translation string: ändere Effekt Aussteuern links/rechts um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1260,6 +1333,7 @@ class Bühne():
     def ändere_effekt_höhe_um(self, value):
         """ändere Effekt Höhe um %2
 
+        Translation string: ändere Effekt Höhe um %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1278,6 +1352,7 @@ class Bühne():
     def ändere_lautstärke_um(self, value):
         """ändere Lautstärke um %1
 
+        Translation string: ändere Lautstärke um %1
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1296,6 +1371,7 @@ class Bühne():
     def schalte_klangeffekte_aus(self):
         """schalte Klangeffekte aus
 
+        Translation string: schalte Klangeffekte aus
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1310,6 +1386,7 @@ class Bühne():
     def spiele_klang(self, name, loop=0):
         """spiele Klang %1
 
+        Translation string: spiele Klang %1
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1329,6 +1406,7 @@ class Bühne():
     def spiele_klang_ganz(self, name):
         """spiele Klang %1 ganz
 
+        Translation string: spiele Klang %1 ganz
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1347,6 +1425,7 @@ class Bühne():
     def setze_effekt_aussteuern_links_rechts_auf(self, value):
         """setze Effekt Aussteuern links/rechts auf %2
 
+        Translation string: setze Effekt Aussteuern links/rechts auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1365,6 +1444,7 @@ class Bühne():
     def setze_effekt_höhe_auf(self, value):
         """setze Effekt Höhe auf %2
 
+        Translation string: setze Effekt Höhe auf %2
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1383,6 +1463,7 @@ class Bühne():
     def setze_lautstärke_auf(self, value):
         """setze Lautstärke auf %1%
 
+        Translation string: setze Lautstärke auf %1%
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1401,6 +1482,7 @@ class Bühne():
     def stoppe_alle_klänge(self):
         """stoppe alle Klänge
 
+        Translation string: stoppe alle Klänge
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1415,6 +1497,7 @@ class Bühne():
     def lautstärke(self):
         """Lautstärke
 
+        Translation string: Lautstärke
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
