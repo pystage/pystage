@@ -26,7 +26,7 @@ class Figur():
         -------
 
         """
-        self._core.control_create_clone_of(sprite='_my_')
+        return self._core.control_create_clone_of(sprite='_my_')
                 
     def lösche_diesen_klon(self):
         """lösche diesen Klon
@@ -41,7 +41,7 @@ class Figur():
         -------
 
         """
-        self._core.control_delete_this_clone()
+        return self._core.control_delete_this_clone()
                 
     def wenn_ich_als_klon_entstehe(self, key, generator_function, name='', no_refresh=False):
         """Wenn ich als Klon entstehe
@@ -63,7 +63,7 @@ class Figur():
         -------
 
         """
-        self._core.control_start_as_clone(key, generator_function, name='', no_refresh=False)
+        return self._core.control_start_as_clone(key, generator_function, name='', no_refresh=False)
                 
     def stoppe_alles(self):
         """stoppe alles
@@ -78,7 +78,7 @@ class Figur():
         -------
 
         """
-        self._core.control_stop_all()
+        return self._core.control_stop_all()
                 
     def stoppe_andere_skripte_der_figur(self):
         """stoppe andere Skripte der Figur
@@ -93,7 +93,7 @@ class Figur():
         -------
 
         """
-        self._core.control_stop_other()
+        return self._core.control_stop_other()
                 
     def stoppe_dieses_skript(self):
         """stoppe dieses Skript
@@ -108,7 +108,7 @@ class Figur():
         -------
 
         """
-        self._core.control_stop_this()
+        return self._core.control_stop_this()
                 
     def warte_sekunden(self, secs):
         """warte %1 Sekunden
@@ -127,7 +127,7 @@ class Figur():
         -------
 
         """
-        self._core.control_wait(secs)
+        return self._core.control_wait(secs)
                 
     def ändere_um(self, name, value):
         """ändere %1 um %2
@@ -147,7 +147,7 @@ class Figur():
         -------
 
         """
-        self._core.data_changevariableby(name, value)
+        return self._core.data_changevariableby(name, value)
                 
     def verstecke_variable(self, name):
         """verstecke Variable %1
@@ -166,7 +166,7 @@ class Figur():
         -------
 
         """
-        self._core.data_hidevariable(name)
+        return self._core.data_hidevariable(name)
                 
     def setze_auf(self, name, value):
         """setze %1 auf %2
@@ -186,7 +186,7 @@ class Figur():
         -------
 
         """
-        self._core.data_setvariableto(name, value)
+        return self._core.data_setvariableto(name, value)
                 
     def zeige_variable(self, name):
         """zeige Variable %1
@@ -205,7 +205,7 @@ class Figur():
         -------
 
         """
-        self._core.data_showvariable(name)
+        return self._core.data_showvariable(name)
                 
     def data_variable(self, name):
         """
@@ -224,7 +224,7 @@ class Figur():
         -------
 
         """
-        self._core.data_variable(name)
+        return self._core.data_variable(name)
                 
     def sende_an_alle(self, message):
         """sende %1 an alle
@@ -243,7 +243,7 @@ class Figur():
         -------
 
         """
-        self._core.event_broadcast(message)
+        return self._core.event_broadcast(message)
                 
     def sende_an_alle_und_warte(self, message):
         """sende %1 an alle und warte
@@ -262,7 +262,7 @@ class Figur():
         -------
 
         """
-        self._core.event_broadcastandwait(message)
+        return self._core.event_broadcastandwait(message)
                 
     def wenn_das_bühnenbild_zu_wechselt(self, backdrop, generator_function, name='', no_refresh=False):
         """Wenn das Bühnenbild zu %1 wechselt
@@ -284,7 +284,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
                 
     def wenn_ich_empfange(self, message, generator_function, name='', no_refresh=False):
         """Wenn ich %1 empfange
@@ -306,7 +306,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
                 
     def wenn_GREENFLAG_angeklickt_wird(self, generator_function, name='', no_refresh=False):
         """Wenn <greenflag> angeklickt wird
@@ -327,7 +327,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
                 
     def wenn_lautstärke_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """Wenn Lautstärke <greater> %2
@@ -349,7 +349,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
                 
     def wenn_stoppuhr_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """Wenn Stoppuhr <greater> %2
@@ -371,7 +371,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whengreaterthan_timer(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_timer(value, generator_function, name='', no_refresh=False)
                 
     def wenn_taste_gedrückt_wird(self, key, generator_function, name='', no_refresh=False):
         """Wenn Taste %1 gedrückt wird
@@ -393,7 +393,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whenkeypressed(key, generator_function, name='', no_refresh=False)
+        return self._core.event_whenkeypressed(key, generator_function, name='', no_refresh=False)
                 
     def wenn_diese_figur_angeklickt_wird(self, generator_function, name='', no_refresh=False):
         """Wenn diese Figur angeklickt wird
@@ -414,7 +414,7 @@ class Figur():
         -------
 
         """
-        self._core.event_whenthisspriteclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenthisspriteclicked(generator_function, name='', no_refresh=False)
                 
     def bühnenbild_name(self):
         """Bühnenbild Name
@@ -429,7 +429,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_backdropnumbername_name()
+        return self._core.looks_backdropnumbername_name()
                 
     def bühnenbild_nummer(self):
         """Bühnenbild Nummer
@@ -444,7 +444,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_backdropnumbername_number()
+        return self._core.looks_backdropnumbername_number()
                 
     def ändere_effekt_helligkeit_um(self, value):
         """ändere Effekt Helligkeit um %2
@@ -463,7 +463,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_brightness(value)
+        return self._core.looks_changeeffectby_brightness(value)
                 
     def ändere_effekt_farbe_um(self, value):
         """ändere Effekt Farbe um %2
@@ -482,7 +482,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_color(value)
+        return self._core.looks_changeeffectby_color(value)
                 
     def ändere_effekt_fischauge_um(self, value):
         """ändere Effekt Fischauge um %2
@@ -501,7 +501,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_fisheye(value)
+        return self._core.looks_changeeffectby_fisheye(value)
                 
     def ändere_effekt_durchsichtigkeit_um(self, value):
         """ändere Effekt Durchsichtigkeit um %2
@@ -520,7 +520,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_ghost(value)
+        return self._core.looks_changeeffectby_ghost(value)
                 
     def ändere_effekt_mosaik_um(self, value):
         """ändere Effekt Mosaik um %2
@@ -539,7 +539,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_mosaic(value)
+        return self._core.looks_changeeffectby_mosaic(value)
                 
     def ändere_effekt_pixel_um(self, value):
         """ändere Effekt Pixel um %2
@@ -558,7 +558,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_pixelate(value)
+        return self._core.looks_changeeffectby_pixelate(value)
                 
     def ändere_effekt_wirbel_um(self, value):
         """ändere Effekt Wirbel um %2
@@ -577,7 +577,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changeeffectby_whirl(value)
+        return self._core.looks_changeeffectby_whirl(value)
                 
     def ändere_größe_um(self, percent):
         """ändere Größe um %1
@@ -596,7 +596,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_changesizeby(percent)
+        return self._core.looks_changesizeby(percent)
                 
     def schalte_grafikeffekte_aus(self):
         """schalte Grafikeffekte aus
@@ -611,7 +611,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_cleargraphiceffects()
+        return self._core.looks_cleargraphiceffects()
                 
     def kostüm_name(self):
         """Kostüm Name
@@ -626,7 +626,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_costumenumbername_name()
+        return self._core.looks_costumenumbername_name()
                 
     def kostüm_nummer(self):
         """Kostüm Nummer
@@ -641,7 +641,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_costumenumbername_number()
+        return self._core.looks_costumenumbername_number()
                 
     def gehe_ebenen_nach_hinten(self, value):
         """gehe %2 Ebenen nach hinten
@@ -660,7 +660,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_goforwardbackwardlayers_backward(value)
+        return self._core.looks_goforwardbackwardlayers_backward(value)
                 
     def gehe_ebenen_nach_vorne(self, value):
         """gehe %2 Ebenen nach vorne
@@ -679,7 +679,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_goforwardbackwardlayers_forward(value)
+        return self._core.looks_goforwardbackwardlayers_forward(value)
                 
     def gehe_zu_hinterster_ebene(self):
         """gehe zu hinterster Ebene
@@ -694,7 +694,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_gotofrontback_back()
+        return self._core.looks_gotofrontback_back()
                 
     def gehe_zu_vorderster_ebene(self):
         """gehe zu vorderster Ebene
@@ -709,7 +709,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_gotofrontback_front()
+        return self._core.looks_gotofrontback_front()
                 
     def verstecke_dich(self):
         """verstecke dich
@@ -724,7 +724,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_hide()
+        return self._core.looks_hide()
                 
     def nächstes_bühnenbild(self):
         """nächstes Bühnenbild
@@ -739,7 +739,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_nextbackdrop()
+        return self._core.looks_nextbackdrop()
                 
     def wechsle_zum_nächsten_kostüm(self):
         """wechsle zum nächsten Kostüm
@@ -754,7 +754,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_nextcostume()
+        return self._core.looks_nextcostume()
                 
     def sage(self, text):
         """sage %1
@@ -773,7 +773,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_say(text)
+        return self._core.looks_say(text)
                 
     def sage_für_sekunden(self, text, secs):
         """sage %1 für %2 Sekunden
@@ -793,7 +793,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_sayforsecs(text, secs)
+        return self._core.looks_sayforsecs(text, secs)
                 
     def setze_effekt_helligkeit_auf(self, value):
         """setze Effekt Helligkeit auf %2
@@ -812,7 +812,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_brightness(value)
+        return self._core.looks_seteffectto_brightness(value)
                 
     def setze_effekt_farbe_auf(self, value):
         """setze Effekt Farbe auf %2
@@ -831,7 +831,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_color(value)
+        return self._core.looks_seteffectto_color(value)
                 
     def setze_effekt_fischauge_auf(self, value):
         """setze Effekt Fischauge auf %2
@@ -850,7 +850,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_fisheye(value)
+        return self._core.looks_seteffectto_fisheye(value)
                 
     def setze_effekt_durchsichtigkeit_auf(self, value):
         """setze Effekt Durchsichtigkeit auf %2
@@ -869,7 +869,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_ghost(value)
+        return self._core.looks_seteffectto_ghost(value)
                 
     def setze_effekt_mosaik_auf(self, value):
         """setze Effekt Mosaik auf %2
@@ -888,7 +888,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_mosaic(value)
+        return self._core.looks_seteffectto_mosaic(value)
                 
     def setze_effekt_pixel_auf(self, value):
         """setze Effekt Pixel auf %2
@@ -907,7 +907,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_pixelate(value)
+        return self._core.looks_seteffectto_pixelate(value)
                 
     def setze_effekt_wirbel_auf(self, value):
         """setze Effekt Wirbel auf %2
@@ -926,7 +926,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_seteffectto_whirl(value)
+        return self._core.looks_seteffectto_whirl(value)
                 
     def setze_größe_auf(self, percent):
         """setze Größe auf %1
@@ -945,7 +945,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_setsizeto(percent)
+        return self._core.looks_setsizeto(percent)
                 
     def zeige_dich(self):
         """zeige dich
@@ -960,7 +960,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_show()
+        return self._core.looks_show()
                 
     def größe(self):
         """Größe
@@ -975,7 +975,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_size()
+        return self._core.looks_size()
                 
     def wechsle_zu_bühnenbild(self, backdrop):
         """wechsle zu Bühnenbild %1
@@ -994,7 +994,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_switchbackdropto(backdrop)
+        return self._core.looks_switchbackdropto(backdrop)
                 
     def wechsle_zu_kostüm(self, costume):
         """wechsle zu Kostüm %1
@@ -1013,7 +1013,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_switchcostumeto(costume)
+        return self._core.looks_switchcostumeto(costume)
                 
     def denke(self, text):
         """denke %1
@@ -1032,7 +1032,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_think(text)
+        return self._core.looks_think(text)
                 
     def denke_für_sekunden(self, text, secs):
         """denke %1 für %2 Sekunden
@@ -1052,7 +1052,7 @@ class Figur():
         -------
 
         """
-        self._core.looks_thinkforsecs(text, secs)
+        return self._core.looks_thinkforsecs(text, secs)
                 
     def ändere_x_um(self, value):
         """ändere x um %1
@@ -1071,7 +1071,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_changexby(value)
+        return self._core.motion_changexby(value)
                 
     def ändere_y_um(self, value):
         """ändere y um %1
@@ -1090,7 +1090,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_changeyby(value)
+        return self._core.motion_changeyby(value)
                 
     def richtung(self):
         """Richtung
@@ -1105,7 +1105,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_direction()
+        return self._core.motion_direction()
                 
     def gleite_in_sek_zu_x_y(self, secs, x, y):
         """gleite in %1 Sek. zu x:%2  y:%3
@@ -1126,7 +1126,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_glidesecstoxy(secs, x, y)
+        return self._core.motion_glidesecstoxy(secs, x, y)
                 
     def gleite_in_sek_zu_mauszeiger(self, secs):
         """gleite in %1 Sek. zu Mauszeiger
@@ -1145,7 +1145,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_glideto_pointer(secs)
+        return self._core.motion_glideto_pointer(secs)
                 
     def gleite_in_sek_zu_zufallsposition(self, secs):
         """gleite in %1 Sek. zu Zufallsposition
@@ -1164,7 +1164,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_glideto_random(secs)
+        return self._core.motion_glideto_random(secs)
                 
     def gleite_in_sek_zu(self, secs, sprite):
         """gleite in %1 Sek. zu %2
@@ -1184,7 +1184,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_glideto_sprite(secs, sprite)
+        return self._core.motion_glideto_sprite(secs, sprite)
                 
     def gehe_zu_mauszeiger(self):
         """gehe zu Mauszeiger
@@ -1199,7 +1199,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_goto_pointer()
+        return self._core.motion_goto_pointer()
                 
     def gehe_zu_zufallsposition(self):
         """gehe zu Zufallsposition
@@ -1214,7 +1214,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_goto_random()
+        return self._core.motion_goto_random()
                 
     def gehe_zu(self, sprite):
         """gehe zu %1
@@ -1233,7 +1233,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_goto_sprite(sprite)
+        return self._core.motion_goto_sprite(sprite)
                 
     def gehe_zu_x_y(self, x, y):
         """gehe zu x: %1 y: %2
@@ -1253,7 +1253,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_gotoxy(x, y)
+        return self._core.motion_gotoxy(x, y)
                 
     def pralle_vom_rand_ab(self):
         """pralle vom Rand ab
@@ -1268,7 +1268,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_ifonedgebounce()
+        return self._core.motion_ifonedgebounce()
                 
     def gehe_er_schritt(self, steps):
         """gehe %1 er Schritt
@@ -1287,7 +1287,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_movesteps(steps)
+        return self._core.motion_movesteps(steps)
                 
     def setze_richtung_auf_grad(self, direction):
         """setze Richtung auf %1 Grad
@@ -1306,7 +1306,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_pointindirection(direction)
+        return self._core.motion_pointindirection(direction)
                 
     def drehe_dich_zu_mauszeiger(self):
         """drehe dich zu Mauszeiger
@@ -1321,7 +1321,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_pointtowards_pointer()
+        return self._core.motion_pointtowards_pointer()
                 
     def drehe_dich_zu(self, sprite):
         """drehe dich zu %1
@@ -1340,7 +1340,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_pointtowards_sprite(sprite)
+        return self._core.motion_pointtowards_sprite(sprite)
                 
     def setze_drehtyp_auf_rundherum(self):
         """setze Drehtyp auf rundherum
@@ -1355,7 +1355,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_setrotationstyle_allaround()
+        return self._core.motion_setrotationstyle_allaround()
                 
     def setze_drehtyp_auf_nicht_drehen(self):
         """setze Drehtyp auf nicht drehen
@@ -1370,7 +1370,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_setrotationstyle_dontrotate()
+        return self._core.motion_setrotationstyle_dontrotate()
                 
     def setze_drehtyp_auf_helligkeit(self):
         """setze Drehtyp auf Helligkeit
@@ -1385,7 +1385,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_setrotationstyle_leftright()
+        return self._core.motion_setrotationstyle_leftright()
                 
     def setze_x_auf(self, value):
         """setze x auf %1
@@ -1404,7 +1404,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_setx(value)
+        return self._core.motion_setx(value)
                 
     def setze_y_auf(self, value):
         """setze y auf %1
@@ -1423,7 +1423,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_sety(value)
+        return self._core.motion_sety(value)
                 
     def drehe_dich_nach_links_um_grad(self, deg):
         """drehe dich nach links um %2 Grad
@@ -1442,7 +1442,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_turnleft(deg)
+        return self._core.motion_turnleft(deg)
                 
     def drehe_dich_nach_rechts_um_grad(self, deg):
         """drehe dich nach rechts um %2 Grad
@@ -1461,7 +1461,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_turnright(deg)
+        return self._core.motion_turnright(deg)
                 
     def x_position(self):
         """x-Position
@@ -1476,7 +1476,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_xposition()
+        return self._core.motion_xposition()
                 
     def y_position(self):
         """y-Position
@@ -1491,7 +1491,7 @@ class Figur():
         -------
 
         """
-        self._core.motion_yposition()
+        return self._core.motion_yposition()
                 
     def von(self, operator, number):
         """%1 von %2
@@ -1511,7 +1511,7 @@ class Figur():
         -------
 
         """
-        self._core.operator_mathop(operator, number)
+        return self._core.operator_mathop(operator, number)
                 
     def zufallszahl_von_bis(self, start, end):
         """Zufallszahl von %1 bis %2
@@ -1531,7 +1531,7 @@ class Figur():
         -------
 
         """
-        self._core.operator_random(start, end)
+        return self._core.operator_random(start, end)
                 
     def ändere_stift_helligkeit_um(self, value):
         """ändere Stift Helligkeit um [VALUE]
@@ -1550,7 +1550,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_changePenColorParamBy_brightness(value)
+        return self._core.pen_changePenColorParamBy_brightness(value)
                 
     def ändere_stift_farbe_um(self, value):
         """ändere Stift Farbe um [VALUE]
@@ -1571,7 +1571,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_changePenColorParamBy_color(value)
+        return self._core.pen_changePenColorParamBy_color(value)
                 
     def ändere_stift_sättigung_um(self, value):
         """ändere Stift Sättigung um [VALUE]
@@ -1590,7 +1590,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_changePenColorParamBy_saturation(value)
+        return self._core.pen_changePenColorParamBy_saturation(value)
                 
     def ändere_stift_transparenz_um(self, value):
         """ändere Stift Transparenz um [VALUE]
@@ -1609,7 +1609,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_changePenColorParamBy_transparency(value)
+        return self._core.pen_changePenColorParamBy_transparency(value)
                 
     def ändere_stiftdicke_um(self, value):
         """ändere Stiftdicke um [SIZE]
@@ -1628,7 +1628,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_changePenSizeBy(value)
+        return self._core.pen_changePenSizeBy(value)
                 
     def lösche_alles(self):
         """lösche alles
@@ -1643,7 +1643,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_clear()
+        return self._core.pen_clear()
                 
     def schalte_stift_ein(self):
         """schalte Stift ein
@@ -1658,7 +1658,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_penDown()
+        return self._core.pen_penDown()
                 
     def schalte_stift_aus(self):
         """schalte Stift aus
@@ -1673,7 +1673,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_penUp()
+        return self._core.pen_penUp()
                 
     def setze_stift_helligkeit_auf(self, value):
         """setze Stift Helligkeit auf [VALUE]
@@ -1692,7 +1692,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenColorParamTo_brightness(value)
+        return self._core.pen_setPenColorParamTo_brightness(value)
                 
     def setze_stift_farbe_auf(self, value):
         """setze Stift Farbe auf [VALUE]
@@ -1713,7 +1713,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenColorParamTo_color(value)
+        return self._core.pen_setPenColorParamTo_color(value)
                 
     def setze_stift_sättigung_auf(self, value):
         """setze Stift Sättigung auf [VALUE]
@@ -1732,7 +1732,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenColorParamTo_saturation(value)
+        return self._core.pen_setPenColorParamTo_saturation(value)
                 
     def setze_stift_transparenz_auf(self, value):
         """setze Stift Transparenz auf [VALUE]
@@ -1751,7 +1751,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenColorParamTo_transparency(value)
+        return self._core.pen_setPenColorParamTo_transparency(value)
                 
     def setze_stiftfarbe_auf(self, color):
         """setze Stiftfarbe auf [COLOR]
@@ -1770,7 +1770,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenColorToColor(color)
+        return self._core.pen_setPenColorToColor(color)
                 
     def setze_stiftdicke_auf(self, value):
         """setze Stiftdicke auf [SIZE]
@@ -1789,7 +1789,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_setPenSizeTo(value)
+        return self._core.pen_setPenSizeTo(value)
                 
     def hinterlasse_abdruck(self):
         """hinterlasse Abdruck
@@ -1804,7 +1804,7 @@ class Figur():
         -------
 
         """
-        self._core.pen_stamp()
+        return self._core.pen_stamp()
                 
     def pystage_addcostume(self, name, center_x=None, center_y=None):
         """
@@ -1825,7 +1825,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_addcostume(name, center_x=None, center_y=None)
+        return self._core.pystage_addcostume(name, center_x=None, center_y=None)
                 
     def pystage_addsound(self, name):
         """
@@ -1844,7 +1844,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_addsound(name)
+        return self._core.pystage_addsound(name)
                 
     def pystage_insertcostume(self, index, name, center_x=None, center_y=None):
         """
@@ -1866,7 +1866,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_insertcostume(index, name, center_x=None, center_y=None)
+        return self._core.pystage_insertcostume(index, name, center_x=None, center_y=None)
                 
     def pystage_makevariable(self, name, all_sprites=True):
         """
@@ -1886,7 +1886,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_makevariable(name, all_sprites=True)
+        return self._core.pystage_makevariable(name, all_sprites=True)
                 
     def pystage_replacecostume(self, index, name, center_x=None, center_y=None):
         """
@@ -1908,7 +1908,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_replacecostume(index, name, center_x=None, center_y=None)
+        return self._core.pystage_replacecostume(index, name, center_x=None, center_y=None)
                 
     def pystage_setmonitorposition(self, name, x, y):
         """
@@ -1929,7 +1929,7 @@ class Figur():
         -------
 
         """
-        self._core.pystage_setmonitorposition(name, x, y)
+        return self._core.pystage_setmonitorposition(name, x, y)
                 
     def antwort(self):
         """Antwort
@@ -1944,7 +1944,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_answer()
+        return self._core.sensing_answer()
                 
     def frage_und_warte(self, question):
         """frage %1 und warte
@@ -1963,7 +1963,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_askandwait(question)
+        return self._core.sensing_askandwait(question)
                 
     def farbe_berührt(self, sprite_color, color):
         """Farbe %1 berührt %2?
@@ -1983,7 +1983,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_coloristouchingcolor(sprite_color, color)
+        return self._core.sensing_coloristouchingcolor(sprite_color, color)
                 
     def datum_im_moment(self):
         """Datum im Moment
@@ -1998,7 +1998,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_date()
+        return self._core.sensing_current_date()
                 
     def wochentag_im_moment(self):
         """Wochentag im Moment
@@ -2013,7 +2013,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_dayofweek()
+        return self._core.sensing_current_dayofweek()
                 
     def stunde_im_moment(self):
         """Stunde im Moment
@@ -2028,7 +2028,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_hour()
+        return self._core.sensing_current_hour()
                 
     def minute_im_moment(self):
         """Minute im Moment
@@ -2043,7 +2043,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_minute()
+        return self._core.sensing_current_minute()
                 
     def monat_im_moment(self):
         """Monat im Moment
@@ -2058,7 +2058,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_month()
+        return self._core.sensing_current_month()
                 
     def sekunde_im_moment(self):
         """Sekunde im Moment
@@ -2073,7 +2073,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_second()
+        return self._core.sensing_current_second()
                 
     def jahr_im_moment(self):
         """Jahr im Moment
@@ -2088,7 +2088,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_current_year()
+        return self._core.sensing_current_year()
                 
     def tage_seit(self):
         """Tage seit 2000
@@ -2103,7 +2103,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_dayssince2000()
+        return self._core.sensing_dayssince2000()
                 
     def entfernung_von_mauszeiger(self):
         """Entfernung von Mauszeiger
@@ -2118,7 +2118,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_distanceto_pointer()
+        return self._core.sensing_distanceto_pointer()
                 
     def entfernung_von(self, sprite):
         """Entfernung von %1
@@ -2137,7 +2137,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_distanceto_sprite(sprite)
+        return self._core.sensing_distanceto_sprite(sprite)
                 
     def taste_gedrückt(self, key):
         """Taste %1 gedrückt?
@@ -2156,7 +2156,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_keypressed(key)
+        return self._core.sensing_keypressed(key)
                 
     def lautstärke(self):
         """Lautstärke
@@ -2171,7 +2171,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_loudness()
+        return self._core.sensing_loudness()
                 
     def maustaste_gedrückt(self):
         """Maustaste gedrückt?
@@ -2186,7 +2186,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_mousedown()
+        return self._core.sensing_mousedown()
                 
     def maus_x_position(self):
         """Maus x-Position
@@ -2201,7 +2201,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_mousex()
+        return self._core.sensing_mousex()
                 
     def maus_y_position(self):
         """Maus y-Position
@@ -2216,7 +2216,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_mousey()
+        return self._core.sensing_mousey()
                 
     def bühnenbildname_von(self, stage='_stage_'):
         """Bühnenbildname von %2
@@ -2235,7 +2235,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_backdropname(stage='_stage_')
+        return self._core.sensing_of_backdropname(stage='_stage_')
                 
     def bühnenbildnummer_von(self, stage='_stage_'):
         """Bühnenbildnummer von %2
@@ -2254,7 +2254,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_backdropnumber(stage='_stage_')
+        return self._core.sensing_of_backdropnumber(stage='_stage_')
                 
     def kostümname_von(self, sprite):
         """Kostümname von %2
@@ -2273,7 +2273,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_costumename(sprite)
+        return self._core.sensing_of_costumename(sprite)
                 
     def kostümnummer_von(self, sprite):
         """Kostümnummer von %2
@@ -2292,7 +2292,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_costumenumber(sprite)
+        return self._core.sensing_of_costumenumber(sprite)
                 
     def richtung_von(self, sprite):
         """Richtung von %2
@@ -2311,7 +2311,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_direction(sprite)
+        return self._core.sensing_of_direction(sprite)
                 
     def größe_von(self, sprite):
         """Größe von %2
@@ -2330,7 +2330,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_size(sprite)
+        return self._core.sensing_of_size(sprite)
                 
     def von(self, variable, sprite='_stage_'):
         """%1 von %2
@@ -2350,7 +2350,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_variable(variable, sprite='_stage_')
+        return self._core.sensing_of_variable(variable, sprite='_stage_')
                 
     def lautstärke_von(self, sprite='_stage_'):
         """Lautstärke von %2
@@ -2369,7 +2369,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_volume(sprite='_stage_')
+        return self._core.sensing_of_volume(sprite='_stage_')
                 
     def x_position_von(self, sprite):
         """x-Position von %2
@@ -2388,7 +2388,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_xposition(sprite)
+        return self._core.sensing_of_xposition(sprite)
                 
     def y_position_von(self, sprite):
         """y-Position von %2
@@ -2407,7 +2407,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_of_yposition(sprite)
+        return self._core.sensing_of_yposition(sprite)
                 
     def setze_stoppuhr_zurück(self):
         """setze Stoppuhr zurück
@@ -2422,7 +2422,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_resettimer()
+        return self._core.sensing_resettimer()
                 
     def setze_ziehbarkeit_auf_ziehbar(self):
         """setze Ziehbarkeit auf ziehbar
@@ -2437,7 +2437,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_setdragmode_draggable()
+        return self._core.sensing_setdragmode_draggable()
                 
     def setze_ziehbarkeit_auf_nicht_ziehbar(self):
         """setze Ziehbarkeit auf nicht ziehbar
@@ -2452,7 +2452,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_setdragmode_notdraggable()
+        return self._core.sensing_setdragmode_notdraggable()
                 
     def stoppuhr(self):
         """Stoppuhr
@@ -2467,7 +2467,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_timer()
+        return self._core.sensing_timer()
                 
     def wird_farbe_berührt(self, color):
         """wird Farbe %1 berührt?
@@ -2486,7 +2486,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_touchingcolor(color)
+        return self._core.sensing_touchingcolor(color)
                 
     def wird_rand_berührt(self):
         """wird Rand berührt?
@@ -2501,7 +2501,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_touchingobject_edge()
+        return self._core.sensing_touchingobject_edge()
                 
     def wird_mauszeiger_berührt(self):
         """wird Mauszeiger berührt?
@@ -2516,7 +2516,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_touchingobject_pointer()
+        return self._core.sensing_touchingobject_pointer()
                 
     def wird_berührt(self, sprite):
         """wird %1 berührt?
@@ -2535,7 +2535,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_touchingobject_sprite(sprite)
+        return self._core.sensing_touchingobject_sprite(sprite)
                 
     def benutzername(self):
         """Benutzername
@@ -2550,7 +2550,7 @@ class Figur():
         -------
 
         """
-        self._core.sensing_username()
+        return self._core.sensing_username()
                 
     def ändere_effekt_aussteuern_links_rechts_um(self, value):
         """ändere Effekt Aussteuern links/rechts um %2
@@ -2569,7 +2569,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_changeeffectby_pan(value)
+        return self._core.sound_changeeffectby_pan(value)
                 
     def ändere_effekt_höhe_um(self, value):
         """ändere Effekt Höhe um %2
@@ -2588,7 +2588,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_changeeffectby_pitch(value)
+        return self._core.sound_changeeffectby_pitch(value)
                 
     def ändere_lautstärke_um(self, value):
         """ändere Lautstärke um %1
@@ -2607,7 +2607,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_changevolumeby(value)
+        return self._core.sound_changevolumeby(value)
                 
     def schalte_klangeffekte_aus(self):
         """schalte Klangeffekte aus
@@ -2622,7 +2622,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_cleareffects()
+        return self._core.sound_cleareffects()
                 
     def spiele_klang(self, name, loop=0):
         """spiele Klang %1
@@ -2642,7 +2642,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_play(name, loop=0)
+        return self._core.sound_play(name, loop=0)
                 
     def spiele_klang_ganz(self, name):
         """spiele Klang %1 ganz
@@ -2661,7 +2661,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_playuntildone(name)
+        return self._core.sound_playuntildone(name)
                 
     def setze_effekt_aussteuern_links_rechts_auf(self, value):
         """setze Effekt Aussteuern links/rechts auf %2
@@ -2680,7 +2680,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_seteffectto_pan(value)
+        return self._core.sound_seteffectto_pan(value)
                 
     def setze_effekt_höhe_auf(self, value):
         """setze Effekt Höhe auf %2
@@ -2699,7 +2699,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_seteffectto_pitch(value)
+        return self._core.sound_seteffectto_pitch(value)
                 
     def setze_lautstärke_auf(self, value):
         """setze Lautstärke auf %1%
@@ -2718,7 +2718,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_setvolumeto(value)
+        return self._core.sound_setvolumeto(value)
                 
     def stoppe_alle_klänge(self):
         """stoppe alle Klänge
@@ -2733,7 +2733,7 @@ class Figur():
         -------
 
         """
-        self._core.sound_stopallsounds()
+        return self._core.sound_stopallsounds()
                 
     def lautstärke(self):
         """Lautstärke
@@ -2748,5 +2748,5 @@ class Figur():
         -------
 
         """
-        self._core.sound_volume()
+        return self._core.sound_volume()
                 

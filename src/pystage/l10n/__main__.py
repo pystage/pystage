@@ -182,7 +182,7 @@ class {sprite_class}():
         -------
 
         """
-        self._core.{name}{deleteself.sub("", params_call)}
+        return self._core.{name}{deleteself.sub("", params_call)}
                 ''')
 
 

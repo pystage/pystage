@@ -34,7 +34,7 @@ class Stage():
         -------
 
         """
-        self._core.control_create_clone_of(sprite='_my_')
+        return self._core.control_create_clone_of(sprite='_my_')
                 
     def stop_all(self):
         """stop all
@@ -49,7 +49,7 @@ class Stage():
         -------
 
         """
-        self._core.control_stop_all()
+        return self._core.control_stop_all()
                 
     def stop_other_scripts_in_sprite(self):
         """stop other scripts in sprite
@@ -64,7 +64,7 @@ class Stage():
         -------
 
         """
-        self._core.control_stop_other()
+        return self._core.control_stop_other()
                 
     def stop_this_script(self):
         """stop this script
@@ -79,7 +79,7 @@ class Stage():
         -------
 
         """
-        self._core.control_stop_this()
+        return self._core.control_stop_this()
                 
     def wait_seconds(self, secs):
         """wait %1 seconds
@@ -98,7 +98,7 @@ class Stage():
         -------
 
         """
-        self._core.control_wait(secs)
+        return self._core.control_wait(secs)
                 
     def broadcast(self, message):
         """broadcast %1
@@ -117,7 +117,7 @@ class Stage():
         -------
 
         """
-        self._core.event_broadcast(message)
+        return self._core.event_broadcast(message)
                 
     def broadcast_and_wait(self, message):
         """broadcast %1 and wait
@@ -136,7 +136,7 @@ class Stage():
         -------
 
         """
-        self._core.event_broadcastandwait(message)
+        return self._core.event_broadcastandwait(message)
                 
     def when_backdrop_switches_to(self, backdrop, generator_function, name='', no_refresh=False):
         """when backdrop switches to %1
@@ -158,7 +158,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name='', no_refresh=False)
                 
     def when_i_receive(self, message, generator_function, name='', no_refresh=False):
         """when I receive %1
@@ -180,7 +180,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
+        return self._core.event_whenbroadcastreceived(message, generator_function, name='', no_refresh=False)
                 
     def when_GREENFLAG_clicked(self, generator_function, name='', no_refresh=False):
         """when <greenflag> clicked
@@ -201,7 +201,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenflagclicked(generator_function, name='', no_refresh=False)
                 
     def when_loudness_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """when loudness <greater> %2
@@ -223,7 +223,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_loudness(value, generator_function, name='', no_refresh=False)
                 
     def when_timer_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
         """when timer <greater> %2
@@ -245,7 +245,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whengreaterthan_timer(value, generator_function, name='', no_refresh=False)
+        return self._core.event_whengreaterthan_timer(value, generator_function, name='', no_refresh=False)
                 
     def when_key_pressed(self, key, generator_function, name='', no_refresh=False):
         """when %1 key pressed
@@ -267,7 +267,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whenkeypressed(key, generator_function, name='', no_refresh=False)
+        return self._core.event_whenkeypressed(key, generator_function, name='', no_refresh=False)
                 
     def when_this_sprite_clicked(self, generator_function, name='', no_refresh=False):
         """when this sprite clicked
@@ -288,7 +288,7 @@ class Stage():
         -------
 
         """
-        self._core.event_whenthisspriteclicked(generator_function, name='', no_refresh=False)
+        return self._core.event_whenthisspriteclicked(generator_function, name='', no_refresh=False)
                 
     def backdrop_name(self):
         """backdrop name
@@ -303,7 +303,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_backdropnumbername_name()
+        return self._core.looks_backdropnumbername_name()
                 
     def backdrop_number(self):
         """backdrop number
@@ -318,7 +318,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_backdropnumbername_number()
+        return self._core.looks_backdropnumbername_number()
                 
     def change_brightness_effect_by(self, value):
         """change brightness effect by %2
@@ -337,7 +337,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_brightness(value)
+        return self._core.looks_changeeffectby_brightness(value)
                 
     def change_color_effect_by(self, value):
         """change color effect by %2
@@ -356,7 +356,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_color(value)
+        return self._core.looks_changeeffectby_color(value)
                 
     def change_fisheye_effect_by(self, value):
         """change fisheye effect by %2
@@ -375,7 +375,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_fisheye(value)
+        return self._core.looks_changeeffectby_fisheye(value)
                 
     def change_ghost_effect_by(self, value):
         """change ghost effect by %2
@@ -394,7 +394,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_ghost(value)
+        return self._core.looks_changeeffectby_ghost(value)
                 
     def change_mosaic_effect_by(self, value):
         """change mosaic effect by %2
@@ -413,7 +413,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_mosaic(value)
+        return self._core.looks_changeeffectby_mosaic(value)
                 
     def change_pixelate_effect_by(self, value):
         """change pixelate effect by %2
@@ -432,7 +432,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_pixelate(value)
+        return self._core.looks_changeeffectby_pixelate(value)
                 
     def change_whirl_effect_by(self, value):
         """change whirl effect by %2
@@ -451,7 +451,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_changeeffectby_whirl(value)
+        return self._core.looks_changeeffectby_whirl(value)
                 
     def clear_graphic_effects(self):
         """clear graphic effects
@@ -466,7 +466,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_cleargraphiceffects()
+        return self._core.looks_cleargraphiceffects()
                 
     def next_backdrop(self):
         """next backdrop
@@ -481,7 +481,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_nextbackdrop()
+        return self._core.looks_nextbackdrop()
                 
     def set_brightness_effect_to(self, value):
         """set brightness effect to %2
@@ -500,7 +500,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_brightness(value)
+        return self._core.looks_seteffectto_brightness(value)
                 
     def set_color_effect_to(self, value):
         """set color effect to %2
@@ -519,7 +519,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_color(value)
+        return self._core.looks_seteffectto_color(value)
                 
     def set_fisheye_effect_to(self, value):
         """set fisheye effect to %2
@@ -538,7 +538,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_fisheye(value)
+        return self._core.looks_seteffectto_fisheye(value)
                 
     def set_ghost_effect_to(self, value):
         """set ghost effect to %2
@@ -557,7 +557,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_ghost(value)
+        return self._core.looks_seteffectto_ghost(value)
                 
     def set_mosaic_effect_to(self, value):
         """set mosaic effect to %2
@@ -576,7 +576,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_mosaic(value)
+        return self._core.looks_seteffectto_mosaic(value)
                 
     def set_pixelate_effect_to(self, value):
         """set pixelate effect to %2
@@ -595,7 +595,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_pixelate(value)
+        return self._core.looks_seteffectto_pixelate(value)
                 
     def set_whirl_effect_to(self, value):
         """set whirl effect to %2
@@ -614,7 +614,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_seteffectto_whirl(value)
+        return self._core.looks_seteffectto_whirl(value)
                 
     def switch_backdrop_to(self, backdrop):
         """switch backdrop to %1
@@ -633,7 +633,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_switchbackdropto(backdrop)
+        return self._core.looks_switchbackdropto(backdrop)
                 
     def switch_backdrop_to_and_wait(self, backdrop):
         """switch backdrop to %1 and wait
@@ -652,7 +652,7 @@ class Stage():
         -------
 
         """
-        self._core.looks_switchbackdroptoandwait(backdrop)
+        return self._core.looks_switchbackdroptoandwait(backdrop)
                 
     def of(self, operator, number):
         """%1 of %2
@@ -672,7 +672,7 @@ class Stage():
         -------
 
         """
-        self._core.operator_mathop(operator, number)
+        return self._core.operator_mathop(operator, number)
                 
     def pick_random_to(self, start, end):
         """pick random %1 to %2
@@ -692,7 +692,7 @@ class Stage():
         -------
 
         """
-        self._core.operator_random(start, end)
+        return self._core.operator_random(start, end)
                 
     def pystage_addbackdrop(self, name, center_x=None, center_y=None):
         """
@@ -713,7 +713,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_addbackdrop(name, center_x=None, center_y=None)
+        return self._core.pystage_addbackdrop(name, center_x=None, center_y=None)
                 
     def pystage_addsound(self, name):
         """
@@ -732,7 +732,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_addsound(name)
+        return self._core.pystage_addsound(name)
                 
     def pystage_createsprite(self, costume='default'):
         """
@@ -751,7 +751,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_createsprite(costume='default')
+        return self._core.pystage_createsprite(costume='default')
                 
     def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
         """
@@ -773,7 +773,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_insertbackdrop(index, name, center_x=None, center_y=None)
+        return self._core.pystage_insertbackdrop(index, name, center_x=None, center_y=None)
                 
     def pystage_play(self):
         """
@@ -788,7 +788,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_play()
+        return self._core.pystage_play()
                 
     def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
         """
@@ -810,7 +810,7 @@ class Stage():
         -------
 
         """
-        self._core.pystage_replacebackdrop(index, name, center_x=None, center_y=None)
+        return self._core.pystage_replacebackdrop(index, name, center_x=None, center_y=None)
                 
     def answer(self):
         """answer
@@ -825,7 +825,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_answer()
+        return self._core.sensing_answer()
                 
     def ask_and_wait(self, question):
         """ask %1 and wait
@@ -844,7 +844,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_askandwait(question)
+        return self._core.sensing_askandwait(question)
                 
     def current_date(self):
         """current date
@@ -859,7 +859,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_date()
+        return self._core.sensing_current_date()
                 
     def current_day_of_week(self):
         """current day of week
@@ -874,7 +874,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_dayofweek()
+        return self._core.sensing_current_dayofweek()
                 
     def current_hour(self):
         """current hour
@@ -889,7 +889,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_hour()
+        return self._core.sensing_current_hour()
                 
     def current_minute(self):
         """current minute
@@ -904,7 +904,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_minute()
+        return self._core.sensing_current_minute()
                 
     def current_month(self):
         """current month
@@ -919,7 +919,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_month()
+        return self._core.sensing_current_month()
                 
     def current_second(self):
         """current second
@@ -934,7 +934,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_second()
+        return self._core.sensing_current_second()
                 
     def current_year(self):
         """current year
@@ -949,7 +949,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_current_year()
+        return self._core.sensing_current_year()
                 
     def days_since(self):
         """days since 2000
@@ -964,7 +964,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_dayssince2000()
+        return self._core.sensing_dayssince2000()
                 
     def key_pressed(self, key):
         """key %1 pressed?
@@ -983,7 +983,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_keypressed(key)
+        return self._core.sensing_keypressed(key)
                 
     def loudness(self):
         """loudness
@@ -998,7 +998,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_loudness()
+        return self._core.sensing_loudness()
                 
     def mouse_down(self):
         """mouse down?
@@ -1013,7 +1013,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_mousedown()
+        return self._core.sensing_mousedown()
                 
     def mouse_x(self):
         """mouse x
@@ -1028,7 +1028,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_mousex()
+        return self._core.sensing_mousex()
                 
     def mouse_y(self):
         """mouse y
@@ -1043,7 +1043,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_mousey()
+        return self._core.sensing_mousey()
                 
     def backdrop_name_of(self, stage='_stage_'):
         """backdrop name of %2
@@ -1062,7 +1062,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_backdropname(stage='_stage_')
+        return self._core.sensing_of_backdropname(stage='_stage_')
                 
     def backdrop_of(self, stage='_stage_'):
         """backdrop # of %2
@@ -1081,7 +1081,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_backdropnumber(stage='_stage_')
+        return self._core.sensing_of_backdropnumber(stage='_stage_')
                 
     def costume_name_of(self, sprite):
         """costume name of %2
@@ -1100,7 +1100,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_costumename(sprite)
+        return self._core.sensing_of_costumename(sprite)
                 
     def costume_of(self, sprite):
         """costume # of %2
@@ -1119,7 +1119,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_costumenumber(sprite)
+        return self._core.sensing_of_costumenumber(sprite)
                 
     def direction_of(self, sprite):
         """direction of %2
@@ -1138,7 +1138,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_direction(sprite)
+        return self._core.sensing_of_direction(sprite)
                 
     def size_of(self, sprite):
         """size of %2
@@ -1157,7 +1157,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_size(sprite)
+        return self._core.sensing_of_size(sprite)
                 
     def of(self, variable, sprite='_stage_'):
         """%1 of %2
@@ -1177,7 +1177,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_variable(variable, sprite='_stage_')
+        return self._core.sensing_of_variable(variable, sprite='_stage_')
                 
     def volume_of(self, sprite='_stage_'):
         """volume of %2
@@ -1196,7 +1196,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_volume(sprite='_stage_')
+        return self._core.sensing_of_volume(sprite='_stage_')
                 
     def x_position_of(self, sprite):
         """x position of %2
@@ -1215,7 +1215,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_xposition(sprite)
+        return self._core.sensing_of_xposition(sprite)
                 
     def y_position_of(self, sprite):
         """y position of %2
@@ -1234,7 +1234,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_of_yposition(sprite)
+        return self._core.sensing_of_yposition(sprite)
                 
     def reset_timer(self):
         """reset timer
@@ -1249,7 +1249,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_resettimer()
+        return self._core.sensing_resettimer()
                 
     def set_drag_mode_draggable(self):
         """set drag mode draggable
@@ -1264,7 +1264,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_setdragmode_draggable()
+        return self._core.sensing_setdragmode_draggable()
                 
     def set_drag_mode_not_draggable(self):
         """set drag mode not draggable
@@ -1279,7 +1279,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_setdragmode_notdraggable()
+        return self._core.sensing_setdragmode_notdraggable()
                 
     def timer(self):
         """timer
@@ -1294,7 +1294,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_timer()
+        return self._core.sensing_timer()
                 
     def username(self):
         """username
@@ -1309,7 +1309,7 @@ class Stage():
         -------
 
         """
-        self._core.sensing_username()
+        return self._core.sensing_username()
                 
     def change_pan_left_right_effect_by(self, value):
         """change pan left/right effect by %2
@@ -1328,7 +1328,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_changeeffectby_pan(value)
+        return self._core.sound_changeeffectby_pan(value)
                 
     def change_pitch_effect_by(self, value):
         """change pitch effect by %2
@@ -1347,7 +1347,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_changeeffectby_pitch(value)
+        return self._core.sound_changeeffectby_pitch(value)
                 
     def change_volume_by(self, value):
         """change volume by %1
@@ -1366,7 +1366,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_changevolumeby(value)
+        return self._core.sound_changevolumeby(value)
                 
     def clear_sound_effects(self):
         """clear sound effects
@@ -1381,7 +1381,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_cleareffects()
+        return self._core.sound_cleareffects()
                 
     def start_sound(self, name, loop=0):
         """start sound %1
@@ -1401,7 +1401,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_play(name, loop=0)
+        return self._core.sound_play(name, loop=0)
                 
     def play_sound_until_done(self, name):
         """play sound %1 until done
@@ -1420,7 +1420,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_playuntildone(name)
+        return self._core.sound_playuntildone(name)
                 
     def set_pan_left_right_effect_to(self, value):
         """set pan left/right effect to %2
@@ -1439,7 +1439,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_seteffectto_pan(value)
+        return self._core.sound_seteffectto_pan(value)
                 
     def set_pitch_effect_to(self, value):
         """set pitch effect to %2
@@ -1458,7 +1458,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_seteffectto_pitch(value)
+        return self._core.sound_seteffectto_pitch(value)
                 
     def set_volume_to(self, value):
         """set volume to %1%
@@ -1477,7 +1477,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_setvolumeto(value)
+        return self._core.sound_setvolumeto(value)
                 
     def stop_all_sounds(self):
         """stop all sounds
@@ -1492,7 +1492,7 @@ class Stage():
         -------
 
         """
-        self._core.sound_stopallsounds()
+        return self._core.sound_stopallsounds()
                 
     def volume(self):
         """volume
@@ -1507,5 +1507,5 @@ class Stage():
         -------
 
         """
-        self._core.sound_volume()
+        return self._core.sound_volume()
                 
