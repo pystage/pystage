@@ -43,7 +43,7 @@ class _LooksSprite(BaseSprite):
         pass
 
     def looks_nextcostume(self):
-        pass
+        self.costume_manager.next_costume()
 
     def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.

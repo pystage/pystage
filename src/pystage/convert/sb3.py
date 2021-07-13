@@ -195,7 +195,15 @@ def get_intermediate(data, name):
             "blocks": [],
             "costumes": [],
             "sounds": [],
-            "currentCostume": 0,
+            "currentCostume": target["currentCostume"],
+            "layerOrder": target["layerOrder"],
+            "visible": target["visible"] if "visible" in target else True,
+            "x": target["x"] if "x" in target else 0,
+            "y": target["y"] if "y" in target else 0,
+            "size": target["size"] if "size" in target else 100,
+            "volume": target["volume"] if "volume" in target else 100,
+            "direction": target["direction"] if "direction" in target else 90,
+            "rotationStyle": target["rotationStyle"] if "rotationStyle" in target else "all around",
         })
         if target["isStage"]:
             project["stage"] = sprite
@@ -222,6 +230,7 @@ def get_intermediate(data, name):
             sprite["costumes"].append({
                 "md5": c["assetId"],
                 "local_name": c["name"],
+                "bitmapResolution": c["bitmapResolution"],
                 "rotationCenterX": c["rotationCenterX"],
                 "rotationCenterY": c["rotationCenterY"],
             })
@@ -277,11 +286,39 @@ def get_python(project, language="core"):
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
+                {sprite_var}.{get_translated_function("motion_setx", language)}({sprite["x"]})
+                {sprite_var}.{get_translated_function("motion_sety", language)}({sprite["y"]})
+                {sprite_var}.{get_translated_function("looks_gotofrontback_back", language)}()
+                {sprite_var}.{get_translated_function("looks_goforwardbackwardlayers_forward", language)}({sprite["layerOrder"]})
                 ''')
+        if sprite["direction"] != 90:
+            res += textwrap.dedent(f"""\
+                    {sprite_var}.{get_translated_function("motion_pointindirection", language)}({sprite["direction"]})
+                    """)
+        if sprite["size"] != 100:
+            res += textwrap.dedent(f"""\
+                    {sprite_var}.{get_translated_function("looks_setsizeto", language)}({sprite["size"]})
+                    """)
+        if not sprite["visible"]:
+            res += textwrap.dedent(f"""\
+                    {sprite_var}.{get_translated_function("looks_hide", language)}()
+                    """)
+        if sprite["volume"] != 100:
+            res += textwrap.dedent(f"""\
+                    {sprite_var}.{get_translated_function("sound_setvolumeto", language)}({sprite["volume"]})
+                    """)
+        if sprite["rotationStyle"] != "all around":
+            print("WARNING: preset rotation styles not yet implemented!")
         for c in costumes:
             res += textwrap.dedent(f'''\
                 {sprite_var}.{add_costume}('{c}')
                 ''')
+        if sprite["currentCostume"] != 0:
+            for i in range(sprite["currentCostume"]):
+                res += textwrap.dedent(f'''\
+                    {sprite_var}.{get_translated_function("looks_nextcostume", language)}()
+                    ''')
+
         for s in sounds:
             res += textwrap.dedent(f'''\
                 {sprite_var}.{add_sound}('{s}')

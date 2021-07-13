@@ -86,7 +86,7 @@ class _Motion():
         pass
 
     def motion_pointindirection(self, direction):
-        pass
+        self.direction = direction
 
     def motion_pointtowards_pointer(self):
         pass

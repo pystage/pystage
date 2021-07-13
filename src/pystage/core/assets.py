@@ -34,6 +34,13 @@ class CostumeManager():
         costume = Costume(self, name, center_x, center_y)
         self.costumes.insert(index, costume)
 
+    def next_costume(self):
+        if self.current_costume == -1:
+            return
+        self.current_costume += 1
+        if self.current_costume == len(self.costumes):
+            self.current_costume = 0
+
 
     def get_image(self):
         if self.current_costume == -1:
