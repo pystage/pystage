@@ -69,7 +69,7 @@ class Costume():
         self.name = name
         internal_folder = pkg_resources.resource_filename("pystage", "images/")
         for folder in ["", "images/", "bilder/", internal_folder]:
-            for ext in ["", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
+            for ext in ["", ".bmp", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
                 if os.path.exists(f"{folder}{name}{ext}"):
                     self.file = f"{folder}{name}{ext}"
                     break
@@ -90,10 +90,11 @@ class Costume():
         else:
             self.image = pygame.image.load(self.file)
         if factor!=1:
-            self.image = pygame.transform.rotozoom(self.image, 0, 1/factor)
-        self.image = self.image.subsurface(self.image.get_bounding_rect()) 
-        self.center_x = self.image.get_width() / 2 if center_x is None else center_x
-        self.center_y = self.image.get_height() / 2 if center_y is None else center_y
+            self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
+            # self.image = pygame.transform.smoothscale(self.image, (int(self.image.get_width() / factor), int(self.image.get_height() / factor)))
+        # self.image = self.image.subsurface(self.image.get_bounding_rect()) 
+        self.center_x = self.image.get_width() / 2 if center_x is None else center_x / factor 
+        self.center_y = self.image.get_height() / 2 if center_y is None else center_y / factor
 
 
     def __str__(self):

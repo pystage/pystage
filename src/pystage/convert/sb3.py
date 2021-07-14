@@ -230,7 +230,7 @@ def get_intermediate(data, name):
             sprite["costumes"].append({
                 "md5": c["assetId"],
                 "local_name": c["name"],
-                "bitmapResolution": c["bitmapResolution"],
+                "bitmapResolution": c["bitmapResolution"] if "bitmapResolution" in c else 1,
                 "rotationCenterX": c["rotationCenterX"],
                 "rotationCenterY": c["rotationCenterY"],
             })
@@ -282,7 +282,7 @@ def get_python(project, language="core"):
     for sprite in project["sprites"]:
         writer.set_sprite(sprite["name"])
         sprite_var = writer.get_sprite_var()
-        costumes = [(writer.global_costume(c["local_name"], False), c["bitmapResolution"]) for c in sprite["costumes"]]
+        costumes = [(writer.global_costume(c["local_name"], False), c) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
@@ -311,10 +311,10 @@ def get_python(project, language="core"):
             print("WARNING: preset rotation styles not yet implemented!")
         for c in costumes:
             factor = ""
-            if c[1] != 1:
-                factor=f", factor={c[1]}"
+            if c[1]["bitmapResolution"] != 1:
+                factor=f", factor={c[1]['bitmapResolution']}"
             res += textwrap.dedent(f'''\
-                {sprite_var}.{add_costume}('{c[0]}'{factor})
+                {sprite_var}.{add_costume}('{c[0]}', center_x={c[1]["rotationCenterX"]}, center_y={c[1]["rotationCenterY"]}{factor})
                 ''')
         if sprite["currentCostume"] != 0:
             for i in range(sprite["currentCostume"]):
