@@ -41,6 +41,12 @@ class CostumeManager():
         if self.current_costume == len(self.costumes):
             self.current_costume = 0
 
+    def switch_costume(self, name):
+        for i, costume in enumerate(self.costumes):
+            if costume.name.lower().strip() == name.lower().strip():
+                self.current_costume = i
+                return
+
 
     def get_image(self):
         if self.current_costume == -1:

@@ -1,5 +1,6 @@
 import enum
 import math
+from pystage.core._sensing import _Sensing
 
 def _deg2rad(deg):
     return deg / 360 * 2 * math.pi
@@ -8,7 +9,7 @@ def _deg2rad(deg):
 def _rad2deg(rad):
     return rad / (2 * math.pi) * 360
 
-class _Motion():
+class _Motion(_Sensing):
     def __init__(self):
         super().__init__()
         self.x = 0.0
@@ -39,7 +40,7 @@ class _Motion():
 
 
     def motion_goto_pointer(self):
-        pass
+        self.motion_gotoxy(self.sensing_mousex(), self.sensing_mousey())
 
     motion_goto_pointer.opcode = "motion_goto"
     motion_goto_pointer.param = "TO"
@@ -47,7 +48,7 @@ class _Motion():
 
 
     def motion_goto_sprite(self, sprite):
-        pass
+        self.motion_gotoxy(sprite.x, sprite.y)
 
     motion_goto_sprite.opcode = "motion_goto"
 
@@ -83,7 +84,11 @@ class _Motion():
 
 
     def motion_glidesecstoxy(self, secs, x, y):
-        pass
+        self.code_manager.current_block.gliding_seconds = secs
+        self.code_manager.current_block.add_to_wait_time = secs
+        self.code_manager.current_block.gliding_start_position = (self.x, self.y)
+        self.code_manager.current_block.gliding_end_position = (x, y)
+        self.code_manager.current_block.gliding = True
 
     def motion_pointindirection(self, direction):
         self.direction = direction

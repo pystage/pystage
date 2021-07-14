@@ -36,8 +36,7 @@ class _LooksSprite(BaseSprite):
         self.bubble_manager.say(text, BubbleManager.THINK)
 
     def looks_switchcostumeto(self, costume):
-        # TODO: Data/class structure for costumes
-        pass
+        self.costume_manager.switch_costume(costume)
 
     def looks_nextcostume(self):
         self.costume_manager.next_costume()

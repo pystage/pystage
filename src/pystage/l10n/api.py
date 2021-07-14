@@ -51,10 +51,27 @@ def get_core_function(translated, language, stage=False):
     cls = lang.stage_class if stage else lang.sprite_class
     for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
         for i in dis.Bytecode(func):
-            if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and name==translated:
-                # print(f"Translated: {name}")
-                # TODO: This is most likely not sufficient...
+            if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and name==translated and i.argval!="_core":
                 return i.argval
-    # print(f"No core API method found for {name}")
+    return None
+
+def get_core_function_from_instance(translated, instance):
+    """Get core API function for a translated function name.
+
+    Use the function metadata to determine the correct translated API
+    function based on a given core function name.
+
+    Parameters
+    ----------
+    translated : str
+        A translated function name, i.e. a method from a sprite or stage class
+    instance : object
+        A stage or sprite instance from a translated API
+    """
+    cls = instance.__class__
+    for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
+        for i in dis.Bytecode(func):
+            if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and name==translated and i.argval!="_core":
+                return i.argval
     return None
 

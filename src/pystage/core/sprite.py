@@ -56,4 +56,4 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
 
     def _pg_pos(self, offset=(0,0)):
         return (self.x + self.stage.center_x + offset[0], 
-                self.y + self.stage.center_y + offset[1])
+                -self.y + self.stage.center_y + offset[1])
