@@ -68,6 +68,9 @@ def get_core_function_from_instance(translated, instance):
     instance : object
         A stage or sprite instance from a translated API
     """
+    # If core is used directly, return translated:
+    if not instance:
+        return translated
     cls = instance.__class__
     for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
         for i in dis.Bytecode(func):

@@ -123,58 +123,71 @@ def render_lines(lines, font, color, lw, lh, lh_offset):
     return surface
 
 
-class BubbleManager():
+
+class Bubble(pygame.sprite.Sprite):
     say_file = pkg_resources.resource_filename("pystage", "images/say.png")
     think_file = pkg_resources.resource_filename("pystage", "images/think.png")
     
     SAY = ResizableBorder(say_file, (18,18,154, 35))
     THINK = ResizableBorder(think_file, (18,18,154, 35))
 
-    def __init__(self, sprite):
+    def __init__(self, sprite, text: str, border: ResizableBorder):
+        super().__init__()
         self.sprite = sprite
-        self.active = False
-        self.text = ""
-        self.border = None
-        self.surface = None
-        self.text_surface = None
+        self.text = text
+        self.border = border
         self.flipped = False
+        self.sprite_x = self.sprite.x
+        self.sprite_y = self.sprite.y
         self.x_offset = -0.1 # percent of sprite width based on lower right corner
         self.y_offset = -0.5 # percent of sprite height based on lower right corner
-
-    def say(self, text: str, border=SAY):
-        print(text)
-        if text is None or text.strip() == "":
-            self.active = False
-            self.text = ""
-        else:
-            self.active = True
-            self.text = text
-            self.border = border
-            lh_offset = -1
-            lines, lw, lh = wrap_text(self.text[:360], regular_font_14, 170)
-            self.text_surface = render_lines(lines, regular_font_14, color1, lw+10, lh, lh_offset)
-            self.surface = self.border.render(self.text_surface.get_width() + 26, self.text_surface.get_height() + 40)
+        lh_offset = -1
+        lines, lw, lh = wrap_text(self.text[:360], regular_font_14, 170)
+        self.text_surface = render_lines(lines, regular_font_14, color1, lw+10, lh, lh_offset)
+        self.image_normal = self.border.render(self.text_surface.get_width() + 26, self.text_surface.get_height() + 40)
+        self.image_flipped = pygame.transform.flip(self.image_normal, True, False)
+        self.image_normal.blit(self.text_surface, (13, 13))
+        self.image_flipped.blit(self.text_surface, (13, 13))
+        self.image = self.image_normal
+        self.rect = self.image.get_rect()
+        self.update(force=True)
 
 
-    def _draw(self, surface: pygame.Surface):
-        if not self.active:
+    def update(self, force=False):
+        if not force and self.sprite.x == self.sprite_x and self.sprite.y == self.sprite_y:
             return
-        else:
-            y = max(0, self.sprite._pg_pos()[1] - self.surface.get_height() + self.sprite.costume_manager.get_image().get_height() * self.y_offset)
-            if not self.flipped:
-                x = self.sprite._pg_pos()[0] - self.surface.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
-                if x < 0:
-                    self.flipped = True
-                    x = self.sprite._pg_pos()[0] - self.sprite.costume_manager.get_image().get_width() * self.x_offset
-            else:
+        y = max(0, self.sprite._pg_pos()[1] - self.image_normal.get_height() + self.sprite.costume_manager.get_image().get_height() * self.y_offset)
+        if not self.flipped:
+            x = self.sprite._pg_pos()[0] - self.image_normal.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
+            if x < 0:
+                self.flipped = True
                 x = self.sprite._pg_pos()[0] - self.sprite.costume_manager.get_image().get_width() * self.x_offset
-                if x + self.surface.get_width() > self.sprite.stage.width:
-                    self.flipped = False
-                    x = self.sprite._pg_pos()[0] - self.surface.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
-            transformed = self.surface
-            if self.flipped:
-                transformed = pygame.transform.flip(self.surface, True, False)
+        else:
+            x = self.sprite._pg_pos()[0] - self.sprite.costume_manager.get_image().get_width() * self.x_offset
+            if x + self.image_normal.get_width() > self.sprite.stage.width:
+                self.flipped = False
+                x = self.sprite._pg_pos()[0] - self.image_normal.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
+        self.image = self.image_flipped if self.flipped else self.image_normal
+        self.rect.x = x
+        self.rect.y = y
 
-            surface.blit(transformed, (x, y))
-            surface.blit(self.text_surface, (x + 13, y + 13))
+
+
+
+class BubbleManager():
+
+    def __init__(self, sprite):
+        self.sprite = sprite
+        self.flipped = False
+        self.bubble = None
+
+    def say(self, text: str, border=Bubble.SAY):
+        print(text)
+        if self.bubble:
+            self.bubble.kill()
+            self.bubble = None
+        if text is not None and text.strip() != "":
+            self.bubble = Bubble(self.sprite, text, border)
+            self.sprite.stage.bubbles.add(self.bubble)
+
 

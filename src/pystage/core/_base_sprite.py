@@ -1,6 +1,8 @@
+import pygame
+
 from pystage.core.code_block import CodeBlock, CodeManager
 
-class BaseSprite():
+class BaseSprite(pygame.sprite.Sprite):
     """Base Class for Mixin Classes that need access to the stage.
     """
     

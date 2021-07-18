@@ -13,6 +13,13 @@ from pystage.core._control import _Control
 from pystage.core.messages import MessageBroker
 import os
 
+
+class SpriteGroup(pygame.sprite.OrderedUpdates):
+
+    def __init__(self):
+        super().__init__()
+
+
 class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
 
@@ -32,7 +39,8 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.FPS = 60
         self.dt = 0
         # The stage is added to the sprites as it also contains code.
-        self.sprites = [self]
+        self.sprites = SpriteGroup()
+        self.bubbles = pygame.sprite.Group()
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
         # it defines the in-game resolution
@@ -53,7 +61,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
     def pystage_createsprite(self, costume="default"):
         sprite = CoreSprite(self, costume)
-        self.sprites.append(sprite)
+        self.sprites.add(sprite)
         if self.sprite_facade_class:
             return self.sprite_facade_class(sprite) # pylint: disable=E1102
             # pylint produces a false positive here
@@ -88,6 +96,12 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
                 if event.type == pygame.KEYDOWN:
                     for sprite in self.sprites:
                         sprite.code_manager.process_key_pressed(event.key)
+                if event.type == pygame.MOUSEBUTTONUP:
+                    pos = pygame.mouse.get_pos()
+                    for sprite in self.sprites[-1:1:-1]:
+                        rect = sprite.costume_manager.get_image().get_rect(topleft=sprite._pg_pos())
+                        if rect.collidepoint(pos):
+                            print("clicked", sprite)
             for message in self.message_broker.get_messages():
                 for sprite in self.sprites:
                     sprite.code_manager.process_broadcast(message)
@@ -95,9 +109,11 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
             self._draw(self.surface)
 
-            for sprite in self.sprites:
-                sprite._update(dt)
-                sprite._draw(self.surface)
+            self.sprites.update(dt)
+            self.bubbles.update()
+
+            self.sprites.draw(self.surface)
+            self.bubbles.draw(self.surface)
 
             factor_x = self.screen.get_width() / self.surface.get_width()
             factor_y = self.screen.get_height() / self.surface.get_height()

@@ -148,7 +148,7 @@ class {sprite_class}():
             ''')
         translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
-            if name.startswith("_"):
+            if name.startswith("_") or name=="update":
                 continue
             param_keys = [key for key in inspect.signature(func).parameters]
             params = [str(inspect.signature(func).parameters[key]) for key in param_keys]

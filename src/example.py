@@ -36,10 +36,10 @@ def left(self: CoreSprite):
     self.motion_changexby(-10)
 
 def up(self: CoreSprite):
-    self.motion_changeyby(-10)
+    self.motion_changeyby(10)
 
 def down(self: CoreSprite):
-    self.motion_changeyby(10)
+    self.motion_changeyby(-10)
 
 def mouse(self: CoreSprite):
     self.looks_say(f"Mouse pos: {self.sensing_mousex()} / {self.sensing_mousey()}")
