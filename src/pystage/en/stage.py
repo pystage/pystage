@@ -791,7 +791,7 @@ class Stage():
         """
         return self._core.operator_random(start, end)
                 
-    def pystage_addbackdrop(self, name, center_x=None, center_y=None):
+    def add_backdrop(self, name, center_x=None, center_y=None):
         """
 
         Translation string: 

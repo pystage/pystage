@@ -147,6 +147,7 @@ class Costume():
         # self.image = self.image.subsurface(self.image.get_bounding_rect()) 
         self.center_x = self.image.get_width() / 2 if center_x is None else center_x / factor 
         self.center_y = self.image.get_height() / 2 if center_y is None else center_y / factor
+        print(f"New costume: {name} -> {self.file}")
 
 
     def __str__(self):

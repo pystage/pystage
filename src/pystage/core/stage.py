@@ -107,7 +107,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         if not image:
             return
         center_x, center_y = self.costume_manager.get_center()
-        surface.blit(image, (self.center_x - center_x, self.center_y - center_y))
+        surface.blit(image, (0,0))
 
 
     def pystage_play(self):
