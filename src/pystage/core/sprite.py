@@ -6,16 +6,15 @@ import pkg_resources
 from pystage.core._events import _Events
 from pystage.core._motion import _Motion
 from pystage.core._sensing import _Sensing, _SensingSprite
-from pystage.core._looks_sprite import _LooksSprite
+from pystage.core._looks import _LooksSprite
 from pystage.core._pen import _Pen
 from pystage.core._variables import _Variables
 from pystage.core._operators import _Operators
-from pystage.core._control import _Control
-from pystage.core._control_sprite import _ControlSprite
+from pystage.core._control import _ControlSprite
 from pystage.core._sound import _Sound
 
 
-class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _Control, _ControlSprite, _Operators, _Variables, _Pen):
+class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _ControlSprite, _Operators, _Variables, _Pen):
 
     def __init__(self, stage, costume="default"):
         super().__init__()

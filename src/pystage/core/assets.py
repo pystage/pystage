@@ -65,6 +65,13 @@ class CostumeManager():
         if self.current_costume == -1:
             return None
         return self.costumes[self.current_costume].image
+
+
+    def get_costume(self):
+        if self.current_costume == -1:
+            return None
+        return self.costumes[self.current_costume]
+
     
     def get_center(self):
         if self.current_costume == -1:

@@ -4,7 +4,7 @@ from pystage.core.sprite import CoreSprite
 
 # Mixins
 from pystage.core._events import _Events
-from pystage.core._looks_stage import _LooksStage
+from pystage.core._looks import _LooksStage
 from pystage.core._sound import _Sound
 from pystage.core._sensing import _Sensing
 from pystage.core._variables import _Variables

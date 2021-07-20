@@ -1,37 +1,20 @@
+from pystage.core.gui import BubbleManager, Bubble
 from pystage.core.assets import CostumeManager
+from pystage.core._base_sprite import BaseSprite
 
 
-class _LooksStage():
-
+class _Looks(BaseSprite):
     def __init__(self):
         super().__init__()
         self.costume_manager = CostumeManager(self)
-
-
-    def pystage_addbackdrop(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
-
-
-    def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
-
-
-    def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert_costume(index, name, center_x, center_y)
-
 
     def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.
         # In Scratch, a sprite can change the backdrop.
         pass
 
-    def looks_switchbackdroptoandwait(self, backdrop):
-        # Wait for any code under a "when backdrop is changed"
-        pass
-
     def looks_nextbackdrop(self):
         pass
-
 
     def looks_seteffectto_color(self, value):
         pass
@@ -171,6 +154,8 @@ class _LooksStage():
     looks_backdropnumbername_number.value="number"
     looks_backdropnumbername_number.translation="looks_numbername_number"
 
+    looks_backdropnumbername_number.return_type = int
+
 
     def looks_backdropnumbername_name(self):
         pass
@@ -179,3 +164,146 @@ class _LooksStage():
     looks_backdropnumbername_name.param="NUMBER_NAME"
     looks_backdropnumbername_name.value="name"
     looks_backdropnumbername_name.translation="looks_numbername_name"
+
+    looks_backdropnumbername_name.return_type = str
+
+class _LooksSprite(_Looks):
+
+    def __init__(self):
+        super().__init__()
+        self.bubble_manager = BubbleManager(self)
+        self.size = 100
+
+
+    def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.add_costume(name, center_x, center_y, factor)
+
+    def pystage_replacecostume(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.replace_costume(index, name, center_x, center_y, factor)
+
+    def pystage_insertcostume(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.insert_costume(index, name, center_x, center_y, factor)
+
+    def looks_sayforsecs(self, text, secs):
+        pass
+
+
+    def looks_say(self, text):
+        self.bubble_manager.say(text)
+
+
+    def looks_thinkforsecs(self, text, secs):
+        pass
+
+    def looks_think(self, text):
+        self.bubble_manager.say(text, Bubble.THINK)
+
+    def looks_switchcostumeto(self, costume):
+        self.costume_manager.switch_costume(costume)
+
+    def looks_nextcostume(self):
+        self.costume_manager.next_costume()
+
+
+    def looks_changesizeby(self, percent):
+        # this is percentage
+        self.size += percent
+
+    def looks_setsizeto(self, percent):
+        self.size = percent
+
+
+    def looks_show(self):
+        pass
+
+    def looks_hide(self):
+        pass
+
+    def looks_gotofrontback_front(self):
+        pass
+
+    looks_gotofrontback_front.opcode="looks_gotofrontback"
+    looks_gotofrontback_front.param="FRONT_BACK"
+    looks_gotofrontback_front.value="front"
+
+    
+    def looks_gotofrontback_back(self):
+        pass
+
+    looks_gotofrontback_back.opcode="looks_gotofrontback"
+    looks_gotofrontback_back.param="FRONT_BACK"
+    looks_gotofrontback_back.value="back"
+
+
+    def looks_goforwardbackwardlayers_forward(self, value):
+        pass
+
+    looks_goforwardbackwardlayers_forward.opcode="looks_goforwardbackwardlayers"
+    looks_goforwardbackwardlayers_forward.param="FORWARD_BACKWARD"
+    looks_goforwardbackwardlayers_forward.value="forward"
+
+    def looks_goforwardbackwardlayers_backward(self, value):
+        pass
+
+    looks_goforwardbackwardlayers_backward.opcode="looks_goforwardbackwardlayers"
+    looks_goforwardbackwardlayers_backward.param="FORWARD_BACKWARD"
+    looks_goforwardbackwardlayers_backward.value="backward"
+
+
+
+    def looks_costumenumbername_number(self):
+        # 1-based
+        return self.costume_manager.current_costume + 1
+
+    looks_costumenumbername_number.opcode="looks_costumenumbername"
+    looks_costumenumbername_number.param="NUMBER_NAME"
+    looks_costumenumbername_number.value="number"
+    looks_costumenumbername_number.translation="looks_numbername_number"
+
+    looks_costumenumbername_number.return_type = int
+
+
+    def looks_costumenumbername_name(self):
+        costume = self.costume_manager.get_costume()
+        if not costume:
+            return ""
+        return costume.name
+
+    looks_costumenumbername_name.opcode="looks_costumenumbername"
+    looks_costumenumbername_name.param="NUMBER_NAME"
+    looks_costumenumbername_name.value="name"
+    looks_costumenumbername_name.translation="looks_numbername_name"
+
+    looks_costumenumbername_name.return_type = str
+
+    def looks_size(self):
+        # percent
+        return self.size
+
+    looks_size.return_type = float
+
+
+class _LooksStage(_Looks):
+
+    def __init__(self):
+        super().__init__()
+
+
+    def pystage_addbackdrop(self, name, center_x=None, center_y=None):
+        self.costume_manager.add_costume(name, center_x, center_y)
+
+
+    def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.replace_costume(index, name, center_x, center_y)
+
+
+    def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
+        self.costume_manager.insert_costume(index, name, center_x, center_y)
+
+
+    def looks_switchbackdroptoandwait(self, backdrop):
+        # Wait for any code under a "when backdrop is changed"
+        pass
+
+
+
