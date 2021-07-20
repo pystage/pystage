@@ -18,15 +18,27 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
 
     def __init__(self):
         super().__init__()
+    
+
+    def get_layer(self, sprite):
+        try:
+            return self.sprites().index(sprite)
+        except ValueError:
+            return -1
+
+
+    def insert(self, i, sprite):
+        self._spritelist.insert(i, sprite)
 
 
 class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
-        super().__init__()
         # This way, code blocks can consistently refer to the stage with self.stage:
         self.stage = self
+        # Above attributes need to be set first so that mixins can access them properly
+        super().__init__()
         # The facade is the translated API
         self.facade = None
         self.sprite_facade_class : type = None
@@ -40,7 +52,9 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
         self.dt = 0
         # The stage is added to the sprites as it also contains code.
         self.sprites = SpriteGroup()
+        self.visible_sprites = SpriteGroup()
         self.bubbles = pygame.sprite.Group()
+        self.visible_bubbles = pygame.sprite.Group()
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
         # it defines the in-game resolution
@@ -62,12 +76,23 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
     def pystage_createsprite(self, costume="default"):
         sprite = CoreSprite(self, costume)
         self.sprites.add(sprite)
+        self._update_visible()
         if self.sprite_facade_class:
             return self.sprite_facade_class(sprite) # pylint: disable=E1102
             # pylint produces a false positive here
             # https://github.com/PyCQA/pylint/issues/1493
         else:
             return sprite
+
+
+    def _update_visible(self):
+        self.visible_sprites.empty()
+        self.visible_bubbles.empty()
+        for sprite in self.sprites:
+            if sprite.visible:
+                self.visible_sprites.add(sprite)
+                if sprite.bubble_manager.bubble:
+                    self.visible_bubbles.add(sprite.bubble_manager.bubble)
 
 
     def _update(self, dt):
@@ -97,22 +122,30 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
                     for sprite in self.sprites:
                         sprite.code_manager.process_key_pressed(event.key)
                 if event.type == pygame.MOUSEBUTTONUP:
-                    pos = pygame.mouse.get_pos()
-                    for sprite in self.sprites[-1:1:-1]:
-                        rect = sprite.costume_manager.get_image().get_rect(topleft=sprite._pg_pos())
-                        if rect.collidepoint(pos):
+                    pos = pygame.Vector2(pygame.mouse.get_pos())
+                    for sprite in self.visible_sprites.sprites()[-1:0:-1]:
+                        if sprite.rect.collidepoint(pos):
+                            internal_pos = pos - sprite.rect.topleft
+                            x = int(internal_pos.x)
+                            y = int(internal_pos.y)
+                            color = sprite.image.get_at((x, y))
+                            if color.a == 0:
+                                continue
                             print("clicked", sprite)
+                            break
+
+            # Handle broadcast messages
             for message in self.message_broker.get_messages():
                 for sprite in self.sprites:
                     sprite.code_manager.process_broadcast(message)
             self.message_broker.mark_completed()
 
-            self._draw(self.surface)
-
+            self._update(dt)
             self.sprites.update(dt)
             self.bubbles.update()
 
-            self.sprites.draw(self.surface)
+            self._draw(self.surface)
+            self.visible_sprites.draw(self.surface)
             self.bubbles.draw(self.surface)
 
             factor_x = self.screen.get_width() / self.surface.get_width()

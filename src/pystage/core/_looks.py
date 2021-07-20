@@ -11,10 +11,10 @@ class _Looks(BaseSprite):
     def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.
         # In Scratch, a sprite can change the backdrop.
-        pass
+        self.stage.costume_manager.switch_costume(backdrop)
 
     def looks_nextbackdrop(self):
-        pass
+        self.stage.costume_manager.next_costume()
 
     def looks_seteffectto_color(self, value):
         pass
@@ -147,7 +147,7 @@ class _Looks(BaseSprite):
 
     def looks_backdropnumbername_number(self):
         # 1-based
-        pass
+        return self.stage.costume_manager.current_costume + 1
 
     looks_backdropnumbername_number.opcode="looks_backdropnumbername"
     looks_backdropnumbername_number.param="NUMBER_NAME"
@@ -158,7 +158,10 @@ class _Looks(BaseSprite):
 
 
     def looks_backdropnumbername_name(self):
-        pass
+        costume = self.stage.costume_manager.get_costume()
+        if not costume:
+            return ""
+        return costume.name
 
     looks_backdropnumbername_name.opcode="looks_backdropnumbername"
     looks_backdropnumbername_name.param="NUMBER_NAME"
@@ -173,6 +176,7 @@ class _LooksSprite(_Looks):
         super().__init__()
         self.bubble_manager = BubbleManager(self)
         self.size = 100
+        self.visible = True
 
 
     def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
@@ -209,15 +213,26 @@ class _LooksSprite(_Looks):
         # this is percentage
         self.size += percent
 
+
     def looks_setsizeto(self, percent):
         self.size = percent
 
 
     def looks_show(self):
-        pass
+        print("Show", self)
+        if self.visible:
+            return
+        self.visible = True
+        self.stage._update_visible()
+
 
     def looks_hide(self):
-        pass
+        print ("Hide", self)
+        if not self.visible:
+            return
+        self.visible = False
+        self.stage._update_visible()
+
 
     def looks_gotofrontback_front(self):
         pass
@@ -248,7 +263,6 @@ class _LooksSprite(_Looks):
     looks_goforwardbackwardlayers_backward.opcode="looks_goforwardbackwardlayers"
     looks_goforwardbackwardlayers_backward.param="FORWARD_BACKWARD"
     looks_goforwardbackwardlayers_backward.value="backward"
-
 
 
     def looks_costumenumbername_number(self):

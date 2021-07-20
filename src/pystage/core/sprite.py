@@ -17,8 +17,9 @@ from pystage.core._sound import _Sound
 class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprite, _ControlSprite, _Operators, _Variables, _Pen):
 
     def __init__(self, stage, costume="default"):
-        super().__init__()
         self.stage = stage
+        # Above attributes need to be set first so that mixins can access them properly
+        super().__init__()
         default_file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
         self.image = pygame.image.load(default_file)
         self.rect = self.image.get_rect()
@@ -36,3 +37,6 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
     def _pg_pos(self, offset=(0,0)):
         return (self.x + self.stage.center_x + offset[0], 
                 -self.y + self.stage.center_y + offset[1])
+
+    def __str__(self):
+        return self.costume_manager.get_costume().name

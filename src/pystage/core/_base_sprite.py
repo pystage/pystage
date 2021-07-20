@@ -9,6 +9,5 @@ class BaseSprite(pygame.sprite.Sprite):
 
     def __init__(self):
         super().__init__()
-
-        self.stage = None
+        self.stage = self.stage if hasattr(self, "stage") else None
         self.code_manager = CodeManager(self)
