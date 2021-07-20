@@ -33,7 +33,13 @@ class _Events(BaseSprite):
 
 
     def event_whenthisspriteclicked(self, generator_function, name="", no_refresh=False):
-        pass
+        '''
+        Adds the code block to the event queue for clicks.
+        '''
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
+        self.code_manager.clicked_blocks.append(new_block)
+        print(f"Bound to click: {new_block.name}")
+
 
 
     def event_whenbackdropswitchesto(self, backdrop, generator_function, name="", no_refresh=False):

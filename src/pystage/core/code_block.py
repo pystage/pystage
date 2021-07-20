@@ -14,6 +14,7 @@ class CodeManager():
         self.key_pressed_blocks = {}
         # message: [name, ...]
         self.broadcast_blocks = {}
+        self.clicked_blocks = []
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
@@ -28,6 +29,11 @@ class CodeManager():
         if key in self.key_pressed_blocks:
             for name in self.key_pressed_blocks[key]:
                 self.code_blocks[name].start_if_not_running()
+
+
+    def process_click(self):
+        for block in self.clicked_blocks:
+            block.start_or_restart()
 
 
     def process_broadcast(self, message):

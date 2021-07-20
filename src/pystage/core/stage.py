@@ -131,7 +131,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
                             color = sprite.image.get_at((x, y))
                             if color.a == 0:
                                 continue
-                            print("clicked", sprite)
+                            sprite.code_manager.process_click()
                             break
 
             # Handle broadcast messages
