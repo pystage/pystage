@@ -31,7 +31,7 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
         self._spritelist.insert(i, sprite)
 
 
-class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing):
+class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _Variables):
 
 
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):

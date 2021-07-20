@@ -16,13 +16,30 @@ class _Variables(BaseSprite):
         self.variables = {}
 
     def data_setvariableto(self, name, value):
-        pass
+        if name in self.variables:
+            self.variables[name] = value
+        elif name in self.stage.variables:
+            self.stage.variables[name] = value
+        else:
+            raise ValueError(f"The variable {name} does not exist.")
+
 
     def data_variable(self, name):
-        pass
+        if name in self.variables:
+            return self.variables[name]
+        elif name in self.stage.variables:
+            return self.stage.variables[name]
+        else:
+            raise ValueError(f"The variable {name} does not exist.")
+
 
     def data_changevariableby(self, name, value):
-        pass
+        if name in self.variables:
+            self.variables[name] += value
+        elif name in self.stage.variables:
+            self.stage.variables[name] += value
+        else:
+            raise ValueError(f"The variable {name} does not exist.")
 
     def data_showvariable(self, name):
         # Use smart positioning or old position, if we have one.
@@ -32,7 +49,21 @@ class _Variables(BaseSprite):
         pass
 
     def pystage_makevariable(self, name, all_sprites=True):
-        pass
+        # Make sure a variable name is unique for a sprite or globally. 
+        # Same name for local variables is allowed!
+        if name in self.stage.variables:
+            raise ValueError(f"The variable {name} already exists!")
+        if name in self.variables:
+            raise ValueError(f"The variable {name} already exists!")
+        if all_sprites:
+            for sprite in self.stage.sprites:
+                if name in sprite.variables:
+                    raise ValueError(f"The variable {name} already exists!")
+
+        if not all_sprites:
+            self.variables[name]=None
+        else:
+            self.stage.variables[name]=None
 
     def pystage_setmonitorposition(self, name, x, y):
         pass

@@ -88,7 +88,7 @@ class DictClass(OrderedDict):
         return self[item]
 
 
-def get_input_value(i):
+def get_input_value(i, stage):
     '''
     Extracts values from sb3 input representations.
     '''
@@ -112,7 +112,18 @@ def get_input_value(i):
     elif input_type == 9:
         h = value.lstrip("#")
         value = tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
-    elif input_type in [10, 11, 12, 13]:
+    elif input_type == 12:
+        block = DictClass()
+        block.update({
+                "opcode": "data_variable",
+                "params": {
+                    "VARIABLE": f'"{value}"',
+                    },
+                "next": False,
+                "stage": stage,
+                })
+        return block
+    elif input_type in [10, 11, 13]:
         try:
             f = float(value)
             if math.floor(f) == f:
@@ -139,7 +150,7 @@ def get_block(block, blocks, stage):
     for i in block["inputs"]:
         value = block["inputs"][i][1]
         if isinstance(value, list):
-            res["params"][i] = get_input_value(value)
+            res["params"][i] = get_input_value(value, stage)
         else:
             res["params"][i] = get_block(blocks[value], blocks, stage)
     if block["next"]:
