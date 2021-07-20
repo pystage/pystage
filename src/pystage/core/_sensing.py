@@ -38,10 +38,10 @@ class _Sensing(BaseSprite):
         pass
 
     def sensing_timer(self):
-        pass
+        return self.stage.timer
 
     def sensing_resettimer(self):
-        pass
+        self.stage.timer = 0
 
 
     def sensing_setdragmode_draggable(self):

@@ -72,6 +72,8 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.offset_x = 0
         self.offset_y = 0
 
+        self.timer = 0
+
 
     def pystage_createsprite(self, costume="default"):
         sprite = CoreSprite(self, costume)
@@ -163,5 +165,6 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
             pygame.display.flip()
 
             dt = self.clock.tick(self.FPS) / 1000
+            self.timer += dt
 
         pygame.quit()

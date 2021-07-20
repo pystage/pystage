@@ -61,9 +61,9 @@ class _Variables(BaseSprite):
                     raise ValueError(f"The variable {name} already exists!")
 
         if not all_sprites:
-            self.variables[name]=None
+            self.variables[name]=0
         else:
-            self.stage.variables[name]=None
+            self.stage.variables[name]=0
 
     def pystage_setmonitorposition(self, name, x, y):
         pass

@@ -19,6 +19,9 @@ multiple_underscores = re.compile(r"_+")
 deleteself = re.compile(r"self[, ]*")
 deletedefaults = re.compile(r"=[^),]+")
 
+# Functions from PyGame sprite class
+ignore_function_names = ["update", "add", "add_internal", "alive", "groups", "kill", "remove", "remove_internal"]
+
 def get_translations(lang="en"):
     blocks = json.loads(requests.get(f"https://raw.githubusercontent.com/LLK/scratch-l10n/master/editor/blocks/{lang}.json").text)
     extensions = json.loads(requests.get(f"https://raw.githubusercontent.com/pystage/scratch-l10n/master/editor/extensions/{lang}.json").text)
@@ -148,7 +151,7 @@ class {sprite_class}():
             ''')
         translations = get_translations(args.language)
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
-            if name.startswith("_") or name=="update":
+            if name.startswith("_") or name in ignore_function_names:
                 continue
             param_keys = [key for key in inspect.signature(func).parameters]
             params = [str(inspect.signature(func).parameters[key]) for key in param_keys]

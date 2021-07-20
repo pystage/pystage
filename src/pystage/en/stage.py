@@ -100,6 +100,103 @@ class Stage():
         """
         return self._core.control_wait(secs)
                 
+    def change_by(self, name, value):
+        """change %1 by %2
+
+        Translation string: change %1 by %2
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        value : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_changevariableby(name, value)
+                
+    def hide_variable(self, name):
+        """hide variable %1
+
+        Translation string: hide variable %1
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_hidevariable(name)
+                
+    def set_variable(self, name, value):
+        """set %1 to %2
+
+        Translation string: set %1 to %2
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        value : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_setvariableto(name, value)
+                
+    def show_variable(self, name):
+        """show variable %1
+
+        Translation string: show variable %1
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_showvariable(name)
+                
+    def get_variable(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_variable(name)
+                
     def broadcast(self, message):
         """broadcast %1
 
@@ -775,6 +872,26 @@ class Stage():
         """
         return self._core.pystage_insertbackdrop(index, name, center_x, center_y)
                 
+    def create_variable(self, name, all_sprites=True):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_makevariable(name, all_sprites)
+                
     def pystage_play(self):
         """
 
@@ -812,6 +929,26 @@ class Stage():
         """
         return self._core.pystage_replacebackdrop(index, name, center_x, center_y)
                 
+    def pystage_setmonitorposition(self, name, x, y):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        x : FILL
+        y : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setmonitorposition(name, x, y)
     def answer(self):
         """answer
 

@@ -206,6 +206,7 @@ def get_intermediate(data, name):
             "blocks": [],
             "costumes": [],
             "sounds": [],
+            "variables": {}, # name: value
             "currentCostume": target["currentCostume"],
             "layerOrder": target["layerOrder"],
             "visible": target["visible"] if "visible" in target else True,
@@ -256,6 +257,9 @@ def get_intermediate(data, name):
                 "md5": s["assetId"],
                 "local_name": s["name"],
             })
+        for key in target["variables"]:
+            v = target["variables"][key]
+            sprite["variables"][v[0]] = v[1]
 
     return project
 
@@ -267,6 +271,7 @@ def get_python(project, language="core"):
     add_backdrop = get_translated_function("pystage_addbackdrop", language, stage=True)
     add_costume = get_translated_function("pystage_addcostume", language)
     add_sound = get_translated_function("pystage_addsound", language)
+    add_variable = get_translated_function("pystage_makevariable", language)
     create_sprite = get_translated_function("pystage_createsprite", language, stage=True)
     play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
@@ -287,6 +292,10 @@ def get_python(project, language="core"):
     for bd in backdrops:
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_backdrop}('{bd}')
+                ''')
+    for v in project["stage"]["variables"]:
+        res += textwrap.dedent(f'''\
+                {stage_var}.{add_variable}('{v}')
                 ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
@@ -338,6 +347,10 @@ def get_python(project, language="core"):
                 {sprite_var}.{add_sound}('{s}')
                 ''')
 
+        for v in sprite["variables"]:
+            res += textwrap.dedent(f'''\
+                    {stage_var}.{add_variable}('{v}')
+                    ''')
         for block in sprite["blocks"]:
             res += writer.process(block)
     res += textwrap.dedent(f'''\
