@@ -100,6 +100,103 @@ class Bühne():
         """
         return self._core.control_wait(secs)
                 
+    def ändere_um(self, name, value):
+        """ändere %1 um %2
+
+        Translation string: ändere %1 um %2
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        value : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_changevariableby(name, value)
+                
+    def verstecke_variable(self, name):
+        """verstecke Variable %1
+
+        Translation string: verstecke Variable %1
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_hidevariable(name)
+                
+    def setze_auf(self, name, value):
+        """setze %1 auf %2
+
+        Translation string: setze %1 auf %2
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        value : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_setvariableto(name, value)
+                
+    def zeige_variable(self, name):
+        """zeige Variable %1
+
+        Translation string: zeige Variable %1
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_showvariable(name)
+                
+    def data_variable(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_variable(name)
+                
     def sende_an_alle(self, message):
         """sende %1 an alle
 
@@ -775,6 +872,26 @@ class Bühne():
         """
         return self._core.pystage_insertbackdrop(index, name, center_x, center_y)
                 
+    def pystage_makevariable(self, name, all_sprites=True):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_makevariable(name, all_sprites)
+                
     def pystage_play(self):
         """
 
@@ -811,6 +928,27 @@ class Bühne():
 
         """
         return self._core.pystage_replacebackdrop(index, name, center_x, center_y)
+                
+    def pystage_setmonitorposition(self, name, x, y):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        x : FILL
+        y : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setmonitorposition(name, x, y)
                 
     def antwort(self):
         """Antwort
