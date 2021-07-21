@@ -1,6 +1,7 @@
 import enum
 import math
 from pystage.core._sensing import _Sensing
+import random
 
 def _deg2rad(deg):
     return deg / 360 * 2 * math.pi
@@ -28,11 +29,15 @@ class _Motion(_Sensing):
         old_x = self.x
         old_y = self.y
         self.x = self.x + steps * math.cos(_deg2rad(self.direction - 90))
-        self.y = self.y + steps * math.sin(_deg2rad(self.direction - 90))
+        self.y = self.y - steps * math.sin(_deg2rad(self.direction - 90))
 
 
     def motion_goto_random(self):
-        pass
+        half_width = int(self.stage.width/2)
+        half_height = int(self.stage.height/2)
+        x = random.randint(-half_width, half_width)
+        y = random.randint(-half_height, half_height)
+        return self.motion_gotoxy(x, y)
 
     motion_goto_random.opcode = "motion_goto"
     motion_goto_random.param = "TO"
@@ -59,9 +64,11 @@ class _Motion(_Sensing):
 
 
     def motion_glideto_random(self, secs):
-        # Handle this in the game loop, i.e. enter a glide mode 
-        # and only after the glide mode finished, the steps are continued.
-        pass
+        half_width = int(self.stage.width/2)
+        half_height = int(self.stage.height/2)
+        x = random.randint(-half_width, half_width)
+        y = random.randint(-half_height, half_height)
+        return self.motion_glidesecstoxy(secs, x, y)
 
     motion_glideto_random.opcode = "motion_glideto"
     motion_glideto_random.param = "TO"
@@ -70,15 +77,16 @@ class _Motion(_Sensing):
 
 
     def motion_glideto_pointer(self, secs):
-        pass
+        self.motion_glidesecstoxy(secs, self.sensing_mousex(), self.sensing_mousey())
 
     motion_glideto_pointer.opcode = "motion_glideto"
     motion_glideto_pointer.param = "TO"
     motion_glideto_pointer.value = "_mouse_"
     motion_glideto_pointer.position = "%2"
 
+
     def motion_glideto_sprite(self, secs, sprite):
-        pass
+        return self.motion_glidesecstoxy(secs, sprite.x, sprite.y)
 
     motion_glideto_sprite.opcode = "motion_glideto"
 
@@ -94,14 +102,18 @@ class _Motion(_Sensing):
         self.direction = direction
 
     def motion_pointtowards_pointer(self):
-        pass
+        dx = self.sensing_mousex() - self.x
+        dy = self.sensing_mousey() - self.y
+        self.direction = 90 - _rad2deg(math.atan2(dy, dx))
 
     motion_pointtowards_pointer.opcode = "motion_pointtowards"
     motion_pointtowards_pointer.param = "TOWARDS"
     motion_pointtowards_pointer.value = "_mouse_"
 
     def motion_pointtowards_sprite(self, sprite):
-        pass
+        dx = sprite.x - self.x
+        dy = sprite.y - self.y
+        self.direction = 90 - _rad2deg(math.atan2(dy, dx))
 
     motion_pointtowards_sprite.opcode = "motion_pointtowards"
 
@@ -118,7 +130,23 @@ class _Motion(_Sensing):
         self.y = value
 
     def motion_ifonedgebounce(self):
-        pass
+        if self.rect.left < -1:
+            self.direction = -self.direction
+            self.rect.left = 1
+            self._update_pos_from_rect()
+        elif self.rect.right > self.stage.width + 1:
+            self.direction = -self.direction
+            self.rect.right = self.stage.width - 1
+            self._update_pos_from_rect()
+        elif self.rect.top < -1:
+            self.direction = 180 - self.direction
+            self.rect.top = 1
+            self._update_pos_from_rect()
+        elif self.rect.bottom > self.stage.height + 1:
+            self.direction = 180 - self.direction
+            self.rect.bottom = self.stage.height - 1
+            self._update_pos_from_rect()
+
 
     def motion_setrotationstyle_leftright(self):
         pass

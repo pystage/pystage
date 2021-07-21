@@ -4,7 +4,14 @@ import importlib
 from pystage.l10n.api import get_core_function_from_instance
 
 # Functions that need to be yielded for screen refresh
-yield_funcs = ["control_wait", "sound_playuntildone", "motion_glidesecstoxy"]
+yield_funcs = [
+        "control_wait",
+        "sound_playuntildone",
+        "motion_glidesecstoxy",
+        "motion_glideto_random",
+        "motion_glideto_sprite",
+        "motion_glideto_pointer",
+        ]
 
 class CodeManager():
     def __init__(self, owner):
@@ -238,7 +245,7 @@ class CodeBlock():
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
 
             # yield after certain calls defined in CodeBlock.yield_funcs
-            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call):
+            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Attribute):
                 corefunc = get_core_function_from_instance(node.value.func.attr, self.sprite_or_stage.facade)
                 if corefunc in yield_funcs:
                     getattr(node.parent, node.isin).insert(node.index + 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))

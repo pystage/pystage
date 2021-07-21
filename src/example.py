@@ -42,6 +42,7 @@ def down(self: CoreSprite):
     self.motion_changeyby(-10)
 
 def mouse(self: CoreSprite):
+    self.motion_pointtowards_pointer()
     self.looks_say(f"Mouse pos: {self.sensing_mousex()} / {self.sensing_mousey()}")
 
 def say_space_pressed(self: CoreSprite):

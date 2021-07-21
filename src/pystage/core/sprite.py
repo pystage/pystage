@@ -35,9 +35,15 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
         self._update_pen()
 
 
-    def _pg_pos(self, offset=(0,0)):
-        return (self.x + self.stage.center_x + offset[0], 
-                -self.y + self.stage.center_y + offset[1])
+    def _pg_pos(self):
+        return pygame.Vector2(self.x + self.stage.center_x, 
+                -self.y + self.stage.center_y)
+
+
+    def _update_pos_from_rect(self):
+        pos = self.rect.topleft + self.costume_manager.get_offset()
+        self.x = pos.x - self.stage.center_x
+        self.y = -pos.y + self.stage.center_y
 
     def __str__(self):
         return self.costume_manager.get_costume().name

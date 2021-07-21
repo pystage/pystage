@@ -13,6 +13,7 @@ class CostumeManager():
         self.owner = owner
         self.costumes = []
         self.current_costume = -1
+        self.offset = pygame.Vector2(0,0)
 
     def add_costume(self, name, center_x=None, center_y=None, factor=1):
         if isinstance(name, str):
@@ -60,6 +61,12 @@ class CostumeManager():
         self.owner.image = image
         self.owner.rect = image.get_rect()
         self.owner.rect.topleft = origin
+        self.offset = self.owner._pg_pos() - origin
+
+
+    def get_offset(self):
+        return self.offset
+
 
     def get_image(self):
         if self.current_costume == -1:
@@ -76,12 +83,12 @@ class CostumeManager():
     def get_center(self):
         if self.current_costume == -1:
             return 0, 0
-        return self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y
+        return pygame.Vector2(self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y)
 
 
     def rotate_and_scale(self):
         # https://stackoverflow.com/questions/54462645/how-to-rotate-an-image-around-its-center-while-its-scale-is-getting-largerin-py
-        pos = self.owner._pg_pos()
+        pos = pygame.Vector2(self.owner._pg_pos())
         originPos = self.get_center()
         # Rotation
         # Scratch is clockwise with 0 upwards
@@ -104,7 +111,7 @@ class CostumeManager():
 
         # calculate the upper left origin of the rotated image
         move   = (-originPos[0] + min_box[0] - pivot_move[0], -originPos[1] - max_box[1] + pivot_move[1])
-        origin = (pos[0] + zoom * move[0], pos[1] + zoom * move[1])
+        origin = pygame.Vector2(pos[0] + zoom * move[0], pos[1] + zoom * move[1])
 
         # get a rotated image
         rotozoom_image = pygame.transform.rotozoom(image, angle, zoom)
