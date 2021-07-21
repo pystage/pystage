@@ -9,11 +9,17 @@ from reportlab.graphics import renderPM
 import pystage
 
 class CostumeManager():
+
+    ALL_AROUND = 1
+    LEFT_RIGHT = 2
+    NO_ROTATION = 3
+
     def __init__(self, owner):
         self.owner = owner
         self.costumes = []
         self.current_costume = -1
         self.offset = pygame.Vector2(0,0)
+        self.rotation_style = CostumeManager.ALL_AROUND
 
     def add_costume(self, name, center_x=None, center_y=None, factor=1):
         if isinstance(name, str):
@@ -93,7 +99,15 @@ class CostumeManager():
         # Rotation
         # Scratch is clockwise with 0 upwards
         # pyGame is counterclockwise with 0 to the right
-        angle = 90-self.owner.direction
+        flipped = False
+        if self.rotation_style == CostumeManager.ALL_AROUND:
+            angle = 90-self.owner.direction
+        elif self.rotation_style == CostumeManager.NO_ROTATION:
+            angle = 0
+        else: # LEFT_RIGHT
+            angle = 0
+            flipped = True if self.owner.direction % 360 > 180 else False 
+             
         zoom = self.owner.size/100
         image = self.get_image()
 
@@ -115,6 +129,8 @@ class CostumeManager():
 
         # get a rotated image
         rotozoom_image = pygame.transform.rotozoom(image, angle, zoom)
+        if flipped:
+            rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
       
         return rotozoom_image, origin
 
@@ -150,10 +166,10 @@ class Costume():
             self.image = pygame.image.load(self.file)
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
-            # self.image = pygame.transform.smoothscale(self.image, (int(self.image.get_width() / factor), int(self.image.get_height() / factor)))
-        # self.image = self.image.subsurface(self.image.get_bounding_rect()) 
-        self.center_x = self.image.get_width() / 2 if center_x is None else center_x / factor 
-        self.center_y = self.image.get_height() / 2 if center_y is None else center_y / factor
+        self.image = self.image.subsurface(self.image.get_bounding_rect()) 
+        offset = pygame.Vector2(self.image.get_offset())
+        self.center_x = (self.image.get_parent().get_width() / 2) - offset.x if center_x is None else (center_x / factor) - offset.x 
+        self.center_y = (self.image.get_parent().get_height() / 2) - offset.y if center_y is None else (center_y / factor) - offset.y
         print(f"New costume: {name} -> {self.file}")
 
 

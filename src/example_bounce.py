@@ -5,6 +5,7 @@ zombie = stage.add_a_sprite()
 
 
 def doit(zombie: Sprite):
+    zombie.set_rotation_style_left_right()
     while True:
         zombie.move(1)
         zombie.if_on_edge_bounce()

@@ -1,6 +1,8 @@
 import enum
 import math
 from pystage.core._sensing import _Sensing
+from pystage.core._looks import _LooksSprite
+from pystage.core.assets import CostumeManager
 import random
 
 def _deg2rad(deg):
@@ -130,26 +132,26 @@ class _Motion(_Sensing):
         self.y = value
 
     def motion_ifonedgebounce(self):
-        if self.rect.left < -1:
+        if self.rect.left < 0:
             self.direction = -self.direction
-            self.rect.left = 1
+            self.rect.left = 0
             self._update_pos_from_rect()
-        elif self.rect.right > self.stage.width + 1:
+        elif self.rect.right > self.stage.width:
             self.direction = -self.direction
-            self.rect.right = self.stage.width - 1
+            self.rect.right = self.stage.width
             self._update_pos_from_rect()
-        elif self.rect.top < -1:
+        elif self.rect.top < 0:
             self.direction = 180 - self.direction
-            self.rect.top = 1
+            self.rect.top = 0
             self._update_pos_from_rect()
-        elif self.rect.bottom > self.stage.height + 1:
+        elif self.rect.bottom > self.stage.height:
             self.direction = 180 - self.direction
-            self.rect.bottom = self.stage.height - 1
+            self.rect.bottom = self.stage.height
             self._update_pos_from_rect()
 
 
     def motion_setrotationstyle_leftright(self):
-        pass
+        self.costume_manager.rotation_style = CostumeManager.LEFT_RIGHT
 
     motion_setrotationstyle_leftright.opcode = "motion_setrotationstyle"
     motion_setrotationstyle_leftright.param = "STYLE"
@@ -157,13 +159,15 @@ class _Motion(_Sensing):
     motion_setrotationstyle_leftright.translation="looks_effect_brightness"
 
     def motion_setrotationstyle_dontrotate(self):
-        pass
+        self.costume_manager.rotation_style = CostumeManager.NO_ROTATION
+
     motion_setrotationstyle_dontrotate.opcode = "motion_setrotationstyle"
     motion_setrotationstyle_dontrotate.param = "STYLE"
     motion_setrotationstyle_dontrotate.value = "don't rotate"
 
     def motion_setrotationstyle_allaround(self):
-        pass
+        self.costume_manager.rotation_style = CostumeManager.ALL_AROUND
+
     motion_setrotationstyle_allaround.opcode = "motion_setrotationstyle"
     motion_setrotationstyle_allaround.param = "STYLE"
     motion_setrotationstyle_allaround.value = "all around"

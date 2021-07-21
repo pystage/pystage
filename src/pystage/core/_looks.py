@@ -6,7 +6,6 @@ from pystage.core._base_sprite import BaseSprite
 class _Looks(BaseSprite):
     def __init__(self):
         super().__init__()
-        self.costume_manager = CostumeManager(self)
 
     def looks_switchbackdropto(self, backdrop):
         # Backdrops are for the stage.
