@@ -27,7 +27,19 @@ Also, not all blocks are documented in a suitable manner.
 ---
 
 # Usage
+Converting a Scratch project to Python code:
+1. Export your Scratch project on the Scratch page. You will get an .sb3 file.
+2. Use the PyStage converter script (src/pystage/sb3.py). Yes, it's unhandy, we will work on it to make things easier.
 
+The base usage is ```python -m sb3.py <SB3 File> -l en -d <DIRECTORY>```
+The parameters are:
+* ```-l``` language of generated python "scratch blocks". In the moment of writing, ```en``` and ```de``` are available.
+* ```-d``` the out directory
+* ```-i``` print intermediate code representation
+* ```-s``` print sb3 project.json
+* ```-p``` print python code
+* ```-v``` verbose
+* ```-vv``` debug mode
 
 
 # Contributors
