@@ -6,7 +6,7 @@ Scratch-like Python programming.
 
 PyStage bridges the gap between [Scratch](https://scratch.mit.edu/) and Python. This module implements all code blocks
 as available in scratch. With the PyStage command line converter Scratch projects can be easily
-transferred to Python executable Code.
+transferred to Python executable Code. To run your game in Python, PyStage uses [PyGame](https://www.pygame.org/news).
 
 ![test](docs/pystage.png)
 
