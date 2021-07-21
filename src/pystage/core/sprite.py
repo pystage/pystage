@@ -32,6 +32,7 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
     def update(self, dt):
         self.code_manager._update(dt)
         self.costume_manager.update_sprite_image()
+        self._update_pen()
 
 
     def _pg_pos(self, offset=(0,0)):

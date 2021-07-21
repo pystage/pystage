@@ -1,14 +1,40 @@
-class _Pen():
+import pygame
+from pystage.core._base_sprite import BaseSprite
+
+
+class _Pen(BaseSprite):
 
     def __init__(self):
         super().__init__()
 
         self.pen = False
-        self.color = (255,0,0)
+        self.pen_color = (255,0,0)
+        self.pen_size = 3
+        self.old_position = (0,0)
+        self.pen_up_at = (0,0)
 
+
+    def _get_image(self):
+        if not self in self.stage.pen_images:
+            image = pygame.Surface((self.stage.width, self.stage.height), flags=pygame.SRCALPHA)
+            self.stage.pen_images[self] = image
+        return self.stage.pen_images[self]
+
+    def _update_pen(self):
+        if self.pen:
+            position = self._pg_pos()
+            if position == self.old_position:
+                return
+            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, position, width=self.pen_size)
+            self.old_position = position
+        else:
+            if self.pen_up_at != self.old_position:
+                pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self.pen_up_at, width=self.pen_size)
+                self.pen_up_at = self.old_position
 
     def pen_clear(self):
-        pass
+        if self in self.stage.pen_images:
+            del self.stage.pen_images[self]
 
 
     def pen_stamp(self):
@@ -16,15 +42,18 @@ class _Pen():
 
 
     def pen_penDown(self):
+        if not self.pen:
+            self.old_position = self._pg_pos()
         self.pen = True
 
 
     def pen_penUp(self):
+        self.pen_up_at = self._pg_pos()
         self.pen = False
 
 
     def pen_setPenColorToColor(self, color):
-        self.color = color
+        self.pen_color = color
 
     pen_setPenColorToColor.translation = "pen_setcolor"
 
@@ -120,11 +149,11 @@ class _Pen():
 
 
     def pen_changePenSizeBy(self, value):
-        pass
+        self.pen_size += value
 
     pen_changePenSizeBy.translation = "pen_changesize"
 
     def pen_setPenSizeTo(self, value):
-        pass
+        self.pen_size = value
 
     pen_setPenSizeTo.translation = "pen_setsize"

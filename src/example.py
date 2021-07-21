@@ -49,11 +49,22 @@ def say_space_pressed(self: CoreSprite):
         if self.sensing_keypressed(" "):
             self.looks_say("Space pressed!")
 
+def pen_toggle(self: CoreSprite):
+    if self.pen:
+        self.pen_penUp()
+    else:
+        self.pen_penDown()
+
+def pen_clear(self: CoreSprite):
+    self.pen_clear()
+
 sprite.event_whenkeypressed("d", right)
 sprite.event_whenkeypressed("a", left)
 sprite.event_whenkeypressed("w", up)
 sprite.event_whenkeypressed("s", down)
 sprite.event_whenkeypressed("m", mouse)
+sprite.event_whenkeypressed("p", pen_toggle)
+sprite.event_whenkeypressed("c", pen_clear)
 sprite.event_whenflagclicked(say_space_pressed)
 
 stage.pystage_play()

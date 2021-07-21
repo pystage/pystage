@@ -55,6 +55,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.visible_sprites = SpriteGroup()
         self.bubbles = pygame.sprite.Group()
         self.visible_bubbles = pygame.sprite.Group()
+        self.pen_images = {}
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
         # it defines the in-game resolution
@@ -147,6 +148,10 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
             self.bubbles.update()
 
             self._draw(self.surface)
+            for sprite in self.pen_images:
+                image = self.pen_images[sprite]
+                self.surface.blit(image, (0, 0))
+
             self.visible_sprites.draw(self.surface)
             self.bubbles.draw(self.surface)
 
