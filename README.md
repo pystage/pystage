@@ -24,7 +24,7 @@ Currently, only the English API is fully translated, the German API is automatic
 
 For the English API, you can start with the following example code:
 
-```
+```python
 from pystage.en import Sprite, Stage
 
 stage = Stage()
