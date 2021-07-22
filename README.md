@@ -18,18 +18,45 @@ transferred to Python executable Code. To run your game in Python, PyStage uses 
 # Installation
 ```pip install pystage```
 
+# Getting started
+
+Currently, only the English API is fully translated, the German API is automatically generated. All other languages will be added when PyStage gets more stable. Get in touch if you want to help maintain a translation.
+
+For the English API, you can start with the following example code:
+
+```python
+from pystage.en import Sprite, Stage
+
+stage = Stage()
+zombie = stage.add_a_sprite()
+
+def doit(zombie: Sprite):
+    for i in range(4):
+        zombie.move(10)
+        zombie.turn_left(90)
+        zombie.wait(1)
+
+zombie.when_program_starts(doit)
+
+stage.play()
+```
+
+Use the autocompletion of your editor to see what methods are available. There are methods for all Scratch blocks bound to your stage and sprite instances. Not all of them work. Motion and Looks is mostly implemented (besides graphics effects), the Pen extension works and most of Sensing should work as well. If you want to know the details, just check the files under `src/pystge/core`. 
+
+The documentation is here: https://pystage.readthedocs.io/en/latest/pystage.en.html
+
 ---
+
 **NOTE**
 
-Please note this is a pre alpha version. Not all things may work as expected. If so, please contact us or open an issue.
-Also, not all blocks are documented in a suitable manner.
+Please note this is a pre alpha version. Not all things may work as expected. If so, please contact us or open an issue. Documentation is automatically generated but especially the user-facing block API is still mostly empty.
 
 ---
 
-# Usage
+# Import your Scratch projects
 Converting a Scratch project to Python code:
 1. Export your Scratch project on the Scratch page. You will get an .sb3 file.
-2. Use the PyStage converter script (src/pystage/sb3.py). Yes, it's unhandy, we will work on it to make things easier.
+2. Use our command line converter. Yes, it's unhandy, we will work on it to make things easier.
 
 The base usage is ```python -m pystage.convert.sb3 <SB3 File> -l en -d <DIRECTORY>```
 The parameters are:
@@ -44,6 +71,5 @@ The parameters are:
 
 # Contributors
 
-Special thanks to
-* Kai Eckert
-* Florian Rupp
+* Kai Eckert, Stuttgart Media University
+* Florian Rupp, Stuttgart Media University
