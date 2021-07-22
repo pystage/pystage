@@ -43,6 +43,8 @@ stage.play()
 
 Use the autocompletion of your editor to see what methods are available. There are methods for all Scratch blocks bound to your stage and sprite instances. Not all of them work. Motion and Looks is mostly implemented (besides graphics effects), the Pen extension works and most of Sensing should work as well. If you want to know the details, just check the files under `src/pystge/core`. 
 
+The documentation is here: https://pystage.readthedocs.io/en/latest/pystage.en.html
+
 ---
 
 **NOTE**
