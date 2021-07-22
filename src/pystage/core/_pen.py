@@ -2,13 +2,20 @@ import pygame
 from pystage.core._base_sprite import BaseSprite
 
 
+
+def int2(vec2):
+    x = int(round(vec2[0]))
+    y = int(round(vec2[1]))
+    return pygame.Vector2(x, y)
+
+
 class _Pen(BaseSprite):
 
     def __init__(self):
         super().__init__()
 
         self.pen = False
-        self.pen_color = (255,0,0)
+        self.pen_color = pygame.Color(255,0,0)
         self.pen_size = 3
         self.old_position = (0,0)
         self.pen_up_at = (0,0)
@@ -25,11 +32,11 @@ class _Pen(BaseSprite):
             position = self._pg_pos()
             if position == self.old_position:
                 return
-            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, position, width=self.pen_size)
+            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, position, width=int(self.pen_size))
             self.old_position = position
         else:
             if self.pen_up_at != self.old_position:
-                pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self.pen_up_at, width=self.pen_size)
+                pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self.pen_up_at, width=int(self.pen_size))
                 self.pen_up_at = self.old_position
 
     def pen_clear(self):
@@ -53,13 +60,15 @@ class _Pen(BaseSprite):
 
 
     def pen_setPenColorToColor(self, color):
-        self.pen_color = color
+        self.pen_color = pygame.Color(color)
 
     pen_setPenColorToColor.translation = "pen_setcolor"
 
 
     def pen_changePenColorParamBy_color(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[0] = (hsva[0] + (value * 3.6)) % 360
+        self.pen_color.hsva = hsva
 
     pen_changePenColorParamBy_color.opcode="pen_changePenColorParamBy"
     pen_changePenColorParamBy_color.param="COLOR_PARAM"
@@ -71,7 +80,9 @@ class _Pen(BaseSprite):
 
 
     def pen_changePenColorParamBy_saturation(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[1] = (hsva[1] + (value)) % 100
+        self.pen_color.hsva = hsva
 
     pen_changePenColorParamBy_saturation.opcode="pen_changePenColorParamBy"
     pen_changePenColorParamBy_saturation.param="COLOR_PARAM"
@@ -82,7 +93,9 @@ class _Pen(BaseSprite):
     
 
     def pen_changePenColorParamBy_brightness(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[2] = (hsva[2] + (value)) % 100
+        self.pen_color.hsva = hsva
 
     pen_changePenColorParamBy_brightness.opcode="pen_changePenColorParamBy"
     pen_changePenColorParamBy_brightness.param="COLOR_PARAM"
@@ -93,7 +106,9 @@ class _Pen(BaseSprite):
     
 
     def pen_changePenColorParamBy_transparency(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[3] = 100 - (((100 - hsva[3]) + (value)) % 100)
+        self.pen_color.hsva = hsva
 
     pen_changePenColorParamBy_transparency.opcode="pen_changePenColorParamBy"
     pen_changePenColorParamBy_transparency.param="COLOR_PARAM"
@@ -104,7 +119,9 @@ class _Pen(BaseSprite):
 
 
     def pen_setPenColorParamTo_color(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[0] = (value * 3.6) % 360 
+        self.pen_color.hsva = hsva
 
     pen_setPenColorParamTo_color.opcode="pen_setPenColorParamTo"
     pen_setPenColorParamTo_color.param="COLOR_PARAM"
@@ -116,7 +133,9 @@ class _Pen(BaseSprite):
 
 
     def pen_setPenColorParamTo_saturation(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[1] = value % 100
+        self.pen_color.hsva = hsva
 
     pen_setPenColorParamTo_saturation.opcode="pen_setPenColorParamTo"
     pen_setPenColorParamTo_saturation.param="COLOR_PARAM"
@@ -127,7 +146,9 @@ class _Pen(BaseSprite):
     
 
     def pen_setPenColorParamTo_brightness(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[2] = value % 100
+        self.pen_color.hsva = hsva
 
     pen_setPenColorParamTo_brightness.opcode="pen_setPenColorParamTo"
     pen_setPenColorParamTo_brightness.param="COLOR_PARAM"
@@ -138,7 +159,9 @@ class _Pen(BaseSprite):
     
 
     def pen_setPenColorParamTo_transparency(self, value):
-        pass
+        hsva = list(self.pen_color.hsva)
+        hsva[3] = 100 - (value % 100)
+        self.pen_color.hsva = hsva
 
     pen_setPenColorParamTo_transparency.opcode="pen_setPenColorParamTo"
     pen_setPenColorParamTo_transparency.param="COLOR_PARAM"
