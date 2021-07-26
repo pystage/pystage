@@ -17,6 +17,8 @@ transferred to Python executable Code. To run your game in Python, PyStage uses 
 
 
 [![A quick into video](https://img.youtube.com/vi/Bo3kUF9k0Vg/0.jpg)](https://www.youtube.com/watch?v=Bo3kUF9k0Vg)
+[See our quick intro to PyStage for ScratchCon 2021](https://www.youtube.com/watch?v=Bo3kUF9k0Vg)
+
 
 # Installation
 ```pip install pystage```
