@@ -29,11 +29,11 @@ class _Pen(BaseSprite):
 
     def _update_pen(self):
         if self.pen:
-            position = self._pg_pos()
-            if position == self.old_position:
+            if self.old_position == self._pos:
                 return
-            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, position, width=int(self.pen_size))
-            self.old_position = position
+            print(self.old_position, self._pos)
+            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self._pos, width=int(self.pen_size))
+            self.old_position = list(self._pos)
         else:
             if self.pen_up_at != self.old_position:
                 pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self.pen_up_at, width=int(self.pen_size))
@@ -49,13 +49,14 @@ class _Pen(BaseSprite):
 
 
     def pen_penDown(self):
+        print("down")
         if not self.pen:
-            self.old_position = self._pg_pos()
+            self.old_position = list(self._pos)
         self.pen = True
 
 
     def pen_penUp(self):
-        self.pen_up_at = self._pg_pos()
+        self.pen_up_at = self._pos
         self.pen = False
 
 

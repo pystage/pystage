@@ -11,7 +11,9 @@ from pystage.core._variables import _Variables
 from pystage.core._operators import _Operators
 from pystage.core._control import _Control
 from pystage.core.messages import MessageBroker
+
 import os
+import sys
 
 
 class SpriteGroup(pygame.sprite.OrderedUpdates):
@@ -74,6 +76,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.offset_y = 0
 
         self.timer = 0
+        self.show_sprite_boundaries = "--show-sprite-boundaries" in sys.argv
 
 
     def pystage_createsprite(self, costume="default"):

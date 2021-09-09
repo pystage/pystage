@@ -1,3 +1,4 @@
+import pygame
 import enum
 import math
 from pystage.core._sensing import _Sensing
@@ -15,23 +16,28 @@ def _rad2deg(rad):
 class _Motion(_Sensing):
     def __init__(self):
         super().__init__()
-        self.x = 0.0
-        self.y = 0.0
-        self.direction = 90
+        # The direction is internally stored as common angle in degrees
+        # (counter-clockwise, 0 to the right)
+        # Scratch uses a clockwise angle with 0 pointing to top
+        self._direction = 0
+        # Position is stored internally as PyGame coordinates
+        # and refers to the center of the costume.
+        self._pos = pygame.Vector2(0, 0)
+        self.motion_setx(0)
+        self.motion_sety(0)
 
     def motion_turnleft(self, deg):
-        self.direction -= deg
+        self._direction += deg
 
 
     def motion_turnright(self, deg):
-        self.direction += deg
+        self._direction -= deg
 
 
     def motion_movesteps(self, steps):
-        old_x = self.x
-        old_y = self.y
-        self.x = self.x + steps * math.cos(_deg2rad(self.direction - 90))
-        self.y = self.y - steps * math.sin(_deg2rad(self.direction - 90))
+        dx = steps * math.cos(_deg2rad(self._direction))
+        dy = steps * math.sin(_deg2rad(self._direction))
+        self._pos += pygame.Vector2(dx, -dy) # PyGame has inverted y axis
 
 
     def motion_goto_random(self):
@@ -61,8 +67,8 @@ class _Motion(_Sensing):
 
 
     def motion_gotoxy(self, x, y):
-        self.x = x
-        self.y = y
+        self.motion_setx(x)
+        self.motion_sety(y)
 
 
     def motion_glideto_random(self, secs):
@@ -96,58 +102,65 @@ class _Motion(_Sensing):
     def motion_glidesecstoxy(self, secs, x, y):
         self.code_manager.current_block.gliding_seconds = secs
         self.code_manager.current_block.add_to_wait_time = secs
-        self.code_manager.current_block.gliding_start_position = (self.x, self.y)
+        self.code_manager.current_block.gliding_start_position = (self.motion_xposition(), self.motion_yposition())
         self.code_manager.current_block.gliding_end_position = (x, y)
         self.code_manager.current_block.gliding = True
 
     def motion_pointindirection(self, direction):
-        self.direction = direction
+        # Scratch uses clock-wise directions with 0 to the top
+        # We have anti-clockwise with 0 to the right
+        self._direction = 90 - direction
 
     def motion_pointtowards_pointer(self):
-        dx = self.sensing_mousex() - self.x
-        dy = self.sensing_mousey() - self.y
-        self.direction = 90 - _rad2deg(math.atan2(dy, dx))
+        dx = self.sensing_mousex() - self.motion_xposition()
+        dy = self.sensing_mousey() - self.motion_yposition()
+        self._direction = _rad2deg(math.atan2(dy, dx))
 
     motion_pointtowards_pointer.opcode = "motion_pointtowards"
     motion_pointtowards_pointer.param = "TOWARDS"
     motion_pointtowards_pointer.value = "_mouse_"
 
     def motion_pointtowards_sprite(self, sprite):
-        dx = sprite.x - self.x
-        dy = sprite.y - self.y
-        self.direction = 90 - _rad2deg(math.atan2(dy, dx))
+        dx = sprite.motion_xposition() - self.motion_xposition()
+        dy = sprite.motion_yposition() - self.motion_yposition()
+        self._direction = _rad2deg(math.atan2(dy, dx))
 
     motion_pointtowards_sprite.opcode = "motion_pointtowards"
 
+
     def motion_changexby(self, value):
-        self.x += value
+        self._pos.x += value
+
 
     def motion_setx(self, value):
-        self.x = value
+        self._pos.x = value + self.stage.center_x
+
 
     def motion_changeyby(self, value):
-        self.y += value
+        self._pos.y -= value # inverted y axis
+
 
     def motion_sety(self, value):
-        self.y = value
+        self._pos.y = -value + self.stage.center_y
+
 
     def motion_ifonedgebounce(self):
         if self.rect.left < 0:
-            self.direction = -self.direction
-            self.rect.left = 0
-            self._update_pos_from_rect()
+            self._direction = 180 - self._direction
+            self.costume_manager.update_sprite_image()
+            self._pos.x -= self.rect.left
         elif self.rect.right > self.stage.width:
-            self.direction = -self.direction
-            self.rect.right = self.stage.width
-            self._update_pos_from_rect()
+            self._direction = 180 - self._direction
+            self.costume_manager.update_sprite_image()
+            self._pos.x -= self.rect.right - self.stage.width
         elif self.rect.top < 0:
-            self.direction = 180 - self.direction
-            self.rect.top = 0
-            self._update_pos_from_rect()
+            self._direction = -self._direction
+            self.costume_manager.update_sprite_image()
+            self._pos.y -= self.rect.top
         elif self.rect.bottom > self.stage.height:
-            self.direction = 180 - self.direction
-            self.rect.bottom = self.stage.height
-            self._update_pos_from_rect()
+            self._direction = -self._direction
+            self.costume_manager.update_sprite_image()
+            self._pos.y -= self.rect.bottom - self.stage.height
 
 
     def motion_setrotationstyle_leftright(self):
@@ -172,26 +185,22 @@ class _Motion(_Sensing):
     motion_setrotationstyle_allaround.param = "STYLE"
     motion_setrotationstyle_allaround.value = "all around"
 
-    # Setters and getters are questionable, but 
-    # this way we would clearly adapt the Scratch API
-    # We could get rid of them for a direct access 
-    # to x, y, direction and so on. Direct access is of 
-    # course available anyway.
+
     def motion_xposition(self):
-        return self.x
+        return self._pos.x - self.stage.center_x
 
     motion_xposition.return_type = float
 
 
     def motion_yposition(self):
-        return self.y
+        return -self._pos.y + self.stage.center_y
 
     motion_yposition.return_type = float
 
 
     def motion_direction(self):
         # Scratch always keeps angles between -180 and 180
-        dir = self.direction % 360
+        dir = (90 - self._direction) % 360
         if dir <= 180:
             return dir
         else:

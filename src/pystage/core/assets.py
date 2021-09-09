@@ -8,6 +8,8 @@ from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 import pystage
 
+_round = lambda v: pygame.Vector2(round(v.x), round(v.y))
+
 class CostumeManager():
 
     ALL_AROUND = 1
@@ -18,7 +20,6 @@ class CostumeManager():
         self.owner = owner
         self.costumes = []
         self.current_costume = -1
-        self.offset = pygame.Vector2(0,0)
         self.rotation_style = CostumeManager.ALL_AROUND
 
     def add_costume(self, name, center_x=None, center_y=None, factor=1):
@@ -63,15 +64,10 @@ class CostumeManager():
     def update_sprite_image(self):
         if isinstance(self.owner, pystage.core.CoreStage):
             return
-        image, origin = self.rotate_and_scale()
+        image, new_center = self.rotate_and_scale()
         self.owner.image = image
         self.owner.rect = image.get_rect()
-        self.owner.rect.topleft = origin
-        self.offset = self.owner._pg_pos() - origin
-
-
-    def get_offset(self):
-        return self.offset
+        self.owner.rect.topleft = _round(self.owner._pos) - new_center
 
 
     def get_image(self):
@@ -93,46 +89,53 @@ class CostumeManager():
 
 
     def rotate_and_scale(self):
+        # Based on:
         # https://stackoverflow.com/questions/54462645/how-to-rotate-an-image-around-its-center-while-its-scale-is-getting-largerin-py
-        pos = pygame.Vector2(self.owner._pg_pos())
-        originPos = self.get_center()
-        # Rotation
-        # Scratch is clockwise with 0 upwards
-        # pyGame is counterclockwise with 0 to the right
+        # Rotation settings
         flipped = False
         if self.rotation_style == CostumeManager.ALL_AROUND:
-            angle = 90-self.owner.direction
+            angle = self.owner._direction
         elif self.rotation_style == CostumeManager.NO_ROTATION:
             angle = 0
         else: # LEFT_RIGHT
             angle = 0
-            flipped = True if self.owner.direction % 360 > 180 else False 
-             
-        zoom = self.owner.size/100
-        image = self.get_image()
+            flipped = True if 90 < self.owner._direction % 360 < 270 else False 
 
-        # calcaulate the axis aligned bounding box of the rotated image
-        w, h       = image.get_size()
+        # Zoom settings
+        scale = self.owner.size / 100
+
+        old_center = self.get_center()
+        old_center.y *= -1
+        center_rotated = old_center.rotate(angle)
+
+        # Corner points of the current rect
+        w, h = self.get_image().get_size()
         box        = [pygame.math.Vector2(p) for p in [(0, 0), (w, 0), (w, -h), (0, -h)]]
         box_rotate = [p.rotate(angle) for p in box]
-        min_box    = (min(box_rotate, key=lambda p: p[0])[0], min(box_rotate, key=lambda p: p[1])[1])
-        max_box    = (max(box_rotate, key=lambda p: p[0])[0], max(box_rotate, key=lambda p: p[1])[1])
+        
+        # Axis aligned bounding box
+        minx = min(box_rotate, key=lambda p: p[0])[0]
+        maxx = max(box_rotate, key=lambda p: p[0])[0]
+        miny = min(box_rotate, key=lambda p: p[1])[1]
+        maxy = max(box_rotate, key=lambda p: p[1])[1]
+        topleft = pygame.Vector2(minx, maxy)
 
-        # calculate the translation of the pivot 
-        pivot        = pygame.math.Vector2(originPos[0], -originPos[1])
-        pivot_rotate = pivot.rotate(angle)
-        pivot_move   = pivot_rotate - pivot
-
-        # calculate the upper left origin of the rotated image
-        move   = (-originPos[0] + min_box[0] - pivot_move[0], -originPos[1] - max_box[1] + pivot_move[1])
-        origin = pygame.Vector2(pos[0] + zoom * move[0], pos[1] + zoom * move[1])
+        # new center
+        new_center = center_rotated - topleft
+        new_center.y *= -1
+        new_center *= scale
 
         # get a rotated image
-        rotozoom_image = pygame.transform.rotozoom(image, angle, zoom)
+        rotozoom_image = pygame.transform.rotozoom(self.get_image(), angle, scale)
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
-      
-        return rotozoom_image, origin
+
+        if self.owner.stage.show_sprite_boundaries:
+            pygame.draw.rect(rotozoom_image, "red", rotozoom_image.get_rect(), 1)
+            pygame.draw.circle(rotozoom_image, "green", new_center, 1)
+
+        return rotozoom_image, new_center
+
 
 class Costume():
     '''
@@ -167,9 +170,10 @@ class Costume():
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
         self.image = self.image.subsurface(self.image.get_bounding_rect()) 
+        # The offset resulting from the image crop
         offset = pygame.Vector2(self.image.get_offset())
-        self.center_x = (self.image.get_parent().get_width() / 2) - offset.x if center_x is None else (center_x / factor) - offset.x 
-        self.center_y = (self.image.get_parent().get_height() / 2) - offset.y if center_y is None else (center_y / factor) - offset.y
+        self.center_x = (float(self.image.get_parent().get_width()) / 2) - offset.x if center_x is None else (float(center_x) / factor) - offset.x 
+        self.center_y = (float(self.image.get_parent().get_height()) / 2) - offset.y if center_y is None else (float(center_y) / factor) - offset.y
         print(f"New costume: {name} -> {self.file}")
 
 

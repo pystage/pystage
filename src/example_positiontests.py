@@ -8,9 +8,8 @@ sprite = stage.pystage_createsprite()
 
 
 def printpos(self):
-    print("Pos", self.x, self.y)
-    print("PG Pos", self._pg_pos())
-    print("Offset", self.costume_manager.get_offset())
+    print("Pos", self.motion_xposition(), self.motion_yposition())
+    print("PG Pos", self._pos)
     print("Center", self.costume_manager.get_center())
     print("Rect", self.rect)
 
@@ -18,8 +17,7 @@ def turn(self):
     self.motion_turnleft(45)
 
 def move_rect(self):
-    self.rect.right += 10
-    self._update_pos_from_rect()
+    self.motion_changexby(10)
 
 sprite.event_whenkeypressed(" ", printpos)
 sprite.event_whenkeypressed("t", turn)

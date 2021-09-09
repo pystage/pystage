@@ -196,8 +196,8 @@ class CodeBlock():
                     print(f"CodeBlock {self.name} has finished.")
                     self.running = False
         elif self.gliding:
-            self.sprite_or_stage.x = self.gliding_end_position[0] - (self.gliding_end_position[0] - self.gliding_start_position[0]) * (self.wait_time / self.gliding_seconds)
-            self.sprite_or_stage.y = self.gliding_end_position[1] - (self.gliding_end_position[1] - self.gliding_start_position[1]) * (self.wait_time / self.gliding_seconds)
+            self.sprite_or_stage.motion_setx(self.gliding_end_position[0] - (self.gliding_end_position[0] - self.gliding_start_position[0]) * (self.wait_time / self.gliding_seconds))
+            self.sprite_or_stage.motion_sety(self.gliding_end_position[1] - (self.gliding_end_position[1] - self.gliding_start_position[1]) * (self.wait_time / self.gliding_seconds))
 
     def index_ast(self, func_ast):
         '''

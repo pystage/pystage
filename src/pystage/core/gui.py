@@ -137,10 +137,10 @@ class Bubble(pygame.sprite.Sprite):
         self.text = text
         self.border = border
         self.flipped = False
-        self.sprite_x = self.sprite.x
-        self.sprite_y = self.sprite.y
-        self.x_offset = -0.1 # percent of sprite width based on lower right corner
-        self.y_offset = -0.5 # percent of sprite height based on lower right corner
+        self.sprite_x = self.sprite.motion_xposition()
+        self.sprite_y = self.sprite.motion_yposition()
+        self.x_offset = -0.2 # percent of sprite width based on lower right corner
+        self.y_offset = -0.2 # percent of sprite height based on lower right corner
         lh_offset = -1
         lines, lw, lh = wrap_text(self.text[:360], regular_font_14, 170)
         self.text_surface = render_lines(lines, regular_font_14, color1, lw+10, lh, lh_offset)
@@ -154,19 +154,19 @@ class Bubble(pygame.sprite.Sprite):
 
 
     def update(self, force=False):
-        if not force and self.sprite.x == self.sprite_x and self.sprite.y == self.sprite_y:
+        if not force and self.sprite.motion_xposition() == self.sprite_x and self.sprite.motion_yposition() == self.sprite_y:
             return
-        y = max(0, self.sprite._pg_pos()[1] - self.image_normal.get_height() + self.sprite.costume_manager.get_image().get_height() * self.y_offset)
+        y = max(0, self.sprite.rect.top - self.image_normal.get_height() - self.sprite.costume_manager.get_image().get_height() * self.y_offset)
         if not self.flipped:
-            x = self.sprite._pg_pos()[0] - self.image_normal.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
+            x = self.sprite.rect.left - self.image_normal.get_width() - self.sprite.costume_manager.get_image().get_width() * self.x_offset
             if x < 0:
                 self.flipped = True
-                x = self.sprite._pg_pos()[0] - self.sprite.costume_manager.get_image().get_width() * self.x_offset
+                x = self.sprite.rect.right + self.sprite.costume_manager.get_image().get_width() * self.x_offset
         else:
-            x = self.sprite._pg_pos()[0] - self.sprite.costume_manager.get_image().get_width() * self.x_offset
+            x = self.sprite.rect.right + self.sprite.costume_manager.get_image().get_width() * self.x_offset
             if x + self.image_normal.get_width() > self.sprite.stage.width:
                 self.flipped = False
-                x = self.sprite._pg_pos()[0] - self.image_normal.get_width() + self.sprite.costume_manager.get_image().get_width() * self.x_offset
+                x = self.sprite.rect.left - self.image_normal.get_width() - self.sprite.costume_manager.get_image().get_width() * self.x_offset
         self.image = self.image_flipped if self.flipped else self.image_normal
         self.rect.x = x
         self.rect.y = y
