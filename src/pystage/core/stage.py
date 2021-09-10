@@ -67,6 +67,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.clock = pygame.time.Clock()
         self.width = width
         self.height = height
+        self.rect = pygame.rect.Rect(0,0,width, height)
         self.center_x = int(width / 2)
         self.center_y = int(height / 2)
         # current scale factor of the stage if the window is resized

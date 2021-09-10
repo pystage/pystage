@@ -66,8 +66,15 @@ class CostumeManager():
             return
         image, new_center = self.rotate_and_scale()
         self.owner.image = image
+        self.owner.mask = pygame.mask.from_surface(image)
         self.owner.rect = image.get_rect()
         self.owner.rect.topleft = _round(self.owner._pos) - new_center
+        new_center = _round(new_center)
+        if self.owner.stage.show_sprite_boundaries:
+            image.blit(self.owner.mask.to_surface(), (0,0))
+            pygame.draw.rect(image, "red", image.get_rect(), 1)
+            pygame.draw.line(image, "red", new_center - (10, 0), new_center + (10, 0), 1)
+            pygame.draw.line(image, "red", new_center - (0, 10), new_center + (0, 10), 1)
 
 
     def get_image(self):
@@ -130,9 +137,6 @@ class CostumeManager():
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
 
-        if self.owner.stage.show_sprite_boundaries:
-            pygame.draw.rect(rotozoom_image, "red", rotozoom_image.get_rect(), 1)
-            pygame.draw.circle(rotozoom_image, "green", new_center, 1)
 
         return rotozoom_image, new_center
 

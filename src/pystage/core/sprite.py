@@ -23,6 +23,7 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
         default_file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
         self.image = pygame.image.load(default_file)
         self.rect = self.image.get_rect()
+        self.mask = pygame.mask.from_surface(self.image)
         if costume:
             self.pystage_addcostume(costume)
         # The facade is the translated API

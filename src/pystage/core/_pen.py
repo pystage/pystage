@@ -31,7 +31,6 @@ class _Pen(BaseSprite):
         if self.pen:
             if self.old_position == self._pos:
                 return
-            print(self.old_position, self._pos)
             pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self._pos, width=int(self.pen_size))
             self.old_position = list(self._pos)
         else:
@@ -49,7 +48,6 @@ class _Pen(BaseSprite):
 
 
     def pen_penDown(self):
-        print("down")
         if not self.pen:
             self.old_position = list(self._pos)
         self.pen = True

@@ -198,13 +198,18 @@ class _SensingSprite(BaseSprite):
     sensing_touchingobject_pointer.value="_mouse_"
 
     def sensing_touchingobject_edge(self):
-        pass
+        return not self.stage.rect.contains(self.rect)
+
     sensing_touchingobject_edge.opcode="sensing_touchingobject"
     sensing_touchingobject_edge.param="TOUCHINGOBJECTMENU"
     sensing_touchingobject_edge.value="_edge_"
 
     def sensing_touchingobject_sprite(self, sprite):
-        pass
+        if sprite.rect.colliderect(self.rect):
+            offset = (self.rect.left - sprite.rect.left, self.rect.top - sprite.rect.top)
+            return sprite.mask.overlap(self.mask, offset) is not None
+        return False
+
     sensing_touchingobject_sprite.opcode="sensing_touchingobject"
 
     def sensing_touchingcolor(self, color):
