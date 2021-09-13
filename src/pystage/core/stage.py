@@ -57,6 +57,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.visible_sprites = SpriteGroup()
         self.bubbles = pygame.sprite.Group()
         self.visible_bubbles = pygame.sprite.Group()
+        self.monitor_group = pygame.sprite.Group()
         self.pen_images = {}
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
@@ -158,6 +159,8 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
 
             self.visible_sprites.draw(self.surface)
             self.bubbles.draw(self.surface)
+
+            self.monitor_group.draw(self.surface)
 
             factor_x = self.screen.get_width() / self.surface.get_width()
             factor_y = self.screen.get_height() / self.surface.get_height()
