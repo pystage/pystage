@@ -207,6 +207,7 @@ def get_intermediate(data, name):
             "costumes": [],
             "sounds": [],
             "variables": {}, # name: value
+            "monitors": [], # name: value
             "currentCostume": target["currentCostume"],
             "layerOrder": target["layerOrder"],
             "visible": target["visible"] if "visible" in target else True,
@@ -259,7 +260,29 @@ def get_intermediate(data, name):
             })
         for key in target["variables"]:
             v = target["variables"][key]
+            variable = {}
             sprite["variables"][v[0]] = v[1]
+    
+    for m in data["monitors"]:
+        if not m["visible"]:
+            continue
+        monitor = {}
+        if not m["spriteName"]:
+            sprite = project["stage"]
+        else:
+            for s in project["sprites"]:
+                if s["name"] == m["spriteName"]:
+                    sprite = sprite
+                    break
+        monitor["style"] = m["mode"]
+        if monitor["style"] == "default":
+            monitor["style"] == "normal"
+        monitor["x"] = m["x"]
+        monitor["y"] = m["y"]
+        monitor["opcode"] = m["opcode"]
+        if "VARIABLE" in m["params"]:
+            monitor["variable"] = m["params"]["VARIABLE"]
+        sprite["monitors"].append(monitor)
 
     return project
 
@@ -297,6 +320,18 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_variable}('{v}')
                 ''')
+    for monitor in project["stage"]["monitors"]:
+        # Only variable monitors are currently implemented
+        if not "variable" in monitor:
+            continue
+        res += textwrap.dedent(f'''\
+                {stage_var}.{get_translated_function("data_showvariable", language)}("{monitor["variable"]}")
+                {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["variable"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
+                ''')
+        if monitor["style"] == "large":
+            res += textwrap.dedent(f'''\
+                    {stage_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
+                    ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
@@ -349,10 +384,24 @@ def get_python(project, language="core"):
 
         for v in sprite["variables"]:
             res += textwrap.dedent(f'''\
-                    {stage_var}.{add_variable}('{v}')
+                    {sprite_var}.{add_variable}('{v}')
                     ''')
+        for monitor in sprite["monitors"]:
+            # Only variable monitors are currently implemented
+            if not "variable" in monitor:
+                continue
+            res += textwrap.dedent(f'''\
+                    {sprite_var}.{get_translated_function("data_showvariable", language)}("{monitor["variable"]}")
+                    {sprite_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["variable"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
+                    ''')
+            if monitor["style"] == "large":
+                res += textwrap.dedent(f'''\
+                        {sprite_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
+                        ''')
         for block in sprite["blocks"]:
             res += writer.process(block)
+
+
     res += textwrap.dedent(f'''\
             
             {stage_var}.{play}()

@@ -151,6 +151,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
             self._update(dt)
             self.sprites.update(dt)
             self.bubbles.update()
+            self.monitor_group.update()
 
             self._draw(self.surface)
             for sprite in self.pen_images:

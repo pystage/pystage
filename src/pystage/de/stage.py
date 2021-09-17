@@ -950,6 +950,63 @@ class Bühne():
         """
         return self._core.pystage_setmonitorposition(name, x, y)
                 
+    def pystage_setmonitorstyle_large(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setmonitorstyle_large(name)
+                
+    def pystage_setmonitorstyle_normal(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setmonitorstyle_normal(name)
+                
+    def pystage_setmonitorstyle_slider(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setmonitorstyle_slider(name)
+                
     def antwort(self):
         """Antwort
 

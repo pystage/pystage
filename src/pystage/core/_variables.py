@@ -18,13 +18,19 @@ class _Variables(BaseSprite):
         self.monitors = {}
 
 
+    def _get_monitor(self, name):
+        if name in self.monitors:
+            return self.monitors[name]
+        elif name in self.stage.monitors:
+            return self.stage.monitors[name]
+        return None
+
+
     def data_setvariableto(self, name, value):
         if name in self.variables:
             self.variables[name] = value
-            self.monitors[name].set_value(value)
         elif name in self.stage.variables:
             self.stage.variables[name] = value
-            self.stage.monitors[name].set_value(value)
         else:
             raise ValueError(f"The variable {name} does not exist.")
 
@@ -41,31 +47,21 @@ class _Variables(BaseSprite):
     def data_changevariableby(self, name, value):
         if name in self.variables:
             self.variables[name] += value
-            self.monitors[name].set_value(self.variables[name])
         elif name in self.stage.variables:
             self.stage.variables[name] += value
-            self.stage.monitors[name].set_value(self.stage.variables[name])
         else:
             raise ValueError(f"The variable {name} does not exist.")
 
     def data_showvariable(self, name):
         # Use smart positioning or old position, if we have one.
-        monitor = None
-        if name in self.monitors:
-            monitor = self.monitors[name]
-        elif name in self.stage.monitors:
-            monitor = self.stage.monitors[name]
+        monitor = self._get_monitor(name)
         if not monitor:
             return
         monitor.show()
 
 
     def data_hidevariable(self, name):
-        monitor = None
-        if name in self.monitors:
-            monitor = self.monitors[name]
-        elif name in self.stage.monitors:
-            monitor = self.stage.monitors[name]
+        monitor = self._get_monitor(name)
         if not monitor:
             return
         monitor.hide()
@@ -83,8 +79,9 @@ class _Variables(BaseSprite):
                 if name in sprite.variables:
                     raise ValueError(f"The variable {name} already exists!")
 
-        monitor = Monitor(self, name, 0)
+        monitor = Monitor(self, name)
         monitor.hide()
+        monitor.set_function(lambda: self.data_variable(name))
 
         if not all_sprites:
             self.variables[name]=0
@@ -95,11 +92,28 @@ class _Variables(BaseSprite):
 
 
     def pystage_setmonitorposition(self, name, x, y):
-        monitor = None
-        if name in self.monitors:
-            monitor = self.monitors[name]
-        elif name in self.stage.monitors:
-            monitor = self.stage.monitors[name]
+        monitor = self._get_monitor(name)
         if not monitor:
             return
         monitor.set_position(x, y)
+
+
+    def pystage_setmonitorstyle_large(self, name):
+        monitor = self._get_monitor(name)
+        if not monitor:
+            return
+        monitor.set_style(Monitor.LARGE)
+
+
+    def pystage_setmonitorstyle_normal(self, name):
+        monitor = self._get_monitor(name)
+        if not monitor:
+            return
+        monitor.set_style(Monitor.NORMAL)
+
+
+    def pystage_setmonitorstyle_slider(self, name):
+        monitor = self._get_monitor(name)
+        if not monitor:
+            return
+        monitor.set_style(Monitor.SLIDER)
