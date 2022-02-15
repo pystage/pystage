@@ -15,3 +15,5 @@ geckodriver.log
 # docs
 /docs/source/_static
 *.png
+images/
+sounds/

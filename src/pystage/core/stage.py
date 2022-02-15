@@ -29,6 +29,40 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
             return -1
 
 
+    def to_front(self, sprite):
+        if not sprite in self._spritelist:
+            raise ValueError(f"Sprite {sprite} unknown.")
+        self._spritelist.remove(sprite)
+        self._spritelist.append(sprite)
+        print(self._spritelist)
+
+
+    def to_back(self, sprite):
+        if not sprite in self._spritelist:
+            raise ValueError(f"Sprite {sprite} unknown.")
+        self._spritelist.remove(sprite)
+        self._spritelist.insert(0, sprite)
+        print(self._spritelist)
+
+
+    def layer_forward(self, sprite, value=1):
+        if not sprite in self._spritelist:
+            raise ValueError(f"Sprite {sprite} unknown.")
+        index = self._spritelist.index(sprite)
+        self._spritelist.remove(sprite)
+        new_index = index + value
+        if new_index < 0:
+            new_index = 0
+        if new_index > len(self._spritelist) - 1:
+            new_index = len(self._spritelist) - 1
+        self._spritelist.insert(new_index, sprite)
+        print(self._spritelist)
+
+
+    def layer_backward(self, sprite, value=1):
+        self.forwards(-value)
+
+
     def insert(self, i, sprite):
         self._spritelist.insert(i, sprite)
 

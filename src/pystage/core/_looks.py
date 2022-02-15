@@ -233,7 +233,7 @@ class _LooksSprite(_Looks):
 
 
     def looks_gotofrontback_front(self):
-        pass
+        self.stage.sprites.to_front(self)
 
     looks_gotofrontback_front.opcode="looks_gotofrontback"
     looks_gotofrontback_front.param="FRONT_BACK"
@@ -241,7 +241,7 @@ class _LooksSprite(_Looks):
 
     
     def looks_gotofrontback_back(self):
-        pass
+        self.stage.sprites.to_back(self)
 
     looks_gotofrontback_back.opcode="looks_gotofrontback"
     looks_gotofrontback_back.param="FRONT_BACK"
@@ -249,14 +249,14 @@ class _LooksSprite(_Looks):
 
 
     def looks_goforwardbackwardlayers_forward(self, value):
-        pass
+        self.stage.sprites.layer_forward(self, value)
 
     looks_goforwardbackwardlayers_forward.opcode="looks_goforwardbackwardlayers"
     looks_goforwardbackwardlayers_forward.param="FORWARD_BACKWARD"
     looks_goforwardbackwardlayers_forward.value="forward"
 
     def looks_goforwardbackwardlayers_backward(self, value):
-        pass
+        self.stage.sprites.layer_backward(self, value)
 
     looks_goforwardbackwardlayers_backward.opcode="looks_goforwardbackwardlayers"
     looks_goforwardbackwardlayers_backward.param="FORWARD_BACKWARD"
