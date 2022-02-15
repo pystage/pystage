@@ -97,8 +97,12 @@ class CodeBlock():
             the sprite or stage) or if a generator function is supplied with no_refresh 
             set to True. 
         '''
-        if len(inspect.signature(generator_function).parameters)!=1:
-            raise ValueError(f"Your code block '{generator_function.__name__}' needs one parameter, usually called self.")
+        if len(inspect.signature(generator_function).parameters)==0:
+            self.inject_instance = False
+        elif len(inspect.signature(generator_function).parameters)==1:
+            self.inject_instance = True
+        else:
+            raise ValueError(f"Your code block '{generator_function.__name__}' needs zero or one parameter. The parameter is usually called self.")
 
         self.sprite_or_stage = sprite_or_stage
         if name!="" and name!=None:
@@ -160,7 +164,10 @@ class CodeBlock():
             target = self.sprite_or_stage
             if self.sprite_or_stage.facade:
                 target = self.sprite_or_stage.facade
-            self.generator = self.generator_function(target)
+            if self.inject_instance:
+                self.generator = self.generator_function(target)
+            else:
+                self.generator = self.generator_function()
         print(f"Start of {self.name} triggered.")
 
 

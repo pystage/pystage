@@ -1,4 +1,5 @@
 from os import environ
+
 # Prevent PyGame support prompt
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 # Do not mess with the compositor
