@@ -5,7 +5,6 @@ zombie = stage.add_a_sprite()
 
 def doit():
     zombie.ask_and_wait("Hi, how are you?")
-    print(zombie.answer())
     zombie.say(f"Great, that you are {zombie.answer()}!")
     zombie.wait(2)
     zombie.ask_and_wait("And what else?")

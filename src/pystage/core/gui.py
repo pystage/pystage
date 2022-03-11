@@ -107,7 +107,7 @@ def wrap_text(text, font, allowed_width):
         # add a line consisting of those words
         line = ' '.join(line_words)
         lines.append(line)
-        print(lines, max_lw, max_lh)
+        # print(lines, max_lw, max_lh)
     return lines, max_lw, max_lh
 
 
@@ -182,7 +182,7 @@ class BubbleManager():
         self.bubble = None
 
     def say(self, text: str, border=Bubble.SAY):
-        print(text)
+        # print(text)
         if self.bubble:
             self.bubble.kill()
             self.bubble = None

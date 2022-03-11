@@ -68,17 +68,27 @@ class Question:
 
     def process_key(self, event):
         key = event.key
-        if key == pygame.K_BACKSPACE:
+        # No CTRL stuff, leads to unknown characters
+        if pygame.key.get_mods() & pygame.KMOD_CTRL:
+            return
+        # backspace and delete both work like backspace
+        elif key == pygame.K_BACKSPACE or key == pygame.K_DELETE:
             if len(self.answer) > 0:
                 self.answer = self.answer[:-1]
-        if key == pygame.K_RETURN:
+        # Return ends the input
+        elif key == pygame.K_RETURN:
             self.manager.accept_answer(self.answer)
             self.codeblock.asking = False
             if not self.is_stage_question:
                 self.codeblock.sprite_or_stage.looks_say("")
+        # Add unicode representation of the pressed key to the answer
         else:
             self.answer += event.unicode
-        self.rendered_answer = light_font_9.render(self.answer, True, pygame.Color(0,0,0))
+        # Update rendered text
+        rendered = light_font_9.render(self.answer, True, pygame.Color(0,0,0))
+        text_width = self.stage.width - 2 * Question.OUTER_MARGIN - 2 * Question.INNER_MARGIN - 36 
+        cutoff = max(rendered.get_width() - text_width, 0)
+        self.rendered_answer = rendered.subsurface((cutoff, 0), (min(rendered.get_width(), text_width), rendered.get_height()))
 
     def update(self, dt):
         if not self.active:
