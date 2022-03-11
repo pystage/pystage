@@ -11,6 +11,7 @@ from pystage.core._variables import _Variables
 from pystage.core._operators import _Operators
 from pystage.core._control import _Control
 from pystage.core.messages import MessageBroker
+from pystage.core.asking import InputManager
 
 import os
 import sys
@@ -80,6 +81,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
         self.sprite_facade_class : type = None
 
         self.message_broker = MessageBroker(self)
+        self.input_manager = InputManager(self)
 
         pygame.init()
         pygame.display.set_caption(name)
@@ -161,8 +163,11 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
                 if event.type == pygame.QUIT:
                     self.running = False
                 if event.type == pygame.KEYDOWN:
-                    for sprite in self.sprites:
-                        sprite.code_manager.process_key_pressed(event.key)
+                    if self.input_manager.is_active():
+                        self.input_manager.process_key(event)
+                    else:
+                        for sprite in self.sprites:
+                            sprite.code_manager.process_key_pressed(event.key)
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.Vector2(pygame.mouse.get_pos())
                     for sprite in self.visible_sprites.sprites()[-1:0:-1]:
@@ -185,6 +190,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
             self._update(dt)
             self.sprites.update(dt)
             self.bubbles.update()
+            self.input_manager.update(dt)
             self.monitor_group.update()
 
             self._draw(self.surface)
@@ -194,6 +200,7 @@ class CoreStage(_LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _V
 
             self.visible_sprites.draw(self.surface)
             self.bubbles.draw(self.surface)
+            self.input_manager.draw(self.surface)
 
             self.monitor_group.draw(self.surface)
 

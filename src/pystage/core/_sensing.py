@@ -12,12 +12,10 @@ class _Sensing(BaseSprite):
 
 
     def sensing_askandwait(self, question):
-        # an input field, answer needs to be available somehow
-        pass
+        self.code_manager.current_block.ask(question)
 
     def sensing_answer(self):
-        # Answer of the last question
-        pass
+        return self.stage.input_manager.answer
 
     def sensing_keypressed(self, key):
         return pygame.key.get_pressed()[KEY_MAPPINGS[key]]   

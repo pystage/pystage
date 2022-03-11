@@ -1,17 +1,19 @@
-import inspect
 import ast
-import importlib
+import inspect
+
 from pystage.l10n.api import get_core_function_from_instance
 
 # Functions that need to be yielded for screen refresh
 yield_funcs = [
-        "control_wait",
-        "sound_playuntildone",
-        "motion_glidesecstoxy",
-        "motion_glideto_random",
-        "motion_glideto_sprite",
-        "motion_glideto_pointer",
-        ]
+    "control_wait",
+    "sound_playuntildone",
+    "motion_glidesecstoxy",
+    "motion_glideto_random",
+    "motion_glideto_sprite",
+    "motion_glideto_pointer",
+    "sensing_askandwait",
+]
+
 
 class CodeManager():
     def __init__(self, owner):
@@ -25,9 +27,8 @@ class CodeManager():
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
-        self.current_block : CodeBlock = None
+        self.current_block: CodeBlock = None
         self.owner = owner
-
 
     def process_key_pressed(self, key):
         # key is a pygame constant, e.g. pygame.K_a
@@ -37,17 +38,14 @@ class CodeManager():
             for name in self.key_pressed_blocks[key]:
                 self.code_blocks[name].start_if_not_running()
 
-
     def process_click(self):
         for block in self.clicked_blocks:
             block.start_or_restart()
-
 
     def process_broadcast(self, message):
         if message in self.broadcast_blocks:
             for name in self.broadcast_blocks[message]:
                 self.code_blocks[name].start_or_restart()
-
 
     def register_code_block(self, generator_function, name="", no_refresh=False):
         new_block = CodeBlock(self.owner, generator_function, name, no_refresh=no_refresh)
@@ -55,12 +53,10 @@ class CodeManager():
         print(f"New code block registered: {new_block.name}")
         return new_block
 
-
     def _update(self, dt):
         for name in self.code_blocks:
             self.current_block = self.code_blocks[name]
             self.code_blocks[name].update(dt)
-
 
 
 class CodeBlock():
@@ -70,7 +66,6 @@ class CodeBlock():
     
     '''
     last_id = -1
-
 
     def __init__(self, sprite_or_stage, generator_function, name="", no_refresh=False):
         '''
@@ -97,15 +92,16 @@ class CodeBlock():
             the sprite or stage) or if a generator function is supplied with no_refresh 
             set to True. 
         '''
-        if len(inspect.signature(generator_function).parameters)==0:
+        if len(inspect.signature(generator_function).parameters) == 0:
             self.inject_instance = False
-        elif len(inspect.signature(generator_function).parameters)==1:
+        elif len(inspect.signature(generator_function).parameters) == 1:
             self.inject_instance = True
         else:
-            raise ValueError(f"Your code block '{generator_function.__name__}' needs zero or one parameter. The parameter is usually called self.")
+            raise ValueError(
+                f"Your code block '{generator_function.__name__}' needs zero or one parameter. The parameter is usually called self.")
 
         self.sprite_or_stage = sprite_or_stage
-        if name!="" and name!=None:
+        if name != "" and name != None:
             name = f"-{name}"
         CodeBlock.last_id += 1
         # The name of a code block is unique with a global id.
@@ -124,7 +120,8 @@ class CodeBlock():
         self.no_refresh = no_refresh
         if inspect.isgeneratorfunction(generator_function):
             if no_refresh:
-                raise ValueError(f"Your code block '{generator_function.__name__}' is set to no refresh. In this case, yield must not be used.")
+                raise ValueError(
+                    f"Your code block '{generator_function.__name__}' is set to no refresh. In this case, yield must not be used.")
         else:
             if no_refresh:
                 # We support also plain functions, i.e. without yield
@@ -141,6 +138,14 @@ class CodeBlock():
         self.gliding_end_position = (0, 0)
         # Flag indicating if the block is currently running
         self.running = False
+        # Ask mode (waiting for user input)
+        self.asking = False
+
+    def ask(self, question):
+        # Go into "ask" mode
+        self.asking = True
+        # Queue the question in the central input manager
+        self.sprite_or_stage.stage.input_manager.queue(question, self)
 
 
     def start_if_not_running(self):
@@ -151,7 +156,6 @@ class CodeBlock():
         if self.running:
             return
         self.start_or_restart()
-
 
     def start_or_restart(self):
         '''
@@ -170,12 +174,14 @@ class CodeBlock():
                 self.generator = self.generator_function()
         print(f"Start of {self.name} triggered.")
 
-
     def update(self, dt):
         '''
         Check if it is time for the next step and execute it.
         '''
         if not self.running:
+            return
+        # Do nothing while waiting for an answer.
+        if self.asking:
             return
         self.wait_time -= dt
         if self.wait_time < 0:
@@ -203,8 +209,12 @@ class CodeBlock():
                     print(f"CodeBlock {self.name} has finished.")
                     self.running = False
         elif self.gliding:
-            self.sprite_or_stage.motion_setx(self.gliding_end_position[0] - (self.gliding_end_position[0] - self.gliding_start_position[0]) * (self.wait_time / self.gliding_seconds))
-            self.sprite_or_stage.motion_sety(self.gliding_end_position[1] - (self.gliding_end_position[1] - self.gliding_start_position[1]) * (self.wait_time / self.gliding_seconds))
+            self.sprite_or_stage.motion_setx(
+                self.gliding_end_position[0] - (self.gliding_end_position[0] - self.gliding_start_position[0]) * (
+                            self.wait_time / self.gliding_seconds))
+            self.sprite_or_stage.motion_sety(
+                self.gliding_end_position[1] - (self.gliding_end_position[1] - self.gliding_start_position[1]) * (
+                            self.wait_time / self.gliding_seconds))
 
     def index_ast(self, func_ast):
         '''
@@ -217,7 +227,7 @@ class CodeBlock():
         func_ast : ast.AST
             The AST to be indexed.
         '''
-        
+
         for node in ast.walk(func_ast):
             for field in ["body", "orelse"]:
                 if hasattr(node, field):
@@ -225,7 +235,6 @@ class CodeBlock():
                         child.parent = node
                         child.index = index
                         child.isin = field
-
 
     def add_yields(self, function):
         '''
@@ -237,14 +246,14 @@ class CodeBlock():
         function : The function to be transformed to a generator function.
         '''
         func_ast = ast.parse(inspect.getsource(function))
-        
+
         # yield at the end of the function
         func_ast.body[0].body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
 
         self.index_ast(func_ast)
 
         for node in ast.walk(func_ast):
-            
+
             # yield at the end of for and while iterations
             if isinstance(node, ast.For):
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
@@ -252,10 +261,12 @@ class CodeBlock():
                 node.body.append(ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
 
             # yield after certain calls defined in CodeBlock.yield_funcs
-            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Attribute):
+            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Call) and isinstance(node.value.func,
+                                                                                              ast.Attribute):
                 corefunc = get_core_function_from_instance(node.value.func.attr, self.sprite_or_stage.facade)
                 if corefunc in yield_funcs:
-                    getattr(node.parent, node.isin).insert(node.index + 1, ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
+                    getattr(node.parent, node.isin).insert(node.index + 1,
+                                                           ast.Expr(value=ast.Yield(value=ast.Constant(value=0))))
                     # We need to reindex so that further yields get the right position
                     self.index_ast(func_ast)
 
@@ -265,10 +276,4 @@ class CodeBlock():
         namespace.update(function.__globals__)
         code = compile(func_ast, "<string>", mode="exec")
         exec(code, namespace)
-        return namespace[function.__name__] 
-
-
-
-
-
-
+        return namespace[function.__name__]
