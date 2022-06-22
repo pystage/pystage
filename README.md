@@ -75,6 +75,8 @@ And here is the result:
 
 # Getting started
 
+If you are interested in PyStage and want to get in touch, feel free to join us on our [Discord Server](https://discord.gg/MSGrs3UCCz).
+
 Currently, only the English API is fully translated, the German API is automatically generated. All other languages will be added when PyStage gets more stable. Get in touch if you want to help maintain a translation.
 
 For the English API, you can start with the following example code:
