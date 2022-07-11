@@ -70,7 +70,7 @@ class _Looks(BaseSprite):
     
 
     def looks_seteffectto_ghost(self, value):
-        pass
+        self.ghost = value
     
     looks_seteffectto_ghost.opcode="looks_seteffectto"
     looks_seteffectto_ghost.param="EFFECT"
@@ -133,7 +133,7 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_ghost(self, value):
-        pass
+        self.ghost += value
     
     looks_changeeffectby_ghost.opcode="looks_changeeffectby"
     looks_changeeffectby_ghost.param="EFFECT"
@@ -175,6 +175,7 @@ class _LooksSprite(_Looks):
         super().__init__()
         self.bubble_manager = BubbleManager(self)
         self.size = 100
+        self.ghost = 0 # 0 - visible / 100 - transparent
         self.visible = True
 
 

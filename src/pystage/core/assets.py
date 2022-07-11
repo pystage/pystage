@@ -65,6 +65,7 @@ class CostumeManager():
         if isinstance(self.owner, pystage.core.CoreStage):
             return
         image, new_center = self.rotate_and_scale()
+        image.set_alpha((100-self.owner.ghost)/100*255)
         self.owner.image = image
         self.owner.mask = pygame.mask.from_surface(image)
         self.owner.rect = image.get_rect()
