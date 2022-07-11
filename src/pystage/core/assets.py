@@ -160,18 +160,18 @@ class Costume():
                 break
         if self.file is None:
             self.file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
-        if self.file.endswith(".svg"):
-            print(f"Converting SVG file: {self.file}")
-            print("\nWARNING: SVG conversion is for convenience only")
-            print("and might not work as expected. It is recommended")
-            print("to manually convert to bitmap graphics (png or jpg).\n")
-            # Deactivated for now because of Windows problems. See issue #10
-            # with stderr_redirector(io.BytesIO()):
-            rlg = svg2rlg(self.file)
-            pil = renderPM.drawToPIL(rlg)
-            self.image = pygame.image.frombuffer(pil.tobytes(), pil.size, pil.mode)
-        else:
-            self.image = pygame.image.load(self.file)
+        # if self.file.endswith(".svg"):
+        #     print(f"Converting SVG file: {self.file}")
+        #     print("\nWARNING: SVG conversion is for convenience only")
+        #     print("and might not work as expected. It is recommended")
+        #     print("to manually convert to bitmap graphics (png or jpg).\n")
+        #     # Deactivated for now because of Windows problems. See issue #10
+        #     # with stderr_redirector(io.BytesIO()):
+        #     rlg = svg2rlg(self.file)
+        #     pil = renderPM.drawToPIL(rlg)
+        #     self.image = pygame.image.frombuffer(pil.tobytes(), pil.size, pil.mode)
+        # else:
+        self.image = pygame.image.load(self.file)
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
         self.image = self.image.subsurface(self.image.get_bounding_rect()) 
