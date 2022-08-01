@@ -43,7 +43,7 @@ class Figur():
         """
         return self._core.control_delete_this_clone()
                 
-    def wenn_ich_als_klon_entstehe(self, key, generator_function, name='', no_refresh=False):
+    def wenn_ich_als_klon_entstehe(self, generator_function, name='', no_refresh=False):
         """Wenn ich als Klon entstehe
 
         Translation string: Wenn ich als Klon entstehe
@@ -53,7 +53,6 @@ class Figur():
         
         Parameters
         ----------
-        key : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
@@ -63,7 +62,7 @@ class Figur():
         -------
 
         """
-        return self._core.control_start_as_clone(key, generator_function, name, no_refresh)
+        return self._core.control_start_as_clone(generator_function, name, no_refresh)
                 
     def stoppe_alles(self):
         """stoppe alles

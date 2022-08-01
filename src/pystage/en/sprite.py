@@ -39,7 +39,7 @@ class Sprite:
         return self._core.control_delete_this_clone()
 
     def when_i_start_as_a_clone(
-        self, key, generator_function, name="", no_refresh=False
+        self, generator_function, name="", no_refresh=False
     ):
         """when I start as a clone
 
@@ -49,7 +49,6 @@ class Sprite:
         
         Parameters
         ----------
-        key : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
@@ -60,7 +59,7 @@ class Sprite:
 
         """
         return self._core.control_start_as_clone(
-            key, generator_function, name="", no_refresh=False
+            generator_function, name="", no_refresh=False
         )
 
     def stop_all(self):

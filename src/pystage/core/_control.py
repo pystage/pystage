@@ -48,7 +48,7 @@ class _ControlSprite(_Control):
 
 
     # This is actually an event but Scratch has the hat block under "Control"
-    def control_start_as_clone(self, key, generator_function, name="", no_refresh=False):
+    def control_start_as_clone(self, generator_function, name="", no_refresh=False):
         pass
     control_start_as_clone.translation = "control_startasclone"
 
