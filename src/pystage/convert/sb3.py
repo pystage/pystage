@@ -341,6 +341,7 @@ def get_python(project, language="core"):
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
+                {sprite_var}.{get_translated_function("pystage_setname", language)}("{sprite["name"]}")
                 {sprite_var}.{get_translated_function("motion_setx", language)}({sprite["x"]})
                 {sprite_var}.{get_translated_function("motion_sety", language)}({sprite["y"]})
                 {sprite_var}.{get_translated_function("looks_gotofrontback_back", language)}()
@@ -480,4 +481,4 @@ if __name__ == "__main__":
                     with open(dp / "sounds" / f'{s["global_name"]}.{s["extension"]}', "wb") as outfile:
                         outfile.write(infile.read())
             with open(dp / f'{project_name}.py', "w", encoding="utf-8") as pyfile:
-                pyfile.write(get_python(project))
+                pyfile.write(get_python(project, language=args.language))

@@ -2662,3 +2662,21 @@ class Sprite:
 
         """
         return self._core.sound_volume()
+
+    def set_name(self, name):
+        """set name of the sprite to %1%
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setname(name)

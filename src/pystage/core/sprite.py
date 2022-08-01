@@ -26,8 +26,15 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
         self.mask = pygame.mask.from_surface(self.image)
         if costume:
             self.pystage_addcostume(costume)
+            self.name = "Sprite" if costume=="default" else costume 
+        else:
+            self.name = "Sprite"
         # The facade is the translated API
         self.facade = None
+
+
+    def pystage_setname(self, name):
+        self.name = name
 
 
     def update(self, dt):
@@ -37,4 +44,4 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
 
 
     def __str__(self):
-        return self.costume_manager.get_costume().name
+        return self.name

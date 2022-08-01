@@ -2810,3 +2810,21 @@ class Figur():
         """
         return self._core.sound_volume()
                 
+    def setze_name(self, name):
+        """
+
+        Translation string: 
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_setname(name)
