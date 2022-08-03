@@ -17,7 +17,7 @@ from pystage.convert import CodeWriter, sb3_templates
 logger = logging.getLogger(__name__)
 
 '''
-For the conversion, we create a simplified version of the 
+For the conversion, we create a simplified version of the
 block trees that is used in the code template functions.
 '''
 
@@ -71,9 +71,9 @@ block trees that is used in the code template functions.
 #                   ],
 #                 "currentCostume": 0
 #                 },
-# 
+#
 #             ],
-# 
+#
 #         }
 
 class DictClass(OrderedDict):
@@ -100,12 +100,12 @@ def get_input_value(i, stage):
     value = i[1]
 
     if input_type in [4, 5, 8]:
-        if value.strip() == '':
+        if isinstance(value, str) and value.strip() == '':
             value = 0
         else:
             value = float(value)
     elif input_type in [6, 7]:
-        if value.strip() == '':
+        if isinstance(value, str) and value.strip() == '':
             value = 0
         else:
             value = int(value)
@@ -262,7 +262,7 @@ def get_intermediate(data, name):
             v = target["variables"][key]
             variable = {}
             sprite["variables"][v[0]] = v[1]
-    
+
     for m in data["monitors"]:
         if not m["visible"]:
             continue
@@ -299,9 +299,9 @@ def get_python(project, language="core"):
     play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
             # {project['name']} (pyStage, converted from Scratch 3)
-            
+
             from pystage.{language} import {sprite_class}, {stage_class}
-            
+
             ''')
     writer = CodeWriter(project, sb3_templates.templates, language)
     writer.set_sprite(project["stage"]["name"])
@@ -404,7 +404,7 @@ def get_python(project, language="core"):
 
 
     res += textwrap.dedent(f'''\
-            
+
             {stage_var}.{play}()
             ''')
     return res
