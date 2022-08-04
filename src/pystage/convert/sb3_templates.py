@@ -105,6 +105,8 @@ templates = {
         "looks_backdrops": "{{BACKDROP | global_backdrop}}",
         "sound_sounds_menu": "{{SOUND_MENU | global_sound }}",
 
+        "sensing_keyoptions": "{{KEY_OPTION}}",
+
                 }
 
 
