@@ -66,6 +66,14 @@ class CoreStage(
     _LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _Variables
 ):
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
+        # Check pygame version
+        pygame_major = int(pygame.ver.split(".")[0])
+        if pygame_major < 2:
+            print("pygame version 2 or higher is required for PyStage.")
+            print("Update with the following command:")
+            print("pip install --upgrade pygame")
+            sys.exit(1)
+
         # This way, code blocks can consistently refer to the stage with self.stage:
         self.stage = self
         # Above attributes need to be set first so that mixins can access them properly
