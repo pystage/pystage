@@ -1,19 +1,19 @@
-import io
-import sys
 import textwrap
 import re
 import logging
 import inspect
-import ast
 import importlib
 import dis
-from jinja2 import Template, Environment
+from jinja2 import Environment
 from jinja2.exceptions import UndefinedError
 logger = logging.getLogger(__name__)
 
 from pystage.core.sprite import CoreSprite
 from pystage.core.stage import CoreStage
 
+to_underscore = re.compile(r"[^A-Za-z0-9_]")
+valid_variable_start = re.compile(r"[a-zA-Z_]")
+multiple_underscores = re.compile(r"_+")
 
 
 def quoted(value):
@@ -73,7 +73,15 @@ class CodeWriter():
 
     def get_sprite_var(self, name=None):
         def to_python(name: str):
-            return name.lower().replace(" ", "_"). replace("-", "_")
+            vname = name.lower().strip()
+            # Replace everything that is not allowed in a 
+            # variable name with underscores
+            vname = to_underscore.sub("_", vname)
+            vname = multiple_underscores.sub("_", vname)
+            # Check of the variable does not start with a number
+            if not valid_variable_start.fullmatch(vname[0]):
+                vname = "_" + vname
+            return vname
         if name is None:
             return to_python(self.current_sprite)
         else:
