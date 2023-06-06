@@ -2,6 +2,7 @@ import json
 import sys
 from pathlib import Path
 import zipfile
+import argparse
 
 try:
     path = Path(__file__).resolve().parent.parent / "src"
@@ -15,10 +16,11 @@ except ImportError as e:
 
 
 class Converter:
-    def __init__(self, path: str, dest: str, language: str = "en"):
+    def __init__(self, path: str, dest: str, language: str = "en", show_err: bool = False):
         self.path = path
         self.dest = dest
         self.language = language
+        self.show_err = show_err
 
     def delete_directory(self, path: Path):
         if not path.exists():
@@ -40,6 +42,8 @@ class Converter:
         except Exception as e:
             chalk.red(f"Failed to convert {self.path}")
             chalk.red(e)
+            if self.show_err:
+                raise e
 
     def __convert(self):
         archive = zipfile.ZipFile(self.path, 'r')
@@ -89,4 +93,17 @@ def convert():
             print(f"Skipping {file}")
 
 if __name__ == "__main__":
-    convert()
+    parser = argparse.ArgumentParser(description='Convert Scratch 3.0 projects to Python')
+    parser.add_argument('-f', '--file', type=str, help='The file to convert')
+    args = parser.parse_args()
+    
+    # python tests\generate.py -f "looks/looks3.sb3"
+    if args.file:
+        source = BASE / "scratch_files"
+        target = BASE / "generated_files"
+        path = source / args.file
+        dest = target / Path(args.file).parent
+        converter = Converter(path.as_posix(), dest.as_posix(), show_err=True)
+        converter.convert()
+    else:
+        convert()
