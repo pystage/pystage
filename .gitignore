@@ -17,3 +17,7 @@ geckodriver.log
 *.png
 images/
 sounds/
+
+venv/
+generated_files/
+scratch_files/
