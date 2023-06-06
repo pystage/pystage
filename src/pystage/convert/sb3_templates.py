@@ -42,6 +42,15 @@ templates = {
                 {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
                 
                 ''',
+        
+        "event_whengreaterthan": '''\
+
+                def {{func}}_{{ID}}(self):
+                    {{NEXT | indent(4)}}
+
+                {{CURRENT_SPRITE}}.{{func}}({{VALUE}}, {{func}}_{{ID}})
+                
+                ''',
                 
         "control_start_as_clone": '''\
 

@@ -262,6 +262,7 @@ class CodeWriter():
                 return self.render(block, template, context)
             else:
                 # We use the default template mechanism
+                print(f"Using default template for {block['opcode']}")
                 default_template = self.get_translated_template(block, self.language)
                 return self.render(block, default_template)
 
