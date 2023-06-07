@@ -163,7 +163,9 @@ def to_filename(name: str):
     name = name.lower().strip()
     for c in umlauts:
         name = name.replace(c, umlauts[c])
-    name = re.sub(r"[^a-z0-9_]", "_", name)
+        
+    # \u4e00-\u9fa5 is the range of Chinese characters
+    name = re.sub(r"[^a-z0-9_\u4e00-\u9fa5]", "_", name)
     name = re.sub(r"_+", "_", name)
     return name
 
