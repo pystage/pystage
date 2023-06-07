@@ -45,6 +45,15 @@ class Converter:
             if self.show_err:
                 raise e
 
+    @staticmethod
+    def get_py_code(path: str, language: str = "en"):
+        archive = zipfile.ZipFile(path, 'r')
+        with archive.open("project.json") as f:
+            project_name = to_filename(Path(path).stem)
+            data = json.loads(f.read())
+            project = get_intermediate(data, project_name)
+        return get_python(project, language=language)
+
     def __convert(self):
         archive = zipfile.ZipFile(self.path, 'r')
         with archive.open("project.json") as f:
@@ -91,12 +100,15 @@ def convert():
                     converter.convert()
         else:
             print(f"Skipping {file}")
+    return True
+
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Convert Scratch 3.0 projects to Python')
+    parser = argparse.ArgumentParser(
+        description='Convert Scratch 3.0 projects to Python')
     parser.add_argument('-f', '--file', type=str, help='The file to convert')
     args = parser.parse_args()
-    
+
     # python tests\generate.py -f "looks/looks3.sb3"
     if args.file:
         source = BASE / "scratch_files"
