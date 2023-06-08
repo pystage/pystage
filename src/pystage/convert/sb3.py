@@ -182,6 +182,9 @@ def unique_global_name(name, ext):
     return iname, ext
 
 def get_intermediate(data, name):
+    # Added for test, in test I will convert all the scratch files to python code.
+    # So I need to clear the global_names before each running.
+    global_names.clear()
     hat_blocks = [
         "event_whenthisspriteclicked",
         "event_whenbroadcastreceived",
