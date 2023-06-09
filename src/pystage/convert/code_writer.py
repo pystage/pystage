@@ -259,6 +259,14 @@ class CodeWriter():
                 if "{{func}}" in template:
                     func = self.get_translated_function(block, self.language)
                     context["func"] = func.__name__ if func is not None else f"<<NO_FUNCTION-{block['opcode']}>>"
+                # render the comment if available, otherwise remove the comment placeholder
+                if "COMMENT" in template:
+                    if comment := block["comment"]:
+                        comment = f'"""\n{comment}\n"""'
+                        context["COMMENT"] = comment
+                    else:
+                        sub_pattern = re.compile(r"{{COMMENT \| indent\(4\)}}\n\s*")
+                        template = re.sub(sub_pattern, "", template)
                 return self.render(block, template, context)
             else:
                 # We use the default template mechanism
