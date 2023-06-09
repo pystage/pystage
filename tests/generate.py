@@ -59,14 +59,12 @@ class Converter:
         with archive.open("project.json") as f:
             project_name = to_filename(Path(self.path).stem)
             data = json.loads(f.read())
-            project = get_intermediate(data, project_name)
-            # print(f"Creating project: {project_name}")
             dp = Path(self.dest) / project_name
             print(f"Exporting to: {dp}")
             self.delete_directory(dp)
-            # print(f"Creating directory: {dp}")
             dp.mkdir(parents=True)
             self.write_json(dp / "project.json", data)
+            project = get_intermediate(data, project_name)
             self.write_json(dp / "project_intermediate.json", project)
             (dp / "images").mkdir(parents=True)
             (dp / "sounds").mkdir(parents=True)

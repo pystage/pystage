@@ -197,7 +197,7 @@ class CodeWriter():
         fieldname = corefunc.param if hasattr(corefunc, "param") else None
         res += ", ".join(["{{" + p + "}}" for p in block.params if p != fieldname])
         res += ")"
-        if comment := block["comment"]:
+        if comment := block.get("comment"):
             comment = comment.replace("\n", " | ")
             res += f"  # {comment}"
         # print(res)
@@ -298,7 +298,10 @@ class CodeWriter():
                 context["NEXT"] = "pass"
             if "SUBSTACK" in text and not context.get("SUBSTACK"):
                 context["SUBSTACK"] = "pass"
-        
+            if "SUBSTACK2" in text and not context.get("SUBSTACK2"):
+                context["SUBSTACK2"] = "pass"
+        if "{{CONDITION}}" in text and not context.get("CONDITION"):
+            context["CONDITION"] = "None"
         template = self.jinja_environment.from_string(text)
         try:
             text = template.render(context)
