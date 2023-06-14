@@ -88,7 +88,7 @@ class CostumeManager():
     def update_sprite_image(self):
         if isinstance(self.owner, pystage.core.CoreStage):
             return
-        image, new_center = self.rotate_and_scale()
+        image, new_center = self.rotate_and_scale_and_discolor()
         image.set_alpha((100-self.owner.ghost)/100*255)
         self.owner.image = image
         self.owner.mask = pygame.mask.from_surface(image)
@@ -120,7 +120,7 @@ class CostumeManager():
         return pygame.Vector2(self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y)
 
 
-    def rotate_and_scale(self):
+    def rotate_and_scale_and_discolor(self):
         # Based on:
         # https://stackoverflow.com/questions/54462645/how-to-rotate-an-image-around-its-center-while-its-scale-is-getting-largerin-py
         # Rotation settings
@@ -162,8 +162,28 @@ class CostumeManager():
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
 
-
+        if self.owner.color != 0:
+            color_image = pygame.Surface((w*scale, h*scale)).convert_alpha()
+            color_image.fill(self.gen_color(self.owner.color))
+            color_image.blit(rotozoom_image, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+            rotozoom_image = color_image
         return rotozoom_image, new_center
+    
+    def gen_color(self, value):
+        if value >= 0 and value <= 50:
+            green = int((value / 50) * 255)
+            return 155, green, 60
+        elif value >= 51 and value <= 100:
+            blue = int(((value - 50) / 50) * 255)
+            return 60, 155, blue
+        elif value >= 101 and value <= 150:
+            red = int(((value - 100) / 50) * 255)
+            return red, 50, 200
+        elif value >= 151 and value <= 200:
+            blue = int(((value - 150) / 50) * 255)
+            return 200, 50, blue
+        else:
+            raise ValueError("Invalid value. Must be between 0 and 200.")
 
 
 class Costume():

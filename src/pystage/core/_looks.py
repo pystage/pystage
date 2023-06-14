@@ -16,7 +16,9 @@ class _Looks(BaseSprite):
         self.stage.costume_manager.next_costume()
 
     def looks_seteffectto_color(self, value):
-        pass
+        # the color value is from 0 to 200
+        # https://scratch.mit.edu/discuss/m/topic/436245/
+        self.color = max(0, min(int(value), 200))
 
     looks_seteffectto_color.opcode="looks_seteffectto"
     looks_seteffectto_color.param="EFFECT"
@@ -79,7 +81,8 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_color(self, value):
-        pass
+        self.color += value
+        self.color = self.color % 200
 
     looks_changeeffectby_color.opcode="looks_changeeffectby"
     looks_changeeffectby_color.param="EFFECT"
@@ -177,7 +180,7 @@ class _LooksSprite(_Looks):
         self.size = 100
         self.ghost = 0 # 0 - visible / 100 - transparent
         self.visible = True
-
+        self.color = 0
 
     def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
         self.costume_manager.add_costume(name, center_x, center_y, factor)
