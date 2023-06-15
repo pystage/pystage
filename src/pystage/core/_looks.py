@@ -27,7 +27,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_fisheye(self, value):
-        pass
+        self.fisheye = value
     
     looks_seteffectto_fisheye.opcode="looks_seteffectto"
     looks_seteffectto_fisheye.param="EFFECT"
@@ -91,7 +91,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_fisheye(self, value):
-        pass
+        self.fisheye += value
     
     looks_changeeffectby_fisheye.opcode="looks_changeeffectby"
     looks_changeeffectby_fisheye.param="EFFECT"
@@ -181,6 +181,7 @@ class _LooksSprite(_Looks):
         self.ghost = 0 # 0 - visible / 100 - transparent
         self.visible = True
         self.color = 0
+        self.fisheye = 0
 
     def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
         self.costume_manager.add_costume(name, center_x, center_y, factor)

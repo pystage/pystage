@@ -1,3 +1,4 @@
+import math
 import os
 import random
 # from pystage.util import stderr_redirector
@@ -88,7 +89,7 @@ class CostumeManager():
     def update_sprite_image(self):
         if isinstance(self.owner, pystage.core.CoreStage):
             return
-        image, new_center = self.rotate_and_scale_and_discolor()
+        image, new_center = self.process_image()
         image.set_alpha((100-self.owner.ghost)/100*255)
         self.owner.image = image
         self.owner.mask = pygame.mask.from_surface(image)
@@ -120,7 +121,7 @@ class CostumeManager():
         return pygame.Vector2(self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y)
 
 
-    def rotate_and_scale_and_discolor(self):
+    def process_image(self):
         # Based on:
         # https://stackoverflow.com/questions/54462645/how-to-rotate-an-image-around-its-center-while-its-scale-is-getting-largerin-py
         # Rotation settings
@@ -167,7 +168,43 @@ class CostumeManager():
             color_image.fill(self.gen_color(self.owner.color))
             color_image.blit(rotozoom_image, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
             rotozoom_image = color_image
+
+        if self.owner.fisheye != 0:
+            rotozoom_image = self.fisheye_effect(rotozoom_image, self.owner.fisheye)
+
         return rotozoom_image, new_center
+    
+    def fisheye_effect(self, image: pygame.Surface, strength):
+        strength = max(0, 1 + strength / 100)
+        width, height = image.get_size()
+        center_x = width // 2
+        center_y = height // 2
+
+        distorted_image = pygame.Surface((width, height), pygame.SRCALPHA)
+
+        for x in range(width):
+            dx = x - center_x
+            dx2 = dx ** 2
+            for y in range(height):
+                dy = y - center_y
+                distance = math.sqrt(dx2 + dy**2)
+                if distance < center_x:
+                    r = distance / center_x
+                    theta = math.atan2(dy, dx)
+                    distortion_radius = r ** strength * center_x
+                    distorted_x = int(
+                        center_x + distortion_radius * math.cos(theta)
+                    )
+                    distorted_y = int(
+                        center_y + distortion_radius * math.sin(theta)
+                    )
+                    if 0 <= distorted_x < width and 0 <= distorted_y < height:
+                        pixel_color = image.get_at((distorted_x, distorted_y))
+                        distorted_image.set_at((x, y), pixel_color)
+                else:
+                    pixel_color = image.get_at((x, y))
+                    distorted_image.set_at((x, y), pixel_color)
+        return distorted_image
     
     def gen_color(self, value):
         if value >= 0 and value <= 50:
