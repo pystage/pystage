@@ -163,19 +163,28 @@ class CostumeManager():
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
 
-        if self.owner.color != 0:
-            color_image = pygame.Surface((w*scale, h*scale)).convert_alpha()
-            color_image.fill(self.gen_color(self.owner.color))
-            color_image.blit(rotozoom_image, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-            rotozoom_image = color_image
-
-        if self.owner.fisheye != 0:
-            rotozoom_image = self.fisheye_effect(rotozoom_image, self.owner.fisheye)
-
-        return rotozoom_image, new_center
+        rendered_image = self.color_processor(rotozoom_image)
+        rendered_image = self.fisheye_processor(rendered_image)
+        rendered_image = self.whirl_processor(rendered_image)
+        rendered_image = self.pixelate_processor(rendered_image)
+        rendered_image = self.mosaic_processor(rendered_image)
+        rendered_image = self.brightness_processor(rendered_image)
+        return rendered_image, new_center
     
-    def fisheye_effect(self, image: pygame.Surface, strength):
-        strength = max(0, 1 + strength / 100)
+    def color_processor(self, image: pygame.Surface):
+        value = self.owner.color
+        if value == 0:
+            return image
+        bg_img = pygame.Surface(image.get_size()).convert_alpha()
+        bg_img.fill(self.gen_color(self.owner.color))
+        bg_img.blit(image, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+        return bg_img
+    
+    def fisheye_processor(self, image: pygame.Surface):
+        value = self.owner.fisheye
+        if value == 0:
+            return image
+        value = max(0, 1 + value / 100)
         width, height = image.get_size()
         center_x = width // 2
         center_y = height // 2
@@ -191,7 +200,7 @@ class CostumeManager():
                 if distance < center_x:
                     r = distance / center_x
                     theta = math.atan2(dy, dx)
-                    distortion_radius = r ** strength * center_x
+                    distortion_radius = r ** value * center_x
                     distorted_x = int(
                         center_x + distortion_radius * math.cos(theta)
                     )
@@ -205,6 +214,109 @@ class CostumeManager():
                     pixel_color = image.get_at((x, y))
                     distorted_image.set_at((x, y), pixel_color)
         return distorted_image
+    
+    def whirl_processor(self, image: pygame.Surface):
+        value = self.owner.whirl
+        if value == 0:
+            return image
+
+        w, h = image.get_size()
+        cx, cy = w // 2, h // 2
+
+        distorted_image = pygame.Surface(image.get_size(), pygame.SRCALPHA)
+
+        for x in range(w):
+            dx = x - cx
+            dx2 = dx ** 2
+            for y in range(h):
+                dy = y - cy
+                distance = math.sqrt(dx2 + dy ** 2)
+
+                if distance < cx:
+                    angle = value * 0.1 * (cx - distance) / cx
+                    new_x = int(cx + math.cos(angle)
+                                * dx - math.sin(angle) * dy)
+                    new_y = int(cy + math.sin(angle)
+                                * dx + math.cos(angle) * dy)
+                    if 0 <= new_x < image.get_width() and 0 <= new_y < image.get_height():
+                        distorted_image.set_at(
+                            (x, y), image.get_at((new_x, new_y)))
+                        
+                else:
+                    distorted_image.set_at((x, y), image.get_at((x, y)))
+        return distorted_image
+
+    def pixelate_processor(self, image: pygame.Surface):
+        value = abs(self.owner.pixelate) // 12
+        if value == 0:
+            return image
+        w, h = image.get_size()
+        image = pygame.transform.scale(image, (w / value, h / value))
+        image = pygame.transform.scale(image, (w, h))
+        return image
+    
+    def mosaic_processor(self, image: pygame.Surface):
+        value = abs(self.owner.mosaic)
+        if value == 0:
+            return image
+        # algorithm of tiles in scratch
+        # https://scratch.mit.edu/discuss/topic/112886/?page=1#post-992766
+        tiles = max(1, int((value + 15) // 10))
+        if tiles == 1:
+            return image
+        w, h = image.get_size()
+        new_image = pygame.Surface((w, h), pygame.SRCALPHA)
+
+        image = pygame.transform.scale_by(image, 1/tiles)
+        copies = []
+        for _ in range(tiles**2-1):
+            copies.append(image.copy())
+
+        copies.append(image)
+
+        x, y = 0, 0
+        row = tiles
+        cur_row = 1
+        cur_col = 1
+        for image in copies:
+            new_image.blit(image, (x, y))
+            cur_row += 1
+            x += w/tiles
+            if cur_row > row:
+                cur_row = 1
+                cur_col += 1
+                x = 0
+                y += h/tiles
+        return new_image
+    
+    def brightness_processor(self, image: pygame.Surface):
+        value = self.owner.brightness
+        if value == 0:
+            return image
+        print(value)
+        brightened_image = pygame.Surface(image.get_size(), pygame.SRCALPHA)
+        brightened_image.blit(image, (0, 0))
+        for x in range(brightened_image.get_width()):
+            for y in range(brightened_image.get_height()):
+                pixel = brightened_image.get_at((x, y))
+                r, g, b, a = pixel
+
+                if value > 0:
+                    r += (255 - r) * value // 100
+                    g += (255 - g) * value // 100
+                    b += (255 - b) * value // 100
+                elif value < 0:
+                    r -= r * abs(value) // 100
+                    g -= g * abs(value) // 100
+                    b -= b * abs(value) // 100
+
+                r = max(0, min(r, 255))
+                g = max(0, min(g, 255))
+                b = max(0, min(b, 255))
+
+                brightened_image.set_at((x, y), (r, g, b, a))
+
+        return brightened_image
     
     def gen_color(self, value):
         if value >= 0 and value <= 50:

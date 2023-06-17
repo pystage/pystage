@@ -36,7 +36,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_whirl(self, value):
-        pass
+        self.whirl = value
     
     looks_seteffectto_whirl.opcode="looks_seteffectto"
     looks_seteffectto_whirl.param="EFFECT"
@@ -45,7 +45,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_pixelate(self, value):
-        pass
+        self.pixelate = value
     
     looks_seteffectto_pixelate.opcode="looks_seteffectto"
     looks_seteffectto_pixelate.param="EFFECT"
@@ -54,7 +54,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_mosaic(self, value):
-        pass
+        self.mosaic = value
     
     looks_seteffectto_mosaic.opcode="looks_seteffectto"
     looks_seteffectto_mosaic.param="EFFECT"
@@ -63,7 +63,8 @@ class _Looks(BaseSprite):
     
 
     def looks_seteffectto_brightness(self, value):
-        pass
+        self.brightness = value
+        self.brightness = max(-100, min(self.brightness, 100))
     
     looks_seteffectto_brightness.opcode="looks_seteffectto"
     looks_seteffectto_brightness.param="EFFECT"
@@ -100,7 +101,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_whirl(self, value):
-        pass
+        self.whirl += value
     
     looks_changeeffectby_whirl.opcode="looks_changeeffectby"
     looks_changeeffectby_whirl.param="EFFECT"
@@ -109,7 +110,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_pixelate(self, value):
-        pass
+        self.pixelate += value
     
     looks_changeeffectby_pixelate.opcode="looks_changeeffectby"
     looks_changeeffectby_pixelate.param="EFFECT"
@@ -118,7 +119,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_mosaic(self, value):
-        pass
+        self.mosaic += value
     
     looks_changeeffectby_mosaic.opcode="looks_changeeffectby"
     looks_changeeffectby_mosaic.param="EFFECT"
@@ -127,7 +128,8 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_brightness(self, value):
-        pass
+        self.brightness += value
+        self.brightness = max(-100, min(self.brightness, 100))
     
     looks_changeeffectby_brightness.opcode="looks_changeeffectby"
     looks_changeeffectby_brightness.param="EFFECT"
@@ -145,7 +147,13 @@ class _Looks(BaseSprite):
     
 
     def looks_cleargraphiceffects(self):
-        pass
+        self.color = 0
+        self.fisheye = 0
+        self.whirl = 0
+        self.pixelate = 0
+        self.mosaic = 0
+        self.brightness = 0
+        self.ghost = 0
 
     def looks_backdropnumbername_number(self):
         # 1-based
@@ -180,8 +188,12 @@ class _LooksSprite(_Looks):
         self.size = 100
         self.ghost = 0 # 0 - visible / 100 - transparent
         self.visible = True
-        self.color = 0
+        self.color = 0  # 0 - 200
         self.fisheye = 0
+        self.whirl = 0
+        self.pixelate = 0
+        self.mosaic = 0
+        self.brightness = 0
 
     def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
         self.costume_manager.add_costume(name, center_x, center_y, factor)
@@ -304,6 +316,13 @@ class _LooksStage(_Looks):
 
     def __init__(self):
         super().__init__()
+        self.ghost = 0
+        self.color = 0  # 0 - 200
+        self.fisheye = 0
+        self.whirl = 0
+        self.pixelate = 0
+        self.mosaic = 0
+        self.brightness = 0
 
 
     def pystage_addbackdrop(self, name, center_x=None, center_y=None):
