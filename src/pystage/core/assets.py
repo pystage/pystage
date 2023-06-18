@@ -90,7 +90,6 @@ class CostumeManager():
         if isinstance(self.owner, pystage.core.CoreStage):
             return
         image, new_center = self.process_image()
-        image.set_alpha((100-self.owner.ghost)/100*255)
         self.owner.image = image
         self.owner.mask = pygame.mask.from_surface(image)
         self.owner.rect = image.get_rect()
@@ -163,13 +162,18 @@ class CostumeManager():
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
 
-        rendered_image = self.color_processor(rotozoom_image)
+        rendered_image = self.run_processors(rotozoom_image)
+        return rendered_image, new_center
+    
+    def run_processors(self, image: pygame.Surface):
+        rendered_image = self.color_processor(image)
         rendered_image = self.fisheye_processor(rendered_image)
         rendered_image = self.whirl_processor(rendered_image)
         rendered_image = self.pixelate_processor(rendered_image)
         rendered_image = self.mosaic_processor(rendered_image)
         rendered_image = self.brightness_processor(rendered_image)
-        return rendered_image, new_center
+        rendered_image = self.ghost_processor(rendered_image)
+        return rendered_image
     
     def color_processor(self, image: pygame.Surface):
         value = self.owner.color
@@ -293,7 +297,6 @@ class CostumeManager():
         value = self.owner.brightness
         if value == 0:
             return image
-        print(value)
         brightened_image = pygame.Surface(image.get_size(), pygame.SRCALPHA)
         brightened_image.blit(image, (0, 0))
         for x in range(brightened_image.get_width()):
@@ -317,6 +320,10 @@ class CostumeManager():
                 brightened_image.set_at((x, y), (r, g, b, a))
 
         return brightened_image
+    
+    def ghost_processor(self, image: pygame.Surface):
+        image.set_alpha((100-self.owner.ghost)/100*255)
+        return image
     
     def gen_color(self, value):
         if value >= 0 and value <= 50:

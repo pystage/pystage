@@ -21,3 +21,4 @@ sounds/
 venv/
 generated_files/
 scratch_files/
+src/test*.py
