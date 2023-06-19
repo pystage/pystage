@@ -3,13 +3,13 @@ import sys
 from pathlib import Path
 import zipfile
 import argparse
+import colored
 
 try:
     path = Path(__file__).resolve().parent.parent / "src"
     sys.path.insert(0, path.as_posix())
 
     from pystage.convert.sb3 import get_intermediate, get_python, to_filename
-    import chalk
 except ImportError as e:
     print("Import Error")
     print(e)
@@ -40,8 +40,8 @@ class Converter:
         try:
             self.__convert()
         except Exception as e:
-            chalk.red(f"Failed to convert {self.path}")
-            chalk.red(e)
+            print(colored.stylize(f"Failed to convert {self.path}", colored.fg("red")))
+            print(colored.stylize(e, colored.fg("red")))
             if self.show_err:
                 raise e
 

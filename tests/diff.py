@@ -17,7 +17,6 @@ class Diff:
             return fg('blue') + line + attr('reset')
         else:
             return None
-            return line
 
     def compare(self, print_=False):
         text1 = self.text1.splitlines()
