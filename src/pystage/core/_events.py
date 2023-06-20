@@ -79,6 +79,18 @@ class _Events(BaseSprite):
 
 
     def event_broadcastandwait(self, message):
-        # waits until all receiver scripts finish. Tricky.
-        pass
+        import threading
+        threads = []
+
+        # Create and start a thread for each receiver script
+        for command in message:
+            t = threading.Thread(target=message, args=(command,))
+            t.start()
+            threads.append(t)
+
+        # Wait for all threads to finish
+        for t in threads:
+            t.join()
+            self.stage.message_broker.broadcast(message)
+        
 

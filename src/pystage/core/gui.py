@@ -191,5 +191,11 @@ class BubbleManager():
         if text is not None and text.strip() != "":
             self.bubble = Bubble(self.sprite, text, border)
             self.sprite.stage.bubbles.add(self.bubble)
+            
+    def kill(self, secs):
+        from threading import Timer
+        
+        t = Timer(secs, self.bubble.kill)
+        t.start()
 
 
