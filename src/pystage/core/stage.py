@@ -50,8 +50,9 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
         new_index = index + value
         if new_index < 0:
             new_index = 0
-        if new_index > len(self._spritelist) - 1:
-            new_index = len(self._spritelist) - 1
+        # because the sprite was already removed, so don't need to minus 1 for the length
+        if new_index > len(self._spritelist):
+            new_index = len(self._spritelist)
         self._spritelist.insert(new_index, sprite)
         # print(self._spritelist)
 
@@ -141,6 +142,8 @@ class CoreStage(
 
     def _update(self, dt):
         self.code_manager._update(dt)
+        # Update it so that the layering is correct while drawing
+        self._update_visible()
 
     def _draw(self, surface: pygame.Surface):
         surface.fill(self.background_color)
@@ -167,19 +170,16 @@ class CoreStage(
                         for sprite in self.sprites:
                             assert(isinstance(sprite, CoreSprite))
                             sprite.code_manager.process_key_pressed(event.key)
-                if event.type == pygame.MOUSEBUTTONUP:
-                    pos = pygame.Vector2(pygame.mouse.get_pos())
-                    for sprite in self.visible_sprites.sprites()[-1:0:-1]:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    for sprite in self.visible_sprites.sprites()[-1::-1]:
                         assert(isinstance(sprite, CoreSprite))
-                        if sprite.rect.collidepoint(pos):
-                            internal_pos = pos - sprite.rect.topleft
-                            x = int(internal_pos.x)
-                            y = int(internal_pos.y)
-                            color = sprite.image.get_at((x, y))
-                            if color.a == 0:
-                                continue
-                            sprite.code_manager.process_click()
-                            break
+                        sprite_rect = sprite.image.get_rect()
+                        sprite_rect.topleft = sprite.rect.topleft
+                        if sprite_rect.collidepoint(event.pos):
+                            pos = event.pos[0] - sprite_rect.left, event.pos[1] - sprite_rect.top
+                            if sprite.image.get_at(pos).a != 0:
+                                sprite.code_manager.process_click()
+                                break
 
             # Handle broadcast messages
             for message in self.message_broker.get_messages():
