@@ -82,12 +82,11 @@ class Converter:
                 pyfile.write(get_python(project, language=self.language))
 
 
-BASE: Path = Path(__file__).resolve().parent.parent
-
+BASE: Path = Path(__file__).resolve().parent / "src"
 
 def convert():
-    source = BASE / "scratch_files"
-    target = BASE / "generated_files"
+    source = BASE / "scratch_projects"
+    target = BASE / "correct_results"
     for file in source.iterdir():
         if file.is_dir():
             for f in file.iterdir():
@@ -109,8 +108,8 @@ if __name__ == "__main__":
 
     # python tests\generate.py -f "looks/looks3.sb3"
     if args.file:
-        source = BASE / "scratch_files"
-        target = BASE / "generated_files"
+        source = BASE / "scratch_projects"
+        target = BASE / "correct_results"
         path = source / args.file
         dest = target / Path(args.file).parent
         converter = Converter(path.as_posix(), dest.as_posix(), show_err=True)

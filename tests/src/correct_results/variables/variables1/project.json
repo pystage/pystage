@@ -1,0 +1,262 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ],
+                "J@*$Bpe`w]+g.f(@mB?z": [
+                    "a",
+                    11
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "2`FzfxVNeeH%kzmimD5/": {
+                    "opcode": "data_setvariableto",
+                    "next": "qLny7TV|r.)lBB?_tQNg",
+                    "parent": "OtdTl4!p(*Ze%@Rlj[x`",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "a",
+                            "J@*$Bpe`w]+g.f(@mB?z"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "h;5iUxfrcAT7aA@tOB/d": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "OtdTl4!p(*Ze%@Rlj[x`",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 746,
+                    "y": 295
+                },
+                "?e`H5N]~Q_#}#MQho8Yx": {
+                    "opcode": "data_changevariableby",
+                    "next": "+?aS2]tgB4?u$XoE6+wN",
+                    "parent": "qLny7TV|r.)lBB?_tQNg",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "a",
+                            "J@*$Bpe`w]+g.f(@mB?z"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "+?aS2]tgB4?u$XoE6+wN": {
+                    "opcode": "control_wait",
+                    "next": "d=N6sXCYjv;EO4*cf:5y",
+                    "parent": "?e`H5N]~Q_#}#MQho8Yx",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "qLny7TV|r.)lBB?_tQNg": {
+                    "opcode": "control_wait",
+                    "next": "?e`H5N]~Q_#}#MQho8Yx",
+                    "parent": "2`FzfxVNeeH%kzmimD5/",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "d=N6sXCYjv;EO4*cf:5y": {
+                    "opcode": "data_hidevariable",
+                    "next": null,
+                    "parent": "+?aS2]tgB4?u$XoE6+wN",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "a",
+                            "J@*$Bpe`w]+g.f(@mB?z"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "OtdTl4!p(*Ze%@Rlj[x`": {
+                    "opcode": "data_showvariable",
+                    "next": "2`FzfxVNeeH%kzmimD5/",
+                    "parent": "h;5iUxfrcAT7aA@tOB/d",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "a",
+                            "J@*$Bpe`w]+g.f(@mB?z"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "`jEk@4|i[#Fk?(8x)AV.-my variable",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "my variable"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "J@*$Bpe`w]+g.f(@mB?z",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "a"
+            },
+            "spriteName": null,
+            "value": 11,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

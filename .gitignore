@@ -19,6 +19,6 @@ images/
 sounds/
 
 venv/
-generated_files/
-scratch_files/
+
+!tests/src/**
 src/test*.py
