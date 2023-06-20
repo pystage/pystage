@@ -1,12 +1,12 @@
-from .diff import Diff
+from ..diff import Diff
 from pathlib import Path
-from .generate import Converter, to_filename
+from ..generate import Converter, to_filename
 from colored import fg, attr
 
 def test_compare():
-    BASE = Path(__file__).parent.parent
-    source = BASE / "scratch_files"
-    target = BASE / "generated_files"
+    BASE = Path(__file__).parent.parent / "src"
+    source = BASE / "correct_results"
+    target = BASE / "scratch_projects"
 
     for file in source.iterdir():
         if file.is_dir():
