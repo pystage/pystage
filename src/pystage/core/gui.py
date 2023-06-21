@@ -1,5 +1,6 @@
 import pygame
 import pkg_resources
+from threading import Timer
 
 pygame.init()
 
@@ -193,9 +194,16 @@ class BubbleManager():
             self.sprite.stage.bubbles.add(self.bubble)
             
     def kill(self, secs):
-        from threading import Timer
-        
         t = Timer(secs, self.bubble.kill)
         t.start()
+        
+                
+        
+        
+        
+        
+        
+        
+    
 
 

@@ -58,6 +58,7 @@ class CodeManager():
             self.current_block = self.code_blocks[name]
             self.code_blocks[name].update(dt)
 
+    
 
 class CodeBlock():
     '''
@@ -146,8 +147,7 @@ class CodeBlock():
         self.asking = True
         # Queue the question in the central input manager
         self.sprite_or_stage.stage.input_manager.queue(question, self)
-
-
+         
     def start_if_not_running(self):
         '''
         Start the code block. If the block is already started,

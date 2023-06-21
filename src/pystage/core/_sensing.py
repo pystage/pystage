@@ -2,7 +2,7 @@ import pygame
 import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
-
+import datetime
 
 
 class _Sensing(BaseSprite):
@@ -179,7 +179,17 @@ class _Sensing(BaseSprite):
 
 
     def sensing_dayssince2000(self):
-        pass
+        current_date = datetime.datetime.now().date()
+        start_date = datetime.date(2000, 1, 1)
+        time_difference = current_date - start_date
+        days = time_difference.days
+        seconds = time_difference.total_seconds()
+        # takes off .0 at the end of number so we can round the seconds as a float
+        if seconds.is_integer():
+            seconds = int(seconds)
+        days_secs = f"{days}.{seconds}"
+        days_secs_rounded = round(float(days_secs), 2)
+        return days_secs_rounded
 
     def sensing_username(self):
         # Makes not a lot of sense, maybe for compatibility?
