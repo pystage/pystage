@@ -18,17 +18,17 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
 
     def __init__(self, stage, costume="default"):
         self.stage = stage
+        if costume:
+            self.pystage_addcostume(costume)
+            self.name = "Sprite" if costume=="default" else costume 
+        else:
+            self.name = "Sprite"
         # Above attributes need to be set first so that mixins can access them properly
         super().__init__()
         default_file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
         self.image = pygame.image.load(default_file)
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        if costume:
-            self.pystage_addcostume(costume)
-            self.name = "Sprite" if costume=="default" else costume 
-        else:
-            self.name = "Sprite"
         # The facade is the translated API
         self.facade = None
 

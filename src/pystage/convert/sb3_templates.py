@@ -63,7 +63,7 @@ templates = {
                     {{COMMENT | indent(4)}}
                     {{NEXT | indent(4)}}
 
-                {{CURRENT_SPRITE}}.{{func}}({{BACKDROP}}, {{func}}_{{ID}})
+                {{CURRENT_SPRITE}}.{{func}}({{BACKDROP | global_backdrop}}, {{func}}_{{ID}})
                 
                 ''',
                 
