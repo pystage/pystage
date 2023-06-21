@@ -10,6 +10,7 @@ build.sh
 geckodriver.log
 *.ipynb
 .ipynb_checkpoints
+.vscode/
 
 
 # docs
