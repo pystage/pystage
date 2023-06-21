@@ -61,7 +61,7 @@ class _Motion(_Sensing):
 
 
     def motion_goto_sprite(self, sprite):
-        self.motion_gotoxy(sprite.x, sprite.y)
+        self.motion_gotoxy(sprite.x_position(), sprite.y_position())
 
     motion_goto_sprite.opcode = "motion_goto"
 
