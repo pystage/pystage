@@ -5,8 +5,8 @@ from colored import fg, attr
 
 def test_compare():
     BASE = Path(__file__).parent.parent / "src"
-    source = BASE / "correct_results"
-    target = BASE / "scratch_projects"
+    source = BASE / "scratch_projects"
+    target = BASE / "correct_results"
 
     for file in source.iterdir():
         if file.is_dir():
