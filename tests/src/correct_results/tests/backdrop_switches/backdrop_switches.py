@@ -19,7 +19,7 @@ def when_backdrop_switches_to_2(self):
     self.wait_seconds(1.0)
     self.change_color_effect_by(25.0)
 
-stage.when_backdrop_switches_to("Colorful City", when_backdrop_switches_to_2)
+stage.when_backdrop_switches_to("colorful_city", when_backdrop_switches_to_2)
 sprite1 = stage.add_a_sprite(None)
 sprite1.set_name("Sprite1")
 sprite1.set_x(0)
@@ -40,7 +40,7 @@ sprite1.when_program_starts(when_program_starts_3)
 def when_backdrop_switches_to_4(self):
     self.say_for_seconds("Backdrop changed to Chalkboard", 0.5)
 
-sprite1.when_backdrop_switches_to("Chalkboard", when_backdrop_switches_to_4)
+sprite1.when_backdrop_switches_to("chalkboard", when_backdrop_switches_to_4)
 sprite2 = stage.add_a_sprite(None)
 sprite2.set_name("Sprite2")
 sprite2.set_x(-130.95103779895632)
@@ -61,6 +61,6 @@ sprite2.when_program_starts(when_program_starts_5)
 def when_backdrop_switches_to_6(self):
     self.say_for_seconds("Sprite2 backdrop changed to Blue Sky", 0.5)
 
-sprite2.when_backdrop_switches_to("Blue Sky", when_backdrop_switches_to_6)
+sprite2.when_backdrop_switches_to("blue_sky", when_backdrop_switches_to_6)
 
 stage.play()
