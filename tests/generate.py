@@ -1,18 +1,10 @@
 import json
-import sys
 from pathlib import Path
 import zipfile
 import argparse
 import colored
 
-try:
-    path = Path(__file__).resolve().parent.parent / "src"
-    sys.path.insert(0, path.as_posix())
-
-    from pystage.convert.sb3 import get_intermediate, get_python, to_filename
-except ImportError as e:
-    print("Import Error")
-    print(e)
+from pystage.convert.sb3 import get_intermediate, get_python, to_filename
 
 
 class Converter:

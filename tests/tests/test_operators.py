@@ -1,4 +1,3 @@
-from .. import init
 from pystage.core._operators import _Operators
 
 class TestOperators:
