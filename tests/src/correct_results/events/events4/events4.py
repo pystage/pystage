@@ -19,7 +19,7 @@ sprite1.add_sound('meow')
 def when_backdrop_switches_to_1(self):
     self.say("Switched backdrop to blue sky")
 
-sprite1.when_backdrop_switches_to("Blue Sky", when_backdrop_switches_to_1)
+sprite1.when_backdrop_switches_to("blue_sky", when_backdrop_switches_to_1)
 
 def when_program_starts_2(self):
     self.switch_backdrop_to("backdrop1")

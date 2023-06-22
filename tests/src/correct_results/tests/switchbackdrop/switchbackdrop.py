@@ -19,7 +19,7 @@ sprite1.add_sound('meow')
 def when_backdrop_switches_to_1(self):
     self.move(100.0)
 
-sprite1.when_backdrop_switches_to("Basketball 2", when_backdrop_switches_to_1)
+sprite1.when_backdrop_switches_to("basketball_2", when_backdrop_switches_to_1)
 
 def when_program_starts_2(self):
     self.switch_backdrop_to("pool")
