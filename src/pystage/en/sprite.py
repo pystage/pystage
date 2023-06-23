@@ -195,6 +195,24 @@ class Sprite:
 
         """
         return self._core.data_showvariable(name)
+    
+    def show_builtinvariable(self, name):
+        """show builtin variable %1
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_showbuiltinvariable(name)
 
     def get_variable(self, name):
         """
@@ -213,6 +231,11 @@ class Sprite:
 
         """
         return self._core.data_variable(name)
+    
+    def add_tolist(self, name):
+        
+        
+        return self._core.data_addtolist(name, value)
 
     def broadcast(self, message):
         """broadcast %1

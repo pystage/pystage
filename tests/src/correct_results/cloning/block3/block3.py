@@ -5,6 +5,8 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
+stage.show_builtinvariable("data_listcontents")
+stage.set_monitor_position("data_listcontents", 138, 180)
 convertible_2 = stage.add_a_sprite(None)
 convertible_2.set_name("Convertible 2")
 convertible_2.set_x(48)

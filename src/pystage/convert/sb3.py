@@ -355,16 +355,21 @@ def get_python(project, language="core"):
                 ''')
     for monitor in project["stage"]["monitors"]:
         # Only variable monitors are currently implemented
-        if not "variable" in monitor:
-            continue
-        res += textwrap.dedent(f'''\
+        if "variable" in monitor:
+            res += textwrap.dedent(f'''\
                 {stage_var}.{get_translated_function("data_showvariable", language)}("{monitor["variable"]}")
                 {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["variable"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
                 ''')
-        if monitor["style"] == "large":
-            res += textwrap.dedent(f'''\
+            if monitor["style"] == "large":
+                res += textwrap.dedent(f'''\
                     {stage_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
                     ''')
+        else:
+            # handle builtin variable like timer, answer, xposition
+            res += textwrap.dedent(f'''\
+                {stage_var}.{get_translated_function("data_showbuiltinvariable", language)}("{monitor["opcode"]}")
+                {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["opcode"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
+                ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
