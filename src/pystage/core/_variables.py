@@ -74,7 +74,9 @@ class _Variables(BaseSprite):
             return
         monitor.hide()
 
-
+    def data_showbuiltinvariable(self, name):
+        pass
+    
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.
         # Same name for local variables is allowed!
