@@ -1,26 +1,9 @@
 {
-    "name": "add_to_list",
+    "name": "list_in_stage",
     "sprites": [
         {
             "name": "Sprite1",
-            "blocks": [
-                {
-                    "opcode": "event_whenflagclicked",
-                    "params": {},
-                    "next": {
-                        "opcode": "data_addtolist",
-                        "params": {
-                            "LIST": "\"groceries\"",
-                            "ITEM": "\"dounuts\""
-                        },
-                        "next": false,
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                }
-            ],
+            "blocks": [],
             "costumes": [
                 {
                     "md5": "bcf454acf82e4504149f7ffe07081dbc",
@@ -49,7 +32,7 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
-            "x": 30,
+            "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
@@ -84,7 +67,24 @@
     },
     "stage": {
         "name": "Stage",
-        "blocks": [],
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "data_addtolist",
+                    "params": {
+                        "LIST": "\"stage_list\"",
+                        "ITEM": "\"thing\""
+                    },
+                    "next": false,
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            }
+        ],
         "costumes": [
             {
                 "md5": "cd21514d0531fdffb22204e0ec5ed84a",
@@ -104,11 +104,8 @@
             "my variable": 0
         },
         "lists": {
-            "groceries": [
-                "thing",
-                "dounuts",
-                "dounuts",
-                "dounuts"
+            "stage_list": [
+                "thing"
             ]
         },
         "monitors": [
