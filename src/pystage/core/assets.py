@@ -10,7 +10,7 @@ import pkg_resources
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 import pystage
-#import soundfile
+import soundfile
 
 _round = lambda v: pygame.Vector2(round(v.x), round(v.y))
 

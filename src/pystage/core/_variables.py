@@ -77,16 +77,19 @@ class _Variables(BaseSprite):
     def data_showbuiltinvariable(self, name):
         pass
     
-    def data_addtolist(self, name, value):
-        if name in self.stage.list_variables:
-            raise ValueError(f"The variable {name} already exists!")
-        if name in self.list_variables:
-            raise ValueError(f"The variable {name} already exists!")
+    def data_addtolist(self, list_variable, value):
+        if list_variable in self.stage.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
+        if list_variable in self.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
         
-        if name in self.list_variables:
-            self.list_variables[name].append(value)
-        elif name in self.stage.list_variables:
-            self.stage.list_variables[name].append(value)  
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].append(value)
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].append(value)  
+    
+    def data_deleteoflist(self, list_variable, value):
+        pass
     
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.

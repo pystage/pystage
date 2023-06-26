@@ -371,6 +371,7 @@ def get_python(project, language="core"):
         for val in lists[item]:
             res += textwrap.dedent(f'''\
                 {stage_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val}")
+                {stage_var}.{get_translated_function("data_deleteoflist", language)}("{item}", "{val}")
             ''')
 
     for monitor in project["stage"]["monitors"]:
@@ -460,6 +461,7 @@ def get_python(project, language="core"):
             for val in lists[item]:
                 res += textwrap.dedent(f'''\
                     {sprite_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val})
+                    {stage_var}.{get_translated_function("data_deleteoflist", language)}("{item}", "{val}")
                 ''')
             
         for monitor in sprite["monitors"]:

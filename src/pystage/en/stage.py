@@ -945,6 +945,25 @@ class Stage():
 
         """
         return self._core.data_addtolist(list_variable, value)
+    
+    def delete_value_to_list(self, list_variable, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_deleteoflist(list_variable, value)
 
     def pystage_play(self):
         """
