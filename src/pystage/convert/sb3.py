@@ -146,7 +146,7 @@ def get_block(block, blocks, stage, comments=None):
         "stage": stage,
         "comment": None
     })
-    
+
     # add the comment attribute to the block if available
     # works for comments that are pointing to a block
     # won't work for global comments
@@ -175,7 +175,7 @@ def to_filename(name: str):
     name = name.lower().strip()
     for c in umlauts:
         name = name.replace(c, umlauts[c])
-        
+
     # \u4e00-\u9fa5 is the range of Chinese characters
     name = re.sub(r"[^a-z0-9_\u4e00-\u9fa5]", "_", name)
     name = re.sub(r"_+", "_", name)
@@ -224,6 +224,7 @@ def get_intermediate(data, name):
             "costumes": [],
             "sounds": [],
             "variables": {}, # name: value
+            "lists": {},
             "monitors": [], # name: value
             "currentCostume": target["currentCostume"],
             "layerOrder": target["layerOrder"],
@@ -290,6 +291,10 @@ def get_intermediate(data, name):
             variable = {}
             sprite["variables"][v[0]] = v[1]
 
+        for key in target["lists"]:
+            l = target["lists"][key]
+            sprite["lists"][l[0]] = l[1]
+
     for m in data["monitors"]:
         if not m["visible"]:
             continue
@@ -322,6 +327,7 @@ def get_python(project, language="core"):
     add_costume = get_translated_function("pystage_addcostume", language)
     add_sound = get_translated_function("pystage_addsound", language)
     add_variable = get_translated_function("pystage_makevariable", language)
+    add_list_variable = get_translated_function("pystage_makelistvariable", language, stage=True)
     create_sprite = get_translated_function("pystage_createsprite", language, stage=True)
     play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
@@ -353,6 +359,12 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_variable}('{v}')
                 ''')
+
+    for l in project["stage"]["lists"]:
+        res += textwrap.dedent(f'''\
+                {stage_var}.{add_list_variable}('{l}')
+                ''')
+
     for monitor in project["stage"]["monitors"]:
         # Only variable monitors are currently implemented
         if not "variable" in monitor:
