@@ -156,6 +156,8 @@ class Bubble(pygame.sprite.Sprite):
     def update(self, force=False):
         if not force and self.sprite.motion_xposition() == self.sprite_x and self.sprite.motion_yposition() == self.sprite_y:
             return
+        self.sprite_x = self.sprite.motion_xposition()
+        self.sprite_y = self.sprite.motion_yposition()
         y = max(0, self.sprite.rect.top - self.image_normal.get_height() - self.sprite.costume_manager.get_image().get_height() * self.y_offset)
         if not self.flipped:
             x = self.sprite.rect.left - self.image_normal.get_width() - self.sprite.costume_manager.get_image().get_width() * self.x_offset
