@@ -12,11 +12,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -30,7 +30,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -46,13 +46,13 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -68,7 +68,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -82,7 +82,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -96,7 +96,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -110,11 +110,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         secs : FILL
-        
+
 
         Returns
         -------
@@ -128,12 +128,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         value : FILL
-        
+
 
         Returns
         -------
@@ -147,11 +147,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -165,12 +165,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         value : FILL
-        
+
 
         Returns
         -------
@@ -184,11 +184,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -220,11 +220,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -232,10 +232,6 @@ class Sprite:
         """
         return self._core.data_variable(name)
     
-    def add_tolist(self, name):
-        
-        
-        return self._core.data_addtolist(name, value)
 
     def broadcast(self, message):
         """broadcast %1
@@ -243,11 +239,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         message : FILL
-        
+
 
         Returns
         -------
@@ -261,11 +257,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         message : FILL
-        
+
 
         Returns
         -------
@@ -281,14 +277,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         backdrop : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -306,14 +302,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         message : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -329,13 +325,13 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -353,14 +349,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -378,14 +374,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -401,14 +397,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         key : FILL
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -424,13 +420,13 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         generator_function : FILL
         name : FILL
         no_refresh : FILL
-        
+
 
         Returns
         -------
@@ -446,7 +442,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -460,7 +456,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -474,11 +470,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -492,11 +488,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -510,11 +506,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -528,11 +524,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -546,11 +542,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -564,11 +560,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -582,11 +578,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -600,11 +596,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         percent : FILL
-        
+
 
         Returns
         -------
@@ -618,7 +614,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -632,7 +628,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -646,7 +642,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -660,11 +656,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -678,11 +674,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -696,7 +692,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -710,7 +706,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -724,7 +720,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -738,7 +734,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -752,7 +748,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -766,11 +762,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         text : FILL
-        
+
 
         Returns
         -------
@@ -784,12 +780,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         text : FILL
         secs : FILL
-        
+
 
         Returns
         -------
@@ -803,11 +799,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -821,11 +817,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -839,11 +835,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -857,11 +853,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -875,11 +871,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -893,11 +889,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -911,11 +907,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -929,11 +925,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         percent : FILL
-        
+
 
         Returns
         -------
@@ -947,7 +943,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -961,7 +957,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -975,11 +971,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         backdrop : FILL
-        
+
 
         Returns
         -------
@@ -993,11 +989,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         costume : FILL
-        
+
 
         Returns
         -------
@@ -1011,11 +1007,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         text : FILL
-        
+
 
         Returns
         -------
@@ -1029,12 +1025,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         text : FILL
         secs : FILL
-        
+
 
         Returns
         -------
@@ -1048,11 +1044,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1066,11 +1062,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1084,7 +1080,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1098,13 +1094,13 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         secs : FILL
         x : FILL
         y : FILL
-        
+
 
         Returns
         -------
@@ -1118,11 +1114,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         secs : FILL
-        
+
 
         Returns
         -------
@@ -1136,11 +1132,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         secs : FILL
-        
+
 
         Returns
         -------
@@ -1154,12 +1150,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         secs : FILL
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -1173,7 +1169,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1187,7 +1183,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1201,11 +1197,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -1219,12 +1215,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         x : FILL
         y : FILL
-        
+
 
         Returns
         -------
@@ -1238,7 +1234,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1252,11 +1248,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         steps : FILL
-        
+
 
         Returns
         -------
@@ -1270,11 +1266,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         direction : FILL
-        
+
 
         Returns
         -------
@@ -1288,7 +1284,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1302,11 +1298,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -1339,7 +1335,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         """
         return self._core.motion_setrotationstyle_allaround()
 
@@ -1349,11 +1345,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1367,11 +1363,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1385,11 +1381,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         deg : FILL
-        
+
 
         Returns
         -------
@@ -1403,11 +1399,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         deg : FILL
-        
+
 
         Returns
         -------
@@ -1421,7 +1417,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1435,7 +1431,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1449,12 +1445,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         operator : FILL
         number : FILL
-        
+
 
         Returns
         -------
@@ -1468,12 +1464,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         start : FILL
         end : FILL
-        
+
 
         Returns
         -------
@@ -1487,11 +1483,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1505,11 +1501,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1523,11 +1519,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1541,11 +1537,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1559,11 +1555,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1577,7 +1573,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1591,7 +1587,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1605,7 +1601,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1619,11 +1615,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1637,11 +1633,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1655,11 +1651,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1673,11 +1669,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1691,11 +1687,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         color : FILL
-        
+
 
         Returns
         -------
@@ -1709,11 +1705,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -1727,7 +1723,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1741,14 +1737,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         center_x : FILL
         center_y : FILL
         factor : FILL
-        
+
 
         Returns
         -------
@@ -1762,11 +1758,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -1780,14 +1776,14 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         index : FILL
         name : FILL
         center_x : FILL
         center_y : FILL
-        
+
 
         Returns
         -------
@@ -1801,12 +1797,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         all_sprites : FILL
-        
+
 
         Returns
         -------
@@ -1814,20 +1810,58 @@ class Sprite:
         """
         return self._core.pystage_makevariable(name, all_sprites=True)
 
+    def create_list_variable(self, name, all_sprites=True):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_makelistvariable(name, all_sprites=True)
+    
+    def add_list_variable(self, name, all_sprites=True):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_addtolist(name, all_sprites=True)
+
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         index : FILL
         name : FILL
         center_x : FILL
         center_y : FILL
-        
+
 
         Returns
         -------
@@ -1843,13 +1877,13 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         x : FILL
         y : FILL
-        
+
 
         Returns
         -------
@@ -1860,15 +1894,15 @@ class Sprite:
     def pystage_setmonitorstyle_large(self, name):
         """
 
-        Translation string: 
+        Translation string:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -1879,15 +1913,15 @@ class Sprite:
     def pystage_setmonitorstyle_normal(self, name):
         """
 
-        Translation string: 
+        Translation string:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -1898,15 +1932,15 @@ class Sprite:
     def pystage_setmonitorstyle_slider(self, name):
         """
 
-        Translation string: 
+        Translation string:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -1920,7 +1954,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1934,11 +1968,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         question : FILL
-        
+
 
         Returns
         -------
@@ -1952,12 +1986,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite_color : FILL
         color : FILL
-        
+
 
         Returns
         -------
@@ -1971,7 +2005,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1985,7 +2019,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -1999,7 +2033,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2013,7 +2047,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2027,7 +2061,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2041,7 +2075,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2055,7 +2089,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2069,7 +2103,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2083,7 +2117,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2097,11 +2131,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2115,11 +2149,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         key : FILL
-        
+
 
         Returns
         -------
@@ -2133,7 +2167,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2147,7 +2181,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2161,7 +2195,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2175,7 +2209,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2189,11 +2223,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         stage : FILL
-        
+
 
         Returns
         -------
@@ -2207,11 +2241,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         stage : FILL
-        
+
 
         Returns
         -------
@@ -2225,11 +2259,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2243,11 +2277,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2261,11 +2295,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2279,11 +2313,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2297,12 +2331,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         variable : FILL
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2316,11 +2350,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2334,11 +2368,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2352,11 +2386,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2370,7 +2404,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2384,7 +2418,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2398,7 +2432,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2412,7 +2446,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2426,11 +2460,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         color : FILL
-        
+
 
         Returns
         -------
@@ -2444,7 +2478,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2458,7 +2492,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2472,11 +2506,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         sprite : FILL
-        
+
 
         Returns
         -------
@@ -2490,7 +2524,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2504,11 +2538,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2522,11 +2556,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2540,11 +2574,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2558,7 +2592,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2572,12 +2606,12 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
         loop : FILL
-        
+
 
         Returns
         -------
@@ -2591,11 +2625,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------
@@ -2609,11 +2643,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2627,11 +2661,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2645,11 +2679,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         value : FILL
-        
+
 
         Returns
         -------
@@ -2663,7 +2697,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2677,7 +2711,7 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
 
         Returns
         -------
@@ -2691,11 +2725,11 @@ class Sprite:
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
-        
+
         Parameters
         ----------
         name : FILL
-        
+
 
         Returns
         -------

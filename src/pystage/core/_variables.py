@@ -15,6 +15,7 @@ class _Variables(BaseSprite):
         super().__init__()
 
         self.variables = {}
+        self.list_variables = {}
         self.monitors = {}
 
 
@@ -43,6 +44,13 @@ class _Variables(BaseSprite):
         else:
             raise ValueError(f"The variable {name} does not exist.")
 
+    def data_listvariable(self, name):
+        if name in self.list_variables:
+            return self.list_variables[name]
+        elif name in self.stage.list_variables:
+            return self.stage.list_variables[name]
+        else:
+            raise ValueError(f"The list variable {name} does not exist.")
 
     def data_changevariableby(self, name, value):
         if name in self.variables:
@@ -69,8 +77,11 @@ class _Variables(BaseSprite):
     def data_showbuiltinvariable(self, name):
         pass
     
+    def data_addtolist(self, name, all_sprites=True):
+        pass
+    
     def pystage_makevariable(self, name, all_sprites=True):
-        # Make sure a variable name is unique for a sprite or globally. 
+        # Make sure a variable name is unique for a sprite or globally.
         # Same name for local variables is allowed!
         if name in self.stage.variables:
             raise ValueError(f"The variable {name} already exists!")
@@ -89,7 +100,37 @@ class _Variables(BaseSprite):
             self.variables[name]=0
             self.monitors[name] = monitor
         else:
-            self.stage.variables[name]=0
+            self.stage.variables[name] = 0
+            self.stage.monitors[name] = monitor
+
+    def pystage_makelistvariable(self, name, all_sprites=True):
+        # Make sure a list variable name is unique for a sprite or globally.
+        # Same name for local variables is allowed!
+
+        # We can have a variable and list variable with the same name, but
+        # we use Monitors for both, and access them via the name/title.
+        # So, we need to uniquify the list variables' names. Thus, we add '[]'
+        # to the name.
+        name = name + '[]'
+
+        if name in self.stage.list_variables:
+            raise ValueError(f"The list variable {name} already exists!")
+        if name in self.variables:
+            raise ValueError(f"The list variable {name} already exists!")
+        if all_sprites:
+            for sprite in self.stage.sprites:
+                if name in sprite.list_variables:
+                    raise ValueError(f"The list variable {name} already exists!")
+
+        monitor = Monitor(self, name)
+        monitor.hide()
+        monitor.set_function(lambda: self.data_listvariable(name))
+
+        if not all_sprites:
+            self.list_variables[name] = []
+            self.monitors[name] = monitor
+        else:
+            self.stage.list_variables[name] = 0
             self.stage.monitors[name] = monitor
 
 
