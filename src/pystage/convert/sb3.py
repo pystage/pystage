@@ -327,7 +327,7 @@ def get_python(project, language="core"):
     add_costume = get_translated_function("pystage_addcostume", language)
     add_sound = get_translated_function("pystage_addsound", language)
     add_variable = get_translated_function("pystage_makevariable", language)
-    add_list_variable = get_translated_function("pystage_makelistvariable", language, stage=True)
+    add_list_variable = get_translated_function("pystage_makelistvariable", language)
     create_sprite = get_translated_function("pystage_createsprite", language, stage=True)
     play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
@@ -364,6 +364,14 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_list_variable}('{l}')
                 ''')
+    for item in (lists := project["stage"]["lists"]):
+        res += textwrap.dedent(f'''\
+                {stage_var}.{add_list_variable}("{item}")
+            ''')
+        for val in lists[item]:
+            res += textwrap.dedent(f'''\
+                {stage_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val}")
+            ''')
 
     for monitor in project["stage"]["monitors"]:
         # Only variable monitors are currently implemented
@@ -381,9 +389,9 @@ def get_python(project, language="core"):
             res += textwrap.dedent(f'''\
                 {stage_var}.{get_translated_function("data_showbuiltinvariable", language)}("{monitor["opcode"]}")
                 {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["opcode"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
-                {stage_var}.{get_translated_function("data_addtolist", language)}("{monitor["opcode"]}")
-                {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["opcode"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
                 ''')
+    
+    
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
@@ -443,6 +451,17 @@ def get_python(project, language="core"):
             res += textwrap.dedent(f'''\
                     {sprite_var}.{add_variable}('{v}')
                     ''')
+            
+        for item in (lists := sprite["lists"]):
+            print('gp: lists = ', lists, ' item = ', item)
+            res += textwrap.dedent(f'''\
+                    {sprite_var}.{add_list_variable}("{item}")
+                ''')
+            for val in lists[item]:
+                res += textwrap.dedent(f'''\
+                    {sprite_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val})
+                ''')
+            
         for monitor in sprite["monitors"]:
             # Only variable monitors are currently implemented
             if not "variable" in monitor:
