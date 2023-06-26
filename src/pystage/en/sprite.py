@@ -232,10 +232,6 @@ class Sprite:
         """
         return self._core.data_variable(name)
     
-    def add_tolist(self, name):
-        
-        
-        return self._core.data_addtolist(name, value)
 
     def broadcast(self, message):
         """broadcast %1
@@ -1832,6 +1828,25 @@ class Sprite:
 
         """
         return self._core.pystage_makelistvariable(name, all_sprites=True)
+    
+    def add_list_variable(self, name, all_sprites=True):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_addtolist(name, all_sprites=True)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """

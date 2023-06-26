@@ -926,6 +926,25 @@ class Stage():
 
         """
         return self._core.pystage_makelistvariable(name, all_sprites=True)
+    
+    def add_list_variable(self, name, all_sprites=True):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_addtolist(name, all_sprites=True)
 
     def pystage_play(self):
         """

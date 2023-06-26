@@ -77,6 +77,9 @@ class _Variables(BaseSprite):
     def data_showbuiltinvariable(self, name):
         pass
     
+    def data_addtolist(self, name, all_sprites=True):
+        pass
+    
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.
         # Same name for local variables is allowed!

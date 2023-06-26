@@ -381,6 +381,8 @@ def get_python(project, language="core"):
             res += textwrap.dedent(f'''\
                 {stage_var}.{get_translated_function("data_showbuiltinvariable", language)}("{monitor["opcode"]}")
                 {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["opcode"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
+                {stage_var}.{get_translated_function("data_addtolist", language)}("{monitor["opcode"]}")
+                {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["opcode"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
                 ''')
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
