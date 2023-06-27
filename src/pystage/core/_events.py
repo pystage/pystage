@@ -63,7 +63,15 @@ class _Events(BaseSprite):
 
     def event_whengreaterthan_timer(self, value, generator_function, name="", no_refresh=False):
         # Scratch has a timer that can be reset. 
-        pass
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
+        if value not in self.code_manager.time_gt_blocks:
+            self.code_manager.time_gt_blocks[value] = {}
+            self.code_manager.time_gt_blocks[value]["done"] = False
+            self.code_manager.time_gt_blocks[value]["blocks"] = []
+        self.code_manager.time_gt_blocks[value]["blocks"].append(new_block.name)
+        print(f"Bound to timer ({value}): {new_block.name}")
+
+
     event_whengreaterthan_timer.opcode="event_whengreaterthan"
     event_whengreaterthan_timer.param="WHENGREATERTHANMENU"
     event_whengreaterthan_timer.value="TIMER"

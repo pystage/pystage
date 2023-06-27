@@ -9,14 +9,7 @@
                     0
                 ]
             },
-            "lists": {
-                "T``j*4x^dqva_^y~AnfC": [
-                    "delete_list_plz",
-                    [
-                        "thing2"
-                    ]
-                ]
-            },
+            "lists": {},
             "broadcasts": {},
             "blocks": {},
             "comments": {},
@@ -37,8 +30,8 @@
                     "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 44100,
-                    "sampleCount": 1032,
+                    "rate": 48000,
+                    "sampleCount": 1123,
                     "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
                 }
             ],
@@ -56,97 +49,51 @@
             "lists": {},
             "broadcasts": {},
             "blocks": {
-                "S#y*{uy(0z@reW9UBE%%": {
-                    "opcode": "event_whenflagclicked",
-                    "next": "=I8ljRZ5B-DU(W6[KNM9",
+                "q)fEaAL(^Wef?naL/y8D": {
+                    "opcode": "event_whengreaterthan",
+                    "next": "@m~`9`na$#ya%[Q+Zb0z",
                     "parent": null,
-                    "inputs": {},
-                    "fields": {},
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "WHENGREATERTHANMENU": [
+                            "TIMER",
+                            null
+                        ]
+                    },
                     "shadow": false,
                     "topLevel": true,
-                    "x": 465,
-                    "y": 158
+                    "x": 326,
+                    "y": 289
                 },
-                "=I8ljRZ5B-DU(W6[KNM9": {
-                    "opcode": "data_addtolist",
-                    "next": "4+`bk6u~:]o.=t8Z{LU0",
-                    "parent": "S#y*{uy(0z@reW9UBE%%",
+                "@m~`9`na$#ya%[Q+Zb0z": {
+                    "opcode": "looks_sayforsecs",
+                    "next": null,
+                    "parent": "q)fEaAL(^Wef?naL/y8D",
                     "inputs": {
-                        "ITEM": [
+                        "MESSAGE": [
                             1,
                             [
                                 10,
-                                "thing"
+                                "Hello!"
                             ]
-                        ]
-                    },
-                    "fields": {
-                        "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
-                        ]
-                    },
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "4+`bk6u~:]o.=t8Z{LU0": {
-                    "opcode": "data_addtolist",
-                    "next": "3{MQ|tr+hB_lwJs%-pH:",
-                    "parent": "=I8ljRZ5B-DU(W6[KNM9",
-                    "inputs": {
-                        "ITEM": [
+                        ],
+                        "SECS": [
                             1,
                             [
-                                10,
-                                "thing2"
-                            ]
-                        ]
-                    },
-                    "fields": {
-                        "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
-                        ]
-                    },
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "3{MQ|tr+hB_lwJs%-pH:": {
-                    "opcode": "control_wait",
-                    "next": "kB6O+ZOi:bHUYOzOzi6t",
-                    "parent": "4+`bk6u~:]o.=t8Z{LU0",
-                    "inputs": {
-                        "DURATION": [
-                            1,
-                            [
-                                5,
-                                "1"
+                                4,
+                                "2"
                             ]
                         ]
                     },
                     "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "kB6O+ZOi:bHUYOzOzi6t": {
-                    "opcode": "data_deleteoflist",
-                    "next": null,
-                    "parent": "3{MQ|tr+hB_lwJs%-pH:",
-                    "inputs": {
-                        "INDEX": [
-                            1,
-                            [
-                                7,
-                                "1"
-                            ]
-                        ]
-                    },
-                    "fields": {
-                        "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
-                        ]
-                    },
                     "shadow": false,
                     "topLevel": false
                 }
@@ -179,8 +126,8 @@
                     "assetId": "83c36d806dc92327b9e7049a565c6bff",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 44100,
-                    "sampleCount": 37376,
+                    "rate": 48000,
+                    "sampleCount": 40681,
                     "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
                 }
             ],
@@ -195,29 +142,11 @@
             "rotationStyle": "all around"
         }
     ],
-    "monitors": [
-        {
-            "id": "T``j*4x^dqva_^y~AnfC",
-            "mode": "list",
-            "opcode": "data_listcontents",
-            "params": {
-                "LIST": "delete_list_plz"
-            },
-            "spriteName": null,
-            "value": [
-                "thing2"
-            ],
-            "width": 0,
-            "height": 0,
-            "x": 5,
-            "y": 5,
-            "visible": true
-        }
-    ],
+    "monitors": [],
     "extensions": [],
     "meta": {
         "semver": "3.0.0",
         "vm": "1.5.76",
-        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
     }
 }

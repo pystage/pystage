@@ -1,5 +1,5 @@
 {
-    "name": "delete_from_list",
+    "name": "length_of_list",
     "sprites": [
         {
             "name": "Sprite1",
@@ -10,33 +10,23 @@
                     "next": {
                         "opcode": "data_addtolist",
                         "params": {
-                            "LIST": "\"delete_list_plz\"",
+                            "LIST": "\"the_length_of_the_list\"",
                             "ITEM": "\"thing\""
                         },
                         "next": {
-                            "opcode": "data_addtolist",
+                            "opcode": "looks_say",
                             "params": {
-                                "LIST": "\"delete_list_plz\"",
-                                "ITEM": "\"thing2\""
-                            },
-                            "next": {
-                                "opcode": "control_wait",
-                                "params": {
-                                    "DURATION": 1.0
-                                },
-                                "next": {
-                                    "opcode": "data_deleteoflist",
+                                "MESSAGE": {
+                                    "opcode": "data_lengthoflist",
                                     "params": {
-                                        "LIST": "\"delete_list_plz\"",
-                                        "INDEX": 1
+                                        "LIST": "\"the_length_of_the_list\""
                                     },
                                     "next": false,
                                     "stage": false,
                                     "comment": null
-                                },
-                                "stage": false,
-                                "comment": null
+                                }
                             },
+                            "next": false,
                             "stage": false,
                             "comment": null
                         },
@@ -70,8 +60,19 @@
                 }
             ],
             "variables": {},
-            "lists": {},
-            "monitors": [],
+            "lists": {
+                "the_length_of_the_list": [
+                    "thing"
+                ]
+            },
+            "monitors": [
+                {
+                    "style": "list",
+                    "x": 6,
+                    "y": 97,
+                    "opcode": "data_listcontents"
+                }
+            ],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -129,19 +130,8 @@
         "variables": {
             "my variable": 0
         },
-        "lists": {
-            "delete_list_plz": [
-                "thing2"
-            ]
-        },
-        "monitors": [
-            {
-                "style": "list",
-                "x": 5,
-                "y": 5,
-                "opcode": "data_listcontents"
-            }
-        ],
+        "lists": {},
+        "monitors": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

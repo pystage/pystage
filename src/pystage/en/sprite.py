@@ -1838,8 +1838,8 @@ class Sprite:
 
         Parameters
         ----------
-        name : FILL
-        all_sprites : FILL
+        list_varaible : FILL
+        value : FILL
 
 
         Returns
@@ -1857,15 +1857,34 @@ class Sprite:
 
         Parameters
         ----------
-        name : FILL
-        all_sprites : FILL
+        list_varaible : FILL
+        value : FILL
 
 
         Returns
         -------
 
         """
+        
         return self._core.data_deleteoflist(list_variable, value)
+    
+    def show_length_of_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_lengthoflist(self, list_variable)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """

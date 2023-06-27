@@ -1,45 +1,22 @@
 {
-    "name": "delete_from_list",
+    "name": "timer",
     "sprites": [
         {
             "name": "Sprite1",
             "blocks": [
                 {
-                    "opcode": "event_whenflagclicked",
-                    "params": {},
+                    "opcode": "event_whengreaterthan",
+                    "params": {
+                        "WHENGREATERTHANMENU": "\"TIMER\"",
+                        "VALUE": 10.0
+                    },
                     "next": {
-                        "opcode": "data_addtolist",
+                        "opcode": "looks_sayforsecs",
                         "params": {
-                            "LIST": "\"delete_list_plz\"",
-                            "ITEM": "\"thing\""
+                            "MESSAGE": "\"Hello!\"",
+                            "SECS": 2.0
                         },
-                        "next": {
-                            "opcode": "data_addtolist",
-                            "params": {
-                                "LIST": "\"delete_list_plz\"",
-                                "ITEM": "\"thing2\""
-                            },
-                            "next": {
-                                "opcode": "control_wait",
-                                "params": {
-                                    "DURATION": 1.0
-                                },
-                                "next": {
-                                    "opcode": "data_deleteoflist",
-                                    "params": {
-                                        "LIST": "\"delete_list_plz\"",
-                                        "INDEX": 1
-                                    },
-                                    "next": false,
-                                    "stage": false,
-                                    "comment": null
-                                },
-                                "stage": false,
-                                "comment": null
-                            },
-                            "stage": false,
-                            "comment": null
-                        },
+                        "next": false,
                         "stage": false,
                         "comment": null
                     },
@@ -70,7 +47,6 @@
                 }
             ],
             "variables": {},
-            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -129,19 +105,7 @@
         "variables": {
             "my variable": 0
         },
-        "lists": {
-            "delete_list_plz": [
-                "thing2"
-            ]
-        },
-        "monitors": [
-            {
-                "style": "list",
-                "x": 5,
-                "y": 5,
-                "opcode": "data_listcontents"
-            }
-        ],
+        "monitors": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

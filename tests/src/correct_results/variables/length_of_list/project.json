@@ -9,14 +9,7 @@
                     0
                 ]
             },
-            "lists": {
-                "T``j*4x^dqva_^y~AnfC": [
-                    "delete_list_plz",
-                    [
-                        "thing2"
-                    ]
-                ]
-            },
+            "lists": {},
             "broadcasts": {},
             "blocks": {},
             "comments": {},
@@ -53,24 +46,63 @@
             "isStage": false,
             "name": "Sprite1",
             "variables": {},
-            "lists": {},
+            "lists": {
+                "[eJo#%v:9=lV7c`6vo82": [
+                    "the_length_of_the_list",
+                    [
+                        "thing"
+                    ]
+                ]
+            },
             "broadcasts": {},
             "blocks": {
-                "S#y*{uy(0z@reW9UBE%%": {
+                "sF`WwY{SbMfCvd_%+97e": {
                     "opcode": "event_whenflagclicked",
-                    "next": "=I8ljRZ5B-DU(W6[KNM9",
+                    "next": "_0V[G`*b4D29Gi*mTu3f",
                     "parent": null,
                     "inputs": {},
                     "fields": {},
                     "shadow": false,
                     "topLevel": true,
-                    "x": 465,
-                    "y": 158
+                    "x": 400,
+                    "y": 147
                 },
-                "=I8ljRZ5B-DU(W6[KNM9": {
+                "_r(u,0Msc]kBlEgzEo56": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "_0V[G`*b4D29Gi*mTu3f",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "UhwV9;tv3!V/0]7ckWEc",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "UhwV9;tv3!V/0]7ckWEc": {
+                    "opcode": "data_lengthoflist",
+                    "next": null,
+                    "parent": "_r(u,0Msc]kBlEgzEo56",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "the_length_of_the_list",
+                            "[eJo#%v:9=lV7c`6vo82"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "_0V[G`*b4D29Gi*mTu3f": {
                     "opcode": "data_addtolist",
-                    "next": "4+`bk6u~:]o.=t8Z{LU0",
-                    "parent": "S#y*{uy(0z@reW9UBE%%",
+                    "next": "_r(u,0Msc]kBlEgzEo56",
+                    "parent": "sF`WwY{SbMfCvd_%+97e",
                     "inputs": {
                         "ITEM": [
                             1,
@@ -82,69 +114,8 @@
                     },
                     "fields": {
                         "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
-                        ]
-                    },
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "4+`bk6u~:]o.=t8Z{LU0": {
-                    "opcode": "data_addtolist",
-                    "next": "3{MQ|tr+hB_lwJs%-pH:",
-                    "parent": "=I8ljRZ5B-DU(W6[KNM9",
-                    "inputs": {
-                        "ITEM": [
-                            1,
-                            [
-                                10,
-                                "thing2"
-                            ]
-                        ]
-                    },
-                    "fields": {
-                        "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
-                        ]
-                    },
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "3{MQ|tr+hB_lwJs%-pH:": {
-                    "opcode": "control_wait",
-                    "next": "kB6O+ZOi:bHUYOzOzi6t",
-                    "parent": "4+`bk6u~:]o.=t8Z{LU0",
-                    "inputs": {
-                        "DURATION": [
-                            1,
-                            [
-                                5,
-                                "1"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "kB6O+ZOi:bHUYOzOzi6t": {
-                    "opcode": "data_deleteoflist",
-                    "next": null,
-                    "parent": "3{MQ|tr+hB_lwJs%-pH:",
-                    "inputs": {
-                        "INDEX": [
-                            1,
-                            [
-                                7,
-                                "1"
-                            ]
-                        ]
-                    },
-                    "fields": {
-                        "LIST": [
-                            "delete_list_plz",
-                            "T``j*4x^dqva_^y~AnfC"
+                            "the_length_of_the_list",
+                            "[eJo#%v:9=lV7c`6vo82"
                         ]
                     },
                     "shadow": false,
@@ -197,20 +168,20 @@
     ],
     "monitors": [
         {
-            "id": "T``j*4x^dqva_^y~AnfC",
+            "id": "[eJo#%v:9=lV7c`6vo82",
             "mode": "list",
             "opcode": "data_listcontents",
             "params": {
-                "LIST": "delete_list_plz"
+                "LIST": "the_length_of_the_list"
             },
-            "spriteName": null,
+            "spriteName": "Sprite1",
             "value": [
-                "thing2"
+                "thing"
             ],
             "width": 0,
             "height": 0,
-            "x": 5,
-            "y": 5,
+            "x": 6,
+            "y": 97,
             "visible": true
         }
     ],

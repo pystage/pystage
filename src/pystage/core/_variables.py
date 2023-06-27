@@ -73,7 +73,7 @@ class _Variables(BaseSprite):
         if not monitor:
             return
         monitor.hide()
-
+    # This function is used for variables in scratch that are built in like timer, answer and xposition
     def data_showbuiltinvariable(self, name):
         pass
     
@@ -89,8 +89,17 @@ class _Variables(BaseSprite):
             self.stage.list_variables[list_variable].append(value)  
     
     def data_deleteoflist(self, list_variable, value):
-        pass
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].append(value)
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].append(value)
     
+    def data_lengthoflist(self, list_variable):
+        if list_variable in self.stage.list_variables:
+            return len(self.stage.list_variables)
+        else:
+            return 0
+                   
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.
         # Same name for local variables is allowed!

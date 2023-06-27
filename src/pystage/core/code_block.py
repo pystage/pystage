@@ -27,11 +27,17 @@ class CodeManager():
         self.broadcast_blocks = {}
         self.clicked_blocks = []
         self.backdrop_switch_blocks = {}
+        # {time: {"done": bool, "block": [CodeBlock]}}
+        self.time_gt_blocks = {}
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
         self.current_block: CodeBlock = None
         self.owner = owner
+
+    def reset_time_gt_blocks(self):
+        for detail in self.time_gt_blocks.values():
+            detail["done"] = False
 
     def process_key_pressed(self, key):
         # key is a pygame constant, e.g. pygame.K_a
@@ -54,6 +60,18 @@ class CodeManager():
         function_names = self.backdrop_switch_blocks.get(backdrop_name, [])
         for name in function_names:
             self.code_blocks[name].start_or_restart()
+
+    def process_time_gt(self, timer):
+        function_names = [detail for time, detail in self.time_gt_blocks.items() if timer > time and not detail["done"]]
+        function_names and print(function_names)
+        for detail in function_names:
+            detail["done"] = True
+            for name in detail["blocks"]:
+                self.code_blocks[name].start_or_restart()
+        
+        # function_names = self.time_gt_blocks.get(time, [])
+        # for name in function_names:
+        #     self.code_blocks[name].start_or_restart()
 
     def register_code_block(self, generator_function, name="", no_refresh=False):
         new_block = CodeBlock(self.owner, generator_function, name, no_refresh=no_refresh)

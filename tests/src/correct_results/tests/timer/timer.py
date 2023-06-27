@@ -1,11 +1,10 @@
-# add_list_variable (pyStage, converted from Scratch 3)
+# timer (pyStage, converted from Scratch 3)
 
 from pystage.en import Sprite, Stage
 
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
-stage.create_list_variable("groceries")
 sprite1 = stage.add_a_sprite(None)
 sprite1.set_name("Sprite1")
 sprite1.set_x(0)
@@ -16,9 +15,9 @@ sprite1.add_costume('costume1', center_x=48, center_y=50)
 sprite1.add_costume('costume2', center_x=46, center_y=53)
 sprite1.add_sound('meow')
 
-def when_program_starts_1(self):
-    self.move(10.0)
+def when_timer_greater_than_1(self):
+    self.say_for_seconds("Hello!", 2.0)
 
-sprite1.when_program_starts(when_program_starts_1)
+sprite1.when_timer_greater_than(10.0, when_timer_greater_than_1)
 
 stage.play()
