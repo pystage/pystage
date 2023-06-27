@@ -1868,6 +1868,25 @@ class Sprite:
         
         return self._core.data_deleteoflist(list_variable, position)
     
+    def delete_all_from_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_deletealloflist(list_variable)
+    
     def inserted_value_to_list(self, list_variable, position, value):
         """
 

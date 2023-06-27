@@ -9,12 +9,7 @@
                     0
                 ]
             },
-            "lists": {
-                "(:{Mx/0`H3Rn6`UgwL=J": [
-                    "groceries",
-                    []
-                ]
-            },
+            "lists": {},
             "broadcasts": {},
             "blocks": {},
             "comments": {},
@@ -35,8 +30,8 @@
                     "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 48000,
-                    "sampleCount": 1124,
+                    "rate": 44100,
+                    "sampleCount": 1032,
                     "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
                 }
             ],
@@ -51,12 +46,17 @@
             "isStage": false,
             "name": "Sprite1",
             "variables": {},
-            "lists": {},
+            "lists": {
+                "RG_Ipmv#P0}G{V4)gt!]": [
+                    "groceries",
+                    []
+                ]
+            },
             "broadcasts": {},
             "blocks": {
                 "_k9(uOO}5WUjDRkv0gVE": {
                     "opcode": "event_whenflagclicked",
-                    "next": "sURYy8e5h$oM_t-OW4+i",
+                    "next": "lv#C~6vEhIN$(n$U|c:1",
                     "parent": null,
                     "inputs": {},
                     "fields": {},
@@ -65,20 +65,25 @@
                     "x": 138,
                     "y": 95
                 },
-                "sURYy8e5h$oM_t-OW4+i": {
-                    "opcode": "motion_movesteps",
+                "lv#C~6vEhIN$(n$U|c:1": {
+                    "opcode": "data_addtolist",
                     "next": null,
                     "parent": "_k9(uOO}5WUjDRkv0gVE",
                     "inputs": {
-                        "STEPS": [
+                        "ITEM": [
                             1,
                             [
-                                4,
-                                "10"
+                                10,
+                                "thing"
                             ]
                         ]
                     },
-                    "fields": {},
+                    "fields": {
+                        "LIST": [
+                            "groceries",
+                            "RG_Ipmv#P0}G{V4)gt!]"
+                        ]
+                    },
                     "shadow": false,
                     "topLevel": false
                 }
@@ -111,8 +116,8 @@
                     "assetId": "83c36d806dc92327b9e7049a565c6bff",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 48000,
-                    "sampleCount": 40682,
+                    "rate": 44100,
+                    "sampleCount": 37376,
                     "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
                 }
             ],
@@ -129,25 +134,25 @@
     ],
     "monitors": [
         {
-            "id": "(:{Mx/0`H3Rn6`UgwL=J",
+            "id": "RG_Ipmv#P0}G{V4)gt!]",
             "mode": "list",
             "opcode": "data_listcontents",
             "params": {
                 "LIST": "groceries"
             },
-            "spriteName": null,
+            "spriteName": "Sprite1",
             "value": [],
             "width": 0,
             "height": 0,
             "x": 5,
             "y": 5,
-            "visible": false
+            "visible": true
         }
     ],
     "extensions": [],
     "meta": {
         "semver": "3.0.0",
         "vm": "1.5.76",
-        "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/114.0"
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
     }
 }

@@ -93,6 +93,9 @@ class _Variables(BaseSprite):
             self.list_variables[list_variable].remove(position)
         elif list_variable in self.stage.list_variables:
             self.stage.list_variables[list_variable].remove(position)
+            
+    def data_deletealloflist(self, list_variable):
+        pass
     
     def data_insertatlist(self, list_variable, value, position):
         if list_variable in self.stage.list_variables:
@@ -101,12 +104,22 @@ class _Variables(BaseSprite):
             raise ValueError(f"The variable {list_variable} already exists!")
         
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].insert(position, value)
+            self.list_variables[list_variable].insert(value, position)
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].insert(position, value) 
+            self.stage.list_variables[list_variable].insert(value, position) 
             
     def data_replaceitemoflist(self, list_variable, value, position):
-        pass        
+        if list_variable in self.stage.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
+        if list_variable in self.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
+        
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].remove(position)
+            self.list_variables[list_variable].insert(value, position)
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].remove(position)
+            self.stage.list_variables[list_variable].insert(value, position)           
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.stage.list_variables:

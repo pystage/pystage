@@ -5,11 +5,10 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
-stage.create_list_variable('list_in_Sprite1')
-stage.create_list_variable('list_for_stage')
 stage.create_list_variable("list_in_Sprite1")
+stage.add_value_to_list("list_in_Sprite1", "[]")
 stage.create_list_variable("list_for_stage")
-stage.add_value_to_list("list_for_stage", "stage")
+stage.add_value_to_list("list_for_stage", "['stage']")
 stage.show_builtinvariable("data_listcontents")
 stage.set_monitor_position("data_listcontents", -85, 175)
 
@@ -29,6 +28,7 @@ sprite1.add_costume('costume2', center_x=46, center_y=53)
 sprite1.add_sound('meow')
 sprite1.create_list_variable("list_for_sprite")
 sprite1.add_value_to_list("list_for_sprite", "sprite)
+stage.deleted_value_from_list("list_for_sprite", "sprite")
 
 def when_program_starts_2(self):
     self.add_value_to_list("list_for_sprite", "sprite")

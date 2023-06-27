@@ -1,5 +1,5 @@
 {
-    "name": "add_list_variable",
+    "name": "delete_all_of_list",
     "sprites": [
         {
             "name": "Sprite1",
@@ -8,11 +8,37 @@
                     "opcode": "event_whenflagclicked",
                     "params": {},
                     "next": {
-                        "opcode": "motion_movesteps",
+                        "opcode": "data_addtolist",
                         "params": {
-                            "STEPS": 10.0
+                            "LIST": "\"scratch list\"",
+                            "ITEM": "\"thing\""
                         },
-                        "next": false,
+                        "next": {
+                            "opcode": "data_addtolist",
+                            "params": {
+                                "LIST": "\"scratch list\"",
+                                "ITEM": "\"thing\""
+                            },
+                            "next": {
+                                "opcode": "control_wait",
+                                "params": {
+                                    "DURATION": 1.0
+                                },
+                                "next": {
+                                    "opcode": "data_deletealloflist",
+                                    "params": {
+                                        "LIST": "\"scratch list\""
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
                         "stage": false,
                         "comment": null
                     },
@@ -103,9 +129,16 @@
             "my variable": 0
         },
         "lists": {
-            "groceries": []
+            "scratch list": []
         },
-        "monitors": [],
+        "monitors": [
+            {
+                "style": "list",
+                "x": 5,
+                "y": 5,
+                "opcode": "data_listcontents"
+            }
+        ],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

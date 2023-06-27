@@ -5,9 +5,8 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
-stage.create_list_variable('stage_list')
 stage.create_list_variable("stage_list")
-stage.add_value_to_list("stage_list", "thing")
+stage.add_value_to_list("stage_list", "['thing']")
 stage.show_builtinvariable("data_listcontents")
 stage.set_monitor_position("data_listcontents", -235, 175)
 
