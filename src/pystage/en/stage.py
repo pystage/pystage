@@ -945,6 +945,24 @@ class Stage():
 
         """
         return self._core.data_addtolist(list_variable, value)
+    
+    def show_length_of_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_lengthoflist(self, list_variable)
 
     def pystage_play(self):
         """
