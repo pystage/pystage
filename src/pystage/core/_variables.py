@@ -90,9 +90,9 @@ class _Variables(BaseSprite):
     
     def data_deleteoflist(self, list_variable, value):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].append(value)
+            self.list_variables[list_variable].remove(value)
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].append(value)
+            self.stage.list_variables[list_variable].remove(value)
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.stage.list_variables:
