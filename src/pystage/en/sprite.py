@@ -1848,7 +1848,7 @@ class Sprite:
         """
         return self._core.data_addtolist(list_variable, value)
     
-    def delete_value_to_list(self, list_variable, value):
+    def deleted_value_from_list(self, list_variable, position):
         """
 
         Engl. Translation for your reference: ...
@@ -1866,7 +1866,27 @@ class Sprite:
 
         """
         
-        return self._core.data_deleteoflist(list_variable, value)
+        return self._core.data_deleteoflist(list_variable, position)
+    
+    def inserted_value_to_list(self, list_variable, value, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_insertatlist(self, list_variable, value, position)
     
     def show_length_of_list(self, list_variable):
         """

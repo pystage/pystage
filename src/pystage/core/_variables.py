@@ -88,11 +88,14 @@ class _Variables(BaseSprite):
         elif list_variable in self.stage.list_variables:
             self.stage.list_variables[list_variable].append(value)  
     
-    def data_deleteoflist(self, list_variable, value):
+    def data_deleteoflist(self, list_variable, position):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].remove(value)
+            self.list_variables[list_variable].remove(position)
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].remove(value)
+            self.stage.list_variables[list_variable].remove(position)
+    
+    def data_insertatlist(self, list_variable, value, position):
+        pass        
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.stage.list_variables:

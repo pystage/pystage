@@ -364,11 +364,10 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_list_variable}("{item}")
             ''')
-        
-        for val in lists[item]:
-            res += textwrap.dedent(f'''\
-                {stage_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val}")
-            ''')
+
+        res += textwrap.dedent(f'''\
+                {stage_var}.{get_translated_function("data_addtolist", language)}("{item}", "{lists[item]}")
+        ''')
     
     for monitor in project["stage"]["monitors"]:
         # Only variable monitors are currently implemented
