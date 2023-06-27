@@ -95,7 +95,15 @@ class _Variables(BaseSprite):
             self.stage.list_variables[list_variable].remove(position)
     
     def data_insertatlist(self, list_variable, value, position):
-        pass        
+        if list_variable in self.stage.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
+        if list_variable in self.list_variables:
+            raise ValueError(f"The variable {list_variable} already exists!")
+        
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].insert(position, value)
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].insert(position, value)         
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.stage.list_variables:
