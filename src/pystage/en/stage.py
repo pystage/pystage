@@ -984,8 +984,27 @@ class Stage():
         -------
 
         """
-        return self._core.data_insertatlist(self, list_variable, value, position)
+        return self._core.data_insertatlist(list_variable, value, position)
 
+    def replaced_item_from_list(self, list_variable, value, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_replaceitemoflist(list_variable, value, position)
     
     def show_length_of_list(self, list_variable):
         """
@@ -1003,7 +1022,7 @@ class Stage():
         -------
 
         """
-        return self._core.data_lengthoflist(self, list_variable)
+        return self._core.data_lengthoflist(list_variable)
 
     def pystage_play(self):
         """

@@ -1868,7 +1868,7 @@ class Sprite:
         
         return self._core.data_deleteoflist(list_variable, position)
     
-    def inserted_value_to_list(self, list_variable, value, position):
+    def inserted_value_to_list(self, list_variable, position, value):
         """
 
         Engl. Translation for your reference: ...
@@ -1886,7 +1886,27 @@ class Sprite:
         -------
 
         """
-        return self._core.data_insertatlist(self, list_variable, value, position)
+        return self._core.data_insertatlist(list_variable, position, value)
+    
+    def replaced_item_from_list(self, list_variable, position, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_replaceitemoflist(list_variable, position, value)
     
     def show_length_of_list(self, list_variable):
         """
@@ -1904,7 +1924,7 @@ class Sprite:
         -------
 
         """
-        return self._core.data_lengthoflist(self, list_variable)
+        return self._core.data_lengthoflist(list_variable)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """

@@ -103,7 +103,10 @@ class _Variables(BaseSprite):
         if list_variable in self.list_variables:
             self.list_variables[list_variable].insert(position, value)
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].insert(position, value)         
+            self.stage.list_variables[list_variable].insert(position, value) 
+            
+    def data_replaceitemoflist(self, list_variable, value, position):
+        pass        
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.stage.list_variables:
