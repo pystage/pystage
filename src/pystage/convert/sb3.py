@@ -359,13 +359,9 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_variable}('{v}')
                 ''')
-
-    for l in project["stage"]["lists"]:
-        res += textwrap.dedent(f'''\
-                {stage_var}.{add_list_variable}('{l}')
-                ''')
-    for item in (lists := project["stage"]["lists"]):
-        res += textwrap.dedent(f'''\
+        
+        for item in (lists := project["stage"]["lists"]):
+            res += textwrap.dedent(f'''\
                 {stage_var}.{add_list_variable}("{item}")
             ''')
         for val in lists[item]:
@@ -453,7 +449,7 @@ def get_python(project, language="core"):
                     ''')
             
         for item in (lists := sprite["lists"]):
-            print('gp: lists = ', lists, ' item = ', item)
+            #print('gp: lists = ', lists, ' item = ', item)
             res += textwrap.dedent(f'''\
                     {sprite_var}.{add_list_variable}("{item}")
                 ''')

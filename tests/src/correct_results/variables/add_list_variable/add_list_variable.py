@@ -5,7 +5,7 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
-stage.create_list_variable('groceries')
+stage.create_list_variable("groceries")
 sprite1 = stage.add_a_sprite(None)
 sprite1.set_name("Sprite1")
 sprite1.set_x(0)
