@@ -21,7 +21,7 @@ stage.deleted_value_from_list("cat", "this thing")
 def when_program_starts_1(self):
     self.add_value_to_list("cat", "thing")
     self.wait(1.0)
-    self.replaced_item_from_list("cat", 1, "this thing")
+    self.replace_item_from_list("cat", 1, "this thing")
 
 sprite1.when_program_starts(when_program_starts_1)
 

@@ -5,8 +5,8 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.create_variable('my variable')
-stage.create_list_variable("lo")
-list = stage.initialize_list("lo", ['thing', 'ghkghjk', 'thing', 'thing'])
+stage.create_list_variable("l")
+stage.initialize_list("l", ['thing', 'ghkghjk', 'thing', 'thing'])
 stage.create_list_variable("fruits")
 stage.initialize_list("fruits", [])
 stage.show_builtinvariable("data_listcontents")
@@ -21,13 +21,17 @@ sprite1.go_to_back_layer()
 sprite1.go_forward(1)
 sprite1.add_costume('costume1', center_x=48, center_y=50)
 sprite1.add_costume('costume2', center_x=46, center_y=53)
-
+sprite1.add_sound('meow')
 
 def when_program_starts_1(self):
+    self.add_value_to_list("l", "thing")
+    self.add_value_to_list("fruits", "apple")
+    self.add_value_to_list("fruits", "pear")
+    self.wait(1.0)
+    self.hide_list("l")
+    self.wait(1.0)
+    self.show_list("l")
 
-    #list = self.create_list_variable("lo")
-    self.add_value_to_list("lo","stufff")
-    print(list)
 sprite1.when_program_starts(when_program_starts_1)
 
 stage.play()

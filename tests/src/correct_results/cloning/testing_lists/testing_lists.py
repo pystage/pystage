@@ -7,7 +7,7 @@ stage.add_backdrop('backdrop1')
 stage.add_backdrop('field_at_mit')
 stage.create_variable('my variable')
 stage.create_list_variable("list_test")
-stage.add_value_to_list("list_test", "['boy', 'boy', 'bug', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'thing', 'whichacallit', 'small', 'whichacallit', 'large', 'medium', '', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing']")
+stage.initialize_list("list_test", ['boy', 'boy', 'bug', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'bug', 'whichacallit', 'thing', 'whichacallit', 'small', 'whichacallit', 'large', 'medium', '', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing', 'thing'])
 stage.show_builtinvariable("data_listcontents")
 stage.set_monitor_position("data_listcontents", -231, 27)
 stage.show_builtinvariable("data_listcontents")
@@ -30,7 +30,7 @@ def when_program_starts_1(self):
     self.add_value_to_list("list_test", "thing")
     self.inserted_value_to_list("list_test", "boy", 1)
     self.inserted_value_to_list("list_test", "whichacallit", 5)
-    self.replaced_item_from_list("list_test", 3, "bug")
+    self.replace_item_from_list("list_test", 3, "bug")
 
 cassy_dance.when_program_starts(when_program_starts_1)
 
@@ -57,13 +57,13 @@ champ99.add_value_to_list("list", "thing)
 stage.deleted_value_from_list("list", "thing")
 
 def when_program_starts_3(self):
-    if ("NO TRANSLATION: data_itemoflist" == 50):
-        "NO TRANSLATION: data_hidelist"
+    if (self.item_in_list("list", 1) == 50):
+        self.hide_list("list")
         self.wait(3.0)
-        "NO TRANSLATION: data_showlist"
+        self.show_list("list")
 
     if (self.show_length_of_list("list_test") == 60):
-        self.replaced_item_from_list("list", 1, "thing")
+        self.replace_item_from_list("list", 1, "thing")
 
 champ99.when_program_starts(when_program_starts_3)
 elephant = stage.add_a_sprite(None)
@@ -78,7 +78,7 @@ elephant.add_sound('pop')
 elephant.create_list_variable("elle")
 
 def when_program_starts_4(self):
-    while not "NO TRANSLATION: data_listcontainsitem":
+    while not self.list_contains_item("elle", "bob"):
         pass
 
     self.deleted_value_from_list("elle", 1)
