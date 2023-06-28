@@ -230,6 +230,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -335,6 +336,7 @@
             "Sum": 6,
             "Year": 8556.637145104167
         },
+        "lists": {},
         "monitors": [
             {
                 "style": "default",

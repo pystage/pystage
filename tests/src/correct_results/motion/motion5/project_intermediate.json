@@ -127,6 +127,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 3,
@@ -381,6 +382,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -503,6 +505,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 5,
@@ -625,6 +628,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 4,
@@ -747,6 +751,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 6,
@@ -869,6 +874,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 2,
@@ -968,6 +974,7 @@
         "variables": {
             "your_score": 5
         },
+        "lists": {},
         "monitors": [
             {
                 "style": "default",

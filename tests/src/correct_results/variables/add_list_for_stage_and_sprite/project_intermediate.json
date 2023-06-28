@@ -1,9 +1,26 @@
 {
-    "name": "showtimer",
+    "name": "add_list_for_stage_and_sprite",
     "sprites": [
         {
             "name": "Sprite1",
-            "blocks": [],
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "data_addtolist",
+                        "params": {
+                            "LIST": "\"list_for_sprite\"",
+                            "ITEM": "\"thing\""
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
             "costumes": [
                 {
                     "md5": "bcf454acf82e4504149f7ffe07081dbc",
@@ -27,7 +44,19 @@
                 }
             ],
             "variables": {},
-            "monitors": [],
+            "lists": {
+                "list_for_sprite": [
+                    "thing"
+                ]
+            },
+            "monitors": [
+                {
+                    "style": "list",
+                    "x": 5,
+                    "y": 5,
+                    "opcode": "data_listcontents"
+                }
+            ],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -66,7 +95,32 @@
     },
     "stage": {
         "name": "Stage",
-        "blocks": [],
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "control_wait",
+                    "params": {
+                        "DURATION": 1.0
+                    },
+                    "next": {
+                        "opcode": "data_addtolist",
+                        "params": {
+                            "LIST": "\"list_for_stage\"",
+                            "ITEM": "\"thing\""
+                        },
+                        "next": false,
+                        "stage": true,
+                        "comment": null
+                    },
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            }
+        ],
         "costumes": [
             {
                 "md5": "cd21514d0531fdffb22204e0ec5ed84a",
@@ -82,13 +136,21 @@
                 "local_name": "pop"
             }
         ],
-        "variables": {},
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {
+            "list_in_Sprite1": [],
+            "list_for_stage": [
+                "thing"
+            ]
+        },
         "monitors": [
             {
-                "style": "default",
-                "x": 10,
-                "y": 3,
-                "opcode": "sensing_timer"
+                "style": "list",
+                "x": 155,
+                "y": 5,
+                "opcode": "data_listcontents"
             }
         ],
         "currentCostume": 0,

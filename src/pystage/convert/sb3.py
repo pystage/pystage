@@ -355,9 +355,15 @@ def get_python(project, language="core"):
             {stage_var} = {stage_class}()
             ''')
     for bd in backdrops:
-        res += textwrap.dedent(f'''\
-                {stage_var}.{add_backdrop}('{bd}', {round(backdrops[bd][0])}, {round(backdrops[bd][1])})
+        # if the backdrop is drawn at the default topleft position, we don't need to specify the position
+        if (round(backdrops[bd][0]), round(backdrops[bd][1])) == (240, 180):
+            res += textwrap.dedent(f'''\
+                {stage_var}.{add_backdrop}('{bd}')
                 ''')
+        else:
+            res += textwrap.dedent(f'''\
+                    {stage_var}.{add_backdrop}('{bd}', {round(backdrops[bd][0])}, {round(backdrops[bd][1])})
+                    ''')
     for v in project["stage"]["variables"]:
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_variable}('{v}')
@@ -462,7 +468,7 @@ def get_python(project, language="core"):
                 ''')
             for val in lists[item]:
                 res += textwrap.dedent(f'''\
-                    {sprite_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val})
+                    {sprite_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val}")
                 ''')
             
         for monitor in sprite["monitors"]:

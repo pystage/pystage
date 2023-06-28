@@ -161,6 +161,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 1,
             "layerOrder": 1,
@@ -252,6 +253,7 @@
         "variables": {
             "my variable": 0
         },
+        "lists": {},
         "monitors": [],
         "currentCostume": 3,
         "layerOrder": 0,

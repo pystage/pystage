@@ -85,6 +85,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -144,6 +145,7 @@
             "my variable": 0,
             "a": 11
         },
+        "lists": {},
         "monitors": [
             {
                 "style": "default",

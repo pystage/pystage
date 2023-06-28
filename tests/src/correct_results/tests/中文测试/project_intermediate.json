@@ -35,6 +35,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -91,6 +92,7 @@
             }
         ],
         "variables": {},
+        "lists": {},
         "monitors": [],
         "currentCostume": 0,
         "layerOrder": 0,

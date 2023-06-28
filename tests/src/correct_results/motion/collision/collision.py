@@ -7,6 +7,16 @@ stage.add_backdrop('backdrop1')
 stage.add_backdrop('canyon')
 stage.add_backdrop('hall')
 stage.create_variable('my variable')
+stage.create_list_variable('l')
+stage.create_list_variable("l")
+stage.add_value_to_list("l", "list")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
+stage.add_value_to_list("l", "owl")
 stage.show_builtinvariable("data_listcontents")
 stage.set_monitor_position("data_listcontents", -235, 175)
 dinosaur5 = stage.add_a_sprite(None)
@@ -35,9 +45,9 @@ def when_program_starts_1(self):
         self.wait(1.0)
         if "NO TRANSLATION: data_listcontainsitem":
             "NO TRANSLATION: data_deletealloflist"
-            "NO TRANSLATION: data_addtolist"
+            self.add_value_to_list("l", "list")
 
-        "NO TRANSLATION: data_addtolist"
+        self.add_value_to_list("l", "owl")
 
 dinosaur5.when_program_starts(when_program_starts_1)
 bat = stage.add_a_sprite(None)
