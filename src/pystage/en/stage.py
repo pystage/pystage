@@ -927,6 +927,25 @@ class Stage():
         """
         return self._core.pystage_makelistvariable(name, all_sprites=True)
     
+    def initialize_list(self, list_variable, list_of_values):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        name : FILL
+        all_sprites : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_initializelist(list_variable, list_of_values)
+    
     def add_value_to_list(self, list_variable, value):
         """
 
@@ -945,6 +964,199 @@ class Stage():
 
         """
         return self._core.data_addtolist(list_variable, value)
+    
+    def deleted_value_from_list(self, list_variable, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_deleteoflist(list_variable, position)
+    
+    def delete_all_from_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_deletealloflist(list_variable)
+    
+    def inserted_value_to_list(self, list_variable, value, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_insertatlist(list_variable, value, position)
+
+    def replaced_item_from_list(self, list_variable, value, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_replaceitemoflist(list_variable, value, position)
+    
+    def item_in_list(self, position, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        position : FILL
+        list_varaible : FILL
+        
+        
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_itemoflist(self, position, list_variable)
+    
+    def item_number_in_list(self, value, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        
+        list_varaible : FILL
+        value : FILL
+        
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_itemnumoflist(value, list_variable)
+    
+    def show_length_of_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_lengthoflist(list_variable)
+    
+    def list_contains_item(self, list_variable, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+        value = FILL
+
+        Returns
+        -------
+
+        """
+        return self._core.data_listcontainsitem(list_variable, value)
+    
+    def show_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_showlist(list_variable)
+    
+    def hide_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_hidelist(list_variable)
 
     def pystage_play(self):
         """

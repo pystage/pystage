@@ -7,6 +7,7 @@ stage.add_backdrop('backdrop1')
 stage.add_backdrop('canyon')
 stage.add_backdrop('hall')
 stage.create_variable('my variable')
+<<<<<<< HEAD
 stage.create_list_variable('l')
 stage.create_list_variable("l")
 stage.add_value_to_list("l", "list")
@@ -17,6 +18,10 @@ stage.add_value_to_list("l", "owl")
 stage.add_value_to_list("l", "owl")
 stage.add_value_to_list("l", "owl")
 stage.add_value_to_list("l", "owl")
+=======
+stage.create_list_variable("l")
+stage.initialize_list("l", ['list', 'owl', 'owl', 'owl', 'owl', 'owl', 'owl', 'owl'])
+>>>>>>> 75f49e9683d251e952412aa0fd2a2d9d8d7060a8
 stage.show_builtinvariable("data_listcontents")
 stage.set_monitor_position("data_listcontents", -235, 175)
 dinosaur5 = stage.add_a_sprite(None)
@@ -43,8 +48,13 @@ def when_program_starts_1(self):
         self.point_towards_mouse_pointer()
         self.if_on_edge_bounce()
         self.wait(1.0)
+<<<<<<< HEAD
         if "NO TRANSLATION: data_listcontainsitem":
             "NO TRANSLATION: data_deletealloflist"
+=======
+        if self.list_contains_item("l", "t"):
+            self.delete_all_from_list("l")
+>>>>>>> 75f49e9683d251e952412aa0fd2a2d9d8d7060a8
             self.add_value_to_list("l", "list")
 
         self.add_value_to_list("l", "owl")

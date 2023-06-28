@@ -73,21 +73,65 @@ class _Variables(BaseSprite):
         if not monitor:
             return
         monitor.hide()
-
+    # This function is used for variables in scratch that are built in like timer, answer and xposition
     def data_showbuiltinvariable(self, name):
         pass
-    
-    def data_addtolist(self, name, value):
-        if name in self.stage.list_variables:
-            raise ValueError(f"The variable {name} already exists!")
-        if name in self.list_variables:
-            raise ValueError(f"The variable {name} already exists!")
+   
+    def data_initializelist(self, list_variable, list_of_values):
+        if list_variable not in self.list_variables:
+            self.list_variables[list_variable] = []
+        self.list_variables[list_variable].extend(list_of_values)
+        return self.list_variables[list_variable]
+   
+    def data_addtolist(self, list_variable, value):
+        if list_variable not in self.list_variables:
+            self.list_variables[list_variable] = []
+        self.list_variables[list_variable].append(value)
         
-        if name in self.list_variables:
-            self.list_variables[name].append(value)
-        elif name in self.stage.list_variables:
-            self.stage.list_variables[name].append(value)  
+    def data_deleteoflist(self, list_variable, position):
+        if list_variable in self.list_variables:
+            del self.list_variables[list_variable][position]
+            
+    def data_deletealloflist(self, list_variable):
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].clear()
+        
+    def data_insertatlist(self, list_variable, value, position):
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable].insert(position, value)
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].insert(position, value) 
+            
+    def data_replaceitemoflist(self, list_variable, value, position):
+        if list_variable in self.list_variables:
+            self.list_variables[list_variable][position] = value
+            
+    def data_itemoflist(self, position, list_variable):
+        if list_variable in self.list_variables:
+            return self.list_variables[list_variable][position]  
     
+    def data_itemnumoflist(self, value, list_variable):
+        if list_variable in self.list_variables:
+            if value in self.list_variables[list_variable]:
+                return self.list_variables[list_variable].index(value)        
+    
+    def data_lengthoflist(self, list_variable):
+        if list_variable in self.list_variables:
+            return len(self.list_variables[list_variable])
+        elif list_variable in self.stage.list_variables:
+            return len(self.stage.list_variables[list_variable])
+        
+    def data_listcontainsitem(self, list_variable, value):
+        if list_variable in self.list_variables:
+            if value in self.list_variables[list_variable]:
+                return True
+    
+    def data_showlist(self, list_variable):
+        pass
+    
+    def data_hidelist(self, list_variable):
+        pass
+                   
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.
         # Same name for local variables is allowed!
