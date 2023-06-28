@@ -13,12 +13,12 @@ sprite1.go_to_back_layer()
 sprite1.go_forward(1)
 sprite1.add_costume('costume1', center_x=48, center_y=50)
 sprite1.add_costume('costume2', center_x=46, center_y=53)
-sprite1.add_sound('meow')
+
 sprite1.create_list_variable("groceries")
 
 def when_program_starts_1(self):
     self.add_value_to_list("groceries", "thing")
-
+    
 sprite1.when_program_starts(when_program_starts_1)
 
 stage.play()

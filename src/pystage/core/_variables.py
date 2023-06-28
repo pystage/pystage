@@ -78,61 +78,53 @@ class _Variables(BaseSprite):
         pass
    
     def data_initializelist(self, list_variable, list_of_values):
-        pass
+        if list_variable not in self.list_variables:
+            self.list_variables[list_variable] = []
+        self.list_variables[list_variable].extend(list_of_values)
+        return self.list_variables[list_variable]
    
     def data_addtolist(self, list_variable, value):
-        self.list_variables[list_variable].append(value) 
+        if list_variable not in self.list_variables:
+            self.list_variables[list_variable] = []
+        self.list_variables[list_variable].append(value)
         
-             
-    
     def data_deleteoflist(self, list_variable, position):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].remove(position)
-        elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].remove(position)
+            del self.list_variables[list_variable][position]
             
     def data_deletealloflist(self, list_variable):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].remove(list_variable)
-        elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].remove(list_variable)
-    
-    def data_insertatlist(self, list_variable, value, position):
-        if list_variable in self.stage.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
-        if list_variable in self.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
+            self.list_variables[list_variable].clear()
         
+    def data_insertatlist(self, list_variable, value, position):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable].insert(value, position)
+            self.list_variables[list_variable].insert(position, value)
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].insert(value, position) 
+            self.stage.list_variables[list_variable].insert(position, value) 
             
     def data_replaceitemoflist(self, list_variable, value, position):
-        if list_variable in self.stage.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
         if list_variable in self.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
-        
-        if list_variable in self.list_variables:
-            self.list_variables[list_variable].remove(position)
-            self.list_variables[list_variable].insert(value, position)
-        elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].remove(position)
-            self.stage.list_variables[list_variable].insert(value, position)
+            self.list_variables[list_variable][position] = value
             
     def data_itemoflist(self, position, list_variable):
-        pass  
+        if list_variable in self.list_variables:
+            return self.list_variables[list_variable][position]  
     
     def data_itemnumoflist(self, value, list_variable):
-        pass        
+        if list_variable in self.list_variables:
+            if value in self.list_variables[list_variable]:
+                return self.list_variables[list_variable].index(value)        
     
     def data_lengthoflist(self, list_variable):
-        print(list_variable)
-        return len(self.list_variables)
+        if list_variable in self.list_variables:
+            return len(self.list_variables[list_variable])
+        elif list_variable in self.stage.list_variables:
+            return len(self.stage.list_variables[list_variable])
         
     def data_listcontainsitem(self, list_variable, value):
-        pass
+        if list_variable in self.list_variables:
+            if value in self.list_variables[list_variable]:
+                return True
     
     def data_showlist(self, list_variable):
         pass

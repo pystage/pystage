@@ -26,7 +26,7 @@ sprite1.add_costume('costume2', center_x=46, center_y=53)
 def when_program_starts_1(self):
 
     #list = self.create_list_variable("lo")
-    #self.add_value_to_list("lo","stuff")
+    self.add_value_to_list("lo","stufff")
     print(list)
 sprite1.when_program_starts(when_program_starts_1)
 
