@@ -77,7 +77,9 @@ class _Variables(BaseSprite):
     def data_showbuiltinvariable(self, name):
         pass
    
-    def data_initializelist(self, list_variable, list_of_values):
+    def data_initializelist(self, list_variable, list_of_values, value):
+        # This function is used to display the entire list
+        # Lists are used in scratch for sprites and stages
         if list_variable not in self.list_variables:
             self.list_variables[list_variable] = []
         self.list_variables[list_variable].extend(list_of_values)
@@ -87,14 +89,21 @@ class _Variables(BaseSprite):
         if list_variable not in self.list_variables:
             self.list_variables[list_variable] = []
         self.list_variables[list_variable].append(value)
+        if list_variable not in self.stage.list_variables:
+            self.stage.list_variables[list_variable] = []
+        self.stage.list_variables[list_variable].append(value)
         
     def data_deleteoflist(self, list_variable, position):
         if list_variable in self.list_variables:
             del self.list_variables[list_variable][position]
+        elif list_variable in self.stage.list_variables:
+            del self.stage.list_variables[list_variable][position]
             
     def data_deletealloflist(self, list_variable):
         if list_variable in self.list_variables:
             self.list_variables[list_variable].clear()
+        if list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable].clear()
         
     def data_insertatlist(self, list_variable, value, position):
         if list_variable in self.list_variables:
@@ -105,15 +114,22 @@ class _Variables(BaseSprite):
     def data_replaceitemoflist(self, list_variable, value, position):
         if list_variable in self.list_variables:
             self.list_variables[list_variable][position] = value
+        elif list_variable in self.stage.list_variables:
+            self.stage.list_variables[list_variable][position] = value
             
-    def data_itemoflist(self, position, list_variable):
+    def data_itemoflist(self, list_variable, position):
         if list_variable in self.list_variables:
-            return self.list_variables[list_variable][position]  
+            return self.list_variables[list_variable][position]
+        if list_variable in self.stage.list_variables:
+            return self.stage.list_variables[list_variable][position] 
     
-    def data_itemnumoflist(self, value, list_variable):
+    def data_itemnumoflist(self, list_variable, value):
         if list_variable in self.list_variables:
             if value in self.list_variables[list_variable]:
-                return self.list_variables[list_variable].index(value)        
+                return self.list_variables[list_variable].index(value) 
+        if list_variable in self.stage.list_variables:
+            if value in self.stage.list_variables[list_variable]:
+                return self.stage.list_variables[list_variable].index(value)       
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.list_variables:
@@ -125,6 +141,10 @@ class _Variables(BaseSprite):
         if list_variable in self.list_variables:
             if value in self.list_variables[list_variable]:
                 return True
+        if list_variable in self.stage.list_variables:
+            if value in self.stage.list_variables[list_variable]:
+                return True
+        
     
     def data_showlist(self, list_variable):
         pass

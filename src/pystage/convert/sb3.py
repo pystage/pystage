@@ -453,13 +453,10 @@ def get_python(project, language="core"):
             res += textwrap.dedent(f'''\
                     {sprite_var}.{add_list_variable}("{item}")
                 ''')
-            for val in lists[item]:
-                res += textwrap.dedent(f'''\
-                    {sprite_var}.{get_translated_function("data_addtolist", language)}("{item}", "{val})
-                    {stage_var}.{get_translated_function("data_deleteoflist", language)}("{item}", "{val}")
+            res += textwrap.dedent(f'''\
+                    {sprite_var}.{get_translated_function("data_initializelist", language)}("{item}", {lists[item]}) 
                 ''')
-            
-            
+                
         for monitor in sprite["monitors"]:
             # Only variable monitors are currently implemented
             if not "variable" in monitor:
