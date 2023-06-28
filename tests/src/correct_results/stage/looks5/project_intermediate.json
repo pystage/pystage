@@ -93,6 +93,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [
                 {
                     "style": "default",
@@ -180,6 +181,7 @@
         "variables": {
             "my variable": 0
         },
+        "lists": {},
         "monitors": [
             {
                 "style": "default",

@@ -159,7 +159,7 @@ class CoreStage(
         if not image:
             return
         image = self.costume_manager.run_processors(image)
-        surface.blit(image, (0, 0))
+        surface.blit(image, self.costume_manager.get_topleft())
 
     def pystage_play(self):
         self.running = True
@@ -178,6 +178,7 @@ class CoreStage(
                         for sprite in self.sprites:
                             assert(isinstance(sprite, CoreSprite))
                             sprite.code_manager.process_key_pressed(event.key)
+                        self.code_manager.process_key_pressed(event.key)
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     for sprite in self.visible_sprites.sprites()[-1::-1]:
                         assert(isinstance(sprite, CoreSprite))

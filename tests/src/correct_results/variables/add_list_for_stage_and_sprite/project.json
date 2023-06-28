@@ -9,9 +9,71 @@
                     0
                 ]
             },
-            "lists": {},
+            "lists": {
+                "kUJYrZCqTE.JZ|.Z7X[W": [
+                    "list_in_Sprite1",
+                    []
+                ],
+                "gl/X};K{%MJSeKt/r~HL": [
+                    "list_for_stage",
+                    [
+                        "thing"
+                    ]
+                ]
+            },
             "broadcasts": {},
-            "blocks": {},
+            "blocks": {
+                "r@R+N.g[.t^T~pPtBL6m": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "S]/.B~N!E-K*inC%XyIP",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 371,
+                    "y": 413
+                },
+                "S]/.B~N!E-K*inC%XyIP": {
+                    "opcode": "control_wait",
+                    "next": ")NmOhu[Kkp,reT9iU!S$",
+                    "parent": "r@R+N.g[.t^T~pPtBL6m",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                ")NmOhu[Kkp,reT9iU!S$": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "S]/.B~N!E-K*inC%XyIP",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "thing"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "list_for_stage",
+                            "gl/X};K{%MJSeKt/r~HL"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
             "comments": {},
             "currentCostume": 0,
             "costumes": [
@@ -47,28 +109,30 @@
             "name": "Sprite1",
             "variables": {},
             "lists": {
-                "RG_Ipmv#P0}G{V4)gt!]": [
-                    "groceries",
-                    []
+                "]EuF;YuI%e8WEo~cC:PK": [
+                    "list_for_sprite",
+                    [
+                        "thing"
+                    ]
                 ]
             },
             "broadcasts": {},
             "blocks": {
-                "_k9(uOO}5WUjDRkv0gVE": {
+                "2F9j7^._u*6vW$n,3J(e": {
                     "opcode": "event_whenflagclicked",
-                    "next": "lv#C~6vEhIN$(n$U|c:1",
+                    "next": "~8$;#ngYEC.cfKbkcR4W",
                     "parent": null,
                     "inputs": {},
                     "fields": {},
                     "shadow": false,
                     "topLevel": true,
-                    "x": 138,
-                    "y": 95
+                    "x": 321,
+                    "y": 213
                 },
-                "lv#C~6vEhIN$(n$U|c:1": {
+                "~8$;#ngYEC.cfKbkcR4W": {
                     "opcode": "data_addtolist",
                     "next": null,
-                    "parent": "_k9(uOO}5WUjDRkv0gVE",
+                    "parent": "2F9j7^._u*6vW$n,3J(e",
                     "inputs": {
                         "ITEM": [
                             1,
@@ -80,8 +144,8 @@
                     },
                     "fields": {
                         "LIST": [
-                            "groceries",
-                            "RG_Ipmv#P0}G{V4)gt!]"
+                            "list_for_sprite",
+                            "]EuF;YuI%e8WEo~cC:PK"
                         ]
                     },
                     "shadow": false,
@@ -134,17 +198,36 @@
     ],
     "monitors": [
         {
-            "id": "RG_Ipmv#P0}G{V4)gt!]",
+            "id": "]EuF;YuI%e8WEo~cC:PK",
             "mode": "list",
             "opcode": "data_listcontents",
             "params": {
-                "LIST": "groceries"
+                "LIST": "list_for_sprite"
             },
             "spriteName": "Sprite1",
-            "value": [],
+            "value": [
+                "thing"
+            ],
             "width": 0,
             "height": 0,
             "x": 5,
+            "y": 5,
+            "visible": true
+        },
+        {
+            "id": "gl/X};K{%MJSeKt/r~HL",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "list_for_stage"
+            },
+            "spriteName": null,
+            "value": [
+                "thing"
+            ],
+            "width": 0,
+            "height": 0,
+            "x": 155,
             "y": 5,
             "visible": true
         }

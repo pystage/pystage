@@ -123,6 +123,7 @@
                 }
             ],
             "variables": {},
+            "lists": {},
             "monitors": [
                 {
                     "style": "default",
@@ -200,6 +201,7 @@
         "variables": {
             "my variable": 0
         },
+        "lists": {},
         "monitors": [],
         "currentCostume": 0,
         "layerOrder": 0,

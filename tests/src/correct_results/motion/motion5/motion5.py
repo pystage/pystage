@@ -5,7 +5,6 @@ from pystage.en import Sprite, Stage
 stage = Stage()
 stage.add_backdrop('backdrop1')
 stage.add_backdrop('forest')
-stage.add_backdrop('forest')
 stage.add_backdrop('blue_sky_2')
 stage.create_variable('your_score')
 stage.show_builtinvariable("sensing_timer")
