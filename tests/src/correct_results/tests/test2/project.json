@@ -32,8 +32,8 @@
                     "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 44100,
-                    "sampleCount": 1032,
+                    "rate": 48000,
+                    "sampleCount": 1123,
                     "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
                 }
             ],
@@ -211,8 +211,8 @@
                     "assetId": "83c36d806dc92327b9e7049a565c6bff",
                     "dataFormat": "wav",
                     "format": "",
-                    "rate": 44100,
-                    "sampleCount": 37376,
+                    "rate": 48000,
+                    "sampleCount": 40681,
                     "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
                 }
             ],
@@ -232,6 +232,6 @@
     "meta": {
         "semver": "3.0.0",
         "vm": "1.5.76",
-        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
     }
 }
