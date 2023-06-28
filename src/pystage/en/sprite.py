@@ -1907,7 +1907,7 @@ class Sprite:
         """
         return self._core.data_insertatlist(list_variable, position, value)
     
-    def replaced_item_from_list(self, list_variable, position, value):
+    def replace_item_from_list(self, position, list_variable, value):
         """
 
         Engl. Translation for your reference: ...
@@ -1916,16 +1916,17 @@ class Sprite:
 
         Parameters
         ----------
+        position : FILL
         list_varaible : FILL
         value : FILL
-        position : FILL
+        
 
 
         Returns
         -------
 
         """
-        return self._core.data_replaceitemoflist(list_variable, position, value)
+        return self._core.data_replaceitemoflist(position, list_variable, value)
     
     def show_length_of_list(self, list_variable):
         """
