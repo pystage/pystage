@@ -366,7 +366,7 @@ def get_python(project, language="core"):
             ''')
 
         res += textwrap.dedent(f'''\
-                {stage_var}.{get_translated_function("data_addtolist", language)}("{item}", "{lists[item]}")
+                {stage_var}.{get_translated_function("data_initializelist", language)}("{item}", {lists[item]})
         ''')
     
     for monitor in project["stage"]["monitors"]:

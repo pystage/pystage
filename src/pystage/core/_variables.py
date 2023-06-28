@@ -76,17 +76,14 @@ class _Variables(BaseSprite):
     # This function is used for variables in scratch that are built in like timer, answer and xposition
     def data_showbuiltinvariable(self, name):
         pass
-    
+   
+    def data_initializelist(self, list_variable, list_of_values):
+        pass
+   
     def data_addtolist(self, list_variable, value):
-        if list_variable in self.stage.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
-        if list_variable in self.list_variables:
-            raise ValueError(f"The variable {list_variable} already exists!")
+        self.list_variables[list_variable].append(value) 
         
-        if list_variable in self.list_variables:
-            self.list_variables[list_variable].append(value)
-        elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable].append(value)  
+             
     
     def data_deleteoflist(self, list_variable, position):
         if list_variable in self.list_variables:
@@ -122,13 +119,26 @@ class _Variables(BaseSprite):
             self.list_variables[list_variable].insert(value, position)
         elif list_variable in self.stage.list_variables:
             self.stage.list_variables[list_variable].remove(position)
-            self.stage.list_variables[list_variable].insert(value, position)           
+            self.stage.list_variables[list_variable].insert(value, position)
+            
+    def data_itemoflist(self, position, list_variable):
+        pass  
+    
+    def data_itemnumoflist(self, value, list_variable):
+        pass        
     
     def data_lengthoflist(self, list_variable):
-        if list_variable in self.stage.list_variables:
-            return len(self.stage.list_variables)
-        else:
-            return 0
+        print(list_variable)
+        return len(self.list_variables)
+        
+    def data_listcontainsitem(self, list_variable, value):
+        pass
+    
+    def data_showlist(self, list_variable):
+        pass
+    
+    def data_hidelist(self, list_variable):
+        pass
                    
     def pystage_makevariable(self, name, all_sprites=True):
         # Make sure a variable name is unique for a sprite or globally.
