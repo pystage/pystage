@@ -11,6 +11,8 @@ from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 import pystage
 import soundfile
+import base64
+from xml.etree import ElementTree as ET
 
 _round = lambda v: pygame.Vector2(round(v.x), round(v.y))
 
@@ -22,7 +24,7 @@ class CostumeManager():
 
     def __init__(self, owner):
         self.owner = owner
-        self.costumes = []
+        self.costumes: list[Costume] = []
         self.current_costume = -1
         self.rotation_style = CostumeManager.ALL_AROUND
 
@@ -124,7 +126,19 @@ class CostumeManager():
     def get_center(self):
         if self.current_costume == -1:
             return 0, 0
-        return pygame.Vector2(self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y)
+        return pygame.Vector2(self.get_costume().center_x, self.get_costume().center_y)
+    
+
+    def get_topleft(self):
+        """
+        Only used for the stage
+
+        With weird coordinate system.
+        """
+        if self.current_costume == -1:
+            return 0, 0
+        cx, cy = self.get_center()
+        return 240 - cx, 180 - cy
 
 
     def process_image(self):
@@ -357,6 +371,8 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
+        # Scale the image to the size shown in the Scratch
+        self.scale = (1, 1)
         internal_folder = pkg_resources.resource_filename("pystage", "images/")
         for folder in ["", "images/", "bilder/", internal_folder]:
             for ext in ["", ".bmp", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
@@ -378,7 +394,14 @@ class Costume():
         #     pil = renderPM.drawToPIL(rlg)
         #     self.image = pygame.image.frombuffer(pil.tobytes(), pil.size, pil.mode)
         # else:
-        self.image = pygame.image.load(self.file)
+        self.image = pygame.image.load(self.parse_image())
+        if self.file.endswith(".png"):
+            # might using resolution as a factor be better
+            # but according to my observation, it is always 2
+            self.image = pygame.transform.scale_by(self.image, 1/2)
+        if self.scale != (1, 1):
+            w, h = self.image.get_size()
+            self.image = pygame.transform.scale(self.image, (w*self.scale[0], h*self.scale[1]))
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
         self.image = self.image.subsurface(self.image.get_bounding_rect()) 
@@ -387,6 +410,32 @@ class Costume():
         self.center_x = (float(self.image.get_parent().get_width()) / 2) - offset.x if center_x is None else (float(center_x) / factor) - offset.x 
         self.center_y = (float(self.image.get_parent().get_height()) / 2) - offset.y if center_y is None else (float(center_y) / factor) - offset.y
         print(f"New costume: {name} -> {self.file}")
+
+    def parse_image(self):
+        """
+        Returns the stream of embedded image in SVG file if exists.
+        """
+        if not self.file.endswith(".svg"):
+            return self.file
+
+        tree = ET.parse(self.file)
+        root = tree.getroot()
+        
+        for element in root.iter():
+            if element.tag == "{http://www.w3.org/2000/svg}image":
+                xlink_href = element.attrib.get("{http://www.w3.org/1999/xlink}href")
+                if xlink_href and xlink_href.startswith("data:image"):
+                    scale = element.attrib.get("transform")
+                    if scale:
+                        scale = scale.replace("scale(", "").replace(")", "").split(",")
+                        self.scale = [round(float(scale[0]), 2), round(float(scale[1]), 2)]
+                    return io.BytesIO(base64.b64decode(xlink_href.split(",")[1]))
+
+            if element.tag == "{http://www.w3.org/2000/svg}path":
+                if "stroke" in element.attrib:
+                    return self.file
+
+        return self.file
 
 
     def __str__(self):
