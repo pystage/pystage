@@ -1947,7 +1947,7 @@ class Sprite:
         """
         return self._core.data_replaceitemoflist(position, list_variable, value)
     
-    def item_in_list(self, position, list_variable):
+    def item_in_list(self, list_variable, position):
         """
 
         Engl. Translation for your reference: ...
@@ -1966,7 +1966,7 @@ class Sprite:
         -------
 
         """
-        return self._core.data_itemoflist(self, position, list_variable)
+        return self._core.data_itemoflist(list_variable, position)
     
     def item_number_in_list(self, list_variable, value):
         """

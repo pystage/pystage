@@ -1044,7 +1044,7 @@ class Stage():
         """
         return self._core.data_replaceitemoflist(list_variable, value, position)
     
-    def item_in_list(self, position, list_variable):
+    def item_in_list(self, list_variable, position):
         """
 
         Engl. Translation for your reference: ...
@@ -1063,9 +1063,9 @@ class Stage():
         -------
 
         """
-        return self._core.data_itemoflist(self, position, list_variable)
+        return self._core.data_itemoflist(list_variable, position)
     
-    def item_number_in_list(self, value, list_variable):
+    def item_number_in_list(self, list_variable, value):
         """
 
         Engl. Translation for your reference: ...
@@ -1084,7 +1084,7 @@ class Stage():
         -------
 
         """
-        return self._core.data_itemnumoflist(value, list_variable)
+        return self._core.data_itemnumoflist(list_variable, value)
     
     def length_of_list(self, list_variable):
         """
