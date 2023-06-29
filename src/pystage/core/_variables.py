@@ -83,8 +83,6 @@ class _Variables(BaseSprite):
         if list_variable not in self.list_variables:
             self.list_variables[list_variable] = []
         self.list_variables[list_variable].extend(list_of_values)
-        if len(list_of_values) == 1:
-            self.list_variables[list_variable].extend(list_of_values[0])
    
     def data_addtolist(self, list_variable, value):
         if list_variable not in self.list_variables:
@@ -114,9 +112,9 @@ class _Variables(BaseSprite):
             
     def data_replaceitemoflist(self, list_variable, value, position):
         if list_variable in self.list_variables:
-            self.list_variables[list_variable][position] = value
+            self.list_variables[list_variable][position - 1] = value
         elif list_variable in self.stage.list_variables:
-            self.stage.list_variables[list_variable][position] = value
+            self.stage.list_variables[list_variable][position - 1] = value
             
     def data_itemoflist(self, list_variable, position):
         if list_variable in self.list_variables:
@@ -128,15 +126,17 @@ class _Variables(BaseSprite):
         if list_variable in self.list_variables:
             if value in self.list_variables[list_variable]:
                 return self.list_variables[list_variable].index(value) + 1
-        if list_variable in self.stage.list_variables:
+        elif list_variable in self.stage.list_variables:
             if value in self.stage.list_variables[list_variable]:
-                return self.stage.list_variables[list_variable].index(value) + 1      
+                return self.stage.list_variables[list_variable].index(value) + 1
+        return 0     
     
     def data_lengthoflist(self, list_variable):
         if list_variable in self.list_variables:
             return len(self.list_variables[list_variable])
         elif list_variable in self.stage.list_variables:
             return len(self.stage.list_variables[list_variable])
+        return 0
         
     def data_listcontainsitem(self, list_variable, value):
         if list_variable in self.list_variables:

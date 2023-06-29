@@ -48,19 +48,24 @@ assert sprite1.item_in_list("b", 1) == "hi"
 assert sprite1.item_in_list("b", 3) == "hey"
 
 sprite1.create_list_variable("c")
-sprite1.initialize_list("c", ["a", "b", "c", "d"])
-assert sprite1.item_number_in_list("c", "a") == 1
-assert sprite1.item_number_in_list("c", "b") == 2
-assert sprite1.item_number_in_list("c", "ab") == None
-sprite1.replace_item_from_list("c", "z", 0)
-assert sprite1.item_number_in_list("c", "z") == 1
-assert sprite1.item_number_in_list("c", "b") == 2
-sprite1.insert_value_to_list("c", "yes", 5)
-assert sprite1.item_number_in_list("c", "yes") == 5
-sprite1.insert_value_to_list("c", "insert", 3)
-assert sprite1.item_number_in_list("c", "insert") == 3
-sprite1.insert_value_to_list("c", "i", 4)
-assert sprite1.item_number_in_list("c", "i") == 4
+sprite1.initialize_list("cl", ["a", "b", "c", "d"])
+assert sprite1.item_number_in_list("cl", "a") == 1
+assert sprite1.item_number_in_list("cl", "b") == 2
+assert sprite1.item_number_in_list("cl", "ab") == 0
+sprite1.replace_item_from_list("cl", "z", 1)
+assert sprite1.item_number_in_list("cl", "z") == 1
+assert sprite1.item_number_in_list("cl", "b") == 2
+assert sprite1.item_number_in_list("cl", "c") == 3
+assert sprite1.item_number_in_list("cl", "d") == 4
+sprite1.insert_value_to_list("cl", "yes", 5)
+assert sprite1.item_number_in_list("cl", "yes") == 5
+sprite1.insert_value_to_list("cl", "insert", 3)
+assert sprite1.item_number_in_list("cl", "insert") == 3
+sprite1.insert_value_to_list("cl", "i", 4)
+assert sprite1.item_number_in_list("cl", "i") == 4
+
+sprite1.initialize_list("l", [])
+assert sprite1.length_of_list("l") == 0
 
 def when_program_starts_1(self):
     for _ in range(10):
