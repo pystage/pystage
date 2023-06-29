@@ -77,7 +77,7 @@ class _Variables(BaseSprite):
     def data_showbuiltinvariable(self, name):
         pass
    
-    def data_initializelist(self, list_variable, list_of_values, value):
+    def data_initializelist(self, list_variable, list_of_values):
         # This function is used to display the entire list
         # Lists are used in scratch for sprites and stages
         if list_variable not in self.list_variables:
@@ -144,6 +144,7 @@ class _Variables(BaseSprite):
         if list_variable in self.stage.list_variables:
             if value in self.stage.list_variables[list_variable]:
                 return True
+        return False
         
     
     def data_showlist(self, list_variable):

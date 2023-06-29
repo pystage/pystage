@@ -15,8 +15,7 @@ sprite1.add_costume('costume1', center_x=48, center_y=50)
 sprite1.add_costume('costume2', center_x=46, center_y=53)
 sprite1.add_sound('meow')
 sprite1.create_list_variable("cat")
-sprite1.add_value_to_list("cat", "this thing)
-stage.deleted_value_from_list("cat", "this thing")
+sprite1.initialize_list("cat", ['this thing']) 
 
 def when_program_starts_1(self):
     self.add_value_to_list("cat", "thing")

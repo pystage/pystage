@@ -20,7 +20,7 @@ sprite1.add_costume('costume2', center_x=46, center_y=53)
 sprite1.add_sound('meow')
 
 def when_program_starts_1(self):
-    self.inserted_value_to_list("A great list", "thing", 1)
+    self.insert_value_to_list("A great list", "thing", 1)
 
 sprite1.when_program_starts(when_program_starts_1)
 

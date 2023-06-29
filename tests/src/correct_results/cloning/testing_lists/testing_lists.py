@@ -28,8 +28,8 @@ cassy_dance.add_sound('dance_around')
 
 def when_program_starts_1(self):
     self.add_value_to_list("list_test", "thing")
-    self.inserted_value_to_list("list_test", "boy", 1)
-    self.inserted_value_to_list("list_test", "whichacallit", 5)
+    self.insert_value_to_list("list_test", "boy", 1)
+    self.insert_value_to_list("list_test", "whichacallit", 5)
     self.replace_item_from_list("list_test", 3, "bug")
 
 cassy_dance.when_program_starts(when_program_starts_1)
@@ -53,8 +53,7 @@ champ99.add_costume('champ99_f', center_x=114, center_y=250, factor=2)
 champ99.add_costume('champ99_g', center_x=132, center_y=258, factor=2)
 champ99.add_sound('dance_celebrate')
 champ99.create_list_variable("list")
-champ99.add_value_to_list("list", "thing)
-stage.deleted_value_from_list("list", "thing")
+champ99.initialize_list("list", ['thing']) 
 
 def when_program_starts_3(self):
     if (self.item_in_list("list", 1) == 50):
@@ -62,7 +61,7 @@ def when_program_starts_3(self):
         self.wait(3.0)
         self.show_list("list")
 
-    if (self.show_length_of_list("list_test") == 60):
+    if (self.length_of_list("list_test") == 60):
         self.replace_item_from_list("list", 1, "thing")
 
 champ99.when_program_starts(when_program_starts_3)
@@ -76,21 +75,22 @@ elephant.add_costume('elephant_a', center_x=107, center_y=33)
 elephant.add_costume('elephant_b', center_x=95, center_y=40)
 elephant.add_sound('pop')
 elephant.create_list_variable("elle")
+elephant.initialize_list("elle", []) 
 
 def when_program_starts_4(self):
     while not self.list_contains_item("elle", "bob"):
         pass
 
-    self.deleted_value_from_list("elle", 1)
+    self.delete_value_from_list("elle", 1)
     self.add_value_to_list("elle", "thing")
-    self.inserted_value_to_list("elle", "thing", 2)
+    self.insert_value_to_list("elle", "thing", 2)
 
 elephant.when_program_starts(when_program_starts_4)
 
 def when_program_starts_5(self):
     self.wait(3.0)
     self.add_value_to_list("elle", "bob")
-    if ((5.0 % self.show_length_of_list("elle")) > 4):
+    if ((5.0 % self.length_of_list("elle")) > 4):
         self.delete_all_from_list("elle")
         self.create_clone_of("NO TRANSLATION: control_create_clone_of_menu")
         self.create_clone_of("NO TRANSLATION: control_create_clone_of_menu")

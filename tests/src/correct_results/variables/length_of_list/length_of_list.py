@@ -15,12 +15,11 @@ sprite1.add_costume('costume1', center_x=48, center_y=50)
 sprite1.add_costume('costume2', center_x=46, center_y=53)
 sprite1.add_sound('meow')
 sprite1.create_list_variable("the_length_of_the_list")
-sprite1.add_value_to_list("the_length_of_the_list", "thing)
-stage.deleted_value_from_list("the_length_of_the_list", "thing")
+sprite1.initialize_list("the_length_of_the_list", ['thing']) 
 
 def when_program_starts_1(self):
     self.add_value_to_list("the_length_of_the_list", "thing")
-    self.say(self.show_length_of_list("the_length_of_the_list"))
+    self.say(self.length_of_list("the_length_of_the_list"))
 
 sprite1.when_program_starts(when_program_starts_1)
 

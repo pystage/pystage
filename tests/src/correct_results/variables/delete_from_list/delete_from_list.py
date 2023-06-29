@@ -23,7 +23,7 @@ def when_program_starts_1(self):
     self.add_value_to_list("delete_list_plz", "thing")
     self.add_value_to_list("delete_list_plz", "thing2")
     self.wait(1.0)
-    self.deleted_value_from_list("delete_list_plz", 1)
+    self.delete_value_from_list("delete_list_plz", 1)
 
 sprite1.when_program_starts(when_program_starts_1)
 
