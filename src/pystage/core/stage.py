@@ -189,6 +189,19 @@ class CoreStage(
                             if sprite.image.get_at(pos).a != 0:
                                 sprite.code_manager.process_click()
                                 break
+                            
+            if pygame.mouse.get_pressed()[0]:
+                pos = pygame.mouse.get_pos()
+                # detecting drag event, move slowly for now....
+                for sprite in filter(lambda s:s.draggable, self.visible_sprites.sprites()[-1::-1]):
+                    assert(isinstance(sprite, CoreSprite))
+                    sprite_rect = sprite.image.get_rect()
+                    sprite_rect.topleft = sprite.rect.topleft
+                    if sprite_rect.collidepoint(pos):
+                        pos = pos[0] - sprite_rect.left, pos[1] - sprite_rect.top
+                        if sprite.image.get_at(pos).a != 0:
+                            sprite.motion_goto_pointer()         
+                        
 
             # Handle broadcast messages
             for message in self.message_broker.get_messages():

@@ -1,7 +1,10 @@
 import pygame
+from pygame.locals import *
 import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
+from pystage.core.gui import ResizableBorder
+from svglib.svglib import svg2rlg
 import datetime
 
 class _Sensing(BaseSprite):
@@ -42,14 +45,15 @@ class _Sensing(BaseSprite):
 
 
     def sensing_setdragmode_draggable(self):
-        pass
+        self.draggable = True
+    
     sensing_setdragmode_draggable.opcode="sensing_setdragmode"
     sensing_setdragmode_draggable.param="DRAG_MODE"
     sensing_setdragmode_draggable.value="draggable"
 
 
     def sensing_setdragmode_notdraggable(self):
-        pass
+        self.draggable = False
     sensing_setdragmode_notdraggable.opcode="sensing_setdragmode"
     sensing_setdragmode_notdraggable.param="DRAG_MODE"
     sensing_setdragmode_notdraggable.value="not draggable"
@@ -239,6 +243,7 @@ class _SensingSprite(BaseSprite):
     sensing_touchingobject_sprite.opcode="sensing_touchingobject"
 
     def sensing_touchingcolor(self, color):
+        # how do we get the users color they picked usign a tuple?
         pass
 
     def sensing_coloristouchingcolor(self, sprite_color, color):

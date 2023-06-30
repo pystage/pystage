@@ -23,7 +23,7 @@ class _Control(BaseSprite):
     control_stop_this.value="this script"
 
     def control_stop_other(self):
-        pass
+        pass    
     control_stop_other.opcode="control_stop"
     control_stop_other.param="STOP_OPTION"
     control_stop_other.value="other scripts in sprite"
