@@ -1,0 +1,152 @@
+{
+    "name": "username1",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Bowl",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if_else",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_equals",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "sensing_username",
+                                        "params": {},
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "OPERAND2": "\"\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK": {
+                                "opcode": "looks_sayforsecs",
+                                "params": {
+                                    "MESSAGE": "\"Hello!\"",
+                                    "SECS": 2.0
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK2": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": {
+                                        "opcode": "operator_join",
+                                        "params": {
+                                            "STRING1": "\"welcome back \"",
+                                            "STRING2": {
+                                                "opcode": "sensing_username",
+                                                "params": {},
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "d147f16e3e2583719c073ac5b55fe3ca",
+                    "local_name": "bowl-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 30,
+                    "rotationCenterY": 15
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -3,
+            "y": -11,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "d147f16e3e2583719c073ac5b55fe3ca": {
+            "global_name": "bowl_a",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        }
+    }
+}

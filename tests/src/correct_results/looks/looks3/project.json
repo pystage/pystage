@@ -1,0 +1,377 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 3,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "dd106330c485bb86143ec614634e7a6b",
+                    "md5ext": "dd106330c485bb86143ec614634e7a6b.svg",
+                    "rotationCenterX": 140.89789386542452,
+                    "rotationCenterY": 142.7356775946011
+                },
+                {
+                    "name": "Blue Sky",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e7c147730f19d284bcd7b3f00af19bb6",
+                    "md5ext": "e7c147730f19d284bcd7b3f00af19bb6.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "random one",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "87440c3dc41d970c06e8c9f6f335d6ff",
+                    "md5ext": "87440c3dc41d970c06e8c9f6f335d6ff.svg",
+                    "rotationCenterX": 165.39802840013851,
+                    "rotationCenterY": 139.91927969531463
+                },
+                {
+                    "name": "next backdrop",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "423d660642ff94cc5f9ecebcd99aaec3",
+                    "md5ext": "423d660642ff94cc5f9ecebcd99aaec3.svg",
+                    "rotationCenterX": 139,
+                    "rotationCenterY": 80.55260901728201
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 1123,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "q@lG~~4.^ADi2~AY6}ff": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "Tly*X;^cq:2bEI5?~BN/",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 644,
+                    "y": 362
+                },
+                "Tly*X;^cq:2bEI5?~BN/": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "WbA)Hy;Y1EYk}slp~^pl",
+                    "parent": "q@lG~~4.^ADi2~AY6}ff",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "3]`[e074?w6{xr^`~@ar"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "3]`[e074?w6{xr^`~@ar": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "Tly*X;^cq:2bEI5?~BN/",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop1",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "WbA)Hy;Y1EYk}slp~^pl": {
+                    "opcode": "control_wait",
+                    "next": "K}%E_G-R]z]R1J_o~NCA",
+                    "parent": "Tly*X;^cq:2bEI5?~BN/",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "K}%E_G-R]z]R1J_o~NCA": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": ".Qa2#9E]E3(.q_Kj$32%",
+                    "parent": "WbA)Hy;Y1EYk}slp~^pl",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "yk_e67,zRQsuvPk4CpVl"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "yk_e67,zRQsuvPk4CpVl": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "K}%E_G-R]z]R1J_o~NCA",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                ".Qa2#9E]E3(.q_Kj$32%": {
+                    "opcode": "control_wait",
+                    "next": "V2m:%c_^$%~vd^%.yr{z",
+                    "parent": "K}%E_G-R]z]R1J_o~NCA",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "V2m:%c_^$%~vd^%.yr{z": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "j_#fB[Gb*K#wQkWPP#9$",
+                    "parent": ".Qa2#9E]E3(.q_Kj$32%",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "vl!|9^$wQn3O}SfB/-GR"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "vl!|9^$wQn3O}SfB/-GR": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "V2m:%c_^$%~vd^%.yr{z",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "next backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "j_#fB[Gb*K#wQkWPP#9$": {
+                    "opcode": "control_wait",
+                    "next": "iNYn|dKM@jrd6!5|D6+v",
+                    "parent": "V2m:%c_^$%~vd^%.yr{z",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "iNYn|dKM@jrd6!5|D6+v": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": ".r@$swD_447Y+J_V=!g$",
+                    "parent": "j_#fB[Gb*K#wQkWPP#9$",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "3W8ZZ9?MZYA=@I)QlBIB"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "3W8ZZ9?MZYA=@I)QlBIB": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "iNYn|dKM@jrd6!5|D6+v",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "previous backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                ".r@$swD_447Y+J_V=!g$": {
+                    "opcode": "control_wait",
+                    "next": "]9|tlfturDkK+9rHy]jm",
+                    "parent": "iNYn|dKM@jrd6!5|D6+v",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "]9|tlfturDkK+9rHy]jm": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "Ji0]f_3dVMio9AFZ_599",
+                    "parent": ".r@$swD_447Y+J_V=!g$",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "9x8b!9@L!8qx*M*O1IWb"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "9x8b!9@L!8qx*M*O1IWb": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "]9|tlfturDkK+9rHy]jm",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "random backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "Ji0]f_3dVMio9AFZ_599": {
+                    "opcode": "control_wait",
+                    "next": "o#AThdwy[8)-IM$L$z)Q",
+                    "parent": "]9|tlfturDkK+9rHy]jm",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "o#AThdwy[8)-IM$L$z)Q": {
+                    "opcode": "looks_nextbackdrop",
+                    "next": null,
+                    "parent": "Ji0]f_3dVMio9AFZ_599",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 1,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 40681,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
+}

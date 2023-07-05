@@ -1,0 +1,230 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 1,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "Blue Sky",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e7c147730f19d284bcd7b3f00af19bb6",
+                    "md5ext": "e7c147730f19d284bcd7b3f00af19bb6.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "(i_GnVa`*VYgkVLGn~W|": {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "next": "{}B0ETL/[*4QYmYr1^pL",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 792,
+                    "y": 276
+                },
+                "tv~@}h~QL^Ph%Z{Kx[8u": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "`3*F3xSvuFz1suJ?%z)g",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 373,
+                    "y": 319
+                },
+                "~nxd4;y%L~oz1oVO`~v8": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": null,
+                    "parent": "2jXWoFZy]YhoYC6hrt8`",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "@CXAAZJbd*!}g%`M5(u{"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "@CXAAZJbd*!}g%`M5(u{": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "~nxd4;y%L~oz1oVO`~v8",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "2jXWoFZy]YhoYC6hrt8`": {
+                    "opcode": "control_wait",
+                    "next": "~nxd4;y%L~oz1oVO`~v8",
+                    "parent": "`3*F3xSvuFz1suJ?%z)g",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "`3*F3xSvuFz1suJ?%z)g": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "2jXWoFZy]YhoYC6hrt8`",
+                    "parent": "tv~@}h~QL^Ph%Z{Kx[8u",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "Y4SLe%[f*qC3!ZX11p;k"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Y4SLe%[f*qC3!ZX11p;k": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "`3*F3xSvuFz1suJ?%z)g",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop1",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "{}B0ETL/[*4QYmYr1^pL": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "(i_GnVa`*VYgkVLGn~W|",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Switched backdrop to blue sky"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}
