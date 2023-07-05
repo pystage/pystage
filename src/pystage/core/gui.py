@@ -191,5 +191,14 @@ class BubbleManager():
         if text is not None and text.strip() != "":
             self.bubble = Bubble(self.sprite, text, border)
             self.sprite.stage.bubbles.add(self.bubble)
+    
+    def sayforsecs(self, text: str, secs: int):
+        self.say(text)
+        self.sprite.code_manager.current_block.saying = True
+        self.sprite.code_manager.current_block.add_to_wait_time = secs
 
+    def kill(self):
+        if self.bubble:
+            self.bubble.kill()
+            self.bubble = None
 
