@@ -1,0 +1,228 @@
+{
+    "name": "backdropdraw",
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"space\""
+                },
+                "next": {
+                    "opcode": "looks_nextbackdrop",
+                    "params": {},
+                    "next": false,
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "30d0974b0d27b1f1590bb92e4f296b4b",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 239.57979208269109,
+                "rotationCenterY": 163.7754501423998
+            },
+            {
+                "md5": "de1e1b716fd5330017315c06040d5b35",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": -0.9589751705999277,
+                "rotationCenterY": 159.33277924427264
+            },
+            {
+                "md5": "e6e12719d2d9794d77c99be89d116b4d",
+                "local_name": "backdrop3",
+                "bitmapResolution": 1,
+                "rotationCenterX": 233.2400985227273,
+                "rotationCenterY": -49.258614090909106
+            },
+            {
+                "md5": "a78e8b37366464d213ae717f3966e1f3",
+                "local_name": "backdrop4",
+                "bitmapResolution": 2,
+                "rotationCenterX": -234,
+                "rotationCenterY": -95
+            },
+            {
+                "md5": "13c419e28886a0b7e85f8b8aeacf71c5",
+                "local_name": "backdrop5",
+                "bitmapResolution": 2,
+                "rotationCenterX": 475,
+                "rotationCenterY": 352
+            },
+            {
+                "md5": "e8970385d721bde1f4879246034b6784",
+                "local_name": "backdrop6",
+                "bitmapResolution": 1,
+                "rotationCenterX": -175.7599014772727,
+                "rotationCenterY": -115.25861409090908
+            },
+            {
+                "md5": "1b25adcc56c5ebe96542846851ca464c",
+                "local_name": "Chalkboard",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "7c93926807a3ab486171392b12a4d484",
+                "local_name": "Theater 2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 403,
+                "rotationCenterY": 277
+            },
+            {
+                "md5": "25a6ede51a96d4e55de2ffb81ae96f8c",
+                "local_name": "Flowers",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "c2b097bc5cdb6a14ef5485202bc5ee76",
+                "local_name": "Theater",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "050615fe992a00d6af0e664e497ebf53",
+                "local_name": "Beach Malibu",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [],
+            "costumes": [
+                {
+                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -94,
+            "y": 54,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "30d0974b0d27b1f1590bb92e4f296b4b": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "de1e1b716fd5330017315c06040d5b35": {
+            "global_name": "backdrop2",
+            "extension": "svg"
+        },
+        "e6e12719d2d9794d77c99be89d116b4d": {
+            "global_name": "backdrop3",
+            "extension": "svg"
+        },
+        "a78e8b37366464d213ae717f3966e1f3": {
+            "global_name": "backdrop4",
+            "extension": "png"
+        },
+        "13c419e28886a0b7e85f8b8aeacf71c5": {
+            "global_name": "backdrop5",
+            "extension": "png"
+        },
+        "e8970385d721bde1f4879246034b6784": {
+            "global_name": "backdrop6",
+            "extension": "svg"
+        },
+        "1b25adcc56c5ebe96542846851ca464c": {
+            "global_name": "chalkboard",
+            "extension": "png"
+        },
+        "7c93926807a3ab486171392b12a4d484": {
+            "global_name": "theater_2",
+            "extension": "svg"
+        },
+        "25a6ede51a96d4e55de2ffb81ae96f8c": {
+            "global_name": "flowers",
+            "extension": "png"
+        },
+        "c2b097bc5cdb6a14ef5485202bc5ee76": {
+            "global_name": "theater",
+            "extension": "png"
+        },
+        "050615fe992a00d6af0e664e497ebf53": {
+            "global_name": "beach_malibu",
+            "extension": "png"
+        },
+        "bcf454acf82e4504149f7ffe07081dbc": {
+            "global_name": "costume1",
+            "extension": "svg"
+        },
+        "0fb9be3e8397c983338cb71dc84d0b25": {
+            "global_name": "costume2",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "83c36d806dc92327b9e7049a565c6bff": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    }
+}

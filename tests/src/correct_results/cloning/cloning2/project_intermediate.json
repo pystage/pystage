@@ -1,0 +1,324 @@
+{
+    "name": "cloning2",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Dinosaur1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_create_clone_of",
+                        "params": {
+                            "CLONE_OPTION": {
+                                "opcode": "control_create_clone_of_menu",
+                                "params": {
+                                    "CLONE_OPTION": "\"_myself_\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "control_start_as_clone",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "control_create_clone_of",
+                                "params": {
+                                    "CLONE_OPTION": {
+                                        "opcode": "control_create_clone_of_menu",
+                                        "params": {
+                                            "CLONE_OPTION": "\"_myself_\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "motion_goto",
+                                    "params": {
+                                        "TO": {
+                                            "opcode": "motion_goto_menu",
+                                            "params": {
+                                                "TO": "\"_random_\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "motion_turnright",
+                                        "params": {
+                                            "DEGREES": 15.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "45b02fbd582c15a50e1953830b59b377",
+                    "local_name": "dinosaur1-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 98,
+                    "rotationCenterY": 92
+                },
+                {
+                    "md5": "7f89417968116ada83d4ddaad22403b3",
+                    "local_name": "dinosaur1-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 98,
+                    "rotationCenterY": 47
+                },
+                {
+                    "md5": "22d94ee5daf557284465425a61186234",
+                    "local_name": "dinosaur1-c",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 81,
+                    "rotationCenterY": 91
+                },
+                {
+                    "md5": "af158d368bf3da576369be1130e18acd",
+                    "local_name": "dinosaur1-d",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 99,
+                    "rotationCenterY": 91
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 49,
+            "y": -5,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Cheesy Puffs",
+            "blocks": [
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "motion_goto",
+                                "params": {
+                                    "TO": {
+                                        "opcode": "motion_goto_menu",
+                                        "params": {
+                                            "TO": "\"_random_\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "control_wait",
+                                "params": {
+                                    "DURATION": 1.0
+                                },
+                                "next": {
+                                    "opcode": "control_create_clone_of",
+                                    "params": {
+                                        "CLONE_OPTION": {
+                                            "opcode": "control_create_clone_of_menu",
+                                            "params": {
+                                                "CLONE_OPTION": "\"_myself_\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "motion_goto",
+                                        "params": {
+                                            "TO": {
+                                                "opcode": "motion_goto_menu",
+                                                "params": {
+                                                    "TO": "\"_random_\""
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "82772a61ec74974e84c686c61ea0b7d5",
+                    "local_name": "cheesy puffs",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 87,
+                    "rotationCenterY": 72
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 147,
+            "y": -82,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "45b02fbd582c15a50e1953830b59b377": {
+            "global_name": "dinosaur1_a",
+            "extension": "svg"
+        },
+        "7f89417968116ada83d4ddaad22403b3": {
+            "global_name": "dinosaur1_b",
+            "extension": "svg"
+        },
+        "22d94ee5daf557284465425a61186234": {
+            "global_name": "dinosaur1_c",
+            "extension": "svg"
+        },
+        "af158d368bf3da576369be1130e18acd": {
+            "global_name": "dinosaur1_d",
+            "extension": "svg"
+        },
+        "82772a61ec74974e84c686c61ea0b7d5": {
+            "global_name": "cheesy_puffs",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        }
+    }
+}

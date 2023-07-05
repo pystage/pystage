@@ -1,0 +1,779 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {
+                "#Nti{}AZei[o7;=/`|qe": [
+                    "fruits",
+                    [
+                        "pineapple",
+                        "apple",
+                        "peach",
+                        "pear",
+                        "banana"
+                    ]
+                ]
+            },
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "a!3%:!JSR.]6qMkCj4M~": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "`b:MGz:xZE~gcf;2[o=s",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 434,
+                    "y": 341
+                },
+                "u+NJgHO7)#y%/W[a9;#H": {
+                    "opcode": "control_repeat",
+                    "next": "P0OKRFI[Y!Ft3.rE$dNB",
+                    "parent": "`b:MGz:xZE~gcf;2[o=s",
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "3"
+                            ]
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "BkuT4+ZPG_`Lx$_tpQ39"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "BkuT4+ZPG_`Lx$_tpQ39": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "u+NJgHO7)#y%/W[a9;#H",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "apple"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "`b:MGz:xZE~gcf;2[o=s": {
+                    "opcode": "data_deletealloflist",
+                    "next": "u+NJgHO7)#y%/W[a9;#H",
+                    "parent": "a!3%:!JSR.]6qMkCj4M~",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "V)G7T:xnTZjjt(2KH1g8": {
+                    "opcode": "control_wait",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 136,
+                    "y": 916
+                },
+                "0oiS00}/XpoX;MhEi:|5": {
+                    "opcode": "data_addtolist",
+                    "next": "I_RnVip,;ojy58*yN!2@",
+                    "parent": "P0OKRFI[Y!Ft3.rE$dNB",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "pear"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "]6eA+1~t|u/:XR!+t4g6": {
+                    "opcode": "data_addtolist",
+                    "next": "!u)a;pn@2G)tWy[F6A*-",
+                    "parent": "I_RnVip,;ojy58*yN!2@",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "I_RnVip,;ojy58*yN!2@": {
+                    "opcode": "control_wait",
+                    "next": "]6eA+1~t|u/:XR!+t4g6",
+                    "parent": "0oiS00}/XpoX;MhEi:|5",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "!u)a;pn@2G)tWy[F6A*-": {
+                    "opcode": "control_wait",
+                    "next": "(BkbPxkWWBBuz:+(@M=m",
+                    "parent": "]6eA+1~t|u/:XR!+t4g6",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "P0OKRFI[Y!Ft3.rE$dNB": {
+                    "opcode": "control_wait",
+                    "next": "0oiS00}/XpoX;MhEi:|5",
+                    "parent": "u+NJgHO7)#y%/W[a9;#H",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "(BkbPxkWWBBuz:+(@M=m": {
+                    "opcode": "data_deleteoflist",
+                    "next": "*XXyA^MH4Wf{|f5.qpXp",
+                    "parent": "!u)a;pn@2G)tWy[F6A*-",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "*XXyA^MH4Wf{|f5.qpXp": {
+                    "opcode": "control_wait",
+                    "next": "|N=ms)+v:8IPt}~[FUXP",
+                    "parent": "(BkbPxkWWBBuz:+(@M=m",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "|N=ms)+v:8IPt}~[FUXP": {
+                    "opcode": "data_insertatlist",
+                    "next": "cFY9i)j9;#@6(R9iVf;C",
+                    "parent": "*XXyA^MH4Wf{|f5.qpXp",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "peach"
+                            ]
+                        ],
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "3"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sxsJ,U^h+xdHx=@|d_!]": {
+                    "opcode": "data_replaceitemoflist",
+                    "next": "D]Obwt3ow1q=Ei|j2kk-",
+                    "parent": "cFY9i)j9;#@6(R9iVf;C",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ],
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "pineapple"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "cFY9i)j9;#@6(R9iVf;C": {
+                    "opcode": "control_wait",
+                    "next": "sxsJ,U^h+xdHx=@|d_!]",
+                    "parent": "|N=ms)+v:8IPt}~[FUXP",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "0imp41w+ldnj(7D0LjIf": {
+                    "opcode": "data_itemoflist",
+                    "next": null,
+                    "parent": "e6|+6.kN!f+^Zt8QZRHO",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "_]Cy4)[HAJYhaV2|ce96": {
+                    "opcode": "looks_sayforsecs",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 98,
+                    "y": 1181
+                },
+                "e6|+6.kN!f+^Zt8QZRHO": {
+                    "opcode": "looks_sayforsecs",
+                    "next": "%=0o|W%C!#j:zKsVt,f~",
+                    "parent": "D]Obwt3ow1q=Ei|j2kk-",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "0imp41w+ldnj(7D0LjIf",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "D]Obwt3ow1q=Ei|j2kk-": {
+                    "opcode": "control_wait",
+                    "next": "e6|+6.kN!f+^Zt8QZRHO",
+                    "parent": "sxsJ,U^h+xdHx=@|d_!]",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "%=0o|W%C!#j:zKsVt,f~": {
+                    "opcode": "control_wait",
+                    "next": "vdG7GaQ4^_O4k0%m1^D*",
+                    "parent": "e6|+6.kN!f+^Zt8QZRHO",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "vdG7GaQ4^_O4k0%m1^D*": {
+                    "opcode": "looks_sayforsecs",
+                    "next": "=?mYWB-`/:jH?NXxX/!$",
+                    "parent": "%=0o|W%C!#j:zKsVt,f~",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "}Z_K8#JvNEGfxMk//*lP",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "}Z_K8#JvNEGfxMk//*lP": {
+                    "opcode": "data_itemnumoflist",
+                    "next": null,
+                    "parent": "vdG7GaQ4^_O4k0%m1^D*",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "0-7g4uYhIHMt?/RBdQ]@": {
+                    "opcode": "data_lengthoflist",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 157,
+                    "y": 1076
+                },
+                "=?mYWB-`/:jH?NXxX/!$": {
+                    "opcode": "control_wait",
+                    "next": "l@rrYX?d8eV5z2,:2a58",
+                    "parent": "vdG7GaQ4^_O4k0%m1^D*",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "l@rrYX?d8eV5z2,:2a58": {
+                    "opcode": "looks_sayforsecs",
+                    "next": "y/P^[Y9[/0j7F4)ye|#m",
+                    "parent": "=?mYWB-`/:jH?NXxX/!$",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "*a]twAWI%0;=v6J3-Dv%",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "*a]twAWI%0;=v6J3-Dv%": {
+                    "opcode": "data_lengthoflist",
+                    "next": null,
+                    "parent": "l@rrYX?d8eV5z2,:2a58",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "y/P^[Y9[/0j7F4)ye|#m": {
+                    "opcode": "control_wait",
+                    "next": "(q9cO(bN24AH$245{)#/",
+                    "parent": "l@rrYX?d8eV5z2,:2a58",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "(q9cO(bN24AH$245{)#/": {
+                    "opcode": "looks_sayforsecs",
+                    "next": "r;`kHV6{$uTJh2DLV|Kz",
+                    "parent": "y/P^[Y9[/0j7F4)ye|#m",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "4XjZBP$pG_brT5N*wM5k",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "4XjZBP$pG_brT5N*wM5k": {
+                    "opcode": "data_listcontainsitem",
+                    "next": null,
+                    "parent": "(q9cO(bN24AH$245{)#/",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "r;`kHV6{$uTJh2DLV|Kz": {
+                    "opcode": "control_wait",
+                    "next": "P[K?)TJGmzWTO!uDTKj{",
+                    "parent": "(q9cO(bN24AH$245{)#/",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "P[K?)TJGmzWTO!uDTKj{": {
+                    "opcode": "data_hidelist",
+                    "next": null,
+                    "parent": "r;`kHV6{$uTJh2DLV|Kz",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "WNR;VP`vNhPQd0nufD-k": {
+                    "opcode": "event_whenthisspriteclicked",
+                    "next": "9ytT_ut]y2#qt{Lf~v{%",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 289,
+                    "y": 1660
+                },
+                "9ytT_ut]y2#qt{Lf~v{%": {
+                    "opcode": "data_showlist",
+                    "next": null,
+                    "parent": "WNR;VP`vNhPQd0nufD-k",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "#Nti{}AZei[o7;=/`|qe"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "#Nti{}AZei[o7;=/`|qe",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "fruits"
+            },
+            "spriteName": null,
+            "value": [
+                "pineapple",
+                "apple",
+                "peach",
+                "pear",
+                "banana"
+            ],
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
+}

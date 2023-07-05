@@ -1,0 +1,237 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                ".^gnN@(/e5#SBj=e$_jV": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "|3Uj$lCn/iYp4[/K_XJD",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 464,
+                    "y": 508
+                },
+                "|3Uj$lCn/iYp4[/K_XJD": {
+                    "opcode": "looks_nextbackdrop",
+                    "next": null,
+                    "parent": ".^gnN@(/e5#SBj=e$_jV",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "30d0974b0d27b1f1590bb92e4f296b4b",
+                    "md5ext": "30d0974b0d27b1f1590bb92e4f296b4b.svg",
+                    "rotationCenterX": 239.57979208269109,
+                    "rotationCenterY": 163.7754501423998
+                },
+                {
+                    "name": "backdrop2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "de1e1b716fd5330017315c06040d5b35",
+                    "md5ext": "de1e1b716fd5330017315c06040d5b35.svg",
+                    "rotationCenterX": -0.9589751705999277,
+                    "rotationCenterY": 159.33277924427264
+                },
+                {
+                    "name": "backdrop3",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e6e12719d2d9794d77c99be89d116b4d",
+                    "md5ext": "e6e12719d2d9794d77c99be89d116b4d.svg",
+                    "rotationCenterX": 233.2400985227273,
+                    "rotationCenterY": -49.258614090909106
+                },
+                {
+                    "name": "backdrop4",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "a78e8b37366464d213ae717f3966e1f3",
+                    "md5ext": "a78e8b37366464d213ae717f3966e1f3.png",
+                    "rotationCenterX": -234,
+                    "rotationCenterY": -95
+                },
+                {
+                    "name": "backdrop5",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "13c419e28886a0b7e85f8b8aeacf71c5",
+                    "md5ext": "13c419e28886a0b7e85f8b8aeacf71c5.png",
+                    "rotationCenterX": 475,
+                    "rotationCenterY": 352
+                },
+                {
+                    "name": "backdrop6",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e8970385d721bde1f4879246034b6784",
+                    "md5ext": "e8970385d721bde1f4879246034b6784.svg",
+                    "rotationCenterX": -175.7599014772727,
+                    "rotationCenterY": -115.25861409090908
+                },
+                {
+                    "name": "Chalkboard",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "1b25adcc56c5ebe96542846851ca464c",
+                    "md5ext": "1b25adcc56c5ebe96542846851ca464c.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                },
+                {
+                    "name": "Theater 2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "7c93926807a3ab486171392b12a4d484",
+                    "md5ext": "7c93926807a3ab486171392b12a4d484.svg",
+                    "rotationCenterX": 403,
+                    "rotationCenterY": 277
+                },
+                {
+                    "name": "Flowers",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "25a6ede51a96d4e55de2ffb81ae96f8c",
+                    "md5ext": "25a6ede51a96d4e55de2ffb81ae96f8c.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                },
+                {
+                    "name": "Theater",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "c2b097bc5cdb6a14ef5485202bc5ee76",
+                    "md5ext": "c2b097bc5cdb6a14ef5485202bc5ee76.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                },
+                {
+                    "name": "Beach Malibu",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "050615fe992a00d6af0e664e497ebf53",
+                    "md5ext": "050615fe992a00d6af0e664e497ebf53.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -94,
+            "y": 54,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "timer",
+            "mode": "default",
+            "opcode": "sensing_timer",
+            "params": {},
+            "spriteName": null,
+            "value": 3835.027,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
+}

@@ -1,0 +1,428 @@
+{
+    "name": "time_sensing_functions",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Anina Dance",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_think",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"YEAR\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"MONTH\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"u\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"DATE\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"j\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"HOUR\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"h\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"DAYOFWEEK\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"k\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"MINUTE\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"a\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_current",
+                                "params": {
+                                    "CURRENTMENU": "\"SECOND\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"z\""
+                    },
+                    "next": {
+                        "opcode": "looks_say",
+                        "params": {
+                            "MESSAGE": {
+                                "opcode": "sensing_dayssince2000",
+                                "params": {},
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "84c5e22b4303c7c1fb707125706c9aaa",
+                    "local_name": "anina stance",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 76,
+                    "rotationCenterY": 252
+                },
+                {
+                    "md5": "db6c03113f71b91f22a9f3351f90e5bf",
+                    "local_name": "anina top stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 74,
+                    "rotationCenterY": 280
+                },
+                {
+                    "md5": "2d208a34e74fdce9dab9d4c585dcfa2b",
+                    "local_name": "anina top R step",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 248,
+                    "rotationCenterY": 272
+                },
+                {
+                    "md5": "ed90e8b7a05c1552194af597ac0637cd",
+                    "local_name": "anina top L step",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 228,
+                    "rotationCenterY": 274
+                },
+                {
+                    "md5": "b7693bd6250d4411ee622b67f8025924",
+                    "local_name": "anina top freeze",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 110,
+                    "rotationCenterY": 268
+                },
+                {
+                    "md5": "3948aad16f8169c013c956dd152a09a6",
+                    "local_name": "anina R cross",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 126,
+                    "rotationCenterY": 268
+                },
+                {
+                    "md5": "4931a363e3e4efa20230f6ff2991c6b4",
+                    "local_name": "anina pop front",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 68,
+                    "rotationCenterY": 270
+                },
+                {
+                    "md5": "e3698b76cb0864df2fbaba80e6bd8067",
+                    "local_name": "anina pop down",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 74,
+                    "rotationCenterY": 156
+                },
+                {
+                    "md5": "d86bb27b4f8d7b70c39c96f29c6943b4",
+                    "local_name": "anina pop left",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 238,
+                    "rotationCenterY": 266
+                },
+                {
+                    "md5": "7bb9c790b02231e1272701167c26b17a",
+                    "local_name": "anina pop right",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 66,
+                    "rotationCenterY": 268
+                },
+                {
+                    "md5": "62c50c90535b64f2ae130a5c680ddcb4",
+                    "local_name": "anina pop L arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 68,
+                    "rotationCenterY": 274
+                },
+                {
+                    "md5": "105f4f3d260dcb8bea02ea9ee5d18cf4",
+                    "local_name": "anina pop stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 76,
+                    "rotationCenterY": 276
+                },
+                {
+                    "md5": "ca27e001a263ee6b5852508f39d021db",
+                    "local_name": "anina pop R arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 88,
+                    "rotationCenterY": 272
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0edb8fb88af19e6e17d0f8cf64c1d136",
+                    "local_name": "dance celebrate"
+                },
+                {
+                    "md5": "042309f190183383c0b1c1fc3edc2e84",
+                    "local_name": "dance magic"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 2,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 28,
+            "y": -28,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "84c5e22b4303c7c1fb707125706c9aaa": {
+            "global_name": "anina_stance",
+            "extension": "png"
+        },
+        "db6c03113f71b91f22a9f3351f90e5bf": {
+            "global_name": "anina_top_stand",
+            "extension": "png"
+        },
+        "2d208a34e74fdce9dab9d4c585dcfa2b": {
+            "global_name": "anina_top_r_step",
+            "extension": "png"
+        },
+        "ed90e8b7a05c1552194af597ac0637cd": {
+            "global_name": "anina_top_l_step",
+            "extension": "png"
+        },
+        "b7693bd6250d4411ee622b67f8025924": {
+            "global_name": "anina_top_freeze",
+            "extension": "png"
+        },
+        "3948aad16f8169c013c956dd152a09a6": {
+            "global_name": "anina_r_cross",
+            "extension": "png"
+        },
+        "4931a363e3e4efa20230f6ff2991c6b4": {
+            "global_name": "anina_pop_front",
+            "extension": "png"
+        },
+        "e3698b76cb0864df2fbaba80e6bd8067": {
+            "global_name": "anina_pop_down",
+            "extension": "png"
+        },
+        "d86bb27b4f8d7b70c39c96f29c6943b4": {
+            "global_name": "anina_pop_left",
+            "extension": "png"
+        },
+        "7bb9c790b02231e1272701167c26b17a": {
+            "global_name": "anina_pop_right",
+            "extension": "png"
+        },
+        "62c50c90535b64f2ae130a5c680ddcb4": {
+            "global_name": "anina_pop_l_arm",
+            "extension": "png"
+        },
+        "105f4f3d260dcb8bea02ea9ee5d18cf4": {
+            "global_name": "anina_pop_stand",
+            "extension": "png"
+        },
+        "ca27e001a263ee6b5852508f39d021db": {
+            "global_name": "anina_pop_r_arm",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "0edb8fb88af19e6e17d0f8cf64c1d136": {
+            "global_name": "dance_celebrate",
+            "extension": "wav"
+        },
+        "042309f190183383c0b1c1fc3edc2e84": {
+            "global_name": "dance_magic",
+            "extension": "wav"
+        }
+    }
+}
