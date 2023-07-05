@@ -1,0 +1,368 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "rlGZ6:aMd*,JE?=O}Fx9": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "1IxzKmItfk*%6kX~+dOD",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 403,
+                    "y": 161
+                },
+                "1IxzKmItfk*%6kX~+dOD": {
+                    "opcode": "sound_playuntildone",
+                    "next": "l^`e0OGG1q87bN5%~dfx",
+                    "parent": "rlGZ6:aMd*,JE?=O}Fx9",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "Y%Tpz6yRLx)l3uE;iCOj"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Y%Tpz6yRLx)l3uE;iCOj": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "1IxzKmItfk*%6kX~+dOD",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "l^`e0OGG1q87bN5%~dfx": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "0D2ar,_eD5m~s({[@$BN",
+                    "parent": "1IxzKmItfk*%6kX~+dOD",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "100"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "0D2ar,_eD5m~s({[@$BN": {
+                    "opcode": "sound_playuntildone",
+                    "next": "6(EiU0Xh5cYlN!(3rYIX",
+                    "parent": "l^`e0OGG1q87bN5%~dfx",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "@%p+hvEgS.c(CUIrxG(^"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "@%p+hvEgS.c(CUIrxG(^": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "0D2ar,_eD5m~s({[@$BN",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "6(EiU0Xh5cYlN!(3rYIX": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "VTZrzwH,RIxAI9spu$su",
+                    "parent": "0D2ar,_eD5m~s({[@$BN",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "VTZrzwH,RIxAI9spu$su": {
+                    "opcode": "sound_playuntildone",
+                    "next": "3m9]79~NIXs~h2}VwH-w",
+                    "parent": "6(EiU0Xh5cYlN!(3rYIX",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "(ld*o4*BhtALK`9g`JHk"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "(ld*o4*BhtALK`9g`JHk": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "VTZrzwH,RIxAI9spu$su",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "3m9]79~NIXs~h2}VwH-w": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "5jjAd(3v,Hh1t%9530T=",
+                    "parent": "VTZrzwH,RIxAI9spu$su",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "5jjAd(3v,Hh1t%9530T=": {
+                    "opcode": "sound_playuntildone",
+                    "next": ")]?ke6]3m-^PGnhn2dg4",
+                    "parent": "3m9]79~NIXs~h2}VwH-w",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "Z`ld}:@fX~VQQLFCsG6F"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Z`ld}:@fX~VQQLFCsG6F": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "5jjAd(3v,Hh1t%9530T=",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                ")]?ke6]3m-^PGnhn2dg4": {
+                    "opcode": "sound_changevolumeby",
+                    "next": ",4i5FG3JAHrY|fGw#3Ea",
+                    "parent": "5jjAd(3v,Hh1t%9530T=",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                ",4i5FG3JAHrY|fGw#3Ea": {
+                    "opcode": "sound_playuntildone",
+                    "next": "EosdnIH7[:R}U=e8~zTq",
+                    "parent": ")]?ke6]3m-^PGnhn2dg4",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "#{C%2t]eGQXDI$i45MXX"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "#{C%2t]eGQXDI$i45MXX": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": ",4i5FG3JAHrY|fGw#3Ea",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "EosdnIH7[:R}U=e8~zTq": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "rs0@O}wDPbrYhpL24F)I",
+                    "parent": ",4i5FG3JAHrY|fGw#3Ea",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "300"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "rs0@O}wDPbrYhpL24F)I": {
+                    "opcode": "sound_playuntildone",
+                    "next": null,
+                    "parent": "EosdnIH7[:R}U=e8~zTq",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "rcQ0u~cREMOM|[yx;8_?"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "rcQ0u~cREMOM|[yx;8_?": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "rs0@O}wDPbrYhpL24F)I",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}
