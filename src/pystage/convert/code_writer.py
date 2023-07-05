@@ -237,6 +237,8 @@ class CodeWriter():
             if costume["local_name"] == name:
                 q = '"' if quoted else ''
                 return f'{q}{self.project["costumes"][costume["md5"]]["global_name"]}{q}'
+        if name in ["next backdrop", "random backdrop", "previous backdrop"]:
+            return f'"{name}"'
         raise ValueError(f"No backdrop with name '{name}' found for stage.")
 
 

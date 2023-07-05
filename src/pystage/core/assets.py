@@ -1,4 +1,5 @@
 import os
+import random
 # from pystage.util import stderr_redirector
 import sys
 import io
@@ -54,7 +55,30 @@ class CostumeManager():
             self.current_costume = 0
         self.update_sprite_image()
 
+    def previous_costume(self):
+        if self.current_costume == -1:
+            return
+        self.current_costume -= 1
+        if self.current_costume == -1:
+            self.current_costume = len(self.costumes) - 1
+        self.update_sprite_image()
+
+    def random_costume(self):
+        if self.current_costume == -1:
+            return
+        self.current_costume = random.randint(0, len(self.costumes)-1)
+        self.update_sprite_image()
+
     def switch_costume(self, name):
+        if name == "next backdrop":
+            self.next_costume()
+            return
+        if name == "previous backdrop":
+            self.previous_costume()
+            return
+        if name == "random backdrop":
+            self.random_costume()
+            return
         for i, costume in enumerate(self.costumes):
             if costume.name.lower().strip() == name.lower().strip():
                 self.current_costume = i
