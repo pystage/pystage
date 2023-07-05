@@ -180,6 +180,15 @@ class CoreStage(
                             sprite.code_manager.process_click()
                             break
 
+                if event.type == pygame.MOUSEWHEEL:
+                    for monitor in filter(lambda m: m.is_list, self.monitor_group.sprites()[-1::-1]):
+                        if monitor.rect.collidepoint(pygame.mouse.get_pos()):
+                            if not len(monitor._value) > 5:
+                                break
+                            monitor.scroll_up() if event.precise_y == 1 else monitor.scroll_down()
+                            monitor.update_image()
+                            break
+
             # Handle broadcast messages
             for message in self.message_broker.get_messages():
                 for sprite in self.sprites:
