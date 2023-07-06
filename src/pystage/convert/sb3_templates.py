@@ -10,7 +10,7 @@ templates = {
         "event_whenflagclicked": '''\
                 
                 def {{func}}_{{ID}}(self):
-                    {{NEXT | indent(4) }}
+                    {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
 
