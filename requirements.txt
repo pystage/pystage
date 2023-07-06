@@ -1,5 +1,5 @@
 colorama==0.4.6
-colored==2.2.2  # for running tests
+colored==1.4.4  # for running tests
 cssselect2==0.7.0
 exceptiongroup==1.1.2
 iniconfig==2.0.0
