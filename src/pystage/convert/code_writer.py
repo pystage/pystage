@@ -191,6 +191,9 @@ class CodeWriter():
         fieldname = corefunc.param if hasattr(corefunc, "param") else None
         res += ", ".join(["{{" + p + "}}" for p in block.params if p != fieldname])
         res += ")"
+        if comment := block["comment"]:
+            comment = comment.replace("\n", " | ")
+            res += f"  # {comment}"
         # print(res)
         return res
 
