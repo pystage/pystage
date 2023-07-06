@@ -2,7 +2,7 @@ import pygame
 import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
-
+import datetime
 
 
 class _Sensing(BaseSprite):
@@ -130,7 +130,7 @@ class _Sensing(BaseSprite):
     sensing_of_backdropname.value="backdrop name"
 
     def sensing_current_year(self):
-        pass
+        return datetime.datetime.now().year
     sensing_current_year.opcode="sensing_current"
     sensing_current_year.param="CURRENTMENU"
     sensing_current_year.value="YEAR"
