@@ -1,0 +1,340 @@
+{
+    "name": "variable6",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 2,
+            "var": 0
+        },
+        "lists": {},
+        "monitors": [
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 5,
+                "opcode": "data_variable",
+                "variable": "var"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "data_setvariableto",
+                        "params": {
+                            "VARIABLE": "\"my variable\"",
+                            "VALUE": {
+                                "opcode": "looks_costumenumbername",
+                                "params": {
+                                    "NUMBER_NAME": "\"number\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "control_wait",
+                            "params": {
+                                "DURATION": 1.0
+                            },
+                            "next": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"my variable\"",
+                                    "VALUE": {
+                                        "opcode": "looks_backdropnumbername",
+                                        "params": {
+                                            "NUMBER_NAME": "\"number\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 1.0
+                                    },
+                                    "next": {
+                                        "opcode": "motion_sety",
+                                        "params": {
+                                            "Y": {
+                                                "opcode": "looks_size",
+                                                "params": {},
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 19,
+            "y": 100,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Buildings",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_setx",
+                        "params": {
+                            "X": {
+                                "opcode": "looks_size",
+                                "params": {},
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "e8c9508b1f6a0a432e09c10ef9ada67c",
+                    "local_name": "building-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 40,
+                    "rotationCenterY": 30
+                },
+                {
+                    "md5": "a8c977a3b85ffe8c8b453c9d668989b8",
+                    "local_name": "building-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": -11
+                },
+                {
+                    "md5": "e4764cfc384a499f92da3ea745bcebe2",
+                    "local_name": "building-c",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 25,
+                    "rotationCenterY": 17
+                },
+                {
+                    "md5": "d1fcce0aac589a17324943a3b759fc2a",
+                    "local_name": "building-d",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 59,
+                    "rotationCenterY": -10
+                },
+                {
+                    "md5": "bb47a3d5d03a34937557c558c6cb5d18",
+                    "local_name": "building-e",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 36,
+                    "rotationCenterY": 55
+                },
+                {
+                    "md5": "80b120b7152ed72fded84fef485f4f79",
+                    "local_name": "building-f",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 41,
+                    "rotationCenterY": 27
+                },
+                {
+                    "md5": "4212ff1769c169bfa0db043b18fdade8",
+                    "local_name": "building-g",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 64,
+                    "rotationCenterY": -65
+                },
+                {
+                    "md5": "8f64966be60d332b345598819c67a8b6",
+                    "local_name": "building-h",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 33,
+                    "rotationCenterY": 136
+                },
+                {
+                    "md5": "fcedb6b25a2db6de28b39130f978b0bf",
+                    "local_name": "building-i",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 31,
+                    "rotationCenterY": -12
+                },
+                {
+                    "md5": "148034b1557cc3dae39953e43ab50ff0",
+                    "local_name": "building-j",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 29,
+                    "rotationCenterY": 33
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 100,
+            "y": -11,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "bcf454acf82e4504149f7ffe07081dbc": {
+            "global_name": "costume1",
+            "extension": "svg"
+        },
+        "0fb9be3e8397c983338cb71dc84d0b25": {
+            "global_name": "costume2",
+            "extension": "svg"
+        },
+        "e8c9508b1f6a0a432e09c10ef9ada67c": {
+            "global_name": "building_a",
+            "extension": "svg"
+        },
+        "a8c977a3b85ffe8c8b453c9d668989b8": {
+            "global_name": "building_b",
+            "extension": "svg"
+        },
+        "e4764cfc384a499f92da3ea745bcebe2": {
+            "global_name": "building_c",
+            "extension": "svg"
+        },
+        "d1fcce0aac589a17324943a3b759fc2a": {
+            "global_name": "building_d",
+            "extension": "svg"
+        },
+        "bb47a3d5d03a34937557c558c6cb5d18": {
+            "global_name": "building_e",
+            "extension": "svg"
+        },
+        "80b120b7152ed72fded84fef485f4f79": {
+            "global_name": "building_f",
+            "extension": "svg"
+        },
+        "4212ff1769c169bfa0db043b18fdade8": {
+            "global_name": "building_g",
+            "extension": "svg"
+        },
+        "8f64966be60d332b345598819c67a8b6": {
+            "global_name": "building_h",
+            "extension": "svg"
+        },
+        "fcedb6b25a2db6de28b39130f978b0bf": {
+            "global_name": "building_i",
+            "extension": "svg"
+        },
+        "148034b1557cc3dae39953e43ab50ff0": {
+            "global_name": "building_j",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "83c36d806dc92327b9e7049a565c6bff": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    }
+}

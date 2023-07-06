@@ -17,3 +17,5 @@ geckodriver.log
 *.png
 images/
 sounds/
+
+!tests/src/**

@@ -1,0 +1,312 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "#PP]zAY1$5u`yGRUy*06": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "$nTll,hsS~`CWbr*]@Xl",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 832,
+                    "y": 373
+                },
+                "$nTll,hsS~`CWbr*]@Xl": {
+                    "opcode": "motion_pointindirection",
+                    "next": ":[urhD7m/(L3N=t*dIIO",
+                    "parent": "#PP]zAY1$5u`yGRUy*06",
+                    "inputs": {
+                        "DIRECTION": [
+                            1,
+                            [
+                                8,
+                                "180"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Wbt6@vdEa5K.tn2sII8!": {
+                    "opcode": "motion_pointtowards",
+                    "next": "AxD6VTb6($Whx6#!jI,_",
+                    "parent": ":[urhD7m/(L3N=t*dIIO",
+                    "inputs": {
+                        "TOWARDS": [
+                            1,
+                            "q-20`,|+.%K)Cbr@4V%k"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "q-20`,|+.%K)Cbr@4V%k": {
+                    "opcode": "motion_pointtowards_menu",
+                    "next": null,
+                    "parent": "Wbt6@vdEa5K.tn2sII8!",
+                    "inputs": {},
+                    "fields": {
+                        "TOWARDS": [
+                            "_mouse_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                ":[urhD7m/(L3N=t*dIIO": {
+                    "opcode": "motion_glideto",
+                    "next": "Wbt6@vdEa5K.tn2sII8!",
+                    "parent": "$nTll,hsS~`CWbr*]@Xl",
+                    "inputs": {
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ],
+                        "TO": [
+                            1,
+                            "8P$[a^#8D#2Y5yGnu;%K"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "8P$[a^#8D#2Y5yGnu;%K": {
+                    "opcode": "motion_glideto_menu",
+                    "next": null,
+                    "parent": ":[urhD7m/(L3N=t*dIIO",
+                    "inputs": {},
+                    "fields": {
+                        "TO": [
+                            "_random_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "AxD6VTb6($Whx6#!jI,_": {
+                    "opcode": "motion_changexby",
+                    "next": "@@CWRDt6ESc1@huM{:V)",
+                    "parent": "Wbt6@vdEa5K.tn2sII8!",
+                    "inputs": {
+                        "DX": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "@@CWRDt6ESc1@huM{:V)": {
+                    "opcode": "motion_setx",
+                    "next": "F52m][X%-%j~9=g|}iT^",
+                    "parent": "AxD6VTb6($Whx6#!jI,_",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "F52m][X%-%j~9=g|}iT^": {
+                    "opcode": "motion_changeyby",
+                    "next": "VULzdxFho5s[7R5_}Zj,",
+                    "parent": "@@CWRDt6ESc1@huM{:V)",
+                    "inputs": {
+                        "DY": [
+                            1,
+                            [
+                                4,
+                                "-20"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "VULzdxFho5s[7R5_}Zj,": {
+                    "opcode": "motion_sety",
+                    "next": null,
+                    "parent": "F52m][X%-%j~9=g|}iT^",
+                    "inputs": {
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 10,
+            "y": 20,
+            "size": 100,
+            "direction": 23.08291951430904,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "_Ht2/N].TmTeFWx4jhY._xposition",
+            "mode": "default",
+            "opcode": "motion_xposition",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": -100,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "_Ht2/N].TmTeFWx4jhY._yposition",
+            "mode": "default",
+            "opcode": "motion_yposition",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": -126,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 32,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "_Ht2/N].TmTeFWx4jhY._direction",
+            "mode": "default",
+            "opcode": "motion_direction",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 61.23602417397498,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 59,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

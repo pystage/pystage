@@ -1,0 +1,149 @@
+{
+    "name": "test",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Cheesy Puffs",
+            "blocks": [],
+            "costumes": [
+                {
+                    "md5": "82772a61ec74974e84c686c61ea0b7d5",
+                    "local_name": "cheesy puffs",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 87,
+                    "rotationCenterY": 72
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -13,
+            "y": -15,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Dog2",
+            "blocks": [],
+            "costumes": [
+                {
+                    "md5": "66b435d333f34d02d5ae49a598bcc5b3",
+                    "local_name": "dog2-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                },
+                {
+                    "md5": "6afc06388d69f99e28d883126f9b2734",
+                    "local_name": "dog2-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                },
+                {
+                    "md5": "4708bff29b3a295a03ac1d5e2d16ec75",
+                    "local_name": "dog2-c",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "b15adefc3c12f758b6dc6a045362532f",
+                    "local_name": "dog1"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 2,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -142,
+            "y": 13,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "82772a61ec74974e84c686c61ea0b7d5": {
+            "global_name": "cheesy_puffs",
+            "extension": "png"
+        },
+        "66b435d333f34d02d5ae49a598bcc5b3": {
+            "global_name": "dog2_a",
+            "extension": "svg"
+        },
+        "6afc06388d69f99e28d883126f9b2734": {
+            "global_name": "dog2_b",
+            "extension": "svg"
+        },
+        "4708bff29b3a295a03ac1d5e2d16ec75": {
+            "global_name": "dog2_c",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "b15adefc3c12f758b6dc6a045362532f": {
+            "global_name": "dog1",
+            "extension": "wav"
+        }
+    }
+}

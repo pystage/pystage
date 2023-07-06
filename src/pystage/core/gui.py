@@ -185,11 +185,16 @@ class BubbleManager():
         # print(text)
         if isinstance(text, bool):
             text = "true" if text else "false"
+        if isinstance(text, (int, float)):
+            text = str(round(text, 2) if text % 1 > 0 else int(text))
         if self.bubble:
             self.bubble.kill()
             self.bubble = None
         if text is not None and text.strip() != "":
             self.bubble = Bubble(self.sprite, text, border)
             self.sprite.stage.bubbles.add(self.bubble)
+            
+    def think(self, text: str):
+        self.say(text, Bubble.THINK)
 
 

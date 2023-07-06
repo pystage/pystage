@@ -1,0 +1,196 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Cheesy Puffs",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "wsxREBDCyi^q.JVd6ZeO": {
+                    "opcode": "control_forever",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 841,
+                    "y": 402
+                },
+                "x_L,AfI2W7Ky9U)|M91c": {
+                    "opcode": "control_if_else",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 360,
+                    "y": 427
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "cheesy puffs",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "82772a61ec74974e84c686c61ea0b7d5",
+                    "md5ext": "82772a61ec74974e84c686c61ea0b7d5.png",
+                    "rotationCenterX": 87,
+                    "rotationCenterY": 72
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -13,
+            "y": -15,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Dog2",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "qs6V^fZ1csukXICC,x|l": {
+                    "opcode": "control_repeat",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 702,
+                    "y": 323
+                }
+            },
+            "comments": {},
+            "currentCostume": 2,
+            "costumes": [
+                {
+                    "name": "dog2-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "66b435d333f34d02d5ae49a598bcc5b3",
+                    "md5ext": "66b435d333f34d02d5ae49a598bcc5b3.svg",
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                },
+                {
+                    "name": "dog2-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "6afc06388d69f99e28d883126f9b2734",
+                    "md5ext": "6afc06388d69f99e28d883126f9b2734.svg",
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                },
+                {
+                    "name": "dog2-c",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "4708bff29b3a295a03ac1d5e2d16ec75",
+                    "md5ext": "4708bff29b3a295a03ac1d5e2d16ec75.svg",
+                    "rotationCenterX": 75,
+                    "rotationCenterY": 75
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "dog1",
+                    "assetId": "b15adefc3c12f758b6dc6a045362532f",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 7344,
+                    "md5ext": "b15adefc3c12f758b6dc6a045362532f.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -142,
+            "y": 13,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

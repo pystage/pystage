@@ -1,0 +1,179 @@
+{
+    "name": "operators5",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Cake",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if_else",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_gt",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "operator_random",
+                                        "params": {
+                                            "FROM": 1.0,
+                                            "TO": 10.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "OPERAND2": 5
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK": {
+                                "opcode": "sound_play",
+                                "params": {
+                                    "SOUND_MENU": {
+                                        "opcode": "sound_sounds_menu",
+                                        "params": {
+                                            "SOUND_MENU": "\"Birthday\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK2": {
+                                "opcode": "control_wait",
+                                "params": {
+                                    "DURATION": {
+                                        "opcode": "operator_mod",
+                                        "params": {
+                                            "NUM1": 2.0,
+                                            "NUM2": 5.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "looks_changesizeby",
+                                    "params": {
+                                        "CHANGE": -10.0
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "862488bf66b67c5330cae9235b853b6e",
+                    "local_name": "cake-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 64,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "dfe9c5d40da0dcc386fad524c36d3579",
+                    "local_name": "cake-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 64,
+                    "rotationCenterY": 42
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "89691587a169d935a58c48c3d4e78534",
+                    "local_name": "Birthday"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 23,
+            "y": -34,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "862488bf66b67c5330cae9235b853b6e": {
+            "global_name": "cake_a",
+            "extension": "svg"
+        },
+        "dfe9c5d40da0dcc386fad524c36d3579": {
+            "global_name": "cake_b",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "89691587a169d935a58c48c3d4e78534": {
+            "global_name": "birthday",
+            "extension": "wav"
+        }
+    }
+}

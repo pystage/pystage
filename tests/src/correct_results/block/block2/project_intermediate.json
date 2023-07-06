@@ -1,0 +1,134 @@
+{
+    "name": "block2",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Bear",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "procedures_call",
+                                "params": {},
+                                "next": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 3.0
+                                    },
+                                    "next": {
+                                        "opcode": "procedures_call",
+                                        "params": {},
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "deef1eaa96d550ae6fc11524a1935024",
+                    "local_name": "bear-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 100,
+                    "rotationCenterY": 90
+                },
+                {
+                    "md5": "6f303e972f33fcb7ef36d0d8012d0975",
+                    "local_name": "bear-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 94,
+                    "rotationCenterY": 190.66666666666666
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -114,
+            "y": -5,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "deef1eaa96d550ae6fc11524a1935024": {
+            "global_name": "bear_a",
+            "extension": "svg"
+        },
+        "6f303e972f33fcb7ef36d0d8012d0975": {
+            "global_name": "bear_b",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        }
+    }
+}

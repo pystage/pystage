@@ -1,0 +1,452 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    2
+                ],
+                "zyBTDc:U+,zE#}`G]y,^": [
+                    "var",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                ";:y]QHpQdj4$j3]r_@J}": {
+                    "opcode": "looks_costumenumbername",
+                    "next": null,
+                    "parent": "^sxV]G2y/bh6Rh^3K$Pw",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "-F;X5{y7qNeC#dP,$[L1": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "s-V2y-Tl^WXTgmkffz58",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "^sxV]G2y/bh6Rh^3K$Pw": {
+                    "opcode": "data_setvariableto",
+                    "next": "th,^g]MMZ-r1,t@-=~~w",
+                    "parent": "C~-l0aTW13zrgf[`ZF5#",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            ";:y]QHpQdj4$j3]r_@J}",
+                            [
+                                10,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "my variable",
+                            "`jEk@4|i[#Fk?(8x)AV.-my variable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "C~-l0aTW13zrgf[`ZF5#": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "^sxV]G2y/bh6Rh^3K$Pw",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 662,
+                    "y": 902
+                },
+                "s-V2y-Tl^WXTgmkffz58": {
+                    "opcode": "data_changevariableby",
+                    "next": "5qMhelML(v97YUYm?!Vk",
+                    "parent": "th,^g]MMZ-r1,t@-=~~w",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "-F;X5{y7qNeC#dP,$[L1",
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "my variable",
+                            "`jEk@4|i[#Fk?(8x)AV.-my variable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Z0#n:D`|ot_^WY}BA|rg": {
+                    "opcode": "motion_sety",
+                    "next": null,
+                    "parent": "5qMhelML(v97YUYm?!Vk",
+                    "inputs": {
+                        "Y": [
+                            3,
+                            "ggrLo,.-$fgX5n,]5[C7",
+                            [
+                                4,
+                                "105"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "ggrLo,.-$fgX5n,]5[C7": {
+                    "opcode": "looks_size",
+                    "next": null,
+                    "parent": "Z0#n:D`|ot_^WY}BA|rg",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "th,^g]MMZ-r1,t@-=~~w": {
+                    "opcode": "control_wait",
+                    "next": "s-V2y-Tl^WXTgmkffz58",
+                    "parent": "^sxV]G2y/bh6Rh^3K$Pw",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "5qMhelML(v97YUYm?!Vk": {
+                    "opcode": "control_wait",
+                    "next": "Z0#n:D`|ot_^WY}BA|rg",
+                    "parent": "s-V2y-Tl^WXTgmkffz58",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 19,
+            "y": 100,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Buildings",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "uydqd9mvIs%f8{47R7z-": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "fSbqTZEM*;jPC7^pxsq]",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 44,
+                    "y": 44
+                },
+                "fSbqTZEM*;jPC7^pxsq]": {
+                    "opcode": "motion_setx",
+                    "next": null,
+                    "parent": "uydqd9mvIs%f8{47R7z-",
+                    "inputs": {
+                        "X": [
+                            3,
+                            "O.}xMF67xhp(/o.X)%3L",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "O.}xMF67xhp(/o.X)%3L": {
+                    "opcode": "looks_size",
+                    "next": null,
+                    "parent": "fSbqTZEM*;jPC7^pxsq]",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "building-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e8c9508b1f6a0a432e09c10ef9ada67c",
+                    "md5ext": "e8c9508b1f6a0a432e09c10ef9ada67c.svg",
+                    "rotationCenterX": 40,
+                    "rotationCenterY": 30
+                },
+                {
+                    "name": "building-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "a8c977a3b85ffe8c8b453c9d668989b8",
+                    "md5ext": "a8c977a3b85ffe8c8b453c9d668989b8.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": -11
+                },
+                {
+                    "name": "building-c",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e4764cfc384a499f92da3ea745bcebe2",
+                    "md5ext": "e4764cfc384a499f92da3ea745bcebe2.svg",
+                    "rotationCenterX": 25,
+                    "rotationCenterY": 17
+                },
+                {
+                    "name": "building-d",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "d1fcce0aac589a17324943a3b759fc2a",
+                    "md5ext": "d1fcce0aac589a17324943a3b759fc2a.svg",
+                    "rotationCenterX": 59,
+                    "rotationCenterY": -10
+                },
+                {
+                    "name": "building-e",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bb47a3d5d03a34937557c558c6cb5d18",
+                    "md5ext": "bb47a3d5d03a34937557c558c6cb5d18.svg",
+                    "rotationCenterX": 36,
+                    "rotationCenterY": 55
+                },
+                {
+                    "name": "building-f",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "80b120b7152ed72fded84fef485f4f79",
+                    "md5ext": "80b120b7152ed72fded84fef485f4f79.svg",
+                    "rotationCenterX": 41,
+                    "rotationCenterY": 27
+                },
+                {
+                    "name": "building-g",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "4212ff1769c169bfa0db043b18fdade8",
+                    "md5ext": "4212ff1769c169bfa0db043b18fdade8.svg",
+                    "rotationCenterX": 64,
+                    "rotationCenterY": -65
+                },
+                {
+                    "name": "building-h",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "8f64966be60d332b345598819c67a8b6",
+                    "md5ext": "8f64966be60d332b345598819c67a8b6.svg",
+                    "rotationCenterX": 33,
+                    "rotationCenterY": 136
+                },
+                {
+                    "name": "building-i",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "fcedb6b25a2db6de28b39130f978b0bf",
+                    "md5ext": "fcedb6b25a2db6de28b39130f978b0bf.svg",
+                    "rotationCenterX": 31,
+                    "rotationCenterY": -12
+                },
+                {
+                    "name": "building-j",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "148034b1557cc3dae39953e43ab50ff0",
+                    "md5ext": "148034b1557cc3dae39953e43ab50ff0.svg",
+                    "rotationCenterX": 29,
+                    "rotationCenterY": 33
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 100,
+            "y": -11,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "`jEk@4|i[#Fk?(8x)AV.-my variable",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "my variable"
+            },
+            "spriteName": null,
+            "value": 2,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": false,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "zyBTDc:U+,zE#}`G]y,^",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "var"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

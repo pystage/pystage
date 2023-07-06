@@ -1,0 +1,1004 @@
+{
+    "name": "motion5",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "92968ac16b2f0c3f7835a6dacd172c7b",
+                "local_name": "Forest",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "92968ac16b2f0c3f7835a6dacd172c7b",
+                "local_name": "Forest2",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "8eb8790be5507fdccf73e7c1570bbbab",
+                "local_name": "Blue Sky 2 ",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "your_score": 5
+        },
+        "lists": {},
+        "monitors": [
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 5,
+                "opcode": "sensing_timer"
+            },
+            {
+                "style": "normal",
+                "x": 7,
+                "y": 34,
+                "opcode": "data_variable",
+                "variable": "your_score"
+            }
+        ],
+        "currentCostume": 3,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Bread",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 1.0
+                                    },
+                                    "next": {
+                                        "opcode": "control_wait_until",
+                                        "params": {
+                                            "CONDITION": {
+                                                "opcode": "sensing_touchingobject",
+                                                "params": {
+                                                    "TOUCHINGOBJECTMENU": {
+                                                        "opcode": "sensing_touchingobjectmenu",
+                                                        "params": {
+                                                            "TOUCHINGOBJECTMENU": "\"Dot\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false,
+                                                        "comment": null
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "data_changevariableby",
+                                            "params": {
+                                                "VARIABLE": "\"your_score\"",
+                                                "VALUE": 1.0
+                                            },
+                                            "next": {
+                                                "opcode": "looks_hide",
+                                                "params": {},
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": -100.0,
+                            "Y": 200.0
+                        },
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "motion_ifonedgebounce",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "motion_movesteps",
+                                        "params": {
+                                            "STEPS": 2.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "585de1550446d4420f8a10fdecac995b",
+                    "local_name": "bread",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 37,
+                    "rotationCenterY": 12
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 3,
+            "visible": false,
+            "x": -38.32409760250535,
+            "y": -12.564624023471827,
+            "size": 100,
+            "volume": 100,
+            "direction": -101.5369590328155,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Dot",
+            "blocks": [
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"d\""
+                    },
+                    "next": {
+                        "opcode": "motion_changexby",
+                        "params": {
+                            "DX": 10.0
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"a\""
+                    },
+                    "next": {
+                        "opcode": "motion_changexby",
+                        "params": {
+                            "DX": -10.0
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"w\""
+                    },
+                    "next": {
+                        "opcode": "motion_changeyby",
+                        "params": {
+                            "DY": 10.0
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"s\""
+                    },
+                    "next": {
+                        "opcode": "motion_changeyby",
+                        "params": {
+                            "DY": -10.0
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_switchbackdropto",
+                        "params": {
+                            "BACKDROP": {
+                                "opcode": "looks_backdrops",
+                                "params": {
+                                    "BACKDROP": "\"Forest\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "sensing_resettimer",
+                            "params": {},
+                            "next": {
+                                "opcode": "data_setvariableto",
+                                "params": {
+                                    "VARIABLE": "\"your_score\"",
+                                    "VALUE": 0
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whengreaterthan",
+                    "params": {
+                        "WHENGREATERTHANMENU": "\"TIMER\"",
+                        "VALUE": 10.0
+                    },
+                    "next": {
+                        "opcode": "control_if_else",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_gt",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "data_variable",
+                                        "params": {
+                                            "VARIABLE": "\"your_score\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    },
+                                    "OPERAND2": 4
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK": {
+                                "opcode": "looks_switchbackdropto",
+                                "params": {
+                                    "BACKDROP": {
+                                        "opcode": "looks_backdrops",
+                                        "params": {
+                                            "BACKDROP": "\"Blue Sky 2 \""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "looks_sayforsecs",
+                                    "params": {
+                                        "MESSAGE": "\"You win!\"",
+                                        "SECS": 10.0
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK2": {
+                                "opcode": "looks_thinkforsecs",
+                                "params": {
+                                    "MESSAGE": {
+                                        "opcode": "operator_join",
+                                        "params": {
+                                            "STRING1": "\" You Lose \"",
+                                            "STRING2": {
+                                                "opcode": "sensing_username",
+                                                "params": {},
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "SECS": 10.0
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whengreaterthan",
+                    "params": {
+                        "WHENGREATERTHANMENU": "\"LOUDNESS\"",
+                        "VALUE": 10.0
+                    },
+                    "next": false,
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "106461f60e34ce231b323e2dd2d9f05b",
+                    "local_name": "dot-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 52,
+                    "rotationCenterY": 67
+                },
+                {
+                    "md5": "21482022f9930400302bc8ec70643717",
+                    "local_name": "dot-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 65,
+                    "rotationCenterY": 67
+                },
+                {
+                    "md5": "9e5a6cc6970ce4932a09affba70a45b0",
+                    "local_name": "dot-c",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 50.53907324990831,
+                    "rotationCenterY": 68.96764494984302
+                },
+                {
+                    "md5": "fb047c94113ee4c6664305a338525e6a",
+                    "local_name": "dot-d",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 56.58074394930321,
+                    "rotationCenterY": 66.76919584395038
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "cd8fa8390b0efdd281882533fbfcfcfb",
+                    "local_name": "bark"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 57,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Bread2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "control_wait_until",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_touchingobject",
+                                    "params": {
+                                        "TOUCHINGOBJECTMENU": {
+                                            "opcode": "sensing_touchingobjectmenu",
+                                            "params": {
+                                                "TOUCHINGOBJECTMENU": "\"Dot\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"your_score\"",
+                                    "VALUE": 1.0
+                                },
+                                "next": {
+                                    "opcode": "looks_hide",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": 100.0,
+                            "Y": 200.0
+                        },
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "motion_ifonedgebounce",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "motion_movesteps",
+                                        "params": {
+                                            "STEPS": 2.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "585de1550446d4420f8a10fdecac995b",
+                    "local_name": "bread",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 37,
+                    "rotationCenterY": 12
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 5,
+            "visible": false,
+            "x": 36.641465728846036,
+            "y": -7.363814353977223,
+            "size": 100,
+            "volume": 100,
+            "direction": 101.53695903281549,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Bread3",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "control_wait_until",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_touchingobject",
+                                    "params": {
+                                        "TOUCHINGOBJECTMENU": {
+                                            "opcode": "sensing_touchingobjectmenu",
+                                            "params": {
+                                                "TOUCHINGOBJECTMENU": "\"Dot\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"your_score\"",
+                                    "VALUE": 1.0
+                                },
+                                "next": {
+                                    "opcode": "looks_hide",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": 50.0,
+                            "Y": 10.0
+                        },
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "motion_ifonedgebounce",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "motion_movesteps",
+                                        "params": {
+                                            "STEPS": 2.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "585de1550446d4420f8a10fdecac995b",
+                    "local_name": "bread",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 37,
+                    "rotationCenterY": 12
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 4,
+            "visible": false,
+            "x": -7.027960616554102,
+            "y": 140.61516742703085,
+            "size": 100,
+            "volume": 100,
+            "direction": 101.53695903281549,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Bread4",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "control_wait_until",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_touchingobject",
+                                    "params": {
+                                        "TOUCHINGOBJECTMENU": {
+                                            "opcode": "sensing_touchingobjectmenu",
+                                            "params": {
+                                                "TOUCHINGOBJECTMENU": "\"Dot\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"your_score\"",
+                                    "VALUE": 1.0
+                                },
+                                "next": {
+                                    "opcode": "looks_hide",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": 0.0,
+                            "Y": 300.0
+                        },
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "motion_ifonedgebounce",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "motion_movesteps",
+                                        "params": {
+                                            "STEPS": 2.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "585de1550446d4420f8a10fdecac995b",
+                    "local_name": "bread",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 37,
+                    "rotationCenterY": 12
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 6,
+            "visible": false,
+            "x": 62.47610381351032,
+            "y": -12.936527442966451,
+            "size": 100,
+            "volume": 100,
+            "direction": -101.5369590328155,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Bread5",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "control_wait_until",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_touchingobject",
+                                    "params": {
+                                        "TOUCHINGOBJECTMENU": {
+                                            "opcode": "sensing_touchingobjectmenu",
+                                            "params": {
+                                                "TOUCHINGOBJECTMENU": "\"Dot\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"your_score\"",
+                                    "VALUE": 1.0
+                                },
+                                "next": {
+                                    "opcode": "looks_hide",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": -300.0,
+                            "Y": -200.0
+                        },
+                        "next": {
+                            "opcode": "control_forever",
+                            "params": {
+                                "SUBSTACK": {
+                                    "opcode": "motion_ifonedgebounce",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "motion_movesteps",
+                                        "params": {
+                                            "STEPS": 2.0
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "585de1550446d4420f8a10fdecac995b",
+                    "local_name": "bread",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 37,
+                    "rotationCenterY": 12
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": false,
+            "x": -146.04253870781898,
+            "y": 10.577908515898349,
+            "size": 100,
+            "volume": 100,
+            "direction": -78.46304096718453,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "92968ac16b2f0c3f7835a6dacd172c7b": {
+            "global_name": "forest",
+            "extension": "png"
+        },
+        "8eb8790be5507fdccf73e7c1570bbbab": {
+            "global_name": "blue_sky_2",
+            "extension": "svg"
+        },
+        "585de1550446d4420f8a10fdecac995b": {
+            "global_name": "bread",
+            "extension": "svg"
+        },
+        "106461f60e34ce231b323e2dd2d9f05b": {
+            "global_name": "dot_a",
+            "extension": "svg"
+        },
+        "21482022f9930400302bc8ec70643717": {
+            "global_name": "dot_b",
+            "extension": "svg"
+        },
+        "9e5a6cc6970ce4932a09affba70a45b0": {
+            "global_name": "dot_c",
+            "extension": "svg"
+        },
+        "fb047c94113ee4c6664305a338525e6a": {
+            "global_name": "dot_d",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "cd8fa8390b0efdd281882533fbfcfcfb": {
+            "global_name": "bark",
+            "extension": "wav"
+        }
+    }
+}
