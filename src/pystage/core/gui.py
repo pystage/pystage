@@ -196,6 +196,9 @@ class BubbleManager():
         if text is not None and text.strip() != "":
             self.bubble = Bubble(self.sprite, text, border)
             self.sprite.stage.bubbles.add(self.bubble)
+            
+    def think(self, text: str):
+        self.say(text, Bubble.THINK)
 
     def sayforsecs(self, text: str, secs: int):
         self.say(text)

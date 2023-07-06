@@ -1,0 +1,565 @@
+{
+    "name": "sound5",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "30085b2d27beb5acdbe895d8b3e64b04",
+                "local_name": "Witch House",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Saxophone",
+            "blocks": [
+                {
+                    "opcode": "event_whenthisspriteclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_switchbackdropto",
+                        "params": {
+                            "BACKDROP": {
+                                "opcode": "looks_backdrops",
+                                "params": {
+                                    "BACKDROP": "\"Witch House\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "sound_seteffectto",
+                            "params": {
+                                "EFFECT": "\"PITCH\"",
+                                "VALUE": 100.0
+                            },
+                            "next": {
+                                "opcode": "control_repeat",
+                                "params": {
+                                    "TIMES": 10,
+                                    "SUBSTACK": {
+                                        "opcode": "sound_changevolumeby",
+                                        "params": {
+                                            "VOLUME": {
+                                                "opcode": "sound_volume",
+                                                "params": {},
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "sound_playuntildone",
+                                            "params": {
+                                                "SOUND_MENU": {
+                                                    "opcode": "sound_sounds_menu",
+                                                    "params": {
+                                                        "SOUND_MENU": "\"C2 Sax\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false,
+                                                    "comment": null
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "sound_changevolumeby",
+                                                "params": {
+                                                    "VOLUME": -10.0
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "motion_pointindirection",
+                                    "params": {
+                                        "DIRECTION": 180.0
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "4414c51bdd03f60f40a1210e1d55cf57",
+                    "local_name": "saxophone-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 80
+                },
+                {
+                    "md5": "459a64bebb7a788395c70e5369ab4746",
+                    "local_name": "saxophone-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 80
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "4d2c939d6953b5f241a27a62cf72de64",
+                    "local_name": "C Sax"
+                },
+                {
+                    "md5": "39f41954a73c0e15d842061e1a4c5e1d",
+                    "local_name": "D Sax"
+                },
+                {
+                    "md5": "3568b7dfe173fab6877a9ff1dcbcf1aa",
+                    "local_name": "E Sax"
+                },
+                {
+                    "md5": "2ae3083817bcd595e26ea2884b6684d5",
+                    "local_name": "F Sax"
+                },
+                {
+                    "md5": "cefba5de46adfe5702485e0934bb1e13",
+                    "local_name": "G Sax"
+                },
+                {
+                    "md5": "420991e0d6d99292c6d736963842536a",
+                    "local_name": "A Sax"
+                },
+                {
+                    "md5": "653ebe92d491b49ad5d8101d629f567b",
+                    "local_name": "B Sax"
+                },
+                {
+                    "md5": "ea8d34b18c3d8fe328cea201666458bf",
+                    "local_name": "C2 Sax"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -2,
+            "y": -28,
+            "size": 100,
+            "volume": 100,
+            "direction": 180,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Guitar-electric1",
+            "blocks": [
+                {
+                    "opcode": "event_whenthisspriteclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sound_changeeffectby",
+                        "params": {
+                            "EFFECT": "\"PITCH\"",
+                            "VALUE": 1000000.0
+                        },
+                        "next": {
+                            "opcode": "control_repeat",
+                            "params": {
+                                "TIMES": 10,
+                                "SUBSTACK": {
+                                    "opcode": "sound_changevolumeby",
+                                    "params": {
+                                        "VOLUME": {
+                                            "opcode": "sound_volume",
+                                            "params": {},
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "sound_playuntildone",
+                                        "params": {
+                                            "SOUND_MENU": {
+                                                "opcode": "sound_sounds_menu",
+                                                "params": {
+                                                    "SOUND_MENU": "\"C2 Elec Guitar\""
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "sound_setvolumeto",
+                                            "params": {
+                                                "VOLUME": 200.0
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "57c6d7dc148576cb2f36e53dea49260a",
+                    "local_name": "guitar-electric1-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                },
+                {
+                    "md5": "677aed0b1168caf4b3ec565b9104dbe0",
+                    "local_name": "guitar-electric1-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0d340de02e14bebaf8dfa0e43eb3f1f9",
+                    "local_name": "C Elec Guitar"
+                },
+                {
+                    "md5": "1b5de9866801eb2f9d4f57c7c3b473f5",
+                    "local_name": "D Elec Guitar"
+                },
+                {
+                    "md5": "2e6a6ae3e0f72bf78c74def8130f459a",
+                    "local_name": "E Elec Guitar"
+                },
+                {
+                    "md5": "5eb00f15f21f734986aa45156d44478d",
+                    "local_name": "F Elec Guitar"
+                },
+                {
+                    "md5": "cd0d0e7dad415b2ffa2ba7a61860eaf8",
+                    "local_name": "G Elec Guitar"
+                },
+                {
+                    "md5": "fa5f7fea601e9368dd68449d9a54c995",
+                    "local_name": "A Elec Guitar"
+                },
+                {
+                    "md5": "81f142d0b00189703d7fe9b1f13f6f87",
+                    "local_name": "B Elec Guitar"
+                },
+                {
+                    "md5": "3a8ed3129f22cba5b0810bc030d16b5f",
+                    "local_name": "C2 Elec Guitar"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [
+                {
+                    "style": "normal",
+                    "x": 5,
+                    "y": 5,
+                    "opcode": "sound_volume"
+                }
+            ],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 187,
+            "y": -31,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Drum Kit",
+            "blocks": [
+                {
+                    "opcode": "event_whenthisspriteclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": 10,
+                            "SUBSTACK": {
+                                "opcode": "sound_changevolumeby",
+                                "params": {
+                                    "VOLUME": {
+                                        "opcode": "sound_volume",
+                                        "params": {},
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "sound_playuntildone",
+                                    "params": {
+                                        "SOUND_MENU": {
+                                            "opcode": "sound_sounds_menu",
+                                            "params": {
+                                                "SOUND_MENU": "\"Low Tom\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "baf6344b6f55b074786a383c1097697d",
+                    "local_name": "drum-kit",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 58,
+                    "rotationCenterY": 78
+                },
+                {
+                    "md5": "3f4fb4836338c55f883607c403b2b25e",
+                    "local_name": "drum-kit-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 58,
+                    "rotationCenterY": 78
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "48328c874353617451e4c7902cc82817",
+                    "local_name": "Drum Bass1"
+                },
+                {
+                    "md5": "711a1270d1cf2e5de9b145ee539213e4",
+                    "local_name": "Drum Bass2"
+                },
+                {
+                    "md5": "c21704337b16359ea631b5f8eb48f765",
+                    "local_name": "Drum Bass3"
+                },
+                {
+                    "md5": "d623f99b3c8d33932eb2c6c9cfd817c5",
+                    "local_name": "High Tom"
+                },
+                {
+                    "md5": "1569bbbd8952b0575e5a5cb5aefb50ba",
+                    "local_name": "Low Tom"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 3,
+            "visible": true,
+            "x": -154,
+            "y": -38,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "30085b2d27beb5acdbe895d8b3e64b04": {
+            "global_name": "witch_house",
+            "extension": "svg"
+        },
+        "4414c51bdd03f60f40a1210e1d55cf57": {
+            "global_name": "saxophone_a",
+            "extension": "svg"
+        },
+        "459a64bebb7a788395c70e5369ab4746": {
+            "global_name": "saxophone_b",
+            "extension": "svg"
+        },
+        "57c6d7dc148576cb2f36e53dea49260a": {
+            "global_name": "guitar_electric1_a",
+            "extension": "svg"
+        },
+        "677aed0b1168caf4b3ec565b9104dbe0": {
+            "global_name": "guitar_electric1_b",
+            "extension": "svg"
+        },
+        "baf6344b6f55b074786a383c1097697d": {
+            "global_name": "drum_kit",
+            "extension": "svg"
+        },
+        "3f4fb4836338c55f883607c403b2b25e": {
+            "global_name": "drum_kit_b",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "4d2c939d6953b5f241a27a62cf72de64": {
+            "global_name": "c_sax",
+            "extension": "wav"
+        },
+        "39f41954a73c0e15d842061e1a4c5e1d": {
+            "global_name": "d_sax",
+            "extension": "wav"
+        },
+        "3568b7dfe173fab6877a9ff1dcbcf1aa": {
+            "global_name": "e_sax",
+            "extension": "wav"
+        },
+        "2ae3083817bcd595e26ea2884b6684d5": {
+            "global_name": "f_sax",
+            "extension": "wav"
+        },
+        "cefba5de46adfe5702485e0934bb1e13": {
+            "global_name": "g_sax",
+            "extension": "wav"
+        },
+        "420991e0d6d99292c6d736963842536a": {
+            "global_name": "a_sax",
+            "extension": "wav"
+        },
+        "653ebe92d491b49ad5d8101d629f567b": {
+            "global_name": "b_sax",
+            "extension": "wav"
+        },
+        "ea8d34b18c3d8fe328cea201666458bf": {
+            "global_name": "c2_sax",
+            "extension": "wav"
+        },
+        "0d340de02e14bebaf8dfa0e43eb3f1f9": {
+            "global_name": "c_elec_guitar",
+            "extension": "wav"
+        },
+        "1b5de9866801eb2f9d4f57c7c3b473f5": {
+            "global_name": "d_elec_guitar",
+            "extension": "wav"
+        },
+        "2e6a6ae3e0f72bf78c74def8130f459a": {
+            "global_name": "e_elec_guitar",
+            "extension": "wav"
+        },
+        "5eb00f15f21f734986aa45156d44478d": {
+            "global_name": "f_elec_guitar",
+            "extension": "wav"
+        },
+        "cd0d0e7dad415b2ffa2ba7a61860eaf8": {
+            "global_name": "g_elec_guitar",
+            "extension": "wav"
+        },
+        "fa5f7fea601e9368dd68449d9a54c995": {
+            "global_name": "a_elec_guitar",
+            "extension": "wav"
+        },
+        "81f142d0b00189703d7fe9b1f13f6f87": {
+            "global_name": "b_elec_guitar",
+            "extension": "wav"
+        },
+        "3a8ed3129f22cba5b0810bc030d16b5f": {
+            "global_name": "c2_elec_guitar",
+            "extension": "wav"
+        },
+        "48328c874353617451e4c7902cc82817": {
+            "global_name": "drum_bass1",
+            "extension": "wav"
+        },
+        "711a1270d1cf2e5de9b145ee539213e4": {
+            "global_name": "drum_bass2",
+            "extension": "wav"
+        },
+        "c21704337b16359ea631b5f8eb48f765": {
+            "global_name": "drum_bass3",
+            "extension": "wav"
+        },
+        "d623f99b3c8d33932eb2c6c9cfd817c5": {
+            "global_name": "high_tom",
+            "extension": "wav"
+        },
+        "1569bbbd8952b0575e5a5cb5aefb50ba": {
+            "global_name": "low_tom",
+            "extension": "wav"
+        }
+    }
+}

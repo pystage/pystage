@@ -73,6 +73,15 @@ And here is the result:
 # Installation
 ```pip install pystage```
 
+**if doesn't work, try following commands one by one.**
+```bash
+pip install wheel
+pip install pygame==2.3.0
+pip install svglib==1.1.0
+pip install reportlab==3.5.67
+pip install pystage
+```
+
 # Getting started
 
 If you are interested in PyStage and want to get in touch, feel free to join us on our [Discord Server](https://discord.gg/MSGrs3UCCz).

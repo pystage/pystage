@@ -1,0 +1,273 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Cake",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "prNTrF2jxdNi=*(i*JY8": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "~@B}#p@23`Q/ib|sJ]!L",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 553,
+                    "y": 194
+                },
+                "gKG/O_()Q|8^9Tn{|*.8": {
+                    "opcode": "operator_random",
+                    "next": null,
+                    "parent": "s(.6D+ZyV56%hC`?HIVS",
+                    "inputs": {
+                        "FROM": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "TO": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "s(.6D+ZyV56%hC`?HIVS": {
+                    "opcode": "operator_gt",
+                    "next": null,
+                    "parent": "~@B}#p@23`Q/ib|sJ]!L",
+                    "inputs": {
+                        "OPERAND1": [
+                            3,
+                            "gKG/O_()Q|8^9Tn{|*.8",
+                            [
+                                10,
+                                ""
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                10,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "(?5@!8jqSxeGkX`[|0_^": {
+                    "opcode": "sound_play",
+                    "next": null,
+                    "parent": "~@B}#p@23`Q/ib|sJ]!L",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "FeBig+L_59fP|^BZ-6+D"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "FeBig+L_59fP|^BZ-6+D": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "(?5@!8jqSxeGkX`[|0_^",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Birthday",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "~@B}#p@23`Q/ib|sJ]!L": {
+                    "opcode": "control_if_else",
+                    "next": null,
+                    "parent": "prNTrF2jxdNi=*(i*JY8",
+                    "inputs": {
+                        "CONDITION": [
+                            2,
+                            "s(.6D+ZyV56%hC`?HIVS"
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "(?5@!8jqSxeGkX`[|0_^"
+                        ],
+                        "SUBSTACK2": [
+                            2,
+                            "x5#1o8I.SYw.3+%5bc4#"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "x5#1o8I.SYw.3+%5bc4#": {
+                    "opcode": "control_wait",
+                    "next": "/E(/}?nTt(sHZk[ph`x?",
+                    "parent": "~@B}#p@23`Q/ib|sJ]!L",
+                    "inputs": {
+                        "DURATION": [
+                            3,
+                            "9N6DQjddxWF1_[q^Oy6u",
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "9N6DQjddxWF1_[q^Oy6u": {
+                    "opcode": "operator_mod",
+                    "next": null,
+                    "parent": "x5#1o8I.SYw.3+%5bc4#",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "/E(/}?nTt(sHZk[ph`x?": {
+                    "opcode": "looks_changesizeby",
+                    "next": null,
+                    "parent": "x5#1o8I.SYw.3+%5bc4#",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "cake-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "862488bf66b67c5330cae9235b853b6e",
+                    "md5ext": "862488bf66b67c5330cae9235b853b6e.svg",
+                    "rotationCenterX": 64,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "cake-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "dfe9c5d40da0dcc386fad524c36d3579",
+                    "md5ext": "dfe9c5d40da0dcc386fad524c36d3579.svg",
+                    "rotationCenterX": 64,
+                    "rotationCenterY": 42
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Birthday",
+                    "assetId": "89691587a169d935a58c48c3d4e78534",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 322816,
+                    "md5ext": "89691587a169d935a58c48c3d4e78534.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 23,
+            "y": -34,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

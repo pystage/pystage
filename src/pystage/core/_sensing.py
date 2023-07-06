@@ -2,7 +2,7 @@ import pygame
 import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
-
+import datetime
 
 
 class _Sensing(BaseSprite):
@@ -130,21 +130,21 @@ class _Sensing(BaseSprite):
     sensing_of_backdropname.value="backdrop name"
 
     def sensing_current_year(self):
-        pass
+        return datetime.datetime.now().year
     sensing_current_year.opcode="sensing_current"
     sensing_current_year.param="CURRENTMENU"
     sensing_current_year.value="YEAR"
 
 
     def sensing_current_month(self):
-        pass
+        return datetime.datetime.now().month
     sensing_current_month.opcode="sensing_current"
     sensing_current_month.param="CURRENTMENU"
     sensing_current_month.value="MONTH"
 
 
     def sensing_current_date(self):
-        pass
+        return datetime.datetime.now().day
     sensing_current_date.opcode="sensing_current"
     sensing_current_date.param="CURRENTMENU"
     sensing_current_date.value="DATE"
@@ -158,28 +158,37 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_hour(self):
-        pass
+        return datetime.datetime.now().hour
     sensing_current_hour.opcode="sensing_current"
     sensing_current_hour.param="CURRENTMENU"
     sensing_current_hour.value="HOUR"
 
 
     def sensing_current_minute(self):
-        pass
+        return datetime.datetime.now().minute
     sensing_current_minute.opcode="sensing_current"
     sensing_current_minute.param="CURRENTMENU"
     sensing_current_minute.value="MINUTE"
 
 
     def sensing_current_second(self):
-        pass
+        return datetime.datetime.now().second
     sensing_current_second.opcode="sensing_current"
     sensing_current_second.param="CURRENTMENU"
     sensing_current_second.value="SECOND"
 
 
     def sensing_dayssince2000(self):
-        pass
+        # use datetime to find days since 2000 in timezone
+        start_date = datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc)
+        current_datetime = datetime.datetime.now(datetime.timezone.utc)
+        time_difference = current_datetime - start_date
+        days = time_difference.days
+        # find fraction of current day like in Scratch
+        decimal_in_day_string = (current_datetime.hour * 3600 + current_datetime.minute * 60 + current_datetime.second) / (24 * 3600)
+        # put full days and part of day together
+        since_2000 = days + decimal_in_day_string
+        return since_2000
 
     def sensing_username(self):
         # Makes not a lot of sense, maybe for compatibility?
