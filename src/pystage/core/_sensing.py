@@ -179,7 +179,16 @@ class _Sensing(BaseSprite):
 
 
     def sensing_dayssince2000(self):
-        pass
+        # use datetime to find days since 2000 in timezone
+        start_date = datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc)
+        current_datetime = datetime.datetime.now(datetime.timezone.utc)
+        time_difference = current_datetime - start_date
+        days = time_difference.days
+        # find fraction of current day like in Scratch
+        decimal_in_day_string = (current_datetime.hour * 3600 + current_datetime.minute * 60 + current_datetime.second) / (24 * 3600)
+        # put full days and part of day together
+        since_2000 = days + decimal_in_day_string
+        return since_2000
 
     def sensing_username(self):
         # Makes not a lot of sense, maybe for compatibility?
