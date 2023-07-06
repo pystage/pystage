@@ -165,7 +165,7 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_minute(self):
-        pass
+        return datetime.datetime.now().minute
     sensing_current_minute.opcode="sensing_current"
     sensing_current_minute.param="CURRENTMENU"
     sensing_current_minute.value="MINUTE"
