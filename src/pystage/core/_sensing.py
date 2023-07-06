@@ -151,7 +151,15 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_dayofweek(self):
-        pass
+        current_datetime = datetime.datetime.now().date()
+        # start counting days by 1 and not 0 (default for datetime)
+        day_of_week = current_datetime.weekday() + 1
+        if day_of_week >= 1:
+            day_of_week += 1
+        # handle Sunday seperately so Sunday is the first day like in Scratch
+        if day_of_week == 7:
+            day_of_week = 1
+        return day_of_week
     sensing_current_dayofweek.opcode="sensing_current"
     sensing_current_dayofweek.param="CURRENTMENU"
     sensing_current_dayofweek.value="DAYOFWEEK"
