@@ -144,7 +144,7 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_date(self):
-        pass
+        return datetime.datetime.now().day
     sensing_current_date.opcode="sensing_current"
     sensing_current_date.param="CURRENTMENU"
     sensing_current_date.value="DATE"
