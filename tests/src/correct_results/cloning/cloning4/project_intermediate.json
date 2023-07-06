@@ -1,0 +1,468 @@
+{
+    "name": "cloning4",
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenbroadcastreceived",
+                "params": {
+                    "BROADCAST_OPTION": "\"message1\""
+                },
+                "next": {
+                    "opcode": "control_repeat",
+                    "params": {
+                        "TIMES": 10,
+                        "SUBSTACK": {
+                            "opcode": "sound_play",
+                            "params": {
+                                "SOUND_MENU": {
+                                    "opcode": "sound_sounds_menu",
+                                    "params": {
+                                        "SOUND_MENU": "\"pop\""
+                                    },
+                                    "next": false,
+                                    "stage": true,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": true,
+                            "comment": null
+                        }
+                    },
+                    "next": false,
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            },
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "event_broadcast",
+                    "params": {
+                        "BROADCAST_INPUT": "\"message1\""
+                    },
+                    "next": false,
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Button4",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "event_broadcast",
+                        "params": {
+                            "BROADCAST_INPUT": "\"message1\""
+                        },
+                        "next": {
+                            "opcode": "sound_setvolumeto",
+                            "params": {
+                                "VOLUME": 500.0
+                            },
+                            "next": {
+                                "opcode": "event_broadcastandwait",
+                                "params": {
+                                    "BROADCAST_INPUT": "\"loud_message\""
+                                },
+                                "next": {
+                                    "opcode": "sound_seteffectto",
+                                    "params": {
+                                        "EFFECT": "\"PITCH\"",
+                                        "VALUE": 100.0
+                                    },
+                                    "next": {
+                                        "opcode": "control_repeat",
+                                        "params": {
+                                            "TIMES": 3,
+                                            "SUBSTACK": {
+                                                "opcode": "control_wait",
+                                                "params": {
+                                                    "DURATION": 1.0
+                                                },
+                                                "next": {
+                                                    "opcode": "sound_playuntildone",
+                                                    "params": {
+                                                        "SOUND_MENU": {
+                                                            "opcode": "sound_sounds_menu",
+                                                            "params": {
+                                                                "SOUND_MENU": "\"pop\""
+                                                            },
+                                                            "next": false,
+                                                            "stage": false,
+                                                            "comment": null
+                                                        }
+                                                    },
+                                                    "next": false,
+                                                    "stage": false,
+                                                    "comment": null
+                                                },
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenbroadcastreceived",
+                    "params": {
+                        "BROADCAST_OPTION": "\"message1\""
+                    },
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": 10,
+                            "SUBSTACK": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"Hello!\""
+                                },
+                                "next": {
+                                    "opcode": "control_create_clone_of",
+                                    "params": {
+                                        "CLONE_OPTION": {
+                                            "opcode": "control_create_clone_of_menu",
+                                            "params": {
+                                                "CLONE_OPTION": "\"_myself_\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "71ced7c192168c7b221d16b4eaff440e",
+                    "local_name": "button4-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 35,
+                    "rotationCenterY": 34
+                },
+                {
+                    "md5": "7d34ad26633abbc752c9cd93ace0a81f",
+                    "local_name": "button4-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 35,
+                    "rotationCenterY": 34
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -165,
+            "y": 72,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "D-Money Dance",
+            "blocks": [
+                {
+                    "opcode": "event_whenbroadcastreceived",
+                    "params": {
+                        "BROADCAST_OPTION": "\"message1\""
+                    },
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": 10,
+                            "SUBSTACK": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"Hello!\""
+                                },
+                                "next": {
+                                    "opcode": "control_create_clone_of",
+                                    "params": {
+                                        "CLONE_OPTION": {
+                                            "opcode": "control_create_clone_of_menu",
+                                            "params": {
+                                                "CLONE_OPTION": "\"_myself_\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dafbdfe454c5ec7029b5c1e07fcabc90",
+                    "local_name": "dm stance",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 106,
+                    "rotationCenterY": 238
+                },
+                {
+                    "md5": "a22da98e5e63de7b2883355afd0184f0",
+                    "local_name": "dm top stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 82,
+                    "rotationCenterY": 244
+                },
+                {
+                    "md5": "12db59633a1709a2c39534d35263791f",
+                    "local_name": "dm top R leg",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 218,
+                    "rotationCenterY": 232
+                },
+                {
+                    "md5": "344384a6a3f1bdf494cc7af31e928d36",
+                    "local_name": "dm top L leg",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 230,
+                    "rotationCenterY": 240
+                },
+                {
+                    "md5": "a4b5d644d9abdbcab236acf19b2a2e81",
+                    "local_name": "dm freeze",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 220,
+                    "rotationCenterY": 234
+                },
+                {
+                    "md5": "70da166596bb484eae1bfbaad5c03d54",
+                    "local_name": "dm pop front",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 92,
+                    "rotationCenterY": 234
+                },
+                {
+                    "md5": "729812366245c0dafd456339c9d94e08",
+                    "local_name": "dm pop down",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 64,
+                    "rotationCenterY": 74
+                },
+                {
+                    "md5": "32ec7b5332cfebd1cfed7f6b79c76e67",
+                    "local_name": "dm pop left",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 204,
+                    "rotationCenterY": 250
+                },
+                {
+                    "md5": "19bd7995d37e3baade673b2fe7cb982b",
+                    "local_name": "dm pop right",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 78,
+                    "rotationCenterY": 238
+                },
+                {
+                    "md5": "3cdebabdb41f6c3e84561cf3ea87bac3",
+                    "local_name": "dm pop L arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 90,
+                    "rotationCenterY": 238
+                },
+                {
+                    "md5": "05529eb3c09294bd15f57c6f10d5894e",
+                    "local_name": "dm pop stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 100,
+                    "rotationCenterY": 244
+                },
+                {
+                    "md5": "50faf1630ea383c0b8c77f70a9329797",
+                    "local_name": "dm pop R arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 80,
+                    "rotationCenterY": 240
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0edb8fb88af19e6e17d0f8cf64c1d136",
+                    "local_name": "dance celebrate"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 41,
+            "y": -5,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "71ced7c192168c7b221d16b4eaff440e": {
+            "global_name": "button4_a",
+            "extension": "svg"
+        },
+        "7d34ad26633abbc752c9cd93ace0a81f": {
+            "global_name": "button4_b",
+            "extension": "svg"
+        },
+        "dafbdfe454c5ec7029b5c1e07fcabc90": {
+            "global_name": "dm_stance",
+            "extension": "png"
+        },
+        "a22da98e5e63de7b2883355afd0184f0": {
+            "global_name": "dm_top_stand",
+            "extension": "png"
+        },
+        "12db59633a1709a2c39534d35263791f": {
+            "global_name": "dm_top_r_leg",
+            "extension": "png"
+        },
+        "344384a6a3f1bdf494cc7af31e928d36": {
+            "global_name": "dm_top_l_leg",
+            "extension": "png"
+        },
+        "a4b5d644d9abdbcab236acf19b2a2e81": {
+            "global_name": "dm_freeze",
+            "extension": "png"
+        },
+        "70da166596bb484eae1bfbaad5c03d54": {
+            "global_name": "dm_pop_front",
+            "extension": "png"
+        },
+        "729812366245c0dafd456339c9d94e08": {
+            "global_name": "dm_pop_down",
+            "extension": "png"
+        },
+        "32ec7b5332cfebd1cfed7f6b79c76e67": {
+            "global_name": "dm_pop_left",
+            "extension": "png"
+        },
+        "19bd7995d37e3baade673b2fe7cb982b": {
+            "global_name": "dm_pop_right",
+            "extension": "png"
+        },
+        "3cdebabdb41f6c3e84561cf3ea87bac3": {
+            "global_name": "dm_pop_l_arm",
+            "extension": "png"
+        },
+        "05529eb3c09294bd15f57c6f10d5894e": {
+            "global_name": "dm_pop_stand",
+            "extension": "png"
+        },
+        "50faf1630ea383c0b8c77f70a9329797": {
+            "global_name": "dm_pop_r_arm",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "0edb8fb88af19e6e17d0f8cf64c1d136": {
+            "global_name": "dance_celebrate",
+            "extension": "wav"
+        }
+    }
+}

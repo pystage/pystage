@@ -1,0 +1,837 @@
+{
+    "name": "testing_lists",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "5b0a970202b464915915260c03f05455",
+                "local_name": "Field At Mit",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {
+            "list_test": [
+                "boy",
+                "boy",
+                "bug",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "bug",
+                "whichacallit",
+                "thing",
+                "whichacallit",
+                "small",
+                "whichacallit",
+                "large",
+                "medium",
+                "",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing",
+                "thing"
+            ]
+        },
+        "monitors": [
+            {
+                "style": "list",
+                "x": 9,
+                "y": 153,
+                "opcode": "data_listcontents",
+                "list": "list_test"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Cassy Dance",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "data_addtolist",
+                        "params": {
+                            "LIST": "\"list_test\"",
+                            "ITEM": "\"thing\""
+                        },
+                        "next": {
+                            "opcode": "data_insertatlist",
+                            "params": {
+                                "LIST": "\"list_test\"",
+                                "ITEM": "\"boy\"",
+                                "INDEX": 1
+                            },
+                            "next": {
+                                "opcode": "data_insertatlist",
+                                "params": {
+                                    "LIST": "\"list_test\"",
+                                    "ITEM": "\"whichacallit\"",
+                                    "INDEX": 5
+                                },
+                                "next": {
+                                    "opcode": "data_replaceitemoflist",
+                                    "params": {
+                                        "LIST": "\"list_test\"",
+                                        "INDEX": 3,
+                                        "ITEM": "\"bug\""
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_create_clone_of",
+                        "params": {
+                            "CLONE_OPTION": {
+                                "opcode": "control_create_clone_of_menu",
+                                "params": {
+                                    "CLONE_OPTION": "\"_myself_\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "6cb3686db1fa658b6541cc9fa3ccfcc7",
+                    "local_name": "cassy-a",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 104,
+                    "rotationCenterY": 192
+                },
+                {
+                    "md5": "f801cec764da5ef6374e1d557296d14e",
+                    "local_name": "cassy-b",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 140,
+                    "rotationCenterY": 192
+                },
+                {
+                    "md5": "63483bbf72fc55719918a335e1a16426",
+                    "local_name": "cassy-c",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 74,
+                    "rotationCenterY": 188
+                },
+                {
+                    "md5": "aca39a47cf3affd8a83d3287d2856c29",
+                    "local_name": "cassy-d",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 94,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "8bcea76415eaf98ec1cbc3825845b934",
+                    "local_name": "dance around"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 3,
+            "visible": true,
+            "x": -123,
+            "y": 54,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Champ99",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_equals",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "data_itemoflist",
+                                        "params": {
+                                            "LIST": "\"list\"",
+                                            "INDEX": 1
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "OPERAND2": 50
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "SUBSTACK": {
+                                "opcode": "data_hidelist",
+                                "params": {
+                                    "LIST": "\"list\""
+                                },
+                                "next": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 3.0
+                                    },
+                                    "next": {
+                                        "opcode": "data_showlist",
+                                        "params": {
+                                            "LIST": "\"list\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "control_if",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "operator_equals",
+                                    "params": {
+                                        "OPERAND1": {
+                                            "opcode": "data_lengthoflist",
+                                            "params": {
+                                                "LIST": "\"list_test\""
+                                            },
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "OPERAND2": 60
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "SUBSTACK": {
+                                    "opcode": "data_replaceitemoflist",
+                                    "params": {
+                                        "LIST": "\"list\"",
+                                        "INDEX": 1,
+                                        "ITEM": "\"thing\""
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "7b073f47fbd9421e0d60daacc157f506",
+                    "local_name": "champ99-a",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 248,
+                    "rotationCenterY": 306
+                },
+                {
+                    "md5": "d6ae13605610aa008d48b0c8b25a57d3",
+                    "local_name": "champ99-b",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 164,
+                    "rotationCenterY": 290
+                },
+                {
+                    "md5": "26fdff424232926001d20041c3d5673b",
+                    "local_name": "champ99-c",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 152,
+                    "rotationCenterY": 270
+                },
+                {
+                    "md5": "a28ffc2b129fb359ff22c79c48341267",
+                    "local_name": "champ99-d",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 188,
+                    "rotationCenterY": 260
+                },
+                {
+                    "md5": "56f3220fa82d99dcfc7d27d433ed01e4",
+                    "local_name": "champ99-e",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 190,
+                    "rotationCenterY": 248
+                },
+                {
+                    "md5": "68453506ae4b6b60a3fc6817ba39d492",
+                    "local_name": "champ99-f",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 114,
+                    "rotationCenterY": 250
+                },
+                {
+                    "md5": "20318b14a332fd618ec91e7c1de8be9a",
+                    "local_name": "champ99-g",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 132,
+                    "rotationCenterY": 258
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0edb8fb88af19e6e17d0f8cf64c1d136",
+                    "local_name": "dance celebrate"
+                }
+            ],
+            "variables": {},
+            "lists": {
+                "list": [
+                    "thing"
+                ]
+            },
+            "monitors": [
+                {
+                    "style": "list",
+                    "x": 367,
+                    "y": 12,
+                    "opcode": "data_listcontents",
+                    "list": "list"
+                }
+            ],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -5,
+            "y": -12,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Elephant",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_wait_until",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "data_listcontainsitem",
+                                "params": {
+                                    "LIST": "\"elle\"",
+                                    "ITEM": "\"bob\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "data_deleteoflist",
+                            "params": {
+                                "LIST": "\"elle\"",
+                                "INDEX": 1
+                            },
+                            "next": {
+                                "opcode": "data_addtolist",
+                                "params": {
+                                    "LIST": "\"elle\"",
+                                    "ITEM": "\"thing\""
+                                },
+                                "next": {
+                                    "opcode": "data_insertatlist",
+                                    "params": {
+                                        "LIST": "\"elle\"",
+                                        "ITEM": "\"thing\"",
+                                        "INDEX": 2
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_wait",
+                        "params": {
+                            "DURATION": 3.0
+                        },
+                        "next": {
+                            "opcode": "data_addtolist",
+                            "params": {
+                                "LIST": "\"elle\"",
+                                "ITEM": "\"bob\""
+                            },
+                            "next": {
+                                "opcode": "control_if",
+                                "params": {
+                                    "CONDITION": {
+                                        "opcode": "operator_gt",
+                                        "params": {
+                                            "OPERAND1": {
+                                                "opcode": "operator_mod",
+                                                "params": {
+                                                    "NUM1": 5.0,
+                                                    "NUM2": {
+                                                        "opcode": "data_lengthoflist",
+                                                        "params": {
+                                                            "LIST": "\"elle\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false,
+                                                        "comment": null
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "OPERAND2": 4
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "SUBSTACK": {
+                                        "opcode": "data_deletealloflist",
+                                        "params": {
+                                            "LIST": "\"elle\""
+                                        },
+                                        "next": {
+                                            "opcode": "control_create_clone_of",
+                                            "params": {
+                                                "CLONE_OPTION": {
+                                                    "opcode": "control_create_clone_of_menu",
+                                                    "params": {
+                                                        "CLONE_OPTION": "\"_myself_\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false,
+                                                    "comment": null
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "control_create_clone_of",
+                                                "params": {
+                                                    "CLONE_OPTION": {
+                                                        "opcode": "control_create_clone_of_menu",
+                                                        "params": {
+                                                            "CLONE_OPTION": "\"Champ99\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false,
+                                                        "comment": null
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "b59873e9558c1c456200f50e5ab34770",
+                    "local_name": "elephant-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 107,
+                    "rotationCenterY": 33
+                },
+                {
+                    "md5": "2c9b5e0125d95b8bc511f6bb09b5ea2f",
+                    "local_name": "elephant-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 95,
+                    "rotationCenterY": 40
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {
+                "elle": []
+            },
+            "monitors": [
+                {
+                    "style": "list",
+                    "x": 159,
+                    "y": 29,
+                    "opcode": "data_listcontents",
+                    "list": "elle"
+                }
+            ],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 174,
+            "y": -151,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "5b0a970202b464915915260c03f05455": {
+            "global_name": "field_at_mit",
+            "extension": "png"
+        },
+        "6cb3686db1fa658b6541cc9fa3ccfcc7": {
+            "global_name": "cassy_a",
+            "extension": "png"
+        },
+        "f801cec764da5ef6374e1d557296d14e": {
+            "global_name": "cassy_b",
+            "extension": "png"
+        },
+        "63483bbf72fc55719918a335e1a16426": {
+            "global_name": "cassy_c",
+            "extension": "png"
+        },
+        "aca39a47cf3affd8a83d3287d2856c29": {
+            "global_name": "cassy_d",
+            "extension": "png"
+        },
+        "7b073f47fbd9421e0d60daacc157f506": {
+            "global_name": "champ99_a",
+            "extension": "png"
+        },
+        "d6ae13605610aa008d48b0c8b25a57d3": {
+            "global_name": "champ99_b",
+            "extension": "png"
+        },
+        "26fdff424232926001d20041c3d5673b": {
+            "global_name": "champ99_c",
+            "extension": "png"
+        },
+        "a28ffc2b129fb359ff22c79c48341267": {
+            "global_name": "champ99_d",
+            "extension": "png"
+        },
+        "56f3220fa82d99dcfc7d27d433ed01e4": {
+            "global_name": "champ99_e",
+            "extension": "png"
+        },
+        "68453506ae4b6b60a3fc6817ba39d492": {
+            "global_name": "champ99_f",
+            "extension": "png"
+        },
+        "20318b14a332fd618ec91e7c1de8be9a": {
+            "global_name": "champ99_g",
+            "extension": "png"
+        },
+        "b59873e9558c1c456200f50e5ab34770": {
+            "global_name": "elephant_a",
+            "extension": "svg"
+        },
+        "2c9b5e0125d95b8bc511f6bb09b5ea2f": {
+            "global_name": "elephant_b",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "8bcea76415eaf98ec1cbc3825845b934": {
+            "global_name": "dance_around",
+            "extension": "wav"
+        },
+        "0edb8fb88af19e6e17d0f8cf64c1d136": {
+            "global_name": "dance_celebrate",
+            "extension": "wav"
+        }
+    }
+}

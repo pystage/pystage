@@ -1,0 +1,549 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "#4W{1+0LWeQk0N}iBF71": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "l)auUTq0yuh]t-^!P(ht",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 237,
+                    "y": 312
+                },
+                "l)auUTq0yuh]t-^!P(ht": {
+                    "opcode": "control_wait",
+                    "next": "e%iK^NLbN-,0|L,ou#{W",
+                    "parent": "#4W{1+0LWeQk0N}iBF71",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "e%iK^NLbN-,0|L,ou#{W": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": null,
+                    "parent": "l)auUTq0yuh]t-^!P(ht",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "fUgaIucV#;n!UDs[S_/J"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "fUgaIucV#;n!UDs[S_/J": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "e%iK^NLbN-,0|L,ou#{W",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Colorful City",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "uF~-F:,FBR/dh~We?[5o": {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "next": "#yrTtp@+_r6xE,R@yiT4",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Colorful City",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 576,
+                    "y": 145
+                },
+                "Y;Z_CBJ_IedJ:EanC09;": {
+                    "opcode": "looks_changeeffectby",
+                    "next": null,
+                    "parent": "#yrTtp@+_r6xE,R@yiT4",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "25"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "COLOR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "#yrTtp@+_r6xE,R@yiT4": {
+                    "opcode": "control_wait",
+                    "next": "Y;Z_CBJ_IedJ:EanC09;",
+                    "parent": "uF~-F:,FBR/dh~We?[5o",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 3,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "Blue Sky",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "e7c147730f19d284bcd7b3f00af19bb6",
+                    "md5ext": "e7c147730f19d284bcd7b3f00af19bb6.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "Chalkboard",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "a8a24b5aa717bbef09dbe31368914427",
+                    "md5ext": "a8a24b5aa717bbef09dbe31368914427.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                },
+                {
+                    "name": "Colorful City",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "04d18ddd1b85f0ea30beb14b8da49f60",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                ";[UPO#vabh,mcl!2Y!LM": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "Zpaj}rw`y#@~D*^1QEtH",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 570,
+                    "y": 278
+                },
+                "Zpaj}rw`y#@~D*^1QEtH": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "y`@^k{i(C)}sSIn!:+Z,",
+                    "parent": ";[UPO#vabh,mcl!2Y!LM",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "J{?epu6fg?I@e]/K!KqV"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "J{?epu6fg?I@e]/K!KqV": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "Zpaj}rw`y#@~D*^1QEtH",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Chalkboard",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "LsR.L$3-VO!/7tv=pE)p": {
+                    "opcode": "control_wait",
+                    "next": null,
+                    "parent": null,
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 300,
+                    "y": 586
+                },
+                "#vbo2Sc|blAV.Du+JPd+": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": null,
+                    "parent": "y`@^k{i(C)}sSIn!:+Z,",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "CYb+=m=ceNq*M|1-rw)I"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "CYb+=m=ceNq*M|1-rw)I": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "#vbo2Sc|blAV.Du+JPd+",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "y`@^k{i(C)}sSIn!:+Z,": {
+                    "opcode": "control_wait",
+                    "next": "#vbo2Sc|blAV.Du+JPd+",
+                    "parent": "Zpaj}rw`y#@~D*^1QEtH",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "W1`L)gHg$uRcoeP^En}^": {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "next": "PS)e3iBwAfG}Hr(_6*B9",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Chalkboard",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 720,
+                    "y": 137
+                },
+                "PS)e3iBwAfG}Hr(_6*B9": {
+                    "opcode": "looks_sayforsecs",
+                    "next": null,
+                    "parent": "W1`L)gHg$uRcoeP^En}^",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Backdrop changed to Chalkboard"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                ".5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Sprite2",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "Y=,M;*#G!bQ(2T!@K`!D": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "?Vown}cLS/]aV+5{a6`^",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 400,
+                    "y": 297
+                },
+                "=DmKxg~hGI^#Htc!=n-u": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "cXq~rhcjR5$WOhKmu5/R",
+                    "parent": "?Vown}cLS/]aV+5{a6`^",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "bRKCdny+=U6{7*$wt8wg"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "bRKCdny+=U6{7*$wt8wg": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "=DmKxg~hGI^#Htc!=n-u",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "cXq~rhcjR5$WOhKmu5/R": {
+                    "opcode": "control_wait",
+                    "next": null,
+                    "parent": "=DmKxg~hGI^#Htc!=n-u",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "XC0!er|xU1.]Ttr#NFSl": {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "next": "(~#|(K~CZ;aAaq!!=j:0",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Blue Sky",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 651,
+                    "y": 202
+                },
+                "(~#|(K~CZ;aAaq!!=j:0": {
+                    "opcode": "looks_sayforsecs",
+                    "next": null,
+                    "parent": "XC0!er|xU1.]Ttr#NFSl",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Sprite2 backdrop changed to Blue Sky"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                4,
+                                "0.5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "?Vown}cLS/]aV+5{a6`^": {
+                    "opcode": "control_wait",
+                    "next": "=DmKxg~hGI^#Htc!=n-u",
+                    "parent": "Y=,M;*#G!bQ(2T!@K`!D",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "636c3e4028e46a9cbc64ec4b64163261",
+                    "md5ext": "636c3e4028e46a9cbc64ec4b64163261.svg",
+                    "rotationCenterX": 47.67898252524472,
+                    "rotationCenterY": 49.49923017660271
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -130.95103779895632,
+            "y": 8.150999853107244,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
+}

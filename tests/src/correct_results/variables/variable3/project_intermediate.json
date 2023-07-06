@@ -1,0 +1,381 @@
+{
+    "name": "variable3",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "Num2": "3",
+            "Num1": "3",
+            "Sum": 6,
+            "Year": 8556.637145104167
+        },
+        "lists": {},
+        "monitors": [
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 5,
+                "opcode": "data_variable",
+                "variable": "Num1"
+            },
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 32,
+                "opcode": "data_variable",
+                "variable": "Sum"
+            },
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 59,
+                "opcode": "data_variable",
+                "variable": "Num2"
+            },
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 86,
+                "opcode": "data_variable",
+                "variable": "Year"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Jouvi Dance",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sensing_askandwait",
+                        "params": {
+                            "QUESTION": "\"enter your number\""
+                        },
+                        "next": {
+                            "opcode": "data_setvariableto",
+                            "params": {
+                                "VARIABLE": "\"Num1\"",
+                                "VALUE": {
+                                    "opcode": "sensing_answer",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "sensing_askandwait",
+                                "params": {
+                                    "QUESTION": "\"enter your number\""
+                                },
+                                "next": {
+                                    "opcode": "data_setvariableto",
+                                    "params": {
+                                        "VARIABLE": "\"Num2\"",
+                                        "VALUE": {
+                                            "opcode": "sensing_answer",
+                                            "params": {},
+                                            "next": false,
+                                            "stage": false,
+                                            "comment": null
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "data_setvariableto",
+                                        "params": {
+                                            "VARIABLE": "\"Sum\"",
+                                            "VALUE": {
+                                                "opcode": "operator_add",
+                                                "params": {
+                                                    "NUM1": {
+                                                        "opcode": "data_variable",
+                                                        "params": {
+                                                            "VARIABLE": "\"Num1\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    },
+                                                    "NUM2": {
+                                                        "opcode": "data_variable",
+                                                        "params": {
+                                                            "VARIABLE": "\"Num2\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "data_setvariableto",
+                                            "params": {
+                                                "VARIABLE": "\"Year\"",
+                                                "VALUE": {
+                                                    "opcode": "sensing_dayssince2000",
+                                                    "params": {},
+                                                    "next": false,
+                                                    "stage": false,
+                                                    "comment": null
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "looks_sayforsecs",
+                                                "params": {
+                                                    "MESSAGE": {
+                                                        "opcode": "operator_join",
+                                                        "params": {
+                                                            "STRING1": "\"the answer is \"",
+                                                            "STRING2": {
+                                                                "opcode": "data_variable",
+                                                                "params": {
+                                                                    "VARIABLE": "\"Sum\""
+                                                                },
+                                                                "next": false,
+                                                                "stage": false
+                                                            }
+                                                        },
+                                                        "next": false,
+                                                        "stage": false,
+                                                        "comment": null
+                                                    },
+                                                    "SECS": 2.0
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "6f68790ee3eb9bdccf8749305186b0dd",
+                    "local_name": "jo stance",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 94,
+                    "rotationCenterY": 240
+                },
+                {
+                    "md5": "0ed4a09c41871d150c51119c1bceded2",
+                    "local_name": "jo top stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 68,
+                    "rotationCenterY": 260
+                },
+                {
+                    "md5": "efaa8eb6c8cf7dc35d4d37d546ebd333",
+                    "local_name": "jo top R leg",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 218,
+                    "rotationCenterY": 262
+                },
+                {
+                    "md5": "a12f40b18067bb31746f9cf461de88aa",
+                    "local_name": "jo top L leg",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 208,
+                    "rotationCenterY": 268
+                },
+                {
+                    "md5": "c2d5519e8a0f2214ff757117038c28dc",
+                    "local_name": "jo top R cross",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 144,
+                    "rotationCenterY": 270
+                },
+                {
+                    "md5": "2e2a6534d33883fdd2f8471a1adbebb7",
+                    "local_name": "jo top L cross",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 84,
+                    "rotationCenterY": 268
+                },
+                {
+                    "md5": "3d3ea804243800981acabc7caba10939",
+                    "local_name": "jo pop front",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 70,
+                    "rotationCenterY": 228
+                },
+                {
+                    "md5": "a55fbb529c10f70bcb374aef8a63571b",
+                    "local_name": "jo pop down",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 68,
+                    "rotationCenterY": 74
+                },
+                {
+                    "md5": "ea812b4c2b2405aa2b73158023298f71",
+                    "local_name": "jo pop left",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 196,
+                    "rotationCenterY": 226
+                },
+                {
+                    "md5": "01dd2f553c7262329ebaba2516e3a2b1",
+                    "local_name": "jo pop right",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 66,
+                    "rotationCenterY": 242
+                },
+                {
+                    "md5": "a9fbc01a4124d555da12630312e46197",
+                    "local_name": "jo pop L arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 108,
+                    "rotationCenterY": 258
+                },
+                {
+                    "md5": "75ee2383fd83992b401c8a0730521d94",
+                    "local_name": "jo pop stand",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 78,
+                    "rotationCenterY": 262
+                },
+                {
+                    "md5": "aabfedff0d11243386b6b0941e0f72e9",
+                    "local_name": "jo pop R arm",
+                    "bitmapResolution": 2,
+                    "rotationCenterX": 108,
+                    "rotationCenterY": 260
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0edb8fb88af19e6e17d0f8cf64c1d136",
+                    "local_name": "dance celebrate"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": -47,
+            "y": 38,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "6f68790ee3eb9bdccf8749305186b0dd": {
+            "global_name": "jo_stance",
+            "extension": "png"
+        },
+        "0ed4a09c41871d150c51119c1bceded2": {
+            "global_name": "jo_top_stand",
+            "extension": "png"
+        },
+        "efaa8eb6c8cf7dc35d4d37d546ebd333": {
+            "global_name": "jo_top_r_leg",
+            "extension": "png"
+        },
+        "a12f40b18067bb31746f9cf461de88aa": {
+            "global_name": "jo_top_l_leg",
+            "extension": "png"
+        },
+        "c2d5519e8a0f2214ff757117038c28dc": {
+            "global_name": "jo_top_r_cross",
+            "extension": "png"
+        },
+        "2e2a6534d33883fdd2f8471a1adbebb7": {
+            "global_name": "jo_top_l_cross",
+            "extension": "png"
+        },
+        "3d3ea804243800981acabc7caba10939": {
+            "global_name": "jo_pop_front",
+            "extension": "png"
+        },
+        "a55fbb529c10f70bcb374aef8a63571b": {
+            "global_name": "jo_pop_down",
+            "extension": "png"
+        },
+        "ea812b4c2b2405aa2b73158023298f71": {
+            "global_name": "jo_pop_left",
+            "extension": "png"
+        },
+        "01dd2f553c7262329ebaba2516e3a2b1": {
+            "global_name": "jo_pop_right",
+            "extension": "png"
+        },
+        "a9fbc01a4124d555da12630312e46197": {
+            "global_name": "jo_pop_l_arm",
+            "extension": "png"
+        },
+        "75ee2383fd83992b401c8a0730521d94": {
+            "global_name": "jo_pop_stand",
+            "extension": "png"
+        },
+        "aabfedff0d11243386b6b0941e0f72e9": {
+            "global_name": "jo_pop_r_arm",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "0edb8fb88af19e6e17d0f8cf64c1d136": {
+            "global_name": "dance_celebrate",
+            "extension": "wav"
+        }
+    }
+}

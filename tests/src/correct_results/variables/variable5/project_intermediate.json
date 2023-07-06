@@ -1,0 +1,504 @@
+{
+    "name": "variable5",
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "f4f908da19e2753f3ed679d7b37650ca",
+                "local_name": "Jungle",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 44,
+            "points": 0
+        },
+        "lists": {},
+        "monitors": [
+            {
+                "style": "normal",
+                "x": 5,
+                "y": 5,
+                "opcode": "data_variable",
+                "variable": "points"
+            }
+        ],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Donut",
+            "blocks": [],
+            "costumes": [
+                {
+                    "md5": "316a67c9e966fd015b4538f54be456db",
+                    "local_name": "donut",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 72.11747235252724,
+                    "rotationCenterY": 14.658782444689848
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0039635b1d6853face36581784558454",
+                    "local_name": "Bite"
+                },
+                {
+                    "md5": "0b1e3033140d094563248e61de4039e5",
+                    "local_name": "Chomp"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 146,
+            "y": -54,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Dragon",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "looks_switchbackdropto",
+                                "params": {
+                                    "BACKDROP": {
+                                        "opcode": "looks_backdrops",
+                                        "params": {
+                                            "BACKDROP": "\"Jungle\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "looks_show",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            },
+                            "CONDITION": {
+                                "opcode": "operator_lt",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "data_variable",
+                                        "params": {
+                                            "VARIABLE": "\"points\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    },
+                                    "OPERAND2": 10
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "control_if",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "operator_gt",
+                                    "params": {
+                                        "OPERAND1": {
+                                            "opcode": "data_variable",
+                                            "params": {
+                                                "VARIABLE": "\"points\""
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        },
+                                        "OPERAND2": 10
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "SUBSTACK": {
+                                    "opcode": "looks_hide",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "looks_switchbackdropto",
+                                        "params": {
+                                            "BACKDROP": {
+                                                "opcode": "looks_backdrops",
+                                                "params": {
+                                                    "BACKDROP": "\"backdrop1\""
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": false,
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "motion_changexby",
+                                "params": {
+                                    "DX": 10.0
+                                },
+                                "next": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 1.0
+                                    },
+                                    "next": {
+                                        "opcode": "motion_changexby",
+                                        "params": {
+                                            "DX": -10.0
+                                        },
+                                        "next": {
+                                            "opcode": "control_wait",
+                                            "params": {
+                                                "DURATION": 1.0
+                                            },
+                                            "next": {
+                                                "opcode": "motion_changeyby",
+                                                "params": {
+                                                    "DY": 30.0
+                                                },
+                                                "next": {
+                                                    "opcode": "control_wait",
+                                                    "params": {
+                                                        "DURATION": 1.0
+                                                    },
+                                                    "next": {
+                                                        "opcode": "motion_changeyby",
+                                                        "params": {
+                                                            "DY": -30.0
+                                                        },
+                                                        "next": false,
+                                                        "stage": false,
+                                                        "comment": null
+                                                    },
+                                                    "stage": false,
+                                                    "comment": null
+                                                },
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "stage": false,
+                                    "comment": null
+                                },
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "12ead885460d96a19132e5970839d36d",
+                    "local_name": "dragon-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 124.12215277545062,
+                    "rotationCenterY": 106.25815347723332
+                },
+                {
+                    "md5": "3f672475ad4ca5d1f9331cffd4223140",
+                    "local_name": "dragon-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 152.5,
+                    "rotationCenterY": 99
+                },
+                {
+                    "md5": "e0aa0083fa0b97da97600d4dbb2055e5",
+                    "local_name": "dragon-c",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 124.4550776985194,
+                    "rotationCenterY": 105.92484014389998
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "1cb60ecdb1075c8769cb346d5c2a22c7",
+                    "local_name": "Magic Spell"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -82,
+            "y": -1,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Basketball",
+            "blocks": [
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "looks_show",
+                        "params": {},
+                        "next": {
+                            "opcode": "motion_movesteps",
+                            "params": {
+                                "STEPS": 20.0
+                            },
+                            "next": {
+                                "opcode": "motion_turnright",
+                                "params": {
+                                    "DEGREES": 15.0
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "control_if",
+                                "params": {
+                                    "CONDITION": {
+                                        "opcode": "sensing_coloristouchingcolor",
+                                        "params": {
+                                            "COLOR": [
+                                                227,
+                                                118,
+                                                29
+                                            ],
+                                            "COLOR2": [
+                                                124,
+                                                191,
+                                                46
+                                            ]
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    },
+                                    "SUBSTACK": {
+                                        "opcode": "control_wait",
+                                        "params": {
+                                            "DURATION": 1.0
+                                        },
+                                        "next": {
+                                            "opcode": "sound_play",
+                                            "params": {
+                                                "SOUND_MENU": {
+                                                    "opcode": "sound_sounds_menu",
+                                                    "params": {
+                                                        "SOUND_MENU": "\"basketball bounce\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false,
+                                                    "comment": null
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "data_changevariableby",
+                                                "params": {
+                                                    "VARIABLE": "\"points\"",
+                                                    "VALUE": 1.0
+                                                },
+                                                "next": false,
+                                                "stage": false,
+                                                "comment": null
+                                            },
+                                            "stage": false,
+                                            "comment": null
+                                        },
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "6b0b2aaa12d655e96b5b34e92d9fbd4f",
+                    "local_name": "basketball",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 23,
+                    "rotationCenterY": 23
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                },
+                {
+                    "md5": "1727f65b5f22d151685b8e5917456a60",
+                    "local_name": "basketball bounce"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 3,
+            "visible": true,
+            "x": 142.84310537078323,
+            "y": -82.72394234696634,
+            "size": 100,
+            "volume": 100,
+            "direction": 165,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "f4f908da19e2753f3ed679d7b37650ca": {
+            "global_name": "jungle",
+            "extension": "png"
+        },
+        "316a67c9e966fd015b4538f54be456db": {
+            "global_name": "donut",
+            "extension": "svg"
+        },
+        "12ead885460d96a19132e5970839d36d": {
+            "global_name": "dragon_a",
+            "extension": "svg"
+        },
+        "3f672475ad4ca5d1f9331cffd4223140": {
+            "global_name": "dragon_b",
+            "extension": "svg"
+        },
+        "e0aa0083fa0b97da97600d4dbb2055e5": {
+            "global_name": "dragon_c",
+            "extension": "svg"
+        },
+        "6b0b2aaa12d655e96b5b34e92d9fbd4f": {
+            "global_name": "basketball",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "0039635b1d6853face36581784558454": {
+            "global_name": "bite",
+            "extension": "wav"
+        },
+        "0b1e3033140d094563248e61de4039e5": {
+            "global_name": "chomp",
+            "extension": "wav"
+        },
+        "1cb60ecdb1075c8769cb346d5c2a22c7": {
+            "global_name": "magic_spell",
+            "extension": "wav"
+        },
+        "1727f65b5f22d151685b8e5917456a60": {
+            "global_name": "basketball_bounce",
+            "extension": "wav"
+        }
+    }
+}

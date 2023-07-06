@@ -1,0 +1,360 @@
+{
+    "name": "backdrop_switches",
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "control_wait",
+                    "params": {
+                        "DURATION": 2.0
+                    },
+                    "next": {
+                        "opcode": "looks_switchbackdropto",
+                        "params": {
+                            "BACKDROP": {
+                                "opcode": "looks_backdrops",
+                                "params": {
+                                    "BACKDROP": "\"Colorful City\""
+                                },
+                                "next": false,
+                                "stage": true,
+                                "comment": null
+                            }
+                        },
+                        "next": false,
+                        "stage": true,
+                        "comment": null
+                    },
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            },
+            {
+                "opcode": "event_whenbackdropswitchesto",
+                "params": {
+                    "BACKDROP": "\"Colorful City\""
+                },
+                "next": {
+                    "opcode": "control_wait",
+                    "params": {
+                        "DURATION": 1.0
+                    },
+                    "next": {
+                        "opcode": "looks_changeeffectby",
+                        "params": {
+                            "EFFECT": "\"COLOR\"",
+                            "CHANGE": 25.0
+                        },
+                        "next": false,
+                        "stage": true,
+                        "comment": null
+                    },
+                    "stage": true,
+                    "comment": null
+                },
+                "stage": true,
+                "comment": null
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "e7c147730f19d284bcd7b3f00af19bb6",
+                "local_name": "Blue Sky",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "a8a24b5aa717bbef09dbe31368914427",
+                "local_name": "Chalkboard",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "04d18ddd1b85f0ea30beb14b8da49f60",
+                "local_name": "Colorful City",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 3,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around",
+        "comments": []
+    },
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_switchbackdropto",
+                        "params": {
+                            "BACKDROP": {
+                                "opcode": "looks_backdrops",
+                                "params": {
+                                    "BACKDROP": "\"Chalkboard\""
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            }
+                        },
+                        "next": {
+                            "opcode": "control_wait",
+                            "params": {
+                                "DURATION": 1.0
+                            },
+                            "next": {
+                                "opcode": "looks_switchbackdropto",
+                                "params": {
+                                    "BACKDROP": {
+                                        "opcode": "looks_backdrops",
+                                        "params": {
+                                            "BACKDROP": "\"Blue Sky\""
+                                        },
+                                        "next": false,
+                                        "stage": false,
+                                        "comment": null
+                                    }
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "params": {
+                        "BACKDROP": "\"Chalkboard\""
+                    },
+                    "next": {
+                        "opcode": "looks_sayforsecs",
+                        "params": {
+                            "MESSAGE": "\"Backdrop changed to Chalkboard\"",
+                            "SECS": 0.5
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        },
+        {
+            "name": "Sprite2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_wait",
+                        "params": {
+                            "DURATION": 1.0
+                        },
+                        "next": {
+                            "opcode": "looks_switchbackdropto",
+                            "params": {
+                                "BACKDROP": {
+                                    "opcode": "looks_backdrops",
+                                    "params": {
+                                        "BACKDROP": "\"Blue Sky\""
+                                    },
+                                    "next": false,
+                                    "stage": false,
+                                    "comment": null
+                                }
+                            },
+                            "next": {
+                                "opcode": "control_wait",
+                                "params": {
+                                    "DURATION": 1.0
+                                },
+                                "next": false,
+                                "stage": false,
+                                "comment": null
+                            },
+                            "stage": false,
+                            "comment": null
+                        },
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                },
+                {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "params": {
+                        "BACKDROP": "\"Blue Sky\""
+                    },
+                    "next": {
+                        "opcode": "looks_sayforsecs",
+                        "params": {
+                            "MESSAGE": "\"Sprite2 backdrop changed to Blue Sky\"",
+                            "SECS": 0.5
+                        },
+                        "next": false,
+                        "stage": false,
+                        "comment": null
+                    },
+                    "stage": false,
+                    "comment": null
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "636c3e4028e46a9cbc64ec4b64163261",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 47.67898252524472,
+                    "rotationCenterY": 49.49923017660271
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -130.95103779895632,
+            "y": 8.150999853107244,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around",
+            "comments": []
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "e7c147730f19d284bcd7b3f00af19bb6": {
+            "global_name": "blue_sky",
+            "extension": "svg"
+        },
+        "a8a24b5aa717bbef09dbe31368914427": {
+            "global_name": "chalkboard",
+            "extension": "png"
+        },
+        "04d18ddd1b85f0ea30beb14b8da49f60": {
+            "global_name": "colorful_city",
+            "extension": "png"
+        },
+        "bcf454acf82e4504149f7ffe07081dbc": {
+            "global_name": "costume1",
+            "extension": "svg"
+        },
+        "0fb9be3e8397c983338cb71dc84d0b25": {
+            "global_name": "costume2",
+            "extension": "svg"
+        },
+        "636c3e4028e46a9cbc64ec4b64163261": {
+            "global_name": "costume1_2",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "83c36d806dc92327b9e7049a565c6bff": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    }
+}

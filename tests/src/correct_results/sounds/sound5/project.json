@@ -1,0 +1,778 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 1,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "Witch House",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "30085b2d27beb5acdbe895d8b3e64b04",
+                    "md5ext": "30085b2d27beb5acdbe895d8b3e64b04.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Saxophone",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "]Rv67%,DzT=1?oGGazN:": {
+                    "opcode": "sound_playuntildone",
+                    "next": "ddn|_Gya]LaI`cQS{`q[",
+                    "parent": "eK)geo|5|)M*qRXMT3;T",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "mo7t(IIbbFtY,x$wD^[P"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "mo7t(IIbbFtY,x$wD^[P": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "]Rv67%,DzT=1?oGGazN:",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "C2 Sax",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "R_1y:X$qZ:kS+6D!r~3^": {
+                    "opcode": "control_repeat",
+                    "next": "Tt?JNF]GY;Z5+r`XMV}u",
+                    "parent": "g-hh$NBVX-4)!%gCq??T",
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "10"
+                            ]
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "eK)geo|5|)M*qRXMT3;T"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "eK)geo|5|)M*qRXMT3;T": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "]Rv67%,DzT=1?oGGazN:",
+                    "parent": "R_1y:X$qZ:kS+6D!r~3^",
+                    "inputs": {
+                        "VOLUME": [
+                            3,
+                            "B2peoO94JofP3H}gkW+j",
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "B2peoO94JofP3H}gkW+j": {
+                    "opcode": "sound_volume",
+                    "next": null,
+                    "parent": "eK)geo|5|)M*qRXMT3;T",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "g-hh$NBVX-4)!%gCq??T": {
+                    "opcode": "sound_seteffectto",
+                    "next": "R_1y:X$qZ:kS+6D!r~3^",
+                    "parent": "V02+KD/:OdrNY_`Y](+#",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "100"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PITCH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Tt?JNF]GY;Z5+r`XMV}u": {
+                    "opcode": "motion_pointindirection",
+                    "next": null,
+                    "parent": "R_1y:X$qZ:kS+6D!r~3^",
+                    "inputs": {
+                        "DIRECTION": [
+                            1,
+                            [
+                                8,
+                                "180"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "V02+KD/:OdrNY_`Y](+#": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "g-hh$NBVX-4)!%gCq??T",
+                    "parent": "Nsth}yhJv|_gAk))U#$C",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "bA^?b[(K^sw2t)cO?zM~"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "bA^?b[(K^sw2t)cO?zM~": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "V02+KD/:OdrNY_`Y](+#",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "Witch House",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "Nsth}yhJv|_gAk))U#$C": {
+                    "opcode": "event_whenthisspriteclicked",
+                    "next": "V02+KD/:OdrNY_`Y](+#",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 531,
+                    "y": 294
+                },
+                "ddn|_Gya]LaI`cQS{`q[": {
+                    "opcode": "sound_changevolumeby",
+                    "next": null,
+                    "parent": "]Rv67%,DzT=1?oGGazN:",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "saxophone-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "4414c51bdd03f60f40a1210e1d55cf57",
+                    "md5ext": "4414c51bdd03f60f40a1210e1d55cf57.svg",
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 80
+                },
+                {
+                    "name": "saxophone-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "459a64bebb7a788395c70e5369ab4746",
+                    "md5ext": "459a64bebb7a788395c70e5369ab4746.svg",
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 80
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "C Sax",
+                    "assetId": "4d2c939d6953b5f241a27a62cf72de64",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 18982,
+                    "md5ext": "4d2c939d6953b5f241a27a62cf72de64.wav"
+                },
+                {
+                    "name": "D Sax",
+                    "assetId": "39f41954a73c0e15d842061e1a4c5e1d",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 19110,
+                    "md5ext": "39f41954a73c0e15d842061e1a4c5e1d.wav"
+                },
+                {
+                    "name": "E Sax",
+                    "assetId": "3568b7dfe173fab6877a9ff1dcbcf1aa",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 14978,
+                    "md5ext": "3568b7dfe173fab6877a9ff1dcbcf1aa.wav"
+                },
+                {
+                    "name": "F Sax",
+                    "assetId": "2ae3083817bcd595e26ea2884b6684d5",
+                    "dataFormat": "wav",
+                    "format": "adpcm",
+                    "rate": 22050,
+                    "sampleCount": 8129,
+                    "md5ext": "2ae3083817bcd595e26ea2884b6684d5.wav"
+                },
+                {
+                    "name": "G Sax",
+                    "assetId": "cefba5de46adfe5702485e0934bb1e13",
+                    "dataFormat": "wav",
+                    "format": "adpcm",
+                    "rate": 22050,
+                    "sampleCount": 8129,
+                    "md5ext": "cefba5de46adfe5702485e0934bb1e13.wav"
+                },
+                {
+                    "name": "A Sax",
+                    "assetId": "420991e0d6d99292c6d736963842536a",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 12944,
+                    "md5ext": "420991e0d6d99292c6d736963842536a.wav"
+                },
+                {
+                    "name": "B Sax",
+                    "assetId": "653ebe92d491b49ad5d8101d629f567b",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 19110,
+                    "md5ext": "653ebe92d491b49ad5d8101d629f567b.wav"
+                },
+                {
+                    "name": "C2 Sax",
+                    "assetId": "ea8d34b18c3d8fe328cea201666458bf",
+                    "dataFormat": "wav",
+                    "format": "adpcm",
+                    "rate": 22050,
+                    "sampleCount": 8129,
+                    "md5ext": "ea8d34b18c3d8fe328cea201666458bf.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -2,
+            "y": -28,
+            "size": 100,
+            "direction": 180,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Guitar-electric1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "dS8harIZ2NF[t^[:@_Ae": {
+                    "opcode": "sound_changeeffectby",
+                    "next": "d$=LZ}lwgjCTMDr^hQ9q",
+                    "parent": "ELYk@91YbEkAX5HgvpzH",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "1000000"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PITCH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "d$=LZ}lwgjCTMDr^hQ9q": {
+                    "opcode": "control_repeat",
+                    "next": null,
+                    "parent": "dS8harIZ2NF[t^[:@_Ae",
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "10"
+                            ]
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "hsj`R.`}BGHBDt0{3C8}"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "hsj`R.`}BGHBDt0{3C8}": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "siwC4)gsq!pC*B(cMOVl",
+                    "parent": "d$=LZ}lwgjCTMDr^hQ9q",
+                    "inputs": {
+                        "VOLUME": [
+                            3,
+                            "~b1gh5DXKlGk|s9hzfFt",
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "~b1gh5DXKlGk|s9hzfFt": {
+                    "opcode": "sound_volume",
+                    "next": null,
+                    "parent": "hsj`R.`}BGHBDt0{3C8}",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "siwC4)gsq!pC*B(cMOVl": {
+                    "opcode": "sound_playuntildone",
+                    "next": "_FRRJB%geFz{[9{xe4mq",
+                    "parent": "hsj`R.`}BGHBDt0{3C8}",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "XKTnkKaMEl~G=Ox4LkUF"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "XKTnkKaMEl~G=Ox4LkUF": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "siwC4)gsq!pC*B(cMOVl",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "C2 Elec Guitar",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "ELYk@91YbEkAX5HgvpzH": {
+                    "opcode": "event_whenthisspriteclicked",
+                    "next": "dS8harIZ2NF[t^[:@_Ae",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 384,
+                    "y": 246
+                },
+                "_FRRJB%geFz{[9{xe4mq": {
+                    "opcode": "sound_setvolumeto",
+                    "next": null,
+                    "parent": "siwC4)gsq!pC*B(cMOVl",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "200"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "guitar-electric1-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "57c6d7dc148576cb2f36e53dea49260a",
+                    "md5ext": "57c6d7dc148576cb2f36e53dea49260a.svg",
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                },
+                {
+                    "name": "guitar-electric1-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "677aed0b1168caf4b3ec565b9104dbe0",
+                    "md5ext": "677aed0b1168caf4b3ec565b9104dbe0.svg",
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "C Elec Guitar",
+                    "assetId": "0d340de02e14bebaf8dfa0e43eb3f1f9",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "0d340de02e14bebaf8dfa0e43eb3f1f9.wav"
+                },
+                {
+                    "name": "D Elec Guitar",
+                    "assetId": "1b5de9866801eb2f9d4f57c7c3b473f5",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "1b5de9866801eb2f9d4f57c7c3b473f5.wav"
+                },
+                {
+                    "name": "E Elec Guitar",
+                    "assetId": "2e6a6ae3e0f72bf78c74def8130f459a",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "2e6a6ae3e0f72bf78c74def8130f459a.wav"
+                },
+                {
+                    "name": "F Elec Guitar",
+                    "assetId": "5eb00f15f21f734986aa45156d44478d",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "5eb00f15f21f734986aa45156d44478d.wav"
+                },
+                {
+                    "name": "G Elec Guitar",
+                    "assetId": "cd0d0e7dad415b2ffa2ba7a61860eaf8",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "cd0d0e7dad415b2ffa2ba7a61860eaf8.wav"
+                },
+                {
+                    "name": "A Elec Guitar",
+                    "assetId": "fa5f7fea601e9368dd68449d9a54c995",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "fa5f7fea601e9368dd68449d9a54c995.wav"
+                },
+                {
+                    "name": "B Elec Guitar",
+                    "assetId": "81f142d0b00189703d7fe9b1f13f6f87",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "81f142d0b00189703d7fe9b1f13f6f87.wav"
+                },
+                {
+                    "name": "C2 Elec Guitar",
+                    "assetId": "3a8ed3129f22cba5b0810bc030d16b5f",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 88200,
+                    "md5ext": "3a8ed3129f22cba5b0810bc030d16b5f.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 187,
+            "y": -31,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Drum Kit",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "XUVt-OHR4``Fs,?|ifkl": {
+                    "opcode": "control_repeat",
+                    "next": null,
+                    "parent": "hh17GLj]A2z5VJ-aU!7P",
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "10"
+                            ]
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "Ikd0sy[WV(~Vwwtnyp85"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "Ikd0sy[WV(~Vwwtnyp85": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "sI^-ClfDpw`KB4?)aX3J",
+                    "parent": "XUVt-OHR4``Fs,?|ifkl",
+                    "inputs": {
+                        "VOLUME": [
+                            3,
+                            "12z6?_-Bs9IUeS-$qtd|",
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "12z6?_-Bs9IUeS-$qtd|": {
+                    "opcode": "sound_volume",
+                    "next": null,
+                    "parent": "Ikd0sy[WV(~Vwwtnyp85",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sI^-ClfDpw`KB4?)aX3J": {
+                    "opcode": "sound_playuntildone",
+                    "next": null,
+                    "parent": "Ikd0sy[WV(~Vwwtnyp85",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "TzNZH=oTolXj0mFp|Z.n"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "TzNZH=oTolXj0mFp|Z.n": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "sI^-ClfDpw`KB4?)aX3J",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "Low Tom",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "hh17GLj]A2z5VJ-aU!7P": {
+                    "opcode": "event_whenthisspriteclicked",
+                    "next": "XUVt-OHR4``Fs,?|ifkl",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 713,
+                    "y": 315
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "drum-kit",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "baf6344b6f55b074786a383c1097697d",
+                    "md5ext": "baf6344b6f55b074786a383c1097697d.svg",
+                    "rotationCenterX": 58,
+                    "rotationCenterY": 78
+                },
+                {
+                    "name": "drum-kit-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "3f4fb4836338c55f883607c403b2b25e",
+                    "md5ext": "3f4fb4836338c55f883607c403b2b25e.svg",
+                    "rotationCenterX": 58,
+                    "rotationCenterY": 78
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Drum Bass1",
+                    "assetId": "48328c874353617451e4c7902cc82817",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 13056,
+                    "md5ext": "48328c874353617451e4c7902cc82817.wav"
+                },
+                {
+                    "name": "Drum Bass2",
+                    "assetId": "711a1270d1cf2e5de9b145ee539213e4",
+                    "dataFormat": "wav",
+                    "format": "adpcm",
+                    "rate": 22050,
+                    "sampleCount": 4065,
+                    "md5ext": "711a1270d1cf2e5de9b145ee539213e4.wav"
+                },
+                {
+                    "name": "Drum Bass3",
+                    "assetId": "c21704337b16359ea631b5f8eb48f765",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 17152,
+                    "md5ext": "c21704337b16359ea631b5f8eb48f765.wav"
+                },
+                {
+                    "name": "High Tom",
+                    "assetId": "d623f99b3c8d33932eb2c6c9cfd817c5",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 24640,
+                    "md5ext": "d623f99b3c8d33932eb2c6c9cfd817c5.wav"
+                },
+                {
+                    "name": "Low Tom",
+                    "assetId": "1569bbbd8952b0575e5a5cb5aefb50ba",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 40000,
+                    "md5ext": "1569bbbd8952b0575e5a5cb5aefb50ba.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 3,
+            "visible": true,
+            "x": -154,
+            "y": -38,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "DHi;ZfC0K]dJ:-%XML(T_volume",
+            "mode": "default",
+            "opcode": "sound_volume",
+            "params": {},
+            "spriteName": "Guitar-electric1",
+            "value": 100,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.68",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}
