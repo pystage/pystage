@@ -12,6 +12,8 @@ yield_funcs = [
     "motion_glideto_sprite",
     "motion_glideto_pointer",
     "sensing_askandwait",
+     "looks_sayforsecs",
+    "looks_thinkforsecs",
 ]
 
 
@@ -136,6 +138,8 @@ class CodeBlock():
         self.gliding_seconds = 0
         self.gliding_start_position = (0, 0)
         self.gliding_end_position = (0, 0)
+
+        self.saying = False
         # Flag indicating if the block is currently running
         self.running = False
         # Ask mode (waiting for user input)
@@ -188,6 +192,9 @@ class CodeBlock():
             if self.gliding:
                 self.x, self.y = self.gliding_end_position
                 self.gliding = False
+            if self.saying:
+                self.sprite_or_stage.bubble_manager.kill()
+                self.saying = False
             if self.is_function:
                 target = self.sprite_or_stage
                 if self.sprite_or_stage.facade:
