@@ -180,6 +180,9 @@ def unique_global_name(name, ext):
     return iname, ext
 
 def get_intermediate(data, name):
+    # Added for test, in test I will convert all the scratch files to python code.
+    # So I need to clear the global_names before each running.
+    global_names.clear()
     hat_blocks = [
         "event_whenthisspriteclicked",
         "event_whenbroadcastreceived",
@@ -193,6 +196,7 @@ def get_intermediate(data, name):
     project = DictClass()
     project.update({
         "name": name,
+        "stage": {},
         "sprites": [],
         "costumes": {},
         "sounds": {},
@@ -207,6 +211,7 @@ def get_intermediate(data, name):
             "costumes": [],
             "sounds": [],
             "variables": {}, # name: value
+            "lists": {},
             "monitors": [], # name: value
             "currentCostume": target["currentCostume"],
             "layerOrder": target["layerOrder"],
@@ -263,6 +268,10 @@ def get_intermediate(data, name):
             variable = {}
             sprite["variables"][v[0]] = v[1]
 
+        for key in target["lists"]:
+            l = target["lists"][key]
+            sprite["lists"][l[0]] = l[1]
+
     for m in data["monitors"]:
         if not m["visible"]:
             continue
@@ -272,19 +281,43 @@ def get_intermediate(data, name):
         else:
             for s in project["sprites"]:
                 if s["name"] == m["spriteName"]:
-                    sprite = sprite
+                    sprite = s
                     break
         monitor["style"] = m["mode"]
         if monitor["style"] == "default":
-            monitor["style"] == "normal"
+            monitor["style"] = "normal"
         monitor["x"] = m["x"]
         monitor["y"] = m["y"]
         monitor["opcode"] = m["opcode"]
         if "VARIABLE" in m["params"]:
             monitor["variable"] = m["params"]["VARIABLE"]
+        elif "LIST" in m["params"]:
+            monitor["list"] = m["params"]["LIST"]
+        else:
+            for param in m["params"]:
+                monitor["param"] = m["params"][param]
         sprite["monitors"].append(monitor)
 
     return project
+
+def get_builtin(opcode, param=None):
+    if not param:
+        param = ""
+    var_map = {
+        "sensing_timer": "timer",
+        "sensing_answer": "answer",
+        "sensing_loudness": "loudness",
+        "sensing_current": f"current_{param.lower()}",
+        "sensing_username": "username",
+        "looks_backdropnumbername": f"backdrop_{param.lower()}",
+        "motion_xposition": "x_position",
+        "motion_yposition": "y_position",
+        "motion_direction": "direction",
+        "looks_costumenumbername": f"costume_{param.lower()}",
+        "looks_size": "size",
+        "sound_volume": "volume",
+    }
+    return var_map.get(opcode, "unknown")
 
 
 def get_python(project, language="core"):
@@ -295,7 +328,12 @@ def get_python(project, language="core"):
     add_costume = get_translated_function("pystage_addcostume", language)
     add_sound = get_translated_function("pystage_addsound", language)
     add_variable = get_translated_function("pystage_makevariable", language)
+    add_list_variable = get_translated_function("pystage_makelistvariable", language)
     create_sprite = get_translated_function("pystage_createsprite", language, stage=True)
+    show_variable = get_translated_function("data_showvariable", language)
+    show_builtinvariable = get_translated_function("data_showbuiltinvariable", language)
+    show_list = get_translated_function("data_showlist", language)
+    set_monitor_pos = get_translated_function("pystage_setmonitorposition", language)
     play = get_translated_function("pystage_play", language, stage=True)
     res = textwrap.dedent(f'''\
             # {project['name']} (pyStage, converted from Scratch 3)
@@ -317,21 +355,32 @@ def get_python(project, language="core"):
                 {stage_var}.{add_backdrop}('{bd}')
                 ''')
     for v in project["stage"]["variables"]:
+        value = project["stage"]["variables"][v]
         res += textwrap.dedent(f'''\
-                {stage_var}.{add_variable}('{v}')
+                {stage_var}.{add_variable}('{v}', {value})
                 ''')
+
+    for item in (lists := project["stage"]["lists"]):
+        res += textwrap.dedent(f'''\
+                {stage_var}.{add_list_variable}("{item}", {lists[item]})
+            ''')
     for monitor in project["stage"]["monitors"]:
-        # Only variable monitors are currently implemented
-        if not "variable" in monitor:
-            continue
+        if "variable" in monitor:
+            funcname = show_variable
+            valuename = monitor["variable"]
+        elif "list" in monitor:
+            funcname = show_list
+            valuename = monitor["list"]
+        else:
+            funcname = show_builtinvariable
+            valuename = get_builtin(monitor.get("opcode"), monitor.get("param"))
+        x = -240 + monitor["x"]
+        y = 180 - monitor["y"]
         res += textwrap.dedent(f'''\
-                {stage_var}.{get_translated_function("data_showvariable", language)}("{monitor["variable"]}")
-                {stage_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["variable"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
-                ''')
-        if monitor["style"] == "large":
-            res += textwrap.dedent(f'''\
-                    {stage_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
-                    ''')
+            {stage_var}.{funcname}("{valuename}", {x}, {y})
+        ''')
+    
+    
     for block in project["stage"]["blocks"]:
         res += writer.process(block)
     for sprite in project["sprites"]:
@@ -384,21 +433,31 @@ def get_python(project, language="core"):
                 ''')
 
         for v in sprite["variables"]:
+            value = sprite["variables"][v]
             res += textwrap.dedent(f'''\
-                    {sprite_var}.{add_variable}('{v}')
+                    {sprite_var}.{add_variable}('{v}', {value})
                     ''')
+
+        for item in (lists := sprite["lists"]):
+            res += textwrap.dedent(f'''\
+                    {sprite_var}.{add_list_variable}("{item}", {lists[item]})
+                ''')
+            
         for monitor in sprite["monitors"]:
-            # Only variable monitors are currently implemented
-            if not "variable" in monitor:
-                continue
+            if "variable" in monitor:
+                funcname = show_variable
+                valuename = monitor["variable"]
+            elif "list" in monitor:
+                funcname = show_list
+                valuename = monitor["list"]
+            else:
+                funcname = show_builtinvariable
+                valuename = get_builtin(monitor.get("opcode"), monitor.get("param"))
+            x = -240 + monitor["x"]
+            y = 180 - monitor["y"]
             res += textwrap.dedent(f'''\
-                    {sprite_var}.{get_translated_function("data_showvariable", language)}("{monitor["variable"]}")
-                    {sprite_var}.{get_translated_function("pystage_setmonitorposition", language)}("{monitor["variable"]}", {-240 + monitor["x"]}, {180 - monitor["y"]})
-                    ''')
-            if monitor["style"] == "large":
-                res += textwrap.dedent(f'''\
-                        {sprite_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
-                        ''')
+                {sprite_var}.{funcname}("{valuename}", {x}, {y})
+            ''')
         for block in sprite["blocks"]:
             res += writer.process(block)
 

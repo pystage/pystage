@@ -1,5 +1,15 @@
 from pystage.core.sprite import CoreSprite
+from typing import Literal
 
+builtins = Literal[
+    "x_position",
+    "y_position",
+    "direction",
+    "costume_number",
+    "costume_name",
+    "size",
+    "volume",
+]
 
 class Sprite:
     def __init__(self, core_sprite):
@@ -196,6 +206,45 @@ class Sprite:
         """
         return self._core.data_showvariable(name)
 
+    def show_builtinvariable(self, name: builtins, x=-240, y=180, style="normal"):
+        """show builtin variable %1
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        x : FILL
+        y : FILL
+        style : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_showbuiltinvariable(name, x, y, style)
+    
+    def hide_builtinvariable(self, name: builtins):
+        """hide builtin variable %1
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_hidebuiltinvariable(name)
+
     def get_variable(self, name):
         """
 
@@ -213,6 +262,24 @@ class Sprite:
 
         """
         return self._core.data_variable(name)
+    
+    def get_list(self, name):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.data_listvariable(name)
 
     def broadcast(self, message):
         """broadcast %1
@@ -1772,7 +1839,7 @@ class Sprite:
         """
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
 
-    def create_variable(self, name, all_sprites=True):
+    def create_variable(self, name, value=0, all_sprites=False):
         """
 
         Engl. Translation for your reference: ...
@@ -1782,6 +1849,7 @@ class Sprite:
         Parameters
         ----------
         name : FILL
+        value : FILL
         all_sprites : FILL
         
 
@@ -1789,7 +1857,240 @@ class Sprite:
         -------
 
         """
-        return self._core.pystage_makevariable(name, all_sprites=True)
+        return self._core.pystage_makevariable(name, value, all_sprites)
+    
+    def create_list_variable(self, name, value=[], all_sprites=False):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+        
+        Parameters
+        ----------
+        name : FILL
+        value : FILL
+        all_sprites : FILL
+        
+
+        Returns
+        -------
+
+        """
+        return self._core.pystage_makelistvariable(name, value, all_sprites)
+    
+    def add_value_to_list(self, list_variable, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_addtolist(list_variable, value)
+    
+    def delete_value_from_list(self, list_variable, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_deleteoflist(list_variable, position)
+    
+    def delete_all_from_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_deletealloflist(list_variable)
+    
+    def insert_value_to_list(self, list_variable, value, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_varaible : FILL
+        value : FILL
+        position : FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_insertatlist(list_variable, value, position)
+    
+    def replace_item_from_list(self, list_variable, position, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        position : FILL
+        list_varaible : FILL
+        value : FILL
+        
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_replaceitemoflist(list_variable, position, value)
+    
+    def item_in_list(self, list_variable, position):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        position : FILL
+        list_varaible : FILL
+        
+        
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_itemoflist(list_variable, position)
+    
+    def item_number_in_list(self, list_variable, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        
+        list_varaible : FILL
+        value : FILL
+        
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_itemnumoflist(list_variable, value)
+    
+    def show_length_of_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+
+        Returns
+        -------
+
+        """
+        return self._core.data_lengthoflist(list_variable)
+    
+    def list_contains_item(self, list_variable, value):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+        value = FILL
+
+        Returns
+        -------
+
+        """
+        return self._core.data_listcontainsitem(list_variable, value)
+    
+    def show_list(self, list_variable, x=None, y=None):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_showlist(list_variable, x, y)
+    
+    def hide_list(self, list_variable):
+        """
+
+        Engl. Translation for your reference: ...
+        Engl. Documentation when available...
+
+
+        Parameters
+        ----------
+        list_variable = FILL
+
+        Returns
+        -------
+
+        """
+        
+        return self._core.data_hidelist(list_variable)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """

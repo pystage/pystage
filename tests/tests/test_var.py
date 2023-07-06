@@ -5,6 +5,7 @@ from pystage.core.stage import CoreStage
 
 
 class TestVar:
+    # will create a black window
     _stage = CoreStage()
     sprite1 = _Variables()
     sprite2 = _Variables()
@@ -135,4 +136,4 @@ class TestList:
 
         assert self.sprite1.data_listcontainsitem("fruits", "banana")
         assert not self.sprite1.data_listcontainsitem("fruits", "peach")
-
+        

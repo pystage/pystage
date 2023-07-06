@@ -183,6 +183,8 @@ class BubbleManager():
 
     def say(self, text: str, border=Bubble.SAY):
         # print(text)
+        if isinstance(text, bool):
+            text = "true" if text else "false"
         if isinstance(text, (int, float)):
             text = str(round(text, 2) if text % 1 > 0 else int(text))
         if self.bubble:
