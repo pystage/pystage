@@ -158,7 +158,7 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_hour(self):
-        pass
+        return datetime.datetime.now().hour
     sensing_current_hour.opcode="sensing_current"
     sensing_current_hour.param="CURRENTMENU"
     sensing_current_hour.value="HOUR"
