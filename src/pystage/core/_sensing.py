@@ -130,7 +130,7 @@ class _Sensing(BaseSprite):
     sensing_of_backdropname.value="backdrop name"
 
     def sensing_current_year(self):
-        return datetime.datetime.now().year
+        pass
     sensing_current_year.opcode="sensing_current"
     sensing_current_year.param="CURRENTMENU"
     sensing_current_year.value="YEAR"
@@ -144,7 +144,7 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_date(self):
-        pass
+        return datetime.datetime.now().day
     sensing_current_date.opcode="sensing_current"
     sensing_current_date.param="CURRENTMENU"
     sensing_current_date.value="DATE"
