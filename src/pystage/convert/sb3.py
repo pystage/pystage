@@ -328,6 +328,12 @@ def get_python(project, language="core"):
     backdrops = []
     for bd in project["stage"]["costumes"]:
         backdrops.append(writer.global_backdrop(bd["local_name"], False))
+    # comment for stage
+    if comments := project["stage"]["comments"]:
+        comments = "\n".join(comments)
+        # not using textwrap.dedent here because it would indent incorrectly
+        # when there is more than one comment
+        res += f'\n"""\n# {project["stage"]["name"]}\n\n{comments}\n"""\n'
     res += textwrap.dedent(f'''\
             {stage_var} = {stage_class}()
             ''')
@@ -358,6 +364,10 @@ def get_python(project, language="core"):
         sprite_var = writer.get_sprite_var()
         costumes = [(writer.global_costume(c["local_name"], False), c) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
+        # comment for sprite
+        if comments := sprite["comments"]:
+            comments = "\n".join(comments)
+            res += f'\n"""\n# {sprite["name"]}\n\n{comments}\n"""\n'
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
                 {sprite_var}.{get_translated_function("pystage_setname", language)}("{sprite["name"]}")

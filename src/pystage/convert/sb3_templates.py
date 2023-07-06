@@ -10,6 +10,7 @@ templates = {
         "event_whenflagclicked": '''\
                 
                 def {{func}}_{{ID}}(self):
+                    {{COMMENT | indent(4)}}
                     {{NEXT | indent(4) }}
 
                 {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
@@ -19,6 +20,7 @@ templates = {
         "event_whenbroadcastreceived": '''\
 
                 def {{func}}_{{ID}}(self):
+                    {{COMMENT | indent(4)}}
                     {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.{{func}}({{BROADCAST_OPTION}}, {{func}}_{{ID}})
@@ -28,6 +30,7 @@ templates = {
         "event_whenkeypressed": '''\
 
                 def {{func}}_{{ID}}(self):
+                    {{COMMENT | indent(4)}}
                     {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.{{func}}({{KEY_OPTION}}, {{func}}_{{ID}})
@@ -37,6 +40,7 @@ templates = {
         "event_whenthisspriteclicked": '''\
 
                 def {{func}}_{{ID}}(self):
+                    {{COMMENT | indent(4)}}
                     {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
@@ -46,6 +50,7 @@ templates = {
         "control_start_as_clone": '''\
 
                 def {{func}}_{{ID}}(self):
+                    {{COMMENT | indent(4)}}
                     {{NEXT | indent(4)}}
 
                 {{CURRENT_SPRITE}}.{{func}}({{func}}_{{ID}})
