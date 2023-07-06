@@ -137,7 +137,7 @@ class _Sensing(BaseSprite):
 
 
     def sensing_current_month(self):
-        pass
+        return datetime.datetime.now().month
     sensing_current_month.opcode="sensing_current"
     sensing_current_month.param="CURRENTMENU"
     sensing_current_month.value="MONTH"
