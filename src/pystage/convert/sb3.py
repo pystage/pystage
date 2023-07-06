@@ -134,7 +134,7 @@ def get_input_value(i, stage):
     return value
 
 
-def get_block(block, blocks, stage):
+def get_block(block, blocks, stage, comments=None):
     '''
     Recursively turns the sb3 structure into our intermediate representation.
     '''
@@ -143,8 +143,17 @@ def get_block(block, blocks, stage):
         "opcode": block["opcode"],
         "params": DictClass(),
         "next": False,
-        "stage": stage
+        "stage": stage,
+        "comment": None
     })
+
+    # add the comment attribute to the block if available
+    # works for comments that are pointing to a block
+    # won't work for global comments
+    if (comment := block.get("comment")) and comments:
+        if comment_text := comments.get(comment, {}).get("text"):
+            res["comment"]= comment_text
+
     for f in block["fields"]:
         res["params"][f] = f'"{block["fields"][f][0]}"'
     for i in block["inputs"]:
@@ -152,9 +161,9 @@ def get_block(block, blocks, stage):
         if isinstance(value, list):
             res["params"][i] = get_input_value(value, stage)
         else:
-            res["params"][i] = get_block(blocks[value], blocks, stage)
+            res["params"][i] = get_block(blocks[value], blocks, stage, comments)
     if block["next"]:
-        res["next"] = get_block(blocks[block["next"]], blocks, stage)
+        res["next"] = get_block(blocks[block["next"]], blocks, stage, comments)
     return res
 
 
@@ -217,7 +226,17 @@ def get_intermediate(data, name):
             "volume": target["volume"] if "volume" in target else 100,
             "direction": target["direction"] if "direction" in target else 90,
             "rotationStyle": target["rotationStyle"] if "rotationStyle" in target else "all around",
+            "comments": []
         })
+
+        # add global comments
+        if comments := target.get("comments"):
+            for comment in comments.values():
+                if comment.get("blockId"):
+                    continue
+                if comment_text := comment.get("text"):
+                    sprite["comments"].append(comment_text)
+
         if target["isStage"]:
             project["stage"] = sprite
         else:
@@ -231,7 +250,7 @@ def get_intermediate(data, name):
                 continue
             # if b["parent"] is None:
             if b["opcode"] in hat_blocks:
-                block = get_block(b, blocks, target["isStage"])
+                block = get_block(b, blocks, target["isStage"], target["comments"])
                 sprite["blocks"].append(block)
         for c in target["costumes"]:
             if c["assetId"] not in project["costumes"]:
@@ -309,6 +328,12 @@ def get_python(project, language="core"):
     backdrops = []
     for bd in project["stage"]["costumes"]:
         backdrops.append(writer.global_backdrop(bd["local_name"], False))
+    # comment for stage
+    if comments := project["stage"]["comments"]:
+        comments = "\n".join(comments)
+        # not using textwrap.dedent here because it would indent incorrectly
+        # when there is more than one comment
+        res += f'\n"""\n# {project["stage"]["name"]}\n\n{comments}\n"""\n'
     res += textwrap.dedent(f'''\
             {stage_var} = {stage_class}()
             ''')
@@ -339,6 +364,10 @@ def get_python(project, language="core"):
         sprite_var = writer.get_sprite_var()
         costumes = [(writer.global_costume(c["local_name"], False), c) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
+        # comment for sprite
+        if comments := sprite["comments"]:
+            comments = "\n".join(comments)
+            res += f'\n"""\n# {sprite["name"]}\n\n{comments}\n"""\n'
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
                 {sprite_var}.{get_translated_function("pystage_setname", language)}("{sprite["name"]}")
