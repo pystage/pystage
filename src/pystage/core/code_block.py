@@ -24,6 +24,7 @@ class CodeManager():
         # message: [name, ...]
         self.broadcast_blocks = {}
         self.clicked_blocks = []
+        self.backdrop_switch_blocks = {}
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
@@ -46,6 +47,11 @@ class CodeManager():
         if message in self.broadcast_blocks:
             for name in self.broadcast_blocks[message]:
                 self.code_blocks[name].start_or_restart()
+
+    def process_backdrop_switch(self, backdrop_name):
+        function_names = self.backdrop_switch_blocks.get(backdrop_name, [])
+        for name in function_names:
+            self.code_blocks[name].start_or_restart()
 
     def register_code_block(self, generator_function, name="", no_refresh=False):
         new_block = CodeBlock(self.owner, generator_function, name, no_refresh=no_refresh)

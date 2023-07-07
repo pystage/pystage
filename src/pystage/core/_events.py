@@ -43,7 +43,14 @@ class _Events(BaseSprite):
 
 
     def event_whenbackdropswitchesto(self, backdrop, generator_function, name="", no_refresh=False):
-        pass
+        '''
+        Adds the code block to the event queue for backdrop switches.
+        '''
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
+        if backdrop not in self.code_manager.backdrop_switch_blocks:
+            self.code_manager.backdrop_switch_blocks[backdrop] = []
+        self.code_manager.backdrop_switch_blocks[backdrop].append(new_block.name)
+        print(f"Bound to backdrop switch ({backdrop}): {new_block.name}")
 
 
     def event_whengreaterthan_loudness(self, value, generator_function, name="", no_refresh=False):
