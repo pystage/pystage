@@ -63,7 +63,7 @@ class CodeWriter():
         self.jinja_environment.filters["global_sound"] = lambda name: self.global_sound(name)
         self.jinja_environment.filters["global_costume"] = lambda name: self.global_costume(name)
         self.jinja_environment.filters["global_backdrop"] = lambda name: self.global_backdrop(name)
-        
+
         logger.debug("CodeWriter created.")
 
 
@@ -74,7 +74,7 @@ class CodeWriter():
     def get_sprite_var(self, name=None):
         def to_python(name: str):
             vname = name.lower().strip()
-            # Replace everything that is not allowed in a 
+            # Replace everything that is not allowed in a
             # variable name with underscores
             vname = to_underscore.sub("_", vname)
             vname = multiple_underscores.sub("_", vname)
@@ -154,7 +154,7 @@ class CodeWriter():
             A block from the intermediate code representation.
         """
         corefunc = self.get_opcode_function(block)
-        if language=="core":
+        if language == "core":
             return corefunc
         if corefunc is None:
             return None
@@ -167,8 +167,8 @@ class CodeWriter():
                     return func
         # print(f"No translated API method found for {block.opcode}")
         return None
-            
-        
+
+
     def get_translated_call(self, block, language):
         corefunc = self.get_opcode_function(block)
         func = self.get_translated_function(block, language)
@@ -213,7 +213,7 @@ class CodeWriter():
                 q = '"' if quoted else ''
                 return f'{q}{self.project["sounds"][sound["md5"]]["global_name"]}{q}'
         raise ValueError(f"No sound with name '{name}' found for sprite '{sprite['name']}'")
-        
+
 
     def global_costume(self, name, quoted=True):
         name = unquoted(name)
