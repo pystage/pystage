@@ -199,20 +199,21 @@ class _SensingSprite(BaseSprite):
         super().__init__()
 
     def sensing_touchingobject_pointer(self):
+        # uses pixel perfect detection so it can be used for any shape of sprite in Scratch
         mx, my = pygame.mouse.get_pos()
-        # this if statement runs if sprite is rectagular
-        if self.rect.collidepoint(mx, my):
+        sprite_rect = self.rect  
+        sprite_mask = pygame.mask.from_surface(self.image)  
+        # Create a mask for the mouse pointer (1 pixel filled with white color)
+        mouse_mask = pygame.mask.from_surface(pygame.Surface((1, 1)))
+        mouse_mask.set_at((0, 0), True)
+        # Calculate the offset between the sprite and mouse pointer positions
+        offset_x = mx - sprite_rect.x
+        offset_y = my - sprite_rect.y
+        # Check for collision between sprite and mouse pointer masks
+        collision = sprite_mask.overlap(mouse_mask, (offset_x, offset_y))
+        if collision:
             #print("Mouse is touching the sprite!")
-            offset = (mx - self.rect.left, my - self.rect.top)
-            return self.mask.overlap(self.mask, offset) is not None
-        # else this code runs if sprite is circular
-        else:
-            dx = mx - (self.rect.left + self.rect.width / 2)
-            dy = my - (self.rect.top + self.rect.height / 2)
-            distance_squared = dx**2 + dy**2
-            radius = self.rect.width / 2  # Assuming the circle is horizontally aligned
-            if distance_squared <= radius**2:
-                return self.mask.overlap(self.mask, (0, 0)) is not None
+            return True
         return False
     sensing_touchingobject_pointer.opcode="sensing_touchingobject"
     sensing_touchingobject_pointer.param="TOUCHINGOBJECTMENU"
