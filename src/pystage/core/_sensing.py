@@ -199,7 +199,21 @@ class _SensingSprite(BaseSprite):
         super().__init__()
 
     def sensing_touchingobject_pointer(self):
-        pass
+        mx, my = pygame.mouse.get_pos()
+        # this if statement runs if sprite is rectagular
+        if self.rect.collidepoint(mx, my):
+            #print("Mouse is touching the sprite!")
+            offset = (mx - self.rect.left, my - self.rect.top)
+            return self.mask.overlap(self.mask, offset) is not None
+        # else this code runs if sprite is circular
+        else:
+            dx = mx - (self.rect.left + self.rect.width / 2)
+            dy = my - (self.rect.top + self.rect.height / 2)
+            distance_squared = dx**2 + dy**2
+            radius = self.rect.width / 2  # Assuming the circle is horizontally aligned
+            if distance_squared <= radius**2:
+                return self.mask.overlap(self.mask, (0, 0)) is not None
+        return False
     sensing_touchingobject_pointer.opcode="sensing_touchingobject"
     sensing_touchingobject_pointer.param="TOUCHINGOBJECTMENU"
     sensing_touchingobject_pointer.value="_mouse_"
