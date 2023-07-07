@@ -63,7 +63,7 @@ class CodeWriter():
         self.jinja_environment.filters["global_sound"] = lambda name: self.global_sound(name)
         self.jinja_environment.filters["global_costume"] = lambda name: self.global_costume(name)
         self.jinja_environment.filters["global_backdrop"] = lambda name: self.global_backdrop(name)
-        
+
         logger.debug("CodeWriter created.")
 
 
@@ -74,7 +74,7 @@ class CodeWriter():
     def get_sprite_var(self, name=None):
         def to_python(name: str):
             vname = name.lower().strip()
-            # Replace everything that is not allowed in a 
+            # Replace everything that is not allowed in a
             # variable name with underscores
             vname = to_underscore.sub("_", vname)
             vname = multiple_underscores.sub("_", vname)
@@ -93,7 +93,7 @@ class CodeWriter():
         if self.project["stage"]["name"] == name:
             return self.project["stage"]
         for sprite in self.project["sprites"]:
-            if sprite["name"]==name:
+            if sprite["name"] == name:
                 return sprite
         raise ValueError(f"No stage or sprite found with name '{name}'.")
 
@@ -122,7 +122,7 @@ class CodeWriter():
         elsefunc = None
         for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
             # print(f"Testing: {name} - {func}")
-            if name==block["opcode"]:
+            if name == block["opcode"]:
                 # print(f"Matching API method: {name}")
                 return func
             if hasattr(func, "opcode"):
@@ -130,7 +130,7 @@ class CodeWriter():
                     if hasattr(func, "param"):
                         if func.param in block["params"]:
                             value = unquoted(resolve(block["params"][func.param]))
-                            if func.value==value:
+                            if func.value == value:
                                 # print(f"Matching API method: {name}")
                                 return func
                     else:
@@ -167,8 +167,8 @@ class CodeWriter():
                     return func
         # print(f"No translated API method found for {block.opcode}")
         return None
-            
-        
+
+
     def get_translated_call(self, block, language):
         corefunc = self.get_opcode_function(block)
         func = self.get_translated_function(block, language)
@@ -213,7 +213,7 @@ class CodeWriter():
                 q = '"' if quoted else ''
                 return f'{q}{self.project["sounds"][sound["md5"]]["global_name"]}{q}'
         raise ValueError(f"No sound with name '{name}' found for sprite '{sprite['name']}'")
-        
+
 
     def global_costume(self, name, quoted=True):
         name = unquoted(name)
