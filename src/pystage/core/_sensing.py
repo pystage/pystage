@@ -2,6 +2,7 @@ import pygame
 import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
+from math import sqrt
 import datetime
 
 
@@ -226,7 +227,13 @@ class _SensingSprite(BaseSprite):
         pass
 
     def sensing_distanceto_pointer(self):
-        pass
+        mx, my = pygame.mouse.get_pos()
+        # gets position of sprite
+        sprite_rect = self.rect
+        # Calculate the distance between the sprite and the mouse pointer
+        distance = sqrt((sprite_rect.centerx - mx)**2 + (sprite_rect.centery - my)**2)
+        return distance
+        
     sensing_distanceto_pointer.opcode="sensing_distanceto"
     sensing_distanceto_pointer.param="DISTANCETOMENU"
     sensing_distanceto_pointer.value="_mouse_"
