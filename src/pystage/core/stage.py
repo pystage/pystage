@@ -180,13 +180,6 @@ class CoreStage(
                             sprite.code_manager.process_click()
                             break
 
-            # Handle broadcast messages
-            for message in self.message_broker.get_messages():
-                for sprite in self.sprites:
-                    assert(isinstance(sprite, CoreSprite))
-                    sprite.code_manager.process_broadcast(message)
-            self.message_broker.mark_completed()
-
             self._update(dt)
             self.sprites.update(dt)
             self.bubbles.update()

@@ -80,5 +80,6 @@ class _Events(BaseSprite):
 
     def event_broadcastandwait(self, message):
         # waits until all receiver scripts finish. Tricky.
-        pass
+        self.code_manager.current_block.broadcasting = True
+        self.stage.message_broker.broadcast(message)
 
