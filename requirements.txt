@@ -18,3 +18,4 @@ tinycss2==1.2.1
 tomli==2.0.1
 webencodings==0.5.1
 windows-curses==2.3.1  # for running tests
+soundfile==0.12.1
