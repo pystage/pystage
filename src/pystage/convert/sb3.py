@@ -406,12 +406,14 @@ def get_python(project, language="core"):
                         {sprite_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
                         ''')
     
-    res += textwrap.dedent(f"""\
+    # Now generate the code for each sprite.
+    for sprite in project["sprites"]:
+        writer.set_sprite(sprite["name"])
+        sprite_var = writer.get_sprite_var()
+        res += textwrap.dedent(f"""\
                 
                 # Scratch Blocks for '{sprite_var}'
                 """)
-    # Now generate the code for each sprite.
-    for sprite in project["sprites"]:
         for block in sprite["blocks"]:
             res += writer.process(block)
 
