@@ -155,6 +155,11 @@ class CoreStage(
         This runs the game loop
         """
         dt = 0
+
+        # maybe we should move this to other place
+        left_clicking_and_holding = False
+        clicked_sprite = None
+
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -179,6 +184,27 @@ class CoreStage(
                                 continue
                             sprite.code_manager.process_click()
                             break
+
+                # with these three conditions, we can detect a click and hold, 
+                # but not move the mouse while holding
+                if event.type == pygame.MOUSEBUTTONDOWN and not left_clicking_and_holding and pygame.mouse.get_pressed()[0]:
+                    pos = pygame.mouse.get_pos()
+                    for sprite in filter(lambda s:s.draggable, self.visible_sprites.sprites()[-1::-1]):
+                        assert(isinstance(sprite, CoreSprite))
+                        sprite_rect = sprite.image.get_rect()
+                        sprite_rect.topleft = sprite.rect.topleft
+                        if sprite_rect.collidepoint(pos):
+                            clicked_pos = pos[0] - sprite_rect.left, pos[1] - sprite_rect.top
+                            if sprite.image.get_at(clicked_pos).a != 0:
+                                left_clicking_and_holding = True
+                                clicked_sprite = sprite
+
+            if not pygame.mouse.get_pressed()[0] and left_clicking_and_holding:
+                left_clicking_and_holding = False
+
+            if left_clicking_and_holding:
+                assert isinstance(clicked_sprite, CoreSprite)
+                clicked_sprite.motion_goto_pointer()
 
             # Handle broadcast messages
             for message in self.message_broker.get_messages():
