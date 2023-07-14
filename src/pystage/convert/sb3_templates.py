@@ -120,6 +120,7 @@ templates = {
         "sound_sounds_menu": "{{SOUND_MENU | global_sound }}",
 
         "sensing_keyoptions": "{{KEY_OPTION}}",
+        "sensing_distancetomenu": "{{DISTANCETOMENU | global_sprite}}",
 
                 }
 
