@@ -269,6 +269,19 @@ class CodeWriter():
         context["CURRENT_SPRITE"] = self.get_sprite_var()
         if "{{ID}}" in text:
             context["ID"] = self.get_id()
+
+        # if {{NEXT | indent (4)}} is still in text, but there is no
+        # NEXT in context, then it means the Scratch “hat” block is empty,
+        # so set NEXT to "pass", and the function is essentially empty.
+        if "indent(4)" in text:
+            if "NEXT" in text and not context.get("NEXT"):
+                context["NEXT"] = "pass"
+            if "SUBSTACK" in text and not context.get("SUBSTACK"):
+                context["SUBSTACK"] = "pass"
+            if "SUBSTACK2" in text and not context.get("SUBSTACK2"):
+                context["SUBSTACK2"] = "pass"
+        if "{{CONDITION}}" in text and not context.get("CONDITION"):
+            context["CONDITION"] = "None"
         template = self.jinja_environment.from_string(text)
         try:
             text = template.render(context)

@@ -149,6 +149,9 @@ def get_block(block, blocks, stage):
         res["params"][f] = f'"{block["fields"][f][0]}"'
     for i in block["inputs"]:
         value = block["inputs"][i][1]
+        if not value:
+            # empty if condition
+            continue
         if isinstance(value, list):
             res["params"][i] = get_input_value(value, stage)
         else:
