@@ -17,7 +17,7 @@ class _Control(BaseSprite):
 
     def control_stop_this(self):
         # This is equivalent to return
-        pass
+        self.code_manager.current_block.running = False
     control_stop_this.opcode="control_stop"
     control_stop_this.param="STOP_OPTION"
     control_stop_this.value="this script"
