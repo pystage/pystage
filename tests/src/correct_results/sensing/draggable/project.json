@@ -1,0 +1,365 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 1,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "Farm",
+                    "bitmapResolution": 2,
+                    "dataFormat": "png",
+                    "assetId": "1e8a70bd07f1dcba3383883f3b948266",
+                    "md5ext": "1e8a70bd07f1dcba3383883f3b948266.png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "l}S57Tde-pBEs[aKuOC0": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "kBmw$9/*We~4kS6!*E_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 392,
+                    "y": 444
+                },
+                "kBmw$9/*We~4kS6!*E_2": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "l}S57Tde-pBEs[aKuOC0",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "draggable",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "ww}9pkL4QnqTx_F2E12Y": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "D%wFv+g0#-mc7vxUMaHn",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 1009,
+                    "y": 406
+                },
+                "D%wFv+g0#-mc7vxUMaHn": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "ww}9pkL4QnqTx_F2E12Y",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "not draggable",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 18.07692307692306,
+            "y": -43.02797202797203,
+            "size": 100,
+            "direction": 90,
+            "draggable": true,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Bear",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "JRaWLs{rzde,Kgh};/Cm": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "Ro9{Lsv~!:;lkboHkD0x",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 241,
+                    "y": 328
+                },
+                "Ro9{Lsv~!:;lkboHkD0x": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "JRaWLs{rzde,Kgh};/Cm",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "draggable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "DD=[tV%33*6carZY;t2n": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "etCqMWSceLSv9iqP%J27",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 816,
+                    "y": 363
+                },
+                "etCqMWSceLSv9iqP%J27": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "DD=[tV%33*6carZY;t2n",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "not draggable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "bear-a",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "deef1eaa96d550ae6fc11524a1935024",
+                    "md5ext": "deef1eaa96d550ae6fc11524a1935024.svg",
+                    "rotationCenterX": 100,
+                    "rotationCenterY": 90
+                },
+                {
+                    "name": "bear-b",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "6f303e972f33fcb7ef36d0d8012d0975",
+                    "md5ext": "6f303e972f33fcb7ef36d0d8012d0975.svg",
+                    "rotationCenterX": 94,
+                    "rotationCenterY": 190.66666666666666
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -117,
+            "y": 66,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Cat 2",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "[%lBC.;1c)afwxt0t|cA": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "]Sy9@K~HJlcy09w^cteq",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 331,
+                    "y": 512
+                },
+                "]Sy9@K~HJlcy09w^cteq": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "[%lBC.;1c)afwxt0t|cA",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "draggable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "++Sop~V`ulnd7c1v.tFi": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "^3`)!N{j[+1}aTmi%?bw",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 875,
+                    "y": 311
+                },
+                "^3`)!N{j[+1}aTmi%?bw": {
+                    "opcode": "sensing_setdragmode",
+                    "next": null,
+                    "parent": "++Sop~V`ulnd7c1v.tFi",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "not draggable"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "cat 2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "7499cf6ec438d0c7af6f896bc6adc294",
+                    "md5ext": "7499cf6ec438d0c7af6f896bc6adc294.svg",
+                    "rotationCenterX": 87,
+                    "rotationCenterY": 39
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow2",
+                    "assetId": "cf51a0c4088942d95bcc20af13202710",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 26048,
+                    "md5ext": "cf51a0c4088942d95bcc20af13202710.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 3,
+            "visible": true,
+            "x": 170,
+            "y": 74,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+}

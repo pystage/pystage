@@ -1,0 +1,279 @@
+{
+    "name": "draggable",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"not draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 18.07692307692306,
+            "y": -43.02797202797203,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Bear",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"not draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "deef1eaa96d550ae6fc11524a1935024",
+                    "local_name": "bear-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 100,
+                    "rotationCenterY": 90
+                },
+                {
+                    "md5": "6f303e972f33fcb7ef36d0d8012d0975",
+                    "local_name": "bear-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 94,
+                    "rotationCenterY": 190.66666666666666
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -117,
+            "y": 66,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Cat 2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"space\""
+                    },
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"not draggable\""
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "7499cf6ec438d0c7af6f896bc6adc294",
+                    "local_name": "cat 2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 87,
+                    "rotationCenterY": 39
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "cf51a0c4088942d95bcc20af13202710",
+                    "local_name": "meow2"
+                }
+            ],
+            "variables": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 3,
+            "visible": true,
+            "x": 170,
+            "y": 74,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "cd21514d0531fdffb22204e0ec5ed84a": {
+            "global_name": "backdrop1",
+            "extension": "svg"
+        },
+        "1e8a70bd07f1dcba3383883f3b948266": {
+            "global_name": "farm",
+            "extension": "png"
+        },
+        "bcf454acf82e4504149f7ffe07081dbc": {
+            "global_name": "costume1",
+            "extension": "svg"
+        },
+        "0fb9be3e8397c983338cb71dc84d0b25": {
+            "global_name": "costume2",
+            "extension": "svg"
+        },
+        "deef1eaa96d550ae6fc11524a1935024": {
+            "global_name": "bear_a",
+            "extension": "svg"
+        },
+        "6f303e972f33fcb7ef36d0d8012d0975": {
+            "global_name": "bear_b",
+            "extension": "svg"
+        },
+        "7499cf6ec438d0c7af6f896bc6adc294": {
+            "global_name": "cat_2",
+            "extension": "svg"
+        }
+    },
+    "sounds": {
+        "83a9787d4cb6f3b7632b4ddfebf74367": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "83c36d806dc92327b9e7049a565c6bff": {
+            "global_name": "meow",
+            "extension": "wav"
+        },
+        "cf51a0c4088942d95bcc20af13202710": {
+            "global_name": "meow2",
+            "extension": "wav"
+        }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "1e8a70bd07f1dcba3383883f3b948266",
+                "local_name": "Farm",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "monitors": [],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

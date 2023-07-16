@@ -339,6 +339,12 @@ def get_python(project, language="core"):
         sprite_var = writer.get_sprite_var()
         costumes = [(writer.global_costume(c["local_name"], False), c) for c in sprite["costumes"]]
         sounds = [writer.global_sound(s["local_name"], False) for s in sprite["sounds"]]
+        
+        # Generate initialization code for each sprite.
+        res += textwrap.dedent(f"""\
+                
+                # Create and initialize sprite '{sprite_var}'
+                """)
         res += textwrap.dedent(f'''\
                 {sprite_var} = {stage_var}.{create_sprite}(None)
                 {sprite_var}.{get_translated_function("pystage_setname", language)}("{sprite["name"]}")
@@ -399,6 +405,15 @@ def get_python(project, language="core"):
                 res += textwrap.dedent(f'''\
                         {sprite_var}.{get_translated_function("pystage_setmonitorstyle_large", language)}("{monitor["variable"]}")
                         ''')
+    
+    # Now generate the code for each sprite.
+    for sprite in project["sprites"]:
+        writer.set_sprite(sprite["name"])
+        sprite_var = writer.get_sprite_var()
+        res += textwrap.dedent(f"""\
+                
+                # Scratch Blocks for '{sprite_var}'
+                """)
         for block in sprite["blocks"]:
             res += writer.process(block)
 
