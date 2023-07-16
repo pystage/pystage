@@ -50,8 +50,9 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
         new_index = index + value
         if new_index < 0:
             new_index = 0
-        if new_index > len(self._spritelist) - 1:
-            new_index = len(self._spritelist) - 1
+        # because the sprite was already removed above, so don't need to minus 1 for the length
+        if new_index > len(self._spritelist):
+            new_index = len(self._spritelist)
         self._spritelist.insert(new_index, sprite)
         # print(self._spritelist)
 
@@ -141,6 +142,9 @@ class CoreStage(
 
     def _update(self, dt):
         self.code_manager._update(dt)
+        # Update it so that the layering is correct while drawing
+        # otherwise the no effect for to_front, to_back, etc.
+        self._update_visible()
 
     def _draw(self, surface: pygame.Surface):
         surface.fill(self.background_color)
@@ -171,9 +175,11 @@ class CoreStage(
                         for sprite in self.sprites:
                             assert(isinstance(sprite, CoreSprite))
                             sprite.code_manager.process_key_pressed(event.key)
-                if event.type == pygame.MOUSEBUTTONUP:
+                # to make it consistent with Scratch, should be BUTTONDOWN
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.Vector2(pygame.mouse.get_pos())
-                    for sprite in self.visible_sprites.sprites()[-1:0:-1]:
+                    # [-1:0:-1] will reverse the list, but not include 0
+                    for sprite in self.visible_sprites.sprites()[-1::-1]:
                         assert(isinstance(sprite, CoreSprite))
                         if sprite.rect.collidepoint(pos):
                             internal_pos = pos - sprite.rect.topleft
