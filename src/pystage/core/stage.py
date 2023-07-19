@@ -86,6 +86,8 @@ class CoreStage(
         self.message_broker = MessageBroker(self)
         self.input_manager = InputManager(self)
 
+        self.last_stage = None
+
         pygame.init()
         pygame.display.set_caption(name)
         self.running = False
@@ -218,6 +220,17 @@ class CoreStage(
                     assert(isinstance(sprite, CoreSprite))
                     sprite.code_manager.process_broadcast(message)
             self.message_broker.mark_completed()
+
+            # get the current backdrop and compare it to the last one
+            # if changed, process the switch
+            backdrop = self.costume_manager.get_costume_name()
+            if backdrop and backdrop != self.last_stage:
+                self.last_stage = backdrop
+
+                self.code_manager.process_backdrop_switch(backdrop)
+                for sprite in self.visible_sprites.sprites():
+                    assert(isinstance(sprite, CoreSprite))
+                    sprite.code_manager.process_backdrop_switch(backdrop)
 
             self._update(dt)
             self.sprites.update(dt)
