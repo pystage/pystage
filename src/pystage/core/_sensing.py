@@ -235,7 +235,9 @@ class _SensingSprite(BaseSprite):
     sensing_distanceto_pointer.value="_mouse_"
 
     def sensing_distanceto_sprite(self, sprite):
-        pass
+        # self is an instance of CoreSprite
+        # sprite is an instance of Sprite
+        return self._pos.distance_to(sprite._core._pos)
     sensing_distanceto_sprite.opcode="sensing_distanceto"
 
 

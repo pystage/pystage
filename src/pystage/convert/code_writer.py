@@ -63,6 +63,7 @@ class CodeWriter():
         self.jinja_environment.filters["global_sound"] = lambda name: self.global_sound(name)
         self.jinja_environment.filters["global_costume"] = lambda name: self.global_costume(name)
         self.jinja_environment.filters["global_backdrop"] = lambda name: self.global_backdrop(name)
+        self.jinja_environment.filters["global_sprite"] = lambda name: self.get_sprite_var(unquoted(name))
         
         logger.debug("CodeWriter created.")
 
