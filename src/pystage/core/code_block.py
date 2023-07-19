@@ -1,5 +1,6 @@
 import ast
 import inspect
+from typing import NamedTuple
 
 from pystage.l10n.api import get_core_function_from_instance
 
@@ -24,11 +25,18 @@ class CodeManager():
         # message: [name, ...]
         self.broadcast_blocks = {}
         self.clicked_blocks = []
+        # {time: {"done": bool, "block": [CodeBlock, ...]}}
+        self.time_gt_blocks = {}
         # Name of the code block currently executed.
         # This way, state about the current execustion
         # can be stored safely where it belongs
         self.current_block: CodeBlock = None
         self.owner = owner
+
+    def reset_time_gt_blocks(self):
+        # Reset all time_gt blocks to "not done"
+        for detail in self.time_gt_blocks.values():
+            detail["done"] = False
 
     def process_key_pressed(self, key):
         # key is a pygame constant, e.g. pygame.K_a
@@ -45,6 +53,13 @@ class CodeManager():
     def process_broadcast(self, message):
         if message in self.broadcast_blocks:
             for name in self.broadcast_blocks[message]:
+                self.code_blocks[name].start_or_restart()
+
+    def process_time_gt(self, timer):
+        function_names = [detail for time, detail in self.time_gt_blocks.items() if timer > time and not detail["done"]]
+        for detail in function_names:
+            detail["done"] = True
+            for name in detail["blocks"]:
                 self.code_blocks[name].start_or_restart()
 
     def register_code_block(self, generator_function, name="", no_refresh=False):
