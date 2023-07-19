@@ -156,6 +156,9 @@ class Bubble(pygame.sprite.Sprite):
     def update(self, force=False):
         if not force and self.sprite.motion_xposition() == self.sprite_x and self.sprite.motion_yposition() == self.sprite_y:
             return
+        # update position to avoid repeated updates
+        self.sprite_x = self.sprite.motion_xposition()
+        self.sprite_y = self.sprite.motion_yposition()
         y = max(0, self.sprite.rect.top - self.image_normal.get_height() - self.sprite.costume_manager.get_image().get_height() * self.y_offset)
         if not self.flipped:
             x = self.sprite.rect.left - self.image_normal.get_width() - self.sprite.costume_manager.get_image().get_width() * self.x_offset
@@ -184,6 +187,8 @@ class BubbleManager():
     def say(self, text: str, border=Bubble.SAY):
         # print(text)
         if isinstance(text, (int, float)):
+            # trim the non-zero fractional part
+            # e.g. 8.00 will be 8
             text = str(round(text, 2) if text % 1 > 0 else int(text))
         if self.bubble:
             self.bubble.kill()
@@ -194,5 +199,23 @@ class BubbleManager():
             
     def think(self, text: str):
         self.say(text, Bubble.THINK)
+
+    def sayforsecs(self, text: str, secs: int):
+        self.say(text)
+        self.sprite.code_manager.current_block.saying = True
+        self.sprite.code_manager.current_block.add_to_wait_time = secs
+
+    def think(self, text: str):
+        self.say(text, Bubble.THINK)
+
+    def thinkforsecs(self, text: str, secs: int):
+        self.think(text)
+        self.sprite.code_manager.current_block.saying = True
+        self.sprite.code_manager.current_block.add_to_wait_time = secs
+
+    def kill(self):
+        if self.bubble:
+            self.bubble.kill()
+            self.bubble = None
 
 

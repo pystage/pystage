@@ -189,7 +189,7 @@ class _LooksSprite(_Looks):
         self.costume_manager.insert_costume(index, name, center_x, center_y, factor)
 
     def looks_sayforsecs(self, text, secs):
-        pass
+        self.bubble_manager.sayforsecs(text, secs)
 
 
     def looks_say(self, text):
@@ -197,7 +197,7 @@ class _LooksSprite(_Looks):
 
 
     def looks_thinkforsecs(self, text, secs):
-        pass
+        self.bubble_manager.thinkforsecs(text, secs)
 
     def looks_think(self, text):
         self.bubble_manager.think(text)
