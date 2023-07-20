@@ -24,6 +24,11 @@ class InputManager:
     def accept_answer(self, answer):
         self._answer = answer
         del self._queue[0]
+
+    def cancel_asking(self):
+        if self._queue:
+            self._queue[0].codeblock.asking = False
+            del self._queue[0]
     
     def process_key(self, event):
         if self.is_active():
