@@ -9,21 +9,27 @@ class _Control(BaseSprite):
         self.code_manager.current_block.add_to_wait_time = secs
 
     def control_stop_all(self):
-        # not only in this sprite!
-        pass
+        for s in self.stage.sprites:
+            s.code_manager.stop_running_blocks()
+        self.stage.code_manager.stop_running_blocks()
+
     control_stop_all.opcode="control_stop"
     control_stop_all.param="STOP_OPTION"
     control_stop_all.value="all"
 
     def control_stop_this(self):
-        # This is equivalent to return
-        self.code_manager.current_block.running = False
+        self.code_manager.stop_running_blocks()
+
     control_stop_this.opcode="control_stop"
     control_stop_this.param="STOP_OPTION"
     control_stop_this.value="this script"
 
     def control_stop_other(self):
-        pass
+        for s in self.stage.sprites:
+            if s is not self:
+                s.code_manager.stop_running_blocks()
+        self.stage.code_manager.stop_running_blocks()
+
     control_stop_other.opcode="control_stop"
     control_stop_other.param="STOP_OPTION"
     control_stop_other.value="other scripts in sprite"

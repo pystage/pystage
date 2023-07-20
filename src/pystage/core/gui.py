@@ -195,4 +195,9 @@ class BubbleManager():
     def think(self, text: str):
         self.say(text, Bubble.THINK)
 
+    def kill(self):
+        if self.bubble:
+            self.bubble.kill()
+            self.bubble = None
+
 
