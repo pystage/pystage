@@ -244,6 +244,7 @@ class Sound():
         So I leave a parameter for keeping the length of the audio.
         """
         if not self.sound:
+            print("WARNING: no sound file!")
             return None
 
         pitch = max(-360, min(360, pitch))
@@ -262,7 +263,7 @@ class Sound():
             p = subprocess.Popen(conversion_command, stdin=devnull, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p_out, p_err = p.communicate()
         if p.returncode != 0:
-            print(f"Can't change pitch of sound file: {self.file}")
+            print(f"WARNING: Can't change pitch of sound file: {self.file}")
             return self.sound
 
         return pygame.mixer.Sound(self.pitched_file)
