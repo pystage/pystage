@@ -216,6 +216,7 @@ class _SensingSprite(BaseSprite):
     sensing_touchingobject_edge.value="_edge_"
 
     def sensing_touchingobject_sprite(self, sprite):
+        sprite = sprite._core
         if sprite.rect.colliderect(self.rect):
             offset = (self.rect.left - sprite.rect.left, self.rect.top - sprite.rect.top)
             return sprite.mask.overlap(self.mask, offset) is not None
