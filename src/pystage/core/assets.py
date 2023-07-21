@@ -7,6 +7,8 @@ import pkg_resources
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 import pystage
+import subprocess
+import soundfile
 
 _round = lambda v: pygame.Vector2(round(v.x), round(v.y))
 
@@ -189,7 +191,7 @@ class Costume():
 class SoundManager():
     def __init__(self, owner):
         self.owner = owner
-        self.sounds = {}
+        self.sounds: dict[str, Sound] = {}
 
     def add_sound(self, name):
         if isinstance(name, str):
@@ -199,9 +201,13 @@ class SoundManager():
             for n in name:
                 self.add_sound(n)
 
-    def get_sound(self, name):
-        return self.sounds[name].sound
-
+    def get_sound(self, name, pitch):
+        if pitch == 0:
+            return self.sounds[name].sound
+        sound = self.sounds[name].get_sound_with_pitch(pitch)
+        if sound:
+            os.unlink(self.sounds[name].pitched_file)
+        return sound
 
 class Sound():
     '''
@@ -224,6 +230,48 @@ class Sound():
             print("WARNING: MP3 is not supported in pyStage. Use wav or ogg format.")
         elif self.file is not None:
             self.sound = pygame.mixer.Sound(self.file)
+            path, suf = self.file.rsplit(".", 1)
+            self.pitched_file = f"{path}_pitched.{suf}"
+
+    def get_sound_with_pitch(self, pitch, keep_length=False):
+        """
+        Pitch from -360 to 360
+        10 is a half-step
+        120 is an octave
+        From: https://en.scratch-wiki.info/wiki/Sound_Effect
+            Right now the pitch effect works by changing the speed of the sound, although in the future the Scratch Team may change it back to only affecting a sound's pitch.
+        
+        So I leave a parameter for keeping the length of the audio.
+        """
+        if not self.sound:
+            print("WARNING: no sound file!")
+            return None
+
+        pitch = max(-360, min(360, pitch))
+        half_steps = pitch / 10
+        rate_factor = 2.0 ** (half_steps / 12.0)
+        original_rate = self.get_framerate()
+        new_rate = round(original_rate * rate_factor, 5)
+        tempo = max(0.5, min(100, round(1.0 / rate_factor, 5)))
+        if keep_length:
+            parameters = "asetrate={},atempo={}".format(new_rate, tempo)
+        else:
+            parameters = "asetrate={}".format(new_rate)
+        conversion_command = ["ffmpeg", "-i", self.file, "-af", parameters, self.pitched_file, "-y"]
+
+        with open(os.devnull, 'rb') as devnull:
+            p = subprocess.Popen(conversion_command, stdin=devnull, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p_out, p_err = p.communicate()
+        if p.returncode != 0:
+            print(f"WARNING: Can't change pitch of sound file: {self.file}")
+            return self.sound
+
+        return pygame.mixer.Sound(self.pitched_file)
+
+    def get_framerate(self):
+        with soundfile.SoundFile(self.file) as f:
+            framerate = f.samplerate
+        return framerate
 
 
     def __str__(self):
