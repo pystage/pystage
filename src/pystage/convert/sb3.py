@@ -319,6 +319,12 @@ def get_python(project, language="core"):
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_backdrop}('{bd}')
                 ''')
+    if project["stage"]["currentCostume"] != 0:
+        switch_backdrop = get_translated_function("looks_switchbackdropto", language)
+        bd = backdrops[project["stage"]["currentCostume"]]
+        res += textwrap.dedent(f'''\
+                {stage_var}.{switch_backdrop}('{bd}')
+                ''')
     for v in project["stage"]["variables"]:
         res += textwrap.dedent(f'''\
                 {stage_var}.{add_variable}('{v}')
@@ -382,9 +388,10 @@ def get_python(project, language="core"):
                 {sprite_var}.{add_costume}('{c[0]}', center_x={c[1]["rotationCenterX"]}, center_y={c[1]["rotationCenterY"]}{factor})
                 ''')
         if sprite["currentCostume"] != 0:
-            for i in range(sprite["currentCostume"]):
-                res += textwrap.dedent(f'''\
-                    {sprite_var}.{get_translated_function("looks_nextcostume", language)}()
+            switch_costume = get_translated_function("looks_switchcostumeto", language)
+            costume = costumes[sprite["currentCostume"]]
+            res += textwrap.dedent(f'''\
+                    {sprite_var}.{switch_costume}('{costume[0]}')
                     ''')
 
         for s in sounds:
