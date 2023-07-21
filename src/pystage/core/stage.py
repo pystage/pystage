@@ -17,8 +17,9 @@ from pystage.core.asking import InputManager
 
 
 class SpriteGroup(pygame.sprite.OrderedUpdates):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *sprites):
+        # added for copy method
+        super().__init__(*sprites)
         # Be careful, we access a private variable here
         self._spritelist = self._spritelist
 
@@ -152,6 +153,17 @@ class CoreStage(
         if not image:
             return
         surface.blit(image, (0, 0))
+
+    def get_screen_without(self, sprite):
+        sprites = self.visible_sprites.copy()
+        sprites.remove(sprite)
+
+        self._draw(self.surface)
+        sprites.draw(self.surface)
+
+        screen = self.screen.copy()
+        screen.blit(self.surface, (0, 0))
+        return screen
 
     def pystage_play(self):
         self.running = True
