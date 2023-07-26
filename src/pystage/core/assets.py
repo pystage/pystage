@@ -151,7 +151,13 @@ class Costume():
         self.file = None
         self.name = name
         internal_folder = pkg_resources.resource_filename("pystage", "images/")
-        for folder in ["", "images/", "bilder/", internal_folder]:
+        search_folders = ["", "images/", "bilder/", internal_folder]
+
+        if len(sys.argv[0])>0:
+            file_directory = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), "images/")
+            search_folders.insert(0, file_directory)
+
+        for folder in search_folders:
             for ext in ["", ".bmp", ".png", ".jpg", ".jpeg", ".gif", ".svg"]:
                 if os.path.exists(f"{folder}{name}{ext}"):
                     self.file = f"{folder}{name}{ext}"
@@ -213,7 +219,13 @@ class Sound():
         self.file = None
         self.sound = None
         internal_folder = pkg_resources.resource_filename("pystage", "sounds/")
-        for folder in ["", "sounds/", "klaenge/", internal_folder]:
+        search_folders = ["", "sounds/", "klaenge/", internal_folder]
+
+        if len(sys.argv[0])>0:
+            file_directory = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), "sounds/")
+            search_folders.insert(0, file_directory)
+
+        for folder in search_folders:
             for ext in ["", ".wav", ".ogg", ".mp3"]:
                 if os.path.exists(f"{folder}{name}{ext}"):
                     self.file = f"{folder}{name}{ext}"
