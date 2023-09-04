@@ -151,7 +151,7 @@ class CoreStage(
         image = self.costume_manager.get_image()
         if not image:
             return
-        surface.blit(image, (0, 0))
+        surface.blit(image, self.costume_manager.get_topleft())
 
     def pystage_play(self):
         self.running = True
