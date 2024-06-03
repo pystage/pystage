@@ -129,6 +129,12 @@ class CoreStage(
             # https://github.com/PyCQA/pylint/issues/1493
         else:
             return sprite
+        
+    def reset_timer(self):
+        self.timer = 0
+        for sprite in self.sprites:
+            sprite.code_manager.reset_time_gt_blocks()
+        self.code_manager.reset_time_gt_blocks()
 
     def _update_visible(self):
         self.visible_sprites.empty()
@@ -218,6 +224,12 @@ class CoreStage(
                     assert(isinstance(sprite, CoreSprite))
                     sprite.code_manager.process_broadcast(message)
             self.message_broker.mark_completed()
+
+
+            self.code_manager.process_time_gt(self.timer)
+            for sprite in self.visible_sprites.sprites():
+                assert(isinstance(sprite, CoreSprite))
+                sprite.code_manager.process_time_gt(self.timer)
 
             self._update(dt)
             self.sprites.update(dt)
