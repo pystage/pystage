@@ -3,3 +3,4 @@ Jinja2==3.1.2
 pygame==2.5.0
 pytest==7.4.0  # for running tests
 windows-curses==2.3.1  # for running tests
+soundfile==0.12.1

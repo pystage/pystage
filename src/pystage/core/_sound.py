@@ -25,13 +25,13 @@ class _Sound(BaseSprite):
 
     def sound_play(self, name, loop=0):
         channel = self.mixer.find_channel()
-        sound = self.sound_manager.get_sound(name)
+        sound = self.sound_manager.get_sound(name, self.current_pitch)
         if sound is not None:
             channel.play(sound, loop)
         return channel
 
     def sound_playuntildone(self, name):
-        sound = self.sound_manager.get_sound(name)
+        sound = self.sound_manager.get_sound(name, self.current_pitch)
         if sound is not None:
             self.mixer.find_channel().play(sound, 0)
             # time.sleep(sound.get_length())
@@ -43,11 +43,10 @@ class _Sound(BaseSprite):
         self.mixer.stop()
 
     def sound_changeeffectby_pitch(self, value):
-        # TODO: for pitching there is no ready to use code in pygame. To do so
-        # we must operate on the audio array itself.
         # -360 to 360, 10 is a half-step, 120 an octave
         # changes only the speed of the sound
-        pass
+        self.current_pitch += value
+        self.current_pitch = min(360, max(-360, self.current_pitch))
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -66,9 +65,8 @@ class _Sound(BaseSprite):
     sound_changeeffectby_pan.translation = "sound_effects_pan"
 
     def sound_seteffectto_pitch(self, value):
-        # TODO: for pitching there is no ready to use code in pygame. To do so
-        # we must operate on the audio array itself.
-        pass
+        self.current_pitch = value
+        self.current_pitch = min(360, max(-360, self.current_pitch))
 
     sound_seteffectto_pitch.opcode = "sound_seteffectto"
     sound_seteffectto_pitch.param = "EFFECT"
