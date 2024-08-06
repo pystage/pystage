@@ -87,19 +87,19 @@ templates = {
                 ''',
 
         "control_if": '''\
-                if {{CONDITION}}:
+                if {{CONDITION | if_missing(False)}}:
                     {{SUBSTACK | indent(4)}}
                 ''',
 
         "control_if_else":'''\
-                if {{CONDITION}}:
+                if {{CONDITION | if_missing(False)}}:
                     {{SUBSTACK | indent(4)}}
                 else:
                     {{SUBSTACK2 | indent(4)}}
                 ''',
 
         "operator_add": "({{NUM1}} + {{NUM2}})",
-        "operator_and": "({{OPERAND1}} and {{OPERAND2 | if_missing(True)}})",
+        "operator_and": "({{OPERAND1 | if_missing(False)}} and {{OPERAND2 | if_missing(False)}})",
         "operator_contains": "({{STRING2}} in {{STRING1}})",
         "operator_divide": "({{NUM1}} / {{NUM2}})",
         "operator_equals": "({{OPERAND1}} == {{OPERAND2}})",
@@ -110,8 +110,8 @@ templates = {
         "operator_lt": "({{OPERAND1}} < {{OPERAND2}})",
         "operator_mod": "({{NUM1}} % {{NUM2}})",
         "operator_multiply": "({{NUM1}} * {{NUM2}})",
-        "operator_not": "not ({{OPERAND}})",
-        "operator_or": "({{OPERAND1}} or {{OPERAND2 | if_missing(False)}})",
+        "operator_not": "not ({{OPERAND | if_missing(False)}})",
+        "operator_or": "({{OPERAND1 | if_missing(False)}} or {{OPERAND2 | if_missing(False)}})",
         "operator_round": "round({{NUM}})",
         "operator_subtract": "({{NUM1}} - {{NUM2}})",
 
