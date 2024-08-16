@@ -4,6 +4,8 @@ import random
 # from pystage.util import stderr_redirector
 import sys
 import io
+import base64
+from xml.etree import ElementTree as ET
 import pygame
 import pkg_resources
 import pystage
@@ -113,6 +115,19 @@ class CostumeManager():
         if self.current_costume == -1:
             return 0, 0
         return pygame.Vector2(self.costumes[self.current_costume].center_x, self.costumes[self.current_costume].center_y)
+    
+    def get_topleft(self):
+        """
+        Only used for the stage
+
+        With weird coordinate system.
+        """
+        if self.current_costume == -1:
+            return 0, 0
+        cx, cy = self.get_center()
+        if (cx, cy) == (240, 180):
+            return 0, 0
+        return 240 + cx, 180 - cy
 
 
     def process_image(self):
@@ -346,6 +361,8 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
+        # Scale the image to the size shown in the Scratch
+        self.scale = (1, 1)
         internal_folder = pkg_resources.resource_filename("pystage", "images/")
         # Add further folders for translations here
         named_folders = ["", "images/", "bilder/"]
@@ -364,7 +381,7 @@ class Costume():
                     # It could e.g. be a directory with the same name as we allow no ending
                     try:
                         filename = f"{folder}{name}{ext}"
-                        self.image = pygame.image.load(filename)
+                        self.image = pygame.image.load(self.parse_image(filename))
                         self.file = filename
                         break
                     except Exception:
@@ -374,10 +391,22 @@ class Costume():
         if self.file is None:
             self.file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
             self.image = pygame.image.load(self.file)
+
+        # This needs to be checked, it might break graphics not exported from Scratch
+        if self.file.endswith(".png"):
+            # might using resolution as a factor be better
+            # but according to my observation, it is always 2
+            self.image = pygame.transform.scale(self.image, pygame.Vector2(self.image.get_size()) * 0.5)
+        
+        if self.scale != (1, 1):
+            w, h = self.image.get_size()
+            self.image = pygame.transform.scale(self.image, (w*self.scale[0], h*self.scale[1]))
+
         if self.file.endswith(".svg"):
             print("\nWARNING: SVG conversion is for convenience only")
             print("and might not work as expected. It is recommended")
             print("to manually convert to bitmap graphics (png or jpg).\n")
+        
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
         self.image = self.image.subsurface(self.image.get_bounding_rect()) 
@@ -387,6 +416,30 @@ class Costume():
         self.center_y = (float(self.image.get_parent().get_height()) / 2) - offset.y if center_y is None else (float(center_y) / factor) - offset.y
         print(f"New costume: {name} -> {self.file}")
 
+    def parse_image(self, filename):
+        """
+        Returns the stream of embedded image in SVG file if exists.
+        """
+        if not filename.endswith(".svg"):
+            return filename
+
+        tree = ET.parse(filename)
+        root = tree.getroot()
+
+        for element in root.iter():
+            if element.tag == "{http://www.w3.org/2000/svg}image":
+                xlink_href = element.attrib.get("{http://www.w3.org/1999/xlink}href")
+                if xlink_href and xlink_href.startswith("data:image"):
+                    scale = element.attrib.get("transform")
+                    if scale:
+                        scale = scale.replace("scale(", "").replace(")", "").split(",")
+                        self.scale = [round(float(scale[0]), 2), round(float(scale[1]), 2)]
+                    return io.BytesIO(base64.b64decode(xlink_href.split(",")[1]))
+
+            if element.tag == "{http://www.w3.org/2000/svg}path":
+                if "stroke" in element.attrib:
+                    return filename
+        return filename
 
     def __str__(self):
         return f"{self.name} ({self.center_x}, {self.center_y})"
