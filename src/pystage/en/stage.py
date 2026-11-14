@@ -694,21 +694,14 @@ class Stage():
         return self._core.pystage_addbackdrop(name, center_x, center_y, factor)
 
     def add_sound(self, name):
-        """
+        """Loads a sound file, so that the sprite or stage can play it.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Sounds are also loaded automatically when they are played for the first time.
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the sound file, e.g. "pop.wav". The file must be in the project folder.
         """
         return self._core.pystage_addsound(name)
 
@@ -1341,200 +1334,126 @@ class Stage():
         return self._core.sensing_username()
 
     def change_pan_left_right_effect_by(self, value):
-        """change pan left/right effect by %2
+        """Changes the pan effect of the sound by the given amount. The pan effect moves the sound between the left and the right speaker.
 
-        Translation string: change pan left/right effect by %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pan left/right effect by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the pan effect. -100 is all left, 0 is the middle and 100 is all right.
         """
         return self._core.sound_changeeffectby_pan(value)
 
     def change_pitch_effect_by(self, value):
-        """change pitch effect by %2
+        """Changes the pitch effect of the sound by the given amount. Positive values make the sound higher.
 
-        Translation string: change pitch effect by %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pitch effect by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the pitch effect. The effect goes from -360 to 360, and 0 is the normal pitch.
         """
         return self._core.sound_changeeffectby_pitch(value)
 
     def change_volume_by(self, value):
-        """change volume by %1
+        """Changes the volume of the sprite's sounds by the given amount. Negative values make the sound quieter.
 
-        Translation string: change volume by %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change volume by (-10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the volume. The volume goes from 0 to 100.
         """
         return self._core.sound_changevolumeby(value)
 
     def clear_sound_effects(self):
-        """clear sound effects
+        """Removes all sound effects (pitch and pan) of the sprite.
 
-        Translation string: clear sound effects
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: clear sound effects
         """
         return self._core.sound_cleareffects()
 
     def start_sound(self, name, loop=0):
-        """start sound %1
+        """Starts playing a sound. The script does not wait until the sound is finished.
 
-        Translation string: start sound %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: start sound (pop)
 
-        
         Parameters
         ----------
-        name : FILL
-        loop : FILL
-        
-
-        Returns
-        -------
-
+        name : str or int
+            The name of the sound file, e.g. "pop.wav", or the number of the sound (starting with 1).
+        loop : int
+            How often the sound is repeated after the first time. 0 plays it once, -1 repeats it forever.
         """
         return self._core.sound_play(name, loop)
 
     def play_sound_until_done(self, name):
-        """play sound %1 until done
+        """Plays a sound and waits until it is finished.
 
-        Translation string: play sound %1 until done
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: play sound (pop) until done
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str or int
+            The name of the sound file, e.g. "pop.wav", or the number of the sound (starting with 1).
         """
         return self._core.sound_playuntildone(name)
 
     def set_pan_left_right_effect_to(self, value):
-        """set pan left/right effect to %2
+        """Sets the pan effect of the sound. The pan effect moves the sound between the left and the right speaker.
 
-        Translation string: set pan left/right effect to %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pan left/right effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new pan effect. -100 is all left, 0 is the middle and 100 is all right.
         """
         return self._core.sound_seteffectto_pan(value)
 
     def set_pitch_effect_to(self, value):
-        """set pitch effect to %2
+        """Sets the pitch effect of the sound. Higher values make the sound higher.
 
-        Translation string: set pitch effect to %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pitch effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new pitch effect, from -360 to 360. 0 is the normal pitch.
         """
         return self._core.sound_seteffectto_pitch(value)
 
     def set_volume_to(self, value):
-        """set volume to %1%
+        """Sets the volume of the sprite's sounds. 100 is the loudest and 0 is silent.
 
-        Translation string: set volume to %1%
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set volume to (100) %
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new volume, from 0 to 100 percent. Values outside this range are limited to it.
         """
         return self._core.sound_setvolumeto(value)
 
     def stop_all_sounds(self):
-        """stop all sounds
+        """Stops all sounds that are playing, of all sprites and the stage.
 
-        Translation string: stop all sounds
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop all sounds
         """
         return self._core.sound_stopallsounds()
 
     def volume(self):
-        """volume
+        """Returns the volume of the sprite's sounds, from 0 to 100.
 
-        Translation string: volume
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (volume)
 
         Returns
         -------
-
+        number
+            The current volume, from 0 to 100.
         """
         return self._core.sound_volume()
 

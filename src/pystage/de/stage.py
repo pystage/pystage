@@ -696,21 +696,14 @@ class Bühne():
         return self._core.pystage_addbackdrop(name, center_x, center_y, factor)
                 
     def füge_klang_hinzu(self, name):
-        """
+        """Lädt eine Klangdatei, damit die Figur oder die Bühne sie abspielen kann.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Klänge werden auch automatisch geladen, wenn sie zum ersten Mal abgespielt werden.
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Klangdatei, z. B. "pop.wav". Die Datei muss im Projektordner liegen.
         """
         return self._core.pystage_addsound(name)
                 
@@ -1343,200 +1336,126 @@ class Bühne():
         return self._core.sensing_username()
                 
     def ändere_effekt_aussteuern_links_rechts_um(self, value):
-        """ändere Effekt Aussteuern links/rechts um %2
+        """Ändert den Aussteuern-Effekt des Klangs um den angegebenen Wert. Der Effekt verschiebt den Klang zwischen linkem und rechtem Lautsprecher.
 
-        Translation string: ändere Effekt Aussteuern links/rechts um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Aussteuern links/rechts um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Aussteuern-Effekts. -100 ist ganz links, 0 die Mitte und 100 ganz rechts.
         """
         return self._core.sound_changeeffectby_pan(value)
                 
     def ändere_effekt_höhe_um(self, value):
-        """ändere Effekt Höhe um %2
+        """Ändert den Höhe-Effekt des Klangs um den angegebenen Wert. Positive Werte machen den Klang höher.
 
-        Translation string: ändere Effekt Höhe um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Höhe um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Höhe-Effekts. Der Effekt geht von -360 bis 360, 0 ist die normale Höhe.
         """
         return self._core.sound_changeeffectby_pitch(value)
                 
     def ändere_lautstärke_um(self, value):
-        """ändere Lautstärke um %1
+        """Ändert die Lautstärke der Klänge der Figur um den angegebenen Wert. Negative Werte machen den Klang leiser.
 
-        Translation string: ändere Lautstärke um %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Lautstärke um (-10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Lautstärke. Die Lautstärke geht von 0 bis 100.
         """
         return self._core.sound_changevolumeby(value)
                 
     def schalte_klangeffekte_aus(self):
-        """schalte Klangeffekte aus
+        """Entfernt alle Klangeffekte (Höhe und Aussteuern) der Figur.
 
-        Translation string: schalte Klangeffekte aus
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: schalte Klangeffekte aus
         """
         return self._core.sound_cleareffects()
                 
     def spiele_klang(self, name, loop=0):
-        """spiele Klang %1
+        """Startet das Abspielen eines Klangs. Das Skript wartet nicht, bis der Klang zu Ende ist.
 
-        Translation string: spiele Klang %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: spiele Klang (Pop)
 
-        
         Parameters
         ----------
-        name : FILL
-        loop : FILL
-        
-
-        Returns
-        -------
-
+        name : str oder int
+            Der Name der Klangdatei, z. B. "pop.wav", oder die Nummer des Klangs (ab 1).
+        loop : int
+            Wie oft der Klang nach dem ersten Mal wiederholt wird. 0 spielt ihn einmal, -1 wiederholt ihn immer.
         """
         return self._core.sound_play(name, loop)
                 
     def spiele_klang_ganz(self, name):
-        """spiele Klang %1 ganz
+        """Spielt einen Klang ab und wartet, bis er zu Ende ist.
 
-        Translation string: spiele Klang %1 ganz
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: spiele Klang (Pop) ganz
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str oder int
+            Der Name der Klangdatei, z. B. "pop.wav", oder die Nummer des Klangs (ab 1).
         """
         return self._core.sound_playuntildone(name)
                 
     def setze_effekt_aussteuern_links_rechts_auf(self, value):
-        """setze Effekt Aussteuern links/rechts auf %2
+        """Setzt den Aussteuern-Effekt des Klangs. Der Effekt verschiebt den Klang zwischen linkem und rechtem Lautsprecher.
 
-        Translation string: setze Effekt Aussteuern links/rechts auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Aussteuern links/rechts auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Aussteuern-Effekt. -100 ist ganz links, 0 die Mitte und 100 ganz rechts.
         """
         return self._core.sound_seteffectto_pan(value)
                 
     def setze_effekt_höhe_auf(self, value):
-        """setze Effekt Höhe auf %2
+        """Setzt den Höhe-Effekt des Klangs. Höhere Werte machen den Klang höher.
 
-        Translation string: setze Effekt Höhe auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Höhe auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Höhe-Effekt, von -360 bis 360. 0 ist die normale Höhe.
         """
         return self._core.sound_seteffectto_pitch(value)
                 
     def setze_lautstärke_auf(self, value):
-        """setze Lautstärke auf %1%
+        """Setzt die Lautstärke der Klänge der Figur. 100 ist am lautesten, 0 ist still.
 
-        Translation string: setze Lautstärke auf %1%
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Lautstärke auf (100)%
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Lautstärke, von 0 bis 100 Prozent. Werte außerhalb dieses Bereichs werden auf ihn begrenzt.
         """
         return self._core.sound_setvolumeto(value)
                 
     def stoppe_alle_klänge(self):
-        """stoppe alle Klänge
+        """Stoppt alle gerade spielenden Klänge, von allen Figuren und der Bühne.
 
-        Translation string: stoppe alle Klänge
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe alle Klänge
         """
         return self._core.sound_stopallsounds()
                 
     def lautstärke(self):
-        """Lautstärke
+        """Gibt die Lautstärke der Klänge der Figur zurück, von 0 bis 100.
 
-        Translation string: Lautstärke
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Lautstärke)
 
         Returns
         -------
-
+        Zahl
+            Die aktuelle Lautstärke, von 0 bis 100.
         """
         return self._core.sound_volume()
 
