@@ -29,6 +29,8 @@ def when_program_starts_2(self):
     while not self.key_pressed("a"):
         pass
     self.stop_all()
+    return
+
 
 sprite1.when_program_starts(when_program_starts_2)
 

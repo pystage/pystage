@@ -90,6 +90,8 @@ def when_program_starts_3(self):
             self.say("Hello!")
             self.wait(10)
             self.stop_all()
+            return
+
 
 octopus.when_program_starts(when_program_starts_3)
 

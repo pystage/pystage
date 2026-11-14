@@ -1,6 +1,7 @@
 import pygame
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
+from pystage.core.values import wrap
 import datetime
 
 
@@ -21,7 +22,7 @@ class _Sensing(BaseSprite):
         self.code_manager.current_block.ask(question)
 
     def sensing_answer(self):
-        return self.stage.input_manager.answer
+        return wrap(self.stage.input_manager.answer)
 
     def sensing_keypressed(self, key):
         pressed = pygame.key.get_pressed()
@@ -131,7 +132,7 @@ class _Sensing(BaseSprite):
     def sensing_of_variable(self, variable, sprite="_stage_"):
         target = self.stage._get_sprite(sprite)
         if target is not None and variable in target.variables:
-            return target.variables[variable]
+            return wrap(target.variables[variable])
         return 0
     sensing_of_variable.opcode="sensing_of"
 

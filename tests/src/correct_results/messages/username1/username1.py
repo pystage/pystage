@@ -17,7 +17,7 @@ bowl.add_sound("pop")
 # Scratch Blocks for 'bowl'
 
 def when_program_starts_1(self):
-    if (self.username() == ""):
+    if self.equals(self.username(), ""):
         self.say_for_seconds("Hello!", 2)
     else:
         self.say(self.join("welcome back ", self.username()))

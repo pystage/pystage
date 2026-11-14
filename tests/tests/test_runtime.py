@@ -441,3 +441,36 @@ def test_missing_sound_does_not_crash(stage, sprite):
     run(stage, frames=3)
     assert log == ["played"]
     assert sprite.volume() == 50
+
+
+# Values
+
+def test_texts_behave_like_in_scratch(stage, sprite):
+    stage.create_variable("text", "abc")
+    stage.create_variable("number", "5")
+    stage.create_variable("empty", "")
+    text, number, empty = (sprite.get_variable(name) for name in ("text", "number", "empty"))
+    assert isinstance(text, str) and text == "ABC" and text != "abd"
+    assert number + 1 == 6 and 1 + number == 6 and number * 2 == 10 and number - 1 == 4
+    assert text + 1 == 1 and empty + 1 == 1
+    assert number + "x" == "5x" and "x" + number == "x5"
+    assert number == 5 and number > 4 and 4 < number and not (number < 5)
+    assert not (empty > 0) and (text > 5) and not (5 > text)
+    assert int(number) == 5 and int(text) == 0 and float(number) == 5.0
+    assert number + number == 10
+    assert sprite.join("1", "2") + 1 == 13
+    assert {number: 1}[5] == 1
+    stage.create_list("items", ["Apple", "7"])
+    assert sprite.item_of_list("items", 2) + 1 == 8
+    assert sprite.item_of_list("items", 1) == "apple"
+
+
+def test_comparison_operators(stage, sprite):
+    stage.create_variable("id", 5)
+    value = sprite.get_variable("id")
+    assert sprite.greater_than(5, "") and sprite.greater_than(value, "")
+    assert not sprite.less_than(value, "")
+    assert sprite.less_than("apple", "Banana") and sprite.greater_than(10, 9)
+    assert sprite.greater_than("10", "9") and sprite.less_than(5, "a")
+    assert sprite.equals("ABC", "abc") and sprite.equals("5", 5.0) and sprite.equals("", "")
+    assert not sprite.equals(0, "") and not sprite.equals("a", 1)

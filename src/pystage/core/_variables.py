@@ -2,7 +2,7 @@ import random
 
 from pystage.core._base_sprite import BaseSprite
 from pystage.core.monitors import Monitor
-from pystage.core.values import to_number, equals
+from pystage.core.values import to_number, equals, wrap
 
 
 class _Variables(BaseSprite):
@@ -86,7 +86,7 @@ class _Variables(BaseSprite):
         self._variable_owner(name).variables[name] = value
 
     def data_variable(self, name):
-        return self._variable_owner(name).variables[name]
+        return wrap(self._variable_owner(name).variables[name])
 
     def data_changevariableby(self, name, value):
         owner = self._variable_owner(name)
@@ -108,7 +108,7 @@ class _Variables(BaseSprite):
 
     def data_listvariable(self, name):
         return self._list(name)
-    data_listvariable.translation = "data_listcontents"
+    data_listvariable.opcode = "data_listcontents"
 
     def data_addtolist(self, name, item):
         self._list(name).append(item)
@@ -141,8 +141,8 @@ class _Variables(BaseSprite):
         lst = self._list(name)
         i = self._list_index(index, lst)
         if i is None:
-            return ""
-        return lst[i]
+            return wrap("")
+        return wrap(lst[i])
 
     def data_itemnumoflist(self, name, item):
         for i, value in enumerate(self._list(name)):

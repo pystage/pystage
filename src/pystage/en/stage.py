@@ -1988,6 +1988,39 @@ class Stage():
         """
         return self._core.operator_contains(string1, string2)
 
+    def greater_than(self, operand1, operand2):
+        """%1 > %2
+
+        Greater than; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_gt(operand1, operand2)
+
+    def less_than(self, operand1, operand2):
+        """%1 < %2
+
+        Less than; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_lt(operand1, operand2)
+
+    def equals(self, operand1, operand2):
+        """%1 = %2
+
+        Equal; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_equals(operand1, operand2)
+
     def round(self, number):
         """round %1
 

@@ -79,6 +79,17 @@ templates = {
                 
                 ''',
 
+        # "stop this script" also ends a custom block, like return.
+        "control_stop": '''\
+                {% if STOP_OPTION == '"this script"' %}
+                return
+                {% elif STOP_OPTION == '"all"' %}
+                self.{{func}}()
+                return
+                {% else %}
+                self.{{func}}()
+                {% endif %}''',
+
         "control_forever":'''\
                 while True:
                     {{SUBSTACK | indent(4)}}

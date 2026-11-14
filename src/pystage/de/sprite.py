@@ -3134,6 +3134,39 @@ class Figur():
         """
         return self._core.operator_contains(string1, string2)
 
+    def größer_als(self, operand1, operand2):
+        """%1 > %2
+
+        Größer als; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_gt(operand1, operand2)
+
+    def kleiner_als(self, operand1, operand2):
+        """%1 < %2
+
+        Kleiner als; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_lt(operand1, operand2)
+
+    def gleich(self, operand1, operand2):
+        """%1 = %2
+
+        Gleich; compares like Scratch (numbers numerically, otherwise text without case).
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_equals(operand1, operand2)
+
     def runde(self, number):
         """%1 gerundet
 

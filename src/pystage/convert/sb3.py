@@ -200,8 +200,8 @@ def get_input_value(i, stage):
             return 0
         n = number(value, None)
         if n is None:
-            # Scratch allows any text in number fields
-            return py_str(value)
+            # Scratch allows any text in number fields, it counts as 0.
+            return 0
         if input_type in [6, 7] and isinstance(n, float):
             return int(round(n))
         return n

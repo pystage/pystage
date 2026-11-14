@@ -26,6 +26,8 @@ def when_program_starts_1(self):
             self.set_pitch_effect_to(100)
             self.start_sound("meow")
             self.stop_all()
+            return
+
 
 sprite1.when_program_starts(when_program_starts_1)
 

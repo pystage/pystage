@@ -410,7 +410,9 @@ class Costume():
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
         bounding_rect = self.image.get_bounding_rect()
         if bounding_rect.width == 0 or bounding_rect.height == 0:
-            # Completely transparent image
+            # Completely transparent or empty image
+            if self.image.get_width() == 0 or self.image.get_height() == 0:
+                self.image = pygame.Surface((1, 1), flags=pygame.SRCALPHA)
             bounding_rect = pygame.Rect(0, 0, 1, 1)
         self.image = self.image.subsurface(bounding_rect)
         # The offset resulting from the image crop

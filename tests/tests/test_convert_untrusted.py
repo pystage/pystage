@@ -220,3 +220,31 @@ def test_name_clashes(tmp_path):
     assert "class_2 = stage.add_a_sprite" in code
     assert "stage_2 = stage.add_a_sprite" in code
     assert "class_3 = stage.add_a_sprite" in code
+
+
+def test_comparisons_with_text_use_scratch_semantics(tmp_path):
+    def comparison(opcode, a, b):
+        blocks = {
+            "a": block("event_whenflagclicked", next="b", top=True),
+            "b": block("control_if", parent="a", inputs={"CONDITION": [2, "c"], "SUBSTACK": [2, "d"]}),
+            "c": block(opcode, parent="b", inputs={"OPERAND1": a, "OPERAND2": b}),
+            "d": block("looks_hide", parent="b"),
+        }
+        return convert(tmp_path, project(blocks, sprite={"variables": {"v": ["v", 1]}}))
+    var = [3, [12, "v", "v"], [10, ""]]
+    text = [1, [10, ""]]
+    number = [1, [4, "5"]]
+    code = comparison("operator_gt", var, text)
+    assert 'self.greater_than(self.get_variable("v"), "")' in code
+    assert "self.less_than(" in comparison("operator_lt", var, text)
+    assert 'self.equals(self.get_variable("v"), "")' in comparison("operator_equals", var, text)
+    assert 'self.equals("", self.get_variable("v"))' in comparison("operator_equals", text, var)
+    # Without text literals the Python operators are used.
+    code = comparison("operator_gt", var, number)
+    assert 'self.get_variable("v") > 5' in code and "greater_than" not in code
+    assert "equals(" not in comparison("operator_equals", var, number)
+    assert "größer_als" in convert(tmp_path, project({
+        "a": block("event_whenflagclicked", next="b", top=True),
+        "b": block("control_if", parent="a", inputs={"CONDITION": [2, "c"]}),
+        "c": block("operator_gt", parent="b", inputs={"OPERAND1": var, "OPERAND2": text}),
+    }), "de")

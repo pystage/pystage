@@ -1,7 +1,7 @@
 import random
 import math
 
-from pystage.core.values import to_number, to_string
+from pystage.core.values import to_number, to_string, Text, compare, equals
 
 class _Operators():
     def __init__(self):
@@ -17,17 +17,26 @@ class _Operators():
         return random.uniform(low, high)
 
     def operator_join(self, string1, string2):
-        return to_string(string1) + to_string(string2)
+        return Text(to_string(string1) + to_string(string2))
 
     def operator_letter_of(self, letter, string):
         string = to_string(string)
         index = int(to_number(letter))
         if index < 1 or index > len(string):
-            return ""
-        return string[index - 1]
+            return Text("")
+        return Text(string[index - 1])
 
     def operator_length(self, string):
         return len(to_string(string))
+
+    def operator_gt(self, a, b):
+        return compare(a, b) > 0
+
+    def operator_lt(self, a, b):
+        return compare(a, b) < 0
+
+    def operator_equals(self, a, b):
+        return equals(a, b)
 
     def operator_contains(self, string1, string2):
         # Not case sensitive, like in Scratch

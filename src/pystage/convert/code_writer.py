@@ -156,6 +156,9 @@ class EmptyInput(Undefined):
         return False
 
 
+COMPARISONS = ("operator_gt", "operator_lt", "operator_equals")
+
+
 class CodeWriter():
     '''
     Helper class to write code templates
@@ -281,7 +284,8 @@ class CodeWriter():
                         value = unquoted(resolve(block["params"][func.param]))
                     except ValueError:
                         continue
-                    if func.value==value:
+                    # Projects from Scratch 2 use lower case, e.g. for effects
+                    if str(func.value).lower() == str(value).lower():
                         return func
             else:
                 elsefunc = func
@@ -401,7 +405,7 @@ class CodeWriter():
             return self._with_comments(self.render_argument(block), statement), False
 
         context = {}
-        if opcode in self.templates:
+        if opcode in self.templates and not self.needs_scratch_comparison(block):
             # If the block has its own template, we simply render it.
             text = textwrap.dedent(self.templates[opcode])
             # if the template needs a translated function name, we deliver it
@@ -450,6 +454,17 @@ class CodeWriter():
                 text = "\n" + "".join(comment_lines(c) for c in own_comments) + text.lstrip("\n")
             return text, True
         return self._with_comments(text, statement), False
+
+
+    def needs_scratch_comparison(self, block):
+        """Python operators are only safe if no text literal is compared.
+
+        Scratch compares a number with a text by comparing texts, Python
+        raises a TypeError. So those comparisons call the core method.
+        """
+        if block["opcode"] not in COMPARISONS:
+            return False
+        return any(isinstance(value, str) and value.startswith('"') for value in block["params"].values())
 
 
     def _with_comments(self, text, statement):
