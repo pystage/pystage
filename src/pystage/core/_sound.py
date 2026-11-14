@@ -1,4 +1,5 @@
 import pygame
+from pystage.core.i18n import tr
 from pystage.core.assets import SoundManager
 from pystage.core._base_sprite import BaseSprite
 from pystage.core.values import to_number
@@ -14,7 +15,7 @@ class _Sound(BaseSprite):
                 pygame.mixer.init()
                 pygame.mixer.set_num_channels(32)
             except pygame.error as e:
-                print(f"WARNING: No sound available. ({e})")
+                print(tr("sound_unavailable", error=e))
         # Each sprite and the stage has its own volume and effects.
         self.current_pan = 0
         self.current_pitch = 0
@@ -43,7 +44,7 @@ class _Sound(BaseSprite):
         else:
             channel = pygame.mixer.find_channel()
         if channel is None:
-            print(f"WARNING: No more free sound channels. Can't play '{name}'.")
+            print(tr("sound_no_channel", name=name))
             return None
         self._channels = [c for c in self._channels if c.get_busy() and c is not channel]
         self._channels.append(channel)

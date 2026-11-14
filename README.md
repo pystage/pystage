@@ -81,6 +81,26 @@ If you are interested in PyStage and want to get in touch, feel free to join us 
 
 Currently, only the English API is fully translated, the German API is automatically generated. All other languages will be added when PyStage gets more stable. Get in touch if you want to help maintain a translation.
 
+### Deutsch
+
+Die deutsche API heißt `pystage.de`. Auch die Werte aus den Auswahlmenüs von Scratch kannst du auf Deutsch angeben (Groß- und Kleinschreibung ist egal, die englischen Werte funktionieren weiterhin), und Fehlermeldungen und Hinweise erscheinen auf Deutsch:
+
+```python
+from pystage.de import Bühne, Figur
+
+bühne = Bühne(titel="Mein erstes Spiel")
+zombie = bühne.füge_eine_figur_hinzu()
+
+def nach_oben(zombie: Figur):
+    zombie.ändere_y_um(10)
+
+zombie.wenn_taste_gedrückt_wird("Pfeil nach oben", nach_oben)
+zombie.wenn_taste_gedrückt_wird("Leertaste", nach_oben)
+bühne.abspielen()
+```
+
+Weitere Werte: `"beliebiges"` (Taste), `"letztes"`, `"zufälliges"` und `"alles"` bei Listen, `"Betrag"`, `"abrunden"`, `"aufrunden"`, `"Wurzel"` bei der mathematischen Funktion, `"nächstes Bühnenbild"`, `"Mauszeiger"`, `"Rand"`, `"mir selbst"`.
+
 For the English API, you can start with the following example code:
 
 ```python

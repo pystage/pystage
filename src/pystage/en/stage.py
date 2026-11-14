@@ -4,8 +4,9 @@ from pystage.en import Sprite
 
 class Stage():
 
-    def __init__(self):
-        self._core = CoreStage()
+    def __init__(self, title="Welcome to pyStage!"):
+        """Create the stage. The title is shown in the window title."""
+        self._core = CoreStage(title)
         self._core.facade = self
         self._core.sprite_facade_class = Sprite
 

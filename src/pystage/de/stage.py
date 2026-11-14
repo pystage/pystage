@@ -5,8 +5,9 @@ from pystage.de.sprite import Figur
 
 class Bühne():
 
-    def __init__(self):
-        self._core = CoreStage()
+    def __init__(self, titel="Welcome to pyStage!"):
+        """Erzeugt die Bühne. Der Titel steht in der Titelleiste des Fensters. Meldungen erscheinen auf Deutsch."""
+        self._core = CoreStage(titel, language="de")
         self._core.facade = self
         self._core.sprite_facade_class = Figur
 

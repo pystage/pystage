@@ -656,10 +656,10 @@ def test_all_keys_of_scratch_are_known():
     scratch_keys += [chr(c) for c in range(ord("a"), ord("z") + 1)] + [str(d) for d in range(10)]
     assert [key for key in scratch_keys if key not in KEY_MAPPINGS] == []
     # The error message must not promise keys that do not work
-    from pystage.core._events import _Events
-    import inspect
-    message = [line for line in inspect.getsource(_Events.event_whenkeypressed).splitlines() if "Bad key" in line][0]
-    assert "enter" in message and "enter" in KEY_MAPPINGS
+    from pystage.core.i18n import MESSAGES
+    for texts in MESSAGES.values():
+        assert "enter" in texts["bad_key"].lower() or "eingabetaste" in texts["bad_key"].lower()
+    assert "enter" in KEY_MAPPINGS
 
 
 # Values that Scratch accepts but Python does not like

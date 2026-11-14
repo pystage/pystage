@@ -1,5 +1,7 @@
 import random
 
+from pystage.core.i18n import canonical, tr
+
 from pystage.core._base_sprite import BaseSprite
 from pystage.core.monitors import Monitor
 from pystage.core.values import to_number, equals, wrap
@@ -31,14 +33,14 @@ class _Variables(BaseSprite):
             return self
         if name in self.stage.variables:
             return self.stage
-        raise ValueError(f"The variable {name} does not exist.")
+        raise ValueError(tr("variable_missing", name=name))
 
     def _list(self, name):
         if name in self.list_variables:
             return self.list_variables[name]
         if name in self.stage.list_variables:
             return self.stage.list_variables[name]
-        raise ValueError(f"The list {name} does not exist.")
+        raise ValueError(tr("list_missing", name=name))
 
     def _get_monitor(self, name):
         if name in self.var_monitors:
@@ -68,7 +70,7 @@ class _Variables(BaseSprite):
         """
         length = len(lst) + (1 if insert else 0)
         if isinstance(index, str):
-            keyword = index.strip().lower()
+            keyword = canonical("list_positions", index).strip().lower()
             if keyword == "last":
                 return length - 1 if length > 0 else None
             if keyword in ("random", "any"):
@@ -115,7 +117,7 @@ class _Variables(BaseSprite):
 
     def data_deleteoflist(self, name, index):
         lst = self._list(name)
-        if isinstance(index, str) and index.strip().lower() == "all":
+        if isinstance(index, str) and canonical("list_positions", index).strip().lower() == "all":
             lst.clear()
             return
         i = self._list_index(index, lst)
@@ -172,11 +174,11 @@ class _Variables(BaseSprite):
 
     def _check_new_name(self, name, attribute, kind, all_sprites):
         if name in getattr(self.stage, attribute) or name in getattr(self, attribute):
-            raise ValueError(f"The {kind} {name} already exists!")
+            raise ValueError(tr(kind + "_exists", name=name))
         if all_sprites:
             for sprite in self.stage.sprites:
                 if name in getattr(sprite, attribute):
-                    raise ValueError(f"The {kind} {name} already exists!")
+                    raise ValueError(tr(kind + "_exists", name=name))
 
     def pystage_makevariable(self, name, value=0, all_sprites=True):
         # A variable name must be unique for a sprite and globally.

@@ -76,6 +76,11 @@ class _Motion(_Sensing):
 
 
     def motion_goto_sprite(self, sprite):
+        sprite = self.stage._special(sprite)
+        if sprite == "_mouse_":
+            return self.motion_goto_pointer()
+        if sprite == "_random_":
+            return self.motion_goto_random()
         sprite = self.stage._get_sprite(sprite)
         if sprite is None:
             return
@@ -111,6 +116,11 @@ class _Motion(_Sensing):
 
 
     def motion_glideto_sprite(self, secs, sprite):
+        sprite = self.stage._special(sprite)
+        if sprite == "_mouse_":
+            return self.motion_glideto_pointer(secs)
+        if sprite == "_random_":
+            return self.motion_glideto_random(secs)
         sprite = self.stage._get_sprite(sprite)
         if sprite is None:
             return
@@ -153,6 +163,7 @@ class _Motion(_Sensing):
     motion_pointtowards_random.value = "_random_"
 
     def motion_pointtowards_sprite(self, sprite):
+        sprite = self.stage._special(sprite)
         if sprite == "_mouse_":
             return self.motion_pointtowards_pointer()
         if sprite == "_random_":

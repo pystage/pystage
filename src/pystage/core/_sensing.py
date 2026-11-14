@@ -1,5 +1,6 @@
 import pygame
 from pystage.core.constants import KEY_MAPPINGS
+from pystage.core.i18n import canonical_key
 from pystage.core._base_sprite import BaseSprite
 from pystage.core.values import wrap, to_color
 import datetime
@@ -19,7 +20,7 @@ class _Sensing(BaseSprite):
 
     def sensing_keypressed(self, key):
         pressed = pygame.key.get_pressed()
-        key = str(key).lower()
+        key = canonical_key(key)
         if key == "any":
             return any(pressed)
         if key not in KEY_MAPPINGS:
@@ -254,6 +255,7 @@ class _SensingSprite(BaseSprite):
         return self.mask.overlap(other.mask, offset) is not None
 
     def sensing_touchingobject_sprite(self, sprite):
+        sprite = self.stage._special(sprite)
         if sprite == "_mouse_":
             return self.sensing_touchingobject_pointer()
         if sprite == "_edge_":
@@ -317,6 +319,7 @@ class _SensingSprite(BaseSprite):
     sensing_distanceto_pointer.value="_mouse_"
 
     def sensing_distanceto_sprite(self, sprite):
+        sprite = self.stage._special(sprite)
         if sprite == "_mouse_":
             return self.sensing_distanceto_pointer()
         sprite = self.stage._get_sprite(sprite)

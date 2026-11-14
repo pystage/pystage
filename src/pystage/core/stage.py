@@ -18,6 +18,7 @@ from pystage.core.messages import MessageBroker
 from pystage.core.sprite import CoreSprite
 from pystage.core.asking import InputManager
 from pystage.core.values import to_string
+from pystage.core import i18n
 
 
 class SpriteGroup(pygame.sprite.RenderUpdates):
@@ -33,7 +34,7 @@ class SpriteGroup(pygame.sprite.RenderUpdates):
 
     def _check(self, sprite):
         if sprite not in self.spritedict:
-            raise ValueError(f"Sprite {sprite} unknown.")
+            raise ValueError(i18n.tr("sprite_unknown", sprite=sprite))
 
     def get_layer(self, sprite):
         try:
@@ -73,13 +74,14 @@ class SpriteGroup(pygame.sprite.RenderUpdates):
 class CoreStage(
     _LooksStage, _Sound, _Events, _ControlStage, _Operators, _Sensing, _Variables, _PenStage
 ):
-    def __init__(self, name="Welcome to pyStage!", width=480, height=360):
+    def __init__(self, name="Welcome to pyStage!", width=480, height=360, language="en"):
+        # The language of messages, see pystage.core.i18n. Set first, as
+        # even the first messages (pygame check, no sound) depend on it.
+        i18n.set_language(language)
         # Check pygame version (pygame-ce)
         pygame_major = int(pygame.ver.split(".")[0])
         if pygame_major < 2 or not getattr(pygame, "IS_CE", False):
-            print("pygame-ce version 2 or higher is required for PyStage.")
-            print("Remove classic pygame and install pygame-ce:")
-            print("pip uninstall pygame && pip install --upgrade pygame-ce")
+            print(i18n.tr("pygame_version"))
             sys.exit(1)
 
         # This way, code blocks can consistently refer to the stage with self.stage:
@@ -148,6 +150,18 @@ class CoreStage(
         self._update_visible()
         return sprite.facade or sprite
 
+    def _special(self, value):
+        """The canonical special sprite ("_mouse_", "_stage_", ...) for a value.
+
+        Localized names like "Mauszeiger" are translated, unless a sprite
+        really has that name. Other values are returned unchanged.
+        """
+        if isinstance(value, str):
+            special = i18n.canonical("sprites", value)
+            if special != value and not any(s.name == value for s in self.sprites):
+                return special
+        return value
+
     def _get_sprite(self, sprite):
         """Get the core sprite for a sprite of any API or for a sprite name.
 
@@ -156,7 +170,7 @@ class CoreStage(
         """
         if hasattr(sprite, "_core"):
             return sprite._core
-        name = to_string(sprite)
+        name = self._special(to_string(sprite))
         if name == "_stage_":
             return self
         for candidate in self.sprites:
@@ -326,7 +340,7 @@ class CoreStage(
         text = f"{type(error).__name__}: {error}"
         if frames:
             frame = frames[-1]
-            text = f"Error in {os.path.basename(frame.filename)}, line {frame.lineno}: {frame.line or ''} --- {text}"
+            text = f"{i18n.tr('error_in', file=os.path.basename(frame.filename), line=frame.lineno)}: {frame.line or ''} --- {text}"
         lines, width, height = wrap_text(text[:600], regular_font_14, self.width - 40)
         message = render_lines(lines, regular_font_14, (255, 255, 255), width, height, 2)
         overlay = pygame.Surface((self.width, message.get_height() + 20), flags=pygame.SRCALPHA)

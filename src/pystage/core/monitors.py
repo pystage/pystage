@@ -2,6 +2,7 @@ import pygame
 from pystage.resources import resource_filename
 
 from pystage.core.values import to_string
+from pystage.core.i18n import tr
 
 pygame.font.init()
 
@@ -131,9 +132,9 @@ class Monitor(pygame.sprite.Sprite):
             y += row_h
 
         if not items:
-            empty = Monitor.LIGHT_FONT_9.render("(empty)", True, Monitor.TITLE_FONT_COLOR)
+            empty = Monitor.LIGHT_FONT_9.render(tr("monitor_empty"), True, Monitor.TITLE_FONT_COLOR)
             surface.blit(empty, (w/2 - empty.get_width()/2, header_h))
-        length = Monitor.LIGHT_FONT_9.render(f"length {len(items)}", True, Monitor.TITLE_FONT_COLOR)
+        length = Monitor.LIGHT_FONT_9.render(tr("monitor_length", length=len(items)), True, Monitor.TITLE_FONT_COLOR)
         surface.blit(length, (w/2 - length.get_width()/2, h - footer_h + padding))
         return surface
 

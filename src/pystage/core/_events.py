@@ -1,4 +1,5 @@
 from pystage.core.constants import KEY_MAPPINGS
+from pystage.core.i18n import canonical, canonical_key, tr
 from pystage.core.code_block import _message_key
 from pystage.core._base_sprite import BaseSprite
 
@@ -20,9 +21,9 @@ class _Events(BaseSprite):
         '''
         Adds the code block to the event queue for key presses.
         '''
-        key = str(key).lower()
+        key = canonical_key(key)
         if key != "any" and key not in KEY_MAPPINGS:
-            raise ValueError(f"Bad key: {key}. Allowed are a-z, 0-9, space, enter, the arrow keys (e.g. 'left arrow') and any.")
+            raise ValueError(tr("bad_key", key=key))
         new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
         if key == "any":
             self.code_manager.any_key_blocks.append(new_block)

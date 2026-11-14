@@ -17,6 +17,6 @@ zombie.wenn_programm_startet(mach_was)
 def reagiere(zombie):
     zombie.gehe_schritte(10)
 
-zombie.wenn_taste_gedrückt_wird(" ", reagiere)
+zombie.wenn_taste_gedrückt_wird("Leertaste", reagiere)
 
 bühne.abspielen()

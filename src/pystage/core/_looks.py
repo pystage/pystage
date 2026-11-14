@@ -1,3 +1,4 @@
+from pystage.core.i18n import canonical
 from pystage.core.gui import BubbleManager, Bubble
 from pystage.core.assets import CostumeManager
 from pystage.core._base_sprite import BaseSprite
@@ -45,8 +46,9 @@ class _Looks(BaseSprite):
             "previous backdrop": self.stage.costume_manager.previous_costume,
             "random backdrop": self.stage.costume_manager.random_costume,
         }
-        if isinstance(backdrop, str) and backdrop in special and not self.stage.costume_manager.has_costume(backdrop):
-            special[backdrop]()
+        key = canonical("backdrops", backdrop)
+        if isinstance(key, str) and key in special and not self.stage.costume_manager.has_costume(backdrop):
+            special[key]()
         else:
             self.stage.costume_manager.switch_costume(backdrop)
         return self.stage._backdrop_switched()

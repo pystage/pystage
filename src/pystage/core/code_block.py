@@ -3,6 +3,8 @@ import inspect
 import textwrap
 import types
 
+from pystage.core.i18n import tr
+
 from pystage.l10n.api import get_core_function_from_instance
 
 # Functions that need to be yielded for screen refresh
@@ -163,8 +165,7 @@ class CodeBlock():
         elif len(inspect.signature(generator_function).parameters) == 1:
             self.inject_instance = True
         else:
-            raise ValueError(
-                f"Your code block '{generator_function.__name__}' needs zero or one parameter. The parameter is usually called self.")
+            raise ValueError(tr("block_parameters", name=generator_function.__name__))
 
         self.sprite_or_stage = sprite_or_stage
         if name != "" and name != None:
@@ -186,8 +187,7 @@ class CodeBlock():
         self.no_refresh = no_refresh
         if inspect.isgeneratorfunction(generator_function):
             if no_refresh:
-                raise ValueError(
-                    f"Your code block '{generator_function.__name__}' is set to no refresh. In this case, yield must not be used.")
+                raise ValueError(tr("block_no_refresh", name=generator_function.__name__))
         else:
             if no_refresh:
                 # We support also plain functions, i.e. without yield
@@ -438,7 +438,7 @@ def add_yields(function, facade=None):
     ast.increment_lineno(func_ast, function.__code__.co_firstlineno - 1)
     func_def = func_ast.body[0]
     if not isinstance(func_def, ast.FunctionDef):
-        raise TypeError(f"'{function.__name__}' must be a normal function defined with def.")
+        raise TypeError(tr("block_not_def", name=function.__name__))
     # Decorators (e.g. no_refresh) must not be applied a second time.
     func_def.decorator_list = []
 

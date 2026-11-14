@@ -1,3 +1,4 @@
+from pystage.core.i18n import canonical, tr
 import random
 import math
 
@@ -72,8 +73,9 @@ class _Operators():
                 'e ^': math.exp,
                 '10 ^': lambda n: math.pow(10, n),
                 }
+        operator = canonical("math", operator)
         if operator not in ops:
-            raise ValueError(f"Operator {operator} not supported.")
+            raise ValueError(tr("operator_unsupported", operator=operator))
         
         try:
             value = ops[operator](to_number(number))

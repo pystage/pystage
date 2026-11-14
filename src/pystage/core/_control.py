@@ -41,7 +41,7 @@ class _Control(BaseSprite):
                 block.stop()
 
     def control_create_clone_of_sprite(self, sprite):
-        if sprite == "_myself_":
+        if self.stage._special(sprite) == "_myself_":
             sprite = self
         sprite = self.stage._get_sprite(sprite)
         if sprite is not None and sprite is not self.stage:

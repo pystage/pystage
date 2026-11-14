@@ -1,3 +1,4 @@
+from pystage.core.i18n import tr
 import math
 import os
 import random
@@ -365,7 +366,7 @@ class CostumeManager():
             blue = int(((value - 150) / 50) * 255)
             return 200, 50, blue
         else:
-            raise ValueError("Invalid value. Must be between 0 and 200.")
+            raise ValueError(tr("effect_range"))
 
 
 class Costume():
@@ -405,9 +406,7 @@ class Costume():
             self.file = resource_filename("images/zombie_idle.png")
             self.image = pygame.image.load(self.file)
         if self.file.endswith(".svg"):
-            print("\nWARNING: SVG conversion is for convenience only")
-            print("and might not work as expected. It is recommended")
-            print("to manually convert to bitmap graphics (png or jpg).\n")
+            print(tr("svg_notice"))
         if pygame.display.get_surface() is not None:
             self.image = self.image.convert_alpha()
         if factor!=1:
@@ -485,12 +484,12 @@ class Sound():
             if self.file is not None:
                 break
         if self.file is None:
-            print(f"WARNING: Sound '{name}' not found.")
+            print(tr("sound_not_found", name=name))
         elif pygame.mixer.get_init():
             try:
                 self.sound = pygame.mixer.Sound(self.file)
             except pygame.error as e:
-                print(f"WARNING: Sound '{name}' can't be loaded, try to convert it to wav or ogg format. ({e})")
+                print(tr("sound_not_loaded", name=name, error=e))
 
 
     def get(self, pitch=0):
