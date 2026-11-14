@@ -142,7 +142,7 @@ class Figur():
         """
         return self._core.control_wait(secs)
                 
-    def ändere_um(self, name, value):
+    def ändere_variable_um(self, name, value):
         """ändere %1 um %2
 
         Translation string: ändere %1 um %2
@@ -181,7 +181,7 @@ class Figur():
         """
         return self._core.data_hidevariable(name)
                 
-    def setze_auf(self, name, value):
+    def setze_variable(self, name, value):
         """setze %1 auf %2
 
         Translation string: setze %1 auf %2
@@ -220,7 +220,7 @@ class Figur():
         """
         return self._core.data_showvariable(name)
                 
-    def data_variable(self, name):
+    def gib_variable(self, name):
         """
 
         Translation string: 
@@ -321,7 +321,7 @@ class Figur():
         """
         return self._core.event_whenbroadcastreceived(message, generator_function, name, no_refresh)
                 
-    def wenn_GREENFLAG_angeklickt_wird(self, generator_function, name='', no_refresh=False):
+    def wenn_programm_startet(self, generator_function, name='', no_refresh=False):
         """Wenn <greenflag> angeklickt wird
 
         Translation string: Wenn <greenflag> angeklickt wird
@@ -342,7 +342,7 @@ class Figur():
         """
         return self._core.event_whenflagclicked(generator_function, name, no_refresh)
                 
-    def wenn_lautstärke_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
+    def wenn_lautstärke_größer_als(self, value, generator_function, name='', no_refresh=False):
         """Wenn Lautstärke <greater> %2
 
         Translation string: Wenn Lautstärke <greater> %2
@@ -364,7 +364,7 @@ class Figur():
         """
         return self._core.event_whengreaterthan_loudness(value, generator_function, name, no_refresh)
                 
-    def wenn_stoppuhr_GREATERTHAN(self, value, generator_function, name='', no_refresh=False):
+    def wenn_stoppuhr_größer_als(self, value, generator_function, name='', no_refresh=False):
         """Wenn Stoppuhr <greater> %2
 
         Translation string: Wenn Stoppuhr <greater> %2
@@ -1539,7 +1539,7 @@ class Figur():
         """
         return self._core.motion_yposition()
                 
-    def von(self, operator, number):
+    def mathematische_funktion(self, operator, number):
         """%1 von %2
 
         Translation string: %1 von %2
@@ -1852,7 +1852,7 @@ class Figur():
         """
         return self._core.pen_stamp()
                 
-    def pystage_addcostume(self, name, center_x=None, center_y=None, factor=1):
+    def füge_kostüm_hinzu(self, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -1874,7 +1874,7 @@ class Figur():
         """
         return self._core.pystage_addcostume(name, center_x, center_y, factor)
                 
-    def pystage_addsound(self, name):
+    def füge_klang_hinzu(self, name):
         """
 
         Translation string: 
@@ -1893,7 +1893,7 @@ class Figur():
         """
         return self._core.pystage_addsound(name)
                 
-    def pystage_insertcostume(self, index, name, center_x=None, center_y=None, factor=1):
+    def füge_kostüm_ein(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -1916,7 +1916,7 @@ class Figur():
         """
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
                 
-    def pystage_makevariable(self, name, all_sprites=True):
+    def erzeuge_variable(self, name, value=0, all_sprites=True):
         """
 
         Translation string: 
@@ -1934,9 +1934,9 @@ class Figur():
         -------
 
         """
-        return self._core.pystage_makevariable(name, all_sprites)
+        return self._core.pystage_makevariable(name, value, all_sprites)
                 
-    def pystage_replacecostume(self, index, name, center_x=None, center_y=None, factor=1):
+    def ersetze_kostüm(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -1959,7 +1959,7 @@ class Figur():
         """
         return self._core.pystage_replacecostume(index, name, center_x, center_y, factor)
                 
-    def pystage_setmonitorposition(self, name, x, y):
+    def setze_monitor_position(self, name, x, y):
         """
 
         Translation string: 
@@ -1980,7 +1980,7 @@ class Figur():
         """
         return self._core.pystage_setmonitorposition(name, x, y)
                 
-    def pystage_setmonitorstyle_large(self, name):
+    def setze_monitor_stil_groß(self, name):
         """
 
         Translation string: 
@@ -1999,7 +1999,7 @@ class Figur():
         """
         return self._core.pystage_setmonitorstyle_large(name)
                 
-    def pystage_setmonitorstyle_normal(self, name):
+    def setze_monitor_stil_normal(self, name):
         """
 
         Translation string: 
@@ -2018,7 +2018,7 @@ class Figur():
         """
         return self._core.pystage_setmonitorstyle_normal(name)
                 
-    def pystage_setmonitorstyle_slider(self, name):
+    def setze_monitor_stil_regler(self, name):
         """
 
         Translation string: 
@@ -2264,7 +2264,7 @@ class Figur():
         """
         return self._core.sensing_keypressed(key)
                 
-    def lautstärke(self):
+    def lautstärke_mikrofon(self):
         """Lautstärke
 
         Translation string: Lautstärke
@@ -2438,7 +2438,7 @@ class Figur():
         """
         return self._core.sensing_of_size(sprite)
                 
-    def von(self, variable, sprite='_stage_'):
+    def gib_variable_von(self, variable, sprite='_stage_'):
         """%1 von %2
 
         Translation string: %1 von %2
@@ -2874,3 +2874,277 @@ class Figur():
 
         """
         return self._core.pystage_setname(name)
+
+    def erzeuge_liste(self, name, values=None, all_sprites=True):
+        """Erzeuge eine Liste.
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        values : list
+            Die anfänglichen Elemente der Liste.
+        all_sprites : bool
+            Wenn True, kann die Liste von der Bühne und allen Figuren benutzt werden.
+            Wenn False, gehört sie nur zu dieser Figur.
+        """
+        return self._core.pystage_makelistvariable(name, values, all_sprites)
+
+    def füge_zu_liste_hinzu(self, name, item):
+        """füge %1 zu Liste %2 hinzu
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        item
+            Das Element, eine Zahl oder ein Text.
+        """
+        return self._core.data_addtolist(name, item)
+
+    def lösche_element_aus_liste(self, name, index):
+        """lösche %1 aus Liste %2
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        index : int or str
+            Die Position, beginnend mit 1. Auch möglich: "last" und "random". Mit "all" werden alle Elemente gelöscht.
+        """
+        return self._core.data_deleteoflist(name, index)
+
+    def lösche_alles_aus_liste(self, name):
+        """lösche alles aus Liste %1
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        """
+        return self._core.data_deletealloflist(name)
+
+    def füge_in_liste_ein(self, name, item, index):
+        """füge %1 bei %2 in Liste %3 ein
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        item
+            Das Element, eine Zahl oder ein Text.
+        index : int or str
+            Die Position, beginnend mit 1. Auch möglich: "last" und "random".
+        """
+        return self._core.data_insertatlist(name, item, index)
+
+    def ersetze_element_von_liste(self, name, index, item):
+        """ersetze Element %1 von Liste %2 durch %3
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        index : int or str
+            Die Position, beginnend mit 1. Auch möglich: "last" und "random".
+        item
+            Das Element, eine Zahl oder ein Text.
+        """
+        return self._core.data_replaceitemoflist(name, index, item)
+
+    def element_von_liste(self, name, index):
+        """Element %1 von Liste %2
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        index : int or str
+            Die Position, beginnend mit 1. Auch möglich: "last" und "random".
+
+        Returns
+        -------
+        Das Element oder ein leerer Text, wenn es an dieser Position kein Element gibt.
+        """
+        return self._core.data_itemoflist(name, index)
+
+    def nummer_in_liste(self, name, item):
+        """Nummer von %1 in Liste %2
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        item
+            Das Element, eine Zahl oder ein Text.
+
+        Returns
+        -------
+        int
+            Die Position des ersten Vorkommens, 0 wenn das Element nicht in der Liste ist.
+        """
+        return self._core.data_itemnumoflist(name, item)
+
+    def länge_von_liste(self, name):
+        """Länge von Liste %1
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+
+        Returns
+        -------
+        int
+        """
+        return self._core.data_lengthoflist(name)
+
+    def liste_enthält(self, name, item):
+        """Liste %1 enthält %2?
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        item
+            Das Element, eine Zahl oder ein Text.
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.data_listcontainsitem(name, item)
+
+    def gib_liste(self, name):
+        """Die Liste selbst.
+
+        Das ist die echte Python-Liste, sie kann wie jede andere Liste benutzt werden.
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+
+        Returns
+        -------
+        list
+        """
+        return self._core.data_listvariable(name)
+
+    def zeige_liste(self, name):
+        """zeige Liste %1
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        """
+        return self._core.data_showlist(name)
+
+    def verstecke_liste(self, name):
+        """verstecke Liste %1
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        """
+        return self._core.data_hidelist(name)
+
+    def setze_listenmonitor_position(self, name, x, y, width=None, height=None):
+        """Setze Position und Größe der auf der Bühne angezeigten Liste.
+
+        Parameters
+        ----------
+        name : str
+            Der Name der Liste.
+        x : int
+            Linker Rand.
+        y : int
+            Oberer Rand.
+        width : int
+            Breite in Pixeln, automatisch wenn nicht angegeben.
+        height : int
+            Höhe in Pixeln, automatisch wenn nicht angegeben.
+        """
+        return self._core.pystage_setlistmonitorposition(name, x, y, width, height)
+
+    def verbinde(self, string1, string2):
+        """verbinde %1 und %2
+
+        Parameters
+        ----------
+        string1
+            Der erste Text oder die erste Zahl.
+        string2
+            Der zweite Text oder die zweite Zahl.
+
+        Returns
+        -------
+        str
+        """
+        return self._core.operator_join(string1, string2)
+
+    def zeichen_von(self, letter, string):
+        """Zeichen %1 von %2
+
+        Parameters
+        ----------
+        letter : int
+            Die Position des Zeichens, beginnend mit 1.
+        string : str
+            Der Text.
+
+        Returns
+        -------
+        str
+            Das Zeichen oder ein leerer Text, wenn es an dieser Position kein Zeichen gibt.
+        """
+        return self._core.operator_letter_of(letter, string)
+
+    def länge_von(self, string):
+        """Länge von %1
+
+        Parameters
+        ----------
+        string : str
+            Der Text.
+
+        Returns
+        -------
+        int
+        """
+        return self._core.operator_length(string)
+
+    def enthält(self, string1, string2):
+        """%1 enthält %2?
+
+        Groß- und Kleinschreibung wird ignoriert.
+
+        Parameters
+        ----------
+        string1 : str
+            Der Text, in dem gesucht wird.
+        string2 : str
+            Der Text, nach dem gesucht wird.
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_contains(string1, string2)
+
+    def runde(self, number):
+        """%1 gerundet
+
+        Wie in Scratch wird .5 immer aufgerundet.
+
+        Parameters
+        ----------
+        number : float
+
+        Returns
+        -------
+        int
+        """
+        return self._core.operator_round(number)

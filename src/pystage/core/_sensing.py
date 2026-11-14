@@ -1,8 +1,6 @@
 import pygame
-import pystage
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
-from math import sqrt
 import datetime
 
 
@@ -19,23 +17,29 @@ class _Sensing(BaseSprite):
         return self.stage.input_manager.answer
 
     def sensing_keypressed(self, key):
-        return pygame.key.get_pressed()[KEY_MAPPINGS[key]]   
+        pressed = pygame.key.get_pressed()
+        key = str(key).lower()
+        if key == "any":
+            return any(pressed)
+        if key not in KEY_MAPPINGS:
+            return False
+        return bool(pressed[KEY_MAPPINGS[key]])
 
     def sensing_mousedown(self):
         return any(pygame.mouse.get_pressed())
 
     def sensing_mousex(self):
-        x = pygame.mouse.get_pos()[0]
-        return ((x - self.stage.offset_x) / self.stage.scale_factor) - self.stage.width / 2
+        x = self.stage._mouse_pos().x - self.stage.center_x
+        return max(-self.stage.center_x, min(self.stage.center_x, round(x)))
 
     def sensing_mousey(self):
-        y = pygame.mouse.get_pos()[1]
-        return -(y - self.stage.offset_y) / self.stage.scale_factor + self.stage.height / 2
+        y = -self.stage._mouse_pos().y + self.stage.center_y
+        return max(-self.stage.center_y, min(self.stage.center_y, round(y)))
 
     def sensing_loudness(self):
-        # See events area, not sure if we support microphone access
-        # This could be useful: https://python-sounddevice.readthedocs.io/en/0.4.7/index.html
-        print("Microphone access is currently not supported. See https://github.com/pystage/pystage/issues/116")
+        # There is no microphone access, Scratch returns -1 in this case.
+        # See https://github.com/pystage/pystage/issues/116
+        return -1
 
     def sensing_timer(self):
         return self.stage.timer
@@ -65,71 +69,75 @@ class _Sensing(BaseSprite):
     # should not be used.
 
     def sensing_of_xposition(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).motion_xposition()
     sensing_of_xposition.opcode="sensing_of"
     sensing_of_xposition.param="PROPERTY"
     sensing_of_xposition.value="x position"
 
 
     def sensing_of_yposition(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).motion_yposition()
     sensing_of_yposition.opcode="sensing_of"
     sensing_of_yposition.param="PROPERTY"
     sensing_of_yposition.value="y position"
 
 
     def sensing_of_direction(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).motion_direction()
     sensing_of_direction.opcode="sensing_of"
     sensing_of_direction.param="PROPERTY"
     sensing_of_direction.value="direction"
 
 
     def sensing_of_costumenumber(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).looks_costumenumbername_number()
     sensing_of_costumenumber.opcode="sensing_of"
     sensing_of_costumenumber.param="PROPERTY"
     sensing_of_costumenumber.value="costume #"
 
 
     def sensing_of_costumename(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).looks_costumenumbername_name()
     sensing_of_costumename.opcode="sensing_of"
     sensing_of_costumename.param="PROPERTY"
     sensing_of_costumename.value="costume name"
 
 
     def sensing_of_size(self, sprite):
-        pass
+        return self.stage._get_sprite(sprite).looks_size()
     sensing_of_size.opcode="sensing_of"
     sensing_of_size.param="PROPERTY"
     sensing_of_size.value="size"
 
 
     def sensing_of_volume(self, sprite="_stage_"):
-        pass
+        return self.stage._get_sprite(sprite).sound_volume()
     sensing_of_volume.opcode="sensing_of"
     sensing_of_volume.param="PROPERTY"
     sensing_of_volume.value="volume"
 
 
     def sensing_of_variable(self, variable, sprite="_stage_"):
-        pass
+        target = self.stage._get_sprite(sprite)
+        if variable in target.variables:
+            return target.variables[variable]
+        return 0
     sensing_of_variable.opcode="sensing_of"
 
 
     def sensing_of_backdropnumber(self, stage="_stage_"):
-        pass
+        return self.stage.looks_backdropnumbername_number()
     sensing_of_backdropnumber.opcode="sensing_of"
     sensing_of_backdropnumber.param="PROPERTY"
     sensing_of_backdropnumber.value="backdrop #"
 
 
     def sensing_of_backdropname(self, stage="_stage_"):
-        pass
+        return self.stage.looks_backdropnumbername_name()
     sensing_of_backdropname.opcode="sensing_of"
     sensing_of_backdropname.param="PROPERTY"
     sensing_of_backdropname.value="backdrop name"
+
 
     def sensing_current_year(self):
         return datetime.datetime.now().year
@@ -196,65 +204,101 @@ class _Sensing(BaseSprite):
         return since_2000
 
     def sensing_username(self):
-        # Makes not a lot of sense, maybe for compatibility?
-        pass
+        # Nobody is logged in, like in the offline editor of Scratch.
+        return ""
 
 class _SensingSprite(BaseSprite):
     def __init__(self):
         super().__init__()
 
     def sensing_touchingobject_pointer(self):
-        pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(pos):
-            x = pos[0] - self.rect.left
-            y = pos[1] - self.rect.top
-            color = self.image.get_at((x, y))
-            if color.a != 0:
-                return True
-        return False
+        if not self.visible:
+            return False
+        return self.stage._sprite_at(self.stage._mouse_pos(), [self]) is not None
 
     sensing_touchingobject_pointer.opcode="sensing_touchingobject"
     sensing_touchingobject_pointer.param="TOUCHINGOBJECTMENU"
     sensing_touchingobject_pointer.value="_mouse_"
 
     def sensing_touchingobject_edge(self):
+        self.costume_manager.update_sprite_image()
         return not self.stage.rect.contains(self.rect)
 
     sensing_touchingobject_edge.opcode="sensing_touchingobject"
     sensing_touchingobject_edge.param="TOUCHINGOBJECTMENU"
     sensing_touchingobject_edge.value="_edge_"
 
+    def _touches(self, other):
+        if other is self or not other.visible:
+            return False
+        if not other.rect.colliderect(self.rect):
+            return False
+        offset = (other.rect.left - self.rect.left, other.rect.top - self.rect.top)
+        return self.mask.overlap(other.mask, offset) is not None
+
     def sensing_touchingobject_sprite(self, sprite):
-        sprite = sprite._core
-        if sprite.rect.colliderect(self.rect):
-            offset = (self.rect.left - sprite.rect.left, self.rect.top - sprite.rect.top)
-            return sprite.mask.overlap(self.mask, offset) is not None
+        if sprite == "_mouse_":
+            return self.sensing_touchingobject_pointer()
+        if sprite == "_edge_":
+            return self.sensing_touchingobject_edge()
+        if not self.visible:
+            return False
+        sprite = self.stage._get_sprite(sprite)
+        self.costume_manager.update_sprite_image()
+        # Clones of the sprite count as well
+        for other in self.stage.sprites:
+            if other is sprite or (other.is_clone and other.name == sprite.name):
+                other.costume_manager.update_sprite_image()
+                if self._touches(other):
+                    return True
         return False
 
     sensing_touchingobject_sprite.opcode="sensing_touchingobject"
 
+    def _color_mask(self, surface, color):
+        # Scratch is tolerant with colors, so are we.
+        return pygame.mask.from_threshold(surface, pygame.Color(color), (12, 12, 12, 255))
+
+    def _touching_color(self, color, own_mask):
+        """True, if own_mask (in the rect of the sprite) touches the color."""
+        area = self.rect.clip(self.stage.rect)
+        if area.width == 0 or area.height == 0:
+            return False
+        # Everything but this sprite as it is seen on the stage
+        background = pygame.Surface(area.size, flags=pygame.SRCALPHA)
+        background.fill((255, 255, 255))
+        offset = (-area.left, -area.top)
+        self.stage._draw(background, offset)
+        background.blit(self.stage.pen_image, offset)
+        for other in self.stage.visible_sprites:
+            if other is not self:
+                background.blit(other.image, other.rect.move(offset))
+        color_mask = self._color_mask(background, color)
+        return own_mask.overlap(color_mask, (area.left - self.rect.left, area.top - self.rect.top)) is not None
+
     def sensing_touchingcolor(self, color):
-        pass
+        if not self.visible:
+            return False
+        self.costume_manager.update_sprite_image()
+        return self._touching_color(color, self.mask)
 
     def sensing_coloristouchingcolor(self, sprite_color, color):
-        pass
+        if not self.visible:
+            return False
+        self.costume_manager.update_sprite_image()
+        own_mask = self._color_mask(self.image, sprite_color)
+        own_mask = own_mask.overlap_mask(self.mask, (0, 0))
+        return self._touching_color(color, own_mask)
 
     def sensing_distanceto_pointer(self):
-        mx, my = pygame.mouse.get_pos()
-        # gets position of sprite
-        sprite_rect = self.rect
-        # Calculate the distance between the sprite and the mouse pointer
-        distance = sqrt((sprite_rect.centerx - mx)**2 + (sprite_rect.centery - my)**2)
-        return distance
-        
+        return self._pos.distance_to(self.stage._mouse_pos())
+
     sensing_distanceto_pointer.opcode="sensing_distanceto"
     sensing_distanceto_pointer.param="DISTANCETOMENU"
     sensing_distanceto_pointer.value="_mouse_"
 
     def sensing_distanceto_sprite(self, sprite):
-        # self is an instance of CoreSprite
-        # sprite is an instance of Sprite
-        return self._pos.distance_to(sprite._core._pos)
+        if sprite == "_mouse_":
+            return self.sensing_distanceto_pointer()
+        return self._pos.distance_to(self.stage._get_sprite(sprite)._pos)
     sensing_distanceto_sprite.opcode="sensing_distanceto"
-
-

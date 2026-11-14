@@ -11,7 +11,7 @@ def mach_was(zombie : Figur):
         zombie.drehe_dich_nach_links_um_grad(90)
         zombie.warte_sekunden(1)
 
-zombie.wenn_GREENFLAG_angeklickt_wird(mach_was)
+zombie.wenn_programm_startet(mach_was)
 
 
 def reagiere(zombie):

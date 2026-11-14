@@ -1,56 +1,62 @@
 import pygame
-from pygame.mixer import music
 from pystage.core.assets import SoundManager
 from pystage.core._base_sprite import BaseSprite
-import time
 
 
 class _Sound(BaseSprite):
 
-    # Like for costumes and backdrops, we need a class structure here.
-    # Plus a global sound manager.
     def __init__(self):
         super().__init__()
         self.sound_manager = SoundManager(self)
-        self.mixer = pygame.mixer
-        self.mixer.init(channels=2)
+        if not pygame.mixer.get_init():
+            try:
+                pygame.mixer.init()
+                pygame.mixer.set_num_channels(32)
+            except pygame.error as e:
+                print(f"WARNING: No sound available. ({e})")
+        # Each sprite and the stage has its own volume and effects.
         self.current_pan = 0
         self.current_pitch = 0
         self.current_volume = 100
+        # The channels this sprite is currently playing on.
+        self._channels = []
 
 
     def pystage_addsound(self, name):
         self.sound_manager.add_sound(name)
 
 
-    def sound_play(self, name, loop=0):
-        channel = self.mixer.find_channel()
-        if channel == None:
+    def _play(self, name, loop=0):
+        """Start a sound and return it, None if it can't be played."""
+        if not pygame.mixer.get_init():
+            return None
+        sound = self.sound_manager.get_sound(name, self.current_pitch)
+        if sound is None:
+            return None
+        channel = pygame.mixer.find_channel()
+        if channel is None:
             print(f"WARNING: No more free sound channels. Can't play '{name}'.")
-            return
-        sound = self.sound_manager.get_sound(name)
-        if sound is not None:
-            channel.play(sound, loop)
-        return channel
+            return None
+        self._channels = [c for c in self._channels if c.get_busy()]
+        self._channels.append(channel)
+        self._apply(channel)
+        channel.play(sound, loop)
+        return sound
+
+    def sound_play(self, name, loop=0):
+        self._play(name, loop)
 
     def sound_playuntildone(self, name):
-        sound = self.sound_manager.get_sound(name)
+        sound = self._play(name)
         if sound is not None:
-            self.mixer.find_channel().play(sound, 0)
-            # time.sleep(sound.get_length())
-            # This need to be done via wait time in code block
-            # TODO: Add this function to yield blocks.
             self.code_manager.current_block.add_to_wait_time = sound.get_length()
 
     def sound_stopallsounds(self):
-        self.mixer.stop()
+        if pygame.mixer.get_init():
+            pygame.mixer.stop()
 
     def sound_changeeffectby_pitch(self, value):
-        # TODO: for pitching there is no ready to use code in pygame. To do so
-        # we must operate on the audio array itself.
-        # -360 to 360, 10 is a half-step, 120 an octave
-        # changes only the speed of the sound
-        pass
+        self.sound_seteffectto_pitch(self.current_pitch + value)
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -58,10 +64,7 @@ class _Sound(BaseSprite):
     sound_changeeffectby_pitch.translation = "sound_effects_pitch"
 
     def sound_changeeffectby_pan(self, value):
-        # norm pan value from -100/100 to range 0/1
-        self.current_pan += value
-        self.current_pan = min(100, max(-100, self.current_pan))
-        self._apply()
+        self.sound_seteffectto_pan(self.current_pan + value)
 
     sound_changeeffectby_pan.opcode = "sound_changeeffectby"
     sound_changeeffectby_pan.param = "EFFECT"
@@ -69,9 +72,9 @@ class _Sound(BaseSprite):
     sound_changeeffectby_pan.translation = "sound_effects_pan"
 
     def sound_seteffectto_pitch(self, value):
-        # TODO: for pitching there is no ready to use code in pygame. To do so
-        # we must operate on the audio array itself.
-        pass
+        # -360 to 360, 10 is a half-step, 120 an octave.
+        # The pitch is used for sounds that are started from now on.
+        self.current_pitch = min(360, max(-360, value))
 
     sound_seteffectto_pitch.opcode = "sound_seteffectto"
     sound_seteffectto_pitch.param = "EFFECT"
@@ -80,8 +83,7 @@ class _Sound(BaseSprite):
 
     def sound_seteffectto_pan(self, value):
         # Values from -100 (left) to 100 (right)
-        self.current_pan = value
-        self.current_pan = min(100, max(-100, self.current_pan))
+        self.current_pan = min(100, max(-100, value))
         self._apply()
 
     sound_seteffectto_pan.opcode = "sound_seteffectto"
@@ -94,32 +96,21 @@ class _Sound(BaseSprite):
         self.current_pitch = 0
         self._apply()
 
-        # apply pitch
-
-    def _apply(self):
-        # norm pan value from -100/100 to range 0/1
-        pgpan = (self.current_pan + 100) / 200
-        pgvolume = self.current_volume / 100
-        for channel_id in range(self.mixer.get_num_channels()):
-            if pgpan > 0.5:
-                self.mixer.Channel(channel_id).set_volume(1, 0)
-            else:
-                self.mixer.Channel(channel_id).set_volume(0, 1)
-
-        for channel_id in range(self.mixer.get_num_channels()):
-            self.mixer.Channel(channel_id).set_volume(pgvolume)
+    def _apply(self, channel=None):
+        """Apply volume and pan to one or all channels of this sprite."""
+        volume = self.current_volume / 100
+        left = volume * min(1, (100 - self.current_pan) / 100)
+        right = volume * min(1, (100 + self.current_pan) / 100)
+        self._channels = [c for c in self._channels if c.get_busy() or c is channel]
+        for c in ([channel] if channel else self._channels):
+            c.set_volume(left, right)
 
     def sound_changevolumeby(self, value):
-        self.current_volume += value
-        self.current_volume = min(100, max(0, self.current_volume))
-        self._apply()
+        self.sound_setvolumeto(self.current_volume + value)
 
     def sound_setvolumeto(self, value):
-        self.current_volume = value
-        self.current_volume = min(100, max(0, self.current_volume))
+        self.current_volume = min(100, max(0, value))
         self._apply()
 
     def sound_volume(self):
-        # as we hide the channel mechanic, we assume all channels are set to the same volume
-        return self.mixer.Channel(0).get_volume() * 100
-
+        return self.current_volume

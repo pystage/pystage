@@ -1,6 +1,8 @@
 import pygame
 import pkg_resources
 
+from pystage.core.values import to_string
+
 pygame.init()
 
 
@@ -186,14 +188,14 @@ class BubbleManager():
 
     def say(self, text: str, border=Bubble.SAY):
         # print(text)
-        if isinstance(text, (int, float)):
-            # trim the non-zero fractional part
-            # e.g. 8.00 will be 8
-            text = str(round(text, 2) if text % 1 > 0 else int(text))
+        if isinstance(text, float):
+            # Only two decimal places are shown, e.g. 8.00 will be 8
+            text = round(text, 2)
+        text = "" if text is None else to_string(text)
         if self.bubble:
             self.bubble.kill()
             self.bubble = None
-        if text is not None and text.strip() != "":
+        if text.strip() != "":
             self.bubble = Bubble(self.sprite, text, border)
             self.sprite.stage.bubbles.add(self.bubble)
             

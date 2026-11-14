@@ -1,5 +1,4 @@
 import pygame
-import pkg_resources
 
 
 # Mixins
@@ -20,8 +19,8 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
         self.stage = stage
         # Above attributes need to be set first so that mixins can access them properly
         super().__init__()
-        default_file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
-        self.image = pygame.image.load(default_file)
+        # Placeholder until a costume is added
+        self.image = pygame.Surface((1, 1), flags=pygame.SRCALPHA)
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
         if costume:
@@ -42,7 +41,6 @@ class CoreSprite(_Motion, _Events, _LooksSprite, _Sound, _Sensing, _SensingSprit
     def update(self, dt):
         self.code_manager._update(dt)
         self.costume_manager.update_sprite_image()
-        self._update_pen()
 
     def __str__(self):
         return self.name

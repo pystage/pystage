@@ -1,12 +1,41 @@
 import random
 import math
 
+from pystage.core.values import to_number, to_string
+
 class _Operators():
     def __init__(self):
         super().__init__()
 
     def operator_random(self, start, end):
-        return random.randint(start, end)
+        # Like in Scratch: Whole numbers lead to a whole number,
+        # otherwise the result is a decimal number.
+        whole = all(float(to_number(v)).is_integer() and "." not in str(v) for v in (start, end))
+        low, high = sorted((to_number(start), to_number(end)))
+        if whole:
+            return random.randint(int(low), int(high))
+        return random.uniform(low, high)
+
+    def operator_join(self, string1, string2):
+        return to_string(string1) + to_string(string2)
+
+    def operator_letter_of(self, letter, string):
+        string = to_string(string)
+        index = int(to_number(letter))
+        if index < 1 or index > len(string):
+            return ""
+        return string[index - 1]
+
+    def operator_length(self, string):
+        return len(to_string(string))
+
+    def operator_contains(self, string1, string2):
+        # Not case sensitive, like in Scratch
+        return to_string(string2).lower() in to_string(string1).lower()
+
+    def operator_round(self, number):
+        # Scratch always rounds .5 up, Python rounds to the even number.
+        return math.floor(to_number(number) + 0.5)
 
     def operator_mathop(self, operator, number): 
         ops = {
@@ -29,7 +58,7 @@ class _Operators():
             raise ValueError(f"Operator {operator} not supported.")
         
         try:
-            value = ops[operator](number)
+            value = ops[operator](to_number(number))
             if value == float("inf"):
                 return "Infinity"
             elif value == -float("inf"):

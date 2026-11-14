@@ -22,10 +22,15 @@ class _Motion(_Sensing):
         self._direction = 0
         # Position is stored internally as PyGame coordinates
         # and refers to the center of the costume.
-        self._pos = pygame.Vector2(0, 0)
+        self._pos = pygame.Vector2(self.stage.center_x, self.stage.center_y)
         self.draggable = False
-        self.motion_setx(0)
-        self.motion_sety(0)
+
+    def _set_pos(self, pos):
+        """Move to a position in PyGame coordinates. Draws, if the pen is down."""
+        old = pygame.Vector2(self._pos)
+        self._pos.update(pos)
+        if old != self._pos:
+            self._pen_line(old, self._pos)
 
     def motion_turnleft(self, deg):
         self._direction += deg
@@ -38,7 +43,7 @@ class _Motion(_Sensing):
     def motion_movesteps(self, steps):
         dx = steps * math.cos(_deg2rad(self._direction))
         dy = steps * math.sin(_deg2rad(self._direction))
-        self._pos += pygame.Vector2(dx, -dy) # PyGame has inverted y axis
+        self._set_pos(self._pos + pygame.Vector2(dx, -dy)) # PyGame has inverted y axis
 
 
     def motion_goto_random(self):
@@ -62,14 +67,14 @@ class _Motion(_Sensing):
 
 
     def motion_goto_sprite(self, sprite):
-        self.motion_gotoxy(sprite.x_position(), sprite.y_position())
+        sprite = self.stage._get_sprite(sprite)
+        self.motion_gotoxy(sprite.motion_xposition(), sprite.motion_yposition())
 
     motion_goto_sprite.opcode = "motion_goto"
 
 
     def motion_gotoxy(self, x, y):
-        self.motion_setx(x)
-        self.motion_sety(y)
+        self._set_pos((x + self.stage.center_x, -y + self.stage.center_y))
 
 
     def motion_glideto_random(self, secs):
@@ -95,7 +100,8 @@ class _Motion(_Sensing):
 
 
     def motion_glideto_sprite(self, secs, sprite):
-        return self.motion_glidesecstoxy(secs, sprite.x, sprite.y)
+        sprite = self.stage._get_sprite(sprite)
+        return self.motion_glidesecstoxy(secs, sprite.motion_xposition(), sprite.motion_yposition())
 
     motion_glideto_sprite.opcode = "motion_glideto"
 
@@ -122,6 +128,7 @@ class _Motion(_Sensing):
     motion_pointtowards_pointer.value = "_mouse_"
 
     def motion_pointtowards_sprite(self, sprite):
+        sprite = self.stage._get_sprite(sprite)
         dx = sprite.motion_xposition() - self.motion_xposition()
         dy = sprite.motion_yposition() - self.motion_yposition()
         self._direction = _rad2deg(math.atan2(dy, dx))
@@ -130,38 +137,40 @@ class _Motion(_Sensing):
 
 
     def motion_changexby(self, value):
-        self._pos.x += value
+        self._set_pos((self._pos.x + value, self._pos.y))
 
 
     def motion_setx(self, value):
-        self._pos.x = value + self.stage.center_x
+        self._set_pos((value + self.stage.center_x, self._pos.y))
 
 
     def motion_changeyby(self, value):
-        self._pos.y -= value # inverted y axis
+        self._set_pos((self._pos.x, self._pos.y - value)) # inverted y axis
 
 
     def motion_sety(self, value):
-        self._pos.y = -value + self.stage.center_y
+        self._set_pos((self._pos.x, -value + self.stage.center_y))
 
 
     def motion_ifonedgebounce(self):
+        self.costume_manager.update_sprite_image()
+        pos = pygame.Vector2(self._pos)
         if self.rect.left < 0:
             self._direction = 180 - self._direction
-            self.costume_manager.update_sprite_image()
-            self._pos.x -= self.rect.left
+            pos.x -= self.rect.left
         elif self.rect.right > self.stage.width:
             self._direction = 180 - self._direction
-            self.costume_manager.update_sprite_image()
-            self._pos.x -= self.rect.right - self.stage.width
+            pos.x -= self.rect.right - self.stage.width
         elif self.rect.top < 0:
             self._direction = -self._direction
-            self.costume_manager.update_sprite_image()
-            self._pos.y -= self.rect.top
+            pos.y -= self.rect.top
         elif self.rect.bottom > self.stage.height:
             self._direction = -self._direction
-            self.costume_manager.update_sprite_image()
-            self._pos.y -= self.rect.bottom - self.stage.height
+            pos.y -= self.rect.bottom - self.stage.height
+        else:
+            return
+        self._set_pos(pos)
+        self.costume_manager.update_sprite_image()
 
 
     def motion_setrotationstyle_leftright(self):
@@ -170,7 +179,6 @@ class _Motion(_Sensing):
     motion_setrotationstyle_leftright.opcode = "motion_setrotationstyle"
     motion_setrotationstyle_leftright.param = "STYLE"
     motion_setrotationstyle_leftright.value = "left-right"
-    motion_setrotationstyle_leftright.translation="looks_effect_brightness"
 
     def motion_setrotationstyle_dontrotate(self):
         self.costume_manager.rotation_style = CostumeManager.NO_ROTATION

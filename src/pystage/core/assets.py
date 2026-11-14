@@ -7,6 +7,7 @@ import io
 import pygame
 import pkg_resources
 import pystage
+from pystage.core.values import is_number, to_number
 
 _round = lambda v: pygame.Vector2(round(v.x), round(v.y))
 
@@ -21,6 +22,10 @@ class CostumeManager():
         self.costumes = []
         self.current_costume = -1
         self.rotation_style = CostumeManager.ALL_AROUND
+        # The rendered image is only updated when something changed.
+        self._cache_key = None
+        self._cached_center = pygame.Vector2(0, 0)
+        self._cached_backdrop = None
 
 
     def add_costume(self, name, center_x=None, center_y=None, factor=1):
@@ -69,33 +74,67 @@ class CostumeManager():
         self.current_costume = random.randint(0, len(self.costumes)-1)
         self.update_sprite_image()
 
+    def has_costume(self, name):
+        return any(costume.name.lower().strip() == str(name).lower().strip() for costume in self.costumes)
+
     def switch_costume(self, name):
-        # Scratch also supports numbers here
-        if type(name)==int:
-            self.current_costume = name % len(self.costumes)
-            self.update_sprite_image
+        if not self.costumes:
             return
-        for i, costume in enumerate(self.costumes):
-            if costume.name.lower().strip() == name.lower().strip():
-                self.current_costume = i
-                self.update_sprite_image()
+        # A name always wins, even if it looks like a number.
+        if not isinstance(name, (int, float)) or isinstance(name, bool):
+            for i, costume in enumerate(self.costumes):
+                if costume.name.lower().strip() == str(name).lower().strip():
+                    self.current_costume = i
+                    self.update_sprite_image()
+                    return
+            if not is_number(name):
                 return
+        # Scratch also supports numbers here, starting with 1.
+        self.current_costume = (int(round(to_number(name))) - 1) % len(self.costumes)
+        self.update_sprite_image()
+
+    def _effects(self):
+        o = self.owner
+        return (o.color, o.fisheye, o.whirl, o.pixelate, o.mosaic, o.brightness, o.ghost)
 
     def update_sprite_image(self):
         if isinstance(self.owner, pystage.core.CoreStage):
             return
-        image, new_center = self.process_image()
-        self.owner.image = image
-        self.owner.mask = pygame.mask.from_surface(image)
-        self.owner.rect = image.get_rect()
-        self.owner.rect.topleft = _round(self.owner._pos) - new_center
-        new_center = _round(new_center)
-        if self.owner.stage.show_sprite_boundaries:
-            image.blit(self.owner.mask.to_surface(), (0,0))
-            pygame.draw.rect(image, "red", image.get_rect(), 1)
-            pygame.draw.line(image, "red", new_center - (10, 0), new_center + (10, 0), 1)
-            pygame.draw.line(image, "red", new_center - (0, 10), new_center + (0, 10), 1)
+        if self.current_costume == -1:
+            return
+        owner = self.owner
+        direction = owner._direction % 360
+        if self.rotation_style == CostumeManager.NO_ROTATION:
+            direction = 0
+        elif self.rotation_style == CostumeManager.LEFT_RIGHT:
+            direction = 180 if 90 < direction < 270 else 0
+        key = (id(self.costumes[self.current_costume]), direction, owner.size, self._effects())
+        if key != self._cache_key:
+            image, new_center = self.process_image()
+            self._cache_key = key
+            self._cached_center = _round(new_center)
+            owner.image = image
+            owner.mask = pygame.mask.from_surface(image)
+            if owner.stage.show_sprite_boundaries:
+                c = self._cached_center
+                image.blit(owner.mask.to_surface(), (0,0))
+                pygame.draw.rect(image, "red", image.get_rect(), 1)
+                pygame.draw.line(image, "red", c - (10, 0), c + (10, 0), 1)
+                pygame.draw.line(image, "red", c - (0, 10), c + (0, 10), 1)
+        owner.rect = owner.image.get_rect()
+        owner.rect.topleft = _round(owner._pos) - self._cached_center
 
+    def get_backdrop(self):
+        """The rendered backdrop and its position on the stage."""
+        costume = self.get_costume()
+        if costume is None:
+            return None, (0, 0)
+        key = (id(costume), self._effects())
+        if key != self._cache_key:
+            self._cache_key = key
+            self._cached_backdrop = self.run_processors(costume.image.copy())
+        stage = self.owner
+        return self._cached_backdrop, (round(stage.center_x - costume.center_x), round(stage.center_y - costume.center_y))
 
     def get_image(self):
         if self.current_costume == -1:
@@ -126,10 +165,11 @@ class CostumeManager():
             angle = 0
         else: # LEFT_RIGHT
             angle = 0
-            flipped = True if 90 < self.owner._direction % 360 < 270 else False 
+            flipped = True if 90 < self.owner._direction % 360 < 270 else False
 
-        # Zoom settings
-        scale = self.owner.size / 100
+        # Very small or negative sizes are not possible
+        scale = max(self.owner.size, 1) / 100
+
 
         old_center = self.get_center()
         old_center.y *= -1
@@ -175,8 +215,8 @@ class CostumeManager():
         value = self.owner.color
         if value == 0:
             return image
-        bg_img = pygame.Surface(image.get_size()).convert_alpha()
-        bg_img.fill(self.gen_color(self.owner.color))
+        bg_img = pygame.Surface(image.get_size(), flags=pygame.SRCALPHA)
+        bg_img.fill(self.gen_color(self.owner.color % 200))
         bg_img.blit(image, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
         return bg_img
 
@@ -251,7 +291,7 @@ class CostumeManager():
         if value == 0:
             return image
         w, h = image.get_size()
-        image = pygame.transform.scale(image, (w / value, h / value))
+        image = pygame.transform.scale(image, (max(1, w // value), max(1, h // value)))
         image = pygame.transform.scale(image, (w, h))
         return image
 
@@ -290,36 +330,23 @@ class CostumeManager():
         return new_image
 
     def brightness_processor(self, image: pygame.Surface):
-        value = self.owner.brightness
+        value = max(-100, min(self.owner.brightness, 100))
         if value == 0:
             return image
-        brightened_image = pygame.Surface(image.get_size(), pygame.SRCALPHA)
-        brightened_image.blit(image, (0, 0))
-        for x in range(brightened_image.get_width()):
-            for y in range(brightened_image.get_height()):
-                pixel = brightened_image.get_at((x, y))
-                r, g, b, a = pixel
-
-                if value > 0:
-                    r += (255 - r) * value // 100
-                    g += (255 - g) * value // 100
-                    b += (255 - b) * value // 100
-                elif value < 0:
-                    r -= r * abs(value) // 100
-                    g -= g * abs(value) // 100
-                    b -= b * abs(value) // 100
-
-                r = max(0, min(r, 255))
-                g = max(0, min(g, 255))
-                b = max(0, min(b, 255))
-
-                brightened_image.set_at((x, y), (r, g, b, a))
-
-        return brightened_image
+        amount = int(abs(value) * 255 / 100)
+        result = image.copy()
+        flag = pygame.BLEND_RGB_ADD if value > 0 else pygame.BLEND_RGB_SUB
+        result.fill((amount, amount, amount), special_flags=flag)
+        return result
 
     def ghost_processor(self, image: pygame.Surface):
-        image.set_alpha((100-self.owner.ghost)/100*255)
-        return image
+        ghost = max(0, min(self.owner.ghost, 100))
+        if ghost == 0:
+            return image
+        result = image.copy()
+        alpha = int((100 - ghost) / 100 * 255)
+        result.fill((255, 255, 255, alpha), special_flags=pygame.BLEND_RGBA_MULT)
+        return result
 
     def gen_color(self, value):
         if value >= 0 and value <= 50:
@@ -378,14 +405,19 @@ class Costume():
             print("\nWARNING: SVG conversion is for convenience only")
             print("and might not work as expected. It is recommended")
             print("to manually convert to bitmap graphics (png or jpg).\n")
+        if pygame.display.get_surface() is not None:
+            self.image = self.image.convert_alpha()
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
-        self.image = self.image.subsurface(self.image.get_bounding_rect()) 
+        bounding_rect = self.image.get_bounding_rect()
+        if bounding_rect.width == 0 or bounding_rect.height == 0:
+            # Completely transparent image
+            bounding_rect = pygame.Rect(0, 0, 1, 1)
+        self.image = self.image.subsurface(bounding_rect)
         # The offset resulting from the image crop
         offset = pygame.Vector2(self.image.get_offset())
         self.center_x = (float(self.image.get_parent().get_width()) / 2) - offset.x if center_x is None else (float(center_x) / factor) - offset.x 
         self.center_y = (float(self.image.get_parent().get_height()) / 2) - offset.y if center_y is None else (float(center_y) / factor) - offset.y
-        print(f"New costume: {name} -> {self.file}")
 
 
     def __str__(self):
@@ -405,8 +437,17 @@ class SoundManager():
             for n in name:
                 self.add_sound(n)
 
-    def get_sound(self, name):
-        return self.sounds[name].sound
+    def get_sound(self, name, pitch=0):
+        """Get the pygame sound, None if it does not exist or can't be played."""
+        if name not in self.sounds:
+            if isinstance(name, (int, float)) and self.sounds:
+                # Scratch also supports numbers here, starting with 1.
+                name = list(self.sounds)[(int(round(name)) - 1) % len(self.sounds)]
+            else:
+                # Sounds can be used without adding them explicitly
+                name = str(name)
+                self.add_sound(name)
+        return self.sounds[name].get(pitch)
 
 
 class Sound():
@@ -418,6 +459,8 @@ class Sound():
         self.sprite = sprite
         self.file = None
         self.sound = None
+        # pitch: sound
+        self._pitched = {}
         internal_folder = pkg_resources.resource_filename("pystage", "sounds/")
         # Add further folders for translations here
         named_folders = ["", "sounds/", "klaenge/"]
@@ -431,15 +474,41 @@ class Sound():
 
         for folder in search_folders:
             for ext in ["", ".wav", ".ogg", ".mp3"]:
-                if os.path.exists(f"{folder}{name}{ext}"):
+                if os.path.isfile(f"{folder}{name}{ext}"):
                     self.file = f"{folder}{name}{ext}"
                     break
             if self.file is not None:
                 break
-        if self.file.endswith(".mp3"):
-            print("WARNING: MP3 is not supported in pyStage. Use wav or ogg format.")
-        elif self.file is not None:
-            self.sound = pygame.mixer.Sound(self.file)
+        if self.file is None:
+            print(f"WARNING: Sound '{name}' not found.")
+        elif pygame.mixer.get_init():
+            try:
+                self.sound = pygame.mixer.Sound(self.file)
+            except pygame.error as e:
+                print(f"WARNING: Sound '{name}' can't be loaded, try to convert it to wav or ogg format. ({e})")
+
+
+    def get(self, pitch=0):
+        """The sound with the pitch effect of Scratch applied.
+
+        A pitch of 10 is a half-step, 120 an octave. Like in Scratch, this
+        also changes the speed of the sound. Needs numpy.
+        """
+        if self.sound is None or pitch == 0:
+            return self.sound
+        pitch = max(-360, min(360, round(pitch)))
+        if pitch not in self._pitched:
+            try:
+                import numpy
+                samples = pygame.sndarray.array(self.sound)
+                ratio = 2 ** (pitch / 120)
+                positions = numpy.arange(0, len(samples), ratio)
+                indices = numpy.minimum(positions.astype(int), len(samples) - 1)
+                self._pitched[pitch] = pygame.sndarray.make_sound(numpy.ascontiguousarray(samples[indices]))
+            except Exception:
+                # numpy is optional
+                self._pitched[pitch] = self.sound
+        return self._pitched[pitch]
 
 
     def __str__(self):

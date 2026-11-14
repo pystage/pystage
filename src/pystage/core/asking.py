@@ -25,11 +25,18 @@ class InputManager:
         self._answer = answer
         del self._queue[0]
 
+    def cancel(self, codeblock):
+        """Remove the questions of a code block, e.g. when it is stopped."""
+        for question in [q for q in self._queue if q.codeblock is codeblock]:
+            question.close()
+            self._queue.remove(question)
+
     def cancel_asking(self):
-        if self._queue:
-            self._queue[0].codeblock.asking = False
-            del self._queue[0]
-    
+        """Remove all questions."""
+        for question in self._queue:
+            question.close()
+        self._queue.clear()
+
     def process_key(self, event):
         if self.is_active():
             self._queue[0].process_key(event)
@@ -83,9 +90,7 @@ class Question:
         # Return ends the input
         elif key == pygame.K_RETURN:
             self.manager.accept_answer(self.answer)
-            self.codeblock.asking = False
-            if not self.is_stage_question:
-                self.codeblock.sprite_or_stage.looks_say("")
+            self.close()
         # Add unicode representation of the pressed key to the answer
         else:
             self.answer += event.unicode
@@ -94,6 +99,11 @@ class Question:
         text_width = self.stage.width - 2 * Question.OUTER_MARGIN - 2 * Question.INNER_MARGIN - 36 
         cutoff = max(rendered.get_width() - text_width, 0)
         self.rendered_answer = rendered.subsurface((cutoff, 0), (min(rendered.get_width(), text_width), rendered.get_height()))
+
+    def close(self):
+        self.codeblock.asking = False
+        if self.active and not self.is_stage_question:
+            self.codeblock.sprite_or_stage.looks_say("")
 
     def update(self, dt):
         if not self.active:

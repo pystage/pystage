@@ -1462,7 +1462,7 @@ class Sprite:
         """
         return self._core.motion_yposition()
 
-    def calculate(self, operator, number):
+    def math_function(self, operator, number):
         """%1 of %2
 
         Engl. Translation for your reference: ...
@@ -1814,7 +1814,7 @@ class Sprite:
         """
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
 
-    def create_variable(self, name, all_sprites=True):
+    def create_variable(self, name, value=0, all_sprites=True):
         """
 
         Engl. Translation for your reference: ...
@@ -1831,7 +1831,7 @@ class Sprite:
         -------
 
         """
-        return self._core.pystage_makevariable(name, all_sprites=True)
+        return self._core.pystage_makevariable(name, value, all_sprites)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
         """
@@ -1876,7 +1876,7 @@ class Sprite:
         """
         return self._core.pystage_setmonitorposition(name, x, y)
 
-    def pystage_setmonitorstyle_large(self, name):
+    def set_monitor_style_large(self, name):
         """
 
         Translation string: 
@@ -1895,7 +1895,7 @@ class Sprite:
         """
         return self._core.pystage_setmonitorstyle_large(name)
 
-    def pystage_setmonitorstyle_normal(self, name):
+    def set_monitor_style_normal(self, name):
         """
 
         Translation string: 
@@ -1914,7 +1914,7 @@ class Sprite:
         """
         return self._core.pystage_setmonitorstyle_normal(name)
 
-    def pystage_setmonitorstyle_slider(self, name):
+    def set_monitor_style_slider(self, name):
         """
 
         Translation string: 
@@ -2721,3 +2721,277 @@ class Sprite:
 
         """
         return self._core.pystage_setname(name)
+
+    def create_list(self, name, values=None, all_sprites=True):
+        """Create a list.
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        values : list
+            The initial items of the list.
+        all_sprites : bool
+            If True, the list can be used by the stage and all sprites.
+            If False, it belongs to this sprite only.
+        """
+        return self._core.pystage_makelistvariable(name, values, all_sprites)
+
+    def add_to_list(self, name, item):
+        """add %1 to list %2
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        item
+            The item, a number or a text.
+        """
+        return self._core.data_addtolist(name, item)
+
+    def delete_item_of_list(self, name, index):
+        """delete %1 of list %2
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        index : int or str
+            The position, starting with 1. Also possible: "last" and "random". With "all", all items are deleted.
+        """
+        return self._core.data_deleteoflist(name, index)
+
+    def delete_all_of_list(self, name):
+        """delete all of list %1
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        """
+        return self._core.data_deletealloflist(name)
+
+    def insert_at_list(self, name, item, index):
+        """insert %1 at %2 of list %3
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        item
+            The item, a number or a text.
+        index : int or str
+            The position, starting with 1. Also possible: "last" and "random".
+        """
+        return self._core.data_insertatlist(name, item, index)
+
+    def replace_item_of_list(self, name, index, item):
+        """replace item %1 of list %2 with %3
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        index : int or str
+            The position, starting with 1. Also possible: "last" and "random".
+        item
+            The item, a number or a text.
+        """
+        return self._core.data_replaceitemoflist(name, index, item)
+
+    def item_of_list(self, name, index):
+        """item %1 of list %2
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        index : int or str
+            The position, starting with 1. Also possible: "last" and "random".
+
+        Returns
+        -------
+        The item or an empty text, if there is no item at this position.
+        """
+        return self._core.data_itemoflist(name, index)
+
+    def item_number_in_list(self, name, item):
+        """item # of %1 in list %2
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        item
+            The item, a number or a text.
+
+        Returns
+        -------
+        int
+            The position of the first occurrence, 0 if the item is not in the list.
+        """
+        return self._core.data_itemnumoflist(name, item)
+
+    def length_of_list(self, name):
+        """length of list %1
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+
+        Returns
+        -------
+        int
+        """
+        return self._core.data_lengthoflist(name)
+
+    def list_contains(self, name, item):
+        """list %1 contains %2?
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        item
+            The item, a number or a text.
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.data_listcontainsitem(name, item)
+
+    def get_list(self, name):
+        """The list itself.
+
+        This is the real Python list, you can use it like any other list.
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+
+        Returns
+        -------
+        list
+        """
+        return self._core.data_listvariable(name)
+
+    def show_list(self, name):
+        """show list %1
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        """
+        return self._core.data_showlist(name)
+
+    def hide_list(self, name):
+        """hide list %1
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        """
+        return self._core.data_hidelist(name)
+
+    def set_list_monitor_position(self, name, x, y, width=None, height=None):
+        """Set position and size of the list shown on the stage.
+
+        Parameters
+        ----------
+        name : str
+            The name of the list.
+        x : int
+            Left border.
+        y : int
+            Upper border.
+        width : int
+            Width in pixels, automatic if not given.
+        height : int
+            Height in pixels, automatic if not given.
+        """
+        return self._core.pystage_setlistmonitorposition(name, x, y, width, height)
+
+    def join(self, string1, string2):
+        """join %1 %2
+
+        Parameters
+        ----------
+        string1
+            The first text or number.
+        string2
+            The second text or number.
+
+        Returns
+        -------
+        str
+        """
+        return self._core.operator_join(string1, string2)
+
+    def letter_of(self, letter, string):
+        """letter %1 of %2
+
+        Parameters
+        ----------
+        letter : int
+            The position of the letter, starting with 1.
+        string : str
+            The text.
+
+        Returns
+        -------
+        str
+            The letter or an empty text, if there is no letter at this position.
+        """
+        return self._core.operator_letter_of(letter, string)
+
+    def length_of(self, string):
+        """length of %1
+
+        Parameters
+        ----------
+        string : str
+            The text.
+
+        Returns
+        -------
+        int
+        """
+        return self._core.operator_length(string)
+
+    def contains(self, string1, string2):
+        """%1 contains %2?
+
+        Upper and lower case is ignored.
+
+        Parameters
+        ----------
+        string1 : str
+            The text to search in.
+        string2 : str
+            The text to search for.
+
+        Returns
+        -------
+        bool
+        """
+        return self._core.operator_contains(string1, string2)
+
+    def round(self, number):
+        """round %1
+
+        Like in Scratch, .5 is always rounded up.
+
+        Parameters
+        ----------
+        number : float
+
+        Returns
+        -------
+        int
+        """
+        return self._core.operator_round(number)

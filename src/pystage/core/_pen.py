@@ -15,50 +15,45 @@ class _Pen(BaseSprite):
         super().__init__()
 
         self.pen = False
-        self.pen_color = pygame.Color(255,0,0)
-        self.pen_size = 3
-        self.old_position = (0,0)
-        self.pen_up_at = (0,0)
+        self.pen_color = pygame.Color(0, 0, 255)
+        self.pen_size = 1
 
 
-    def _get_image(self):
-        if not self in self.stage.pen_images:
-            image = pygame.Surface((self.stage.width, self.stage.height), flags=pygame.SRCALPHA)
-            self.stage.pen_images[self] = image
-        return self.stage.pen_images[self]
-
-    def _update_pen(self):
-        if self.pen:
-            if self.old_position == self._pos:
-                return
-            pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self._pos, width=int(self.pen_size))
-            self.old_position = list(self._pos)
-        else:
-            if self.pen_up_at != self.old_position:
-                pygame.draw.line(self._get_image(), self.pen_color, self.old_position, self.pen_up_at, width=int(self.pen_size))
-                self.pen_up_at = self.old_position
+    def _pen_line(self, start, end):
+        """Draw a line on the pen layer, if the pen is down."""
+        if not self.pen:
+            return
+        image = self.stage.pen_image
+        size = max(1, int(round(self.pen_size)))
+        start, end = int2(start), int2(end)
+        if start != end:
+            pygame.draw.line(image, self.pen_color, start, end, width=size)
+        if size > 2 or start == end:
+            # Round ends, this is also the dot when the pen is put down.
+            pygame.draw.circle(image, self.pen_color, start, size / 2)
+            pygame.draw.circle(image, self.pen_color, end, size / 2)
 
     def pen_clear(self):
-        if self in self.stage.pen_images:
-            del self.stage.pen_images[self]
+        self.stage.pen_image.fill((0, 0, 0, 0))
 
 
     def pen_stamp(self):
-        pass
+        self.costume_manager.update_sprite_image()
+        self.stage.pen_image.blit(self.image, self.rect)
 
 
     def pen_penDown(self):
         if not self.pen:
-            self.old_position = list(self._pos)
-        self.pen = True
+            self.pen = True
+            self._pen_line(self._pos, self._pos)
 
 
     def pen_penUp(self):
-        self.pen_up_at = self._pos
         self.pen = False
 
 
     def pen_setPenColorToColor(self, color):
+        # A new object, clones must not share the color with the original
         self.pen_color = pygame.Color(color)
 
     pen_setPenColorToColor.translation = "pen_setcolor"
@@ -171,11 +166,11 @@ class _Pen(BaseSprite):
 
 
     def pen_changePenSizeBy(self, value):
-        self.pen_size += value
+        self.pen_size = max(1, self.pen_size + value)
 
     pen_changePenSizeBy.translation = "pen_changesize"
 
     def pen_setPenSizeTo(self, value):
-        self.pen_size = value
+        self.pen_size = max(1, value)
 
     pen_setPenSizeTo.translation = "pen_setsize"

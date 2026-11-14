@@ -55,6 +55,22 @@ def get_core_function(translated, language, stage=False):
                 return i.argval
     return None
 
+# facade class: {translated name: core name}
+_core_names = {}
+
+
+def _get_core_names(cls):
+    if cls not in _core_names:
+        names = {}
+        for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
+            for i in dis.Bytecode(func):
+                if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and i.argval!="_core":
+                    names[name] = i.argval
+                    break
+        _core_names[cls] = names
+    return _core_names[cls]
+
+
 def get_core_function_from_instance(translated, instance):
     """Get core API function for a translated function name.
 
@@ -71,10 +87,4 @@ def get_core_function_from_instance(translated, instance):
     # If core is used directly, return translated:
     if not instance:
         return translated
-    cls = instance.__class__
-    for name, func in inspect.getmembers(cls, predicate=inspect.isfunction):
-        for i in dis.Bytecode(func):
-            if (i.opname=="LOAD_METHOD" or i.opname=="LOAD_ATTR") and name==translated and i.argval!="_core":
-                return i.argval
-    return None
-
+    return _get_core_names(instance.__class__).get(translated)

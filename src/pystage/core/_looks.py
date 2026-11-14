@@ -9,6 +9,7 @@ class _Looks(BaseSprite):
 
     def looks_switchbackdropto_next(self):
         self.stage.costume_manager.next_costume()
+        return self.stage._backdrop_switched()
 
     looks_switchbackdropto_next.opcode="looks_switchbackdropto"
     looks_switchbackdropto_next.param="BACKDROP"
@@ -16,6 +17,7 @@ class _Looks(BaseSprite):
 
     def looks_switchbackdropto_previous(self):
         self.stage.costume_manager.previous_costume()
+        return self.stage._backdrop_switched()
 
     looks_switchbackdropto_previous.opcode="looks_switchbackdropto"
     looks_switchbackdropto_previous.param="BACKDROP"
@@ -23,6 +25,7 @@ class _Looks(BaseSprite):
 
     def looks_switchbackdropto_random(self):
         self.stage.costume_manager.random_costume()
+        return self.stage._backdrop_switched()
 
     looks_switchbackdropto_random.opcode="looks_switchbackdropto"
     looks_switchbackdropto_random.param="BACKDROP"
@@ -31,12 +34,22 @@ class _Looks(BaseSprite):
     def looks_switchbackdropto_backdrop(self, backdrop):
         # Backdrops are for the stage.
         # In Scratch, a sprite can change the backdrop.
-        self.stage.costume_manager.switch_costume(backdrop)
-    
+        special = {
+            "next backdrop": self.stage.costume_manager.next_costume,
+            "previous backdrop": self.stage.costume_manager.previous_costume,
+            "random backdrop": self.stage.costume_manager.random_costume,
+        }
+        if isinstance(backdrop, str) and backdrop in special and not self.stage.costume_manager.has_costume(backdrop):
+            special[backdrop]()
+        else:
+            self.stage.costume_manager.switch_costume(backdrop)
+        return self.stage._backdrop_switched()
+
     looks_switchbackdropto_backdrop.opcode="looks_switchbackdropto"
 
     def looks_nextbackdrop(self):
         self.stage.costume_manager.next_costume()
+        return self.stage._backdrop_switched()
 
     def looks_seteffectto_color(self, value):
         # the color value is from 0 to 200
@@ -256,7 +269,6 @@ class _LooksSprite(_Looks):
         self.size = percent
 
     def looks_show(self):
-        print("Show", self)
         if self.visible:
             return
         self.visible = True
@@ -264,7 +276,6 @@ class _LooksSprite(_Looks):
 
 
     def looks_hide(self):
-        print ("Hide", self)
         if not self.visible:
             return
         self.visible = False
@@ -360,8 +371,7 @@ class _LooksStage(_Looks):
 
 
     def looks_switchbackdroptoandwait(self, backdrop):
-        # Wait for any code under a "when backdrop is changed"
-        pass
-
-
-
+        # Wait for any code under a "when backdrop switches to"
+        current = self.code_manager.current_block
+        started = self.looks_switchbackdropto_backdrop(backdrop)
+        current.waiting_for = [block for block in started if block is not current]

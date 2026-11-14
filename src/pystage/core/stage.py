@@ -59,8 +59,11 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
     def layer_backward(self, sprite, value=1):
         self.layer_forward(sprite, -value)
 
-    def insert(self, i, sprite):
-        self._spritelist.insert(i, sprite)
+    def move_to(self, sprite, index):
+        if not sprite in self._spritelist:
+            raise ValueError(f"Sprite {sprite} unknown.")
+        self._spritelist.remove(sprite)
+        self._spritelist.insert(index, sprite)
 
 
 class CoreStage(
@@ -97,9 +100,9 @@ class CoreStage(
         self.sprites = SpriteGroup()
         self.visible_sprites = SpriteGroup()
         self.bubbles = pygame.sprite.Group()
-        self.visible_bubbles = pygame.sprite.Group()
         self.monitor_group = pygame.sprite.Group()
-        self.pen_images = {}
+        # All sprites draw on the same pen layer, it is created on demand.
+        self._pen_image = None
         self.background_color = (255, 255, 255)
         # surface is where the whole stage is rendered to
         # it defines the in-game resolution
@@ -119,28 +122,45 @@ class CoreStage(
         self.offset_y = 0
 
         self.timer = 0
+        self._dragged_sprite = None
+        self._drag_offset = pygame.Vector2(0, 0)
         self.show_sprite_boundaries = "--show-sprite-boundaries" in sys.argv
 
-    def pystage_createsprite(self, costume="default"):
+    @property
+    def pen_image(self):
+        if self._pen_image is None:
+            self._pen_image = pygame.Surface((self.width, self.height), flags=pygame.SRCALPHA)
+        return self._pen_image
+
+    def _create_core_sprite(self, costume="default"):
         sprite = CoreSprite(self, costume)
         self.sprites.add(sprite)
-        self._update_visible()
         if self.sprite_facade_class:
-            return self.sprite_facade_class(sprite)  # pylint: disable=E1102
-            # pylint produces a false positive here
-            # https://github.com/PyCQA/pylint/issues/1493
-        else:
-            return sprite
+            self.sprite_facade_class(sprite)  # pylint: disable=E1102
+        return sprite
+
+    def pystage_createsprite(self, costume="default"):
+        sprite = self._create_core_sprite(costume)
+        self._update_visible()
+        return sprite.facade or sprite
+
+    def _get_sprite(self, sprite):
+        """Get the core sprite for a sprite of any API or for a sprite name."""
+        if isinstance(sprite, str):
+            for candidate in self.sprites:
+                if candidate.name == sprite and not candidate.is_clone:
+                    return candidate
+            if sprite == "_stage_":
+                return self
+            raise ValueError(f"There is no sprite with the name '{sprite}'.")
+        return sprite._core
 
     def _update_visible(self):
         self.visible_sprites.empty()
-        self.visible_bubbles.empty()
         for sprite in self.sprites:
             assert(isinstance(sprite, CoreSprite))
             if sprite.visible:
                 self.visible_sprites.add(sprite)
-                if sprite.bubble_manager.bubble:
-                    self.visible_bubbles.add(sprite.bubble_manager.bubble)
 
     def _update(self, dt):
         self.code_manager._update(dt)
@@ -148,113 +168,151 @@ class CoreStage(
         # otherwise the no effect for to_front, to_back, etc.
         self._update_visible()
 
-    def _draw(self, surface: pygame.Surface):
+    def _draw(self, surface: pygame.Surface, offset=(0, 0)):
         surface.fill(self.background_color)
-        image = self.costume_manager.get_image()
-        if not image:
-            return
-        image = self.costume_manager.run_processors(image)
-        surface.blit(image, (0, 0))
+        image, position = self.costume_manager.get_backdrop()
+        if image:
+            surface.blit(image, (position[0] + offset[0], position[1] + offset[1]))
+
+    def _mouse_pos(self):
+        """Mouse position in stage pixels (PyGame coordinates).
+
+        The window can be resized, so the position on the screen has to
+        be scaled back to the resolution of the stage.
+        """
+        x, y = pygame.mouse.get_pos()
+        return pygame.Vector2(
+            (x - self.offset_x) / self.scale_factor,
+            (y - self.offset_y) / self.scale_factor,
+        )
+
+    def _sprite_at(self, pos, sprites):
+        """The topmost of the given sprites with a visible pixel at pos."""
+        for sprite in reversed(sprites):
+            if not sprite.rect.collidepoint(pos):
+                continue
+            x = int(pos[0] - sprite.rect.left)
+            y = int(pos[1] - sprite.rect.top)
+            if not sprite.image.get_rect().collidepoint(x, y):
+                continue
+            if sprite.image.get_at((x, y)).a != 0:
+                return sprite
+        return None
+
+    def event_whenstageclicked(self, generator_function, name="", no_refresh=False):
+        """
+        Adds the code block to the event queue for clicks on the stage.
+        """
+        new_block = self.code_manager.register_code_block(generator_function, name, no_refresh)
+        self.code_manager.clicked_blocks.append(new_block)
+
+    def _all_code_managers(self):
+        return [self.code_manager] + [sprite.code_manager for sprite in self.sprites]
+
+    def _backdrop_switched(self):
+        """Called whenever a block switches the backdrop.
+
+        Returns
+        -------
+        The code blocks that were started by "when backdrop switches to".
+        """
+        costume = self.costume_manager.get_costume()
+        if not costume:
+            return []
+        started = []
+        for code_manager in self._all_code_managers():
+            started.extend(code_manager.process_backdrop(costume.name))
+        return started
+
+    def _broadcast(self, message):
+        """Start all code blocks waiting for the message and return them."""
+        started = []
+        for code_manager in self._all_code_managers():
+            started.extend(code_manager.process_broadcast(message))
+        return started
+
+    def _process_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            elif event.type == pygame.KEYDOWN:
+                if self.input_manager.is_active():
+                    self.input_manager.process_key(event)
+                else:
+                    for code_manager in self._all_code_managers():
+                        code_manager.process_key_pressed(event.key)
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                pos = self._mouse_pos()
+                visible = self.visible_sprites.sprites()
+                sprite = self._sprite_at(pos, visible)
+                if sprite:
+                    sprite.code_manager.process_click()
+                elif self.rect.collidepoint(pos):
+                    self.code_manager.process_click()
+                # Sprites can be dragged, if they are set to draggable
+                self._dragged_sprite = self._sprite_at(pos, [s for s in visible if s.draggable])
+                if self._dragged_sprite:
+                    self._drag_offset = self._dragged_sprite._pos - pos
+            elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                self._dragged_sprite = None
+
+        if self._dragged_sprite:
+            self._dragged_sprite._set_pos(self._mouse_pos() + self._drag_offset)
+
+    def _frame(self, dt):
+        """Everything that happens in one frame, besides event handling."""
+        # Handle broadcast messages
+        for message in self.message_broker.get_messages():
+            self._broadcast(message)
+        self.message_broker.mark_completed()
+
+        for code_manager in self._all_code_managers():
+            code_manager.process_timer(self.timer)
+
+        self._update(dt)
+        self.sprites.update(dt)
+        self.bubbles.update()
+        self.input_manager.update(dt)
+        self.monitor_group.update()
+
+        self._draw(self.surface)
+        self.surface.blit(self.pen_image, (0, 0))
+
+        self.visible_sprites.draw(self.surface)
+        self.bubbles.draw(self.surface)
+        self.input_manager.draw(self.surface)
+
+        self.monitor_group.draw(self.surface)
+        self.timer += dt
+
+    def _show(self):
+        """Scale the stage to the window and show it."""
+        factor_x = self.screen.get_width() / self.surface.get_width()
+        factor_y = self.screen.get_height() / self.surface.get_height()
+        self.scale_factor = min(factor_x, factor_y)
+        scaled = pygame.transform.smoothscale(
+            self.surface,
+            (
+                int(self.surface.get_width() * self.scale_factor),
+                int(self.surface.get_height() * self.scale_factor),
+            ),
+        )
+        self.offset_x = int((self.screen.get_width() - scaled.get_width()) / 2)
+        self.offset_y = int((self.screen.get_height() - scaled.get_height()) / 2)
+        self.screen.fill((0, 0, 0))
+        self.screen.blit(scaled, (self.offset_x, self.offset_y,))
+        pygame.display.flip()
 
     def pystage_play(self):
-        self.running = True
         """
         This runs the game loop
         """
+        self.running = True
         dt = 0
-
-        # maybe we should move this to other place
-        left_clicking_and_holding = False
-        clicked_sprite = None
-
         while self.running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-                if event.type == pygame.KEYDOWN:
-                    if self.input_manager.is_active():
-                        self.input_manager.process_key(event)
-                    else:
-                        for sprite in self.sprites:
-                            assert(isinstance(sprite, CoreSprite))
-                            sprite.code_manager.process_key_pressed(event.key)
-                # to make it consistent with Scratch, should be BUTTONDOWN
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    pos = pygame.Vector2(pygame.mouse.get_pos())
-                    # [-1:0:-1] will reverse the list, but not include 0
-                    for sprite in self.visible_sprites.sprites()[-1::-1]:
-                        assert(isinstance(sprite, CoreSprite))
-                        if sprite.rect.collidepoint(pos):
-                            internal_pos = pos - sprite.rect.topleft
-                            x = int(internal_pos.x)
-                            y = int(internal_pos.y)
-                            color = sprite.image.get_at((x, y))
-                            if color.a == 0:
-                                continue
-                            sprite.code_manager.process_click()
-                            break
-
-                # with these three conditions, we can detect a click and hold, 
-                # but not move the mouse while holding
-                if event.type == pygame.MOUSEBUTTONDOWN and not left_clicking_and_holding and pygame.mouse.get_pressed()[0]:
-                    pos = pygame.mouse.get_pos()
-                    for sprite in filter(lambda s:s.draggable, self.visible_sprites.sprites()[-1::-1]):
-                        assert(isinstance(sprite, CoreSprite))
-                        sprite_rect = sprite.image.get_rect()
-                        sprite_rect.topleft = sprite.rect.topleft
-                        if sprite_rect.collidepoint(pos):
-                            clicked_pos = pos[0] - sprite_rect.left, pos[1] - sprite_rect.top
-                            if sprite.image.get_at(clicked_pos).a != 0:
-                                left_clicking_and_holding = True
-                                clicked_sprite = sprite
-
-            if not pygame.mouse.get_pressed()[0] and left_clicking_and_holding:
-                left_clicking_and_holding = False
-
-            if left_clicking_and_holding:
-                assert isinstance(clicked_sprite, CoreSprite)
-                clicked_sprite.motion_goto_pointer()
-
-            # Handle broadcast messages
-            for message in self.message_broker.get_messages():
-                for sprite in self.sprites:
-                    assert(isinstance(sprite, CoreSprite))
-                    sprite.code_manager.process_broadcast(message)
-            self.message_broker.mark_completed()
-
-            self._update(dt)
-            self.sprites.update(dt)
-            self.bubbles.update()
-            self.input_manager.update(dt)
-            self.monitor_group.update()
-
-            self._draw(self.surface)
-            for sprite in self.pen_images:
-                image = self.pen_images[sprite]
-                self.surface.blit(image, (0, 0))
-
-            self.visible_sprites.draw(self.surface)
-            self.bubbles.draw(self.surface)
-            self.input_manager.draw(self.surface)
-
-            self.monitor_group.draw(self.surface)
-
-            factor_x = self.screen.get_width() / self.surface.get_width()
-            factor_y = self.screen.get_height() / self.surface.get_height()
-            self.scale_factor = min(factor_x, factor_y)
-            scaled = pygame.transform.smoothscale(
-                self.surface,
-                (
-                    int(self.surface.get_width() * self.scale_factor),
-                    int(self.surface.get_height() * self.scale_factor),
-                ),
-            )
-            self.offset_x = int((self.screen.get_width() - scaled.get_width()) / 2)
-            self.offset_y = int((self.screen.get_height() - scaled.get_height()) / 2)
-            self.screen.blit(scaled, (self.offset_x, self.offset_y,))
-            pygame.display.flip()
-
+            self._process_events()
+            self._frame(dt)
+            self._show()
             dt = self.clock.tick(self.FPS) / 1000
-            self.timer += dt
 
         pygame.quit()
