@@ -73,14 +73,7 @@ And here is the result:
 # Installation
 ```pip install pystage```
 
-**if doesn't work, try following commands one by one.**
-```bash
-pip install wheel
-pip install pygame==2.3.0
-pip install svglib==1.1.0
-pip install reportlab==3.5.67
-pip install pystage
-```
+PyStage needs Python 3.9 or newer. [PyGame](https://www.pygame.org/news) is installed automatically.
 
 # Getting started
 
@@ -107,7 +100,47 @@ zombie.when_program_starts(doit)
 stage.play()
 ```
 
-Use the autocompletion of your editor to see what methods are available. There are methods for all Scratch blocks bound to your stage and sprite instances. Not all of them work. Motion and Looks is mostly implemented (besides graphics effects), the Pen extension works and most of Sensing should work as well. If you want to know the details, just check the files under `src/pystge/core`. 
+Use the autocompletion of your editor to see what methods are available. There are methods for all Scratch blocks bound to your stage and sprite instances, including the Pen extension, variables, lists, clones and all events. The only blocks that do nothing are the ones that need a microphone (loudness).
+
+Some things work differently than in normal Python programs, because your code behaves like a Scratch script:
+
+* The screen is refreshed after each iteration of a loop and after blocks that take time, like `wait`. You do not have to care about a game loop.
+* Functions in the same file that you call from your code behave like custom blocks in Scratch, i.e. they can contain loops and `wait` as well:
+
+```python
+from pystage.en import Sprite, Stage, no_refresh
+
+stage = Stage()
+zombie = stage.add_a_sprite()
+
+def jump(zombie: Sprite, height):
+    for i in range(10):
+        zombie.change_y_by(height / 10)
+    for i in range(10):
+        zombie.change_y_by(-height / 10)
+
+@no_refresh
+def draw_square(zombie: Sprite):
+    # Like "run without screen refresh" in Scratch:
+    # The square is there at once.
+    zombie.pen_down()
+    for i in range(4):
+        zombie.move(50)
+        zombie.turn_left(90)
+    zombie.pen_up()
+
+def doit(zombie: Sprite):
+    draw_square(zombie)
+    while True:
+        jump(zombie, 80)
+        zombie.wait(1)
+
+zombie.when_program_starts(doit)
+
+stage.play()
+```
+
+* If there is an error in your code, the message is shown in the window and in the terminal.
 
 The documentation is here: https://pystage.readthedocs.io/en/latest/pystage.en.html
 
@@ -115,7 +148,7 @@ The documentation is here: https://pystage.readthedocs.io/en/latest/pystage.en.h
 
 **NOTE**
 
-Please note this is a pre alpha version. Not all things may work as expected. If so, please contact us or open an issue. Documentation is automatically generated but especially the user-facing block API is still mostly empty.
+Please note this is an alpha version. Not all things may work as expected. If so, please contact us or open an issue. Documentation is automatically generated but especially the user-facing block API is still mostly empty.
 
 ---
 
@@ -133,13 +166,15 @@ Converting a Scratch project to Python code:
 
 The base usage is ```python -m pystage.convert.sb3 <SB3 File> -l en -d <DIRECTORY>```
 The parameters are:
-* ```-l``` language of generated python "scratch blocks". In the moment of writing, ```en``` and ```de``` are available.
+* ```-l``` language of generated python "scratch blocks". In the moment of writing, ```en``` and ```de``` are available. Without it, the language neutral core API is used.
 * ```-d``` the output directory, defaults to current directory
 * ```-i``` print intermediate code representation
 * ```-s``` print sb3 project.json
 * ```-p``` print python code
 * ```-v``` verbose
 * ```-vv``` debug mode
+
+Scripts, custom blocks, variables, lists, monitors and comments of your project are converted. Blocks from extensions other than Pen (e.g. Music or Text to Speech) are not supported; they show up as a text starting with `NOT SUPPORTED` in the Python code.
 
 
 # Contributors

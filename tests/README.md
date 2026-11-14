@@ -1,9 +1,14 @@
 ### Usage
-Download scratch files for test into `src/scratch_projects`, and run `python generate.py -a` to convert all the scratch files into .py files.
+`pytest` in the root directory runs all tests. No window is opened.
 
-`python generate.py -s` to select and convert a single file, and this will print out the path of sb3 file.
-E.g. Converting "tests/show var.sb3"
+`tests/tests/test_convert.py` converts all Scratch projects in `src/scratch_projects`, compares the code
+with the expected results in `src/correct_results` and plays each converted project for a few seconds.
 
-You can copy this path and run `python generate.py -f <path>` to convert a single file.
+To add a project, put the sb3 file into a folder in `src/scratch_projects` and generate the expected result:
 
-Go to root directory, `pytest` to run all tests which will compare the output of the scratch file and the output of the generated .py file.
+`python generate.py -a` (in this directory) converts all Scratch files into .py files.
+
+`python generate.py -s` lets you select a single file, `python generate.py -f <folder>/<file>.sb3` converts
+a single file directly.
+
+After an intended change of the converter, generate all results and review the diff before you commit.
