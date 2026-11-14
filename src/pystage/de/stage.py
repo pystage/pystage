@@ -199,192 +199,152 @@ class Bühne():
         return self._core.data_variable(name)
                 
     def sende_an_alle(self, message):
-        """sende %1 an alle
+        """Sendet eine Nachricht an alle Figuren und die Bühne. Jeder Block "Wenn ich ... empfange" mit dieser Nachricht startet. Das Skript wartet nicht auf sie.
 
-        Translation string: sende %1 an alle
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: sende (Nachricht1) an alle
 
-        
         Parameters
         ----------
-        message : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            Der Name der Nachricht. Groß- und Kleinschreibung spielen keine Rolle.
         """
         return self._core.event_broadcast(message)
                 
     def sende_an_alle_und_warte(self, message):
-        """sende %1 an alle und warte
+        """Sendet eine Nachricht an alle Figuren und die Bühne und wartet, bis alle Skripte fertig sind, die sie empfangen.
 
-        Translation string: sende %1 an alle und warte
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: sende (Nachricht1) an alle und warte
 
-        
         Parameters
         ----------
-        message : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            Der Name der Nachricht. Groß- und Kleinschreibung spielen keine Rolle.
         """
         return self._core.event_broadcastandwait(message)
                 
     def wenn_das_bühnenbild_wechselt_zu(self, backdrop, generator_function, name='', no_refresh=False):
-        """Wenn das Bühnenbild zu %1 wechselt
+        """Führt den Code aus, wenn die Bühne zu dem angegebenen Bühnenbild wechselt.
 
-        Translation string: Wenn das Bühnenbild zu %1 wechselt
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn das Bühnenbild zu (Bühnenbild1) wechselt
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str
+            Der Name des Bühnenbilds. Groß- und Kleinschreibung spielen keine Rolle.
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name, no_refresh)
                 
     def wenn_ich_empfange(self, message, generator_function, name='', no_refresh=False):
-        """Wenn ich %1 empfange
+        """Führt den Code aus, wenn die angegebene Nachricht gesendet wird.
 
-        Translation string: Wenn ich %1 empfange
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn ich (Nachricht1) empfange
 
-        
         Parameters
         ----------
-        message : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            Der Name der Nachricht. Groß- und Kleinschreibung spielen keine Rolle.
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenbroadcastreceived(message, generator_function, name, no_refresh)
                 
     def wenn_programm_startet(self, generator_function, name='', no_refresh=False):
-        """Wenn <greenflag> angeklickt wird
+        """Führt den Code aus, wenn die grüne Flagge angeklickt wird, also wenn das Programm startet.
 
-        Translation string: Wenn <greenflag> angeklickt wird
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn [grüne Flagge] angeklickt wird
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenflagclicked(generator_function, name, no_refresh)
                 
     def wenn_lautstärke_größer_als(self, value, generator_function, name='', no_refresh=False):
-        """Wenn Lautstärke <greater> %2
+        """Führt den Code aus, wenn die Lautstärke des Mikrofons größer als der angegebene Wert ist.
 
-        Translation string: Wenn Lautstärke <greater> %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Dies ist nur ein Platzhalter: Das Mikrofon wird nicht unterstützt, die Lautstärke ist immer -1 und der Code wird nie ausgeführt.
 
-        
+        Scratch-Block: Wenn [Lautstärke] > (10)
+
         Parameters
         ----------
-        value : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der Lautstärkewert, der überschritten werden muss.
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whengreaterthan_loudness(value, generator_function, name, no_refresh)
                 
     def wenn_stoppuhr_größer_als(self, value, generator_function, name='', no_refresh=False):
-        """Wenn Stoppuhr <greater> %2
+        """Führt den Code aus, wenn die Stoppuhr größer als der angegebene Wert ist.
 
-        Translation string: Wenn Stoppuhr <greater> %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Der Code wird jedes Mal einmal ausgeführt, wenn die Stoppuhr den Wert überschreitet. Er wird erneut ausgeführt, nachdem die Stoppuhr zurückgesetzt wurde.
 
-        
+        Scratch-Block: Wenn [Stoppuhr] > (10)
+
         Parameters
         ----------
-        value : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Anzahl Sekunden, die die Stoppuhr überschreiten muss.
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whengreaterthan_timer(value, generator_function, name, no_refresh)
                 
     def wenn_taste_gedrückt_wird(self, key, generator_function, name='', no_refresh=False):
-        """Wenn Taste %1 gedrückt wird
+        """Führt den Code aus, wenn eine Taste gedrückt wird.
 
-        Translation string: Wenn Taste %1 gedrückt wird
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn Taste (Leertaste) gedrückt wird
 
-        
         Parameters
         ----------
-        key : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        key : str
+            Die Taste, z. B. "a", "1", "Leertaste", "Pfeil nach links", "Pfeil nach rechts", "Pfeil nach oben", "Pfeil nach unten" oder "beliebiges" (jede Taste). Groß- und Kleinschreibung spielen keine Rolle.
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenkeypressed(key, generator_function, name, no_refresh)
                 
     def wenn_diese_figur_angeklickt_wird(self, generator_function, name='', no_refresh=False):
-        """Wenn diese Figur angeklickt wird
+        """Führt den Code aus, wenn die Figur mit der Maus angeklickt wird.
 
-        Translation string: Wenn diese Figur angeklickt wird
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn diese Figur angeklickt wird
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenthisspriteclicked(generator_function, name, no_refresh)
                 

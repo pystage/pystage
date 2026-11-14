@@ -197,192 +197,152 @@ class Stage():
         return self._core.data_variable(name)
 
     def broadcast(self, message):
-        """broadcast %1
+        """Sends a message to all sprites and the stage. Every "when I receive" block with this message starts running. The script does not wait for them.
 
-        Translation string: broadcast %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: broadcast (message1)
 
-        
         Parameters
         ----------
-        message : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            The name of the message. Upper and lower case do not matter.
         """
         return self._core.event_broadcast(message)
 
     def broadcast_and_wait(self, message):
-        """broadcast %1 and wait
+        """Sends a message to all sprites and the stage and waits until all scripts that receive it are finished.
 
-        Translation string: broadcast %1 and wait
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: broadcast (message1) and wait
 
-        
         Parameters
         ----------
-        message : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            The name of the message. Upper and lower case do not matter.
         """
         return self._core.event_broadcastandwait(message)
 
     def when_backdrop_switches_to(self, backdrop, generator_function, name='', no_refresh=False):
-        """when backdrop switches to %1
+        """Runs the code when the stage switches to the given backdrop.
 
-        Translation string: when backdrop switches to %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when backdrop switches to (backdrop1)
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str
+            The name of the backdrop. Upper and lower case do not matter.
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenbackdropswitchesto(backdrop, generator_function, name, no_refresh)
 
     def when_i_receive_message(self, message, generator_function, name='', no_refresh=False):
-        """when I receive %1
+        """Runs the code when the given message is broadcast.
 
-        Translation string: when I receive %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when I receive (message1)
 
-        
         Parameters
         ----------
-        message : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        message : str
+            The name of the message. Upper and lower case do not matter.
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenbroadcastreceived(message, generator_function, name, no_refresh)
 
     def when_program_starts(self, generator_function, name='', no_refresh=False):
-        """when <greenflag> clicked
+        """Runs the code when the green flag is clicked, i.e. when the program starts.
 
-        Translation string: when <greenflag> clicked
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when [green flag] clicked
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenflagclicked(generator_function, name, no_refresh)
 
     def when_loudness_greater_than(self, value, generator_function, name='', no_refresh=False):
-        """when loudness <greater> %2
+        """Runs the code when the loudness of the microphone is greater than the given value.
 
-        Translation string: when loudness <greater> %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        This is only a stub: the microphone is not supported, the loudness is always -1 and the code never runs.
 
-        
+        Scratch block: when [loudness] > (10)
+
         Parameters
         ----------
-        value : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The loudness value that must be exceeded.
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whengreaterthan_loudness(value, generator_function, name, no_refresh)
 
     def when_timer_greater_than(self, value, generator_function, name='', no_refresh=False):
-        """when timer <greater> %2
+        """Runs the code when the timer is greater than the given value.
 
-        Translation string: when timer <greater> %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The code runs once each time the timer becomes greater than the value. It runs again after the timer has been reset.
 
-        
+        Scratch block: when [timer] > (10)
+
         Parameters
         ----------
-        value : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The number of seconds the timer must exceed.
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whengreaterthan_timer(value, generator_function, name, no_refresh)
 
     def when_key_pressed(self, key, generator_function, name='', no_refresh=False):
-        """when %1 key pressed
+        """Runs the code when a key is pressed.
 
-        Translation string: when %1 key pressed
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when (space) key pressed
 
-        
         Parameters
         ----------
-        key : FILL
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        key : str
+            The key, e.g. "a", "1", "space", "left arrow", "right arrow", "up arrow", "down arrow" or "any" (any key). Upper and lower case do not matter.
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenkeypressed(key, generator_function, name, no_refresh)
 
     def when_this_sprite_clicked(self, generator_function, name='', no_refresh=False):
-        """when this sprite clicked
+        """Runs the code when the sprite is clicked with the mouse.
 
-        Translation string: when this sprite clicked
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when this sprite clicked
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenthisspriteclicked(generator_function, name, no_refresh)
 
