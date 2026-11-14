@@ -148,6 +148,7 @@ SCRATCH_FONTS = {
     "Handwriting": "Handlee-Regular.ttf",
     "Marker": "Knewave.ttf",
     "Curly": "Griffy-Regular.ttf",
+    "Pixel": "Grand9K-Pixel.ttf",
 }
 
 
@@ -159,6 +160,8 @@ def test_scratch_families_use_bundled_fonts(family, filename):
     assert os.path.basename(path) == filename
     assert os.path.dirname(path).endswith(os.path.join("fonts", "scratch"))
     assert os.path.isfile(path)
+    for size in (12, 40, 100):
+        assert svg_text._font(path, size).render("Hello", True, (255, 255, 255)).get_bounding_rect().width > 10
     surface = svg_text._font(path, 40).render("Hello", True, (255, 255, 255))
     assert surface.get_bounding_rect().width > 20
 
@@ -168,7 +171,9 @@ def test_bundled_fonts_ship_with_licences():
     from pystage.resources import resource_filename
     folder = resource_filename("fonts/scratch")
     names = os.listdir(os.path.join(folder, "licenses"))
-    assert len([n for n in names if n.startswith("OFL-")]) == len(SCRATCH_FONTS)
+    assert len([n for n in names if n.startswith("OFL-")]) == len(SCRATCH_FONTS) - 1
+    assert any(n.startswith("CC-BY-SA-3.0") for n in names)
+    assert os.path.isfile(resource_filename("fonts/LICENSE-Roboto.txt"))
     assert os.path.isfile(os.path.join(folder, "README.md"))
 
 

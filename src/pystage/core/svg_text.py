@@ -134,12 +134,13 @@ _SCRATCH_FONTS = {
     "handwriting": "Handlee-Regular.ttf",
     "marker": "Knewave.ttf",
     "curly": "Griffy-Regular.ttf",
+    "pixel": "Grand9K-Pixel.ttf",
 }
 # Scratch 2 names, converted by scratch-svg-renderer when the whole attribute is one of them
 _SCRATCH2_NAMES = {"helvetica": "sans serif", "mystery": "curly", "gloria": "handwriting", "donegal": "serif"}
 
-# Families without a bundled font (Pixel: Grand9K Pixel is CC BY-SA, Chinese,
-# Japanese and Korean: Scratch uses system fonts as well) and generic names,
+# Families without a bundled font (Chinese, Japanese and Korean: Scratch uses
+# system fonts as well; Pixel only if its file is missing) and generic names,
 # with system fonts that look similar and the bundled Roboto to use if there is none.
 _FAMILIES = {
     "pixel": (["couriernew", "courier", "dejavusansmono", "liberationmono"], "regular"),
