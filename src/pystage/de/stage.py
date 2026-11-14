@@ -66,99 +66,71 @@ class Bühne():
         return self._core.control_wait(secs)
                 
     def ändere_variable_um(self, name, value):
-        """ändere %1 um %2
+        """Ändert den Wert einer Variable um die angegebene Zahl. Die Variable muss eine Zahl enthalten.
 
-        Translation string: ändere %1 um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere (Variable) um (1)
 
-        
         Parameters
         ----------
-        name : FILL
-        value : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
+        value : Zahl
+            Die Zahl, die addiert wird. Negative Werte machen die Variable kleiner.
         """
         return self._core.data_changevariableby(name, value)
                 
     def verstecke_variable(self, name):
-        """verstecke Variable %1
+        """Versteckt den Monitor einer Variable auf der Bühne.
 
-        Translation string: verstecke Variable %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: verstecke Variable (Variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
         """
         return self._core.data_hidevariable(name)
                 
     def setze_variable(self, name, value):
-        """setze %1 auf %2
+        """Setzt eine Variable auf einen neuen Wert.
 
-        Translation string: setze %1 auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze (Variable) auf (0)
 
-        
         Parameters
         ----------
-        name : FILL
-        value : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
+        value : object
+            Der neue Wert, eine Zahl oder ein Text.
         """
         return self._core.data_setvariableto(name, value)
                 
     def zeige_variable(self, name):
-        """zeige Variable %1
+        """Zeigt den Monitor einer Variable auf der Bühne, damit ihr Wert zu sehen ist.
 
-        Translation string: zeige Variable %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: zeige Variable (Variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
         """
         return self._core.data_showvariable(name)
                 
     def gib_variable(self, name):
-        """
+        """Gibt den Wert einer Variable zurück.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
+        name : str
+            Der Name der Variable.
 
         Returns
         -------
-
+        object
+            Der Wert der Variable.
         """
         return self._core.data_variable(name)
                 
@@ -648,22 +620,16 @@ class Bühne():
         return self._core.pystage_insertbackdrop(index, name, center_x, center_y, factor)
                 
     def erzeuge_variable(self, name, value=0, all_sprites=True):
-        """
+        """Erzeugt eine neue Variable. Die Variable kann mit den Variablen-Blöcken verwendet und als Monitor angezeigt werden.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        all_sprites : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable. Er darf noch nicht existieren.
+        value : object
+            Der Anfangswert der Variable. Standardmäßig 0.
+        all_sprites : bool
+            Wenn True, wird die Variable von der Bühne und allen Figuren gemeinsam genutzt. Wenn False, gehört sie nur dieser Figur.
         """
         return self._core.pystage_makevariable(name, value, all_sprites)
                 
@@ -686,61 +652,36 @@ class Bühne():
         return self._core.pystage_replacebackdrop(index, name, center_x, center_y, factor)
                 
     def setze_monitor_position(self, name, x, y):
-        """
+        """Setzt die Position des Monitors einer Variable auf der Bühne.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
+        x : Zahl
+            Die waagerechte Position der oberen linken Ecke des Monitors. Die Mitte der Bühne ist 0.
+        y : Zahl
+            Die senkrechte Position der oberen linken Ecke des Monitors. Die Mitte der Bühne ist 0.
         """
         return self._core.pystage_setmonitorposition(name, x, y)
                 
     def setze_monitor_stil_groß(self, name):
-        """
+        """Zeigt den Monitor einer Variable im großen Stil, mit einer großen Anzeige ihres Werts.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
         """
         return self._core.pystage_setmonitorstyle_large(name)
                 
     def setze_monitor_stil_normal(self, name):
-        """
+        """Zeigt den Monitor einer Variable im normalen Stil, mit einer kleinen Anzeige ihres Werts.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variable.
         """
         return self._core.pystage_setmonitorstyle_normal(name)
                 

@@ -90,94 +90,71 @@ class Sprite:
         return self._core.control_wait(secs)
 
     def change_variable_by(self, name, value):
-        """change %1 by %2
+        """Changes the value of a variable by the given number. The variable must contain a number.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change (my variable) by (1)
 
-        
         Parameters
         ----------
-        name : FILL
-        value : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
+        value : number
+            The number to add. Negative values make the variable smaller.
         """
         return self._core.data_changevariableby(name, value)
 
     def hide_variable(self, name):
-        """hide variable %1
+        """Hides the monitor of a variable on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: hide variable (my variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
         """
         return self._core.data_hidevariable(name)
 
     def set_variable(self, name, value):
-        """set %1 to %2
+        """Sets a variable to a new value.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set (my variable) to (0)
 
-        
         Parameters
         ----------
-        name : FILL
-        value : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
+        value : object
+            The new value, a number or a text.
         """
         return self._core.data_setvariableto(name, value)
 
     def show_variable(self, name):
-        """show variable %1
+        """Shows the monitor of a variable on the stage, so that its value can be seen.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: show variable (my variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
         """
         return self._core.data_showvariable(name)
 
     def get_variable(self, name):
-        """
+        """Returns the value of a variable.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (my variable)
 
-        
         Parameters
         ----------
-        name : FILL
-        
+        name : str
+            The name of the variable.
 
         Returns
         -------
-
+        object
+            The value of the variable.
         """
         return self._core.data_variable(name)
 
@@ -1411,21 +1388,16 @@ class Sprite:
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
 
     def create_variable(self, name, value=0, all_sprites=True):
-        """
+        """Creates a new variable. The variable can be used with the variable blocks and shown as a monitor.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        all_sprites : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable. It must not exist yet.
+        value : object
+            The initial value of the variable. The default is 0.
+        all_sprites : bool
+            If True, the variable is shared by the stage and all sprites. If False, it belongs to this sprite only.
         """
         return self._core.pystage_makevariable(name, value, all_sprites)
 
@@ -1450,60 +1422,36 @@ class Sprite:
         )
 
     def set_monitor_position(self, name, x, y):
-        """
+        """Sets the position of the monitor of a variable on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
+        x : number
+            The horizontal position of the upper left corner of the monitor. The center of the stage is 0.
+        y : number
+            The vertical position of the upper left corner of the monitor. The center of the stage is 0.
         """
         return self._core.pystage_setmonitorposition(name, x, y)
 
     def set_monitor_style_large(self, name):
-        """
+        """Shows the monitor of a variable in the large style, with a big display of its value.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
         """
         return self._core.pystage_setmonitorstyle_large(name)
 
     def set_monitor_style_normal(self, name):
-        """
+        """Shows the monitor of a variable in the normal style, with a small display of its value.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
         """
         return self._core.pystage_setmonitorstyle_normal(name)
 
