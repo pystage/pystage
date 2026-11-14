@@ -1,7 +1,4 @@
 # motion5 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -13,6 +10,8 @@ stage.add_backdrop("blue_sky_2", center_x=240, center_y=180)
 stage.switch_backdrop_to("blue_sky_2")
 stage.add_sound("pop")
 stage.create_variable("your_score", 5)
+stage.show_monitor("sensing_timer")
+stage.set_value_monitor_position("sensing_timer", -235, 175)
 stage.show_variable("your_score")
 stage.set_monitor_position("your_score", -233, 146)
 

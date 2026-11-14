@@ -1923,24 +1923,19 @@ class Sprite:
         """
         return self._core.pystage_setmonitorstyle_normal(name)
 
-    def set_monitor_style_slider(self, name):
-        """
+    def set_monitor_style_slider(self, name, minimum=0, maximum=100, integer=True):
+        """Show the variable as a slider that can be dragged with the mouse.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the variable.
+        minimum, maximum : number
+            The range of the slider (0 to 100 by default, like in Scratch).
+        integer : bool
+            If True, the slider only sets whole numbers, otherwise numbers with two decimals.
         """
-        return self._core.pystage_setmonitorstyle_slider(name)
+        return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
 
     def answer(self):
         """answer
@@ -3071,3 +3066,47 @@ class Sprite:
         float
         """
         return self._core.operator_mod(a, b)
+
+    def show_monitor(self, reporter):
+        """Show the monitor of a value, like the checkbox next to a block in Scratch.
+
+        Parameters
+        ----------
+        reporter : str
+            What to show: "x position", "y position", "direction",
+            "costume number", "costume name", "size", "volume" (sprites and
+            stage), "backdrop number", "backdrop name" (stage), "answer",
+            "loudness", "timer", "year", "month", "date", "day of week",
+            "hour", "minute", "second" or "username".
+        """
+        return self._core.pystage_showmonitor(reporter)
+
+    def hide_monitor(self, reporter):
+        """Hide the monitor of a value. See show_monitor for the values."""
+        return self._core.pystage_hidemonitor(reporter)
+
+    def set_value_monitor_position(self, reporter, x, y):
+        """Set the position of the monitor of a value.
+
+        Parameters
+        ----------
+        reporter : str
+            The value, see show_monitor.
+        x : int
+            Left border (Scratch coordinates).
+        y : int
+            Upper border (Scratch coordinates).
+        """
+        return self._core.pystage_setreportermonitorposition(reporter, x, y)
+
+    def set_value_monitor_style(self, reporter, style="normal"):
+        """Set the style of the monitor of a value.
+
+        Parameters
+        ----------
+        reporter : str
+            The value, see show_monitor.
+        style : str
+            "normal" or "large".
+        """
+        return self._core.pystage_setreportermonitorstyle(reporter, style)

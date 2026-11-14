@@ -1,7 +1,4 @@
 # looks4 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Sprite1: The monitor for 'looks_size' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -16,6 +13,8 @@ sprite1.set_name("Sprite1")
 sprite1.add_costume("costume1", center_x=48, center_y=50)
 sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
+sprite1.show_monitor("looks_size")
+sprite1.set_value_monitor_position("looks_size", -235, 148)
 
 # Scratch Blocks for 'sprite1'
 

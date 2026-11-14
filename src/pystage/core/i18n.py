@@ -119,6 +119,59 @@ ALIASES = {
             "_stage_": ["Bühne"],
         },
     },
+
+    # Reporters that can be shown as a monitor, canonical values are the
+    # ids in pystage.core._variables.REPORTERS. The English names are the
+    # labels of the Scratch monitors, the German ones are the words of
+    # Scratch DE (SENSING_OF_*, MOTION_*, SENSING_CURRENT_*, ...). "Lautstärke"
+    # is the volume of sounds; Scratch DE uses it for the microphone too, so
+    # that needs another name (not from Scratch).
+    "reporters": {
+        "en": {
+            "motion_xposition": ["x position"],
+            "motion_yposition": ["y position"],
+            "motion_direction": ["direction"],
+            "looks_costumenumbername:number": ["costume number"],
+            "looks_costumenumbername:name": ["costume name"],
+            "looks_backdropnumbername:number": ["backdrop number"],
+            "looks_backdropnumbername:name": ["backdrop name"],
+            "looks_size": ["size"],
+            "sound_volume": ["volume"],
+            "sensing_answer": ["answer"],
+            "sensing_loudness": ["loudness"],
+            "sensing_timer": ["timer"],
+            "sensing_current:YEAR": ["year"],
+            "sensing_current:MONTH": ["month"],
+            "sensing_current:DATE": ["date"],
+            "sensing_current:DAYOFWEEK": ["day of week"],
+            "sensing_current:HOUR": ["hour"],
+            "sensing_current:MINUTE": ["minute"],
+            "sensing_current:SECOND": ["second"],
+            "sensing_username": ["username"],
+        },
+        "de": {
+            "motion_xposition": ["x-Position"],
+            "motion_yposition": ["y-Position"],
+            "motion_direction": ["Richtung"],
+            "looks_costumenumbername:number": ["Kostümnummer", "Kostüm Nummer"],
+            "looks_costumenumbername:name": ["Kostümname", "Kostüm Name"],
+            "looks_backdropnumbername:number": ["Bühnenbildnummer", "Bühnenbild Nummer"],
+            "looks_backdropnumbername:name": ["Bühnenbildname", "Bühnenbild Name"],
+            "looks_size": ["Größe"],
+            "sound_volume": ["Lautstärke"],
+            "sensing_answer": ["Antwort"],
+            "sensing_loudness": ["Mikrofon-Lautstärke"],
+            "sensing_timer": ["Stoppuhr"],
+            "sensing_current:YEAR": ["Jahr"],
+            "sensing_current:MONTH": ["Monat"],
+            "sensing_current:DATE": ["Datum"],
+            "sensing_current:DAYOFWEEK": ["Wochentag"],
+            "sensing_current:HOUR": ["Stunde"],
+            "sensing_current:MINUTE": ["Minute"],
+            "sensing_current:SECOND": ["Sekunde"],
+            "sensing_username": ["Benutzername"],
+        },
+    },
 }
 
 
@@ -129,7 +182,7 @@ def _build_lookup():
         for aliases in languages.values():
             for value, names in aliases.items():
                 for name in names:
-                    entries[name.lower()] = value
+                    entries[name.casefold()] = value
     return lookup
 
 
@@ -144,7 +197,7 @@ def canonical(table, value):
     """
     if not isinstance(value, str):
         return value
-    return _LOOKUP[table].get(value.strip().lower(), value)
+    return _LOOKUP[table].get(value.strip().casefold(), value)
 
 
 def canonical_key(key):
@@ -186,6 +239,29 @@ MESSAGES = {
         "error_in": "Error in {file}, line {line}",
         "monitor_length": "length {length}",
         "monitor_empty": "(empty)",
+        "reporter_unknown": "Unknown reporter: {reporter}.",
+        "reporter_unavailable": "The reporter {reporter} does not exist for this sprite or stage.",
+        "stage_name": "Stage",
+        "reporter:motion_xposition": "x position",
+        "reporter:motion_yposition": "y position",
+        "reporter:motion_direction": "direction",
+        "reporter:looks_costumenumbername:number": "costume number",
+        "reporter:looks_costumenumbername:name": "costume name",
+        "reporter:looks_backdropnumbername:number": "backdrop number",
+        "reporter:looks_backdropnumbername:name": "backdrop name",
+        "reporter:looks_size": "size",
+        "reporter:sound_volume": "volume",
+        "reporter:sensing_answer": "answer",
+        "reporter:sensing_loudness": "loudness",
+        "reporter:sensing_timer": "timer",
+        "reporter:sensing_current:YEAR": "year",
+        "reporter:sensing_current:MONTH": "month",
+        "reporter:sensing_current:DATE": "date",
+        "reporter:sensing_current:DAYOFWEEK": "day of week",
+        "reporter:sensing_current:HOUR": "hour",
+        "reporter:sensing_current:MINUTE": "minute",
+        "reporter:sensing_current:SECOND": "second",
+        "reporter:sensing_username": "username",
     },
     "de": {
         "variable_missing": "Die Variable {name} gibt es nicht.",
@@ -212,6 +288,29 @@ MESSAGES = {
         "error_in": "Fehler in {file}, Zeile {line}",
         "monitor_length": "Länge {length}",
         "monitor_empty": "(leer)",
+        "reporter_unknown": "Unbekannter Wert: {reporter}.",
+        "reporter_unavailable": "Den Wert {reporter} gibt es für diese Figur oder Bühne nicht.",
+        "stage_name": "Bühne",
+        "reporter:motion_xposition": "x-Position",
+        "reporter:motion_yposition": "y-Position",
+        "reporter:motion_direction": "Richtung",
+        "reporter:looks_costumenumbername:number": "Kostüm Nummer",
+        "reporter:looks_costumenumbername:name": "Kostüm Name",
+        "reporter:looks_backdropnumbername:number": "Bühnenbild Nummer",
+        "reporter:looks_backdropnumbername:name": "Bühnenbild Name",
+        "reporter:looks_size": "Größe",
+        "reporter:sound_volume": "Lautstärke",
+        "reporter:sensing_answer": "Antwort",
+        "reporter:sensing_loudness": "Lautstärke",
+        "reporter:sensing_timer": "Stoppuhr",
+        "reporter:sensing_current:YEAR": "Jahr",
+        "reporter:sensing_current:MONTH": "Monat",
+        "reporter:sensing_current:DATE": "Datum",
+        "reporter:sensing_current:DAYOFWEEK": "Wochentag",
+        "reporter:sensing_current:HOUR": "Stunde",
+        "reporter:sensing_current:MINUTE": "Minute",
+        "reporter:sensing_current:SECOND": "Sekunde",
+        "reporter:sensing_username": "Benutzername",
     },
 }
 

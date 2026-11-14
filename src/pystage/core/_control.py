@@ -132,6 +132,7 @@ class _ControlSprite(_Control):
         # However, monitors can be shown and hidden, so we need access
         clone.var_monitors = self.var_monitors
         clone.list_monitors = self.list_monitors
+        clone.reporter_monitors = self.reporter_monitors
 
         # Costumes are shared
         clone.costume_manager.costumes = self.costume_manager.costumes

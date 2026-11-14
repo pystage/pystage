@@ -148,6 +148,11 @@ def test_all_aliases_are_accepted_by_the_core(core):
                         core.data_deleteoflist("tmp" + name, name)
                     elif table == "backdrops":
                         core.looks_switchbackdropto_backdrop(name)
+                    elif table == "reporters":
+                        from pystage.core._variables import REPORTERS
+                        assert value in REPORTERS
+                        scope = REPORTERS[value][2]
+                        (core if scope == "stage" else sprite).pystage_showmonitor(name)
                     elif table == "sprites":
                         assert core._special(name) == value
                         assert value in ("_mouse_", "_random_", "_edge_", "_myself_", "_stage_")

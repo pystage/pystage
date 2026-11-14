@@ -320,18 +320,7 @@
             "extension": "wav"
         }
     },
-    "warnings": [
-        {
-            "kind": "monitor",
-            "target": "Stage",
-            "message": "The monitor for 'sensing_timer' is not supported and was left out."
-        },
-        {
-            "kind": "monitor",
-            "target": "Stage",
-            "message": "The monitor for 'sensing_current' is not supported and was left out."
-        }
-    ],
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -361,7 +350,24 @@
             "my variable": 0
         },
         "lists": {},
-        "monitors": [],
+        "monitors": [
+            {
+                "x": 5,
+                "y": 32,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "reporter": "sensing_timer"
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "reporter": "sensing_current:YEAR"
+            }
+        ],
         "comments": [],
         "currentCostume": 1,
         "layerOrder": 0,

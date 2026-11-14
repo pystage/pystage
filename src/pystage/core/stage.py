@@ -129,6 +129,8 @@ class CoreStage(
 
         self.timer = 0
         self._dragged_sprite = None
+        # The slider monitor that is dragged
+        self._dragged_monitor = None
         self._drag_offset = pygame.Vector2(0, 0)
         self.show_sprite_boundaries = "--show-sprite-boundaries" in sys.argv
 
@@ -254,6 +256,18 @@ class CoreStage(
             started.extend(code_manager.process_broadcast(message))
         return started
 
+    def _press_slider(self, pos):
+        """Start dragging the slider monitor at pos, if there is one.
+
+        Returns True if a slider was hit, the click is then used up.
+        """
+        for monitor in reversed(self.monitor_group.sprites()):
+            if monitor.slider_hit(pos):
+                self._dragged_monitor = monitor
+                monitor.drag_to(pos[0])
+                return True
+        return False
+
     def _process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -266,6 +280,9 @@ class CoreStage(
                         code_manager.process_key_pressed(event.key)
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 pos = self._mouse_pos()
+                # Sliders are on top of everything, a click on them is not a click on a sprite
+                if self._press_slider(pos):
+                    continue
                 visible = self.visible_sprites.sprites()
                 sprite = self._sprite_at(pos, visible)
                 if sprite:
@@ -278,8 +295,11 @@ class CoreStage(
                     self._drag_offset = self._dragged_sprite._pos - pos
             elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 self._dragged_sprite = None
+                self._dragged_monitor = None
 
-        if self._dragged_sprite:
+        if self._dragged_monitor:
+            self._dragged_monitor.drag_to(self._mouse_pos().x)
+        elif self._dragged_sprite:
             self._dragged_sprite._set_pos(self._mouse_pos() + self._drag_offset)
 
     def _frame(self, dt):

@@ -1,0 +1,939 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "var_stage_score": [
+                    "score",
+                    0
+                ],
+                "var_stage_big": [
+                    "big",
+                    42
+                ],
+                "var_stage_speed": [
+                    "speed",
+                    30
+                ],
+                "var_stage_temp": [
+                    "temp",
+                    0.5
+                ],
+                "var_stage_long": [
+                    "long",
+                    "A very long text that is shown in a monitor, it does not fit into a column"
+                ]
+            },
+            "lists": {
+                "list_stage_fruits": [
+                    "fruits",
+                    [
+                        "apple",
+                        "banana",
+                        "cherry"
+                    ]
+                ],
+                "list_stage_empty": [
+                    "empty",
+                    []
+                ]
+            },
+            "broadcasts": {},
+            "blocks": {
+                "stage_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "stage_2": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "stage_4",
+                    "parent": "stage_1",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_3"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_3": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_2",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_4": {
+                    "opcode": "sound_setvolumeto",
+                    "next": null,
+                    "parent": "stage_2",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "90"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {
+                "var_sprite1_local": [
+                    "local",
+                    7
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_3",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "12"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "score",
+                            "var_score"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "motion_gotoxy",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "-60"
+                            ]
+                        ],
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "-40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "motion_pointindirection",
+                    "next": "sprite1_5",
+                    "parent": "sprite1_3",
+                    "inputs": {
+                        "DIRECTION": [
+                            1,
+                            [
+                                8,
+                                "45"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "looks_switchcostumeto",
+                    "next": "sprite1_7",
+                    "parent": "sprite1_4",
+                    "inputs": {
+                        "COSTUME": [
+                            1,
+                            "sprite1_6"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "looks_costume",
+                    "next": null,
+                    "parent": "sprite1_5",
+                    "inputs": {},
+                    "fields": {
+                        "COSTUME": [
+                            "costume2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "looks_setsizeto",
+                    "next": "sprite1_8",
+                    "parent": "sprite1_5",
+                    "inputs": {
+                        "SIZE": [
+                            1,
+                            [
+                                4,
+                                "80"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "sprite1_9",
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "60"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "sprite1_8",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "date"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Sprite2",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite2_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite2_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite2_2": {
+                    "opcode": "motion_gotoxy",
+                    "next": "sprite2_3",
+                    "parent": "sprite2_1",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "60"
+                            ]
+                        ],
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "-40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite2_3": {
+                    "opcode": "looks_changesizeby",
+                    "next": null,
+                    "parent": "sprite2_2",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "2c322913515e2fb8a51876fba3f836fb",
+                    "md5ext": "2c322913515e2fb8a51876fba3f836fb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "95d9743f5638aad2dabf7126cbf698cb",
+                    "md5ext": "95d9743f5638aad2dabf7126cbf698cb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "sensing_timer",
+            "mode": "default",
+            "opcode": "sensing_timer",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true
+        },
+        {
+            "id": "sensing_answer",
+            "mode": "default",
+            "opcode": "sensing_answer",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 27,
+            "visible": true
+        },
+        {
+            "id": "sensing_loudness",
+            "mode": "default",
+            "opcode": "sensing_loudness",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 49,
+            "visible": true
+        },
+        {
+            "id": "sensing_username",
+            "mode": "default",
+            "opcode": "sensing_username",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 71,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "YEAR"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 93,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "MONTH"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 115,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "DATE"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 137,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "DAYOFWEEK"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 159,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "HOUR"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 181,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "MINUTE"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 203,
+            "visible": true
+        },
+        {
+            "id": "sensing_current",
+            "mode": "default",
+            "opcode": "sensing_current",
+            "params": {
+                "CURRENTMENU": "SECOND"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 225,
+            "visible": true
+        },
+        {
+            "id": "motion_xposition",
+            "mode": "default",
+            "opcode": "motion_xposition",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 5,
+            "visible": true
+        },
+        {
+            "id": "motion_yposition",
+            "mode": "default",
+            "opcode": "motion_yposition",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 27,
+            "visible": true
+        },
+        {
+            "id": "motion_direction",
+            "mode": "default",
+            "opcode": "motion_direction",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 49,
+            "visible": true
+        },
+        {
+            "id": "looks_costumenumbername",
+            "mode": "default",
+            "opcode": "looks_costumenumbername",
+            "params": {
+                "NUMBER_NAME": "number"
+            },
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 71,
+            "visible": true
+        },
+        {
+            "id": "looks_costumenumbername",
+            "mode": "default",
+            "opcode": "looks_costumenumbername",
+            "params": {
+                "NUMBER_NAME": "name"
+            },
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 93,
+            "visible": true
+        },
+        {
+            "id": "looks_size",
+            "mode": "default",
+            "opcode": "looks_size",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 115,
+            "visible": true
+        },
+        {
+            "id": "sound_volume",
+            "mode": "default",
+            "opcode": "sound_volume",
+            "params": {},
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 137,
+            "visible": true
+        },
+        {
+            "id": "motion_xposition",
+            "mode": "large",
+            "opcode": "motion_xposition",
+            "params": {},
+            "spriteName": "Sprite2",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 159,
+            "visible": true
+        },
+        {
+            "id": "looks_costumenumbername",
+            "mode": "default",
+            "opcode": "looks_costumenumbername",
+            "params": {
+                "NUMBER_NAME": "name"
+            },
+            "spriteName": "Sprite2",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 195,
+            "visible": true
+        },
+        {
+            "id": "looks_backdropnumbername",
+            "mode": "default",
+            "opcode": "looks_backdropnumbername",
+            "params": {
+                "NUMBER_NAME": "number"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 217,
+            "visible": true
+        },
+        {
+            "id": "looks_backdropnumbername",
+            "mode": "default",
+            "opcode": "looks_backdropnumbername",
+            "params": {
+                "NUMBER_NAME": "name"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 239,
+            "visible": true
+        },
+        {
+            "id": "sound_volume",
+            "mode": "default",
+            "opcode": "sound_volume",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 130,
+            "y": 261,
+            "visible": true
+        },
+        {
+            "id": "var_stage_score",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "score"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 312,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "var_stage_big",
+            "mode": "large",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "big"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 312,
+            "y": 27,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "var_stage_speed",
+            "mode": "slider",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "speed"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 312,
+            "y": 60,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "var_stage_temp",
+            "mode": "slider",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "temp"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 312,
+            "y": 98,
+            "visible": true,
+            "sliderMin": -10,
+            "sliderMax": 10,
+            "isDiscrete": false
+        },
+        {
+            "id": "var_sprite1_local",
+            "mode": "slider",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "local"
+            },
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 312,
+            "y": 136,
+            "visible": true,
+            "sliderMin": 1,
+            "sliderMax": 10,
+            "isDiscrete": true
+        },
+        {
+            "id": "list_stage_fruits",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "fruits"
+            },
+            "spriteName": null,
+            "value": [],
+            "width": 80,
+            "height": 100,
+            "x": 312,
+            "y": 178,
+            "visible": true
+        },
+        {
+            "id": "list_stage_empty",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "empty"
+            },
+            "spriteName": null,
+            "value": [],
+            "width": 80,
+            "height": 100,
+            "x": 397,
+            "y": 178,
+            "visible": true
+        },
+        {
+            "id": "var_stage_long",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "long"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 290,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "sensing_timer",
+            "mode": "default",
+            "opcode": "sensing_timer",
+            "params": {},
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 200,
+            "y": 200,
+            "visible": false
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

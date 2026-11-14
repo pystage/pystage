@@ -1,7 +1,4 @@
 # lists_monitors (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Sprite1: The slider of variable 'local' is shown as a normal monitor.
 
 from pystage.en import Sprite, Stage
 
@@ -29,6 +26,7 @@ sprite1.create_variable("local", "x", all_sprites=False)
 sprite1.create_list("mine", [1, 2, 3], all_sprites=False)
 sprite1.show_variable("local")
 sprite1.set_monitor_position("local", -235, 100)
+sprite1.set_monitor_style_slider("local", 0, 100, True)
 sprite1.show_list("mine")
 sprite1.set_list_monitor_position("mine", -40, 30, 150, 100)
 

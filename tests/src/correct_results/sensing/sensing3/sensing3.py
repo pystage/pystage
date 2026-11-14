@@ -1,8 +1,4 @@
 # sensing3 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
-# - [monitor] Stage: The monitor for 'sensing_current' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -12,6 +8,10 @@ stage.add_backdrop("castle_3", center_x=480, center_y=360, factor=2)
 stage.switch_backdrop_to("castle_3")
 stage.add_sound("pop")
 stage.create_variable("my variable", 0)
+stage.show_monitor("sensing_timer")
+stage.set_value_monitor_position("sensing_timer", -235, 148)
+stage.show_monitor("sensing_current:YEAR")
+stage.set_value_monitor_position("sensing_current:YEAR", -235, 175)
 
 # Create and initialize sprite 'sprite1'
 sprite1 = stage.add_a_sprite(None)

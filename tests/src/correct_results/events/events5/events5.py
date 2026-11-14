@@ -1,8 +1,4 @@
 # events5 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Stage: The monitor for 'sensing_loudness' is not supported and was left out.
-# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -10,6 +6,10 @@ stage = Stage()
 stage.add_backdrop("backdrop1", center_x=240, center_y=180)
 stage.add_sound("pop")
 stage.create_variable("my variable", 0)
+stage.show_monitor("sensing_loudness")
+stage.set_value_monitor_position("sensing_loudness", -224, 137)
+stage.show_monitor("sensing_timer")
+stage.set_value_monitor_position("sensing_timer", -223, 167)
 
 # Create and initialize sprite 'sprite1'
 sprite1 = stage.add_a_sprite(None)

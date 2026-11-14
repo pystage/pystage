@@ -7,6 +7,38 @@ from pystage.core.monitors import Monitor
 from pystage.core.values import to_number, equals, wrap
 
 
+# The reporters that can be shown as a monitor, like with the checkboxes
+# next to the reporter blocks in Scratch. The key is the canonical id (the
+# opcode, plus the value of the dropdown after a colon), the value is
+# (core method, color, scope). The scope tells whose monitor it is:
+# "sprite" and "stage" only exist for a sprite or the stage and are shown
+# with its name, "target" exist for both, "global" is the same for everybody.
+# Localized names for the ids are in pystage.core.i18n (table "reporters"),
+# the labels are in the messages "reporter:<id>".
+REPORTERS = {
+    "motion_xposition": ("motion_xposition", Monitor.MOTION_COLOR, "sprite"),
+    "motion_yposition": ("motion_yposition", Monitor.MOTION_COLOR, "sprite"),
+    "motion_direction": ("motion_direction", Monitor.MOTION_COLOR, "sprite"),
+    "looks_costumenumbername:number": ("looks_costumenumbername_number", Monitor.LOOKS_COLOR, "sprite"),
+    "looks_costumenumbername:name": ("looks_costumenumbername_name", Monitor.LOOKS_COLOR, "sprite"),
+    "looks_backdropnumbername:number": ("looks_backdropnumbername_number", Monitor.LOOKS_COLOR, "stage"),
+    "looks_backdropnumbername:name": ("looks_backdropnumbername_name", Monitor.LOOKS_COLOR, "stage"),
+    "looks_size": ("looks_size", Monitor.LOOKS_COLOR, "sprite"),
+    "sound_volume": ("sound_volume", Monitor.SOUND_COLOR, "target"),
+    "sensing_answer": ("sensing_answer", Monitor.SENSING_COLOR, "global"),
+    "sensing_loudness": ("sensing_loudness", Monitor.SENSING_COLOR, "global"),
+    "sensing_timer": ("sensing_timer", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:YEAR": ("sensing_current_year", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:MONTH": ("sensing_current_month", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:DATE": ("sensing_current_date", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:DAYOFWEEK": ("sensing_current_dayofweek", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:HOUR": ("sensing_current_hour", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:MINUTE": ("sensing_current_minute", Monitor.SENSING_COLOR, "global"),
+    "sensing_current:SECOND": ("sensing_current_second", Monitor.SENSING_COLOR, "global"),
+    "sensing_username": ("sensing_username", Monitor.SENSING_COLOR, "global"),
+}
+
+
 class _Variables(BaseSprite):
     # Variables, lists and their monitors.
     #
@@ -23,6 +55,8 @@ class _Variables(BaseSprite):
         self.list_variables = {}
         self.var_monitors = {}
         self.list_monitors = {}
+        # Monitors of reporters, by canonical id, created when needed
+        self.reporter_monitors = {}
 
     ##
     # Lookup helpers
@@ -189,6 +223,7 @@ class _Variables(BaseSprite):
         monitor = Monitor(owner, name)
         monitor.hide()
         monitor.set_function(lambda: owner.variables[name])
+        monitor.set_setter(lambda value: owner.variables.__setitem__(name, value))
         owner.var_monitors[name] = monitor
 
     def pystage_makelistvariable(self, name, values=None, all_sprites=True):
@@ -225,7 +260,79 @@ class _Variables(BaseSprite):
         if monitor:
             monitor.set_style(Monitor.NORMAL)
 
-    def pystage_setmonitorstyle_slider(self, name):
+    def pystage_setmonitorstyle_slider(self, name, minimum=0, maximum=100, integer=True):
+        """Show the variable as a slider that can be dragged with the mouse.
+
+        Parameters
+        ----------
+        name : str
+            The name of the variable.
+        minimum, maximum : number
+            The range of the slider (like in Scratch, 0 to 100 by default).
+        integer : bool
+            If True, the slider only sets whole numbers, otherwise numbers
+            with two decimals.
+        """
         monitor = self._get_monitor(name)
         if monitor:
+            monitor.configure_slider(to_number(minimum), to_number(maximum), integer)
             monitor.set_style(Monitor.SLIDER)
+
+    ##
+    # Monitors of reporters (position, size, answer, timer, ...)
+    #
+
+    def _reporter_monitor(self, reporter, create=True):
+        """The monitor of a reporter for this sprite or stage (None if not created).
+
+        Raises a ValueError for unknown reporters and for reporters that
+        this sprite or the stage does not have, e.g. the x position of the stage.
+        """
+        reporter = canonical("reporters", reporter)
+        if reporter not in REPORTERS:
+            raise ValueError(tr("reporter_unknown", reporter=reporter))
+        method, color, scope = REPORTERS[reporter]
+        is_stage = self is self.stage
+        if (scope == "sprite" and is_stage) or (scope == "stage" and not is_stage):
+            raise ValueError(tr("reporter_unavailable", reporter=reporter))
+        # Global monitors belong to the stage, the monitor of a clone is the one of the original.
+        owner = self.stage if scope == "global" else self
+        monitors = owner.reporter_monitors
+        if reporter not in monitors and create:
+            monitor = Monitor(owner, "", color=color)
+            monitor.hide()
+            if scope == "global":
+                monitor.set_title_function(lambda: tr("reporter:" + reporter))
+            else:
+                monitor.set_title_function(lambda: f"{tr('stage_name') if owner is owner.stage else owner.name}: {tr('reporter:' + reporter)}")
+            monitor.set_function(getattr(owner, method))
+            monitors[reporter] = monitor
+        return monitors.get(reporter)
+
+    def pystage_showmonitor(self, reporter):
+        """Show the monitor of a reporter, like the checkbox next to the block in Scratch.
+
+        Parameters
+        ----------
+        reporter : str
+            The reporter, e.g. "x position", "size", "timer" or "year"
+            (in German "x-Position", "Größe", "Stoppuhr", "Jahr"). The
+            canonical ids, e.g. "motion_xposition" or "sensing_current:YEAR",
+            work as well. See REPORTERS.
+        """
+        self._reporter_monitor(reporter).show()
+
+    def pystage_hidemonitor(self, reporter):
+        """Hide the monitor of a reporter."""
+        monitor = self._reporter_monitor(reporter, create=False)
+        if monitor:
+            monitor.hide()
+
+    def pystage_setreportermonitorposition(self, reporter, x, y):
+        """Set the upper left corner of the monitor of a reporter (Scratch coordinates)."""
+        self._reporter_monitor(reporter).set_position(x, y)
+
+    def pystage_setreportermonitorstyle(self, reporter, style="normal"):
+        """Set the style of the monitor of a reporter: "normal" or "large"."""
+        styles = {"normal": Monitor.NORMAL, "large": Monitor.LARGE}
+        self._reporter_monitor(reporter).set_style(styles.get(str(style).lower(), Monitor.NORMAL))

@@ -914,6 +914,57 @@ def control_project():
     return p
 
 
+def monitors_project():
+    """Every kind of monitor in every style."""
+    p = Project(sprites=2)
+    one, two, stage = p.sprites[0], p.sprites[1], p.stage
+    stage.variable("score", 0).variable("big", 42).variable("speed", 30).variable("temp", 0.5)
+    stage.variable("long", "A very long text that is shown in a monitor, it does not fit into a column").list("fruits", ["apple", "banana", "cherry"])
+    stage.list("empty", [])
+    one.variable("local", 7)
+    one.script(flag(
+        b("data_setvariableto", VARIABLE="score", VALUE=12),
+        b("motion_gotoxy", X=-60, Y=-40),
+        b("motion_pointindirection", DIRECTION=45),
+        b("looks_switchcostumeto", COSTUME="costume2"),
+        b("looks_setsizeto", SIZE=80),
+        b("sound_setvolumeto", VOLUME=60),
+        b("data_addtolist", LIST="fruits", ITEM="date"),
+    ))
+    two.script(flag(b("motion_gotoxy", X=60, Y=-40), b("looks_changesizeby", CHANGE=20)))
+    stage.script(flag(b("looks_switchbackdropto", BACKDROP="backdrop2"), b("sound_setvolumeto", VOLUME=90)))
+
+    def current(item, y):
+        return reporter_monitor("sensing_current", {"CURRENTMENU": item}, x=5, y=y)
+
+    sensing = [reporter_monitor("sensing_timer", y=5), reporter_monitor("sensing_answer", y=27),
+               reporter_monitor("sensing_loudness", y=49), reporter_monitor("sensing_username", y=71)]
+    sensing += [current(item, 93 + 22 * i) for i, item in enumerate(
+        ["YEAR", "MONTH", "DATE", "DAYOFWEEK", "HOUR", "MINUTE", "SECOND"])]
+    sprite_one = [reporter_monitor(opcode, params, sprite="Sprite1", x=130, y=5 + 22 * i) for i, (opcode, params) in enumerate([
+        ("motion_xposition", {}), ("motion_yposition", {}), ("motion_direction", {}),
+        ("looks_costumenumbername", {"NUMBER_NAME": "number"}), ("looks_costumenumbername", {"NUMBER_NAME": "name"}),
+        ("looks_size", {}), ("sound_volume", {})])]
+    sprite_two = [reporter_monitor("motion_xposition", sprite="Sprite2", x=130, y=159, mode="large"),
+                  reporter_monitor("looks_costumenumbername", {"NUMBER_NAME": "name"}, sprite="Sprite2", x=130, y=195)]
+    stage_monitors = [reporter_monitor("looks_backdropnumbername", {"NUMBER_NAME": "number"}, x=130, y=217),
+                      reporter_monitor("looks_backdropnumbername", {"NUMBER_NAME": "name"}, x=130, y=239),
+                      reporter_monitor("sound_volume", x=130, y=261)]
+    p.monitors = sensing + sprite_one + sprite_two + stage_monitors + [
+        variable_monitor(stage, "score", x=312, y=5),
+        variable_monitor(stage, "big", "large", x=312, y=27),
+        variable_monitor(stage, "speed", "slider", x=312, y=60, sliderMin=0, sliderMax=100, isDiscrete=True),
+        variable_monitor(stage, "temp", "slider", x=312, y=98, sliderMin=-10, sliderMax=10, isDiscrete=False),
+        variable_monitor(one, "local", "slider", x=312, y=136, sprite="Sprite1", sliderMin=1, sliderMax=10),
+        list_monitor(stage, "fruits", x=312, y=178) | {"width": 80, "height": 100},
+        list_monitor(stage, "empty", x=397, y=178) | {"width": 80, "height": 100},
+        variable_monitor(stage, "long", x=5, y=290),
+        # Hidden monitors are not created
+        reporter_monitor("sensing_timer", x=200, y=200) | {"visible": False},
+    ]
+    return p
+
+
 GENERATED = {
     "pen": pen_project,
     "timer_events": timer_project,
@@ -925,6 +976,7 @@ GENERATED = {
     "lists_monitors": lists_project,
     "custom_blocks": procedures_project,
     "control_clones": control_project,
+    "monitors": monitors_project,
 }
 
 
@@ -956,10 +1008,10 @@ def unsupported_project():
     other.comment("A comment on a block that is converted", fine)
     stage.script(flag(b("sensing_loud")))
     p.monitors = [
-        reporter_monitor("sensing_timer"),
-        reporter_monitor("sensing_answer"),
-        reporter_monitor("motion_xposition", sprite="Sprite1"),
-        reporter_monitor("motion_yposition", sprite="Sprite1"),
+        # Not supported: no checkbox in Scratch for the reporters, or a reporter the stage does not have
+        reporter_monitor("sensing_dayssince2000"),
+        reporter_monitor("sensing_mousex"),
+        reporter_monitor("motion_xposition"),
         variable_monitor(stage, "plain", "slider", x=5, y=100),
         variable_monitor(stage, "cloudy", "default", x=5, y=130),
         # not visible: no warning

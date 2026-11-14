@@ -94,7 +94,7 @@ of blocks and parameters are simple identifiers.
 #   opcode:       a block that is not supported (once per sprite and opcode, with a count)
 #   hat:          scripts with a hat block that is not supported, they are left out
 #   loose_script: scripts without a hat block, they are left out (count per sprite)
-#   monitor:      monitors that are not shown or shown differently
+#   monitor:      monitors that are not supported and were left out
 #   comment:      comments that belong to blocks that are left out
 #   extension:    extensions of the project other than pen
 #   asset:        costumes or sounds that are missing or have an unsupported format
@@ -532,6 +532,47 @@ def warn_about_blocks(project, name, reader):
         add_warning(project, "comment", name, f"{lost} comment(s) belong to blocks that were left out.")
 
 
+# The reporters that can be shown as monitors: id (see
+# pystage.core._variables.REPORTERS) -> whether it belongs to a sprite
+# ("sprite"), to the stage ("stage"), to both ("target") or to nobody ("global").
+MONITOR_REPORTERS = {
+    "motion_xposition": "sprite", "motion_yposition": "sprite", "motion_direction": "sprite",
+    "looks_costumenumbername:number": "sprite", "looks_costumenumbername:name": "sprite",
+    "looks_backdropnumbername:number": "stage", "looks_backdropnumbername:name": "stage",
+    "looks_size": "sprite", "sound_volume": "target",
+    "sensing_answer": "global", "sensing_loudness": "global", "sensing_timer": "global",
+    "sensing_current:YEAR": "global", "sensing_current:MONTH": "global", "sensing_current:DATE": "global",
+    "sensing_current:DAYOFWEEK": "global", "sensing_current:HOUR": "global",
+    "sensing_current:MINUTE": "global", "sensing_current:SECOND": "global",
+    "sensing_username": "global",
+}
+# Monitors with a dropdown: opcode -> (parameter, allowed values)
+MONITOR_DROPDOWNS = {
+    "looks_costumenumbername": ("NUMBER_NAME", ("number", "name")),
+    "looks_backdropnumbername": ("NUMBER_NAME", ("number", "name")),
+    "sensing_current": ("CURRENTMENU", ("YEAR", "MONTH", "DATE", "DAYOFWEEK", "HOUR", "MINUTE", "SECOND")),
+}
+
+
+def monitor_reporter(opcode, params, is_stage):
+    '''
+    The id of the reporter of a monitor, None if it is not supported (or
+    does not exist for the stage / for sprites).
+    '''
+    if not isinstance(opcode, str):
+        return None
+    if opcode in MONITOR_DROPDOWNS:
+        parameter, allowed = MONITOR_DROPDOWNS[opcode]
+        value = params.get(parameter)
+        if value not in allowed:
+            return None
+        opcode = f"{opcode}:{value}"
+    scope = MONITOR_REPORTERS.get(opcode)
+    if scope is None or (scope == "sprite" and is_stage) or (scope == "stage" and not is_stage):
+        return None
+    return opcode
+
+
 def get_intermediate(data, name, limits=DEFAULT_LIMITS):
     project = DictClass()
     project.update({
@@ -631,15 +672,21 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
             "height": number(m.get("height"), 0),
             "style": m.get("mode") if m.get("mode") in ("large", "slider") else "normal",
         }
+        reporter = monitor_reporter(m.get("opcode"), m["params"], sprite is project["stage"])
         if m.get("opcode") == "data_variable" and isinstance(m["params"].get("VARIABLE"), str):
             monitor["variable"] = m["params"]["VARIABLE"]
             if monitor["style"] == "slider":
-                add_warning(project, "monitor", sprite["name"],
-                            f"The slider of variable '{clean_text(monitor['variable'])}' is shown as a normal monitor.")
+                monitor["slider_min"] = number(m.get("sliderMin"), 0)
+                monitor["slider_max"] = number(m.get("sliderMax"), 100)
+                monitor["slider_discrete"] = m.get("isDiscrete") is not False
+        elif reporter:
+            monitor["reporter"] = reporter
+            if monitor["style"] == "slider":
+                monitor["style"] = "normal"
         elif m.get("opcode") == "data_listcontents" and isinstance(m["params"].get("LIST"), str):
             monitor["list"] = m["params"]["LIST"]
         else:
-            # Only monitors for variables and lists are implemented
+            # Monitors of variables, lists and the reporters in MONITOR_REPORTERS are implemented
             opcode = m.get("opcode")
             opcode = opcode if isinstance(opcode, str) and identifier.match(opcode) else "unknown"
             unsupported_monitors[(sprite["name"], opcode)] = unsupported_monitors.get((sprite["name"], opcode), 0) + 1
@@ -712,12 +759,21 @@ def get_python(project, language="core", project_link=None):
             lines.append(f"{var}.{fn('pystage_makelistvariable', is_stage)}({py_str(name)}, [{', '.join(literal(v) for v in values)}]{local})")
         for monitor in sprite["monitors"]:
             x, y = -240 + monitor["x"], 180 - monitor["y"]
-            if "variable" in monitor:
+            if "reporter" in monitor:
+                name = py_str(monitor["reporter"])
+                lines.append(f"{var}.{fn('pystage_showmonitor', is_stage)}({name})")
+                lines.append(f"{var}.{fn('pystage_setreportermonitorposition', is_stage)}({name}, {x}, {y})")
+                if monitor["style"] == "large":
+                    lines.append(f"{var}.{fn('pystage_setreportermonitorstyle', is_stage)}({name}, \"large\")")
+            elif "variable" in monitor:
                 name = py_str(monitor["variable"])
                 lines.append(f"{var}.{fn('data_showvariable', is_stage)}({name})")
                 lines.append(f"{var}.{fn('pystage_setmonitorposition', is_stage)}({name}, {x}, {y})")
                 if monitor["style"] == "large":
                     lines.append(f"{var}.{fn('pystage_setmonitorstyle_large', is_stage)}({name})")
+                elif monitor["style"] == "slider":
+                    lines.append(f"{var}.{fn('pystage_setmonitorstyle_slider', is_stage)}({name}, {literal(monitor['slider_min'])}, "
+                                 f"{literal(monitor['slider_max'])}, {monitor['slider_discrete']})")
             else:
                 name = py_str(monitor["list"])
                 lines.append(f"{var}.{fn('data_showlist', is_stage)}({name})")

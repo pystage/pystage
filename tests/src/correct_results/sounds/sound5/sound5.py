@@ -1,7 +1,4 @@
 # sound5 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Guitar-electric1: The monitor for 'sound_volume' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -26,6 +23,8 @@ guitar_electric1.add_sound("g_elec_guitar")
 guitar_electric1.add_sound("a_elec_guitar")
 guitar_electric1.add_sound("b_elec_guitar")
 guitar_electric1.add_sound("c2_elec_guitar")
+guitar_electric1.show_monitor("sound_volume")
+guitar_electric1.set_value_monitor_position("sound_volume", -235, 175)
 
 # Create and initialize sprite 'saxophone'
 saxophone = stage.add_a_sprite(None)

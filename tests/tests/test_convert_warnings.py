@@ -54,8 +54,8 @@ def test_every_kind_of_problem_is_reported():
     assert by_target(project_, "loose_script")["Sprite2"].startswith("1 script(s)")
     assert by_target(project_, "comment") == {"Sprite2": "1 comment(s) belong to blocks that were left out."}
     monitors = " ".join(messages(project_, "monitor"))
-    assert "sensing_timer" in monitors and "sensing_answer" in monitors and "motion_xposition" in monitors
-    assert "slider of variable 'plain'" in monitors
+    assert "sensing_dayssince2000" in monitors and "sensing_mousex" in monitors and "motion_xposition" in monitors
+    assert "slider" not in monitors, "sliders are supported"
     assert "sensing_username" not in monitors, "hidden monitors are not a problem"
     assert any("photo" in m and "webp" in m for m in messages(project_, "asset"))
 

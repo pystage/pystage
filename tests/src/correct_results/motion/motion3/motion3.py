@@ -1,9 +1,4 @@
 # motion3 (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Sprite1: The monitor for 'motion_xposition' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'motion_yposition' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'motion_direction' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -21,6 +16,12 @@ sprite1.set_rotation_style_left_right()
 sprite1.add_costume("costume1", center_x=48, center_y=50)
 sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
+sprite1.show_monitor("motion_xposition")
+sprite1.set_value_monitor_position("motion_xposition", -235, 175)
+sprite1.show_monitor("motion_yposition")
+sprite1.set_value_monitor_position("motion_yposition", -235, 148)
+sprite1.show_monitor("motion_direction")
+sprite1.set_value_monitor_position("motion_direction", -235, 121)
 
 # Scratch Blocks for 'sprite1'
 

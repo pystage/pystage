@@ -1,18 +1,4 @@
 # show_var (pyStage, converted from Scratch 3)
-#
-# Not everything of the Scratch project could be converted:
-# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'motion_xposition' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'motion_yposition' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'motion_direction' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'looks_costumenumbername' is not supported and was left out (2 monitors).
-# - [monitor] Stage: The monitor for 'looks_backdropnumbername' is not supported and was left out (2 monitors).
-# - [monitor] Sprite1: The monitor for 'looks_size' is not supported and was left out.
-# - [monitor] Sprite1: The monitor for 'sound_volume' is not supported and was left out.
-# - [monitor] Stage: The monitor for 'sensing_answer' is not supported and was left out.
-# - [monitor] Stage: The monitor for 'sensing_loudness' is not supported and was left out.
-# - [monitor] Stage: The monitor for 'sensing_current' is not supported and was left out (7 monitors).
-# - [monitor] Stage: The monitor for 'sensing_username' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 
@@ -21,10 +7,36 @@ stage.add_backdrop("backdrop1", center_x=240, center_y=180)
 stage.add_sound("pop")
 stage.create_variable("my variable", 29)
 stage.create_list("list", ["asdfasdfasdfasdfasdfasfd"])
+stage.show_monitor("sensing_timer")
+stage.set_value_monitor_position("sensing_timer", -235, 175)
+stage.show_monitor("looks_backdropnumbername:number")
+stage.set_value_monitor_position("looks_backdropnumbername:number", -235, 7)
+stage.show_monitor("looks_backdropnumbername:name")
+stage.set_value_monitor_position("looks_backdropnumbername:name", -235, -20)
+stage.show_monitor("sensing_answer")
+stage.set_value_monitor_position("sensing_answer", -85, 175)
+stage.show_monitor("sensing_loudness")
+stage.set_value_monitor_position("sensing_loudness", -85, -47)
+stage.show_monitor("sensing_current:YEAR")
+stage.set_value_monitor_position("sensing_current:YEAR", -35, 148)
+stage.show_monitor("sensing_username")
+stage.set_value_monitor_position("sensing_username", -35, 121)
 stage.show_variable("my variable")
 stage.set_monitor_position("my variable", -35, 94)
 stage.show_list("list")
 stage.set_list_monitor_position("list", 82, 64, 100, 200)
+stage.show_monitor("sensing_current:MONTH")
+stage.set_value_monitor_position("sensing_current:MONTH", -35, 7)
+stage.show_monitor("sensing_current:DATE")
+stage.set_value_monitor_position("sensing_current:DATE", -35, -20)
+stage.show_monitor("sensing_current:DAYOFWEEK")
+stage.set_value_monitor_position("sensing_current:DAYOFWEEK", 65, 175)
+stage.show_monitor("sensing_current:HOUR")
+stage.set_value_monitor_position("sensing_current:HOUR", -35, -74)
+stage.show_monitor("sensing_current:MINUTE")
+stage.set_value_monitor_position("sensing_current:MINUTE", 65, 148)
+stage.show_monitor("sensing_current:SECOND")
+stage.set_value_monitor_position("sensing_current:SECOND", 115, 121)
 
 # Create and initialize sprite 'sprite1'
 sprite1 = stage.add_a_sprite(None)
@@ -34,6 +46,20 @@ sprite1.add_costume("costume1", center_x=48, center_y=50)
 sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
 sprite1.create_list("a", [], all_sprites=False)
+sprite1.show_monitor("motion_xposition")
+sprite1.set_value_monitor_position("motion_xposition", -235, 148)
+sprite1.show_monitor("motion_yposition")
+sprite1.set_value_monitor_position("motion_yposition", -240, 88)
+sprite1.show_monitor("motion_direction")
+sprite1.set_value_monitor_position("motion_direction", -237, 118)
+sprite1.show_monitor("looks_costumenumbername:number")
+sprite1.set_value_monitor_position("looks_costumenumbername:number", -235, 61)
+sprite1.show_monitor("looks_costumenumbername:name")
+sprite1.set_value_monitor_position("looks_costumenumbername:name", -235, 34)
+sprite1.show_monitor("looks_size")
+sprite1.set_value_monitor_position("looks_size", -235, -47)
+sprite1.show_monitor("sound_volume")
+sprite1.set_value_monitor_position("sound_volume", -235, -74)
 
 # Scratch Blocks for 'sprite1'
 

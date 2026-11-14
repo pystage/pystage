@@ -86,7 +86,32 @@
             ],
             "variables": {},
             "lists": {},
-            "monitors": [],
+            "monitors": [
+                {
+                    "x": 5,
+                    "y": 5,
+                    "width": 0,
+                    "height": 0,
+                    "style": "normal",
+                    "reporter": "looks_costumenumbername:number"
+                },
+                {
+                    "x": 5,
+                    "y": 59,
+                    "width": 0,
+                    "height": 0,
+                    "style": "normal",
+                    "reporter": "looks_size"
+                },
+                {
+                    "x": 5,
+                    "y": 86,
+                    "width": 0,
+                    "height": 0,
+                    "style": "normal",
+                    "reporter": "looks_costumenumbername:name"
+                }
+            ],
             "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
@@ -132,23 +157,7 @@
             "extension": "wav"
         }
     },
-    "warnings": [
-        {
-            "kind": "monitor",
-            "target": "Sprite1",
-            "message": "The monitor for 'looks_costumenumbername' is not supported and was left out (2 monitors)."
-        },
-        {
-            "kind": "monitor",
-            "target": "Stage",
-            "message": "The monitor for 'looks_backdropnumbername' is not supported and was left out (2 monitors)."
-        },
-        {
-            "kind": "monitor",
-            "target": "Sprite1",
-            "message": "The monitor for 'looks_size' is not supported and was left out."
-        }
-    ],
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -185,7 +194,24 @@
             "my variable": 0
         },
         "lists": {},
-        "monitors": [],
+        "monitors": [
+            {
+                "x": 5,
+                "y": 32,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "reporter": "looks_backdropnumbername:number"
+            },
+            {
+                "x": 5,
+                "y": 140,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "reporter": "looks_backdropnumbername:name"
+            }
+        ],
         "comments": [],
         "currentCostume": 2,
         "layerOrder": 0,

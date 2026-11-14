@@ -1,3 +1,5 @@
+import math
+
 import pygame
 from pystage.resources import resource_filename
 
@@ -49,18 +51,33 @@ class Monitor(pygame.sprite.Sprite):
         # Only used for lists, None means automatic
         self._width = None
         self._height = None
+        # Only used for sliders: the range, whether only whole numbers are
+        # allowed, the function that sets the value and the area of the
+        # slider in the image (updated when it is rendered).
+        self._min = 0
+        self._max = 100
+        self._discrete = True
+        self._setter = None
+        self._slider_rect = None
+        # If set, the title is computed (e.g. the name of a sprite can change)
+        self._title_func = None
 
         self.update_image()
 
 
     def update(self):
+        if self._title_func:
+            title = self._title_func()
+            if title != self._title:
+                self._title = title
+                self.update_image()
         if not self._func:
             return
         # set_value checks if the value is changed
         self.set_value(self._func())
 
 
-    def _render_normal(self):
+    def _render_normal(self, border=True):
         title_surface = Monitor.BOLD_FONT_9.render(self._title, True, Monitor.TITLE_FONT_COLOR)
         value_surface = Monitor.LIGHT_FONT_9.render(to_string(self._value), True, Monitor.VALUE_FONT_COLOR)
 
@@ -76,10 +93,93 @@ class Monitor(pygame.sprite.Sprite):
         h = rect_surface.get_height() + padding/2
         surface = pygame.Surface((w, h), flags=pygame.SRCALPHA)
         pygame.draw.rect(surface, Monitor.BACKGROUND_COLOR, (0,0,w,h), border_radius=3)
-        pygame.draw.rect(surface, Monitor.BORDER_COLOR, (0,0,w,h), width=1, border_radius=3)
+        if border:
+            pygame.draw.rect(surface, Monitor.BORDER_COLOR, (0,0,w,h), width=1, border_radius=3)
         surface.blit(title_surface, (padding, padding/2))
         surface.blit(rect_surface, (padding + title_surface.get_width() + padding, padding/4))
         return surface
+
+
+    def _slider_fraction(self):
+        span = self._max - self._min
+        if span == 0:
+            return 0
+        try:
+            value = float(self._value)
+        except (TypeError, ValueError):
+            value = self._min
+        return max(0.0, min(1.0, (value - self._min) / span))
+
+
+    def _render_slider(self):
+        '''Like a normal monitor, with the slider below title and value.'''
+        top = self._render_normal(border=False)
+        padding = 10
+        w = max(top.get_width(), 110)
+        track_h = 4
+        handle_r = 5
+        h = top.get_height() + 2 * handle_r + 6
+        surface = pygame.Surface((w, h), flags=pygame.SRCALPHA)
+        pygame.draw.rect(surface, Monitor.BACKGROUND_COLOR, (0, 0, w, h), border_radius=3)
+        # The top row is centered, the border is drawn last
+        surface.blit(top, ((w - top.get_width()) // 2, 0))
+        pygame.draw.rect(surface, Monitor.BORDER_COLOR, (0, 0, w, h), width=1, border_radius=3)
+        # The handle stays completely inside of the monitor
+        left, right = padding, w - padding
+        y = top.get_height() + handle_r
+        self._slider_rect = pygame.Rect(left, y - handle_r, right - left, 2 * handle_r)
+        pygame.draw.rect(surface, Monitor.BORDER_COLOR, (left, y - track_h // 2, right - left, track_h), border_radius=2)
+        x = left + round(self._slider_fraction() * (right - left))
+        pygame.draw.rect(surface, self._color, (left, y - track_h // 2, x - left, track_h), border_radius=2)
+        pygame.draw.circle(surface, (255, 255, 255), (x, y), handle_r)
+        pygame.draw.circle(surface, self._color, (x, y), handle_r, width=2)
+        return surface
+
+
+    def configure_slider(self, minimum, maximum, discrete):
+        '''Set the range of a slider. The minimum is never above the maximum.'''
+        minimum, maximum = float(minimum), float(maximum)
+        if minimum > maximum:
+            minimum, maximum = maximum, minimum
+        if discrete:
+            minimum, maximum = round(minimum), round(maximum)
+        else:
+            minimum, maximum = round(minimum, 2), round(maximum, 2)
+        self._min, self._max, self._discrete = minimum, maximum, bool(discrete)
+        if self._style == Monitor.SLIDER:
+            self.update_image()
+
+
+    def set_setter(self, setter):
+        '''The function that sets the variable when the slider is dragged.'''
+        self._setter = setter
+
+
+    def is_slider(self):
+        return self._style == Monitor.SLIDER and self._slider_rect is not None
+
+
+    def slider_hit(self, pos):
+        '''True if pos (stage pixels, pygame coordinates) is on the slider.'''
+        if not self.is_slider() or self.rect is None:
+            return False
+        area = self._slider_rect.move(self.rect.topleft).inflate(6, 6)
+        return area.collidepoint(pos)
+
+
+    def drag_to(self, x):
+        '''Move the handle to the stage x position (pygame coordinates)
+        and set the variable.'''
+        if not self.is_slider() or self._setter is None:
+            return
+        left = self.rect.x + self._slider_rect.left
+        fraction = max(0.0, min(1.0, (x - left) / max(1, self._slider_rect.width)))
+        value = self._min + fraction * (self._max - self._min)
+        value = round(value) if self._discrete else round(value, 2)
+        if self._discrete is False and value == round(value):
+            value = round(value)
+        self._setter(value)
+        self.set_value(value)
 
 
     def _render_large(self):
@@ -146,9 +246,12 @@ class Monitor(pygame.sprite.Sprite):
             surface = self._render_large()
         elif self._style == Monitor.LIST:
             surface = self._render_list()
+        elif self._style == Monitor.SLIDER:
+            surface = self._render_slider()
         else:
-            # Sliders are shown as normal monitors, they can't be dragged.
             surface = self._render_normal()
+        if self._style != Monitor.SLIDER:
+            self._slider_rect = None
 
         self.image = surface
         self.rect = surface.get_rect()
@@ -186,12 +289,20 @@ class Monitor(pygame.sprite.Sprite):
             # Lists are changed in place, we need a copy to detect changes.
             value = list(value)
         elif type(value)==float:
-            value = round(value, 2)
-            if value == round(value):
-                value = round(value)
+            if math.isfinite(value):
+                value = round(value, 2)
+                if value == round(value):
+                    value = round(value)
         if self._value == value and type(self._value) == type(value):
             return
         self._value = value
+        self.update_image()
+
+
+    def set_title_function(self, func):
+        '''The title is computed by the function instead of being fixed.'''
+        self._title_func = func
+        self._title = func()
         self.update_image()
 
 

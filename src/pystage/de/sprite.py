@@ -2027,24 +2027,19 @@ class Figur():
         """
         return self._core.pystage_setmonitorstyle_normal(name)
                 
-    def setze_monitor_stil_regler(self, name):
-        """
+    def setze_monitor_stil_regler(self, name, minimum=0, maximum=100, integer=True):
+        """Zeigt die Variable als Regler, den man mit der Maus ziehen kann.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Variablen.
+        minimum, maximum : number
+            Der Bereich des Reglers (wie in Scratch standardmäßig 0 bis 100).
+        integer : bool
+            Bei True setzt der Regler nur ganze Zahlen, sonst Zahlen mit zwei Nachkommastellen.
         """
-        return self._core.pystage_setmonitorstyle_slider(name)
+        return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
                 
     def antwort(self):
         """Antwort
@@ -3224,3 +3219,47 @@ class Figur():
         float
         """
         return self._core.operator_mod(a, b)
+
+    def zeige_monitor(self, reporter):
+        """Zeigt den Monitor eines Werts, wie das Kästchen neben einem Block in Scratch.
+
+        Parameters
+        ----------
+        reporter : str
+            Was gezeigt wird: "x-Position", "y-Position", "Richtung",
+            "Kostümnummer", "Kostümname", "Größe", "Lautstärke" (Figuren und
+            Bühne), "Bühnenbildnummer", "Bühnenbildname" (Bühne), "Antwort",
+            "Mikrofon-Lautstärke", "Stoppuhr", "Jahr", "Monat", "Datum",
+            "Wochentag", "Stunde", "Minute", "Sekunde" oder "Benutzername".
+        """
+        return self._core.pystage_showmonitor(reporter)
+
+    def verstecke_monitor(self, reporter):
+        """Versteckt den Monitor eines Werts. Die Werte stehen bei zeige_monitor."""
+        return self._core.pystage_hidemonitor(reporter)
+
+    def setze_wertemonitor_position(self, reporter, x, y):
+        """Setzt die Position des Monitors eines Werts.
+
+        Parameters
+        ----------
+        reporter : str
+            Der Wert, siehe zeige_monitor.
+        x : int
+            Linker Rand (Scratch-Koordinaten).
+        y : int
+            Oberer Rand (Scratch-Koordinaten).
+        """
+        return self._core.pystage_setreportermonitorposition(reporter, x, y)
+
+    def setze_wertemonitor_stil(self, reporter, stil="normal"):
+        """Setzt den Stil des Monitors eines Werts.
+
+        Parameters
+        ----------
+        reporter : str
+            Der Wert, siehe zeige_monitor.
+        stil : str
+            "normal" oder "groß" (auch "large").
+        """
+        return self._core.pystage_setreportermonitorstyle(reporter, stil)

@@ -1,32 +1,30 @@
-from pystage.core.sprite import CoreSprite
-from pystage.core.stage import CoreStage
-from pystage.core.monitors import Monitor
+from pystage.en import Sprite, Stage
 
-stage = CoreStage()
-stage.pystage_addbackdrop("grid")
-sprite = stage.pystage_createsprite()
+stage = Stage()
+stage.add_backdrop("grid")
+sprite = stage.add_a_sprite()
 
-# This is not yet how it should look like for end users. Either we have a
-# generic way to add monitors to a stage or we need to create an API to get the
-# monitors for non-variable monitors.
-
-monitor = Monitor(stage, "Zombie: x position", color=Monitor.MOTION_COLOR)
-monitor.set_function(sprite.motion_xposition)
-monitor.set_position(-100, 130)
+# Monitors of values, like the checkboxes next to the blocks in Scratch
+sprite.show_monitor("x position")
+sprite.set_value_monitor_position("x position", -100, 130)
+stage.show_monitor("timer")
+stage.set_value_monitor_position("timer", -100, 100)
 
 
-def do_something(self: CoreSprite):
-    self.pystage_makevariable("test")
-    self.data_setvariableto("test", 99999999999)
-    self.data_showvariable("test")
-    self.pystage_setmonitorposition("test", -100, 100)
-    self.pystage_setmonitorstyle_large("test")
-    self.motion_glidesecstoxy(5, 100, 0)
+def do_something(self: Sprite):
+    self.create_variable("test")
+    self.set_variable("test", 99999999999)
+    self.show_variable("test")
+    self.set_monitor_position("test", -100, 70)
+    self.set_monitor_style_large("test")
+    self.create_variable("speed", 50)
+    self.show_variable("speed")
+    self.set_monitor_position("speed", -100, 20)
+    # A slider can be dragged with the mouse
+    self.set_monitor_style_slider("speed", 0, 100)
+    self.glide_to_x_y(5, 100, 0)
 
 
+sprite.when_program_starts(do_something)
 
-sprite.event_whenflagclicked(do_something)
-
-
-
-stage.pystage_play()
+stage.play()

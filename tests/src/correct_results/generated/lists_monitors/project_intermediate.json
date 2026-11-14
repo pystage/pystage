@@ -299,7 +299,10 @@
                     "width": 0,
                     "height": 0,
                     "style": "slider",
-                    "variable": "local"
+                    "variable": "local",
+                    "slider_min": 0,
+                    "slider_max": 100,
+                    "slider_discrete": true
                 },
                 {
                     "x": 200,
@@ -351,13 +354,7 @@
             "extension": "wav"
         }
     },
-    "warnings": [
-        {
-            "kind": "monitor",
-            "target": "Sprite1",
-            "message": "The slider of variable 'local' is shown as a normal monitor."
-        }
-    ],
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [
