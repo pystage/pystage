@@ -11,9 +11,27 @@ class Stage():
         self._core.sprite_facade_class = Sprite
 
     def add_a_sprite(self, costume="default") -> Sprite:
+        """Adds a new sprite to the stage and returns it. The sprite is shown with the given costume.
+
+        The name of the sprite is "Sprite" for the default costume, otherwise the name of the costume.
+
+        Parameters
+        ----------
+        costume : str
+            The name of the image file for the sprite's costume, e.g. "cat.png". "default" is the standard costume of pystage.
+
+        Returns
+        -------
+        Sprite
+            The new sprite.
+        """
         return self._core.pystage_createsprite(costume=costume)
 
     def play(self):
+        """Starts the program. The stage is shown and all scripts run until the window is closed.
+
+        Call this once, at the end of the program.
+        """
         self._core.pystage_play()
 
     def create_clone_of_sprite(self, sprite='_myself_'):

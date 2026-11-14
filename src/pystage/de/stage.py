@@ -12,9 +12,27 @@ class Bühne():
         self._core.sprite_facade_class = Figur
 
     def füge_eine_figur_hinzu(self, costume="default"):
+        """Fügt der Bühne eine neue Figur hinzu und gibt sie zurück. Die Figur wird mit dem angegebenen Kostüm gezeigt.
+
+        Der Name der Figur ist "Sprite" beim Standardkostüm, sonst der Name des Kostüms.
+
+        Parameters
+        ----------
+        costume : str
+            Der Name der Bilddatei für das Kostüm der Figur, z. B. "katze.png". "default" ist das Standardkostüm von pystage.
+
+        Returns
+        -------
+        Figur
+            Die neue Figur.
+        """
         return self._core.pystage_createsprite(costume=costume)
 
     def abspielen(self):
+        """Startet das Programm. Die Bühne wird gezeigt und alle Skripte laufen, bis das Fenster geschlossen wird.
+
+        Dies wird einmal am Ende des Programms aufgerufen.
+        """
         self._core.pystage_play()
         
             
