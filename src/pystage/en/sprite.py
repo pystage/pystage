@@ -1073,40 +1073,40 @@ class Sprite:
         return self._core.motion_yposition()
 
     def math_function(self, operator, number):
-        """%1 of %2
+        """Calculates a mathematical function of a number.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: ((abs) of (-1))
 
-        
         Parameters
         ----------
-        operator : FILL
-        number : FILL
-        
+        operator : str
+            The function: "abs", "floor", "ceiling", "sqrt", "sin", "cos", "tan", "asin", "acos", "atan", "ln", "log", "e ^" or "10 ^". The sine, cosine and tangent use degrees.
+        number : number
+            The number to calculate the function of.
 
         Returns
         -------
-
+        number
+            The result. It is "Infinity", "-Infinity" or "NaN" if the result is not a number.
         """
         return self._core.operator_mathop(operator, number)
 
     def pick_random(self, start, end):
-        """pick random %1 to %2
+        """Returns a random number between two numbers, both ends included. If both numbers are whole numbers, the result is a whole number too.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: pick random (1) to (10)
 
-        
         Parameters
         ----------
-        start : FILL
-        end : FILL
-        
+        start : number
+            The lowest possible number.
+        end : number
+            The highest possible number. If it is lower than start, the two are swapped.
 
         Returns
         -------
-
+        number
+            A random number between start and end.
         """
         return self._core.operator_random(start, end)
 
@@ -2435,35 +2435,59 @@ class Sprite:
         return self._core.operator_contains(string1, string2)
 
     def greater_than(self, operand1, operand2):
-        """%1 > %2
+        """Checks whether the first value is greater than the second. Numbers are compared as numbers, texts alphabetically without regard to upper and lower case.
 
-        Greater than; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch block: ((a) > (b))
+
+        Parameters
+        ----------
+        operand1 : number or str
+            The first value.
+        operand2 : number or str
+            The second value.
 
         Returns
         -------
         bool
+            True if operand1 is greater than operand2, otherwise False.
         """
         return self._core.operator_gt(operand1, operand2)
 
     def less_than(self, operand1, operand2):
-        """%1 < %2
+        """Checks whether the first value is less than the second. Numbers are compared as numbers, texts alphabetically without regard to upper and lower case.
 
-        Less than; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch block: ((a) < (b))
+
+        Parameters
+        ----------
+        operand1 : number or str
+            The first value.
+        operand2 : number or str
+            The second value.
 
         Returns
         -------
         bool
+            True if operand1 is less than operand2, otherwise False.
         """
         return self._core.operator_lt(operand1, operand2)
 
     def equals(self, operand1, operand2):
-        """%1 = %2
+        """Checks whether two values are equal. Numbers are compared as numbers, texts without regard to upper and lower case.
 
-        Equal; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch block: ((a) = (b))
+
+        Parameters
+        ----------
+        operand1 : number or str
+            The first value.
+        operand2 : number or str
+            The second value.
 
         Returns
         -------
         bool
+            True if the values are equal, otherwise False.
         """
         return self._core.operator_equals(operand1, operand2)
 

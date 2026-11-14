@@ -1055,42 +1055,40 @@ class Figur():
         return self._core.motion_yposition()
                 
     def mathematische_funktion(self, operator, number):
-        """%1 von %2
+        """Berechnet eine mathematische Funktion einer Zahl.
 
-        Translation string: %1 von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Betrag) von (-1)
 
-        
         Parameters
         ----------
-        operator : FILL
-        number : FILL
-        
+        operator : str
+            Die Funktion: "abs", "floor", "ceiling", "sqrt", "sin", "cos", "tan", "asin", "acos", "atan", "ln", "log", "e ^" oder "10 ^". Sinus, Kosinus und Tangens rechnen mit Grad.
+        number : Zahl
+            Die Zahl, von der die Funktion berechnet wird.
 
         Returns
         -------
-
+        Zahl
+            Das Ergebnis. Ist es keine Zahl, ist es "Infinity", "-Infinity" oder "NaN".
         """
         return self._core.operator_mathop(operator, number)
                 
     def zufallszahl_von_bis(self, start, end):
-        """Zufallszahl von %1 bis %2
+        """Gibt eine Zufallszahl zwischen zwei Zahlen zurück, die Grenzen eingeschlossen. Sind beide Zahlen ganze Zahlen, ist das Ergebnis auch eine ganze Zahl.
 
-        Translation string: Zufallszahl von %1 bis %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Zufallszahl von (1) bis (10)
 
-        
         Parameters
         ----------
-        start : FILL
-        end : FILL
-        
+        start : Zahl
+            Die kleinste mögliche Zahl.
+        end : Zahl
+            Die größte mögliche Zahl. Ist sie kleiner als start, werden beide vertauscht.
 
         Returns
         -------
-
+        Zahl
+            Eine Zufallszahl zwischen start und end.
         """
         return self._core.operator_random(start, end)
                 
@@ -2439,35 +2437,59 @@ class Figur():
         return self._core.operator_contains(string1, string2)
 
     def größer_als(self, operand1, operand2):
-        """%1 > %2
+        """Prüft, ob der erste Wert größer als der zweite ist. Zahlen werden als Zahlen verglichen, Texte alphabetisch ohne Beachtung von Groß- und Kleinschreibung.
 
-        Größer als; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch-Block: ((a) > (b))
+
+        Parameters
+        ----------
+        operand1 : Zahl oder str
+            Der erste Wert.
+        operand2 : Zahl oder str
+            Der zweite Wert.
 
         Returns
         -------
         bool
+            True, wenn operand1 größer als operand2 ist, sonst False.
         """
         return self._core.operator_gt(operand1, operand2)
 
     def kleiner_als(self, operand1, operand2):
-        """%1 < %2
+        """Prüft, ob der erste Wert kleiner als der zweite ist. Zahlen werden als Zahlen verglichen, Texte alphabetisch ohne Beachtung von Groß- und Kleinschreibung.
 
-        Kleiner als; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch-Block: ((a) < (b))
+
+        Parameters
+        ----------
+        operand1 : Zahl oder str
+            Der erste Wert.
+        operand2 : Zahl oder str
+            Der zweite Wert.
 
         Returns
         -------
         bool
+            True, wenn operand1 kleiner als operand2 ist, sonst False.
         """
         return self._core.operator_lt(operand1, operand2)
 
     def gleich(self, operand1, operand2):
-        """%1 = %2
+        """Prüft, ob zwei Werte gleich sind. Zahlen werden als Zahlen verglichen, Texte ohne Beachtung von Groß- und Kleinschreibung.
 
-        Gleich; compares like Scratch (numbers numerically, otherwise text without case).
+        Scratch-Block: ((a) = (b))
+
+        Parameters
+        ----------
+        operand1 : Zahl oder str
+            Der erste Wert.
+        operand2 : Zahl oder str
+            Der zweite Wert.
 
         Returns
         -------
         bool
+            True, wenn die Werte gleich sind, sonst False.
         """
         return self._core.operator_equals(operand1, operand2)
 
