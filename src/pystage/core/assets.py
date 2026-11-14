@@ -201,7 +201,12 @@ class CostumeManager():
         new_center *= scale
 
         # get a rotated image
-        rotozoom_image = pygame.transform.rotozoom(self.get_image(), angle, scale)
+        if angle % 360 == 0 and scale == 1:
+            # rotozoom is not the identity here: it smears the image and loses
+            # the last column and row (cuts the colon of a tight text costume)
+            rotozoom_image = self.get_image().copy()
+        else:
+            rotozoom_image = pygame.transform.rotozoom(self.get_image(), angle, scale)
         if flipped:
             rotozoom_image = pygame.transform.flip(rotozoom_image, True, False)
 

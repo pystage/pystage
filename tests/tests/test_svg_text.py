@@ -188,3 +188,41 @@ def test_font_family_aliases_and_fallbacks():
     # unknown families and bold fall back to Roboto (or a system font), never fail
     assert os.path.isfile(svg_text._font_file("No Such Font 123", False, False))
     assert name("No Such Font 123", True) == "roboto-bold.ttf"
+
+
+def test_tight_text_costume_is_not_cut(tmp_path):
+    """Scratch writes the SVG of a text exactly as large as the text. The
+    sprite image must keep every glyph pixel (e.g. the dots of a colon at the
+    right and bottom edge); it must equal the same text on a generous canvas."""
+    def label(w, h, dx, dy):
+        return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0,0,{w},{h}">'
+                f'<g fill="#ffffff" font-family="Handwriting" font-size="40"><text '
+                f'transform="translate({0.21879 + dx},{16.85474 + dy}) scale(0.43779,0.43779)" font-size="40" '
+                f'xml:space="preserve" fill="#ffffff" font-family="Handwriting"><tspan x="0" dy="0">Score:</tspan>'
+                f'</text></g></svg>')
+
+    def sprite_image(content, name):
+        path = tmp_path / f"{name}.svg"
+        path.write_text(content)
+        stage = Stage()
+        sprite = stage.add_a_sprite()
+        sprite._core.pystage_addcostume(str(path))
+        core = sprite._core
+        core.costume_manager.current_costume = len(core.costume_manager.costumes) - 1
+        core.costume_manager.update_sprite_image()
+        # the sprite shows the costume as it is at size 100 and direction 90
+        costume = core.costume_manager.costumes[-1].image
+        assert core.image.get_size() == costume.get_size()
+        assert abs(pygame.surfarray.array_alpha(core.image).astype(int)
+                   - pygame.surfarray.array_alpha(costume).astype(int)).max() <= 2
+        return core.image
+
+    tight = sprite_image(label(47.48513, 24.51598, 0, 0), "tight")
+    roomy = sprite_image(label(147.48513, 124.51598, 10, 10), "roomy")
+    assert tight.get_size() == roomy.get_size()
+    a = pygame.surfarray.array_alpha(tight).astype(int)
+    b = pygame.surfarray.array_alpha(roomy).astype(int)
+    assert abs(a - b).max() <= 2
+    # the colon: both dots are there in the last columns
+    cols = a[-3:, :].max(axis=0)
+    assert (cols > 100).sum() >= 4
