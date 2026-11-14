@@ -430,673 +430,428 @@ class Figur():
         return self._core.event_whenthisspriteclicked(generator_function, name, no_refresh)
                 
     def bühnenbild_name(self):
-        """Bühnenbild Name
+        """Gibt den Namen des aktuellen Bühnenbilds zurück.
 
-        Translation string: Bühnenbild Name
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Bühnenbild [Name])
 
         Returns
         -------
-
+        str
+            Der Name des aktuellen Bühnenbilds, oder ein leerer Text, wenn es kein Bühnenbild gibt.
         """
         return self._core.looks_backdropnumbername_name()
                 
     def bühnenbild_nummer(self):
-        """Bühnenbild Nummer
+        """Gibt die Nummer des aktuellen Bühnenbilds zurück (ab 1).
 
-        Translation string: Bühnenbild Nummer
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Bühnenbild [Nummer])
 
         Returns
         -------
-
+        int
+            Die Nummer des aktuellen Bühnenbilds.
         """
         return self._core.looks_backdropnumbername_number()
                 
     def ändere_effekt_helligkeit_um(self, value):
-        """ändere Effekt Helligkeit um %2
+        """Ändert den Helligkeit-Effekt der Figur um den angegebenen Wert. Negative Werte machen das Kostüm dunkler.
 
-        Translation string: ändere Effekt Helligkeit um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Helligkeit um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. Der Effekt geht von -100 (schwarz) bis 100 (weiß).
         """
         return self._core.looks_changeeffectby_brightness(value)
                 
     def ändere_effekt_farbe_um(self, value):
-        """ändere Effekt Farbe um %2
+        """Ändert den Farbeffekt der Figur um den angegebenen Wert. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Translation string: ändere Effekt Farbe um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Farbe um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. Der Effekt geht von 0 bis 200 und beginnt nach 200 wieder bei 0.
         """
         return self._core.looks_changeeffectby_color(value)
                 
     def ändere_effekt_fischauge_um(self, value):
-        """ändere Effekt Fischauge um %2
+        """Ändert den Fischauge-Effekt der Figur um den angegebenen Wert. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Translation string: ändere Effekt Fischauge um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Fischauge um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_fisheye(value)
                 
     def ändere_effekt_durchsichtigkeit_um(self, value):
-        """ändere Effekt Durchsichtigkeit um %2
+        """Ändert den Durchsichtigkeit-Effekt der Figur um den angegebenen Wert. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Translation string: ändere Effekt Durchsichtigkeit um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Durchsichtigkeit um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet sichtbar, 100 bedeutet unsichtbar.
         """
         return self._core.looks_changeeffectby_ghost(value)
                 
     def ändere_effekt_mosaik_um(self, value):
-        """ändere Effekt Mosaik um %2
+        """Ändert den Mosaik-Effekt der Figur um den angegebenen Wert. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Translation string: ändere Effekt Mosaik um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Mosaik um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_mosaic(value)
                 
     def ändere_effekt_pixel_um(self, value):
-        """ändere Effekt Pixel um %2
+        """Ändert den Pixel-Effekt der Figur um den angegebenen Wert. Das Kostüm sieht dann klotzig aus.
 
-        Translation string: ändere Effekt Pixel um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Pixel um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_pixelate(value)
                 
     def ändere_effekt_wirbel_um(self, value):
-        """ändere Effekt Wirbel um %2
+        """Ändert den Wirbel-Effekt der Figur um den angegebenen Wert. Das Kostüm wird verdreht.
 
-        Translation string: ändere Effekt Wirbel um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Wirbel um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_whirl(value)
                 
     def ändere_größe_um(self, percent):
-        """ändere Größe um %1
+        """Ändert die Größe der Figur um den angegebenen Prozentwert. Negative Werte machen sie kleiner.
 
-        Translation string: ändere Größe um %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Größe um (10)
 
-        
         Parameters
         ----------
-        percent : FILL
-        
-
-        Returns
-        -------
-
+        percent : Zahl
+            Die Änderung in Prozent. Mit 10 wird die Figur 10 Prozent größer.
         """
         return self._core.looks_changesizeby(percent)
                 
     def schalte_grafikeffekte_aus(self):
-        """schalte Grafikeffekte aus
+        """Entfernt alle Grafikeffekte (Farbe, Fischauge, Wirbel, Pixel, Mosaik, Helligkeit und Durchsichtigkeit) der Figur.
 
-        Translation string: schalte Grafikeffekte aus
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: schalte Grafikeffekte aus
         """
         return self._core.looks_cleargraphiceffects()
                 
     def kostüm_name(self):
-        """Kostüm Name
+        """Gibt den Namen des aktuellen Kostüms der Figur zurück.
 
-        Translation string: Kostüm Name
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Kostüm [Name])
 
         Returns
         -------
-
+        str
+            Der Name des aktuellen Kostüms, oder ein leerer Text, wenn die Figur kein Kostüm hat.
         """
         return self._core.looks_costumenumbername_name()
                 
     def kostüm_nummer(self):
-        """Kostüm Nummer
+        """Gibt die Nummer des aktuellen Kostüms der Figur zurück (ab 1).
 
-        Translation string: Kostüm Nummer
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Kostüm [Nummer])
 
         Returns
         -------
-
+        int
+            Die Nummer des aktuellen Kostüms.
         """
         return self._core.looks_costumenumbername_number()
                 
     def gehe_ebenen_nach_hinten(self, value):
-        """gehe %2 Ebenen nach hinten
+        """Bringt die Figur um die angegebene Anzahl Ebenen nach hinten, also hinter andere Figuren.
 
-        Translation string: gehe %2 Ebenen nach hinten
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: gehe (1) Ebenen nach hinten
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : int
+            Die Anzahl Ebenen, um die nach hinten gegangen wird.
         """
         return self._core.looks_goforwardbackwardlayers_backward(value)
                 
     def gehe_ebenen_nach_vorne(self, value):
-        """gehe %2 Ebenen nach vorne
+        """Bringt die Figur um die angegebene Anzahl Ebenen nach vorne, also vor andere Figuren.
 
-        Translation string: gehe %2 Ebenen nach vorne
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: gehe (1) Ebenen nach vorne
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : int
+            Die Anzahl Ebenen, um die nach vorne gegangen wird.
         """
         return self._core.looks_goforwardbackwardlayers_forward(value)
                 
     def gehe_zu_hinterster_ebene(self):
-        """gehe zu hinterster Ebene
+        """Bringt die Figur hinter alle anderen Figuren.
 
-        Translation string: gehe zu hinterster Ebene
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: gehe zu hinterster Ebene
         """
         return self._core.looks_gotofrontback_back()
                 
     def gehe_zu_vorderster_ebene(self):
-        """gehe zu vorderster Ebene
+        """Bringt die Figur vor alle anderen Figuren.
 
-        Translation string: gehe zu vorderster Ebene
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: gehe zu vorderster Ebene
         """
         return self._core.looks_gotofrontback_front()
                 
     def verstecke_dich(self):
-        """verstecke dich
+        """Versteckt die Figur. Sie wird erst wieder auf der Bühne gezeigt, wenn sie erneut angezeigt wird.
 
-        Translation string: verstecke dich
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: verstecke dich
         """
         return self._core.looks_hide()
                 
     def nächstes_bühnenbild(self):
-        """nächstes Bühnenbild
+        """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-        Translation string: nächstes Bühnenbild
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: nächstes Bühnenbild
         """
         return self._core.looks_nextbackdrop()
                 
     def wechsle_zum_nächsten_kostüm(self):
-        """wechsle zum nächsten Kostüm
+        """Wechselt zum nächsten Kostüm der Figur. Nach dem letzten Kostüm wird wieder das erste benutzt.
 
-        Translation string: wechsle zum nächsten Kostüm
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: wechsle zum nächsten Kostüm
         """
         return self._core.looks_nextcostume()
                 
     def sage(self, text):
-        """sage %1
+        """Zeigt eine Sprechblase mit dem angegebenen Text neben der Figur.
 
-        Translation string: sage %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: sage (Hallo!)
 
-        
         Parameters
         ----------
-        text : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            Der Text, der in der Sprechblase steht.
         """
         return self._core.looks_say(text)
                 
     def sage_für_sekunden(self, text, secs):
-        """sage %1 für %2 Sekunden
+        """Zeigt eine Sprechblase mit dem angegebenen Text neben der Figur für eine bestimmte Anzahl Sekunden.
 
-        Translation string: sage %1 für %2 Sekunden
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis die Zeit vorbei ist.
 
-        
+        Scratch-Block: sage (Hallo!) für (2) Sekunden
+
         Parameters
         ----------
-        text : FILL
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            Der Text, der in der Sprechblase steht.
+        secs : Zahl
+            Die Anzahl Sekunden, für die die Sprechblase angezeigt wird.
         """
         return self._core.looks_sayforsecs(text, secs)
                 
     def setze_effekt_helligkeit_auf(self, value):
-        """setze Effekt Helligkeit auf %2
+        """Setzt den Helligkeit-Effekt der Figur. Negative Werte machen das Kostüm dunkler.
 
-        Translation string: setze Effekt Helligkeit auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Helligkeit auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts, von -100 (schwarz) bis 100 (weiß). 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_brightness(value)
                 
     def setze_effekt_farbe_auf(self, value):
-        """setze Effekt Farbe auf %2
+        """Setzt den Farbeffekt der Figur. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Translation string: setze Effekt Farbe auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Farbe auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts, von 0 bis 200. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_color(value)
                 
     def setze_effekt_fischauge_auf(self, value):
-        """setze Effekt Fischauge auf %2
+        """Setzt den Fischauge-Effekt der Figur. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Translation string: setze Effekt Fischauge auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Fischauge auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_fisheye(value)
                 
     def setze_effekt_durchsichtigkeit_auf(self, value):
-        """setze Effekt Durchsichtigkeit auf %2
+        """Setzt den Durchsichtigkeit-Effekt der Figur. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Translation string: setze Effekt Durchsichtigkeit auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Durchsichtigkeit auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet sichtbar, 100 bedeutet unsichtbar.
         """
         return self._core.looks_seteffectto_ghost(value)
                 
     def setze_effekt_mosaik_auf(self, value):
-        """setze Effekt Mosaik auf %2
+        """Setzt den Mosaik-Effekt der Figur. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Translation string: setze Effekt Mosaik auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Mosaik auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_mosaic(value)
                 
     def setze_effekt_pixel_auf(self, value):
-        """setze Effekt Pixel auf %2
+        """Setzt den Pixel-Effekt der Figur. Das Kostüm sieht dann klotzig aus.
 
-        Translation string: setze Effekt Pixel auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Pixel auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_pixelate(value)
                 
     def setze_effekt_wirbel_auf(self, value):
-        """setze Effekt Wirbel auf %2
+        """Setzt den Wirbel-Effekt der Figur. Das Kostüm wird verdreht.
 
-        Translation string: setze Effekt Wirbel auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Wirbel auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_whirl(value)
                 
     def setze_größe_auf(self, percent):
-        """setze Größe auf %1
+        """Setzt die Größe der Figur in Prozent. 100 ist die normale Größe.
 
-        Translation string: setze Größe auf %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Größe auf (100) %
 
-        
         Parameters
         ----------
-        percent : FILL
-        
-
-        Returns
-        -------
-
+        percent : Zahl
+            Die neue Größe in Prozent. 100 ist die normale Größe, 50 ist halb so groß.
         """
         return self._core.looks_setsizeto(percent)
                 
     def zeige_dich(self):
-        """zeige dich
+        """Zeigt die Figur auf der Bühne.
 
-        Translation string: zeige dich
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: zeige dich
         """
         return self._core.looks_show()
                 
     def größe(self):
-        """Größe
+        """Gibt die Größe der Figur in Prozent zurück. 100 ist die normale Größe.
 
-        Translation string: Größe
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Größe)
 
         Returns
         -------
-
+        Zahl
+            Die Größe der Figur in Prozent.
         """
         return self._core.looks_size()
                 
     def wechsle_zu_bühnenbild(self, backdrop):
-        """wechsle zu Bühnenbild %1
+        """Wechselt zu einem anderen Bühnenbild.
 
-        Translation string: wechsle zu Bühnenbild %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wechsle zu Bühnenbild (Bühnenbild1)
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str oder int
+            Der Name des Bühnenbilds, seine Nummer (ab 1) oder eines von "nächstes Bühnenbild", "vorheriges Bühnenbild" und "zufälliges Bühnenbild".
         """
         return self._core.looks_switchbackdropto_backdrop(backdrop)
                 
     def wechsle_zu_zufälligem_bühnenbild(self):
-        """wechsle zu zufälligem Bühnenbild
+        """Wechselt zu einem zufälligen Bühnenbild.
 
-        Translation string: wechsle zu zufäBühnenbild
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [zufälliges Bühnenbild]
         """
         return self._core.looks_switchbackdropto_random()
 
     def wechsle_zum_vorherigen_bühnenbild(self):
-        """wechsle zum vorherigen Bühnenbild
+        """Wechselt zum vorherigen Bühnenbild. Vor dem ersten Bühnenbild wird das letzte benutzt.
 
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [vorheriges Bühnenbild]
         """
         return self._core.looks_switchbackdropto_previous()
 
     def wechsle_zum_nächsten_bühnenbild(self):
-        """wechsle zum nachfolgenden Bühnenbild
+        """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [nächstes Bühnenbild]
         """
         return self._core.looks_switchbackdropto_next()
 
     def wechsle_zu_kostüm(self, costume):
-        """wechsle zu Kostüm %1
+        """Wechselt zu einem anderen Kostüm der Figur.
 
-        Translation string: wechsle zu Kostüm %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wechsle zu Kostüm (Kostüm2)
 
-        
         Parameters
         ----------
-        costume : FILL
-        
-
-        Returns
-        -------
-
+        costume : str oder int
+            Der Name des Kostüms oder seine Nummer (ab 1).
         """
         return self._core.looks_switchcostumeto(costume)
                 
     def denke(self, text):
-        """denke %1
+        """Zeigt eine Denkblase mit dem angegebenen Text neben der Figur.
 
-        Translation string: denke %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: denke (Hmm...)
 
-        
         Parameters
         ----------
-        text : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            Der Text, der in der Denkblase steht.
         """
         return self._core.looks_think(text)
                 
     def denke_für_sekunden(self, text, secs):
-        """denke %1 für %2 Sekunden
+        """Zeigt eine Denkblase mit dem angegebenen Text neben der Figur für eine bestimmte Anzahl Sekunden.
 
-        Translation string: denke %1 für %2 Sekunden
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis die Zeit vorbei ist.
 
-        
+        Scratch-Block: denke (Hmm...) für (2) Sekunden
+
         Parameters
         ----------
-        text : FILL
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            Der Text, der in der Denkblase steht.
+        secs : Zahl
+            Die Anzahl Sekunden, für die die Denkblase angezeigt wird.
         """
         return self._core.looks_thinkforsecs(text, secs)
                 
@@ -1707,24 +1462,18 @@ class Figur():
         return self._core.pen_stamp()
                 
     def füge_kostüm_hinzu(self, name, center_x=None, center_y=None, factor=1):
-        """
+        """Fügt der Figur ein Kostüm (ein Bild) hinzu. Das Kostüm kommt ans Ende der Kostümliste.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        factor : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Bilddatei, z. B. "katze.png". Die Datei muss im Projektordner liegen.
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße, 2 zeigt das Bild doppelt so groß.
         """
         return self._core.pystage_addcostume(name, center_x, center_y, factor)
                 
@@ -1748,25 +1497,20 @@ class Figur():
         return self._core.pystage_addsound(name)
                 
     def füge_kostüm_ein(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Fügt ein Kostüm (ein Bild) an der angegebenen Stelle in die Kostümliste der Figur ein.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        factor : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            Die Stelle, an der das Kostüm eingefügt wird, ab 1.
+        name : str
+            Der Name der Bilddatei, z. B. "katze.png".
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße.
         """
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
                 
@@ -1791,25 +1535,20 @@ class Figur():
         return self._core.pystage_makevariable(name, value, all_sprites)
                 
     def ersetze_kostüm(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Ersetzt ein vorhandenes Kostüm der Figur durch ein anderes Bild.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        factor : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            Die Nummer des Kostüms, das ersetzt wird, ab 1.
+        name : str
+            Der Name der neuen Bilddatei.
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Kostüms im Bild in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße.
         """
         return self._core.pystage_replacecostume(index, name, center_x, center_y, factor)
                 

@@ -389,398 +389,253 @@ class Bühne():
         return self._core.event_whenthisspriteclicked(generator_function, name, no_refresh)
                 
     def bühnenbild_name(self):
-        """Bühnenbild Name
+        """Gibt den Namen des aktuellen Bühnenbilds zurück.
 
-        Translation string: Bühnenbild Name
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Bühnenbild [Name])
 
         Returns
         -------
-
+        str
+            Der Name des aktuellen Bühnenbilds, oder ein leerer Text, wenn es kein Bühnenbild gibt.
         """
         return self._core.looks_backdropnumbername_name()
                 
     def bühnenbild_nummer(self):
-        """Bühnenbild Nummer
+        """Gibt die Nummer des aktuellen Bühnenbilds zurück (ab 1).
 
-        Translation string: Bühnenbild Nummer
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Bühnenbild [Nummer])
 
         Returns
         -------
-
+        int
+            Die Nummer des aktuellen Bühnenbilds.
         """
         return self._core.looks_backdropnumbername_number()
                 
     def ändere_effekt_helligkeit_um(self, value):
-        """ändere Effekt Helligkeit um %2
+        """Ändert den Helligkeit-Effekt der Figur um den angegebenen Wert. Negative Werte machen das Kostüm dunkler.
 
-        Translation string: ändere Effekt Helligkeit um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Helligkeit um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. Der Effekt geht von -100 (schwarz) bis 100 (weiß).
         """
         return self._core.looks_changeeffectby_brightness(value)
                 
     def ändere_effekt_farbe_um(self, value):
-        """ändere Effekt Farbe um %2
+        """Ändert den Farbeffekt der Figur um den angegebenen Wert. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Translation string: ändere Effekt Farbe um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Farbe um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. Der Effekt geht von 0 bis 200 und beginnt nach 200 wieder bei 0.
         """
         return self._core.looks_changeeffectby_color(value)
                 
     def ändere_effekt_fischauge_um(self, value):
-        """ändere Effekt Fischauge um %2
+        """Ändert den Fischauge-Effekt der Figur um den angegebenen Wert. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Translation string: ändere Effekt Fischauge um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Fischauge um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_fisheye(value)
                 
     def ändere_effekt_durchsichtigkeit_um(self, value):
-        """ändere Effekt Durchsichtigkeit um %2
+        """Ändert den Durchsichtigkeit-Effekt der Figur um den angegebenen Wert. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Translation string: ändere Effekt Durchsichtigkeit um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Durchsichtigkeit um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet sichtbar, 100 bedeutet unsichtbar.
         """
         return self._core.looks_changeeffectby_ghost(value)
                 
     def ändere_effekt_mosaik_um(self, value):
-        """ändere Effekt Mosaik um %2
+        """Ändert den Mosaik-Effekt der Figur um den angegebenen Wert. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Translation string: ändere Effekt Mosaik um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Mosaik um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_mosaic(value)
                 
     def ändere_effekt_pixel_um(self, value):
-        """ändere Effekt Pixel um %2
+        """Ändert den Pixel-Effekt der Figur um den angegebenen Wert. Das Kostüm sieht dann klotzig aus.
 
-        Translation string: ändere Effekt Pixel um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Pixel um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_pixelate(value)
                 
     def ändere_effekt_wirbel_um(self, value):
-        """ändere Effekt Wirbel um %2
+        """Ändert den Wirbel-Effekt der Figur um den angegebenen Wert. Das Kostüm wird verdreht.
 
-        Translation string: ändere Effekt Wirbel um %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Effekt Wirbel um (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_changeeffectby_whirl(value)
                 
     def schalte_grafikeffekte_aus(self):
-        """schalte Grafikeffekte aus
+        """Entfernt alle Grafikeffekte (Farbe, Fischauge, Wirbel, Pixel, Mosaik, Helligkeit und Durchsichtigkeit) der Figur.
 
-        Translation string: schalte Grafikeffekte aus
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: schalte Grafikeffekte aus
         """
         return self._core.looks_cleargraphiceffects()
                 
     def nächstes_bühnenbild(self):
-        """nächstes Bühnenbild
+        """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-        Translation string: nächstes Bühnenbild
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: nächstes Bühnenbild
         """
         return self._core.looks_nextbackdrop()
                 
     def setze_effekt_helligkeit_auf(self, value):
-        """setze Effekt Helligkeit auf %2
+        """Setzt den Helligkeit-Effekt der Figur. Negative Werte machen das Kostüm dunkler.
 
-        Translation string: setze Effekt Helligkeit auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Helligkeit auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts, von -100 (schwarz) bis 100 (weiß). 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_brightness(value)
                 
     def setze_effekt_farbe_auf(self, value):
-        """setze Effekt Farbe auf %2
+        """Setzt den Farbeffekt der Figur. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Translation string: setze Effekt Farbe auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Farbe auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts, von 0 bis 200. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_color(value)
                 
     def setze_effekt_fischauge_auf(self, value):
-        """setze Effekt Fischauge auf %2
+        """Setzt den Fischauge-Effekt der Figur. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Translation string: setze Effekt Fischauge auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Fischauge auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_fisheye(value)
                 
     def setze_effekt_durchsichtigkeit_auf(self, value):
-        """setze Effekt Durchsichtigkeit auf %2
+        """Setzt den Durchsichtigkeit-Effekt der Figur. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Translation string: setze Effekt Durchsichtigkeit auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Durchsichtigkeit auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet sichtbar, 100 bedeutet unsichtbar.
         """
         return self._core.looks_seteffectto_ghost(value)
                 
     def setze_effekt_mosaik_auf(self, value):
-        """setze Effekt Mosaik auf %2
+        """Setzt den Mosaik-Effekt der Figur. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Translation string: setze Effekt Mosaik auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Mosaik auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_mosaic(value)
                 
     def setze_effekt_pixel_auf(self, value):
-        """setze Effekt Pixel auf %2
+        """Setzt den Pixel-Effekt der Figur. Das Kostüm sieht dann klotzig aus.
 
-        Translation string: setze Effekt Pixel auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Pixel auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_pixelate(value)
                 
     def setze_effekt_wirbel_auf(self, value):
-        """setze Effekt Wirbel auf %2
+        """Setzt den Wirbel-Effekt der Figur. Das Kostüm wird verdreht.
 
-        Translation string: setze Effekt Wirbel auf %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Effekt Wirbel auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Der neue Wert des Effekts. 0 bedeutet kein Effekt.
         """
         return self._core.looks_seteffectto_whirl(value)
                 
     def wechsle_zu_bühnenbild(self, backdrop):
-        """wechsle zu Bühnenbild %1
+        """Wechselt zu einem anderen Bühnenbild.
 
-        Translation string: wechsle zu Bühnenbild %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wechsle zu Bühnenbild (Bühnenbild1)
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str oder int
+            Der Name des Bühnenbilds, seine Nummer (ab 1) oder eines von "nächstes Bühnenbild", "vorheriges Bühnenbild" und "zufälliges Bühnenbild".
         """
         return self._core.looks_switchbackdropto_backdrop(backdrop)
                 
     def wechsle_zu_zufälligem_bühnenbild(self):
-        """wechsle zu zufälligem Bühnenbild
+        """Wechselt zu einem zufälligen Bühnenbild.
 
-        Translation string: wechsle zu zufäBühnenbild
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [zufälliges Bühnenbild]
         """
         return self._core.looks_switchbackdropto_random()
 
     def wechsle_zum_vorherigen_bühnenbild(self):
-        """wechsle zum vorherigen Bühnenbild
+        """Wechselt zum vorherigen Bühnenbild. Vor dem ersten Bühnenbild wird das letzte benutzt.
 
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [vorheriges Bühnenbild]
         """
         return self._core.looks_switchbackdropto_previous()
 
     def wechsle_zum_nächsten_bühnenbild(self):
-        """wechsle zum nachfolgenden Bühnenbild
+        """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-        Returns
-        -------
-
+        Scratch-Block: wechsle zu [nächstes Bühnenbild]
         """
         return self._core.looks_switchbackdropto_next()
                 
     def wechsle_zu_bühnenbild_und_warte(self, backdrop):
-        """wechsle zu Bühnenbild %1 und warte
+        """Wechselt zu einem anderen Bühnenbild und wartet, bis alle Skripte fertig sind, die mit "Wenn das Bühnenbild wechselt" gestartet wurden.
 
-        Translation string: wechsle zu Bühnenbild %1 und warte
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wechsle zu Bühnenbild (Bühnenbild1) und warte
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str oder int
+            Der Name des Bühnenbilds, seine Nummer (ab 1) oder eines von "nächstes Bühnenbild", "vorheriges Bühnenbild" und "zufälliges Bühnenbild".
         """
         return self._core.looks_switchbackdroptoandwait(backdrop)
                 
@@ -825,23 +680,18 @@ class Bühne():
         return self._core.operator_random(start, end)
                 
     def füge_bühnenbild_hinzu(self, name, center_x=None, center_y=None, factor=1):
-        """
+        """Fügt der Bühne ein Bühnenbild (ein Bild) hinzu. Das Bühnenbild kommt ans Ende der Bühnenbildliste.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            Der Name der Bilddatei, z. B. "wald.png". Die Datei muss im Projektordner liegen.
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße.
         """
         return self._core.pystage_addbackdrop(name, center_x, center_y, factor)
                 
@@ -865,24 +715,20 @@ class Bühne():
         return self._core.pystage_addsound(name)
                 
     def füge_bühnenbild_ein(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Fügt ein Bühnenbild (ein Bild) an der angegebenen Stelle in die Bühnenbildliste ein.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            Die Stelle, an der das Bühnenbild eingefügt wird, ab 1.
+        name : str
+            Der Name der Bilddatei, z. B. "wald.png".
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße.
         """
         return self._core.pystage_insertbackdrop(index, name, center_x, center_y, factor)
                 
@@ -907,24 +753,20 @@ class Bühne():
         return self._core.pystage_makevariable(name, value, all_sprites)
                 
     def ersetze_bühnenbild(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Ersetzt ein vorhandenes Bühnenbild durch ein anderes Bild.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            Die Nummer des Bühnenbilds, das ersetzt wird, ab 1.
+        name : str
+            Der Name der neuen Bilddatei.
+        center_x : Zahl
+            Die waagerechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        center_y : Zahl
+            Die senkrechte Position des Mittelpunkts des Bildes in Pixeln. Ohne Angabe wird die Bildmitte genommen.
+        factor : Zahl
+            Die Skalierung des Bildes. 1 lässt die Originalgröße.
         """
         return self._core.pystage_replacebackdrop(index, name, center_x, center_y, factor)
                 

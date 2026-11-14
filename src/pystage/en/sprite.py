@@ -432,632 +432,428 @@ class Sprite:
         )
 
     def backdrop_name(self):
-        """backdrop name
+        """Returns the name of the current backdrop of the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (backdrop [name])
 
         Returns
         -------
-
+        str
+            The name of the current backdrop, or an empty text if there is no backdrop.
         """
         return self._core.looks_backdropnumbername_name()
 
     def backdrop_number(self):
-        """backdrop number
+        """Returns the number of the current backdrop of the stage (starting with 1).
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (backdrop [number])
 
         Returns
         -------
-
+        int
+            The number of the current backdrop.
         """
         return self._core.looks_backdropnumbername_number()
 
     def change_brightness_effect_by(self, value):
-        """change brightness effect by %2
+        """Changes the brightness effect of the sprite by the given amount. Negative values make the costume darker.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change brightness effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. The effect goes from -100 (black) to 100 (white).
         """
         return self._core.looks_changeeffectby_brightness(value)
 
     def change_color_effect_by(self, value):
-        """change color effect by %2
+        """Changes the color effect of the sprite by the given amount. The color effect changes the colors of the costume.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change color effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. The effect goes from 0 to 200 and starts again at 0 after 200.
         """
         return self._core.looks_changeeffectby_color(value)
 
     def change_fisheye_effect_by(self, value):
-        """change fisheye effect by %2
+        """Changes the fisheye effect of the sprite by the given amount. The fisheye effect bends the costume like a fish-eye lens.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change fisheye effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. 0 means no effect.
         """
         return self._core.looks_changeeffectby_fisheye(value)
 
     def change_ghost_effect_by(self, value):
-        """change ghost effect by %2
+        """Changes the ghost effect of the sprite by the given amount. The higher the effect, the more transparent the sprite becomes.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change ghost effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. 0 means visible, 100 means invisible.
         """
         return self._core.looks_changeeffectby_ghost(value)
 
     def change_mosaic_effect_by(self, value):
-        """change mosaic effect by %2
+        """Changes the mosaic effect of the sprite by the given amount. The mosaic effect repeats the costume as small tiles.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change mosaic effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. 0 means no effect.
         """
         return self._core.looks_changeeffectby_mosaic(value)
 
     def change_pixelate_effect_by(self, value):
-        """change pixelate effect by %2
+        """Changes the pixelate effect of the sprite by the given amount. The pixelate effect makes the costume look blocky.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pixelate effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. 0 means no effect.
         """
         return self._core.looks_changeeffectby_pixelate(value)
 
     def change_whirl_effect_by(self, value):
-        """change whirl effect by %2
+        """Changes the whirl effect of the sprite by the given amount. The whirl effect twists the costume.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change whirl effect by (25)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the effect. 0 means no effect.
         """
         return self._core.looks_changeeffectby_whirl(value)
 
     def change_size_by(self, percent):
-        """change size by %1
+        """Changes the size of the sprite by the given percentage. Negative values make it smaller.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change size by (10)
 
-        
         Parameters
         ----------
-        percent : FILL
-        
-
-        Returns
-        -------
-
+        percent : number
+            The change in percent. For example, 10 makes the sprite 10 percent bigger.
         """
         return self._core.looks_changesizeby(percent)
 
     def clear_graphic_effects(self):
-        """clear graphic effects
+        """Removes all graphic effects (color, fisheye, whirl, pixelate, mosaic, brightness and ghost) of the sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: clear graphic effects
         """
         return self._core.looks_cleargraphiceffects()
 
     def costume_name(self):
-        """costume name
+        """Returns the name of the current costume of the sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (costume [name])
 
         Returns
         -------
-
+        str
+            The name of the current costume, or an empty text if the sprite has no costume.
         """
         return self._core.looks_costumenumbername_name()
 
     def costume_number(self):
-        """costume number
+        """Returns the number of the current costume of the sprite (starting with 1).
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (costume [number])
 
         Returns
         -------
-
+        int
+            The number of the current costume.
         """
         return self._core.looks_costumenumbername_number()
 
     def go_backward(self, value):
-        """go backward %2 layers
+        """Moves the sprite backward by the given number of layers, so that it is shown behind other sprites.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: go backward (1) layers
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : int
+            The number of layers to move backward.
         """
         return self._core.looks_goforwardbackwardlayers_backward(value)
 
     def go_forward(self, value):
-        """go forward %2 layers
+        """Moves the sprite forward by the given number of layers, so that it is shown in front of other sprites.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: go forward (1) layers
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : int
+            The number of layers to move forward.
         """
         return self._core.looks_goforwardbackwardlayers_forward(value)
 
     def go_to_back_layer(self):
-        """go to back layer
+        """Moves the sprite behind all other sprites.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: go to back layer
         """
         return self._core.looks_gotofrontback_back()
 
     def go_to_front_layer(self):
-        """go to front layer
+        """Moves the sprite in front of all other sprites.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: go to front layer
         """
         return self._core.looks_gotofrontback_front()
 
     def hide(self):
-        """hide
+        """Hides the sprite. It is not shown on the stage until it is shown again.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: hide
         """
         return self._core.looks_hide()
 
     def next_backdrop(self):
-        """next backdrop
+        """Switches the stage to the next backdrop. After the last backdrop, the first one is used again.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: next backdrop
         """
         return self._core.looks_nextbackdrop()
 
     def next_costume(self):
-        """next costume
+        """Switches the sprite to the next costume. After the last costume, the first one is used again.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: next costume
         """
         return self._core.looks_nextcostume()
 
     def say(self, text):
-        """say %1
+        """Shows a speech bubble with the given text next to the sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: say (Hello!)
 
-        
         Parameters
         ----------
-        text : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            The text to show in the bubble.
         """
         return self._core.looks_say(text)
 
     def say_for_seconds(self, text, secs):
-        """say %1 for %2 seconds
+        """Shows a speech bubble with the given text next to the sprite for a number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the time is over.
 
-        
+        Scratch block: say (Hello!) for (2) seconds
+
         Parameters
         ----------
-        text : FILL
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            The text to show in the bubble.
+        secs : number
+            The number of seconds the bubble is shown.
         """
         return self._core.looks_sayforsecs(text, secs)
 
     def set_brightness_effect_to(self, value):
-        """set brightness effect to %2
+        """Sets the brightness effect of the sprite. Negative values make the costume darker.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set brightness effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect, from -100 (black) to 100 (white). 0 means no effect.
         """
         return self._core.looks_seteffectto_brightness(value)
 
     def set_color_effect_to(self, value):
-        """set color effect to %2
+        """Sets the color effect of the sprite. The color effect changes the colors of the costume.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set color effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect, from 0 to 200. 0 means no effect.
         """
         return self._core.looks_seteffectto_color(value)
 
     def set_fisheye_effect_to(self, value):
-        """set fisheye effect to %2
+        """Sets the fisheye effect of the sprite. The fisheye effect bends the costume like a fish-eye lens.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set fisheye effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect. 0 means no effect.
         """
         return self._core.looks_seteffectto_fisheye(value)
 
     def set_ghost_effect_to(self, value):
-        """set ghost effect to %2
+        """Sets the ghost effect of the sprite. The higher the effect, the more transparent the sprite becomes.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set ghost effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect. 0 means visible, 100 means invisible.
         """
         return self._core.looks_seteffectto_ghost(value)
 
     def set_mosaic_effect_to(self, value):
-        """set mosaic effect to %2
+        """Sets the mosaic effect of the sprite. The mosaic effect repeats the costume as small tiles.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set mosaic effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect. 0 means no effect.
         """
         return self._core.looks_seteffectto_mosaic(value)
 
     def set_pixelate_effect_to(self, value):
-        """set pixelate effect to %2
+        """Sets the pixelate effect of the sprite. The pixelate effect makes the costume look blocky.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pixelate effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect. 0 means no effect.
         """
         return self._core.looks_seteffectto_pixelate(value)
 
     def set_whirl_effect_to(self, value):
-        """set whirl effect to %2
+        """Sets the whirl effect of the sprite. The whirl effect twists the costume.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set whirl effect to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new value of the effect. 0 means no effect.
         """
         return self._core.looks_seteffectto_whirl(value)
 
     def set_size_to(self, percent):
-        """set size to %1 %
+        """Sets the size of the sprite in percent. 100 is the normal size.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set size to (100) %
 
-        
         Parameters
         ----------
-        percent : FILL
-        
-
-        Returns
-        -------
-
+        percent : number
+            The new size in percent. 100 is the normal size, 50 is half size.
         """
         return self._core.looks_setsizeto(percent)
 
     def show(self):
-        """show
+        """Shows the sprite on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: show
         """
         return self._core.looks_show()
 
     def size(self):
-        """size
+        """Returns the size of the sprite in percent. 100 is the normal size.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (size)
 
         Returns
         -------
-
+        number
+            The size of the sprite in percent.
         """
         return self._core.looks_size()
 
     def switch_backdrop_to(self, backdrop):
-        """switch backdrop to %1
+        """Switches the stage to another backdrop.
 
-        Translation string: switch backdrop to %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: switch backdrop to (backdrop1)
 
-        
         Parameters
         ----------
-        backdrop : FILL
-        
-
-        Returns
-        -------
-
+        backdrop : str or int
+            The name of the backdrop, its number (starting with 1), or one of "next backdrop", "previous backdrop" and "random backdrop".
         """
         return self._core.looks_switchbackdropto_backdrop(backdrop)
 
     def switch_to_random_backdrop(self):
-        """switch to random backdrop
+        """Switches the stage to a random backdrop.
 
-        Returns
-        -------
-
+        Scratch block: switch backdrop to [random backdrop]
         """
         return self._core.looks_switchbackdropto_random()
 
     def switch_to_next_backdrop(self):
-        """switch to next backdrop
+        """Switches the stage to the next backdrop. After the last backdrop, the first one is used again.
 
-        Returns
-        -------
-
+        Scratch block: switch backdrop to [next backdrop]
         """
         return self._core.looks_switchbackdropto_next()
 
     def switch_to_previous_backdrop(self):
-        """switch to previous backdrop
+        """Switches the stage to the previous backdrop. Before the first backdrop, the last one is used.
 
-        Returns
-        -------
-
+        Scratch block: switch backdrop to [previous backdrop]
         """
         return self._core.looks_switchbackdropto_previous()
 
     def switch_costume_to(self, costume):
-        """switch costume to %1
+        """Switches the sprite to another costume.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: switch costume to (costume2)
 
-        
         Parameters
         ----------
-        costume : FILL
-        
-
-        Returns
-        -------
-
+        costume : str or int
+            The name of the costume, or its number (starting with 1).
         """
         return self._core.looks_switchcostumeto(costume)
 
     def think(self, text):
-        """think %1
+        """Shows a thought bubble with the given text next to the sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: think (Hmm...)
 
-        
         Parameters
         ----------
-        text : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            The text to show in the bubble.
         """
         return self._core.looks_think(text)
 
     def think_for_seconds(self, text, secs):
-        """think %1 for %2 seconds
+        """Shows a thought bubble with the given text next to the sprite for a number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the time is over.
 
-        
+        Scratch block: think (Hmm...) for (2) seconds
+
         Parameters
         ----------
-        text : FILL
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        text : str
+            The text to show in the bubble.
+        secs : number
+            The number of seconds the bubble is shown.
         """
         return self._core.looks_thinkforsecs(text, secs)
 
@@ -1647,23 +1443,18 @@ class Sprite:
         return self._core.pen_stamp()
 
     def add_costume(self, name, center_x=None, center_y=None, factor=1):
-        """
+        """Adds a costume (an image) to the sprite. The costume is added at the end of the costume list.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        factor : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The name of the image file, e.g. "cat.png". The file must be in the project folder.
+        center_x : number
+            The horizontal position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        center_y : number
+            The vertical position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        factor : number
+            The scaling of the image. 1 keeps the original size, 2 shows it at double size.
         """
         return self._core.pystage_addcostume(name, center_x, center_y, factor)
 
@@ -1686,23 +1477,20 @@ class Sprite:
         return self._core.pystage_addsound(name)
 
     def insert_costume(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Inserts a costume (an image) into the sprite's costume list at the given position.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            The position where the costume is inserted, starting with 1.
+        name : str
+            The name of the image file, e.g. "cat.png".
+        center_x : number
+            The horizontal position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        center_y : number
+            The vertical position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        factor : number
+            The scaling of the image. 1 keeps the original size.
         """
         return self._core.pystage_insertcostume(index, name, center_x, center_y, factor)
 
@@ -1726,23 +1514,20 @@ class Sprite:
         return self._core.pystage_makevariable(name, value, all_sprites)
 
     def replace_costume(self, index, name, center_x=None, center_y=None, factor=1):
-        """
+        """Replaces an existing costume of the sprite with another image.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        index : FILL
-        name : FILL
-        center_x : FILL
-        center_y : FILL
-        
-
-        Returns
-        -------
-
+        index : int
+            The number of the costume to replace, starting with 1.
+        name : str
+            The name of the new image file.
+        center_x : number
+            The horizontal position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        center_y : number
+            The vertical position of the costume's center in the image, in pixels. If not given, the center of the image is used.
+        factor : number
+            The scaling of the image. 1 keeps the original size.
         """
         return self._core.pystage_replacecostume(
             index, name, center_x, center_y, factor
