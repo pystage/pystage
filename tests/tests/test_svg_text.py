@@ -140,3 +140,46 @@ def test_svg_warning_only_once(tmp_path, capsys):
     costume_image(tmp_path, svg(text("A")), "w1")
     costume_image(tmp_path, svg(text("B")), "w2")
     assert capsys.readouterr().out.count("SVG") == 1
+
+
+SCRATCH_FONTS = {
+    "Sans Serif": "NotoSans-Medium.ttf",
+    "Serif": "SourceSerifPro-Regular.otf",
+    "Handwriting": "Handlee-Regular.ttf",
+    "Marker": "Knewave.ttf",
+    "Curly": "Griffy-Regular.ttf",
+}
+
+
+@pytest.mark.parametrize("family,filename", SCRATCH_FONTS.items())
+def test_scratch_families_use_bundled_fonts(family, filename):
+    import os
+    from pystage.core import svg_text
+    path = svg_text._font_file(family, False, False)
+    assert os.path.basename(path) == filename
+    assert os.path.dirname(path).endswith(os.path.join("fonts", "scratch"))
+    assert os.path.isfile(path)
+    surface = svg_text._font(path, 40).render("Hello", True, (255, 255, 255))
+    assert surface.get_bounding_rect().width > 20
+
+
+def test_bundled_fonts_ship_with_licences():
+    import os
+    from pystage.resources import resource_filename
+    folder = resource_filename("fonts/scratch")
+    names = os.listdir(os.path.join(folder, "licenses"))
+    assert len([n for n in names if n.startswith("OFL-")]) == len(SCRATCH_FONTS)
+    assert os.path.isfile(os.path.join(folder, "README.md"))
+
+
+def test_font_family_aliases_and_fallbacks():
+    import os
+    from pystage.core import svg_text
+    name = lambda family, bold=False: os.path.basename(svg_text._font_file(family, bold, False))
+    assert name(None) == name("") == "NotoSans-Medium.ttf"
+    assert name("Helvetica") == "NotoSans-Medium.ttf"
+    assert name("Gloria") == "Handlee-Regular.ttf"
+    assert name("'Sans Serif', Arial") == "NotoSans-Medium.ttf"
+    # unknown families and bold fall back to Roboto (or a system font), never fail
+    assert os.path.isfile(svg_text._font_file("No Such Font 123", False, False))
+    assert name("No Such Font 123", True) == "roboto-bold.ttf"

@@ -198,6 +198,11 @@ The parameters are:
 Scripts, custom blocks, variables, lists, monitors and comments of your project are converted. Blocks from extensions other than Pen (e.g. Music or Text to Speech) are not supported; they show up as a text starting with `NOT SUPPORTED` in the Python code.
 
 
+# Fonts and licences
+
+PyStage is MIT licensed. It bundles the original Scratch 3 text fonts (Noto Sans, Source Serif Pro, Handlee, Knewave and Griffy, all under the SIL Open Font License 1.1) so that text in SVG costumes looks like in Scratch, and Roboto (Apache License 2.0) as fallback; see `THIRD-PARTY-NOTICES.md`.
+
+
 # Contributors
 
 * Kai Eckert, Stuttgart Media University

@@ -17,6 +17,7 @@ Nothing here raises: on any problem the plain image is used.
 """
 import functools
 import math
+import os
 import re
 import xml.etree.ElementTree as ET
 
@@ -124,32 +125,61 @@ def _style(element):
 # Fonts
 #
 
-# Scratch's font names (scratch-paint) with the system fonts that look similar,
-# and the bundled font to use if there is none: (candidates, fallback)
+# Scratch's font families (scratch-paint) and the original font files that
+# Scratch ships (scratch-render-fonts), bundled in fonts/scratch. Scratch only
+# has the regular weight, there is no bold or italic cut.
+_SCRATCH_FONTS = {
+    "sans serif": "NotoSans-Medium.ttf",
+    "serif": "SourceSerifPro-Regular.otf",
+    "handwriting": "Handlee-Regular.ttf",
+    "marker": "Knewave.ttf",
+    "curly": "Griffy-Regular.ttf",
+}
+# Scratch 2 names, converted by scratch-svg-renderer when the whole attribute is one of them
+_SCRATCH2_NAMES = {"helvetica": "sans serif", "mystery": "curly", "gloria": "handwriting", "donegal": "serif"}
+
+# Families without a bundled font (Pixel: Grand9K Pixel is CC BY-SA, Chinese,
+# Japanese and Korean: Scratch uses system fonts as well) and generic names,
+# with system fonts that look similar and the bundled Roboto to use if there is none.
 _FAMILIES = {
-    "sans serif": (["helvetica", "arial", "dejavusans", "liberationsans", "freesans"], "regular"),
-    "serif": (["times", "timesnewroman", "dejavuserif", "liberationserif", "freeserif"], "regular"),
-    "handwriting": (["handlee", "comicsansms", "chalkboard", "comicneue"], "light"),
-    "marker": (["markerfelt", "impact", "arialblack"], "bold"),
-    "curly": (["brushscriptmt", "zapfino", "lucidahandwriting", "comicsansms"], "regular"),
     "pixel": (["couriernew", "courier", "dejavusansmono", "liberationmono"], "regular"),
     "monospace": (["couriernew", "courier", "dejavusansmono", "liberationmono"], "regular"),
     "sans-serif": (["helvetica", "arial", "dejavusans", "liberationsans", "freesans"], "regular"),
     "chinese": (["pingfangsc", "heitisc", "microsoftyahei", "notosanscjksc", "notosanssc", "simsun", "arialunicodems"], "regular"),
     "japanese": (["hiraginosans", "hiraginokakugothicpro", "meiryo", "notosanscjkjp", "notosansjp", "msgothic", "arialunicodems"], "regular"),
-    "korean": (["applesdgothicneo", "malgungothic", "notosanscjkkr", "notosanskr", "arialunicodems"], "regular"),
+    "korean": (["applesdgothicneo", "malgungothic", "notosanskr", "notosanscjkkr", "arialunicodems"], "regular"),
 }
 _FALLBACK_FILES = {"regular": "roboto-regular.ttf", "bold": "roboto-bold.ttf", "light": "roboto-light.ttf"}
 
 
+def _scratch_font(name):
+    """The path of the bundled Scratch font of a (lower case) family name or None."""
+    filename = _SCRATCH_FONTS.get(name)
+    if filename:
+        path = resource_filename("fonts/scratch/" + filename)
+        if os.path.isfile(path):
+            return path
+    return None
+
+
 @functools.lru_cache(maxsize=None)
 def _font_file(family, bold, italic):
-    """The file of a font for a family list (comma separated), never None."""
+    """The file of a font for a family list (comma separated), never None.
+
+    Scratch's own families use the bundled originals, other names a similar
+    system font, and Roboto is the last resort."""
     fallback = "regular"
-    for name in (family or "").split(","):
+    family = (family or "").strip().strip("'\"").strip().lower()
+    if not family:
+        family = "sans serif"
+    family = _SCRATCH2_NAMES.get(family, family)
+    for name in family.split(","):
         name = name.strip().strip("'\"").lower()
         if not name:
             continue
+        path = _scratch_font(name)
+        if path:
+            return path
         candidates, fb = _FAMILIES.get(name, ([re.sub(r"[^a-z0-9]", "", name)], "regular"))
         if name in _FAMILIES:
             fallback = fb
@@ -341,7 +371,7 @@ def add_svg_text(image, filename):
         to_px = (sx, 0.0, 0.0, sy, -vx * sx, -vy * sy)
 
         texts = []
-        _collect(root, _IDENTITY, {"fill": "black", "font-size": "16", "font-family": "sans-serif"}, texts)
+        _collect(root, _IDENTITY, {"fill": "black", "font-size": "16", "font-family": "Sans Serif"}, texts)
         parts = []
         for element, matrix, props in texts:
             for run in _runs(element, props):
@@ -350,10 +380,19 @@ def add_svg_text(image, filename):
                     parts.append(rendered)
         if not parts:
             return image, (0, 0)
-        left = min(0, *(p[1][0] for p in parts))
-        top = min(0, *(p[1][1] for p in parts))
-        right = max(w, *(p[1][0] + p[0].get_width() for p in parts))
-        bottom = max(h, *(p[1][1] + p[0].get_height() for p in parts))
+        # only the ink counts: the empty space above and below a line (ascent,
+        # descent) must not enlarge the image
+        inks = []
+        for surface, (x, y) in parts:
+            ink = surface.get_bounding_rect()
+            if ink.width and ink.height:
+                inks.append(pygame.Rect(x + ink.x, y + ink.y, ink.width, ink.height))
+        if not inks:
+            return image, (0, 0)
+        left = min(0, *(r.left for r in inks))
+        top = min(0, *(r.top for r in inks))
+        right = max(w, *(r.right for r in inks))
+        bottom = max(h, *(r.bottom for r in inks))
         if (right - left) * (bottom - top) > _MAX_PIXELS:
             return image, (0, 0)
         result = pygame.Surface((right - left, bottom - top), pygame.SRCALPHA)

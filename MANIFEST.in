@@ -1,3 +1,5 @@
 exclude tests/*
 prune tests
 
+include THIRD-PARTY-NOTICES.md
+recursive-include src/pystage/fonts *
