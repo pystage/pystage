@@ -3,10 +3,10 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-stage.add_backdrop("backdrop1")
-stage.add_backdrop("blue_sky")
-stage.add_backdrop("random_one")
-stage.add_backdrop("next_backdrop")
+stage.add_backdrop("backdrop1", center_x=140.89789386542452, center_y=142.7356775946011)
+stage.add_backdrop("blue_sky", center_x=240, center_y=180)
+stage.add_backdrop("random_one", center_x=165.39802840013851, center_y=139.91927969531463)
+stage.add_backdrop("next_backdrop", center_x=139, center_y=80.55260901728201)
 stage.switch_backdrop_to("next_backdrop")
 stage.add_sound("pop")
 stage.create_variable("my variable", 0)

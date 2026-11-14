@@ -1,7 +1,7 @@
 import pygame
-import pkg_resources
+from pystage.resources import resource_filename
 
-light_font_9 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-light.ttf"), 10)
+light_font_9 = pygame.font.Font(resource_filename("fonts/roboto-light.ttf"), 10)
 
 class InputManager:
 

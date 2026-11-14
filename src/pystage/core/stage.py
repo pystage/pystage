@@ -1,5 +1,7 @@
 # pyright: basic, reportPrivateUsage=false
+import os
 import sys
+import traceback
 
 import pygame
 
@@ -309,16 +311,50 @@ class CoreStage(
         self.screen.blit(scaled, (self.offset_x, self.offset_y,))
         pygame.display.flip()
 
+    def _show_error(self, error):
+        """Show an error in the window until it is closed.
+
+        The error message in the terminal is easily missed, especially
+        when the terminal closes together with the program.
+        """
+        from pystage.core.gui import regular_font_14, wrap_text, render_lines
+        tb = traceback.extract_tb(error.__traceback__)
+        # The last position that is not in pyStage itself is most helpful
+        own = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        frames = [f for f in tb if not os.path.abspath(f.filename).startswith(own)] or list(tb)
+        text = f"{type(error).__name__}: {error}"
+        if frames:
+            frame = frames[-1]
+            text = f"Error in {os.path.basename(frame.filename)}, line {frame.lineno}: {frame.line or ''} --- {text}"
+        lines, width, height = wrap_text(text[:600], regular_font_14, self.width - 40)
+        message = render_lines(lines, regular_font_14, (255, 255, 255), width, height, 2)
+        overlay = pygame.Surface((self.width, message.get_height() + 20), flags=pygame.SRCALPHA)
+        overlay.fill((180, 0, 0, 230))
+        overlay.blit(message, (20, 10))
+        self.surface.blit(overlay, (0, self.height - overlay.get_height()))
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return
+            self._show()
+            self.clock.tick(10)
+
     def pystage_play(self):
         """
         This runs the game loop
         """
         self.running = True
         dt = 0
-        while self.running:
-            self._process_events()
-            self._frame(dt)
-            self._show()
-            dt = self.clock.tick(self.FPS) / 1000
+        try:
+            while self.running:
+                self._process_events()
+                self._frame(dt)
+                self._show()
+                dt = self.clock.tick(self.FPS) / 1000
+        except Exception as error:
+            traceback.print_exc()
+            self._show_error(error)
+            pygame.quit()
+            sys.exit(1)
 
         pygame.quit()

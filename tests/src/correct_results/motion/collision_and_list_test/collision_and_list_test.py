@@ -3,9 +3,9 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-stage.add_backdrop("backdrop1")
-stage.add_backdrop("canyon")
-stage.add_backdrop("hall")
+stage.add_backdrop("backdrop1", center_x=240, center_y=180)
+stage.add_backdrop("canyon", center_x=480, center_y=360, factor=2)
+stage.add_backdrop("hall", center_x=480, center_y=360, factor=2)
 stage.switch_backdrop_to("canyon")
 stage.add_sound("pop")
 stage.create_variable("my variable", 0)

@@ -3,7 +3,7 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-stage.add_backdrop("backdrop1")
+stage.add_backdrop("backdrop1", center_x=240, center_y=180)
 stage.add_sound("pop")
 stage.create_variable("my variable", 2)
 stage.create_variable("var", 0)

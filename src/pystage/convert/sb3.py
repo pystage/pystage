@@ -598,21 +598,19 @@ def get_python(project, language="core", project_link=None):
         writer.set_sprite(sprite["name"])
         if is_stage:
             names = [writer.global_backdrop(c["local_name"], False) for c in sprite["costumes"]]
-            for name in names:
-                lines.append(f"{var}.{fn('pystage_addbackdrop', True)}({py_str(name)})")
-            if sprite["currentCostume"] != 0:
-                lines.append(f"{var}.{fn('looks_switchbackdropto_backdrop', True)}({py_str(names[sprite['currentCostume']])})")
+            add, switch = fn("pystage_addbackdrop", True), fn("looks_switchbackdropto_backdrop", True)
         else:
             names = [writer.global_costume(c["local_name"], False) for c in sprite["costumes"]]
-            for name, c in zip(names, sprite["costumes"]):
-                args = py_str(name)
-                if c["rotationCenterX"] is not None and c["rotationCenterY"] is not None:
-                    args += f", center_x={c['rotationCenterX']}, center_y={c['rotationCenterY']}"
-                if c["bitmapResolution"] != 1:
-                    args += f", factor={c['bitmapResolution']}"
-                lines.append(f"{var}.{fn('pystage_addcostume')}({args})")
-            if sprite["currentCostume"] != 0:
-                lines.append(f"{var}.{fn('looks_switchcostumeto')}({py_str(names[sprite['currentCostume']])})")
+            add, switch = fn("pystage_addcostume"), fn("looks_switchcostumeto")
+        for name, c in zip(names, sprite["costumes"]):
+            args = py_str(name)
+            if c["rotationCenterX"] is not None and c["rotationCenterY"] is not None:
+                args += f", center_x={c['rotationCenterX']}, center_y={c['rotationCenterY']}"
+            if c["bitmapResolution"] != 1:
+                args += f", factor={c['bitmapResolution']}"
+            lines.append(f"{var}.{add}({args})")
+        if sprite["currentCostume"] != 0:
+            lines.append(f"{var}.{switch}({py_str(names[sprite['currentCostume']])})")
         for s in sprite["sounds"]:
             lines.append(f"{var}.{fn('pystage_addsound', is_stage)}({py_str(writer.global_sound(s['local_name'], False))})")
         local = "" if is_stage else ", all_sprites=False"

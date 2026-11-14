@@ -1,11 +1,10 @@
 import math
 import os
 import random
-# from pystage.util import stderr_redirector
 import sys
 import io
 import pygame
-import pkg_resources
+from pystage.resources import resource_filename
 import pystage
 from pystage.core.values import is_number, to_number
 
@@ -373,7 +372,7 @@ class Costume():
         self.sprite = sprite
         self.file = None
         self.name = name
-        internal_folder = pkg_resources.resource_filename("pystage", "images/")
+        internal_folder = resource_filename("images/")
         # Add further folders for translations here
         named_folders = ["", "images/", "bilder/"]
         # Folders relative to CWD
@@ -399,7 +398,7 @@ class Costume():
             if self.file is not None:
                 break
         if self.file is None:
-            self.file = pkg_resources.resource_filename("pystage", "images/zombie_idle.png")
+            self.file = resource_filename("images/zombie_idle.png")
             self.image = pygame.image.load(self.file)
         if self.file.endswith(".svg"):
             print("\nWARNING: SVG conversion is for convenience only")
@@ -461,7 +460,7 @@ class Sound():
         self.sound = None
         # pitch: sound
         self._pitched = {}
-        internal_folder = pkg_resources.resource_filename("pystage", "sounds/")
+        internal_folder = resource_filename("sounds/")
         # Add further folders for translations here
         named_folders = ["", "sounds/", "klaenge/"]
         # Folders relative to CWD

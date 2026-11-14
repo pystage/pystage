@@ -823,7 +823,7 @@ class Bühne():
         """
         return self._core.operator_random(start, end)
                 
-    def füge_bühnenbild_hinzu(self, name, center_x=None, center_y=None):
+    def füge_bühnenbild_hinzu(self, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -842,7 +842,7 @@ class Bühne():
         -------
 
         """
-        return self._core.pystage_addbackdrop(name, center_x, center_y)
+        return self._core.pystage_addbackdrop(name, center_x, center_y, factor)
                 
     def füge_klang_hinzu(self, name):
         """
@@ -882,7 +882,7 @@ class Bühne():
         """
         return self._core.pystage_createsprite(costume)
                 
-    def füge_bühnenbild_ein(self, index, name, center_x=None, center_y=None):
+    def füge_bühnenbild_ein(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -902,7 +902,7 @@ class Bühne():
         -------
 
         """
-        return self._core.pystage_insertbackdrop(index, name, center_x, center_y)
+        return self._core.pystage_insertbackdrop(index, name, center_x, center_y, factor)
                 
     def erzeuge_variable(self, name, value=0, all_sprites=True):
         """
@@ -939,7 +939,7 @@ class Bühne():
         """
         return self._core.pystage_play()
                 
-    def ersetze_bühnenbild(self, index, name, center_x=None, center_y=None):
+    def ersetze_bühnenbild(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -959,7 +959,7 @@ class Bühne():
         -------
 
         """
-        return self._core.pystage_replacebackdrop(index, name, center_x, center_y)
+        return self._core.pystage_replacebackdrop(index, name, center_x, center_y, factor)
                 
     def setze_monitor_position(self, name, x, y):
         """

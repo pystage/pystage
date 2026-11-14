@@ -1,5 +1,5 @@
 import pygame
-import pkg_resources
+from pystage.resources import resource_filename
 
 from pystage.core.values import to_string
 
@@ -8,9 +8,9 @@ pygame.font.init()
 
 class Monitor(pygame.sprite.Sprite):
 
-    BOLD_FONT_9 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-bold.ttf"), 9)
-    LIGHT_FONT_9 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-light.ttf"), 9)
-    LIGHT_FONT_11 = pygame.font.Font(pkg_resources.resource_filename("pystage", "fonts/roboto-light.ttf"), 11)
+    BOLD_FONT_9 = pygame.font.Font(resource_filename("fonts/roboto-bold.ttf"), 9)
+    LIGHT_FONT_9 = pygame.font.Font(resource_filename("fonts/roboto-light.ttf"), 9)
+    LIGHT_FONT_11 = pygame.font.Font(resource_filename("fonts/roboto-light.ttf"), 11)
 
     VARIABLE_COLOR = (255, 140, 26)
     LIST_COLOR = (252, 102, 44)

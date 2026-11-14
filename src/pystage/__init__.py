@@ -4,7 +4,6 @@ from importlib.metadata import version, PackageNotFoundError
 
 try:
     __version__ = version("pystage")
-    print("PyStage version {}".format(__version__))
 except PackageNotFoundError:
     # package is not installed
     __version__ = "Pre 0.1"

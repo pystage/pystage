@@ -373,16 +373,16 @@ class _LooksStage(_Looks):
         self.brightness = 0
 
 
-    def pystage_addbackdrop(self, name, center_x=None, center_y=None):
-        self.costume_manager.add_costume(name, center_x, center_y)
+    def pystage_addbackdrop(self, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.add_costume(name, center_x, center_y, factor)
 
 
-    def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.replace_costume(index, name, center_x, center_y)
+    def pystage_replacebackdrop(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.replace_costume(index, name, center_x, center_y, factor)
 
 
-    def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None):
-        self.costume_manager.insert_costume(index, name, center_x, center_y)
+    def pystage_insertbackdrop(self, index, name, center_x=None, center_y=None, factor=1):
+        self.costume_manager.insert_costume(index, name, center_x, center_y, factor)
 
 
     def looks_switchbackdroptoandwait(self, backdrop):

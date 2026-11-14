@@ -816,7 +816,7 @@ class Stage():
         """
         return self._core.operator_random(start, end)
 
-    def add_backdrop(self, name, center_x=None, center_y=None):
+    def add_backdrop(self, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -835,7 +835,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_addbackdrop(name, center_x, center_y)
+        return self._core.pystage_addbackdrop(name, center_x, center_y, factor)
 
     def add_sound(self, name):
         """
@@ -875,7 +875,7 @@ class Stage():
         """
         return self._core.pystage_createsprite(costume)
 
-    def insert_backdrop(self, index, name, center_x=None, center_y=None):
+    def insert_backdrop(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -895,7 +895,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_insertbackdrop(index, name, center_x, center_y)
+        return self._core.pystage_insertbackdrop(index, name, center_x, center_y, factor)
 
     def create_variable(self, name, value=0, all_sprites=True):
         """
@@ -932,7 +932,7 @@ class Stage():
         """
         return self._core.pystage_play()
 
-    def replace_backdrop(self, index, name, center_x=None, center_y=None):
+    def replace_backdrop(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
         Translation string: 
@@ -952,7 +952,7 @@ class Stage():
         -------
 
         """
-        return self._core.pystage_replacebackdrop(index, name, center_x, center_y)
+        return self._core.pystage_replacebackdrop(index, name, center_x, center_y, factor)
 
     def set_monitor_position(self, name, x, y):
         """

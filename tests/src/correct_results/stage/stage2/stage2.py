@@ -3,11 +3,11 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-stage.add_backdrop("backdrop1")
-stage.add_backdrop("city_with_water")
-stage.add_backdrop("boardwalk")
-stage.add_backdrop("basketball_2")
-stage.add_backdrop("farm")
+stage.add_backdrop("backdrop1", center_x=240, center_y=180)
+stage.add_backdrop("city_with_water", center_x=480, center_y=360, factor=2)
+stage.add_backdrop("boardwalk", center_x=480, center_y=360, factor=2)
+stage.add_backdrop("basketball_2", center_x=480, center_y=360, factor=2)
+stage.add_backdrop("farm", center_x=480, center_y=360, factor=2)
 stage.switch_backdrop_to("basketball_2")
 stage.add_sound("pop")
 stage.create_variable("my variable", 0)
