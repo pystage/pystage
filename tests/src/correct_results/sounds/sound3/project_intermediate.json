@@ -1,39 +1,5 @@
 {
     "name": "sound3",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -50,14 +16,13 @@
                                     "SOUND_MENU": "\"Meow\""
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": {
                             "opcode": "sound_setvolumeto",
                             "params": {
-                                "VOLUME": 100.0
+                                "VOLUME": 100
                             },
                             "next": {
                                 "opcode": "sound_playuntildone",
@@ -68,14 +33,13 @@
                                             "SOUND_MENU": "\"Meow\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
                                     "opcode": "sound_changevolumeby",
                                     "params": {
-                                        "VOLUME": -10.0
+                                        "VOLUME": -10
                                     },
                                     "next": {
                                         "opcode": "sound_playuntildone",
@@ -86,14 +50,13 @@
                                                     "SOUND_MENU": "\"Meow\""
                                                 },
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             }
                                         },
                                         "next": {
                                             "opcode": "sound_changevolumeby",
                                             "params": {
-                                                "VOLUME": -10.0
+                                                "VOLUME": -10
                                             },
                                             "next": {
                                                 "opcode": "sound_playuntildone",
@@ -104,14 +67,13 @@
                                                             "SOUND_MENU": "\"Meow\""
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": {
                                                     "opcode": "sound_changevolumeby",
                                                     "params": {
-                                                        "VOLUME": -40.0
+                                                        "VOLUME": -40
                                                     },
                                                     "next": {
                                                         "opcode": "sound_playuntildone",
@@ -122,14 +84,13 @@
                                                                     "SOUND_MENU": "\"Meow\""
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             }
                                                         },
                                                         "next": {
                                                             "opcode": "sound_setvolumeto",
                                                             "params": {
-                                                                "VOLUME": 300.0
+                                                                "VOLUME": 300
                                                             },
                                                             "next": {
                                                                 "opcode": "sound_playuntildone",
@@ -140,46 +101,33 @@
                                                                             "SOUND_MENU": "\"Meow\""
                                                                         },
                                                                         "next": false,
-                                                                        "stage": false,
-                                                                        "comment": null
+                                                                        "stage": false
                                                                     }
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             },
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -210,13 +158,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -242,5 +190,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

@@ -1,49 +1,5 @@
 {
     "name": "add_to_variables",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {
-            "groceries": []
-        },
-        "monitors": [
-            {
-                "style": "list",
-                "x": 5,
-                "y": 5,
-                "opcode": "data_listcontents",
-                "list": "groceries"
-            }
-        ],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -54,7 +10,7 @@
                     "next": {
                         "opcode": "motion_movesteps",
                         "params": {
-                            "STEPS": 10.0
+                            "STEPS": 10
                         },
                         "next": {
                             "opcode": "data_addtolist",
@@ -63,14 +19,11 @@
                                 "ITEM": "\"donuts\""
                             },
                             "next": false,
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -101,13 +54,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -133,5 +86,50 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {
+            "groceries": []
+        },
+        "monitors": [
+            {
+                "x": 5,
+                "y": 5,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "list": "groceries"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

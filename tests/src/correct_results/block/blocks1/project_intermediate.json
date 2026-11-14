@@ -1,43 +1,34 @@
 {
     "name": "blocks1",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
             "blocks": [
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_turnright",
+                        "params": {
+                            "DEGREES": 90
+                        },
+                        "next": {
+                            "opcode": "motion_movesteps",
+                            "params": {
+                                "STEPS": 90
+                            },
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "test",
+                        "args": [],
+                        "warp": false
+                    }
+                },
                 {
                     "opcode": "event_whenflagclicked",
                     "params": {},
@@ -46,10 +37,10 @@
                         "params": {},
                         "next": false,
                         "stage": false,
-                        "comment": null
+                        "proccode": "test",
+                        "args": []
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -80,13 +71,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 55.846750160078926,
             "y": 67.5215148170418,
             "size": 100,
             "volume": 100,
             "direction": 105,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -112,5 +103,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

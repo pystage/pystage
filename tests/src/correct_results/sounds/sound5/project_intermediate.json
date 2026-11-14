@@ -1,47 +1,129 @@
 {
     "name": "sound5",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "30085b2d27beb5acdbe895d8b3e64b04",
-                "local_name": "Witch House",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 1,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
+        {
+            "name": "Guitar-electric1",
+            "blocks": [
+                {
+                    "opcode": "event_whenthisspriteclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sound_changeeffectby",
+                        "params": {
+                            "EFFECT": "\"PITCH\"",
+                            "VALUE": 1000000
+                        },
+                        "next": {
+                            "opcode": "control_repeat",
+                            "params": {
+                                "TIMES": 10,
+                                "SUBSTACK": {
+                                    "opcode": "sound_changevolumeby",
+                                    "params": {
+                                        "VOLUME": {
+                                            "opcode": "sound_volume",
+                                            "params": {},
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "sound_playuntildone",
+                                        "params": {
+                                            "SOUND_MENU": {
+                                                "opcode": "sound_sounds_menu",
+                                                "params": {
+                                                    "SOUND_MENU": "\"C2 Elec Guitar\""
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "sound_setvolumeto",
+                                            "params": {
+                                                "VOLUME": 200
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                }
+                            },
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "57c6d7dc148576cb2f36e53dea49260a",
+                    "local_name": "guitar-electric1-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                },
+                {
+                    "md5": "677aed0b1168caf4b3ec565b9104dbe0",
+                    "local_name": "guitar-electric1-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 42,
+                    "rotationCenterY": 85
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "0d340de02e14bebaf8dfa0e43eb3f1f9",
+                    "local_name": "C Elec Guitar"
+                },
+                {
+                    "md5": "1b5de9866801eb2f9d4f57c7c3b473f5",
+                    "local_name": "D Elec Guitar"
+                },
+                {
+                    "md5": "2e6a6ae3e0f72bf78c74def8130f459a",
+                    "local_name": "E Elec Guitar"
+                },
+                {
+                    "md5": "5eb00f15f21f734986aa45156d44478d",
+                    "local_name": "F Elec Guitar"
+                },
+                {
+                    "md5": "cd0d0e7dad415b2ffa2ba7a61860eaf8",
+                    "local_name": "G Elec Guitar"
+                },
+                {
+                    "md5": "fa5f7fea601e9368dd68449d9a54c995",
+                    "local_name": "A Elec Guitar"
+                },
+                {
+                    "md5": "81f142d0b00189703d7fe9b1f13f6f87",
+                    "local_name": "B Elec Guitar"
+                },
+                {
+                    "md5": "3a8ed3129f22cba5b0810bc030d16b5f",
+                    "local_name": "C2 Elec Guitar"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 187,
+            "y": -31,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
         {
             "name": "Saxophone",
             "blocks": [
@@ -57,15 +139,14 @@
                                     "BACKDROP": "\"Witch House\""
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": {
                             "opcode": "sound_seteffectto",
                             "params": {
                                 "EFFECT": "\"PITCH\"",
-                                "VALUE": 100.0
+                                "VALUE": 100
                             },
                             "next": {
                                 "opcode": "control_repeat",
@@ -78,8 +159,7 @@
                                                 "opcode": "sound_volume",
                                                 "params": {},
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             }
                                         },
                                         "next": {
@@ -91,46 +171,37 @@
                                                         "SOUND_MENU": "\"C2 Sax\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 }
                                             },
                                             "next": {
                                                 "opcode": "sound_changevolumeby",
                                                 "params": {
-                                                    "VOLUME": -10.0
+                                                    "VOLUME": -10
                                                 },
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
                                     "opcode": "motion_pointindirection",
                                     "params": {
-                                        "DIRECTION": 180.0
+                                        "DIRECTION": 180
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -189,151 +260,13 @@
             "currentCostume": 0,
             "layerOrder": 2,
             "visible": true,
+            "draggable": false,
             "x": -2,
             "y": -28,
             "size": 100,
             "volume": 100,
             "direction": 180,
-            "rotationStyle": "all around",
-            "comments": []
-        },
-        {
-            "name": "Guitar-electric1",
-            "blocks": [
-                {
-                    "opcode": "event_whenthisspriteclicked",
-                    "params": {},
-                    "next": {
-                        "opcode": "sound_changeeffectby",
-                        "params": {
-                            "EFFECT": "\"PITCH\"",
-                            "VALUE": 1000000.0
-                        },
-                        "next": {
-                            "opcode": "control_repeat",
-                            "params": {
-                                "TIMES": 10,
-                                "SUBSTACK": {
-                                    "opcode": "sound_changevolumeby",
-                                    "params": {
-                                        "VOLUME": {
-                                            "opcode": "sound_volume",
-                                            "params": {},
-                                            "next": false,
-                                            "stage": false,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": {
-                                        "opcode": "sound_playuntildone",
-                                        "params": {
-                                            "SOUND_MENU": {
-                                                "opcode": "sound_sounds_menu",
-                                                "params": {
-                                                    "SOUND_MENU": "\"C2 Elec Guitar\""
-                                                },
-                                                "next": false,
-                                                "stage": false,
-                                                "comment": null
-                                            }
-                                        },
-                                        "next": {
-                                            "opcode": "sound_setvolumeto",
-                                            "params": {
-                                                "VOLUME": 200.0
-                                            },
-                                            "next": false,
-                                            "stage": false,
-                                            "comment": null
-                                        },
-                                        "stage": false,
-                                        "comment": null
-                                    },
-                                    "stage": false,
-                                    "comment": null
-                                }
-                            },
-                            "next": false,
-                            "stage": false,
-                            "comment": null
-                        },
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                }
-            ],
-            "costumes": [
-                {
-                    "md5": "57c6d7dc148576cb2f36e53dea49260a",
-                    "local_name": "guitar-electric1-a",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 42,
-                    "rotationCenterY": 85
-                },
-                {
-                    "md5": "677aed0b1168caf4b3ec565b9104dbe0",
-                    "local_name": "guitar-electric1-b",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 42,
-                    "rotationCenterY": 85
-                }
-            ],
-            "sounds": [
-                {
-                    "md5": "0d340de02e14bebaf8dfa0e43eb3f1f9",
-                    "local_name": "C Elec Guitar"
-                },
-                {
-                    "md5": "1b5de9866801eb2f9d4f57c7c3b473f5",
-                    "local_name": "D Elec Guitar"
-                },
-                {
-                    "md5": "2e6a6ae3e0f72bf78c74def8130f459a",
-                    "local_name": "E Elec Guitar"
-                },
-                {
-                    "md5": "5eb00f15f21f734986aa45156d44478d",
-                    "local_name": "F Elec Guitar"
-                },
-                {
-                    "md5": "cd0d0e7dad415b2ffa2ba7a61860eaf8",
-                    "local_name": "G Elec Guitar"
-                },
-                {
-                    "md5": "fa5f7fea601e9368dd68449d9a54c995",
-                    "local_name": "A Elec Guitar"
-                },
-                {
-                    "md5": "81f142d0b00189703d7fe9b1f13f6f87",
-                    "local_name": "B Elec Guitar"
-                },
-                {
-                    "md5": "3a8ed3129f22cba5b0810bc030d16b5f",
-                    "local_name": "C2 Elec Guitar"
-                }
-            ],
-            "variables": {},
-            "lists": {},
-            "monitors": [
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 5,
-                    "opcode": "sound_volume"
-                }
-            ],
-            "currentCostume": 0,
-            "layerOrder": 1,
-            "visible": true,
-            "x": 187,
-            "y": -31,
-            "size": 100,
-            "volume": 100,
-            "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         },
         {
             "name": "Drum Kit",
@@ -352,8 +285,7 @@
                                         "opcode": "sound_volume",
                                         "params": {},
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
@@ -365,24 +297,19 @@
                                                 "SOUND_MENU": "\"Low Tom\""
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -429,13 +356,13 @@
             "currentCostume": 0,
             "layerOrder": 3,
             "visible": true,
+            "draggable": false,
             "x": -154,
             "y": -38,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -561,5 +488,46 @@
             "global_name": "low_tom",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "30085b2d27beb5acdbe895d8b3e64b04",
+                "local_name": "Witch House",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

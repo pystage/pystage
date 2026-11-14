@@ -4,6 +4,13 @@ from pystage.core._base_sprite import BaseSprite
 import datetime
 
 
+class _Nothing:
+    """Stands for a sprite that does not exist, all blocks return 0."""
+
+    def __getattr__(self, name):
+        return lambda *args: 0
+
+
 class _Sensing(BaseSprite):
 
     def __init__(self):
@@ -68,50 +75,54 @@ class _Sensing(BaseSprite):
     # explanations and examples in the documentation that show why these functions
     # should not be used.
 
+    def _of(self, sprite):
+        # Unknown sprites have 0 for all properties in Scratch
+        return self.stage._get_sprite(sprite) or _Nothing()
+
     def sensing_of_xposition(self, sprite):
-        return self.stage._get_sprite(sprite).motion_xposition()
+        return self._of(sprite).motion_xposition()
     sensing_of_xposition.opcode="sensing_of"
     sensing_of_xposition.param="PROPERTY"
     sensing_of_xposition.value="x position"
 
 
     def sensing_of_yposition(self, sprite):
-        return self.stage._get_sprite(sprite).motion_yposition()
+        return self._of(sprite).motion_yposition()
     sensing_of_yposition.opcode="sensing_of"
     sensing_of_yposition.param="PROPERTY"
     sensing_of_yposition.value="y position"
 
 
     def sensing_of_direction(self, sprite):
-        return self.stage._get_sprite(sprite).motion_direction()
+        return self._of(sprite).motion_direction()
     sensing_of_direction.opcode="sensing_of"
     sensing_of_direction.param="PROPERTY"
     sensing_of_direction.value="direction"
 
 
     def sensing_of_costumenumber(self, sprite):
-        return self.stage._get_sprite(sprite).looks_costumenumbername_number()
+        return self._of(sprite).looks_costumenumbername_number()
     sensing_of_costumenumber.opcode="sensing_of"
     sensing_of_costumenumber.param="PROPERTY"
     sensing_of_costumenumber.value="costume #"
 
 
     def sensing_of_costumename(self, sprite):
-        return self.stage._get_sprite(sprite).looks_costumenumbername_name()
+        return self._of(sprite).looks_costumenumbername_name()
     sensing_of_costumename.opcode="sensing_of"
     sensing_of_costumename.param="PROPERTY"
     sensing_of_costumename.value="costume name"
 
 
     def sensing_of_size(self, sprite):
-        return self.stage._get_sprite(sprite).looks_size()
+        return self._of(sprite).looks_size()
     sensing_of_size.opcode="sensing_of"
     sensing_of_size.param="PROPERTY"
     sensing_of_size.value="size"
 
 
     def sensing_of_volume(self, sprite="_stage_"):
-        return self.stage._get_sprite(sprite).sound_volume()
+        return self._of(sprite).sound_volume()
     sensing_of_volume.opcode="sensing_of"
     sensing_of_volume.param="PROPERTY"
     sensing_of_volume.value="volume"
@@ -119,7 +130,7 @@ class _Sensing(BaseSprite):
 
     def sensing_of_variable(self, variable, sprite="_stage_"):
         target = self.stage._get_sprite(sprite)
-        if variable in target.variables:
+        if target is not None and variable in target.variables:
             return target.variables[variable]
         return 0
     sensing_of_variable.opcode="sensing_of"
@@ -244,6 +255,8 @@ class _SensingSprite(BaseSprite):
         if not self.visible:
             return False
         sprite = self.stage._get_sprite(sprite)
+        if sprite is None or sprite is self.stage:
+            return False
         self.costume_manager.update_sprite_image()
         # Clones of the sprite count as well
         for other in self.stage.sprites:
@@ -300,5 +313,9 @@ class _SensingSprite(BaseSprite):
     def sensing_distanceto_sprite(self, sprite):
         if sprite == "_mouse_":
             return self.sensing_distanceto_pointer()
-        return self._pos.distance_to(self.stage._get_sprite(sprite)._pos)
+        sprite = self.stage._get_sprite(sprite)
+        if sprite is None or sprite is self.stage:
+            # Like in Scratch
+            return 10000
+        return self._pos.distance_to(sprite._pos)
     sensing_distanceto_sprite.opcode="sensing_distanceto"

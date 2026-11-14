@@ -1,245 +1,6 @@
 {
     "name": "cloning4",
-    "stage": {
-        "name": "Stage",
-        "blocks": [
-            {
-                "opcode": "event_whenbroadcastreceived",
-                "params": {
-                    "BROADCAST_OPTION": "\"message1\""
-                },
-                "next": {
-                    "opcode": "control_repeat",
-                    "params": {
-                        "TIMES": 10,
-                        "SUBSTACK": {
-                            "opcode": "sound_play",
-                            "params": {
-                                "SOUND_MENU": {
-                                    "opcode": "sound_sounds_menu",
-                                    "params": {
-                                        "SOUND_MENU": "\"pop\""
-                                    },
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                }
-                            },
-                            "next": false,
-                            "stage": true,
-                            "comment": null
-                        }
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenflagclicked",
-                "params": {},
-                "next": {
-                    "opcode": "event_broadcast",
-                    "params": {
-                        "BROADCAST_INPUT": "\"message1\""
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            }
-        ],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
-        {
-            "name": "Button4",
-            "blocks": [
-                {
-                    "opcode": "event_whenflagclicked",
-                    "params": {},
-                    "next": {
-                        "opcode": "event_broadcast",
-                        "params": {
-                            "BROADCAST_INPUT": "\"message1\""
-                        },
-                        "next": {
-                            "opcode": "sound_setvolumeto",
-                            "params": {
-                                "VOLUME": 500.0
-                            },
-                            "next": {
-                                "opcode": "event_broadcastandwait",
-                                "params": {
-                                    "BROADCAST_INPUT": "\"loud_message\""
-                                },
-                                "next": {
-                                    "opcode": "sound_seteffectto",
-                                    "params": {
-                                        "EFFECT": "\"PITCH\"",
-                                        "VALUE": 100.0
-                                    },
-                                    "next": {
-                                        "opcode": "control_repeat",
-                                        "params": {
-                                            "TIMES": 3,
-                                            "SUBSTACK": {
-                                                "opcode": "control_wait",
-                                                "params": {
-                                                    "DURATION": 1.0
-                                                },
-                                                "next": {
-                                                    "opcode": "sound_playuntildone",
-                                                    "params": {
-                                                        "SOUND_MENU": {
-                                                            "opcode": "sound_sounds_menu",
-                                                            "params": {
-                                                                "SOUND_MENU": "\"pop\""
-                                                            },
-                                                            "next": false,
-                                                            "stage": false,
-                                                            "comment": null
-                                                        }
-                                                    },
-                                                    "next": false,
-                                                    "stage": false,
-                                                    "comment": null
-                                                },
-                                                "stage": false,
-                                                "comment": null
-                                            }
-                                        },
-                                        "next": false,
-                                        "stage": false,
-                                        "comment": null
-                                    },
-                                    "stage": false,
-                                    "comment": null
-                                },
-                                "stage": false,
-                                "comment": null
-                            },
-                            "stage": false,
-                            "comment": null
-                        },
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                },
-                {
-                    "opcode": "event_whenbroadcastreceived",
-                    "params": {
-                        "BROADCAST_OPTION": "\"message1\""
-                    },
-                    "next": {
-                        "opcode": "control_repeat",
-                        "params": {
-                            "TIMES": 10,
-                            "SUBSTACK": {
-                                "opcode": "looks_say",
-                                "params": {
-                                    "MESSAGE": "\"Hello!\""
-                                },
-                                "next": {
-                                    "opcode": "control_create_clone_of",
-                                    "params": {
-                                        "CLONE_OPTION": {
-                                            "opcode": "control_create_clone_of_menu",
-                                            "params": {
-                                                "CLONE_OPTION": "\"_myself_\""
-                                            },
-                                            "next": false,
-                                            "stage": false,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": false,
-                                    "stage": false,
-                                    "comment": null
-                                },
-                                "stage": false,
-                                "comment": null
-                            }
-                        },
-                        "next": false,
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                }
-            ],
-            "costumes": [
-                {
-                    "md5": "71ced7c192168c7b221d16b4eaff440e",
-                    "local_name": "button4-a",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 35,
-                    "rotationCenterY": 34
-                },
-                {
-                    "md5": "7d34ad26633abbc752c9cd93ace0a81f",
-                    "local_name": "button4-b",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 35,
-                    "rotationCenterY": 34
-                }
-            ],
-            "sounds": [
-                {
-                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                    "local_name": "pop"
-                }
-            ],
-            "variables": {},
-            "lists": {},
-            "monitors": [],
-            "currentCostume": 0,
-            "layerOrder": 2,
-            "visible": true,
-            "x": -165,
-            "y": 72,
-            "size": 100,
-            "volume": 100,
-            "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
-        },
         {
             "name": "D-Money Dance",
             "blocks": [
@@ -266,24 +27,19 @@
                                                 "CLONE_OPTION": "\"_myself_\""
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -384,13 +140,154 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 41,
             "y": -5,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Button4",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "event_broadcast",
+                        "params": {
+                            "BROADCAST_INPUT": "\"message1\""
+                        },
+                        "next": {
+                            "opcode": "sound_setvolumeto",
+                            "params": {
+                                "VOLUME": 500
+                            },
+                            "next": {
+                                "opcode": "event_broadcastandwait",
+                                "params": {
+                                    "BROADCAST_INPUT": "\"loud_message\""
+                                },
+                                "next": {
+                                    "opcode": "sound_seteffectto",
+                                    "params": {
+                                        "EFFECT": "\"PITCH\"",
+                                        "VALUE": 100
+                                    },
+                                    "next": {
+                                        "opcode": "control_repeat",
+                                        "params": {
+                                            "TIMES": 3,
+                                            "SUBSTACK": {
+                                                "opcode": "control_wait",
+                                                "params": {
+                                                    "DURATION": 1
+                                                },
+                                                "next": {
+                                                    "opcode": "sound_playuntildone",
+                                                    "params": {
+                                                        "SOUND_MENU": {
+                                                            "opcode": "sound_sounds_menu",
+                                                            "params": {
+                                                                "SOUND_MENU": "\"pop\""
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        }
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenbroadcastreceived",
+                    "params": {
+                        "BROADCAST_OPTION": "\"message1\""
+                    },
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": 10,
+                            "SUBSTACK": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"Hello!\""
+                                },
+                                "next": {
+                                    "opcode": "control_create_clone_of",
+                                    "params": {
+                                        "CLONE_OPTION": {
+                                            "opcode": "control_create_clone_of_menu",
+                                            "params": {
+                                                "CLONE_OPTION": "\"_myself_\""
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": false
+                                },
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "71ced7c192168c7b221d16b4eaff440e",
+                    "local_name": "button4-a",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 35,
+                    "rotationCenterY": 34
+                },
+                {
+                    "md5": "7d34ad26633abbc752c9cd93ace0a81f",
+                    "local_name": "button4-b",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 35,
+                    "rotationCenterY": 34
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "draggable": false,
+            "x": -165,
+            "y": 72,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -464,5 +361,83 @@
             "global_name": "dance_celebrate",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenbroadcastreceived",
+                "params": {
+                    "BROADCAST_OPTION": "\"message1\""
+                },
+                "next": {
+                    "opcode": "control_repeat",
+                    "params": {
+                        "TIMES": 10,
+                        "SUBSTACK": {
+                            "opcode": "sound_play",
+                            "params": {
+                                "SOUND_MENU": {
+                                    "opcode": "sound_sounds_menu",
+                                    "params": {
+                                        "SOUND_MENU": "\"pop\""
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                }
+                            },
+                            "next": false,
+                            "stage": true
+                        }
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "event_broadcast",
+                    "params": {
+                        "BROADCAST_INPUT": "\"message1\""
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

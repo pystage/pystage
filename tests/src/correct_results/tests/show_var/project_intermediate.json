@@ -1,145 +1,5 @@
 {
     "name": "show_var",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 29
-        },
-        "lists": {
-            "list": [
-                "asdfasdfasdfasdfasdfasfd"
-            ]
-        },
-        "monitors": [
-            {
-                "style": "normal",
-                "x": 5,
-                "y": 5,
-                "opcode": "sensing_timer"
-            },
-            {
-                "style": "normal",
-                "x": 5,
-                "y": 173,
-                "opcode": "looks_backdropnumbername",
-                "param": "number"
-            },
-            {
-                "style": "normal",
-                "x": 5,
-                "y": 200,
-                "opcode": "looks_backdropnumbername",
-                "param": "name"
-            },
-            {
-                "style": "normal",
-                "x": 155,
-                "y": 5,
-                "opcode": "sensing_answer"
-            },
-            {
-                "style": "normal",
-                "x": 155,
-                "y": 227,
-                "opcode": "sensing_loudness"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 32,
-                "opcode": "sensing_current",
-                "param": "YEAR"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 59,
-                "opcode": "sensing_username"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 86,
-                "opcode": "data_variable",
-                "variable": "my variable"
-            },
-            {
-                "style": "list",
-                "x": 322,
-                "y": 116,
-                "opcode": "data_listcontents",
-                "list": "list"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 173,
-                "opcode": "sensing_current",
-                "param": "MONTH"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 200,
-                "opcode": "sensing_current",
-                "param": "DATE"
-            },
-            {
-                "style": "normal",
-                "x": 305,
-                "y": 5,
-                "opcode": "sensing_current",
-                "param": "DAYOFWEEK"
-            },
-            {
-                "style": "normal",
-                "x": 205,
-                "y": 254,
-                "opcode": "sensing_current",
-                "param": "HOUR"
-            },
-            {
-                "style": "normal",
-                "x": 305,
-                "y": 32,
-                "opcode": "sensing_current",
-                "param": "MINUTE"
-            },
-            {
-                "style": "normal",
-                "x": 355,
-                "y": 59,
-                "opcode": "sensing_current",
-                "param": "SECOND"
-            }
-        ],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -154,11 +14,9 @@
                             "VALUE": 10
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -187,62 +45,17 @@
             "lists": {
                 "a": []
             },
-            "monitors": [
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 32,
-                    "opcode": "motion_xposition"
-                },
-                {
-                    "style": "normal",
-                    "x": 0,
-                    "y": 92,
-                    "opcode": "motion_yposition"
-                },
-                {
-                    "style": "normal",
-                    "x": 3,
-                    "y": 62,
-                    "opcode": "motion_direction"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 119,
-                    "opcode": "looks_costumenumbername",
-                    "param": "number"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 146,
-                    "opcode": "looks_costumenumbername",
-                    "param": "name"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 227,
-                    "opcode": "looks_size"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 254,
-                    "opcode": "sound_volume"
-                }
-            ],
+            "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -32,
             "y": -12,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -268,5 +81,60 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 29
+        },
+        "lists": {
+            "list": [
+                "asdfasdfasdfasdfasdfasfd"
+            ]
+        },
+        "monitors": [
+            {
+                "x": 205,
+                "y": 86,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "variable": "my variable"
+            },
+            {
+                "x": 322,
+                "y": 116,
+                "width": 100,
+                "height": 200,
+                "style": "normal",
+                "list": "list"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

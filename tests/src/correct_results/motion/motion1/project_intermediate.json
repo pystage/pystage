@@ -1,39 +1,5 @@
 {
     "name": "motion1",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -44,17 +10,17 @@
                     "next": {
                         "opcode": "motion_movesteps",
                         "params": {
-                            "STEPS": 80.0
+                            "STEPS": 80
                         },
                         "next": {
                             "opcode": "motion_turnleft",
                             "params": {
-                                "DEGREES": 180.0
+                                "DEGREES": 180
                             },
                             "next": {
                                 "opcode": "motion_turnright",
                                 "params": {
-                                    "DEGREES": 90.0
+                                    "DEGREES": 90
                                 },
                                 "next": {
                                     "opcode": "motion_goto",
@@ -65,28 +31,26 @@
                                                 "TO": "\"_random_\""
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": {
                                         "opcode": "motion_gotoxy",
                                         "params": {
-                                            "X": 15.0,
-                                            "Y": -111.0
+                                            "X": 15,
+                                            "Y": -111
                                         },
                                         "next": {
                                             "opcode": "motion_glideto",
                                             "params": {
-                                                "SECS": 1.0,
+                                                "SECS": 1,
                                                 "TO": {
                                                     "opcode": "motion_glideto_menu",
                                                     "params": {
                                                         "TO": "\"_random_\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 }
                                             },
                                             "next": {
@@ -98,61 +62,49 @@
                                                             "TO": "\"_mouse_\""
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": {
                                                     "opcode": "motion_glidesecstoxy",
                                                     "params": {
-                                                        "SECS": 1.0,
-                                                        "X": -188.0,
-                                                        "Y": 14.0
+                                                        "SECS": 1,
+                                                        "X": -188,
+                                                        "Y": 14
                                                     },
                                                     "next": {
                                                         "opcode": "motion_glideto",
                                                         "params": {
-                                                            "SECS": 1.0,
+                                                            "SECS": 1,
                                                             "TO": {
                                                                 "opcode": "motion_glideto_menu",
                                                                 "params": {
                                                                     "TO": "\"_mouse_\""
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             }
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -183,13 +135,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -185.162,
             "y": 58.461999999999996,
             "size": 100,
             "volume": 100,
             "direction": -90.35745470593531,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -215,5 +167,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

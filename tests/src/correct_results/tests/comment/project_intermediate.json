@@ -1,41 +1,5 @@
 {
     "name": "comment",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": [
-            "comment for backdrop1"
-        ]
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -47,14 +11,15 @@
                         "opcode": "looks_sayforsecs",
                         "params": {
                             "MESSAGE": "\"Hello!\"",
-                            "SECS": 2.0
+                            "SECS": 2
                         },
                         "next": false,
                         "stage": false,
-                        "comment": "comment for say hello "
+                        "comments": [
+                            "comment for say hello "
+                        ]
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 },
                 {
                     "opcode": "event_whenkeypressed",
@@ -68,10 +33,15 @@
                         },
                         "next": false,
                         "stage": false,
-                        "comment": "comment for say Aha\nmultiline"
+                        "comments": [
+                            "comment for say Aha\nmultiline"
+                        ]
                     },
                     "stage": false,
-                    "comment": "comment fot when space key pressed"
+                    "comments": [
+                        "comment for key pressed",
+                        "comment fot when space key pressed"
+                    ]
                 }
             ],
             "costumes": [
@@ -102,16 +72,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": [
-                "comment for sprite1\nmultiline",
-                "comment2 for sprite1"
-            ]
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -137,5 +104,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

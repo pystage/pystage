@@ -1,39 +1,5 @@
 {
     "name": "motion3",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -44,9 +10,9 @@
                     "next": {
                         "opcode": "motion_glidesecstoxy",
                         "params": {
-                            "SECS": 1.0,
-                            "X": -1000.0,
-                            "Y": -1000.0
+                            "SECS": 1,
+                            "X": -1000,
+                            "Y": -1000
                         },
                         "next": {
                             "opcode": "motion_ifonedgebounce",
@@ -59,14 +25,14 @@
                                 "next": {
                                     "opcode": "control_wait",
                                     "params": {
-                                        "DURATION": 1.0
+                                        "DURATION": 1
                                     },
                                     "next": {
                                         "opcode": "motion_glidesecstoxy",
                                         "params": {
-                                            "SECS": 1.0,
-                                            "X": 1000.0,
-                                            "Y": -1000.0
+                                            "SECS": 1,
+                                            "X": 1000,
+                                            "Y": -1000
                                         },
                                         "next": {
                                             "opcode": "motion_ifonedgebounce",
@@ -79,14 +45,14 @@
                                                 "next": {
                                                     "opcode": "control_wait",
                                                     "params": {
-                                                        "DURATION": 1.0
+                                                        "DURATION": 1
                                                     },
                                                     "next": {
                                                         "opcode": "motion_glidesecstoxy",
                                                         "params": {
-                                                            "SECS": 1.0,
-                                                            "X": 1000.0,
-                                                            "Y": -1000.0
+                                                            "SECS": 1,
+                                                            "X": 1000,
+                                                            "Y": -1000
                                                         },
                                                         "next": {
                                                             "opcode": "motion_ifonedgebounce",
@@ -97,41 +63,29 @@
                                                                     "STYLE": "\"don't rotate\""
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             },
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -158,36 +112,17 @@
             ],
             "variables": {},
             "lists": {},
-            "monitors": [
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 5,
-                    "opcode": "motion_xposition"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 32,
-                    "opcode": "motion_yposition"
-                },
-                {
-                    "style": "normal",
-                    "x": 5,
-                    "y": 59,
-                    "opcode": "motion_direction"
-                }
-            ],
+            "monitors": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 216.2211115722656,
             "y": -156.0312922363281,
             "size": 100,
             "volume": 100,
             "direction": -82.71618147372726,
-            "rotationStyle": "left-right",
-            "comments": []
+            "rotationStyle": "left-right"
         }
     ],
     "costumes": {
@@ -213,5 +148,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

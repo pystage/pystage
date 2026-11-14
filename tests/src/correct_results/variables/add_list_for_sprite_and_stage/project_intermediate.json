@@ -1,77 +1,5 @@
 {
     "name": "add_list_for_sprite_and_stage",
-    "stage": {
-        "name": "Stage",
-        "blocks": [
-            {
-                "opcode": "event_whenflagclicked",
-                "params": {},
-                "next": {
-                    "opcode": "control_wait",
-                    "params": {
-                        "DURATION": 1.0
-                    },
-                    "next": {
-                        "opcode": "data_addtolist",
-                        "params": {
-                            "LIST": "\"list_for_stage\"",
-                            "ITEM": "\"stage\""
-                        },
-                        "next": false,
-                        "stage": true,
-                        "comment": null
-                    },
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            }
-        ],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {
-            "list_in_Sprite1": [],
-            "list_for_stage": [
-                "stage"
-            ]
-        },
-        "monitors": [
-            {
-                "style": "list",
-                "x": 155,
-                "y": 5,
-                "opcode": "data_listcontents",
-                "list": "list_for_stage"
-            }
-        ],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -86,11 +14,9 @@
                             "ITEM": "\"sprite\""
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -123,23 +49,24 @@
             },
             "monitors": [
                 {
-                    "style": "list",
                     "x": 5,
                     "y": 5,
-                    "opcode": "data_listcontents",
+                    "width": 0,
+                    "height": 0,
+                    "style": "normal",
                     "list": "list_for_sprite"
                 }
             ],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -165,5 +92,75 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "control_wait",
+                    "params": {
+                        "DURATION": 1
+                    },
+                    "next": {
+                        "opcode": "data_addtolist",
+                        "params": {
+                            "LIST": "\"list_for_stage\"",
+                            "ITEM": "\"stage\""
+                        },
+                        "next": false,
+                        "stage": true
+                    },
+                    "stage": true
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {
+            "list_in_Sprite1": [],
+            "list_for_stage": [
+                "stage"
+            ]
+        },
+        "monitors": [
+            {
+                "x": 155,
+                "y": 5,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "list": "list_for_stage"
+            }
+        ],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

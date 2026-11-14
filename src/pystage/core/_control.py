@@ -1,6 +1,7 @@
 import pygame
 
 from pystage.core._base_sprite import BaseSprite
+from pystage.core.values import to_number
 
 class _Control(BaseSprite):
 
@@ -8,7 +9,7 @@ class _Control(BaseSprite):
         super().__init__()
 
     def control_wait(self, secs):
-        self.code_manager.current_block.add_to_wait_time = secs
+        self.code_manager.current_block.add_to_wait_time = max(0, to_number(secs))
 
     def control_stop_all(self):
         # Like the stop sign in Scratch: all scripts and sounds stop,
@@ -46,7 +47,9 @@ class _Control(BaseSprite):
     def control_create_clone_of_sprite(self, sprite):
         if sprite == "_myself_":
             sprite = self
-        self.stage._get_sprite(sprite).clone()
+        sprite = self.stage._get_sprite(sprite)
+        if sprite is not None and sprite is not self.stage:
+            sprite.clone()
 
     control_create_clone_of_sprite.opcode = "control_create_clone_of"
 

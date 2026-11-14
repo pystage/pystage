@@ -1,72 +1,5 @@
 {
     "name": "collision",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "c7c0b27b959193a0b570a9639cfe8158",
-                "local_name": "Canyon",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            },
-            {
-                "md5": "ea86ca30b346f27ca5faf1254f6a31e3",
-                "local_name": "Hall",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {
-            "l": [
-                "list",
-                "owl",
-                "owl",
-                "owl",
-                "owl",
-                "owl",
-                "owl",
-                "owl"
-            ]
-        },
-        "monitors": [
-            {
-                "style": "list",
-                "x": 5,
-                "y": 5,
-                "opcode": "data_listcontents",
-                "list": "l"
-            }
-        ],
-        "currentCostume": 1,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Dinosaur5",
@@ -80,15 +13,14 @@
                             "SUBSTACK": {
                                 "opcode": "motion_glideto",
                                 "params": {
-                                    "SECS": 1.0,
+                                    "SECS": 1,
                                     "TO": {
                                         "opcode": "motion_glideto_menu",
                                         "params": {
                                             "TO": "\"_random_\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
@@ -100,8 +32,7 @@
                                                 "TOWARDS": "\"_mouse_\""
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": {
@@ -110,7 +41,7 @@
                                         "next": {
                                             "opcode": "control_wait",
                                             "params": {
-                                                "DURATION": 1.0
+                                                "DURATION": 1
                                             },
                                             "next": {
                                                 "opcode": "control_if",
@@ -122,8 +53,7 @@
                                                             "ITEM": "\"t\""
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
                                                     "SUBSTACK": {
                                                         "opcode": "data_deletealloflist",
@@ -137,11 +67,9 @@
                                                                 "ITEM": "\"list\""
                                                             },
                                                             "next": false,
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": {
@@ -151,31 +79,23 @@
                                                         "ITEM": "\"owl\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -252,13 +172,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -157.52664184570312,
             "y": -42,
             "size": 100,
             "volume": 100,
             "direction": 168.46572972124042,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         },
         {
             "name": "Bat",
@@ -278,8 +198,7 @@
                                             "TO": "\"_random_\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
@@ -295,8 +214,7 @@
                                                 ]
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
                                         "SUBSTACK": {
                                             "opcode": "sound_playuntildone",
@@ -307,29 +225,23 @@
                                                         "SOUND_MENU": "\"owl\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 }
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -374,13 +286,13 @@
             "currentCostume": 0,
             "layerOrder": 2,
             "visible": true,
+            "draggable": false,
             "x": -114,
             "y": -94,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         },
         {
             "name": "Octopus",
@@ -399,25 +311,24 @@
                                 "next": {
                                     "opcode": "motion_changexby",
                                     "params": {
-                                        "DX": 10.0
+                                        "DX": 10
                                     },
                                     "next": {
                                         "opcode": "motion_turnright",
                                         "params": {
-                                            "DEGREES": 90.0
+                                            "DEGREES": 90
                                         },
                                         "next": {
                                             "opcode": "motion_glideto",
                                             "params": {
-                                                "SECS": 1.0,
+                                                "SECS": 1,
                                                 "TO": {
                                                     "opcode": "motion_glideto_menu",
                                                     "params": {
                                                         "TO": "\"Dinosaur5\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 }
                                             },
                                             "next": {
@@ -433,8 +344,7 @@
                                                             ]
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
                                                     "SUBSTACK": {
                                                         "opcode": "looks_say",
@@ -444,7 +354,7 @@
                                                         "next": {
                                                             "opcode": "control_wait",
                                                             "params": {
-                                                                "DURATION": 10.0
+                                                                "DURATION": 10
                                                             },
                                                             "next": {
                                                                 "opcode": "control_stop",
@@ -452,39 +362,29 @@
                                                                     "STOP_OPTION": "\"all\""
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             },
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -540,13 +440,13 @@
             "currentCostume": 0,
             "layerOrder": 3,
             "visible": true,
+            "draggable": false,
             "x": -94,
             "y": -20,
             "size": 100,
             "volume": 100,
             "direction": 180,
-            "rotationStyle": "left-right",
-            "comments": []
+            "rotationStyle": "left-right"
         }
     ],
     "costumes": {
@@ -656,5 +556,73 @@
             "global_name": "ocean_wave",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "c7c0b27b959193a0b570a9639cfe8158",
+                "local_name": "Canyon",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "ea86ca30b346f27ca5faf1254f6a31e3",
+                "local_name": "Hall",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {
+            "l": [
+                "list",
+                "owl",
+                "owl",
+                "owl",
+                "owl",
+                "owl",
+                "owl",
+                "owl"
+            ]
+        },
+        "monitors": [
+            {
+                "x": 5,
+                "y": 5,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "list": "l"
+            }
+        ],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

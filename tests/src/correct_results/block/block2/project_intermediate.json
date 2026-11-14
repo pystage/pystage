@@ -1,43 +1,98 @@
 {
     "name": "block2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Bear",
             "blocks": [
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "procedures_call",
+                        "params": {},
+                        "next": false,
+                        "stage": false,
+                        "proccode": "fade number of times %s change amount %s %b",
+                        "args": [
+                            10,
+                            -10,
+                            "\"\""
+                        ]
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "fade in",
+                        "args": [],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "procedures_call",
+                        "params": {},
+                        "next": false,
+                        "stage": false,
+                        "proccode": "fade number of times %s change amount %s %b",
+                        "args": [
+                            10,
+                            10,
+                            "\"\""
+                        ]
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "fade out",
+                        "args": [],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": {
+                                "opcode": "argument_reporter_string_number",
+                                "params": {
+                                    "VALUE": "\"repeat times\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "looks_changeeffectby",
+                                "params": {
+                                    "EFFECT": "\"GHOST\"",
+                                    "CHANGE": {
+                                        "opcode": "argument_reporter_string_number",
+                                        "params": {
+                                            "VALUE": "\"change amount\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": false,
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "fade number of times %s change amount %s %b",
+                        "args": [
+                            "repeat times",
+                            "change amount",
+                            "in?"
+                        ],
+                        "warp": false
+                    }
+                },
                 {
                     "opcode": "event_whenflagclicked",
                     "params": {},
@@ -50,28 +105,27 @@
                                 "next": {
                                     "opcode": "control_wait",
                                     "params": {
-                                        "DURATION": 3.0
+                                        "DURATION": 3
                                     },
                                     "next": {
                                         "opcode": "procedures_call",
                                         "params": {},
                                         "next": false,
                                         "stage": false,
-                                        "comment": null
+                                        "proccode": "fade in",
+                                        "args": []
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
                                 "stage": false,
-                                "comment": null
+                                "proccode": "fade out",
+                                "args": []
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -102,13 +156,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -114,
             "y": -5,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -130,5 +184,39 @@
             "global_name": "pop",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

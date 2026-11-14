@@ -1,39 +1,5 @@
 {
     "name": "operators5",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Cake",
@@ -50,18 +16,16 @@
                                     "OPERAND1": {
                                         "opcode": "operator_random",
                                         "params": {
-                                            "FROM": 1.0,
-                                            "TO": 10.0
+                                            "FROM": 1,
+                                            "TO": 10
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
                                     "OPERAND2": 5
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
                             "SUBSTACK": {
                                 "opcode": "sound_play",
@@ -72,13 +36,11 @@
                                             "SOUND_MENU": "\"Birthday\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
                             "SUBSTACK2": {
                                 "opcode": "control_wait",
@@ -86,33 +48,28 @@
                                     "DURATION": {
                                         "opcode": "operator_mod",
                                         "params": {
-                                            "NUM1": 2.0,
-                                            "NUM2": 5.0
+                                            "NUM1": 2,
+                                            "NUM2": 5
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
                                     "opcode": "looks_changesizeby",
                                     "params": {
-                                        "CHANGE": -10.0
+                                        "CHANGE": -10
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -143,13 +100,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 23,
             "y": -34,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -175,5 +132,39 @@
             "global_name": "birthday",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

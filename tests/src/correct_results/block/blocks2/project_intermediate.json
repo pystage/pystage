@@ -1,39 +1,5 @@
 {
     "name": "blocks2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -43,16 +9,78 @@
                     "params": {},
                     "next": {
                         "opcode": "procedures_call",
-                        "params": {
-                            "s`.W4Nu/:3#3(C7g/(}X": "\"hello\"",
-                            "4OD1]dvwXuTJ$+0ee(pd": 0.2
-                        },
+                        "params": {},
                         "next": false,
                         "stage": false,
-                        "comment": null
+                        "proccode": "label %s %s",
+                        "args": [
+                            "\"hello\"",
+                            0.2
+                        ]
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_forever",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "motion_ifonedgebounce",
+                                "params": {},
+                                "next": {
+                                    "opcode": "looks_say",
+                                    "params": {
+                                        "MESSAGE": {
+                                            "opcode": "argument_reporter_string_number",
+                                            "params": {
+                                                "VALUE": "\"saying\""
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "motion_glideto",
+                                        "params": {
+                                            "SECS": {
+                                                "opcode": "argument_reporter_string_number",
+                                                "params": {
+                                                    "VALUE": "\"waitTime\""
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            },
+                                            "TO": {
+                                                "opcode": "motion_glideto_menu",
+                                                "params": {
+                                                    "TO": "\"_random_\""
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
                     },
                     "stage": false,
-                    "comment": null
+                    "procedure": {
+                        "proccode": "label %s %s",
+                        "args": [
+                            "saying",
+                            "waitTime"
+                        ],
+                        "warp": false
+                    }
                 }
             ],
             "costumes": [
@@ -83,13 +111,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 166.64,
             "y": 24.145,
             "size": 100,
             "volume": 100,
             "direction": -101.5369590328155,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -115,5 +143,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

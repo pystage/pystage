@@ -1,39 +1,5 @@
 {
     "name": "motion2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -44,20 +10,19 @@
                     "next": {
                         "opcode": "motion_pointindirection",
                         "params": {
-                            "DIRECTION": 180.0
+                            "DIRECTION": 180
                         },
                         "next": {
                             "opcode": "motion_glideto",
                             "params": {
-                                "SECS": 2.0,
+                                "SECS": 2,
                                 "TO": {
                                     "opcode": "motion_glideto_menu",
                                     "params": {
                                         "TO": "\"_random_\""
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 }
                             },
                             "next": {
@@ -69,54 +34,45 @@
                                             "TOWARDS": "\"_mouse_\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
                                     "opcode": "motion_changexby",
                                     "params": {
-                                        "DX": -10.0
+                                        "DX": -10
                                     },
                                     "next": {
                                         "opcode": "motion_setx",
                                         "params": {
-                                            "X": 10.0
+                                            "X": 10
                                         },
                                         "next": {
                                             "opcode": "motion_changeyby",
                                             "params": {
-                                                "DY": -20.0
+                                                "DY": -20
                                             },
                                             "next": {
                                                 "opcode": "motion_sety",
                                                 "params": {
-                                                    "Y": 20.0
+                                                    "Y": 20
                                                 },
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -147,13 +103,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 10,
             "y": 20,
             "size": 100,
             "volume": 100,
             "direction": 23.08291951430904,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -179,5 +135,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

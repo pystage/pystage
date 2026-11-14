@@ -20,6 +20,8 @@ class _Sound(BaseSprite):
         self.current_volume = 100
         # The channels this sprite is currently playing on.
         self._channels = []
+        # sound name: channel
+        self._playing = {}
 
 
     def pystage_addsound(self, name):
@@ -33,12 +35,18 @@ class _Sound(BaseSprite):
         sound = self.sound_manager.get_sound(name, self.current_pitch)
         if sound is None:
             return None
-        channel = pygame.mixer.find_channel()
+        # Like in Scratch, a sound that is still playing is started again.
+        channel = self._playing.get(name)
+        if channel is not None and channel in self._channels and channel.get_busy():
+            channel.stop()
+        else:
+            channel = pygame.mixer.find_channel()
         if channel is None:
             print(f"WARNING: No more free sound channels. Can't play '{name}'.")
             return None
-        self._channels = [c for c in self._channels if c.get_busy()]
+        self._channels = [c for c in self._channels if c.get_busy() and c is not channel]
         self._channels.append(channel)
+        self._playing[name] = channel
         self._apply(channel)
         channel.play(sound, loop)
         return sound

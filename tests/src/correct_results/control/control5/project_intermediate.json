@@ -1,47 +1,79 @@
 {
     "name": "control5",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "de0e54cd11551566f044e7e6bc588b2c",
-                "local_name": "Boardwalk",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 1,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
+        {
+            "name": "Broom",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_repeat_until",
+                        "params": {
+                            "SUBSTACK": {
+                                "opcode": "motion_movesteps",
+                                "params": {
+                                    "STEPS": 10
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "CONDITION": {
+                                "opcode": "sensing_touchingobject",
+                                "params": {
+                                    "TOUCHINGOBJECTMENU": {
+                                        "opcode": "sensing_touchingobjectmenu",
+                                        "params": {
+                                            "TOUCHINGOBJECTMENU": "\"_edge_\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": false,
+                                "stage": false
+                            }
+                        },
+                        "next": {
+                            "opcode": "looks_hide",
+                            "params": {},
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "2553f68cd09362c40b90f83f2c0cf2cf",
+                    "local_name": "broom",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 131.1,
+                    "rotationCenterY": 21.100000000000023
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "local_name": "pop"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": false,
+            "draggable": false,
+            "x": 113,
+            "y": -54,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
         {
             "name": "Sprite1",
             "blocks": [
@@ -54,19 +86,17 @@
                             "SUBSTACK": {
                                 "opcode": "motion_movesteps",
                                 "params": {
-                                    "STEPS": 10.0
+                                    "STEPS": 10
                                 },
                                 "next": {
                                     "opcode": "looks_changesizeby",
                                     "params": {
-                                        "CHANGE": 30.0
+                                        "CHANGE": 30
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
                             "CONDITION": {
                                 "opcode": "sensing_touchingobject",
@@ -77,21 +107,17 @@
                                             "TOUCHINGOBJECTMENU": "\"_edge_\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -122,92 +148,13 @@
             "currentCostume": 0,
             "layerOrder": 2,
             "visible": true,
+            "draggable": false,
             "x": 64,
             "y": -6,
             "size": 190,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
-        },
-        {
-            "name": "Broom",
-            "blocks": [
-                {
-                    "opcode": "event_whenflagclicked",
-                    "params": {},
-                    "next": {
-                        "opcode": "control_repeat_until",
-                        "params": {
-                            "SUBSTACK": {
-                                "opcode": "motion_movesteps",
-                                "params": {
-                                    "STEPS": 10.0
-                                },
-                                "next": false,
-                                "stage": false,
-                                "comment": null
-                            },
-                            "CONDITION": {
-                                "opcode": "sensing_touchingobject",
-                                "params": {
-                                    "TOUCHINGOBJECTMENU": {
-                                        "opcode": "sensing_touchingobjectmenu",
-                                        "params": {
-                                            "TOUCHINGOBJECTMENU": "\"_edge_\""
-                                        },
-                                        "next": false,
-                                        "stage": false,
-                                        "comment": null
-                                    }
-                                },
-                                "next": false,
-                                "stage": false,
-                                "comment": null
-                            }
-                        },
-                        "next": {
-                            "opcode": "looks_hide",
-                            "params": {},
-                            "next": false,
-                            "stage": false,
-                            "comment": null
-                        },
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                }
-            ],
-            "costumes": [
-                {
-                    "md5": "2553f68cd09362c40b90f83f2c0cf2cf",
-                    "local_name": "broom",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 131.1,
-                    "rotationCenterY": 21.100000000000023
-                }
-            ],
-            "sounds": [
-                {
-                    "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                    "local_name": "pop"
-                }
-            ],
-            "variables": {},
-            "lists": {},
-            "monitors": [],
-            "currentCostume": 0,
-            "layerOrder": 1,
-            "visible": false,
-            "x": 113,
-            "y": -54,
-            "size": 100,
-            "volume": 100,
-            "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -241,5 +188,46 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "de0e54cd11551566f044e7e6bc588b2c",
+                "local_name": "Boardwalk",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

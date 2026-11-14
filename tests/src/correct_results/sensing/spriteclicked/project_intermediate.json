@@ -1,102 +1,6 @@
 {
     "name": "spriteclicked",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
-        {
-            "name": "Sprite1",
-            "blocks": [
-                {
-                    "opcode": "event_whenthisspriteclicked",
-                    "params": {},
-                    "next": {
-                        "opcode": "looks_nextcostume",
-                        "params": {},
-                        "next": {
-                            "opcode": "looks_goforwardbackwardlayers",
-                            "params": {
-                                "FORWARD_BACKWARD": "\"forward\"",
-                                "NUM": 1
-                            },
-                            "next": false,
-                            "stage": false,
-                            "comment": null
-                        },
-                        "stage": false,
-                        "comment": null
-                    },
-                    "stage": false,
-                    "comment": null
-                }
-            ],
-            "costumes": [
-                {
-                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
-                    "local_name": "costume1",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 48,
-                    "rotationCenterY": 50
-                },
-                {
-                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
-                    "local_name": "costume2",
-                    "bitmapResolution": 1,
-                    "rotationCenterX": 46,
-                    "rotationCenterY": 53
-                }
-            ],
-            "sounds": [
-                {
-                    "md5": "83c36d806dc92327b9e7049a565c6bff",
-                    "local_name": "Meow"
-                }
-            ],
-            "variables": {},
-            "lists": {},
-            "monitors": [],
-            "currentCostume": 1,
-            "layerOrder": 2,
-            "visible": true,
-            "x": -11,
-            "y": -2,
-            "size": 100,
-            "volume": 100,
-            "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
-        },
         {
             "name": "Apple",
             "blocks": [
@@ -113,14 +17,11 @@
                                 "NUM": 1
                             },
                             "next": false,
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -151,13 +52,72 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -8,
             "y": -6,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenthisspriteclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_nextcostume",
+                        "params": {},
+                        "next": {
+                            "opcode": "looks_goforwardbackwardlayers",
+                            "params": {
+                                "FORWARD_BACKWARD": "\"forward\"",
+                                "NUM": 1
+                            },
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "bcf454acf82e4504149f7ffe07081dbc",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "md5": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "83c36d806dc92327b9e7049a565c6bff",
+                    "local_name": "Meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "currentCostume": 1,
+            "layerOrder": 2,
+            "visible": true,
+            "draggable": false,
+            "x": -11,
+            "y": -2,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -195,5 +155,39 @@
             "global_name": "chomp",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

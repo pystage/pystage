@@ -14,6 +14,7 @@ from pystage.core._variables import _Variables
 from pystage.core.messages import MessageBroker
 from pystage.core.sprite import CoreSprite
 from pystage.core.asking import InputManager
+from pystage.core.values import to_string
 
 
 class SpriteGroup(pygame.sprite.OrderedUpdates):
@@ -145,15 +146,20 @@ class CoreStage(
         return sprite.facade or sprite
 
     def _get_sprite(self, sprite):
-        """Get the core sprite for a sprite of any API or for a sprite name."""
-        if isinstance(sprite, str):
-            for candidate in self.sprites:
-                if candidate.name == sprite and not candidate.is_clone:
-                    return candidate
-            if sprite == "_stage_":
-                return self
-            raise ValueError(f"There is no sprite with the name '{sprite}'.")
-        return sprite._core
+        """Get the core sprite for a sprite of any API or for a sprite name.
+
+        Like in Scratch, where nothing happens if a sprite does not exist,
+        None is returned if there is no such sprite.
+        """
+        if hasattr(sprite, "_core"):
+            return sprite._core
+        name = to_string(sprite)
+        if name == "_stage_":
+            return self
+        for candidate in self.sprites:
+            if candidate.name == name and not candidate.is_clone:
+                return candidate
+        return None
 
     def _update_visible(self):
         self.visible_sprites.empty()

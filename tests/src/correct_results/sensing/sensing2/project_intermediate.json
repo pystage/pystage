@@ -1,39 +1,5 @@
 {
     "name": "sensing2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -53,13 +19,11 @@
                                             "KEY_OPTION": "\"n\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
                             "SUBSTACK": {
                                 "opcode": "control_wait_until",
@@ -68,8 +32,7 @@
                                         "opcode": "sensing_mousedown",
                                         "params": {},
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
@@ -79,7 +42,7 @@
                                             "opcode": "sound_seteffectto",
                                             "params": {
                                                 "EFFECT": "\"PITCH\"",
-                                                "VALUE": 100.0
+                                                "VALUE": 100
                                             },
                                             "next": {
                                                 "opcode": "sound_play",
@@ -90,8 +53,7 @@
                                                             "SOUND_MENU": "\"Meow\""
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": {
@@ -100,30 +62,23 @@
                                                         "STOP_OPTION": "\"all\""
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 },
                 {
                     "opcode": "event_whenflagclicked",
@@ -151,25 +106,21 @@
                                                                 "DISTANCETOMENU": "\"_mouse_\""
                                                             },
                                                             "next": false,
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         }
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "NUM2": 10.0
+                                                "NUM2": 10
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
                                         "OPERAND2": 100
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
                                 "SUBSTACK": {
                                     "opcode": "sound_playuntildone",
@@ -180,34 +131,28 @@
                                                 "SOUND_MENU": "\"Meow\""
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         }
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
                                 "SUBSTACK2": {
                                     "opcode": "motion_gotoxy",
                                     "params": {
-                                        "X": 0.0,
-                                        "Y": 0.0
+                                        "X": 0,
+                                        "Y": 0
                                     },
                                     "next": false,
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 }
                             },
                             "next": false,
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -238,13 +183,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": true,
             "x": 8,
             "y": 28,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -270,5 +215,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

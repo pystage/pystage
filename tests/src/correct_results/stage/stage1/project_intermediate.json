@@ -1,173 +1,5 @@
 {
     "name": "stage1",
-    "stage": {
-        "name": "Stage",
-        "blocks": [
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"a\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"COLOR\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"b\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"FISHEYE\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"c\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"WHIRL\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"d\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"PIXELATE\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"e\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"MOSAIC\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"f\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"BRIGHTNESS\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenkeypressed",
-                "params": {
-                    "KEY_OPTION": "\"g\""
-                },
-                "next": {
-                    "opcode": "looks_changeeffectby",
-                    "params": {
-                        "EFFECT": "\"GHOST\"",
-                        "CHANGE": 25.0
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            }
-        ],
-        "costumes": [
-            {
-                "md5": "e7c147730f19d284bcd7b3f00af19bb6",
-                "local_name": "Blue Sky",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "c7c0b27b959193a0b570a9639cfe8158",
-                "local_name": "Canyon",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -200,13 +32,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 11,
             "y": -52,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -236,5 +68,170 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"a\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"COLOR\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"b\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"FISHEYE\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"c\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"WHIRL\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"d\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"PIXELATE\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"e\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"MOSAIC\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"f\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"BRIGHTNESS\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenkeypressed",
+                "params": {
+                    "KEY_OPTION": "\"g\""
+                },
+                "next": {
+                    "opcode": "looks_changeeffectby",
+                    "params": {
+                        "EFFECT": "\"GHOST\"",
+                        "CHANGE": 25
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenstageclicked",
+                "params": {},
+                "next": {
+                    "opcode": "looks_cleargraphiceffects",
+                    "params": {},
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "e7c147730f19d284bcd7b3f00af19bb6",
+                "local_name": "Blue Sky",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "c7c0b27b959193a0b570a9639cfe8158",
+                "local_name": "Canyon",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

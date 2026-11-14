@@ -1,7 +1,7 @@
 import pygame
 import pkg_resources
 
-from pystage.core.values import to_string
+from pystage.core.values import to_string, to_number
 
 pygame.init()
 
@@ -205,12 +205,12 @@ class BubbleManager():
     def sayforsecs(self, text: str, secs: int):
         self.say(text)
         self.sprite.code_manager.current_block.saying = True
-        self.sprite.code_manager.current_block.add_to_wait_time = secs
+        self.sprite.code_manager.current_block.add_to_wait_time = max(0, to_number(secs))
 
     def thinkforsecs(self, text: str, secs: int):
         self.think(text)
         self.sprite.code_manager.current_block.saying = True
-        self.sprite.code_manager.current_block.add_to_wait_time = secs
+        self.sprite.code_manager.current_block.add_to_wait_time = max(0, to_number(secs))
 
     def kill(self):
         if self.bubble:

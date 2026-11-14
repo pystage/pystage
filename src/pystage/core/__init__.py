@@ -3,3 +3,5 @@ from .stage import CoreStage
 
 sprite_class = CoreSprite
 stage_class = CoreStage
+
+from .code_block import no_refresh

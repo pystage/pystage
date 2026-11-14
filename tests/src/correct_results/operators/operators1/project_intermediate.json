@@ -1,39 +1,5 @@
 {
     "name": "operators1",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 0,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -47,18 +13,17 @@
                             "MESSAGE": {
                                 "opcode": "operator_add",
                                 "params": {
-                                    "NUM1": 1.0,
-                                    "NUM2": 1.0
+                                    "NUM1": 1,
+                                    "NUM2": 1
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": {
                             "opcode": "control_wait",
                             "params": {
-                                "DURATION": 1.0
+                                "DURATION": 1
                             },
                             "next": {
                                 "opcode": "looks_say",
@@ -66,18 +31,17 @@
                                     "MESSAGE": {
                                         "opcode": "operator_subtract",
                                         "params": {
-                                            "NUM1": 3.0,
-                                            "NUM2": 1.0
+                                            "NUM1": 3,
+                                            "NUM2": 1
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
                                     "opcode": "control_wait",
                                     "params": {
-                                        "DURATION": 1.0
+                                        "DURATION": 1
                                     },
                                     "next": {
                                         "opcode": "looks_say",
@@ -85,18 +49,17 @@
                                             "MESSAGE": {
                                                 "opcode": "operator_multiply",
                                                 "params": {
-                                                    "NUM1": 1.0,
-                                                    "NUM2": 2.0
+                                                    "NUM1": 1,
+                                                    "NUM2": 2
                                                 },
                                                 "next": false,
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             }
                                         },
                                         "next": {
                                             "opcode": "control_wait",
                                             "params": {
-                                                "DURATION": 1.0
+                                                "DURATION": 1
                                             },
                                             "next": {
                                                 "opcode": "looks_say",
@@ -104,18 +67,17 @@
                                                     "MESSAGE": {
                                                         "opcode": "operator_divide",
                                                         "params": {
-                                                            "NUM1": 2.0,
-                                                            "NUM2": 1.0
+                                                            "NUM1": 2,
+                                                            "NUM2": 1
                                                         },
                                                         "next": false,
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     }
                                                 },
                                                 "next": {
                                                     "opcode": "control_wait",
                                                     "params": {
-                                                        "DURATION": 1.0
+                                                        "DURATION": 1
                                                     },
                                                     "next": {
                                                         "opcode": "looks_say",
@@ -123,18 +85,17 @@
                                                             "MESSAGE": {
                                                                 "opcode": "operator_divide",
                                                                 "params": {
-                                                                    "NUM1": 2.0,
-                                                                    "NUM2": 0.0
+                                                                    "NUM1": 2,
+                                                                    "NUM2": 0
                                                                 },
                                                                 "next": false,
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             }
                                                         },
                                                         "next": {
                                                             "opcode": "control_wait",
                                                             "params": {
-                                                                "DURATION": 1.0
+                                                                "DURATION": 1
                                                             },
                                                             "next": {
                                                                 "opcode": "looks_say",
@@ -142,18 +103,17 @@
                                                                     "MESSAGE": {
                                                                         "opcode": "operator_random",
                                                                         "params": {
-                                                                            "FROM": 1.0,
-                                                                            "TO": 10.0
+                                                                            "FROM": 1,
+                                                                            "TO": 10
                                                                         },
                                                                         "next": false,
-                                                                        "stage": false,
-                                                                        "comment": null
+                                                                        "stage": false
                                                                     }
                                                                 },
                                                                 "next": {
                                                                     "opcode": "control_wait",
                                                                     "params": {
-                                                                        "DURATION": 1.0
+                                                                        "DURATION": 1
                                                                     },
                                                                     "next": {
                                                                         "opcode": "looks_say",
@@ -165,14 +125,13 @@
                                                                                     "OPERAND2": 1
                                                                                 },
                                                                                 "next": false,
-                                                                                "stage": false,
-                                                                                "comment": null
+                                                                                "stage": false
                                                                             }
                                                                         },
                                                                         "next": {
                                                                             "opcode": "control_wait",
                                                                             "params": {
-                                                                                "DURATION": 1.0
+                                                                                "DURATION": 1
                                                                             },
                                                                             "next": {
                                                                                 "opcode": "looks_say",
@@ -184,14 +143,13 @@
                                                                                             "OPERAND2": 1
                                                                                         },
                                                                                         "next": false,
-                                                                                        "stage": false,
-                                                                                        "comment": null
+                                                                                        "stage": false
                                                                                     }
                                                                                 },
                                                                                 "next": {
                                                                                     "opcode": "control_wait",
                                                                                     "params": {
-                                                                                        "DURATION": 1.0
+                                                                                        "DURATION": 1
                                                                                     },
                                                                                     "next": {
                                                                                         "opcode": "looks_say",
@@ -203,14 +161,13 @@
                                                                                                     "OPERAND2": 50
                                                                                                 },
                                                                                                 "next": false,
-                                                                                                "stage": false,
-                                                                                                "comment": null
+                                                                                                "stage": false
                                                                                             }
                                                                                         },
                                                                                         "next": {
                                                                                             "opcode": "control_wait",
                                                                                             "params": {
-                                                                                                "DURATION": 1.0
+                                                                                                "DURATION": 1
                                                                                             },
                                                                                             "next": {
                                                                                                 "opcode": "looks_say",
@@ -222,14 +179,13 @@
                                                                                                             "OPERAND2": 50
                                                                                                         },
                                                                                                         "next": false,
-                                                                                                        "stage": false,
-                                                                                                        "comment": null
+                                                                                                        "stage": false
                                                                                                     }
                                                                                                 },
                                                                                                 "next": {
                                                                                                     "opcode": "control_wait",
                                                                                                     "params": {
-                                                                                                        "DURATION": 1.0
+                                                                                                        "DURATION": 1
                                                                                                     },
                                                                                                     "next": {
                                                                                                         "opcode": "looks_say",
@@ -244,8 +200,7 @@
                                                                                                                             "OPERAND2": 50
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     },
                                                                                                                     "OPERAND2": {
                                                                                                                         "opcode": "operator_lt",
@@ -254,19 +209,17 @@
                                                                                                                             "OPERAND2": 50
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     }
                                                                                                                 },
                                                                                                                 "next": false,
-                                                                                                                "stage": false,
-                                                                                                                "comment": null
+                                                                                                                "stage": false
                                                                                                             }
                                                                                                         },
                                                                                                         "next": {
                                                                                                             "opcode": "control_wait",
                                                                                                             "params": {
-                                                                                                                "DURATION": 1.0
+                                                                                                                "DURATION": 1
                                                                                                             },
                                                                                                             "next": {
                                                                                                                 "opcode": "looks_say",
@@ -281,8 +234,7 @@
                                                                                                                                     "OPERAND2": 50
                                                                                                                                 },
                                                                                                                                 "next": false,
-                                                                                                                                "stage": false,
-                                                                                                                                "comment": null
+                                                                                                                                "stage": false
                                                                                                                             },
                                                                                                                             "OPERAND2": {
                                                                                                                                 "opcode": "operator_gt",
@@ -291,19 +243,17 @@
                                                                                                                                     "OPERAND2": 50
                                                                                                                                 },
                                                                                                                                 "next": false,
-                                                                                                                                "stage": false,
-                                                                                                                                "comment": null
+                                                                                                                                "stage": false
                                                                                                                             }
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     }
                                                                                                                 },
                                                                                                                 "next": {
                                                                                                                     "opcode": "control_wait",
                                                                                                                     "params": {
-                                                                                                                        "DURATION": 1.0
+                                                                                                                        "DURATION": 1
                                                                                                                     },
                                                                                                                     "next": {
                                                                                                                         "opcode": "looks_say",
@@ -318,93 +268,65 @@
                                                                                                                                             "OPERAND2": 50
                                                                                                                                         },
                                                                                                                                         "next": false,
-                                                                                                                                        "stage": false,
-                                                                                                                                        "comment": null
+                                                                                                                                        "stage": false
                                                                                                                                     }
                                                                                                                                 },
                                                                                                                                 "next": false,
-                                                                                                                                "stage": false,
-                                                                                                                                "comment": null
+                                                                                                                                "stage": false
                                                                                                                             }
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     },
-                                                                                                                    "stage": false,
-                                                                                                                    "comment": null
+                                                                                                                    "stage": false
                                                                                                                 },
-                                                                                                                "stage": false,
-                                                                                                                "comment": null
+                                                                                                                "stage": false
                                                                                                             },
-                                                                                                            "stage": false,
-                                                                                                            "comment": null
+                                                                                                            "stage": false
                                                                                                         },
-                                                                                                        "stage": false,
-                                                                                                        "comment": null
+                                                                                                        "stage": false
                                                                                                     },
-                                                                                                    "stage": false,
-                                                                                                    "comment": null
+                                                                                                    "stage": false
                                                                                                 },
-                                                                                                "stage": false,
-                                                                                                "comment": null
+                                                                                                "stage": false
                                                                                             },
-                                                                                            "stage": false,
-                                                                                            "comment": null
+                                                                                            "stage": false
                                                                                         },
-                                                                                        "stage": false,
-                                                                                        "comment": null
+                                                                                        "stage": false
                                                                                     },
-                                                                                    "stage": false,
-                                                                                    "comment": null
+                                                                                    "stage": false
                                                                                 },
-                                                                                "stage": false,
-                                                                                "comment": null
+                                                                                "stage": false
                                                                             },
-                                                                            "stage": false,
-                                                                            "comment": null
+                                                                            "stage": false
                                                                         },
-                                                                        "stage": false,
-                                                                        "comment": null
+                                                                        "stage": false
                                                                     },
-                                                                    "stage": false,
-                                                                    "comment": null
+                                                                    "stage": false
                                                                 },
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             },
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -435,13 +357,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 0,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -467,5 +389,39 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

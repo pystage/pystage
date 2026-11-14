@@ -1,67 +1,5 @@
 {
     "name": "stage2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "1ef98019fc94ea65a1b55d5521285c7a",
-                "local_name": "City With Water",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            },
-            {
-                "md5": "de0e54cd11551566f044e7e6bc588b2c",
-                "local_name": "Boardwalk",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            },
-            {
-                "md5": "a5865738283613a2725b2c9dda6d8c78",
-                "local_name": "Basketball 2",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            },
-            {
-                "md5": "1e8a70bd07f1dcba3383883f3b948266",
-                "local_name": "Farm",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 3,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Amon",
@@ -77,8 +15,8 @@
                         "next": {
                             "opcode": "motion_gotoxy",
                             "params": {
-                                "X": 0.0,
-                                "Y": 0.0
+                                "X": 0,
+                                "Y": 0
                             },
                             "next": {
                                 "opcode": "control_forever",
@@ -86,7 +24,7 @@
                                     "SUBSTACK": {
                                         "opcode": "motion_changexby",
                                         "params": {
-                                            "DX": -5.0
+                                            "DX": -5
                                         },
                                         "next": {
                                             "opcode": "control_if",
@@ -98,46 +36,37 @@
                                                             "opcode": "motion_xposition",
                                                             "params": {},
                                                             "next": false,
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
                                                         "OPERAND2": -460
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
                                                 "SUBSTACK": {
                                                     "opcode": "motion_gotoxy",
                                                     "params": {
-                                                        "X": 465.0,
-                                                        "Y": 0.0
+                                                        "X": 465,
+                                                        "Y": 0
                                                     },
                                                     "next": false,
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 }
                                             },
                                             "next": false,
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": false,
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             },
-                            "stage": false,
-                            "comment": null
+                            "stage": false
                         },
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -161,13 +90,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": 280,
             "y": 0,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         },
         {
             "name": "Anina Dance",
@@ -187,8 +116,7 @@
                                             "TO": "\"_random_\""
                                         },
                                         "next": false,
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     }
                                 },
                                 "next": {
@@ -205,18 +133,18 @@
                                             "next": {
                                                 "opcode": "looks_setsizeto",
                                                 "params": {
-                                                    "SIZE": 100.0
+                                                    "SIZE": 100
                                                 },
                                                 "next": {
                                                     "opcode": "looks_sayforsecs",
                                                     "params": {
                                                         "MESSAGE": "\"Hello!\"",
-                                                        "SECS": 1.0
+                                                        "SECS": 1
                                                     },
                                                     "next": {
                                                         "opcode": "control_wait",
                                                         "params": {
-                                                            "DURATION": 2.0
+                                                            "DURATION": 2
                                                         },
                                                         "next": {
                                                             "opcode": "looks_hide",
@@ -230,14 +158,13 @@
                                                                             "BACKDROP": "\"City With Water\""
                                                                         },
                                                                         "next": false,
-                                                                        "stage": false,
-                                                                        "comment": null
+                                                                        "stage": false
                                                                     }
                                                                 },
                                                                 "next": {
                                                                     "opcode": "control_wait",
                                                                     "params": {
-                                                                        "DURATION": 1.0
+                                                                        "DURATION": 1
                                                                     },
                                                                     "next": {
                                                                         "opcode": "looks_show",
@@ -251,8 +178,7 @@
                                                                                         "COSTUME": "\"anina pop R arm\""
                                                                                     },
                                                                                     "next": false,
-                                                                                    "stage": false,
-                                                                                    "comment": null
+                                                                                    "stage": false
                                                                                 }
                                                                             },
                                                                             "next": {
@@ -264,14 +190,13 @@
                                                                                             "BACKDROP": "\"Boardwalk\""
                                                                                         },
                                                                                         "next": false,
-                                                                                        "stage": false,
-                                                                                        "comment": null
+                                                                                        "stage": false
                                                                                     }
                                                                                 },
                                                                                 "next": {
                                                                                     "opcode": "control_wait",
                                                                                     "params": {
-                                                                                        "DURATION": 1.0
+                                                                                        "DURATION": 1
                                                                                     },
                                                                                     "next": {
                                                                                         "opcode": "looks_switchbackdropto",
@@ -282,8 +207,7 @@
                                                                                                     "BACKDROP": "\"backdrop1\""
                                                                                                 },
                                                                                                 "next": false,
-                                                                                                "stage": false,
-                                                                                                "comment": null
+                                                                                                "stage": false
                                                                                             }
                                                                                         },
                                                                                         "next": {
@@ -295,14 +219,13 @@
                                                                                                         "COSTUME": "\"anina pop left\""
                                                                                                     },
                                                                                                     "next": false,
-                                                                                                    "stage": false,
-                                                                                                    "comment": null
+                                                                                                    "stage": false
                                                                                                 }
                                                                                             },
                                                                                             "next": {
                                                                                                 "opcode": "control_wait",
                                                                                                 "params": {
-                                                                                                    "DURATION": 1.0
+                                                                                                    "DURATION": 1
                                                                                                 },
                                                                                                 "next": {
                                                                                                     "opcode": "looks_switchcostumeto",
@@ -313,8 +236,7 @@
                                                                                                                 "COSTUME": "\"anina top freeze\""
                                                                                                             },
                                                                                                             "next": false,
-                                                                                                            "stage": false,
-                                                                                                            "comment": null
+                                                                                                            "stage": false
                                                                                                         }
                                                                                                     },
                                                                                                     "next": {
@@ -326,14 +248,13 @@
                                                                                                                     "BACKDROP": "\"Basketball 2\""
                                                                                                                 },
                                                                                                                 "next": false,
-                                                                                                                "stage": false,
-                                                                                                                "comment": null
+                                                                                                                "stage": false
                                                                                                             }
                                                                                                         },
                                                                                                         "next": {
                                                                                                             "opcode": "control_wait",
                                                                                                             "params": {
-                                                                                                                "DURATION": 1.0
+                                                                                                                "DURATION": 1
                                                                                                             },
                                                                                                             "next": {
                                                                                                                 "opcode": "looks_switchcostumeto",
@@ -344,14 +265,13 @@
                                                                                                                             "COSTUME": "\"anina R cross\""
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     }
                                                                                                                 },
                                                                                                                 "next": {
                                                                                                                     "opcode": "looks_setsizeto",
                                                                                                                     "params": {
-                                                                                                                        "SIZE": 100.0
+                                                                                                                        "SIZE": 100
                                                                                                                     },
                                                                                                                     "next": {
                                                                                                                         "opcode": "looks_switchbackdropto",
@@ -362,87 +282,61 @@
                                                                                                                                     "BACKDROP": "\"Farm\""
                                                                                                                                 },
                                                                                                                                 "next": false,
-                                                                                                                                "stage": false,
-                                                                                                                                "comment": null
+                                                                                                                                "stage": false
                                                                                                                             }
                                                                                                                         },
                                                                                                                         "next": false,
-                                                                                                                        "stage": false,
-                                                                                                                        "comment": null
+                                                                                                                        "stage": false
                                                                                                                     },
-                                                                                                                    "stage": false,
-                                                                                                                    "comment": null
+                                                                                                                    "stage": false
                                                                                                                 },
-                                                                                                                "stage": false,
-                                                                                                                "comment": null
+                                                                                                                "stage": false
                                                                                                             },
-                                                                                                            "stage": false,
-                                                                                                            "comment": null
+                                                                                                            "stage": false
                                                                                                         },
-                                                                                                        "stage": false,
-                                                                                                        "comment": null
+                                                                                                        "stage": false
                                                                                                     },
-                                                                                                    "stage": false,
-                                                                                                    "comment": null
+                                                                                                    "stage": false
                                                                                                 },
-                                                                                                "stage": false,
-                                                                                                "comment": null
+                                                                                                "stage": false
                                                                                             },
-                                                                                            "stage": false,
-                                                                                            "comment": null
+                                                                                            "stage": false
                                                                                         },
-                                                                                        "stage": false,
-                                                                                        "comment": null
+                                                                                        "stage": false
                                                                                     },
-                                                                                    "stage": false,
-                                                                                    "comment": null
+                                                                                    "stage": false
                                                                                 },
-                                                                                "stage": false,
-                                                                                "comment": null
+                                                                                "stage": false
                                                                             },
-                                                                            "stage": false,
-                                                                            "comment": null
+                                                                            "stage": false
                                                                         },
-                                                                        "stage": false,
-                                                                        "comment": null
+                                                                        "stage": false
                                                                     },
-                                                                    "stage": false,
-                                                                    "comment": null
+                                                                    "stage": false
                                                                 },
-                                                                "stage": false,
-                                                                "comment": null
+                                                                "stage": false
                                                             },
-                                                            "stage": false,
-                                                            "comment": null
+                                                            "stage": false
                                                         },
-                                                        "stage": false,
-                                                        "comment": null
+                                                        "stage": false
                                                     },
-                                                    "stage": false,
-                                                    "comment": null
+                                                    "stage": false
                                                 },
-                                                "stage": false,
-                                                "comment": null
+                                                "stage": false
                                             },
-                                            "stage": false,
-                                            "comment": null
+                                            "stage": false
                                         },
-                                        "stage": false,
-                                        "comment": null
+                                        "stage": false
                                     },
-                                    "stage": false,
-                                    "comment": null
+                                    "stage": false
                                 },
-                                "stage": false,
-                                "comment": null
+                                "stage": false
                             }
                         },
                         "next": false,
-                        "stage": false,
-                        "comment": null
+                        "stage": false
                     },
-                    "stage": false,
-                    "comment": null
+                    "stage": false
                 }
             ],
             "costumes": [
@@ -554,13 +448,13 @@
             "currentCostume": 4,
             "layerOrder": 2,
             "visible": true,
+            "draggable": false,
             "x": -150,
             "y": -48,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -654,5 +548,67 @@
             "global_name": "dance_magic",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "1ef98019fc94ea65a1b55d5521285c7a",
+                "local_name": "City With Water",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "de0e54cd11551566f044e7e6bc588b2c",
+                "local_name": "Boardwalk",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "a5865738283613a2725b2c9dda6d8c78",
+                "local_name": "Basketball 2",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            },
+            {
+                "md5": "1e8a70bd07f1dcba3383883f3b948266",
+                "local_name": "Farm",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 3,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }

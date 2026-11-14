@@ -3,31 +3,32 @@
 from pystage.en import Sprite, Stage
 
 stage = Stage()
-stage.add_backdrop('backdrop1')
-stage.create_variable('my variable', 0)
+stage.add_backdrop("backdrop1")
+stage.add_sound("pop")
+stage.create_variable("my variable", 0)
+
+# Create and initialize sprite 'anina_dance'
 anina_dance = stage.add_a_sprite(None)
 anina_dance.set_name("Anina Dance")
-anina_dance.set_x(28)
-anina_dance.set_y(-28)
-anina_dance.go_to_back_layer()
-anina_dance.go_forward(1)
-anina_dance.add_costume('anina_stance', center_x=76, center_y=252, factor=2)
-anina_dance.add_costume('anina_top_stand', center_x=74, center_y=280, factor=2)
-anina_dance.add_costume('anina_top_r_step', center_x=248, center_y=272, factor=2)
-anina_dance.add_costume('anina_top_l_step', center_x=228, center_y=274, factor=2)
-anina_dance.add_costume('anina_top_freeze', center_x=110, center_y=268, factor=2)
-anina_dance.add_costume('anina_r_cross', center_x=126, center_y=268, factor=2)
-anina_dance.add_costume('anina_pop_front', center_x=68, center_y=270, factor=2)
-anina_dance.add_costume('anina_pop_down', center_x=74, center_y=156, factor=2)
-anina_dance.add_costume('anina_pop_left', center_x=238, center_y=266, factor=2)
-anina_dance.add_costume('anina_pop_right', center_x=66, center_y=268, factor=2)
-anina_dance.add_costume('anina_pop_l_arm', center_x=68, center_y=274, factor=2)
-anina_dance.add_costume('anina_pop_stand', center_x=76, center_y=276, factor=2)
-anina_dance.add_costume('anina_pop_r_arm', center_x=88, center_y=272, factor=2)
-anina_dance.next_costume()
-anina_dance.next_costume()
-anina_dance.add_sound('dance_celebrate')
-anina_dance.add_sound('dance_magic')
+anina_dance.go_to_x_y(28, -28)
+anina_dance.add_costume("anina_stance", center_x=76, center_y=252, factor=2)
+anina_dance.add_costume("anina_top_stand", center_x=74, center_y=280, factor=2)
+anina_dance.add_costume("anina_top_r_step", center_x=248, center_y=272, factor=2)
+anina_dance.add_costume("anina_top_l_step", center_x=228, center_y=274, factor=2)
+anina_dance.add_costume("anina_top_freeze", center_x=110, center_y=268, factor=2)
+anina_dance.add_costume("anina_r_cross", center_x=126, center_y=268, factor=2)
+anina_dance.add_costume("anina_pop_front", center_x=68, center_y=270, factor=2)
+anina_dance.add_costume("anina_pop_down", center_x=74, center_y=156, factor=2)
+anina_dance.add_costume("anina_pop_left", center_x=238, center_y=266, factor=2)
+anina_dance.add_costume("anina_pop_right", center_x=66, center_y=268, factor=2)
+anina_dance.add_costume("anina_pop_l_arm", center_x=68, center_y=274, factor=2)
+anina_dance.add_costume("anina_pop_stand", center_x=76, center_y=276, factor=2)
+anina_dance.add_costume("anina_pop_r_arm", center_x=88, center_y=272, factor=2)
+anina_dance.switch_costume_to("anina_top_r_step")
+anina_dance.add_sound("dance_celebrate")
+anina_dance.add_sound("dance_magic")
+
+# Scratch Blocks for 'anina_dance'
 
 def when_program_starts_1(self):
     self.think(self.current_year())
@@ -68,4 +69,5 @@ def when_key_pressed_8(self):
     self.say(self.days_since())
 
 anina_dance.when_key_pressed("z", when_key_pressed_8)
+
 stage.play()

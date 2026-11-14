@@ -1,207 +1,5 @@
 {
     "name": "control2",
-    "stage": {
-        "name": "Stage",
-        "blocks": [
-            {
-                "opcode": "event_whenflagclicked",
-                "params": {},
-                "next": {
-                    "opcode": "control_forever",
-                    "params": {
-                        "SUBSTACK": {
-                            "opcode": "control_if",
-                            "params": {
-                                "CONDITION": {
-                                    "opcode": "sensing_mousedown",
-                                    "params": {},
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                },
-                                "SUBSTACK": {
-                                    "opcode": "sound_playuntildone",
-                                    "params": {
-                                        "SOUND_MENU": {
-                                            "opcode": "sound_sounds_menu",
-                                            "params": {
-                                                "SOUND_MENU": "\"pop\""
-                                            },
-                                            "next": false,
-                                            "stage": true,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                }
-                            },
-                            "next": {
-                                "opcode": "control_if_else",
-                                "params": {
-                                    "CONDITION": {
-                                        "opcode": "sensing_mousedown",
-                                        "params": {},
-                                        "next": false,
-                                        "stage": true,
-                                        "comment": null
-                                    },
-                                    "SUBSTACK": {
-                                        "opcode": "sound_seteffectto",
-                                        "params": {
-                                            "EFFECT": "\"PITCH\"",
-                                            "VALUE": 100.0
-                                        },
-                                        "next": false,
-                                        "stage": true,
-                                        "comment": null
-                                    },
-                                    "SUBSTACK2": {
-                                        "opcode": "sound_stopallsounds",
-                                        "params": {},
-                                        "next": false,
-                                        "stage": true,
-                                        "comment": null
-                                    }
-                                },
-                                "next": false,
-                                "stage": true,
-                                "comment": null
-                            },
-                            "stage": true,
-                            "comment": null
-                        }
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            },
-            {
-                "opcode": "event_whenflagclicked",
-                "params": {},
-                "next": {
-                    "opcode": "control_repeat",
-                    "params": {
-                        "TIMES": 10,
-                        "SUBSTACK": {
-                            "opcode": "control_if_else",
-                            "params": {
-                                "CONDITION": {
-                                    "opcode": "sensing_keypressed",
-                                    "params": {
-                                        "KEY_OPTION": {
-                                            "opcode": "sensing_keyoptions",
-                                            "params": {
-                                                "KEY_OPTION": "\"space\""
-                                            },
-                                            "next": false,
-                                            "stage": true,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                },
-                                "SUBSTACK": {
-                                    "opcode": "control_repeat",
-                                    "params": {
-                                        "TIMES": 10,
-                                        "SUBSTACK": {
-                                            "opcode": "looks_switchbackdropto",
-                                            "params": {
-                                                "BACKDROP": {
-                                                    "opcode": "looks_backdrops",
-                                                    "params": {
-                                                        "BACKDROP": "\"Beach Rio\""
-                                                    },
-                                                    "next": false,
-                                                    "stage": true,
-                                                    "comment": null
-                                                }
-                                            },
-                                            "next": false,
-                                            "stage": true,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                },
-                                "SUBSTACK2": {
-                                    "opcode": "sound_play",
-                                    "params": {
-                                        "SOUND_MENU": {
-                                            "opcode": "sound_sounds_menu",
-                                            "params": {
-                                                "SOUND_MENU": "\"pop\""
-                                            },
-                                            "next": false,
-                                            "stage": true,
-                                            "comment": null
-                                        }
-                                    },
-                                    "next": false,
-                                    "stage": true,
-                                    "comment": null
-                                }
-                            },
-                            "next": false,
-                            "stage": true,
-                            "comment": null
-                        }
-                    },
-                    "next": false,
-                    "stage": true,
-                    "comment": null
-                },
-                "stage": true,
-                "comment": null
-            }
-        ],
-        "costumes": [
-            {
-                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
-                "local_name": "backdrop1",
-                "bitmapResolution": 1,
-                "rotationCenterX": 240,
-                "rotationCenterY": 180
-            },
-            {
-                "md5": "968f0ede6e70e1dbb763d6fd4c5003e0",
-                "local_name": "Beach Rio",
-                "bitmapResolution": 2,
-                "rotationCenterX": 480,
-                "rotationCenterY": 360
-            }
-        ],
-        "sounds": [
-            {
-                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
-                "local_name": "pop"
-            }
-        ],
-        "variables": {
-            "my variable": 0
-        },
-        "lists": {},
-        "monitors": [],
-        "currentCostume": 1,
-        "layerOrder": 0,
-        "visible": true,
-        "x": 0,
-        "y": 0,
-        "size": 100,
-        "volume": 100,
-        "direction": 90,
-        "rotationStyle": "all around",
-        "comments": []
-    },
     "sprites": [
         {
             "name": "Sprite1",
@@ -234,13 +32,13 @@
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
+            "draggable": false,
             "x": -15,
             "y": 1,
             "size": 100,
             "volume": 100,
             "direction": 90,
-            "rotationStyle": "all around",
-            "comments": []
+            "rotationStyle": "all around"
         }
     ],
     "costumes": {
@@ -270,5 +68,187 @@
             "global_name": "meow",
             "extension": "wav"
         }
+    },
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "control_forever",
+                    "params": {
+                        "SUBSTACK": {
+                            "opcode": "control_if",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_mousedown",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": true
+                                },
+                                "SUBSTACK": {
+                                    "opcode": "sound_playuntildone",
+                                    "params": {
+                                        "SOUND_MENU": {
+                                            "opcode": "sound_sounds_menu",
+                                            "params": {
+                                                "SOUND_MENU": "\"pop\""
+                                            },
+                                            "next": false,
+                                            "stage": true
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                }
+                            },
+                            "next": {
+                                "opcode": "control_if_else",
+                                "params": {
+                                    "CONDITION": {
+                                        "opcode": "sensing_mousedown",
+                                        "params": {},
+                                        "next": false,
+                                        "stage": true
+                                    },
+                                    "SUBSTACK": {
+                                        "opcode": "sound_seteffectto",
+                                        "params": {
+                                            "EFFECT": "\"PITCH\"",
+                                            "VALUE": 100
+                                        },
+                                        "next": false,
+                                        "stage": true
+                                    },
+                                    "SUBSTACK2": {
+                                        "opcode": "sound_stopallsounds",
+                                        "params": {},
+                                        "next": false,
+                                        "stage": true
+                                    }
+                                },
+                                "next": false,
+                                "stage": true
+                            },
+                            "stage": true
+                        }
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            },
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "control_repeat",
+                    "params": {
+                        "TIMES": 10,
+                        "SUBSTACK": {
+                            "opcode": "control_if_else",
+                            "params": {
+                                "CONDITION": {
+                                    "opcode": "sensing_keypressed",
+                                    "params": {
+                                        "KEY_OPTION": {
+                                            "opcode": "sensing_keyoptions",
+                                            "params": {
+                                                "KEY_OPTION": "\"space\""
+                                            },
+                                            "next": false,
+                                            "stage": true
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                },
+                                "SUBSTACK": {
+                                    "opcode": "control_repeat",
+                                    "params": {
+                                        "TIMES": 10,
+                                        "SUBSTACK": {
+                                            "opcode": "looks_switchbackdropto",
+                                            "params": {
+                                                "BACKDROP": {
+                                                    "opcode": "looks_backdrops",
+                                                    "params": {
+                                                        "BACKDROP": "\"Beach Rio\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": true
+                                                }
+                                            },
+                                            "next": false,
+                                            "stage": true
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                },
+                                "SUBSTACK2": {
+                                    "opcode": "sound_play",
+                                    "params": {
+                                        "SOUND_MENU": {
+                                            "opcode": "sound_sounds_menu",
+                                            "params": {
+                                                "SOUND_MENU": "\"pop\""
+                                            },
+                                            "next": false,
+                                            "stage": true
+                                        }
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                }
+                            },
+                            "next": false,
+                            "stage": true
+                        }
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "cd21514d0531fdffb22204e0ec5ed84a",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "968f0ede6e70e1dbb763d6fd4c5003e0",
+                "local_name": "Beach Rio",
+                "bitmapResolution": 2,
+                "rotationCenterX": 480,
+                "rotationCenterY": 360
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "83a9787d4cb6f3b7632b4ddfebf74367",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "my variable": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "currentCostume": 1,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
     }
 }
