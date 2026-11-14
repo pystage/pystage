@@ -127,6 +127,10 @@ templates = {
         "operator_contains": "self.{{func}}({{STRING1}}, {{STRING2}})",
         "operator_divide": "({{NUM1}} / {{NUM2}})",
         "operator_equals": "({{OPERAND1}} == {{OPERAND2}})",
+        # Python raises an error when dividing by 0, Scratch does not.
+        # These are used if the divisor is not a number other than 0.
+        "operator_divide.scratch": "self.{{func}}({{NUM1}}, {{NUM2}})",
+        "operator_mod.scratch": "self.{{func}}({{NUM1}}, {{NUM2}})",
         "operator_gt": "({{OPERAND1}} > {{OPERAND2}})",
         "operator_join": "self.{{func}}({{STRING1}}, {{STRING2}})",
         "operator_length": "self.{{func}}({{STRING}})",
@@ -169,6 +173,10 @@ templates = {
         "motion_goto_menu": "{{TO | global_sprite }}",
         "motion_glideto_menu": "{{TO | global_sprite }}",
         "pen_menu_colorParam": "{{colorParam}}",
+        # Menus of supported blocks. The value is already a quoted text.
+        # sound_beats_menu belongs to the music extension, which is not supported.
+        "event_broadcast_menu": "{{BROADCAST_OPTION}}",
+        "sound_effects_menu": "{{EFFECT}}",
         "sound_sounds_menu": "{{SOUND_MENU | global_sound }}",
                 }
 

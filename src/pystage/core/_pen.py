@@ -9,7 +9,14 @@ def int2(vec2):
     return pygame.Vector2(x, y)
 
 
-class _Pen(BaseSprite):
+class _PenStage(BaseSprite):
+    """The only pen block of the stage: erase all."""
+
+    def pen_clear(self):
+        self.stage.pen_image.fill((0, 0, 0, 0))
+
+
+class _Pen(_PenStage):
 
     def __init__(self):
         super().__init__()
@@ -32,10 +39,6 @@ class _Pen(BaseSprite):
             # Round ends, this is also the dot when the pen is put down.
             pygame.draw.circle(image, self.pen_color, start, size / 2)
             pygame.draw.circle(image, self.pen_color, end, size / 2)
-
-    def pen_clear(self):
-        self.stage.pen_image.fill((0, 0, 0, 0))
-
 
     def pen_stamp(self):
         self.costume_manager.update_sprite_image()

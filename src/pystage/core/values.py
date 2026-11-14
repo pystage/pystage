@@ -76,6 +76,32 @@ def compare(a, b):
     return (a > b) - (a < b)
 
 
+def divide(a, b):
+    """Scratch division: dividing by 0 is Infinity, -Infinity or NaN."""
+    a, b = to_number(a), to_number(b)
+    if b == 0:
+        if a == 0 or (isinstance(a, float) and math.isnan(a)):
+            return math.nan
+        return math.inf if a > 0 else -math.inf
+    return a / b
+
+
+def modulo(a, b):
+    """Scratch modulo: The result has the sign of the divisor, dividing by 0 is NaN."""
+    a, b = to_number(a), to_number(b)
+    if b == 0 or (isinstance(a, float) and math.isinf(a)):
+        return math.nan
+    if isinstance(b, float) and math.isinf(b):
+        # like in Scratch (JavaScript): the dividend is not changed
+        return a
+    if isinstance(a, int) and isinstance(b, int):
+        return a % b
+    result = math.fmod(a, b)
+    if result != 0 and (result < 0) != (b < 0):
+        result += b
+    return result
+
+
 class Text(str):
     """A text that comes from Scratch-like sources: variables, lists, answers.
 
@@ -114,16 +140,16 @@ class Text(str):
         return to_number(other) * to_number(self)
 
     def __truediv__(self, other):
-        return to_number(self) / to_number(other)
+        return divide(self, other)
 
     def __rtruediv__(self, other):
-        return to_number(other) / to_number(self)
+        return divide(other, self)
 
     def __mod__(self, other):
-        return to_number(self) % to_number(other)
+        return modulo(self, other)
 
     def __rmod__(self, other):
-        return to_number(other) % to_number(self)
+        return modulo(other, self)
 
     def __neg__(self):
         return -to_number(self)

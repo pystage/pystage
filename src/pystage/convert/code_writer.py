@@ -157,6 +157,8 @@ class EmptyInput(Undefined):
 
 
 COMPARISONS = ("operator_gt", "operator_lt", "operator_equals")
+# Divisions: Python raises an error for a divisor of 0
+DIVISIONS = ("operator_divide", "operator_mod")
 
 
 class CodeWriter():
@@ -405,7 +407,13 @@ class CodeWriter():
             return self._with_comments(self.render_argument(block), statement), False
 
         context = {}
-        if opcode in self.templates and not self.needs_scratch_comparison(block):
+        if f"{opcode}.scratch" in self.templates and self.needs_scratch_division(block):
+            # The Python operator is not safe, the core method follows Scratch.
+            text = textwrap.dedent(self.templates[f"{opcode}.scratch"])
+            context["func"] = self.get_translated_function(block)
+            if context["func"] is None:
+                return self._with_comments(py_str(f"NOT SUPPORTED: {opcode}"), statement), False
+        elif opcode in self.templates and not self.needs_scratch_comparison(block):
             # If the block has its own template, we simply render it.
             text = textwrap.dedent(self.templates[opcode])
             # if the template needs a translated function name, we deliver it
@@ -466,6 +474,19 @@ class CodeWriter():
             return False
         return any(isinstance(value, str) and value.startswith('"') for value in block["params"].values())
 
+
+    def needs_scratch_division(self, block):
+        """Python operators for / and mod are only safe for a divisor other than 0.
+
+        In Scratch, dividing by 0 gives Infinity, -Infinity or NaN. So the
+        core method is called unless the divisor is a number literal that
+        is not 0 and the dividend is not a text literal.
+        """
+        if block["opcode"] not in DIVISIONS:
+            return False
+        dividend, divisor = block["params"].get("NUM1"), block["params"].get("NUM2")
+        is_number = lambda value: isinstance(value, (int, float)) and not isinstance(value, bool)
+        return not (is_number(divisor) and divisor != 0 and (is_number(dividend) or isinstance(dividend, dict)))
 
     def _with_comments(self, text, statement):
         """Write the collected comments in front of a statement."""

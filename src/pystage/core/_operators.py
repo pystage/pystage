@@ -1,7 +1,7 @@
 import random
 import math
 
-from pystage.core.values import to_number, to_string, Text, compare, equals
+from pystage.core.values import to_number, to_string, Text, compare, equals, divide, modulo
 
 class _Operators():
     def __init__(self):
@@ -15,6 +15,12 @@ class _Operators():
         if whole:
             return random.randint(int(low), int(high))
         return random.uniform(low, high)
+
+    def operator_divide(self, a, b):
+        return divide(a, b)
+
+    def operator_mod(self, a, b):
+        return modulo(a, b)
 
     def operator_join(self, string1, string2):
         return Text(to_string(string1) + to_string(string2))

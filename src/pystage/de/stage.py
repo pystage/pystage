@@ -51,10 +51,10 @@ class Bühne():
         """
         return self._core.control_stop_all()
                 
-    def stoppe_andere_skripte_der_figur(self):
-        """stoppe andere Skripte der Figur
+    def stoppe_andere_skripte_der_bühne(self):
+        """stoppe andere Skripte der Bühne
 
-        Translation string: stoppe andere Skripte der Figur
+        Translation string: stoppe andere Skripte der Bühne
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -235,7 +235,7 @@ class Bühne():
         """
         return self._core.event_broadcastandwait(message)
                 
-    def wenn_das_bühnenbild_zu_wechselt(self, backdrop, generator_function, name='', no_refresh=False):
+    def wenn_das_bühnenbild_wechselt_zu(self, backdrop, generator_function, name='', no_refresh=False):
         """Wenn das Bühnenbild zu %1 wechselt
 
         Translation string: Wenn das Bühnenbild zu %1 wechselt
@@ -863,25 +863,6 @@ class Bühne():
         """
         return self._core.pystage_addsound(name)
                 
-    def pystage_createsprite(self, costume='default'):
-        """
-
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-        Parameters
-        ----------
-        costume : FILL
-        
-
-        Returns
-        -------
-
-        """
-        return self._core.pystage_createsprite(costume)
-                
     def füge_bühnenbild_ein(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
@@ -923,21 +904,6 @@ class Bühne():
 
         """
         return self._core.pystage_makevariable(name, value, all_sprites)
-                
-    def pystage_play(self):
-        """
-
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
-        """
-        return self._core.pystage_play()
                 
     def ersetze_bühnenbild(self, index, name, center_x=None, center_y=None, factor=1):
         """
@@ -2056,3 +2022,48 @@ class Bühne():
             Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.event_whenstageclicked(generator_function, name, no_refresh)
+
+    def geteilt_durch(self, a, b):
+        """%1 / %2
+
+        Wie in Scratch ergibt die Division durch 0 Infinity, -Infinity oder NaN
+        statt eines Fehlers.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_divide(a, b)
+
+    def modulo(self, a, b):
+        """%1 modulo %2
+
+        Der Rest einer Division, mit dem Vorzeichen des Teilers wie in
+        Scratch. Modulo 0 ergibt NaN.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_mod(a, b)
+
+    def lösche_alles(self):
+        """lösche alles
+
+        Löscht alles, was mit dem Stift gemalt wurde.
+
+        Returns
+        -------
+        None
+        """
+        return self._core.pen_clear()

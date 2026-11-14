@@ -25,7 +25,7 @@ def when_program_starts_1(self):
     self.wait(1)
     self.say((2 / 1))
     self.wait(1)
-    self.say((2 / 0))
+    self.say(self.divide(2, 0))
     self.wait(1)
     self.say(self.pick_random(1, 10))
     self.wait(1)

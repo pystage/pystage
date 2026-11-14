@@ -48,5 +48,6 @@ KEY_MAPPINGS = {
         "down arrow": pygame.K_DOWN,
         "space": pygame.K_SPACE,
         " ": pygame.K_SPACE,
+        "enter": pygame.K_RETURN,
         }
 

@@ -137,7 +137,19 @@ class _Motion(_Sensing):
     motion_pointtowards_pointer.param = "TOWARDS"
     motion_pointtowards_pointer.value = "_mouse_"
 
+    def motion_pointtowards_random(self):
+        # Like in Scratch: A random direction between -180 and 180
+        self.motion_pointindirection(random.randint(-180, 180))
+
+    motion_pointtowards_random.opcode = "motion_pointtowards"
+    motion_pointtowards_random.param = "TOWARDS"
+    motion_pointtowards_random.value = "_random_"
+
     def motion_pointtowards_sprite(self, sprite):
+        if sprite == "_mouse_":
+            return self.motion_pointtowards_pointer()
+        if sprite == "_random_":
+            return self.motion_pointtowards_random()
         sprite = self.stage._get_sprite(sprite)
         if sprite is None:
             return

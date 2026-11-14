@@ -34,15 +34,11 @@ class _Control(BaseSprite):
     control_stop_this.param="STOP_OPTION"
     control_stop_this.value="this script"
 
-    def control_stop_other(self):
+    def _stop_other_scripts(self):
         current = self.code_manager.current_block
         for block in self.code_manager.code_blocks.values():
             if block is not current:
                 block.stop()
-
-    control_stop_other.opcode="control_stop"
-    control_stop_other.param="STOP_OPTION"
-    control_stop_other.value="other scripts in sprite"
 
     def control_create_clone_of_sprite(self, sprite):
         if sprite == "_myself_":
@@ -54,6 +50,17 @@ class _Control(BaseSprite):
     control_create_clone_of_sprite.opcode = "control_create_clone_of"
 
 
+class _ControlStage(_Control):
+    """Control blocks that only the stage has."""
+
+    def control_stop_other(self):
+        self._stop_other_scripts()
+
+    control_stop_other.opcode="control_stop"
+    control_stop_other.param="STOP_OPTION"
+    control_stop_other.value="other scripts in stage"
+
+
 class _ControlSprite(_Control):
 
     # In Scratch, there can only be a maximum of 300 clones
@@ -61,6 +68,13 @@ class _ControlSprite(_Control):
 
     def __init__(self):
         super().__init__()
+
+    def control_stop_other(self):
+        self._stop_other_scripts()
+
+    control_stop_other.opcode="control_stop"
+    control_stop_other.param="STOP_OPTION"
+    control_stop_other.value="other scripts in sprite"
 
     def control_create_clone_of_myself(self):
         self.clone()

@@ -474,3 +474,189 @@ def test_comparison_operators(stage, sprite):
     assert sprite.greater_than("10", "9") and sprite.less_than(5, "a")
     assert sprite.equals("ABC", "abc") and sprite.equals("5", 5.0) and sprite.equals("", "")
     assert not sprite.equals(0, "") and not sprite.equals("a", 1)
+
+
+# Stage blocks and small gaps
+
+def test_stage_erase_all(stage, sprite):
+    image = stage._core.pen_image
+    sprite.pen_down()
+    sprite.move(30)
+    assert image.get_bounding_rect().width > 0
+    stage.erase_all()
+    assert image.get_bounding_rect().width == 0
+
+
+def stage_erases(self):
+    self.erase_all()
+    log.append("erased")
+
+
+def test_stage_script_can_erase_all(stage, sprite):
+    sprite.pen_down()
+    sprite.move(30)
+    stage.when_program_starts(stage_erases)
+    run(stage, frames=2)
+    assert log == ["erased"]
+    assert stage._core.pen_image.get_bounding_rect().width == 0
+
+
+# The blocks that the Scratch editor offers for the stage (not the sprite only
+# blocks), written as core opcode or method name.
+STAGE_PALETTE = [
+    # looks
+    "looks_switchbackdropto", "looks_nextbackdrop", "looks_switchbackdroptoandwait",
+    "looks_changeeffectby", "looks_seteffectto", "looks_cleargraphiceffects", "looks_backdropnumbername",
+    # sound
+    "sound_playuntildone", "sound_play", "sound_stopallsounds", "sound_changeeffectby", "sound_seteffectto",
+    "sound_cleareffects", "sound_changevolumeby", "sound_setvolumeto", "sound_volume",
+    # events
+    "event_whenflagclicked", "event_whenkeypressed", "event_whenstageclicked", "event_whenbackdropswitchesto",
+    "event_whengreaterthan", "event_whenbroadcastreceived", "event_broadcast", "event_broadcastandwait",
+    # control
+    "control_wait", "control_stop", "control_create_clone_of",
+    # sensing
+    "sensing_askandwait", "sensing_answer", "sensing_keypressed", "sensing_mousedown", "sensing_mousex",
+    "sensing_mousey", "sensing_loudness", "sensing_timer", "sensing_resettimer", "sensing_of",
+    "sensing_current", "sensing_dayssince2000", "sensing_username",
+    # operators
+    "operator_random", "operator_gt", "operator_lt", "operator_equals", "operator_join",
+    "operator_letter_of", "operator_length", "operator_contains", "operator_mod", "operator_round",
+    "operator_mathop", "operator_divide",
+    # variables and lists
+    "data_variable", "data_setvariableto", "data_changevariableby", "data_showvariable", "data_hidevariable",
+    "data_listcontents", "data_addtolist", "data_deleteoflist", "data_deletealloflist", "data_insertatlist",
+    "data_replaceitemoflist", "data_itemoflist", "data_itemnumoflist", "data_lengthoflist",
+    "data_listcontainsitem", "data_showlist", "data_hidelist",
+    # pen: the stage can only erase all
+    "pen_clear",
+]
+
+
+def test_stage_has_all_blocks_of_the_stage_palette():
+    from pystage.core.stage import CoreStage
+    methods = [getattr(CoreStage, name) for name in dir(CoreStage) if callable(getattr(CoreStage, name))]
+    available = {m.__name__ for m in methods} | {m.opcode for m in methods if hasattr(m, "opcode")}
+    # Python itself does the work of these blocks
+    python_native = {"data_variable", "data_listcontents"}
+    missing = [opcode for opcode in STAGE_PALETTE if opcode not in available and opcode not in python_native]
+    assert missing == []
+
+
+def test_sprite_only_blocks_are_not_on_the_stage():
+    from pystage.core.stage import CoreStage
+    for name in ("pen_stamp", "pen_penDown", "motion_movesteps", "looks_say", "sensing_touchingobject_edge"):
+        assert not hasattr(CoreStage, name)
+
+
+def test_point_towards_random_direction(sprite):
+    directions = set()
+    for _ in range(100):
+        sprite.point_towards_random_direction()
+        assert -180 <= sprite.direction() <= 180
+        directions.add(round(sprite.direction()))
+    assert len(directions) > 10
+
+
+def stage_stopper(self):
+    self.wait(0.25)
+    self.stop_other_scripts_in_stage()
+    log.append("stopped others")
+
+
+def stage_counter(self):
+    while True:
+        log.append("tick " + self._core.name if hasattr(self._core, "name") else "tick stage")
+        self.wait(0.1)
+
+
+def test_stop_other_scripts_in_stage(stage, sprite):
+    sprite.when_program_starts(stage_counter)
+    stage.when_program_starts(stage_counter)
+    stage.when_program_starts(stage_stopper)
+    run(stage, 0.3)
+    assert "stopped others" in log
+    log.clear()
+    run(stage, 0.5)
+    # Only the script of the sprite goes on
+    assert log and set(log) == {"tick Sprite"}
+    assert not hasattr(stage, "stop_other_scripts_in_sprite")
+    assert not hasattr(sprite, "stop_other_scripts_in_stage")
+
+
+def test_blocks_of_the_stage_as_target(stage, sprite):
+    stage.create_variable("score", 7)
+    sprite.create_variable("lives", 3, all_sprites=False)
+    stage.add_backdrop("default")
+    stage.set_volume_to(40)
+    # Properties that only sprites have are 0 for the stage, like in Scratch
+    for name in ("x_position_of", "y_position_of", "direction_of", "costume_of", "costume_name_of", "size_of"):
+        if hasattr(sprite, name):
+            assert getattr(sprite, name)("_stage_") == 0, name
+    core = sprite._core
+    for method in ("sensing_of_xposition", "sensing_of_yposition", "sensing_of_direction",
+                   "sensing_of_costumenumber", "sensing_of_costumename", "sensing_of_size"):
+        assert getattr(core, method)("_stage_") == 0, method
+    # What the stage has
+    assert core.sensing_of_variable("score", "_stage_") == 7
+    assert core.sensing_of_variable("lives", "_stage_") == 0
+    assert core.sensing_of_volume("_stage_") == 40
+    assert core.sensing_of_backdropnumber("_stage_") == 1
+    assert core.sensing_of_backdropname("_stage_") == "default"
+    # and the other way round: sprites do not have a backdrop
+    assert core.sensing_of_backdropnumber(sprite) == 0
+    assert core.sensing_of_variable("lives", sprite) == 3
+    assert core.sensing_of_xposition("no such sprite") == 0
+    # The stage can ask for its own values, too
+    assert stage._core.sensing_of_xposition("_stage_") == 0
+    assert stage._core.sensing_of_variable("score", "_stage_") == 7
+    assert stage._core.sensing_of_xposition(sprite) == 0
+
+
+def test_division_by_zero_is_like_scratch(stage, sprite):
+    inf, nan = float("inf"), float("nan")
+    assert sprite.divide(1, 0) == inf
+    assert sprite.divide(-1, 0) == -inf
+    assert sprite.divide("5", "") == inf
+    assert sprite.divide(0, 0) != sprite.divide(0, 0), "NaN"
+    assert sprite.divide(6, 4) == 1.5 and sprite.divide("6", "3") == 2
+    assert sprite.divide("abc", 3) == 0
+    assert sprite.modulo(5, 0) != sprite.modulo(5, 0), "NaN"
+    assert sprite.modulo(7, 3) == 1 and sprite.modulo(-7, 3) == 2 and sprite.modulo(7, -3) == -2
+    assert sprite.modulo(5.5, 2) == 1.5 and sprite.modulo(-5.5, 2) == 0.5
+    assert sprite.modulo(5, inf) == 5
+    assert stage.divide(1, 0) == inf and stage.modulo(1, 0) != 0
+    # Texts from variables behave the same
+    stage.create_variable("zero", "0")
+    stage.create_variable("one", "1")
+    zero, one = sprite.get_variable("zero"), sprite.get_variable("one")
+    assert one / zero == inf and -one / zero == -inf and 1 / zero == inf
+    assert zero / zero != zero / zero
+    assert one % zero != one % zero and 5 % zero != 5 % zero
+    assert one / 4 == 0.25 and 7 % (one + 2) == 1
+    # The result can be used like in Scratch
+    assert sprite.join(sprite.divide(1, 0), "!") == "Infinity!"
+    sprite.say(sprite.divide(1, 0))
+    assert sprite.round(sprite.divide(7, 2)) == 4
+
+
+def test_enter_key(stage, sprite):
+    sprite.when_key_pressed("enter", on_key)
+    stage.when_key_pressed("Enter", on_key)
+    for code_manager in stage._core._all_code_managers():
+        code_manager.process_key_pressed(pygame.K_RETURN)
+    run(stage, frames=2)
+    assert log == ["key", "key"]
+    assert sprite.key_pressed("enter") is False
+
+
+def test_all_keys_of_scratch_are_known():
+    from pystage.core.constants import KEY_MAPPINGS
+    scratch_keys = ["space", "up arrow", "down arrow", "right arrow", "left arrow", "enter"]
+    scratch_keys += [chr(c) for c in range(ord("a"), ord("z") + 1)] + [str(d) for d in range(10)]
+    assert [key for key in scratch_keys if key not in KEY_MAPPINGS] == []
+    # The error message must not promise keys that do not work
+    from pystage.core._events import _Events
+    import inspect
+    message = [line for line in inspect.getsource(_Events.event_whenkeypressed).splitlines() if "Bad key" in line][0]
+    assert "enter" in message and "enter" in KEY_MAPPINGS

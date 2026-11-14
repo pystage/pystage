@@ -277,7 +277,7 @@ class Figur():
         """
         return self._core.event_broadcastandwait(message)
                 
-    def wenn_das_bühnenbild_zu_wechselt(self, backdrop, generator_function, name='', no_refresh=False):
+    def wenn_das_bühnenbild_wechselt_zu(self, backdrop, generator_function, name='', no_refresh=False):
         """Wenn das Bühnenbild zu %1 wechselt
 
         Translation string: Wenn das Bühnenbild zu %1 wechselt
@@ -1316,10 +1316,10 @@ class Figur():
         """
         return self._core.motion_ifonedgebounce()
                 
-    def gehe_er_schritt(self, steps):
-        """gehe %1 er Schritt
+    def gehe_schritte(self, steps):
+        """gehe %1 Schritte
 
-        Translation string: gehe %1 er Schritt
+        Translation string: gehe %1 Schritte
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -1388,6 +1388,15 @@ class Figur():
         """
         return self._core.motion_pointtowards_sprite(sprite)
                 
+    def drehe_dich_zu_zufallsrichtung(self):
+        """drehe dich zu (Zufallsrichtung)
+
+        Returns
+        -------
+        None
+        """
+        return self._core.motion_pointtowards_random()
+
     def setze_drehtyp_auf_rundherum(self):
         """setze Drehtyp auf rundherum
 
@@ -1418,10 +1427,10 @@ class Figur():
         """
         return self._core.motion_setrotationstyle_dontrotate()
                 
-    def setze_drehtyp_auf_helligkeit(self):
-        """setze Drehtyp auf Helligkeit
+    def setze_drehtyp_auf_links_rechts(self):
+        """setze Drehtyp auf links-rechts
 
-        Translation string: setze Drehtyp auf Helligkeit
+        Translation string: setze Drehtyp auf links-rechts
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -3181,3 +3190,37 @@ class Figur():
         int
         """
         return self._core.operator_round(number)
+
+    def geteilt_durch(self, a, b):
+        """%1 / %2
+
+        Wie in Scratch ergibt die Division durch 0 Infinity, -Infinity oder NaN
+        statt eines Fehlers.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_divide(a, b)
+
+    def modulo(self, a, b):
+        """%1 modulo %2
+
+        Der Rest einer Division, mit dem Vorzeichen des Teilers wie in
+        Scratch. Modulo 0 ergibt NaN.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_mod(a, b)

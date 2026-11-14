@@ -49,10 +49,10 @@ class Stage():
         """
         return self._core.control_stop_all()
 
-    def stop_other_scripts_in_sprite(self):
-        """stop other scripts in sprite
+    def stop_other_scripts_in_stage(self):
+        """stop other scripts in stage
 
-        Translation string: stop other scripts in sprite
+        Translation string: stop other scripts in stage
         Engl. Translation for your reference: ...
         Engl. Documentation when available...
 
@@ -856,25 +856,6 @@ class Stage():
         """
         return self._core.pystage_addsound(name)
 
-    def pystage_createsprite(self, costume='default'):
-        """
-
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-        Parameters
-        ----------
-        costume : FILL
-        
-
-        Returns
-        -------
-
-        """
-        return self._core.pystage_createsprite(costume)
-
     def insert_backdrop(self, index, name, center_x=None, center_y=None, factor=1):
         """
 
@@ -916,21 +897,6 @@ class Stage():
 
         """
         return self._core.pystage_makevariable(name, value, all_sprites)
-
-    def pystage_play(self):
-        """
-
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
-        """
-        return self._core.pystage_play()
 
     def replace_backdrop(self, index, name, center_x=None, center_y=None, factor=1):
         """
@@ -2049,3 +2015,48 @@ class Stage():
             If True, the code is executed in one go without screen refresh.
         """
         return self._core.event_whenstageclicked(generator_function, name, no_refresh)
+
+    def divide(self, a, b):
+        """%1 / %2
+
+        Like in Scratch, dividing by 0 gives Infinity, -Infinity or NaN
+        instead of an error.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_divide(a, b)
+
+    def modulo(self, a, b):
+        """%1 mod %2
+
+        The remainder of a division, with the sign of the divisor like in
+        Scratch. The modulo of 0 is NaN.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_mod(a, b)
+
+    def erase_all(self):
+        """erase all
+
+        Clears everything that was drawn with the pen.
+
+        Returns
+        -------
+        None
+        """
+        return self._core.pen_clear()

@@ -1333,6 +1333,15 @@ class Sprite:
         """
         return self._core.motion_pointtowards_sprite(sprite)
 
+    def point_towards_random_direction(self):
+        """point towards random direction
+
+        Returns
+        -------
+        None
+        """
+        return self._core.motion_pointtowards_random()
+
     def set_rotation_style_none(self):
         """set rotation style %1
 
@@ -3028,3 +3037,37 @@ class Sprite:
         int
         """
         return self._core.operator_round(number)
+
+    def divide(self, a, b):
+        """%1 / %2
+
+        Like in Scratch, dividing by 0 gives Infinity, -Infinity or NaN
+        instead of an error.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_divide(a, b)
+
+    def modulo(self, a, b):
+        """%1 mod %2
+
+        The remainder of a division, with the sign of the divisor like in
+        Scratch. The modulo of 0 is NaN.
+
+        Parameters
+        ----------
+        a : float
+        b : float
+
+        Returns
+        -------
+        float
+        """
+        return self._core.operator_mod(a, b)

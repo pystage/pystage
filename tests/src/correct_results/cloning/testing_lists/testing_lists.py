@@ -74,7 +74,7 @@ elephant.when_program_starts(when_program_starts_2)
 def when_program_starts_3(self):
     self.wait(3)
     self.add_to_list("elle", "bob")
-    if ((5 % self.length_of_list("elle")) > 4):
+    if (self.modulo(5, self.length_of_list("elle")) > 4):
         self.delete_all_of_list("elle")
         self.create_clone_of_myself()
         self.create_clone_of_sprite(champ99)

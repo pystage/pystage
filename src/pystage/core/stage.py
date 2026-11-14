@@ -6,10 +6,11 @@ import traceback
 import pygame
 
 # Mixins
-from pystage.core._control import _Control
+from pystage.core._control import _ControlStage
 from pystage.core._events import _Events
 from pystage.core._looks import _LooksStage
 from pystage.core._operators import _Operators
+from pystage.core._pen import _PenStage
 from pystage.core._sensing import _Sensing
 from pystage.core._sound import _Sound
 from pystage.core._variables import _Variables
@@ -70,7 +71,7 @@ class SpriteGroup(pygame.sprite.RenderUpdates):
 
 
 class CoreStage(
-    _LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _Variables
+    _LooksStage, _Sound, _Events, _ControlStage, _Operators, _Sensing, _Variables, _PenStage
 ):
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
         # Check pygame version (pygame-ce)
