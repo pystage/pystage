@@ -1,0 +1,1057 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {
+                "var_sprite1_info": [
+                    "info",
+                    ""
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "looks_sayforsecs",
+                    "next": "sprite1_3",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                5,
+                                "0.2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "looks_say",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Hmm"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "looks_thinkforsecs",
+                    "next": "sprite1_5",
+                    "parent": "sprite1_3",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Thinking"
+                            ]
+                        ],
+                        "SECS": [
+                            1,
+                            [
+                                5,
+                                "0.2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "looks_think",
+                    "next": "sprite1_6",
+                    "parent": "sprite1_4",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "Hmm..."
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "looks_switchcostumeto",
+                    "next": "sprite1_8",
+                    "parent": "sprite1_5",
+                    "inputs": {
+                        "COSTUME": [
+                            1,
+                            "sprite1_7"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "looks_costume",
+                    "next": null,
+                    "parent": "sprite1_6",
+                    "inputs": {},
+                    "fields": {
+                        "COSTUME": [
+                            "costume2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "looks_nextcostume",
+                    "next": "sprite1_9",
+                    "parent": "sprite1_6",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "sprite1_11",
+                    "parent": "sprite1_8",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "sprite1_10"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_10": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "sprite1_9",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_11": {
+                    "opcode": "looks_nextbackdrop",
+                    "next": "sprite1_12",
+                    "parent": "sprite1_9",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_12": {
+                    "opcode": "looks_changesizeby",
+                    "next": "sprite1_13",
+                    "parent": "sprite1_11",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_13": {
+                    "opcode": "looks_setsizeto",
+                    "next": "sprite1_14",
+                    "parent": "sprite1_12",
+                    "inputs": {
+                        "SIZE": [
+                            1,
+                            [
+                                4,
+                                "120"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_14": {
+                    "opcode": "looks_hide",
+                    "next": "sprite1_15",
+                    "parent": "sprite1_13",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_15": {
+                    "opcode": "looks_show",
+                    "next": "sprite1_16",
+                    "parent": "sprite1_14",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_16": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_17",
+                    "parent": "sprite1_15",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "COLOR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_17": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_18",
+                    "parent": "sprite1_16",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "FISHEYE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_18": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_19",
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "WHIRL",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_19": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_20",
+                    "parent": "sprite1_18",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PIXELATE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_20": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_21",
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "MOSAIC",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_21": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_22",
+                    "parent": "sprite1_20",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "BRIGHTNESS",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_22": {
+                    "opcode": "looks_seteffectto",
+                    "next": "sprite1_23",
+                    "parent": "sprite1_21",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "GHOST",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_23": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_24",
+                    "parent": "sprite1_22",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "COLOR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_24": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_25",
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "FISHEYE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_25": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_26",
+                    "parent": "sprite1_24",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "WHIRL",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_26": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_27",
+                    "parent": "sprite1_25",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PIXELATE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_27": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_28",
+                    "parent": "sprite1_26",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "MOSAIC",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_28": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_29",
+                    "parent": "sprite1_27",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "BRIGHTNESS",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_29": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "sprite1_30",
+                    "parent": "sprite1_28",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "GHOST",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_30": {
+                    "opcode": "looks_cleargraphiceffects",
+                    "next": "sprite1_31",
+                    "parent": "sprite1_29",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_31": {
+                    "opcode": "looks_gotofrontback",
+                    "next": "sprite1_32",
+                    "parent": "sprite1_30",
+                    "inputs": {},
+                    "fields": {
+                        "FRONT_BACK": [
+                            "front",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_32": {
+                    "opcode": "looks_gotofrontback",
+                    "next": "sprite1_33",
+                    "parent": "sprite1_31",
+                    "inputs": {},
+                    "fields": {
+                        "FRONT_BACK": [
+                            "back",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_33": {
+                    "opcode": "looks_goforwardbackwardlayers",
+                    "next": "sprite1_34",
+                    "parent": "sprite1_32",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "FORWARD_BACKWARD": [
+                            "forward",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_34": {
+                    "opcode": "looks_goforwardbackwardlayers",
+                    "next": "sprite1_35",
+                    "parent": "sprite1_33",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "FORWARD_BACKWARD": [
+                            "backward",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_35": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_39",
+                    "parent": "sprite1_34",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_36",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "info",
+                            "var_sprite1_info"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_36": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_35",
+                    "inputs": {
+                        "STRING1": [
+                            3,
+                            "sprite1_37",
+                            [
+                                10,
+                                ""
+                            ]
+                        ],
+                        "STRING2": [
+                            3,
+                            "sprite1_38",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_37": {
+                    "opcode": "looks_costumenumbername",
+                    "next": null,
+                    "parent": "sprite1_36",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_38": {
+                    "opcode": "looks_costumenumbername",
+                    "next": null,
+                    "parent": "sprite1_36",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_39": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_43",
+                    "parent": "sprite1_35",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_40",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "info",
+                            "var_sprite1_info"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_40": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_39",
+                    "inputs": {
+                        "STRING1": [
+                            3,
+                            "sprite1_41",
+                            [
+                                10,
+                                ""
+                            ]
+                        ],
+                        "STRING2": [
+                            3,
+                            "sprite1_42",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_41": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "sprite1_40",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_42": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "sprite1_40",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_43": {
+                    "opcode": "looks_say",
+                    "next": "sprite1_45",
+                    "parent": "sprite1_39",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_44",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_44": {
+                    "opcode": "looks_size",
+                    "next": null,
+                    "parent": "sprite1_43",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_45": {
+                    "opcode": "looks_switchcostumeto",
+                    "next": null,
+                    "parent": "sprite1_43",
+                    "inputs": {
+                        "COSTUME": [
+                            3,
+                            "sprite1_46",
+                            "sprite1_47"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_46": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_45",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "costume"
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_47": {
+                    "opcode": "looks_costume",
+                    "next": null,
+                    "parent": "sprite1_45",
+                    "inputs": {},
+                    "fields": {
+                        "COSTUME": [
+                            "_mouse_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Sprite2",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite2_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite2_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite2_2": {
+                    "opcode": "motion_gotoxy",
+                    "next": "sprite2_3",
+                    "parent": "sprite2_1",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "-120"
+                            ]
+                        ],
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "-80"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite2_3": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "sprite2_2",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "I am behind"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "2c322913515e2fb8a51876fba3f836fb",
+                    "md5ext": "2c322913515e2fb8a51876fba3f836fb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "95d9743f5638aad2dabf7126cbf698cb",
+                    "md5ext": "95d9743f5638aad2dabf7126cbf698cb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

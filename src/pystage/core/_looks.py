@@ -1,7 +1,12 @@
 from pystage.core.gui import BubbleManager, Bubble
 from pystage.core.assets import CostumeManager
 from pystage.core._base_sprite import BaseSprite
-from pystage.core.values import to_number
+from pystage.core.values import to_number, to_int
+
+
+def effect_value(value):
+    """The value of a graphic effect. Infinity would break the image processing."""
+    return max(-1e6, min(1e6, to_number(value)))
 
 
 class _Looks(BaseSprite):
@@ -53,10 +58,11 @@ class _Looks(BaseSprite):
         return self.stage._backdrop_switched()
 
     def looks_seteffectto_color(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         # the color value is from 0 to 200
         # https://scratch.mit.edu/discuss/m/topic/436245/
-        self.color = max(0, min(int(value), 200))
+        self.color = max(0, min(value, 200)) if value == value else 0
+        self.color = int(self.color)
 
     looks_seteffectto_color.opcode="looks_seteffectto"
     looks_seteffectto_color.param="EFFECT"
@@ -65,7 +71,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_fisheye(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.fisheye = value
     
     looks_seteffectto_fisheye.opcode="looks_seteffectto"
@@ -75,7 +81,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_whirl(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.whirl = value
     
     looks_seteffectto_whirl.opcode="looks_seteffectto"
@@ -85,7 +91,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_pixelate(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.pixelate = value
     
     looks_seteffectto_pixelate.opcode="looks_seteffectto"
@@ -95,7 +101,7 @@ class _Looks(BaseSprite):
 
 
     def looks_seteffectto_mosaic(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.mosaic = value
     
     looks_seteffectto_mosaic.opcode="looks_seteffectto"
@@ -105,7 +111,7 @@ class _Looks(BaseSprite):
     
 
     def looks_seteffectto_brightness(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.brightness = value
         self.brightness = max(-100, min(self.brightness, 100))
     
@@ -116,7 +122,7 @@ class _Looks(BaseSprite):
     
 
     def looks_seteffectto_ghost(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.ghost = value
     
     looks_seteffectto_ghost.opcode="looks_seteffectto"
@@ -126,7 +132,7 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_color(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.color += value
         self.color = self.color % 200
 
@@ -137,7 +143,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_fisheye(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.fisheye += value
     
     looks_changeeffectby_fisheye.opcode="looks_changeeffectby"
@@ -147,7 +153,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_whirl(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.whirl += value
     
     looks_changeeffectby_whirl.opcode="looks_changeeffectby"
@@ -157,7 +163,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_pixelate(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.pixelate += value
     
     looks_changeeffectby_pixelate.opcode="looks_changeeffectby"
@@ -167,7 +173,7 @@ class _Looks(BaseSprite):
 
 
     def looks_changeeffectby_mosaic(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.mosaic += value
     
     looks_changeeffectby_mosaic.opcode="looks_changeeffectby"
@@ -177,7 +183,7 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_brightness(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.brightness += value
         self.brightness = max(-100, min(self.brightness, 100))
     
@@ -188,7 +194,7 @@ class _Looks(BaseSprite):
     
 
     def looks_changeeffectby_ghost(self, value):
-        value = to_number(value)
+        value = effect_value(value)
         self.ghost += value
     
     looks_changeeffectby_ghost.opcode="looks_changeeffectby"
@@ -314,14 +320,14 @@ class _LooksSprite(_Looks):
 
 
     def looks_goforwardbackwardlayers_forward(self, value):
-        self.stage.sprites.layer_forward(self, int(to_number(value)))
+        self.stage.sprites.layer_forward(self, to_int(value))
 
     looks_goforwardbackwardlayers_forward.opcode="looks_goforwardbackwardlayers"
     looks_goforwardbackwardlayers_forward.param="FORWARD_BACKWARD"
     looks_goforwardbackwardlayers_forward.value="forward"
 
     def looks_goforwardbackwardlayers_backward(self, value):
-        self.stage.sprites.layer_backward(self, int(to_number(value)))
+        self.stage.sprites.layer_backward(self, to_int(value))
 
     looks_goforwardbackwardlayers_backward.opcode="looks_goforwardbackwardlayers"
     looks_goforwardbackwardlayers_backward.param="FORWARD_BACKWARD"

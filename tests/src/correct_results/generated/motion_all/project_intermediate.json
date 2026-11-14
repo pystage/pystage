@@ -1,0 +1,486 @@
+{
+    "name": "motion_all",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": -50,
+                            "Y": 20
+                        },
+                        "next": {
+                            "opcode": "motion_goto",
+                            "params": {
+                                "TO": {
+                                    "opcode": "motion_goto_menu",
+                                    "params": {
+                                        "TO": "\"_random_\""
+                                    },
+                                    "next": false,
+                                    "stage": false
+                                }
+                            },
+                            "next": {
+                                "opcode": "motion_goto",
+                                "params": {
+                                    "TO": {
+                                        "opcode": "motion_goto_menu",
+                                        "params": {
+                                            "TO": "\"Sprite2\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "motion_goto",
+                                    "params": {
+                                        "TO": {
+                                            "opcode": "motion_goto_menu",
+                                            "params": {
+                                                "TO": "\"_mouse_\""
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "motion_glidesecstoxy",
+                                        "params": {
+                                            "SECS": 0.5,
+                                            "X": 20,
+                                            "Y": -20
+                                        },
+                                        "next": {
+                                            "opcode": "motion_glideto",
+                                            "params": {
+                                                "SECS": 0.5,
+                                                "TO": {
+                                                    "opcode": "motion_glideto_menu",
+                                                    "params": {
+                                                        "TO": "\"_random_\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "motion_glideto",
+                                                "params": {
+                                                    "SECS": 0.5,
+                                                    "TO": {
+                                                        "opcode": "motion_glideto_menu",
+                                                        "params": {
+                                                            "TO": "\"Sprite2\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": {
+                                                    "opcode": "motion_glideto",
+                                                    "params": {
+                                                        "SECS": 0.5,
+                                                        "TO": {
+                                                            "opcode": "motion_glideto_menu",
+                                                            "params": {
+                                                                "TO": "\"_mouse_\""
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        }
+                                                    },
+                                                    "next": {
+                                                        "opcode": "motion_pointindirection",
+                                                        "params": {
+                                                            "DIRECTION": 45
+                                                        },
+                                                        "next": {
+                                                            "opcode": "motion_pointtowards",
+                                                            "params": {
+                                                                "TOWARDS": {
+                                                                    "opcode": "motion_pointtowards_menu",
+                                                                    "params": {
+                                                                        "TOWARDS": "\"_mouse_\""
+                                                                    },
+                                                                    "next": false,
+                                                                    "stage": false
+                                                                }
+                                                            },
+                                                            "next": {
+                                                                "opcode": "motion_pointtowards",
+                                                                "params": {
+                                                                    "TOWARDS": {
+                                                                        "opcode": "motion_pointtowards_menu",
+                                                                        "params": {
+                                                                            "TOWARDS": "\"_random_\""
+                                                                        },
+                                                                        "next": false,
+                                                                        "stage": false
+                                                                    }
+                                                                },
+                                                                "next": {
+                                                                    "opcode": "motion_pointtowards",
+                                                                    "params": {
+                                                                        "TOWARDS": {
+                                                                            "opcode": "motion_pointtowards_menu",
+                                                                            "params": {
+                                                                                "TOWARDS": "\"Sprite2\""
+                                                                            },
+                                                                            "next": false,
+                                                                            "stage": false
+                                                                        }
+                                                                    },
+                                                                    "next": {
+                                                                        "opcode": "motion_turnright",
+                                                                        "params": {
+                                                                            "DEGREES": 15
+                                                                        },
+                                                                        "next": {
+                                                                            "opcode": "motion_turnleft",
+                                                                            "params": {
+                                                                                "DEGREES": 15
+                                                                            },
+                                                                            "next": {
+                                                                                "opcode": "motion_movesteps",
+                                                                                "params": {
+                                                                                    "STEPS": 10
+                                                                                },
+                                                                                "next": {
+                                                                                    "opcode": "motion_changexby",
+                                                                                    "params": {
+                                                                                        "DX": 10
+                                                                                    },
+                                                                                    "next": {
+                                                                                        "opcode": "motion_setx",
+                                                                                        "params": {
+                                                                                            "X": -20
+                                                                                        },
+                                                                                        "next": {
+                                                                                            "opcode": "motion_changeyby",
+                                                                                            "params": {
+                                                                                                "DY": 10
+                                                                                            },
+                                                                                            "next": {
+                                                                                                "opcode": "motion_sety",
+                                                                                                "params": {
+                                                                                                    "Y": 30
+                                                                                                },
+                                                                                                "next": {
+                                                                                                    "opcode": "motion_ifonedgebounce",
+                                                                                                    "params": {},
+                                                                                                    "next": {
+                                                                                                        "opcode": "motion_setrotationstyle",
+                                                                                                        "params": {
+                                                                                                            "STYLE": "\"all around\""
+                                                                                                        },
+                                                                                                        "next": {
+                                                                                                            "opcode": "motion_setrotationstyle",
+                                                                                                            "params": {
+                                                                                                                "STYLE": "\"don't rotate\""
+                                                                                                            },
+                                                                                                            "next": {
+                                                                                                                "opcode": "motion_setrotationstyle",
+                                                                                                                "params": {
+                                                                                                                    "STYLE": "\"left-right\""
+                                                                                                                },
+                                                                                                                "next": {
+                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                    "params": {
+                                                                                                                        "VARIABLE": "\"here\"",
+                                                                                                                        "VALUE": {
+                                                                                                                            "opcode": "operator_join",
+                                                                                                                            "params": {
+                                                                                                                                "STRING1": {
+                                                                                                                                    "opcode": "motion_xposition",
+                                                                                                                                    "params": {},
+                                                                                                                                    "next": false,
+                                                                                                                                    "stage": false
+                                                                                                                                },
+                                                                                                                                "STRING2": {
+                                                                                                                                    "opcode": "motion_yposition",
+                                                                                                                                    "params": {},
+                                                                                                                                    "next": false,
+                                                                                                                                    "stage": false
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            "next": false,
+                                                                                                                            "stage": false
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "next": {
+                                                                                                                        "opcode": "looks_say",
+                                                                                                                        "params": {
+                                                                                                                            "MESSAGE": {
+                                                                                                                                "opcode": "motion_direction",
+                                                                                                                                "params": {},
+                                                                                                                                "next": false,
+                                                                                                                                "stage": false
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "next": {
+                                                                                                                            "opcode": "control_repeat",
+                                                                                                                            "params": {
+                                                                                                                                "TIMES": 30,
+                                                                                                                                "SUBSTACK": {
+                                                                                                                                    "opcode": "motion_movesteps",
+                                                                                                                                    "params": {
+                                                                                                                                        "STEPS": 15
+                                                                                                                                    },
+                                                                                                                                    "next": {
+                                                                                                                                        "opcode": "motion_ifonedgebounce",
+                                                                                                                                        "params": {},
+                                                                                                                                        "next": false,
+                                                                                                                                        "stage": false
+                                                                                                                                    },
+                                                                                                                                    "stage": false
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            "next": false,
+                                                                                                                            "stage": false
+                                                                                                                        },
+                                                                                                                        "stage": false
+                                                                                                                    },
+                                                                                                                    "stage": false
+                                                                                                                },
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "stage": false
+                                                                                                        },
+                                                                                                        "stage": false
+                                                                                                    },
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "stage": false
+                                                                                            },
+                                                                                            "stage": false
+                                                                                        },
+                                                                                        "stage": false
+                                                                                    },
+                                                                                    "stage": false
+                                                                                },
+                                                                                "stage": false
+                                                                            },
+                                                                            "stage": false
+                                                                        },
+                                                                        "stage": false
+                                                                    },
+                                                                    "stage": false
+                                                                },
+                                                                "stage": false
+                                                            },
+                                                            "stage": false
+                                                        },
+                                                        "stage": false
+                                                    },
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            },
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "here": 0
+            },
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Sprite2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": 100,
+                            "Y": 60
+                        },
+                        "next": {
+                            "opcode": "motion_setrotationstyle",
+                            "params": {
+                                "STYLE": "\"left-right\""
+                            },
+                            "next": {
+                                "opcode": "motion_turnleft",
+                                "params": {
+                                    "DEGREES": 15
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "2c322913515e2fb8a51876fba3f836fb",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "95d9743f5638aad2dabf7126cbf698cb",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "510da64cf172d53750dffd23fbf73563": {
+            "global_name": "backdrop1",
+            "extension": "png"
+        },
+        "7e924ddd03ae82392a9ec023c9060504": {
+            "global_name": "backdrop2",
+            "extension": "png"
+        },
+        "dbbd297deb8f1e79e0657c1df52f182e": {
+            "global_name": "costume1",
+            "extension": "png"
+        },
+        "b56c6816a535aa4f98ff1e5b6d326d47": {
+            "global_name": "costume2",
+            "extension": "png"
+        },
+        "2c322913515e2fb8a51876fba3f836fb": {
+            "global_name": "costume1_2",
+            "extension": "png"
+        },
+        "95d9743f5638aad2dabf7126cbf698cb": {
+            "global_name": "costume2_2",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "8ed8c60cc88247a91bc9b4c1f0cfd800": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "56fce12cd7e0ab5972da0e89daf1eb75": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    },
+    "warnings": [],
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "510da64cf172d53750dffd23fbf73563",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "7e924ddd03ae82392a9ec023c9060504",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {},
+        "lists": {},
+        "monitors": [],
+        "comments": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

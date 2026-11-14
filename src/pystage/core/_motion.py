@@ -29,16 +29,23 @@ class _Motion(_Sensing):
     def _set_pos(self, pos):
         """Move to a position in PyGame coordinates. Draws, if the pen is down."""
         old = pygame.Vector2(self._pos)
-        self._pos.update(pos)
+        # Infinity (e.g. from a division by 0) must not break the drawing
+        limit = 1e6
+        self._pos.update(max(-limit, min(limit, pos[0])), max(-limit, min(limit, pos[1])))
         if old != self._pos:
             self._pen_line(old, self._pos)
 
+    def _set_direction(self, direction):
+        # Like Scratch, ignore Infinity (e.g. from a division by 0)
+        if math.isfinite(direction):
+            self._direction = direction
+
     def motion_turnleft(self, deg):
-        self._direction += to_number(deg)
+        self._set_direction(self._direction + to_number(deg))
 
 
     def motion_turnright(self, deg):
-        self._direction -= to_number(deg)
+        self._set_direction(self._direction - to_number(deg))
 
 
     def motion_movesteps(self, steps):
@@ -126,7 +133,7 @@ class _Motion(_Sensing):
     def motion_pointindirection(self, direction):
         # Scratch uses clock-wise directions with 0 to the top
         # We have anti-clockwise with 0 to the right
-        self._direction = 90 - to_number(direction)
+        self._set_direction(90 - to_number(direction))
 
     def motion_pointtowards_pointer(self):
         dx = self.sensing_mousex() - self.motion_xposition()

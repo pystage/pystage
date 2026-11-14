@@ -1,4 +1,8 @@
 # events5 (pyStage, converted from Scratch 3)
+#
+# Not everything of the Scratch project could be converted:
+# - [monitor] Stage: The monitor for 'sensing_loudness' is not supported and was left out.
+# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 

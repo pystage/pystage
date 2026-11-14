@@ -26,6 +26,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -225,6 +226,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 2,
             "visible": true,
@@ -355,6 +357,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 3,
             "visible": true,
@@ -419,6 +422,7 @@
             "extension": "wav"
         }
     },
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -459,6 +463,7 @@
                 "variable": "points"
             }
         ],
+        "comments": [],
         "currentCostume": 1,
         "layerOrder": 0,
         "visible": true,

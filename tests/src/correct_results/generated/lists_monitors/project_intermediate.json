@@ -1,0 +1,484 @@
+{
+    "name": "lists_monitors",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "data_setvariableto",
+                        "params": {
+                            "VARIABLE": "\"global\"",
+                            "VALUE": 5
+                        },
+                        "next": {
+                            "opcode": "data_changevariableby",
+                            "params": {
+                                "VARIABLE": "\"global\"",
+                                "VALUE": 2
+                            },
+                            "next": {
+                                "opcode": "data_setvariableto",
+                                "params": {
+                                    "VARIABLE": "\"local\"",
+                                    "VALUE": {
+                                        "opcode": "data_variable",
+                                        "params": {
+                                            "VARIABLE": "\"global\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "data_showvariable",
+                                    "params": {
+                                        "VARIABLE": "\"local\""
+                                    },
+                                    "next": {
+                                        "opcode": "data_hidevariable",
+                                        "params": {
+                                            "VARIABLE": "\"local\""
+                                        },
+                                        "next": {
+                                            "opcode": "data_showvariable",
+                                            "params": {
+                                                "VARIABLE": "\"local\""
+                                            },
+                                            "next": {
+                                                "opcode": "data_addtolist",
+                                                "params": {
+                                                    "LIST": "\"fruits\"",
+                                                    "ITEM": "\"date\""
+                                                },
+                                                "next": {
+                                                    "opcode": "data_insertatlist",
+                                                    "params": {
+                                                        "LIST": "\"fruits\"",
+                                                        "INDEX": 1,
+                                                        "ITEM": "\"apricot\""
+                                                    },
+                                                    "next": {
+                                                        "opcode": "data_insertatlist",
+                                                        "params": {
+                                                            "LIST": "\"fruits\"",
+                                                            "INDEX": "\"last\"",
+                                                            "ITEM": "\"zucchini\""
+                                                        },
+                                                        "next": {
+                                                            "opcode": "data_replaceitemoflist",
+                                                            "params": {
+                                                                "LIST": "\"fruits\"",
+                                                                "INDEX": 2,
+                                                                "ITEM": "\"avocado\""
+                                                            },
+                                                            "next": {
+                                                                "opcode": "data_replaceitemoflist",
+                                                                "params": {
+                                                                    "LIST": "\"fruits\"",
+                                                                    "INDEX": "\"random\"",
+                                                                    "ITEM": "\"mango\""
+                                                                },
+                                                                "next": {
+                                                                    "opcode": "data_deleteoflist",
+                                                                    "params": {
+                                                                        "LIST": "\"fruits\"",
+                                                                        "INDEX": 1
+                                                                    },
+                                                                    "next": {
+                                                                        "opcode": "data_deleteoflist",
+                                                                        "params": {
+                                                                            "LIST": "\"fruits\"",
+                                                                            "INDEX": "\"last\""
+                                                                        },
+                                                                        "next": {
+                                                                            "opcode": "data_setvariableto",
+                                                                            "params": {
+                                                                                "VARIABLE": "\"local\"",
+                                                                                "VALUE": {
+                                                                                    "opcode": "data_itemoflist",
+                                                                                    "params": {
+                                                                                        "LIST": "\"fruits\"",
+                                                                                        "INDEX": 1
+                                                                                    },
+                                                                                    "next": false,
+                                                                                    "stage": false
+                                                                                }
+                                                                            },
+                                                                            "next": {
+                                                                                "opcode": "data_setvariableto",
+                                                                                "params": {
+                                                                                    "VARIABLE": "\"local\"",
+                                                                                    "VALUE": {
+                                                                                        "opcode": "data_itemoflist",
+                                                                                        "params": {
+                                                                                            "LIST": "\"fruits\"",
+                                                                                            "INDEX": "\"random\""
+                                                                                        },
+                                                                                        "next": false,
+                                                                                        "stage": false
+                                                                                    }
+                                                                                },
+                                                                                "next": {
+                                                                                    "opcode": "data_setvariableto",
+                                                                                    "params": {
+                                                                                        "VARIABLE": "\"local\"",
+                                                                                        "VALUE": {
+                                                                                            "opcode": "data_itemnumoflist",
+                                                                                            "params": {
+                                                                                                "LIST": "\"fruits\"",
+                                                                                                "ITEM": "\"banana\""
+                                                                                            },
+                                                                                            "next": false,
+                                                                                            "stage": false
+                                                                                        }
+                                                                                    },
+                                                                                    "next": {
+                                                                                        "opcode": "data_setvariableto",
+                                                                                        "params": {
+                                                                                            "VARIABLE": "\"local\"",
+                                                                                            "VALUE": {
+                                                                                                "opcode": "data_lengthoflist",
+                                                                                                "params": {
+                                                                                                    "LIST": "\"fruits\""
+                                                                                                },
+                                                                                                "next": false,
+                                                                                                "stage": false
+                                                                                            }
+                                                                                        },
+                                                                                        "next": {
+                                                                                            "opcode": "control_if",
+                                                                                            "params": {
+                                                                                                "CONDITION": {
+                                                                                                    "opcode": "data_listcontainsitem",
+                                                                                                    "params": {
+                                                                                                        "LIST": "\"fruits\"",
+                                                                                                        "ITEM": "\"banana\""
+                                                                                                    },
+                                                                                                    "next": false,
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "SUBSTACK": {
+                                                                                                    "opcode": "data_addtolist",
+                                                                                                    "params": {
+                                                                                                        "LIST": "\"mine\"",
+                                                                                                        "ITEM": {
+                                                                                                            "opcode": "data_listcontents",
+                                                                                                            "params": {
+                                                                                                                "LIST": "\"fruits\""
+                                                                                                            },
+                                                                                                            "next": false,
+                                                                                                            "stage": false
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "next": false,
+                                                                                                    "stage": false
+                                                                                                }
+                                                                                            },
+                                                                                            "next": {
+                                                                                                "opcode": "data_showlist",
+                                                                                                "params": {
+                                                                                                    "LIST": "\"mine\""
+                                                                                                },
+                                                                                                "next": {
+                                                                                                    "opcode": "data_hidelist",
+                                                                                                    "params": {
+                                                                                                        "LIST": "\"mine\""
+                                                                                                    },
+                                                                                                    "next": {
+                                                                                                        "opcode": "data_showlist",
+                                                                                                        "params": {
+                                                                                                            "LIST": "\"mine\""
+                                                                                                        },
+                                                                                                        "next": {
+                                                                                                            "opcode": "data_deletealloflist",
+                                                                                                            "params": {
+                                                                                                                "LIST": "\"mine\""
+                                                                                                            },
+                                                                                                            "next": {
+                                                                                                                "opcode": "data_addtolist",
+                                                                                                                "params": {
+                                                                                                                    "LIST": "\"mine\"",
+                                                                                                                    "ITEM": {
+                                                                                                                        "opcode": "data_variable",
+                                                                                                                        "params": {
+                                                                                                                            "VARIABLE": "\"local\""
+                                                                                                                        },
+                                                                                                                        "next": false,
+                                                                                                                        "stage": false
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "next": false,
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "stage": false
+                                                                                                        },
+                                                                                                        "stage": false
+                                                                                                    },
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "stage": false
+                                                                                            },
+                                                                                            "stage": false
+                                                                                        },
+                                                                                        "stage": false
+                                                                                    },
+                                                                                    "stage": false
+                                                                                },
+                                                                                "stage": false
+                                                                            },
+                                                                            "stage": false
+                                                                        },
+                                                                        "stage": false
+                                                                    },
+                                                                    "stage": false
+                                                                },
+                                                                "stage": false
+                                                            },
+                                                            "stage": false
+                                                        },
+                                                        "stage": false
+                                                    },
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            },
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "local": "x"
+            },
+            "lists": {
+                "mine": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            "monitors": [
+                {
+                    "x": 5,
+                    "y": 80,
+                    "width": 0,
+                    "height": 0,
+                    "style": "slider",
+                    "variable": "local"
+                },
+                {
+                    "x": 200,
+                    "y": 150,
+                    "width": 150,
+                    "height": 100,
+                    "style": "normal",
+                    "list": "mine"
+                }
+            ],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "510da64cf172d53750dffd23fbf73563": {
+            "global_name": "backdrop1",
+            "extension": "png"
+        },
+        "7e924ddd03ae82392a9ec023c9060504": {
+            "global_name": "backdrop2",
+            "extension": "png"
+        },
+        "dbbd297deb8f1e79e0657c1df52f182e": {
+            "global_name": "costume1",
+            "extension": "png"
+        },
+        "b56c6816a535aa4f98ff1e5b6d326d47": {
+            "global_name": "costume2",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "8ed8c60cc88247a91bc9b4c1f0cfd800": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "56fce12cd7e0ab5972da0e89daf1eb75": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    },
+    "warnings": [
+        {
+            "kind": "monitor",
+            "target": "Sprite1",
+            "message": "The slider of variable 'local' is shown as a normal monitor."
+        }
+    ],
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "data_addtolist",
+                    "params": {
+                        "LIST": "\"fruits\"",
+                        "ITEM": {
+                            "opcode": "data_lengthoflist",
+                            "params": {
+                                "LIST": "\"fruits\""
+                            },
+                            "next": false,
+                            "stage": true
+                        }
+                    },
+                    "next": {
+                        "opcode": "data_hidelist",
+                        "params": {
+                            "LIST": "\"fruits\""
+                        },
+                        "next": {
+                            "opcode": "data_showlist",
+                            "params": {
+                                "LIST": "\"fruits\""
+                            },
+                            "next": {
+                                "opcode": "data_hidevariable",
+                                "params": {
+                                    "VARIABLE": "\"global\""
+                                },
+                                "next": {
+                                    "opcode": "data_showvariable",
+                                    "params": {
+                                        "VARIABLE": "\"global\""
+                                    },
+                                    "next": false,
+                                    "stage": true
+                                },
+                                "stage": true
+                            },
+                            "stage": true
+                        },
+                        "stage": true
+                    },
+                    "stage": true
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "510da64cf172d53750dffd23fbf73563",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "7e924ddd03ae82392a9ec023c9060504",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "global": 1
+        },
+        "lists": {
+            "fruits": [
+                "apple",
+                "banana",
+                "cherry"
+            ]
+        },
+        "monitors": [
+            {
+                "x": 5,
+                "y": 5,
+                "width": 0,
+                "height": 0,
+                "style": "normal",
+                "variable": "global"
+            },
+            {
+                "x": 5,
+                "y": 40,
+                "width": 0,
+                "height": 0,
+                "style": "large",
+                "variable": "global"
+            },
+            {
+                "x": 200,
+                "y": 5,
+                "width": 150,
+                "height": 100,
+                "style": "normal",
+                "list": "fruits"
+            }
+        ],
+        "comments": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

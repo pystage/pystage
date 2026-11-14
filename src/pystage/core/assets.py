@@ -166,8 +166,12 @@ class CostumeManager():
             angle = 0
             flipped = True if 90 < self.owner._direction % 360 < 270 else False
 
-        # Very small or negative sizes are not possible
+        # Very small or negative sizes are not possible. Like in Scratch, a sprite
+        # can't be bigger than one and a half stage (also protects from huge images).
         scale = max(self.owner.size, 1) / 100
+        w0, h0 = self.get_image().get_size()
+        stage = self.owner.stage
+        scale = min(scale, 1.5 * stage.width / max(1, w0), 1.5 * stage.height / max(1, h0))
 
 
         old_center = self.get_center()
@@ -300,7 +304,7 @@ class CostumeManager():
             return image
         # algorithm of tiles in scratch
         # https://scratch.mit.edu/discuss/topic/112886/?page=1#post-992766
-        tiles = max(1, int((value + 15) // 10))
+        tiles = max(1, min(int((value + 15) // 10), 100))
         if tiles == 1:
             return image
         w, h = image.get_size()

@@ -1,4 +1,18 @@
 # show_var (pyStage, converted from Scratch 3)
+#
+# Not everything of the Scratch project could be converted:
+# - [monitor] Stage: The monitor for 'sensing_timer' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'motion_xposition' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'motion_yposition' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'motion_direction' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'looks_costumenumbername' is not supported and was left out (2 monitors).
+# - [monitor] Stage: The monitor for 'looks_backdropnumbername' is not supported and was left out (2 monitors).
+# - [monitor] Sprite1: The monitor for 'looks_size' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'sound_volume' is not supported and was left out.
+# - [monitor] Stage: The monitor for 'sensing_answer' is not supported and was left out.
+# - [monitor] Stage: The monitor for 'sensing_loudness' is not supported and was left out.
+# - [monitor] Stage: The monitor for 'sensing_current' is not supported and was left out (7 monitors).
+# - [monitor] Stage: The monitor for 'sensing_username' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 

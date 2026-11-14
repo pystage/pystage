@@ -1,0 +1,518 @@
+{
+    "name": "custom_blocks",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": {
+                                "opcode": "argument_reporter_string_number",
+                                "params": {
+                                    "VALUE": "\"count\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "motion_changeyby",
+                                "params": {
+                                    "DY": 10
+                                },
+                                "next": {
+                                    "opcode": "control_wait",
+                                    "params": {
+                                        "DURATION": 0.05
+                                    },
+                                    "next": false,
+                                    "stage": false
+                                },
+                                "stage": false
+                            }
+                        },
+                        "next": {
+                            "opcode": "motion_changeyby",
+                            "params": {
+                                "DY": -50
+                            },
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "jump %s times",
+                        "args": [
+                            "count"
+                        ],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_repeat",
+                        "params": {
+                            "TIMES": {
+                                "opcode": "argument_reporter_string_number",
+                                "params": {
+                                    "VALUE": "\"steps\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "motion_movesteps",
+                                "params": {
+                                    "STEPS": {
+                                        "opcode": "argument_reporter_string_number",
+                                        "params": {
+                                            "VALUE": "\"size\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "motion_turnright",
+                                    "params": {
+                                        "DEGREES": 90
+                                    },
+                                    "next": false,
+                                    "stage": false
+                                },
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "square %s %s",
+                        "args": [
+                            "size",
+                            "steps"
+                        ],
+                        "warp": true
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if_else",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "argument_reporter_boolean",
+                                "params": {
+                                    "VALUE": "\"flag\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"yes\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK2": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"no\""
+                                },
+                                "next": false,
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "say if %b",
+                        "args": [
+                            "flag"
+                        ],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "control_if",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_gt",
+                                "params": {
+                                    "OPERAND1": {
+                                        "opcode": "argument_reporter_string_number",
+                                        "params": {
+                                            "VALUE": "\"n\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    },
+                                    "OPERAND2": 0
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "data_changevariableby",
+                                "params": {
+                                    "VARIABLE": "\"sum\"",
+                                    "VALUE": {
+                                        "opcode": "argument_reporter_string_number",
+                                        "params": {
+                                            "VALUE": "\"n\""
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "procedures_call",
+                                    "params": {},
+                                    "next": false,
+                                    "stage": false,
+                                    "proccode": "add up %s",
+                                    "args": [
+                                        {
+                                            "opcode": "operator_subtract",
+                                            "params": {
+                                                "NUM1": {
+                                                    "opcode": "argument_reporter_string_number",
+                                                    "params": {
+                                                        "VALUE": "\"n\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                },
+                                                "NUM2": 1
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    ]
+                                },
+                                "stage": false
+                            }
+                        },
+                        "next": {
+                            "opcode": "control_stop",
+                            "params": {
+                                "STOP_OPTION": "\"this script\""
+                            },
+                            "next": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"never\""
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "add up %s",
+                        "args": [
+                            "n"
+                        ],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "procedures_definition",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_turnleft",
+                        "params": {
+                            "DEGREES": 1
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false,
+                    "procedure": {
+                        "proccode": "no arguments",
+                        "args": [],
+                        "warp": false
+                    }
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "procedures_call",
+                        "params": {},
+                        "next": {
+                            "opcode": "procedures_call",
+                            "params": {},
+                            "next": {
+                                "opcode": "procedures_call",
+                                "params": {},
+                                "next": {
+                                    "opcode": "procedures_call",
+                                    "params": {},
+                                    "next": {
+                                        "opcode": "procedures_call",
+                                        "params": {},
+                                        "next": {
+                                            "opcode": "procedures_call",
+                                            "params": {},
+                                            "next": {
+                                                "opcode": "procedures_call",
+                                                "params": {},
+                                                "next": {
+                                                    "opcode": "looks_say",
+                                                    "params": {
+                                                        "MESSAGE": {
+                                                            "opcode": "data_variable",
+                                                            "params": {
+                                                                "VARIABLE": "\"sum\""
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        }
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                },
+                                                "stage": false,
+                                                "proccode": "jump %s times",
+                                                "args": [
+                                                    {
+                                                        "opcode": "data_variable",
+                                                        "params": {
+                                                            "VARIABLE": "\"sum\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                ]
+                                            },
+                                            "stage": false,
+                                            "proccode": "no arguments",
+                                            "args": []
+                                        },
+                                        "stage": false,
+                                        "proccode": "add up %s",
+                                        "args": [
+                                            4
+                                        ]
+                                    },
+                                    "stage": false,
+                                    "proccode": "say if %b",
+                                    "args": [
+                                        "\"\""
+                                    ]
+                                },
+                                "stage": false,
+                                "proccode": "say if %b",
+                                "args": [
+                                    {
+                                        "opcode": "operator_gt",
+                                        "params": {
+                                            "OPERAND1": 2,
+                                            "OPERAND2": 1
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                ]
+                            },
+                            "stage": false,
+                            "proccode": "square %s %s",
+                            "args": [
+                                20,
+                                4
+                            ]
+                        },
+                        "stage": false,
+                        "proccode": "jump %s times",
+                        "args": [
+                            3
+                        ]
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "sum": 0
+            },
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "510da64cf172d53750dffd23fbf73563": {
+            "global_name": "backdrop1",
+            "extension": "png"
+        },
+        "7e924ddd03ae82392a9ec023c9060504": {
+            "global_name": "backdrop2",
+            "extension": "png"
+        },
+        "dbbd297deb8f1e79e0657c1df52f182e": {
+            "global_name": "costume1",
+            "extension": "png"
+        },
+        "b56c6816a535aa4f98ff1e5b6d326d47": {
+            "global_name": "costume2",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "8ed8c60cc88247a91bc9b4c1f0cfd800": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "56fce12cd7e0ab5972da0e89daf1eb75": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    },
+    "warnings": [],
+    "stage": {
+        "name": "Stage",
+        "blocks": [
+            {
+                "opcode": "procedures_definition",
+                "params": {},
+                "next": {
+                    "opcode": "data_changevariableby",
+                    "params": {
+                        "VARIABLE": "\"count\"",
+                        "VALUE": {
+                            "opcode": "argument_reporter_string_number",
+                            "params": {
+                                "VALUE": "\"by\""
+                            },
+                            "next": false,
+                            "stage": true
+                        }
+                    },
+                    "next": false,
+                    "stage": true
+                },
+                "stage": true,
+                "procedure": {
+                    "proccode": "count up %s",
+                    "args": [
+                        "by"
+                    ],
+                    "warp": true
+                }
+            },
+            {
+                "opcode": "event_whenflagclicked",
+                "params": {},
+                "next": {
+                    "opcode": "procedures_call",
+                    "params": {},
+                    "next": {
+                        "opcode": "procedures_call",
+                        "params": {},
+                        "next": false,
+                        "stage": true,
+                        "proccode": "count up %s",
+                        "args": [
+                            3
+                        ]
+                    },
+                    "stage": true,
+                    "proccode": "count up %s",
+                    "args": [
+                        2
+                    ]
+                },
+                "stage": true
+            }
+        ],
+        "costumes": [
+            {
+                "md5": "510da64cf172d53750dffd23fbf73563",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "7e924ddd03ae82392a9ec023c9060504",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "count": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "comments": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

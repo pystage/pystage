@@ -101,6 +101,37 @@ def comment_lines(text):
     return "".join(f"# {line.strip()}\n" for line in lines if line.strip())
 
 
+def clean_text(value, limit=60):
+    """A short single-line text for messages. Texts from the project are untrusted."""
+    text = _line_breaks.sub(" ", "" if value is None else str(value)).strip()
+    return text if len(text) <= limit else text[:limit - 3] + "..."
+
+
+def add_warning(project, kind, target, message):
+    """Adds a warning to the project, unless exactly this warning is already there.
+
+    Parameters
+    ----------
+    project : dict
+        The intermediate project, its "warnings" are extended.
+    kind : str
+        What kind of problem: opcode, hat, loose_script, monitor, comment,
+        extension, asset or cloud.
+    target : str or None
+        The name of the sprite or stage, None if the problem concerns the project.
+    message : str
+        A short English message. All texts from the project in it have to be
+        cleaned with clean_text.
+    """
+    warning = {"kind": kind, "target": None if target is None else clean_text(target), "message": message}
+    warnings = project.setdefault("warnings", [])
+    if warning not in warnings:
+        warnings.append(warning)
+
+
+STANDARD_CATEGORIES = ("motion", "looks", "sound", "event", "control", "sensing", "operator", "data", "procedures", "argument", "pen")
+
+
 def resolve(value):
     """The value of the first field of a (menu) block."""
     depth = 0
@@ -173,6 +204,8 @@ class CodeWriter():
         self.lang_module = importlib.import_module(f"pystage.{language}")
 
         self.comments = []
+        # (sprite name, opcode): how often a block could not be converted
+        self.unsupported = {}
         self.last_id = 0
         self.current_sprite = ""
         # The custom block that is currently written
@@ -323,12 +356,32 @@ class CodeWriter():
         return self.get_translated_name(corefunc.__name__, block["stage"])
 
 
+    def not_supported(self, opcode):
+        """The code for a block that can't be converted. It is reported as warning."""
+        key = (self.current_sprite, opcode)
+        self.unsupported[key] = self.unsupported.get(key, 0) + 1
+        # A text is valid as value and as statement
+        return py_str(f"NOT SUPPORTED: {opcode}")
+
+
+    def add_warnings(self):
+        """Report the blocks that could not be converted, once per sprite and opcode."""
+        for (sprite, opcode), count in self.unsupported.items():
+            category = opcode.split("_")[0]
+            extension = "" if category in STANDARD_CATEGORIES else f" of extension '{clean_text(category)}'"
+            times = f" ({count} times)" if count > 1 else ""
+            if opcode == "procedures_call":
+                message = f"Call of a custom block without definition, it was replaced by a text{times}."
+            else:
+                message = f"Block '{opcode}'{extension} is not supported, it was replaced by a text{times}."
+            add_warning(self.project, "opcode", sprite, message)
+
+
     def get_translated_template(self, block):
         corefunc = self.get_opcode_function(block)
         func = self.get_translated_function(block)
         if func is None:
-            # A text is valid as value and as statement
-            return py_str(f"NOT SUPPORTED: {block['opcode']}")
+            return self.not_supported(block["opcode"])
         fieldname = corefunc.param if hasattr(corefunc, "param") else None
         res = f"self.{func}("
         res += ", ".join(["{{" + p + "}}" for p in block["params"] if p != fieldname and p not in SUBSTACKS])
@@ -412,7 +465,7 @@ class CodeWriter():
             text = textwrap.dedent(self.templates[f"{opcode}.scratch"])
             context["func"] = self.get_translated_function(block)
             if context["func"] is None:
-                return self._with_comments(py_str(f"NOT SUPPORTED: {opcode}"), statement), False
+                return self._with_comments(self.not_supported(opcode), statement), False
         elif opcode in self.templates and not self.needs_scratch_comparison(block):
             # If the block has its own template, we simply render it.
             text = textwrap.dedent(self.templates[opcode])
@@ -420,7 +473,7 @@ class CodeWriter():
             if "{{func}}" in text:
                 context["func"] = self.get_translated_function(block)
                 if context["func"] is None:
-                    return self._with_comments(py_str(f"NOT SUPPORTED: {opcode}"), statement), False
+                    return self._with_comments(self.not_supported(opcode), statement), False
         else:
             # We use the default template mechanism
             text = self.get_translated_template(block)
@@ -455,7 +508,7 @@ class CodeWriter():
             text = self._compiled[text].render(context)
         except UndefinedError as e:
             logger.warning(f"Template variable not available: {e}")
-            text = py_str(f"NOT SUPPORTED: {opcode}")
+            text = self.not_supported(opcode)
 
         if is_hat:
             if own_comments:
@@ -534,6 +587,7 @@ class CodeWriter():
     def render_procedure_call(self, block):
         proc = self.procedures[self.current_sprite].get(block.get("proccode"))
         if proc is None:
+            self.not_supported("procedures_call")
             return py_str(f"NOT SUPPORTED: unknown custom block {block.get('proccode')}")
         args = [self.process(arg) for arg in block.get("args", [])]
         # Missing or additional arguments do not hurt in Scratch

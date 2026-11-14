@@ -1,4 +1,8 @@
 # test (pyStage, converted from Scratch 3)
+#
+# Not everything of the Scratch project could be converted:
+# - [loose_script] Cheesy Puffs: 2 script(s) without a hat block were left out (in Scratch they only run when clicked in the editor).
+# - [loose_script] Dog2: 1 script(s) without a hat block were left out (in Scratch they only run when clicked in the editor).
 
 from pystage.en import Sprite, Stage
 

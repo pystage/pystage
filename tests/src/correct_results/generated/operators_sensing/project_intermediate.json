@@ -1,0 +1,1546 @@
+{
+    "name": "operators_sensing",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "data_setvariableto",
+                        "params": {
+                            "VARIABLE": "\"result\"",
+                            "VALUE": {
+                                "opcode": "operator_add",
+                                "params": {
+                                    "NUM1": 1,
+                                    "NUM2": {
+                                        "opcode": "operator_subtract",
+                                        "params": {
+                                            "NUM1": 5,
+                                            "NUM2": 2
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": false,
+                                "stage": false
+                            }
+                        },
+                        "next": {
+                            "opcode": "data_setvariableto",
+                            "params": {
+                                "VARIABLE": "\"result\"",
+                                "VALUE": {
+                                    "opcode": "operator_multiply",
+                                    "params": {
+                                        "NUM1": 3,
+                                        "NUM2": 4
+                                    },
+                                    "next": false,
+                                    "stage": false
+                                }
+                            },
+                            "next": {
+                                "opcode": "data_setvariableto",
+                                "params": {
+                                    "VARIABLE": "\"result\"",
+                                    "VALUE": {
+                                        "opcode": "operator_divide",
+                                        "params": {
+                                            "NUM1": 10,
+                                            "NUM2": 4
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "data_setvariableto",
+                                    "params": {
+                                        "VARIABLE": "\"result\"",
+                                        "VALUE": {
+                                            "opcode": "operator_divide",
+                                            "params": {
+                                                "NUM1": 1,
+                                                "NUM2": 0
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "data_setvariableto",
+                                        "params": {
+                                            "VARIABLE": "\"result\"",
+                                            "VALUE": {
+                                                "opcode": "operator_divide",
+                                                "params": {
+                                                    "NUM1": 1,
+                                                    "NUM2": {
+                                                        "opcode": "data_variable",
+                                                        "params": {
+                                                            "VARIABLE": "\"zero\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "data_setvariableto",
+                                            "params": {
+                                                "VARIABLE": "\"result\"",
+                                                "VALUE": {
+                                                    "opcode": "operator_divide",
+                                                    "params": {
+                                                        "NUM1": {
+                                                            "opcode": "data_variable",
+                                                            "params": {
+                                                                "VARIABLE": "\"text\""
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        },
+                                                        "NUM2": 2
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "data_setvariableto",
+                                                "params": {
+                                                    "VARIABLE": "\"result\"",
+                                                    "VALUE": {
+                                                        "opcode": "operator_mod",
+                                                        "params": {
+                                                            "NUM1": 10,
+                                                            "NUM2": 3
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": {
+                                                    "opcode": "data_setvariableto",
+                                                    "params": {
+                                                        "VARIABLE": "\"result\"",
+                                                        "VALUE": {
+                                                            "opcode": "operator_mod",
+                                                            "params": {
+                                                                "NUM1": -7,
+                                                                "NUM2": 3
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        }
+                                                    },
+                                                    "next": {
+                                                        "opcode": "data_setvariableto",
+                                                        "params": {
+                                                            "VARIABLE": "\"result\"",
+                                                            "VALUE": {
+                                                                "opcode": "operator_mod",
+                                                                "params": {
+                                                                    "NUM1": 5,
+                                                                    "NUM2": {
+                                                                        "opcode": "data_variable",
+                                                                        "params": {
+                                                                            "VARIABLE": "\"zero\""
+                                                                        },
+                                                                        "next": false,
+                                                                        "stage": false
+                                                                    }
+                                                                },
+                                                                "next": false,
+                                                                "stage": false
+                                                            }
+                                                        },
+                                                        "next": {
+                                                            "opcode": "data_setvariableto",
+                                                            "params": {
+                                                                "VARIABLE": "\"result\"",
+                                                                "VALUE": {
+                                                                    "opcode": "operator_random",
+                                                                    "params": {
+                                                                        "FROM": 1,
+                                                                        "TO": 10
+                                                                    },
+                                                                    "next": false,
+                                                                    "stage": false
+                                                                }
+                                                            },
+                                                            "next": {
+                                                                "opcode": "data_setvariableto",
+                                                                "params": {
+                                                                    "VARIABLE": "\"result\"",
+                                                                    "VALUE": {
+                                                                        "opcode": "operator_random",
+                                                                        "params": {
+                                                                            "FROM": 0.5,
+                                                                            "TO": 2.5
+                                                                        },
+                                                                        "next": false,
+                                                                        "stage": false
+                                                                    }
+                                                                },
+                                                                "next": {
+                                                                    "opcode": "data_setvariableto",
+                                                                    "params": {
+                                                                        "VARIABLE": "\"result\"",
+                                                                        "VALUE": {
+                                                                            "opcode": "operator_join",
+                                                                            "params": {
+                                                                                "STRING1": "\"apple \"",
+                                                                                "STRING2": "\"banana\""
+                                                                            },
+                                                                            "next": false,
+                                                                            "stage": false
+                                                                        }
+                                                                    },
+                                                                    "next": {
+                                                                        "opcode": "data_setvariableto",
+                                                                        "params": {
+                                                                            "VARIABLE": "\"result\"",
+                                                                            "VALUE": {
+                                                                                "opcode": "operator_letter_of",
+                                                                                "params": {
+                                                                                    "LETTER": 2,
+                                                                                    "STRING": "\"apple\""
+                                                                                },
+                                                                                "next": false,
+                                                                                "stage": false
+                                                                            }
+                                                                        },
+                                                                        "next": {
+                                                                            "opcode": "data_setvariableto",
+                                                                            "params": {
+                                                                                "VARIABLE": "\"result\"",
+                                                                                "VALUE": {
+                                                                                    "opcode": "operator_length",
+                                                                                    "params": {
+                                                                                        "STRING": "\"apple\""
+                                                                                    },
+                                                                                    "next": false,
+                                                                                    "stage": false
+                                                                                }
+                                                                            },
+                                                                            "next": {
+                                                                                "opcode": "data_setvariableto",
+                                                                                "params": {
+                                                                                    "VARIABLE": "\"result\"",
+                                                                                    "VALUE": {
+                                                                                        "opcode": "operator_contains",
+                                                                                        "params": {
+                                                                                            "STRING1": "\"apple\"",
+                                                                                            "STRING2": "\"PP\""
+                                                                                        },
+                                                                                        "next": false,
+                                                                                        "stage": false
+                                                                                    }
+                                                                                },
+                                                                                "next": {
+                                                                                    "opcode": "data_setvariableto",
+                                                                                    "params": {
+                                                                                        "VARIABLE": "\"result\"",
+                                                                                        "VALUE": {
+                                                                                            "opcode": "operator_round",
+                                                                                            "params": {
+                                                                                                "NUM": 2.5
+                                                                                            },
+                                                                                            "next": false,
+                                                                                            "stage": false
+                                                                                        }
+                                                                                    },
+                                                                                    "next": {
+                                                                                        "opcode": "data_setvariableto",
+                                                                                        "params": {
+                                                                                            "VARIABLE": "\"result\"",
+                                                                                            "VALUE": {
+                                                                                                "opcode": "operator_gt",
+                                                                                                "params": {
+                                                                                                    "OPERAND1": 5,
+                                                                                                    "OPERAND2": 3
+                                                                                                },
+                                                                                                "next": false,
+                                                                                                "stage": false
+                                                                                            }
+                                                                                        },
+                                                                                        "next": {
+                                                                                            "opcode": "data_setvariableto",
+                                                                                            "params": {
+                                                                                                "VARIABLE": "\"result\"",
+                                                                                                "VALUE": {
+                                                                                                    "opcode": "operator_lt",
+                                                                                                    "params": {
+                                                                                                        "OPERAND1": "\"apple\"",
+                                                                                                        "OPERAND2": "\"Banana\""
+                                                                                                    },
+                                                                                                    "next": false,
+                                                                                                    "stage": false
+                                                                                                }
+                                                                                            },
+                                                                                            "next": {
+                                                                                                "opcode": "data_setvariableto",
+                                                                                                "params": {
+                                                                                                    "VARIABLE": "\"result\"",
+                                                                                                    "VALUE": {
+                                                                                                        "opcode": "operator_equals",
+                                                                                                        "params": {
+                                                                                                            "OPERAND1": {
+                                                                                                                "opcode": "data_variable",
+                                                                                                                "params": {
+                                                                                                                    "VARIABLE": "\"text\""
+                                                                                                                },
+                                                                                                                "next": false,
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "OPERAND2": "\"ABC\""
+                                                                                                        },
+                                                                                                        "next": false,
+                                                                                                        "stage": false
+                                                                                                    }
+                                                                                                },
+                                                                                                "next": {
+                                                                                                    "opcode": "data_setvariableto",
+                                                                                                    "params": {
+                                                                                                        "VARIABLE": "\"result\"",
+                                                                                                        "VALUE": {
+                                                                                                            "opcode": "operator_and",
+                                                                                                            "params": {
+                                                                                                                "OPERAND1": {
+                                                                                                                    "opcode": "operator_gt",
+                                                                                                                    "params": {
+                                                                                                                        "OPERAND1": 2,
+                                                                                                                        "OPERAND2": 1
+                                                                                                                    },
+                                                                                                                    "next": false,
+                                                                                                                    "stage": false
+                                                                                                                },
+                                                                                                                "OPERAND2": {
+                                                                                                                    "opcode": "operator_lt",
+                                                                                                                    "params": {
+                                                                                                                        "OPERAND1": 1,
+                                                                                                                        "OPERAND2": 2
+                                                                                                                    },
+                                                                                                                    "next": false,
+                                                                                                                    "stage": false
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "next": false,
+                                                                                                            "stage": false
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "next": {
+                                                                                                        "opcode": "data_setvariableto",
+                                                                                                        "params": {
+                                                                                                            "VARIABLE": "\"result\"",
+                                                                                                            "VALUE": {
+                                                                                                                "opcode": "operator_or",
+                                                                                                                "params": {
+                                                                                                                    "OPERAND1": {
+                                                                                                                        "opcode": "operator_equals",
+                                                                                                                        "params": {
+                                                                                                                            "OPERAND1": 1,
+                                                                                                                            "OPERAND2": 2
+                                                                                                                        },
+                                                                                                                        "next": false,
+                                                                                                                        "stage": false
+                                                                                                                    },
+                                                                                                                    "OPERAND2": {
+                                                                                                                        "opcode": "sensing_mousedown",
+                                                                                                                        "params": {},
+                                                                                                                        "next": false,
+                                                                                                                        "stage": false
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "next": false,
+                                                                                                                "stage": false
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "next": {
+                                                                                                            "opcode": "data_setvariableto",
+                                                                                                            "params": {
+                                                                                                                "VARIABLE": "\"result\"",
+                                                                                                                "VALUE": {
+                                                                                                                    "opcode": "operator_not",
+                                                                                                                    "params": {
+                                                                                                                        "OPERAND": {
+                                                                                                                            "opcode": "sensing_keypressed",
+                                                                                                                            "params": {
+                                                                                                                                "KEY_OPTION": {
+                                                                                                                                    "opcode": "sensing_keyoptions",
+                                                                                                                                    "params": {
+                                                                                                                                        "KEY_OPTION": "\"space\""
+                                                                                                                                    },
+                                                                                                                                    "next": false,
+                                                                                                                                    "stage": false
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            "next": false,
+                                                                                                                            "stage": false
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "next": false,
+                                                                                                                    "stage": false
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "next": {
+                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                "params": {
+                                                                                                                    "VARIABLE": "\"result\"",
+                                                                                                                    "VALUE": {
+                                                                                                                        "opcode": "operator_mathop",
+                                                                                                                        "params": {
+                                                                                                                            "OPERATOR": "\"abs\"",
+                                                                                                                            "NUM": 30
+                                                                                                                        },
+                                                                                                                        "next": false,
+                                                                                                                        "stage": false
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "next": {
+                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                    "params": {
+                                                                                                                        "VARIABLE": "\"result\"",
+                                                                                                                        "VALUE": {
+                                                                                                                            "opcode": "operator_mathop",
+                                                                                                                            "params": {
+                                                                                                                                "OPERATOR": "\"floor\"",
+                                                                                                                                "NUM": 30
+                                                                                                                            },
+                                                                                                                            "next": false,
+                                                                                                                            "stage": false
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "next": {
+                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                        "params": {
+                                                                                                                            "VARIABLE": "\"result\"",
+                                                                                                                            "VALUE": {
+                                                                                                                                "opcode": "operator_mathop",
+                                                                                                                                "params": {
+                                                                                                                                    "OPERATOR": "\"ceiling\"",
+                                                                                                                                    "NUM": 30
+                                                                                                                                },
+                                                                                                                                "next": false,
+                                                                                                                                "stage": false
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "next": {
+                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                            "params": {
+                                                                                                                                "VARIABLE": "\"result\"",
+                                                                                                                                "VALUE": {
+                                                                                                                                    "opcode": "operator_mathop",
+                                                                                                                                    "params": {
+                                                                                                                                        "OPERATOR": "\"sqrt\"",
+                                                                                                                                        "NUM": 30
+                                                                                                                                    },
+                                                                                                                                    "next": false,
+                                                                                                                                    "stage": false
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            "next": {
+                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                "params": {
+                                                                                                                                    "VARIABLE": "\"result\"",
+                                                                                                                                    "VALUE": {
+                                                                                                                                        "opcode": "operator_mathop",
+                                                                                                                                        "params": {
+                                                                                                                                            "OPERATOR": "\"sin\"",
+                                                                                                                                            "NUM": 30
+                                                                                                                                        },
+                                                                                                                                        "next": false,
+                                                                                                                                        "stage": false
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "next": {
+                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                    "params": {
+                                                                                                                                        "VARIABLE": "\"result\"",
+                                                                                                                                        "VALUE": {
+                                                                                                                                            "opcode": "operator_mathop",
+                                                                                                                                            "params": {
+                                                                                                                                                "OPERATOR": "\"cos\"",
+                                                                                                                                                "NUM": 30
+                                                                                                                                            },
+                                                                                                                                            "next": false,
+                                                                                                                                            "stage": false
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "next": {
+                                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                                        "params": {
+                                                                                                                                            "VARIABLE": "\"result\"",
+                                                                                                                                            "VALUE": {
+                                                                                                                                                "opcode": "operator_mathop",
+                                                                                                                                                "params": {
+                                                                                                                                                    "OPERATOR": "\"tan\"",
+                                                                                                                                                    "NUM": 30
+                                                                                                                                                },
+                                                                                                                                                "next": false,
+                                                                                                                                                "stage": false
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                        "next": {
+                                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                                            "params": {
+                                                                                                                                                "VARIABLE": "\"result\"",
+                                                                                                                                                "VALUE": {
+                                                                                                                                                    "opcode": "operator_mathop",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "OPERATOR": "\"asin\"",
+                                                                                                                                                        "NUM": 30
+                                                                                                                                                    },
+                                                                                                                                                    "next": false,
+                                                                                                                                                    "stage": false
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                            "next": {
+                                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                                "params": {
+                                                                                                                                                    "VARIABLE": "\"result\"",
+                                                                                                                                                    "VALUE": {
+                                                                                                                                                        "opcode": "operator_mathop",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "OPERATOR": "\"acos\"",
+                                                                                                                                                            "NUM": 30
+                                                                                                                                                        },
+                                                                                                                                                        "next": false,
+                                                                                                                                                        "stage": false
+                                                                                                                                                    }
+                                                                                                                                                },
+                                                                                                                                                "next": {
+                                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "VARIABLE": "\"result\"",
+                                                                                                                                                        "VALUE": {
+                                                                                                                                                            "opcode": "operator_mathop",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "OPERATOR": "\"atan\"",
+                                                                                                                                                                "NUM": 30
+                                                                                                                                                            },
+                                                                                                                                                            "next": false,
+                                                                                                                                                            "stage": false
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "next": {
+                                                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "VARIABLE": "\"result\"",
+                                                                                                                                                            "VALUE": {
+                                                                                                                                                                "opcode": "operator_mathop",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "OPERATOR": "\"ln\"",
+                                                                                                                                                                    "NUM": 30
+                                                                                                                                                                },
+                                                                                                                                                                "next": false,
+                                                                                                                                                                "stage": false
+                                                                                                                                                            }
+                                                                                                                                                        },
+                                                                                                                                                        "next": {
+                                                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "VARIABLE": "\"result\"",
+                                                                                                                                                                "VALUE": {
+                                                                                                                                                                    "opcode": "operator_mathop",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "OPERATOR": "\"log\"",
+                                                                                                                                                                        "NUM": 30
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                }
+                                                                                                                                                            },
+                                                                                                                                                            "next": {
+                                                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "VARIABLE": "\"result\"",
+                                                                                                                                                                    "VALUE": {
+                                                                                                                                                                        "opcode": "operator_mathop",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "OPERATOR": "\"e ^\"",
+                                                                                                                                                                            "NUM": 30
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "next": {
+                                                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "VARIABLE": "\"result\"",
+                                                                                                                                                                        "VALUE": {
+                                                                                                                                                                            "opcode": "operator_mathop",
+                                                                                                                                                                            "params": {
+                                                                                                                                                                                "OPERATOR": "\"10 ^\"",
+                                                                                                                                                                                "NUM": 30
+                                                                                                                                                                            },
+                                                                                                                                                                            "next": false,
+                                                                                                                                                                            "stage": false
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                },
+                                                                                                                                                                "stage": false
+                                                                                                                                                            },
+                                                                                                                                                            "stage": false
+                                                                                                                                                        },
+                                                                                                                                                        "stage": false
+                                                                                                                                                    },
+                                                                                                                                                    "stage": false
+                                                                                                                                                },
+                                                                                                                                                "stage": false
+                                                                                                                                            },
+                                                                                                                                            "stage": false
+                                                                                                                                        },
+                                                                                                                                        "stage": false
+                                                                                                                                    },
+                                                                                                                                    "stage": false
+                                                                                                                                },
+                                                                                                                                "stage": false
+                                                                                                                            },
+                                                                                                                            "stage": false
+                                                                                                                        },
+                                                                                                                        "stage": false
+                                                                                                                    },
+                                                                                                                    "stage": false
+                                                                                                                },
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "stage": false
+                                                                                                        },
+                                                                                                        "stage": false
+                                                                                                    },
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "stage": false
+                                                                                            },
+                                                                                            "stage": false
+                                                                                        },
+                                                                                        "stage": false
+                                                                                    },
+                                                                                    "stage": false
+                                                                                },
+                                                                                "stage": false
+                                                                            },
+                                                                            "stage": false
+                                                                        },
+                                                                        "stage": false
+                                                                    },
+                                                                    "stage": false
+                                                                },
+                                                                "stage": false
+                                                            },
+                                                            "stage": false
+                                                        },
+                                                        "stage": false
+                                                    },
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            },
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenkeypressed",
+                    "params": {
+                        "KEY_OPTION": "\"any\""
+                    },
+                    "next": {
+                        "opcode": "control_if",
+                        "params": {
+                            "CONDITION": {
+                                "opcode": "operator_not",
+                                "params": {
+                                    "OPERAND": {
+                                        "opcode": "operator_equals",
+                                        "params": {
+                                            "OPERAND1": 1,
+                                            "OPERAND2": 1
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": false,
+                                "stage": false
+                            },
+                            "SUBSTACK": {
+                                "opcode": "looks_say",
+                                "params": {
+                                    "MESSAGE": "\"never\""
+                                },
+                                "next": false,
+                                "stage": false
+                            }
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                },
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "sensing_setdragmode",
+                        "params": {
+                            "DRAG_MODE": "\"draggable\""
+                        },
+                        "next": {
+                            "opcode": "sensing_setdragmode",
+                            "params": {
+                                "DRAG_MODE": "\"not draggable\""
+                            },
+                            "next": {
+                                "opcode": "data_setvariableto",
+                                "params": {
+                                    "VARIABLE": "\"copy\"",
+                                    "VALUE": {
+                                        "opcode": "sensing_touchingobject",
+                                        "params": {
+                                            "TOUCHINGOBJECTMENU": {
+                                                "opcode": "sensing_touchingobjectmenu",
+                                                "params": {
+                                                    "TOUCHINGOBJECTMENU": "\"_mouse_\""
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": false,
+                                        "stage": false
+                                    }
+                                },
+                                "next": {
+                                    "opcode": "data_setvariableto",
+                                    "params": {
+                                        "VARIABLE": "\"copy\"",
+                                        "VALUE": {
+                                            "opcode": "sensing_touchingobject",
+                                            "params": {
+                                                "TOUCHINGOBJECTMENU": {
+                                                    "opcode": "sensing_touchingobjectmenu",
+                                                    "params": {
+                                                        "TOUCHINGOBJECTMENU": "\"_edge_\""
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                }
+                                            },
+                                            "next": false,
+                                            "stage": false
+                                        }
+                                    },
+                                    "next": {
+                                        "opcode": "data_setvariableto",
+                                        "params": {
+                                            "VARIABLE": "\"copy\"",
+                                            "VALUE": {
+                                                "opcode": "sensing_touchingobject",
+                                                "params": {
+                                                    "TOUCHINGOBJECTMENU": {
+                                                        "opcode": "sensing_touchingobjectmenu",
+                                                        "params": {
+                                                            "TOUCHINGOBJECTMENU": "\"Sprite2\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "data_setvariableto",
+                                            "params": {
+                                                "VARIABLE": "\"copy\"",
+                                                "VALUE": {
+                                                    "opcode": "sensing_touchingcolor",
+                                                    "params": {
+                                                        "COLOR": [
+                                                            255,
+                                                            0,
+                                                            0
+                                                        ]
+                                                    },
+                                                    "next": false,
+                                                    "stage": false
+                                                }
+                                            },
+                                            "next": {
+                                                "opcode": "data_setvariableto",
+                                                "params": {
+                                                    "VARIABLE": "\"copy\"",
+                                                    "VALUE": {
+                                                        "opcode": "sensing_coloristouchingcolor",
+                                                        "params": {
+                                                            "COLOR": [
+                                                                255,
+                                                                140,
+                                                                0
+                                                            ],
+                                                            "COLOR2": [
+                                                                0,
+                                                                160,
+                                                                90
+                                                            ]
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": {
+                                                    "opcode": "data_setvariableto",
+                                                    "params": {
+                                                        "VARIABLE": "\"copy\"",
+                                                        "VALUE": {
+                                                            "opcode": "sensing_distanceto",
+                                                            "params": {
+                                                                "DISTANCETOMENU": {
+                                                                    "opcode": "sensing_distancetomenu",
+                                                                    "params": {
+                                                                        "DISTANCETOMENU": "\"_mouse_\""
+                                                                    },
+                                                                    "next": false,
+                                                                    "stage": false
+                                                                }
+                                                            },
+                                                            "next": false,
+                                                            "stage": false
+                                                        }
+                                                    },
+                                                    "next": {
+                                                        "opcode": "data_setvariableto",
+                                                        "params": {
+                                                            "VARIABLE": "\"copy\"",
+                                                            "VALUE": {
+                                                                "opcode": "sensing_distanceto",
+                                                                "params": {
+                                                                    "DISTANCETOMENU": {
+                                                                        "opcode": "sensing_distancetomenu",
+                                                                        "params": {
+                                                                            "DISTANCETOMENU": "\"Sprite2\""
+                                                                        },
+                                                                        "next": false,
+                                                                        "stage": false
+                                                                    }
+                                                                },
+                                                                "next": false,
+                                                                "stage": false
+                                                            }
+                                                        },
+                                                        "next": {
+                                                            "opcode": "data_setvariableto",
+                                                            "params": {
+                                                                "VARIABLE": "\"copy\"",
+                                                                "VALUE": {
+                                                                    "opcode": "sensing_mousex",
+                                                                    "params": {},
+                                                                    "next": false,
+                                                                    "stage": false
+                                                                }
+                                                            },
+                                                            "next": {
+                                                                "opcode": "data_setvariableto",
+                                                                "params": {
+                                                                    "VARIABLE": "\"copy\"",
+                                                                    "VALUE": {
+                                                                        "opcode": "sensing_mousey",
+                                                                        "params": {},
+                                                                        "next": false,
+                                                                        "stage": false
+                                                                    }
+                                                                },
+                                                                "next": {
+                                                                    "opcode": "data_setvariableto",
+                                                                    "params": {
+                                                                        "VARIABLE": "\"copy\"",
+                                                                        "VALUE": {
+                                                                            "opcode": "sensing_mousedown",
+                                                                            "params": {},
+                                                                            "next": false,
+                                                                            "stage": false
+                                                                        }
+                                                                    },
+                                                                    "next": {
+                                                                        "opcode": "data_setvariableto",
+                                                                        "params": {
+                                                                            "VARIABLE": "\"copy\"",
+                                                                            "VALUE": {
+                                                                                "opcode": "sensing_keypressed",
+                                                                                "params": {
+                                                                                    "KEY_OPTION": {
+                                                                                        "opcode": "sensing_keyoptions",
+                                                                                        "params": {
+                                                                                            "KEY_OPTION": "\"a\""
+                                                                                        },
+                                                                                        "next": false,
+                                                                                        "stage": false
+                                                                                    }
+                                                                                },
+                                                                                "next": false,
+                                                                                "stage": false
+                                                                            }
+                                                                        },
+                                                                        "next": {
+                                                                            "opcode": "data_setvariableto",
+                                                                            "params": {
+                                                                                "VARIABLE": "\"copy\"",
+                                                                                "VALUE": {
+                                                                                    "opcode": "sensing_keypressed",
+                                                                                    "params": {
+                                                                                        "KEY_OPTION": {
+                                                                                            "opcode": "sensing_keyoptions",
+                                                                                            "params": {
+                                                                                                "KEY_OPTION": "\"space\""
+                                                                                            },
+                                                                                            "next": false,
+                                                                                            "stage": false
+                                                                                        }
+                                                                                    },
+                                                                                    "next": false,
+                                                                                    "stage": false
+                                                                                }
+                                                                            },
+                                                                            "next": {
+                                                                                "opcode": "data_setvariableto",
+                                                                                "params": {
+                                                                                    "VARIABLE": "\"copy\"",
+                                                                                    "VALUE": {
+                                                                                        "opcode": "sensing_timer",
+                                                                                        "params": {},
+                                                                                        "next": false,
+                                                                                        "stage": false
+                                                                                    }
+                                                                                },
+                                                                                "next": {
+                                                                                    "opcode": "sensing_resettimer",
+                                                                                    "params": {},
+                                                                                    "next": {
+                                                                                        "opcode": "data_setvariableto",
+                                                                                        "params": {
+                                                                                            "VARIABLE": "\"copy\"",
+                                                                                            "VALUE": {
+                                                                                                "opcode": "sensing_dayssince2000",
+                                                                                                "params": {},
+                                                                                                "next": false,
+                                                                                                "stage": false
+                                                                                            }
+                                                                                        },
+                                                                                        "next": {
+                                                                                            "opcode": "data_setvariableto",
+                                                                                            "params": {
+                                                                                                "VARIABLE": "\"copy\"",
+                                                                                                "VALUE": {
+                                                                                                    "opcode": "sensing_username",
+                                                                                                    "params": {},
+                                                                                                    "next": false,
+                                                                                                    "stage": false
+                                                                                                }
+                                                                                            },
+                                                                                            "next": {
+                                                                                                "opcode": "data_setvariableto",
+                                                                                                "params": {
+                                                                                                    "VARIABLE": "\"copy\"",
+                                                                                                    "VALUE": {
+                                                                                                        "opcode": "sensing_loudness",
+                                                                                                        "params": {},
+                                                                                                        "next": false,
+                                                                                                        "stage": false
+                                                                                                    }
+                                                                                                },
+                                                                                                "next": {
+                                                                                                    "opcode": "data_setvariableto",
+                                                                                                    "params": {
+                                                                                                        "VARIABLE": "\"copy\"",
+                                                                                                        "VALUE": {
+                                                                                                            "opcode": "sensing_current",
+                                                                                                            "params": {
+                                                                                                                "CURRENTMENU": "\"YEAR\""
+                                                                                                            },
+                                                                                                            "next": false,
+                                                                                                            "stage": false
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "next": {
+                                                                                                        "opcode": "data_setvariableto",
+                                                                                                        "params": {
+                                                                                                            "VARIABLE": "\"copy\"",
+                                                                                                            "VALUE": {
+                                                                                                                "opcode": "sensing_current",
+                                                                                                                "params": {
+                                                                                                                    "CURRENTMENU": "\"MONTH\""
+                                                                                                                },
+                                                                                                                "next": false,
+                                                                                                                "stage": false
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "next": {
+                                                                                                            "opcode": "data_setvariableto",
+                                                                                                            "params": {
+                                                                                                                "VARIABLE": "\"copy\"",
+                                                                                                                "VALUE": {
+                                                                                                                    "opcode": "sensing_current",
+                                                                                                                    "params": {
+                                                                                                                        "CURRENTMENU": "\"DATE\""
+                                                                                                                    },
+                                                                                                                    "next": false,
+                                                                                                                    "stage": false
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "next": {
+                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                "params": {
+                                                                                                                    "VARIABLE": "\"copy\"",
+                                                                                                                    "VALUE": {
+                                                                                                                        "opcode": "sensing_current",
+                                                                                                                        "params": {
+                                                                                                                            "CURRENTMENU": "\"DAYOFWEEK\""
+                                                                                                                        },
+                                                                                                                        "next": false,
+                                                                                                                        "stage": false
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "next": {
+                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                    "params": {
+                                                                                                                        "VARIABLE": "\"copy\"",
+                                                                                                                        "VALUE": {
+                                                                                                                            "opcode": "sensing_current",
+                                                                                                                            "params": {
+                                                                                                                                "CURRENTMENU": "\"HOUR\""
+                                                                                                                            },
+                                                                                                                            "next": false,
+                                                                                                                            "stage": false
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "next": {
+                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                        "params": {
+                                                                                                                            "VARIABLE": "\"copy\"",
+                                                                                                                            "VALUE": {
+                                                                                                                                "opcode": "sensing_current",
+                                                                                                                                "params": {
+                                                                                                                                    "CURRENTMENU": "\"MINUTE\""
+                                                                                                                                },
+                                                                                                                                "next": false,
+                                                                                                                                "stage": false
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "next": {
+                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                            "params": {
+                                                                                                                                "VARIABLE": "\"copy\"",
+                                                                                                                                "VALUE": {
+                                                                                                                                    "opcode": "sensing_current",
+                                                                                                                                    "params": {
+                                                                                                                                        "CURRENTMENU": "\"SECOND\""
+                                                                                                                                    },
+                                                                                                                                    "next": false,
+                                                                                                                                    "stage": false
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            "next": {
+                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                "params": {
+                                                                                                                                    "VARIABLE": "\"copy\"",
+                                                                                                                                    "VALUE": {
+                                                                                                                                        "opcode": "sensing_of",
+                                                                                                                                        "params": {
+                                                                                                                                            "PROPERTY": "\"x position\"",
+                                                                                                                                            "OBJECT": {
+                                                                                                                                                "opcode": "sensing_of_object_menu",
+                                                                                                                                                "params": {
+                                                                                                                                                    "OBJECT": "\"Sprite2\""
+                                                                                                                                                },
+                                                                                                                                                "next": false,
+                                                                                                                                                "stage": false
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                        "next": false,
+                                                                                                                                        "stage": false
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "next": {
+                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                    "params": {
+                                                                                                                                        "VARIABLE": "\"copy\"",
+                                                                                                                                        "VALUE": {
+                                                                                                                                            "opcode": "sensing_of",
+                                                                                                                                            "params": {
+                                                                                                                                                "PROPERTY": "\"y position\"",
+                                                                                                                                                "OBJECT": {
+                                                                                                                                                    "opcode": "sensing_of_object_menu",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "OBJECT": "\"Sprite2\""
+                                                                                                                                                    },
+                                                                                                                                                    "next": false,
+                                                                                                                                                    "stage": false
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                            "next": false,
+                                                                                                                                            "stage": false
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "next": {
+                                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                                        "params": {
+                                                                                                                                            "VARIABLE": "\"copy\"",
+                                                                                                                                            "VALUE": {
+                                                                                                                                                "opcode": "sensing_of",
+                                                                                                                                                "params": {
+                                                                                                                                                    "PROPERTY": "\"direction\"",
+                                                                                                                                                    "OBJECT": {
+                                                                                                                                                        "opcode": "sensing_of_object_menu",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "OBJECT": "\"Sprite2\""
+                                                                                                                                                        },
+                                                                                                                                                        "next": false,
+                                                                                                                                                        "stage": false
+                                                                                                                                                    }
+                                                                                                                                                },
+                                                                                                                                                "next": false,
+                                                                                                                                                "stage": false
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                        "next": {
+                                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                                            "params": {
+                                                                                                                                                "VARIABLE": "\"copy\"",
+                                                                                                                                                "VALUE": {
+                                                                                                                                                    "opcode": "sensing_of",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "PROPERTY": "\"costume #\"",
+                                                                                                                                                        "OBJECT": {
+                                                                                                                                                            "opcode": "sensing_of_object_menu",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "OBJECT": "\"Sprite2\""
+                                                                                                                                                            },
+                                                                                                                                                            "next": false,
+                                                                                                                                                            "stage": false
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "next": false,
+                                                                                                                                                    "stage": false
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                            "next": {
+                                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                                "params": {
+                                                                                                                                                    "VARIABLE": "\"copy\"",
+                                                                                                                                                    "VALUE": {
+                                                                                                                                                        "opcode": "sensing_of",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "PROPERTY": "\"costume name\"",
+                                                                                                                                                            "OBJECT": {
+                                                                                                                                                                "opcode": "sensing_of_object_menu",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "OBJECT": "\"Sprite2\""
+                                                                                                                                                                },
+                                                                                                                                                                "next": false,
+                                                                                                                                                                "stage": false
+                                                                                                                                                            }
+                                                                                                                                                        },
+                                                                                                                                                        "next": false,
+                                                                                                                                                        "stage": false
+                                                                                                                                                    }
+                                                                                                                                                },
+                                                                                                                                                "next": {
+                                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "VARIABLE": "\"copy\"",
+                                                                                                                                                        "VALUE": {
+                                                                                                                                                            "opcode": "sensing_of",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "PROPERTY": "\"size\"",
+                                                                                                                                                                "OBJECT": {
+                                                                                                                                                                    "opcode": "sensing_of_object_menu",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "OBJECT": "\"Sprite2\""
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                }
+                                                                                                                                                            },
+                                                                                                                                                            "next": false,
+                                                                                                                                                            "stage": false
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "next": {
+                                                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "VARIABLE": "\"copy\"",
+                                                                                                                                                            "VALUE": {
+                                                                                                                                                                "opcode": "sensing_of",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "PROPERTY": "\"volume\"",
+                                                                                                                                                                    "OBJECT": {
+                                                                                                                                                                        "opcode": "sensing_of_object_menu",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "OBJECT": "\"Sprite2\""
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "next": false,
+                                                                                                                                                                "stage": false
+                                                                                                                                                            }
+                                                                                                                                                        },
+                                                                                                                                                        "next": {
+                                                                                                                                                            "opcode": "data_setvariableto",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "VARIABLE": "\"copy\"",
+                                                                                                                                                                "VALUE": {
+                                                                                                                                                                    "opcode": "sensing_of",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "PROPERTY": "\"local\"",
+                                                                                                                                                                        "OBJECT": {
+                                                                                                                                                                            "opcode": "sensing_of_object_menu",
+                                                                                                                                                                            "params": {
+                                                                                                                                                                                "OBJECT": "\"Sprite2\""
+                                                                                                                                                                            },
+                                                                                                                                                                            "next": false,
+                                                                                                                                                                            "stage": false
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                }
+                                                                                                                                                            },
+                                                                                                                                                            "next": {
+                                                                                                                                                                "opcode": "data_setvariableto",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "VARIABLE": "\"copy\"",
+                                                                                                                                                                    "VALUE": {
+                                                                                                                                                                        "opcode": "sensing_of",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "PROPERTY": "\"x position\"",
+                                                                                                                                                                            "OBJECT": {
+                                                                                                                                                                                "opcode": "sensing_of_object_menu",
+                                                                                                                                                                                "params": {
+                                                                                                                                                                                    "OBJECT": "\"_stage_\""
+                                                                                                                                                                                },
+                                                                                                                                                                                "next": false,
+                                                                                                                                                                                "stage": false
+                                                                                                                                                                            }
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "next": {
+                                                                                                                                                                    "opcode": "sensing_askandwait",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "QUESTION": "\"What is your name?\""
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": {
+                                                                                                                                                                        "opcode": "looks_say",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "MESSAGE": {
+                                                                                                                                                                                "opcode": "sensing_answer",
+                                                                                                                                                                                "params": {},
+                                                                                                                                                                                "next": false,
+                                                                                                                                                                                "stage": false
+                                                                                                                                                                            }
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": {
+                                                                                                                                                                            "opcode": "looks_say",
+                                                                                                                                                                            "params": {
+                                                                                                                                                                                "MESSAGE": {
+                                                                                                                                                                                    "opcode": "operator_join",
+                                                                                                                                                                                    "params": {
+                                                                                                                                                                                        "STRING1": "\"Hello \"",
+                                                                                                                                                                                        "STRING2": {
+                                                                                                                                                                                            "opcode": "sensing_answer",
+                                                                                                                                                                                            "params": {},
+                                                                                                                                                                                            "next": false,
+                                                                                                                                                                                            "stage": false
+                                                                                                                                                                                        }
+                                                                                                                                                                                    },
+                                                                                                                                                                                    "next": false,
+                                                                                                                                                                                    "stage": false
+                                                                                                                                                                                }
+                                                                                                                                                                            },
+                                                                                                                                                                            "next": false,
+                                                                                                                                                                            "stage": false
+                                                                                                                                                                        },
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    },
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                },
+                                                                                                                                                                "stage": false
+                                                                                                                                                            },
+                                                                                                                                                            "stage": false
+                                                                                                                                                        },
+                                                                                                                                                        "stage": false
+                                                                                                                                                    },
+                                                                                                                                                    "stage": false
+                                                                                                                                                },
+                                                                                                                                                "stage": false
+                                                                                                                                            },
+                                                                                                                                            "stage": false
+                                                                                                                                        },
+                                                                                                                                        "stage": false
+                                                                                                                                    },
+                                                                                                                                    "stage": false
+                                                                                                                                },
+                                                                                                                                "stage": false
+                                                                                                                            },
+                                                                                                                            "stage": false
+                                                                                                                        },
+                                                                                                                        "stage": false
+                                                                                                                    },
+                                                                                                                    "stage": false
+                                                                                                                },
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "stage": false
+                                                                                                        },
+                                                                                                        "stage": false
+                                                                                                    },
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "stage": false
+                                                                                            },
+                                                                                            "stage": false
+                                                                                        },
+                                                                                        "stage": false
+                                                                                    },
+                                                                                    "stage": false
+                                                                                },
+                                                                                "stage": false
+                                                                            },
+                                                                            "stage": false
+                                                                        },
+                                                                        "stage": false
+                                                                    },
+                                                                    "stage": false
+                                                                },
+                                                                "stage": false
+                                                            },
+                                                            "stage": false
+                                                        },
+                                                        "stage": false
+                                                    },
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            },
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "copy": 0
+            },
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Sprite2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": 60,
+                            "Y": 0
+                        },
+                        "next": false,
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "2c322913515e2fb8a51876fba3f836fb",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "95d9743f5638aad2dabf7126cbf698cb",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "local": 5
+            },
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "510da64cf172d53750dffd23fbf73563": {
+            "global_name": "backdrop1",
+            "extension": "png"
+        },
+        "7e924ddd03ae82392a9ec023c9060504": {
+            "global_name": "backdrop2",
+            "extension": "png"
+        },
+        "dbbd297deb8f1e79e0657c1df52f182e": {
+            "global_name": "costume1",
+            "extension": "png"
+        },
+        "b56c6816a535aa4f98ff1e5b6d326d47": {
+            "global_name": "costume2",
+            "extension": "png"
+        },
+        "2c322913515e2fb8a51876fba3f836fb": {
+            "global_name": "costume1_2",
+            "extension": "png"
+        },
+        "95d9743f5638aad2dabf7126cbf698cb": {
+            "global_name": "costume2_2",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "8ed8c60cc88247a91bc9b4c1f0cfd800": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "56fce12cd7e0ab5972da0e89daf1eb75": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    },
+    "warnings": [],
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "510da64cf172d53750dffd23fbf73563",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "7e924ddd03ae82392a9ec023c9060504",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {
+            "zero": 0,
+            "text": "abc",
+            "result": 0
+        },
+        "lists": {},
+        "monitors": [],
+        "comments": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

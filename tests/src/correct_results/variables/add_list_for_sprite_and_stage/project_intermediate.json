@@ -57,6 +57,7 @@
                     "list": "list_for_sprite"
                 }
             ],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -93,6 +94,7 @@
             "extension": "wav"
         }
     },
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [
@@ -152,6 +154,7 @@
                 "list": "list_for_stage"
             }
         ],
+        "comments": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

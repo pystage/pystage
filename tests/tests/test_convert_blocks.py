@@ -71,8 +71,9 @@ def test_point_towards_random_direction(tmp_path):
 
 
 def say_blocks(opcode, a, b):
-    return script(("a", block("looks_say", inputs={"MESSAGE": [3, "d", [10, ""]]})),
-                  ) | {"d": divide_block(opcode, a, b)}
+    reporter = divide_block(opcode, a, b)
+    reporter["parent"] = "a"
+    return script(("a", block("looks_say", inputs={"MESSAGE": [3, "d", [10, ""]]}))) | {"d": reporter}
 
 
 @pytest.mark.parametrize("opcode, operator, en, de", [
@@ -122,9 +123,11 @@ def run_code(code, tmp_path, monkeypatch):
 
 
 def test_converted_division_by_zero_runs(tmp_path, monkeypatch):
+    reporter = divide_block("operator_divide", number_input(1), number_input(0))
+    reporter["parent"] = "a"
     blocks = script(
         ("a", block("data_setvariableto", inputs={"VALUE": [3, "d", [10, ""]]}, fields={"VARIABLE": ["result", "vid"]})),
-    ) | {"d": divide_block("operator_divide", number_input(1), number_input(0))}
+    ) | {"d": reporter}
     data = project(blocks=blocks, sprite={"variables": {"vid": ["result", 0]}})
     code = convert(tmp_path, data, "en")
     namespace = run_code(code, tmp_path, monkeypatch)

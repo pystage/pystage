@@ -1,0 +1,519 @@
+{
+    "name": "looks_all",
+    "sprites": [
+        {
+            "name": "Sprite1",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "looks_sayforsecs",
+                        "params": {
+                            "MESSAGE": "\"Hello!\"",
+                            "SECS": 0.2
+                        },
+                        "next": {
+                            "opcode": "looks_say",
+                            "params": {
+                                "MESSAGE": "\"Hmm\""
+                            },
+                            "next": {
+                                "opcode": "looks_thinkforsecs",
+                                "params": {
+                                    "MESSAGE": "\"Thinking\"",
+                                    "SECS": 0.2
+                                },
+                                "next": {
+                                    "opcode": "looks_think",
+                                    "params": {
+                                        "MESSAGE": "\"Hmm...\""
+                                    },
+                                    "next": {
+                                        "opcode": "looks_switchcostumeto",
+                                        "params": {
+                                            "COSTUME": {
+                                                "opcode": "looks_costume",
+                                                "params": {
+                                                    "COSTUME": "\"costume2\""
+                                                },
+                                                "next": false,
+                                                "stage": false
+                                            }
+                                        },
+                                        "next": {
+                                            "opcode": "looks_nextcostume",
+                                            "params": {},
+                                            "next": {
+                                                "opcode": "looks_switchbackdropto",
+                                                "params": {
+                                                    "BACKDROP": {
+                                                        "opcode": "looks_backdrops",
+                                                        "params": {
+                                                            "BACKDROP": "\"backdrop2\""
+                                                        },
+                                                        "next": false,
+                                                        "stage": false
+                                                    }
+                                                },
+                                                "next": {
+                                                    "opcode": "looks_nextbackdrop",
+                                                    "params": {},
+                                                    "next": {
+                                                        "opcode": "looks_changesizeby",
+                                                        "params": {
+                                                            "CHANGE": 10
+                                                        },
+                                                        "next": {
+                                                            "opcode": "looks_setsizeto",
+                                                            "params": {
+                                                                "SIZE": 120
+                                                            },
+                                                            "next": {
+                                                                "opcode": "looks_hide",
+                                                                "params": {},
+                                                                "next": {
+                                                                    "opcode": "looks_show",
+                                                                    "params": {},
+                                                                    "next": {
+                                                                        "opcode": "looks_seteffectto",
+                                                                        "params": {
+                                                                            "EFFECT": "\"COLOR\"",
+                                                                            "VALUE": 20
+                                                                        },
+                                                                        "next": {
+                                                                            "opcode": "looks_seteffectto",
+                                                                            "params": {
+                                                                                "EFFECT": "\"FISHEYE\"",
+                                                                                "VALUE": 20
+                                                                            },
+                                                                            "next": {
+                                                                                "opcode": "looks_seteffectto",
+                                                                                "params": {
+                                                                                    "EFFECT": "\"WHIRL\"",
+                                                                                    "VALUE": 20
+                                                                                },
+                                                                                "next": {
+                                                                                    "opcode": "looks_seteffectto",
+                                                                                    "params": {
+                                                                                        "EFFECT": "\"PIXELATE\"",
+                                                                                        "VALUE": 20
+                                                                                    },
+                                                                                    "next": {
+                                                                                        "opcode": "looks_seteffectto",
+                                                                                        "params": {
+                                                                                            "EFFECT": "\"MOSAIC\"",
+                                                                                            "VALUE": 20
+                                                                                        },
+                                                                                        "next": {
+                                                                                            "opcode": "looks_seteffectto",
+                                                                                            "params": {
+                                                                                                "EFFECT": "\"BRIGHTNESS\"",
+                                                                                                "VALUE": 20
+                                                                                            },
+                                                                                            "next": {
+                                                                                                "opcode": "looks_seteffectto",
+                                                                                                "params": {
+                                                                                                    "EFFECT": "\"GHOST\"",
+                                                                                                    "VALUE": 20
+                                                                                                },
+                                                                                                "next": {
+                                                                                                    "opcode": "looks_changeeffectby",
+                                                                                                    "params": {
+                                                                                                        "EFFECT": "\"COLOR\"",
+                                                                                                        "CHANGE": 5
+                                                                                                    },
+                                                                                                    "next": {
+                                                                                                        "opcode": "looks_changeeffectby",
+                                                                                                        "params": {
+                                                                                                            "EFFECT": "\"FISHEYE\"",
+                                                                                                            "CHANGE": 5
+                                                                                                        },
+                                                                                                        "next": {
+                                                                                                            "opcode": "looks_changeeffectby",
+                                                                                                            "params": {
+                                                                                                                "EFFECT": "\"WHIRL\"",
+                                                                                                                "CHANGE": 5
+                                                                                                            },
+                                                                                                            "next": {
+                                                                                                                "opcode": "looks_changeeffectby",
+                                                                                                                "params": {
+                                                                                                                    "EFFECT": "\"PIXELATE\"",
+                                                                                                                    "CHANGE": 5
+                                                                                                                },
+                                                                                                                "next": {
+                                                                                                                    "opcode": "looks_changeeffectby",
+                                                                                                                    "params": {
+                                                                                                                        "EFFECT": "\"MOSAIC\"",
+                                                                                                                        "CHANGE": 5
+                                                                                                                    },
+                                                                                                                    "next": {
+                                                                                                                        "opcode": "looks_changeeffectby",
+                                                                                                                        "params": {
+                                                                                                                            "EFFECT": "\"BRIGHTNESS\"",
+                                                                                                                            "CHANGE": 5
+                                                                                                                        },
+                                                                                                                        "next": {
+                                                                                                                            "opcode": "looks_changeeffectby",
+                                                                                                                            "params": {
+                                                                                                                                "EFFECT": "\"GHOST\"",
+                                                                                                                                "CHANGE": 5
+                                                                                                                            },
+                                                                                                                            "next": {
+                                                                                                                                "opcode": "looks_cleargraphiceffects",
+                                                                                                                                "params": {},
+                                                                                                                                "next": {
+                                                                                                                                    "opcode": "looks_gotofrontback",
+                                                                                                                                    "params": {
+                                                                                                                                        "FRONT_BACK": "\"front\""
+                                                                                                                                    },
+                                                                                                                                    "next": {
+                                                                                                                                        "opcode": "looks_gotofrontback",
+                                                                                                                                        "params": {
+                                                                                                                                            "FRONT_BACK": "\"back\""
+                                                                                                                                        },
+                                                                                                                                        "next": {
+                                                                                                                                            "opcode": "looks_goforwardbackwardlayers",
+                                                                                                                                            "params": {
+                                                                                                                                                "FORWARD_BACKWARD": "\"forward\"",
+                                                                                                                                                "NUM": 1
+                                                                                                                                            },
+                                                                                                                                            "next": {
+                                                                                                                                                "opcode": "looks_goforwardbackwardlayers",
+                                                                                                                                                "params": {
+                                                                                                                                                    "FORWARD_BACKWARD": "\"backward\"",
+                                                                                                                                                    "NUM": 1
+                                                                                                                                                },
+                                                                                                                                                "next": {
+                                                                                                                                                    "opcode": "data_setvariableto",
+                                                                                                                                                    "params": {
+                                                                                                                                                        "VARIABLE": "\"info\"",
+                                                                                                                                                        "VALUE": {
+                                                                                                                                                            "opcode": "operator_join",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "STRING1": {
+                                                                                                                                                                    "opcode": "looks_costumenumbername",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "NUMBER_NAME": "\"name\""
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                },
+                                                                                                                                                                "STRING2": {
+                                                                                                                                                                    "opcode": "looks_costumenumbername",
+                                                                                                                                                                    "params": {
+                                                                                                                                                                        "NUMBER_NAME": "\"number\""
+                                                                                                                                                                    },
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                }
+                                                                                                                                                            },
+                                                                                                                                                            "next": false,
+                                                                                                                                                            "stage": false
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "next": {
+                                                                                                                                                        "opcode": "data_setvariableto",
+                                                                                                                                                        "params": {
+                                                                                                                                                            "VARIABLE": "\"info\"",
+                                                                                                                                                            "VALUE": {
+                                                                                                                                                                "opcode": "operator_join",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "STRING1": {
+                                                                                                                                                                        "opcode": "looks_backdropnumbername",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "NUMBER_NAME": "\"name\""
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    },
+                                                                                                                                                                    "STRING2": {
+                                                                                                                                                                        "opcode": "looks_backdropnumbername",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "NUMBER_NAME": "\"number\""
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "next": false,
+                                                                                                                                                                "stage": false
+                                                                                                                                                            }
+                                                                                                                                                        },
+                                                                                                                                                        "next": {
+                                                                                                                                                            "opcode": "looks_say",
+                                                                                                                                                            "params": {
+                                                                                                                                                                "MESSAGE": {
+                                                                                                                                                                    "opcode": "looks_size",
+                                                                                                                                                                    "params": {},
+                                                                                                                                                                    "next": false,
+                                                                                                                                                                    "stage": false
+                                                                                                                                                                }
+                                                                                                                                                            },
+                                                                                                                                                            "next": {
+                                                                                                                                                                "opcode": "looks_switchcostumeto",
+                                                                                                                                                                "params": {
+                                                                                                                                                                    "COSTUME": {
+                                                                                                                                                                        "opcode": "operator_join",
+                                                                                                                                                                        "params": {
+                                                                                                                                                                            "STRING1": "\"costume\"",
+                                                                                                                                                                            "STRING2": 1
+                                                                                                                                                                        },
+                                                                                                                                                                        "next": false,
+                                                                                                                                                                        "stage": false
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "next": false,
+                                                                                                                                                                "stage": false
+                                                                                                                                                            },
+                                                                                                                                                            "stage": false
+                                                                                                                                                        },
+                                                                                                                                                        "stage": false
+                                                                                                                                                    },
+                                                                                                                                                    "stage": false
+                                                                                                                                                },
+                                                                                                                                                "stage": false
+                                                                                                                                            },
+                                                                                                                                            "stage": false
+                                                                                                                                        },
+                                                                                                                                        "stage": false
+                                                                                                                                    },
+                                                                                                                                    "stage": false
+                                                                                                                                },
+                                                                                                                                "stage": false
+                                                                                                                            },
+                                                                                                                            "stage": false
+                                                                                                                        },
+                                                                                                                        "stage": false
+                                                                                                                    },
+                                                                                                                    "stage": false
+                                                                                                                },
+                                                                                                                "stage": false
+                                                                                                            },
+                                                                                                            "stage": false
+                                                                                                        },
+                                                                                                        "stage": false
+                                                                                                    },
+                                                                                                    "stage": false
+                                                                                                },
+                                                                                                "stage": false
+                                                                                            },
+                                                                                            "stage": false
+                                                                                        },
+                                                                                        "stage": false
+                                                                                    },
+                                                                                    "stage": false
+                                                                                },
+                                                                                "stage": false
+                                                                            },
+                                                                            "stage": false
+                                                                        },
+                                                                        "stage": false
+                                                                    },
+                                                                    "stage": false
+                                                                },
+                                                                "stage": false
+                                                            },
+                                                            "stage": false
+                                                        },
+                                                        "stage": false
+                                                    },
+                                                    "stage": false
+                                                },
+                                                "stage": false
+                                            },
+                                            "stage": false
+                                        },
+                                        "stage": false
+                                    },
+                                    "stage": false
+                                },
+                                "stage": false
+                            },
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {
+                "info": ""
+            },
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 1,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        },
+        {
+            "name": "Sprite2",
+            "blocks": [
+                {
+                    "opcode": "event_whenflagclicked",
+                    "params": {},
+                    "next": {
+                        "opcode": "motion_gotoxy",
+                        "params": {
+                            "X": -120,
+                            "Y": -80
+                        },
+                        "next": {
+                            "opcode": "looks_say",
+                            "params": {
+                                "MESSAGE": "\"I am behind\""
+                            },
+                            "next": false,
+                            "stage": false
+                        },
+                        "stage": false
+                    },
+                    "stage": false
+                }
+            ],
+            "costumes": [
+                {
+                    "md5": "2c322913515e2fb8a51876fba3f836fb",
+                    "local_name": "costume1",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "md5": "95d9743f5638aad2dabf7126cbf698cb",
+                    "local_name": "costume2",
+                    "bitmapResolution": 1,
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "md5": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "local_name": "meow"
+                }
+            ],
+            "variables": {},
+            "lists": {},
+            "monitors": [],
+            "comments": [],
+            "currentCostume": 0,
+            "layerOrder": 2,
+            "visible": true,
+            "draggable": false,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "volume": 100,
+            "direction": 90,
+            "rotationStyle": "all around"
+        }
+    ],
+    "costumes": {
+        "510da64cf172d53750dffd23fbf73563": {
+            "global_name": "backdrop1",
+            "extension": "png"
+        },
+        "7e924ddd03ae82392a9ec023c9060504": {
+            "global_name": "backdrop2",
+            "extension": "png"
+        },
+        "dbbd297deb8f1e79e0657c1df52f182e": {
+            "global_name": "costume1",
+            "extension": "png"
+        },
+        "b56c6816a535aa4f98ff1e5b6d326d47": {
+            "global_name": "costume2",
+            "extension": "png"
+        },
+        "2c322913515e2fb8a51876fba3f836fb": {
+            "global_name": "costume1_2",
+            "extension": "png"
+        },
+        "95d9743f5638aad2dabf7126cbf698cb": {
+            "global_name": "costume2_2",
+            "extension": "png"
+        }
+    },
+    "sounds": {
+        "8ed8c60cc88247a91bc9b4c1f0cfd800": {
+            "global_name": "pop",
+            "extension": "wav"
+        },
+        "56fce12cd7e0ab5972da0e89daf1eb75": {
+            "global_name": "meow",
+            "extension": "wav"
+        }
+    },
+    "warnings": [],
+    "stage": {
+        "name": "Stage",
+        "blocks": [],
+        "costumes": [
+            {
+                "md5": "510da64cf172d53750dffd23fbf73563",
+                "local_name": "backdrop1",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            },
+            {
+                "md5": "7e924ddd03ae82392a9ec023c9060504",
+                "local_name": "backdrop2",
+                "bitmapResolution": 1,
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+            }
+        ],
+        "sounds": [
+            {
+                "md5": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                "local_name": "pop"
+            }
+        ],
+        "variables": {},
+        "lists": {},
+        "monitors": [],
+        "comments": [],
+        "currentCostume": 0,
+        "layerOrder": 0,
+        "visible": true,
+        "draggable": false,
+        "x": 0,
+        "y": 0,
+        "size": 100,
+        "volume": 100,
+        "direction": 90,
+        "rotationStyle": "all around"
+    }
+}

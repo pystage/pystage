@@ -254,6 +254,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -290,6 +291,13 @@
             "extension": "wav"
         }
     },
+    "warnings": [
+        {
+            "kind": "loose_script",
+            "target": "Sprite1",
+            "message": "3 script(s) without a hat block were left out (in Scratch they only run when clicked in the editor)."
+        }
+    ],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -330,6 +338,7 @@
                 "list": "fruits"
             }
         ],
+        "comments": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

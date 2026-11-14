@@ -1,0 +1,953 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "var_stage_global": [
+                    "global",
+                    1
+                ]
+            },
+            "lists": {
+                "list_stage_fruits": [
+                    "fruits",
+                    [
+                        "apple",
+                        "banana",
+                        "cherry"
+                    ]
+                ]
+            },
+            "broadcasts": {},
+            "blocks": {
+                "stage_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "stage_2": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_4",
+                    "parent": "stage_1",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_3",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_stage_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_3": {
+                    "opcode": "data_lengthoflist",
+                    "next": null,
+                    "parent": "stage_2",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_stage_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_4": {
+                    "opcode": "data_hidelist",
+                    "next": "stage_5",
+                    "parent": "stage_2",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_stage_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_5": {
+                    "opcode": "data_showlist",
+                    "next": "stage_6",
+                    "parent": "stage_4",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_stage_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_6": {
+                    "opcode": "data_hidevariable",
+                    "next": "stage_7",
+                    "parent": "stage_5",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "global",
+                            "var_stage_global"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_7": {
+                    "opcode": "data_showvariable",
+                    "next": null,
+                    "parent": "stage_6",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "global",
+                            "var_stage_global"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {
+                "var_sprite1_local": [
+                    "local",
+                    "x"
+                ]
+            },
+            "lists": {
+                "list_sprite1_mine": [
+                    "mine",
+                    [
+                        1,
+                        2,
+                        3
+                    ]
+                ]
+            },
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_3",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "global",
+                            "var_global"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "data_changevariableby",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "global",
+                            "var_global"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_5",
+                    "parent": "sprite1_3",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            [
+                                12,
+                                "global",
+                                "var_global"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "data_showvariable",
+                    "next": "sprite1_6",
+                    "parent": "sprite1_4",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "data_hidevariable",
+                    "next": "sprite1_7",
+                    "parent": "sprite1_5",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "data_showvariable",
+                    "next": "sprite1_8",
+                    "parent": "sprite1_6",
+                    "inputs": {},
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "data_addtolist",
+                    "next": "sprite1_9",
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "date"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "data_insertatlist",
+                    "next": "sprite1_10",
+                    "parent": "sprite1_8",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ],
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "apricot"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_10": {
+                    "opcode": "data_insertatlist",
+                    "next": "sprite1_11",
+                    "parent": "sprite1_9",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                10,
+                                "last"
+                            ]
+                        ],
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "zucchini"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_11": {
+                    "opcode": "data_replaceitemoflist",
+                    "next": "sprite1_12",
+                    "parent": "sprite1_10",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "2"
+                            ]
+                        ],
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "avocado"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_12": {
+                    "opcode": "data_replaceitemoflist",
+                    "next": "sprite1_13",
+                    "parent": "sprite1_11",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                10,
+                                "random"
+                            ]
+                        ],
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "mango"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_13": {
+                    "opcode": "data_deleteoflist",
+                    "next": "sprite1_14",
+                    "parent": "sprite1_12",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_14": {
+                    "opcode": "data_deleteoflist",
+                    "next": "sprite1_15",
+                    "parent": "sprite1_13",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                10,
+                                "last"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_15": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_17",
+                    "parent": "sprite1_14",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_16",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_16": {
+                    "opcode": "data_itemoflist",
+                    "next": null,
+                    "parent": "sprite1_15",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                7,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_17": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_19",
+                    "parent": "sprite1_15",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_18",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_18": {
+                    "opcode": "data_itemoflist",
+                    "next": null,
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "INDEX": [
+                            1,
+                            [
+                                10,
+                                "random"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_19": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_21",
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_20",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_20": {
+                    "opcode": "data_itemnumoflist",
+                    "next": null,
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_21": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_23",
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_22",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "local",
+                            "var_sprite1_local"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_22": {
+                    "opcode": "data_lengthoflist",
+                    "next": null,
+                    "parent": "sprite1_21",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_23": {
+                    "opcode": "control_if",
+                    "next": "sprite1_26",
+                    "parent": "sprite1_21",
+                    "inputs": {
+                        "CONDITION": [
+                            2,
+                            "sprite1_24"
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "sprite1_25"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_24": {
+                    "opcode": "data_listcontainsitem",
+                    "next": null,
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "fruits",
+                            "list_fruits"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_25": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            [
+                                13,
+                                "fruits",
+                                "list_fruits"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_26": {
+                    "opcode": "data_showlist",
+                    "next": "sprite1_27",
+                    "parent": "sprite1_23",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_27": {
+                    "opcode": "data_hidelist",
+                    "next": "sprite1_28",
+                    "parent": "sprite1_26",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_28": {
+                    "opcode": "data_showlist",
+                    "next": "sprite1_29",
+                    "parent": "sprite1_27",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_29": {
+                    "opcode": "data_deletealloflist",
+                    "next": "sprite1_30",
+                    "parent": "sprite1_28",
+                    "inputs": {},
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_30": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "sprite1_29",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            [
+                                12,
+                                "local",
+                                "var_sprite1_local"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "mine",
+                            "list_sprite1_mine"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "var_stage_global",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "global"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "monitor_large",
+            "mode": "large",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "global"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 40,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "var_sprite1_local",
+            "mode": "slider",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "local"
+            },
+            "spriteName": "Sprite1",
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 80,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "list_stage_fruits",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "fruits"
+            },
+            "spriteName": null,
+            "value": [],
+            "width": 150,
+            "height": 100,
+            "x": 200,
+            "y": 5,
+            "visible": true
+        },
+        {
+            "id": "list_sprite1_mine",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "mine"
+            },
+            "spriteName": "Sprite1",
+            "value": [],
+            "width": 150,
+            "height": 100,
+            "x": 200,
+            "y": 150,
+            "visible": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

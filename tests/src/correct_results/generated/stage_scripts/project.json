@@ -1,0 +1,1237 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "var_stage_score": [
+                    "score",
+                    7
+                ]
+            },
+            "lists": {
+                "list_stage_log": [
+                    "log",
+                    [
+                        "start"
+                    ]
+                ]
+            },
+            "broadcasts": {
+                "broadcast_backdrop changed": "backdrop changed",
+                "broadcast_done": "done"
+            },
+            "blocks": {
+                "stage_1": {
+                    "opcode": "event_whenstageclicked",
+                    "next": "stage_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "stage_2": {
+                    "opcode": "looks_nextbackdrop",
+                    "next": "stage_3",
+                    "parent": "stage_1",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_3": {
+                    "opcode": "data_changevariableby",
+                    "next": "stage_4",
+                    "parent": "stage_2",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "score",
+                            "var_stage_score"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_4": {
+                    "opcode": "sound_play",
+                    "next": null,
+                    "parent": "stage_3",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "stage_5"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_5": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "stage_4",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "pop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_6": {
+                    "opcode": "event_whenbackdropswitchesto",
+                    "next": "stage_7",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop2",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 20
+                },
+                "stage_7": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_8",
+                    "parent": "stage_6",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "backdrop2"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_8": {
+                    "opcode": "event_broadcast",
+                    "next": null,
+                    "parent": "stage_7",
+                    "inputs": {
+                        "BROADCAST_INPUT": [
+                            1,
+                            [
+                                11,
+                                "backdrop changed",
+                                "broadcast_backdrop changed"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_9": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_10",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 170
+                },
+                "stage_10": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "stage_12",
+                    "parent": "stage_9",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_11"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_11": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_10",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_12": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "stage_14",
+                    "parent": "stage_10",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_13"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_13": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_12",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "next backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_14": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "stage_16",
+                    "parent": "stage_12",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_15"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_15": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_14",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "previous backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_16": {
+                    "opcode": "looks_switchbackdropto",
+                    "next": "stage_18",
+                    "parent": "stage_14",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_17"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_17": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_16",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "random backdrop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_18": {
+                    "opcode": "looks_switchbackdroptoandwait",
+                    "next": "stage_20",
+                    "parent": "stage_16",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_19"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_19": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_18",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_20": {
+                    "opcode": "looks_switchbackdroptoandwait",
+                    "next": "stage_22",
+                    "parent": "stage_18",
+                    "inputs": {
+                        "BACKDROP": [
+                            1,
+                            "stage_21"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_21": {
+                    "opcode": "looks_backdrops",
+                    "next": null,
+                    "parent": "stage_20",
+                    "inputs": {},
+                    "fields": {
+                        "BACKDROP": [
+                            "backdrop1",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_22": {
+                    "opcode": "looks_nextbackdrop",
+                    "next": "stage_23",
+                    "parent": "stage_20",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_23": {
+                    "opcode": "looks_seteffectto",
+                    "next": "stage_24",
+                    "parent": "stage_22",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "25"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "COLOR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_24": {
+                    "opcode": "looks_changeeffectby",
+                    "next": "stage_25",
+                    "parent": "stage_23",
+                    "inputs": {
+                        "CHANGE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "BRIGHTNESS",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_25": {
+                    "opcode": "looks_cleargraphiceffects",
+                    "next": "stage_26",
+                    "parent": "stage_24",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_26": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "stage_27",
+                    "parent": "stage_25",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "80"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_27": {
+                    "opcode": "data_setvariableto",
+                    "next": "stage_30",
+                    "parent": "stage_26",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "stage_28",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "score",
+                            "var_stage_score"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_28": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "stage_27",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "stage_29"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "score",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_29": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "stage_28",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "_stage_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_30": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_32",
+                    "parent": "stage_27",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_31",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_31": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "stage_30",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_32": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_34",
+                    "parent": "stage_30",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_33",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_33": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "stage_32",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_34": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_37",
+                    "parent": "stage_32",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_35",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_35": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "stage_34",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "stage_36"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "backdrop #",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_36": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "stage_35",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "_stage_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_37": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_40",
+                    "parent": "stage_34",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_38",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_38": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "stage_37",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "stage_39"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "backdrop name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_39": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "stage_38",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "_stage_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_40": {
+                    "opcode": "data_addtolist",
+                    "next": "stage_43",
+                    "parent": "stage_37",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_41",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_41": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "stage_40",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "stage_42"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "volume",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_42": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "stage_41",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "_stage_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_43": {
+                    "opcode": "event_broadcastandwait",
+                    "next": "stage_44",
+                    "parent": "stage_40",
+                    "inputs": {
+                        "BROADCAST_INPUT": [
+                            1,
+                            [
+                                11,
+                                "done",
+                                "broadcast_done"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_44": {
+                    "opcode": "control_stop",
+                    "next": "stage_45",
+                    "parent": "stage_43",
+                    "inputs": {},
+                    "fields": {
+                        "STOP_OPTION": [
+                            "other scripts in stage",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false,
+                    "mutation": {
+                        "tagName": "mutation",
+                        "children": [],
+                        "hasnext": "true"
+                    }
+                },
+                "stage_45": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "stage_44",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "end"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_46": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_47",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 170
+                },
+                "stage_47": {
+                    "opcode": "control_forever",
+                    "next": null,
+                    "parent": "stage_46",
+                    "inputs": {
+                        "SUBSTACK": [
+                            2,
+                            "stage_48"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_48": {
+                    "opcode": "data_changevariableby",
+                    "next": "stage_49",
+                    "parent": "stage_47",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "score",
+                            "var_stage_score"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_49": {
+                    "opcode": "control_wait",
+                    "next": null,
+                    "parent": "stage_48",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "0.1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_50": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "stage_51",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 320
+                },
+                "stage_51": {
+                    "opcode": "event_broadcastandwait",
+                    "next": null,
+                    "parent": "stage_50",
+                    "inputs": {
+                        "BROADCAST_INPUT": [
+                            1,
+                            [
+                                11,
+                                "done",
+                                "broadcast_done"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_52": {
+                    "opcode": "event_whenbroadcastreceived",
+                    "next": "stage_53",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BROADCAST_OPTION": [
+                            "done",
+                            "broadcast_done"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 320
+                },
+                "stage_53": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "stage_52",
+                    "inputs": {
+                        "ITEM": [
+                            1,
+                            [
+                                10,
+                                "done"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_54": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_55",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 470
+                },
+                "stage_55": {
+                    "opcode": "control_create_clone_of",
+                    "next": "stage_57",
+                    "parent": "stage_54",
+                    "inputs": {
+                        "CLONE_OPTION": [
+                            1,
+                            "stage_56"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_56": {
+                    "opcode": "control_create_clone_of_menu",
+                    "next": null,
+                    "parent": "stage_55",
+                    "inputs": {},
+                    "fields": {
+                        "CLONE_OPTION": [
+                            "Sprite1",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_57": {
+                    "opcode": "sensing_askandwait",
+                    "next": "stage_58",
+                    "parent": "stage_55",
+                    "inputs": {
+                        "QUESTION": [
+                            1,
+                            [
+                                10,
+                                "Name?"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_58": {
+                    "opcode": "data_addtolist",
+                    "next": null,
+                    "parent": "stage_57",
+                    "inputs": {
+                        "ITEM": [
+                            3,
+                            "stage_59",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "LIST": [
+                            "log",
+                            "list_stage_log"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_59": {
+                    "opcode": "sensing_answer",
+                    "next": null,
+                    "parent": "stage_58",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {
+                "broadcast_backdrop changed": "backdrop changed"
+            },
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenbroadcastreceived",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "BROADCAST_OPTION": [
+                            "backdrop changed",
+                            "broadcast_backdrop changed"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "looks_say",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_3",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "sprite1_2",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_5",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "looks_backdropnumbername",
+                    "next": null,
+                    "parent": "sprite1_4",
+                    "inputs": {},
+                    "fields": {
+                        "NUMBER_NAME": [
+                            "number",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "sprite1_7",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "enter",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 20
+                },
+                "sprite1_7": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "sprite1_6",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "enter"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [
+        {
+            "id": "var_stage_score",
+            "mode": "default",
+            "opcode": "data_variable",
+            "params": {
+                "VARIABLE": "score"
+            },
+            "spriteName": null,
+            "value": 0,
+            "width": 0,
+            "height": 0,
+            "x": 5,
+            "y": 5,
+            "visible": true,
+            "sliderMin": 0,
+            "sliderMax": 100,
+            "isDiscrete": true
+        },
+        {
+            "id": "list_stage_log",
+            "mode": "list",
+            "opcode": "data_listcontents",
+            "params": {
+                "LIST": "log"
+            },
+            "spriteName": null,
+            "value": [],
+            "width": 150,
+            "height": 100,
+            "x": 5,
+            "y": 40,
+            "visible": true
+        }
+    ],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

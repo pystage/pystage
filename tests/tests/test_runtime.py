@@ -660,3 +660,60 @@ def test_all_keys_of_scratch_are_known():
     import inspect
     message = [line for line in inspect.getsource(_Events.event_whenkeypressed).splitlines() if "Bad key" in line][0]
     assert "enter" in message and "enter" in KEY_MAPPINGS
+
+
+# Values that Scratch accepts but Python does not like
+
+def test_texts_and_infinity_for_numbers(stage, sprite):
+    inf = float("inf")
+    stage.create_variable("text", "abc")
+    stage.create_variable("infinite", "Infinity")
+    text, infinite = sprite.get_variable("text"), sprite.get_variable("infinite")
+    assert infinite + 1 == inf and infinite > 5 and -infinite < 5
+    assert sprite.round(inf) == inf and sprite.letter_of(inf, "abc") == ""
+    # Pen and sound blocks calculate with texts like the other blocks
+    sprite.set_pen_size_to(text)
+    sprite.change_pen_size_by("2")
+    assert sprite._core.pen_size == 3
+    sprite.set_pen_hue_to(text)
+    sprite.change_pen_brightness_by(infinite)
+    sprite.set_volume_to(text)
+    assert sprite.volume() == 0
+    sprite.change_volume_by("50")
+    assert sprite.volume() == 50
+    sprite.set_pitch_effect_to(text)
+    sprite.change_pan_left_right_effect_by(infinite)
+    sprite.set_pan_left_right_effect_to(text)
+
+
+def test_infinity_does_not_break_the_stage(stage, sprite):
+    inf = float("inf")
+    sprite.go_to_x_y(inf, -inf)
+    sprite.move(inf)
+    sprite.turn_right(inf)
+    sprite.point_in_direction(inf)
+    assert sprite.direction() == 90, "like in Scratch, an infinite direction is ignored"
+    sprite.set_size_to(inf)
+    sprite.go_forward(inf)
+    sprite.go_backward(inf)
+    for effect in ("color", "fisheye", "whirl", "pixelate", "mosaic", "brightness", "ghost"):
+        getattr(sprite, f"set_{effect}_effect_to")(inf)
+        getattr(sprite, f"change_{effect}_effect_by")(inf)
+    sprite.pen_down()
+    sprite.go_to_x_y(0, 0)
+    run(stage, frames=3)
+    assert sprite.touching_color("#ff0000") in (True, False)
+
+
+def test_colors_like_in_scratch(sprite):
+    from pystage.core.values import to_color
+    assert tuple(to_color((255, 0, 0))) == (255, 0, 0, 255)
+    assert tuple(to_color("#00ff00")) == (0, 255, 0, 255)
+    assert tuple(to_color("#f00")) == (255, 0, 0, 255)
+    assert tuple(to_color(0x0000ff)) == (0, 0, 255, 255)
+    assert tuple(to_color("16711680")) == (255, 0, 0, 255)
+    assert tuple(to_color("no color")) == (0, 0, 0, 255)
+    sprite.set_pen_color(0xff0000)
+    assert tuple(sprite._core.pen_color) == (255, 0, 0, 255)
+    sprite.set_pen_color("nonsense")
+    assert tuple(sprite._core.pen_color) == (0, 0, 0, 255)

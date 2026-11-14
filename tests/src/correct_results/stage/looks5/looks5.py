@@ -1,4 +1,9 @@
 # looks5 (pyStage, converted from Scratch 3)
+#
+# Not everything of the Scratch project could be converted:
+# - [monitor] Sprite1: The monitor for 'looks_costumenumbername' is not supported and was left out (2 monitors).
+# - [monitor] Stage: The monitor for 'looks_backdropnumbername' is not supported and was left out (2 monitors).
+# - [monitor] Sprite1: The monitor for 'looks_size' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 

@@ -62,6 +62,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -98,6 +99,18 @@
             "extension": "wav"
         }
     },
+    "warnings": [
+        {
+            "kind": "monitor",
+            "target": "Stage",
+            "message": "The monitor for 'sensing_loudness' is not supported and was left out."
+        },
+        {
+            "kind": "monitor",
+            "target": "Stage",
+            "message": "The monitor for 'sensing_timer' is not supported and was left out."
+        }
+    ],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -121,6 +134,7 @@
         },
         "lists": {},
         "monitors": [],
+        "comments": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

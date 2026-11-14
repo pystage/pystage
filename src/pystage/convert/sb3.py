@@ -11,7 +11,7 @@ from collections import OrderedDict
 from pathlib import Path
 
 from pystage.convert import CodeWriter, sb3_templates
-from pystage.convert.code_writer import py_str, identifier
+from pystage.convert.code_writer import py_str, identifier, comment_lines, clean_text, add_warning
 
 logger = logging.getLogger(__name__)
 
@@ -75,12 +75,34 @@ of blocks and parameters are simple identifiers.
 #                   ],
 #                 "variables": {"name": 0},
 #                 "lists": {"name": [1, "two"]},
+#                 "comments": ["text of a comment that is not attached to a block"],
 #                 "currentCostume": 0
 #                 },
 #
 #             ],
-#
+#         "warnings": [
+#             {"kind": "opcode", "target": "Sprite1", "message": "Block 'music_playNote' of extension 'music' is not supported ..."},
+#             ]
 #         }
+#
+# Warnings tell what could not be converted. They are collected for this
+# project only (no global state) and can be shown to the user, e.g. by the
+# web converter. Every warning has a kind, the name of the sprite or stage it
+# belongs to (None if it concerns the whole project) and a short English message.
+# All names in messages come from the project and are cleaned with clean_text.
+# kinds:
+#   opcode:       a block that is not supported (once per sprite and opcode, with a count)
+#   hat:          scripts with a hat block that is not supported, they are left out
+#   loose_script: scripts without a hat block, they are left out (count per sprite)
+#   monitor:      monitors that are not shown or shown differently
+#   comment:      comments that belong to blocks that are left out
+#   extension:    extensions of the project other than pen
+#   asset:        costumes or sounds that are missing or have an unsupported format
+#   cloud:        cloud variables (they are normal variables)
+# get_intermediate adds the warnings it finds in the project. get_python adds the
+# blocks that could not be converted and create_project adds missing asset files,
+# so use project["warnings"] after these steps. Adding them twice does not
+# duplicate warnings.
 #
 # Custom blocks:
 #   definition: {"opcode": "procedures_definition", "procedure": {"proccode": "jump %s", "args": ["height"], "warp": False}, ...}
@@ -245,21 +267,48 @@ class BlockReader:
         self.seen = set()
         # block id: [text, ...]
         self.comments = {}
+        # comments that are not attached to a block
+        self.free_comments = []
+        # blocks that have their comments written
+        self.attached = set()
+        # What is not converted: scripts without hat block, scripts with unsupported hat blocks
+        self.loose = 0
+        self.unsupported_hats = {}
         comments = target.get("comments")
         if isinstance(comments, dict):
             for comment in comments.values():
                 if isinstance(comment, dict) and isinstance(comment.get("text"), str) and comment["text"].strip():
-                    self.comments.setdefault(comment.get("blockId"), []).append(comment["text"])
+                    if isinstance(comment.get("blockId"), str) and comment["blockId"]:
+                        self.comments.setdefault(comment["blockId"], []).append(comment["text"])
+                    else:
+                        self.free_comments.append(comment["text"])
 
     def top_level_blocks(self):
         res = []
         for key, b in self.blocks.items():
-            if not isinstance(b, dict):
-                # Stuff like variables, not interesting at this point
+            if isinstance(b, list):
+                # A variable or list reporter that lies around in the workspace
+                if b and b[0] in (12, 13):
+                    self.loose += 1
                 continue
-            if b.get("opcode") in HAT_BLOCKS and not b.get("parent"):
+            if not isinstance(b, dict) or b.get("parent") or b.get("shadow") is True:
+                continue
+            opcode = b.get("opcode")
+            if opcode in HAT_BLOCKS:
                 res.append(self.stack(key))
+            elif isinstance(opcode, str) and identifier.match(opcode) and opcode.partition("_")[2].startswith("when"):
+                # Hat blocks that are not supported, e.g. when touching
+                self.unsupported_hats[opcode] = self.unsupported_hats.get(opcode, 0) + 1
+            else:
+                self.loose += 1
         return res
+
+    def lost_comments(self):
+        """The number of comments on blocks that were not converted."""
+        return sum(len(texts) for block_id, texts in self.comments.items()
+                   if block_id not in self.attached
+                   and isinstance(self.blocks.get(block_id), dict)
+                   and self.blocks[block_id].get("shadow") is not True)
 
     def stack(self, block_id, depth=0):
         '''
@@ -299,6 +348,7 @@ class BlockReader:
         })
         if block_id in self.comments:
             res["comments"] = self.comments[block_id]
+            self.attached.add(block_id)
 
         fields = block.get("fields") if isinstance(block.get("fields"), dict) else {}
         inputs = block.get("inputs") if isinstance(block.get("inputs"), dict) else {}
@@ -427,12 +477,13 @@ def get_sb3_data(file, limits=DEFAULT_LIMITS):
     return data
 
 
-def _assets(target, key, formats, registry, global_names):
+def _assets(project, target_name, target, key, formats, registry, global_names):
     '''
     Collects the costumes or sounds of a target.
     '''
     res = []
     entries = target.get(key)
+    what = "Costume" if key == "costumes" else "Sound"
     for entry in entries if isinstance(entries, list) else []:
         if not isinstance(entry, dict):
             continue
@@ -441,8 +492,11 @@ def _assets(target, key, formats, registry, global_names):
         name = entry.get("name")
         # The asset id is the name of the file in the sb3 file.
         if not isinstance(asset_id, str) or not re.fullmatch(r"[0-9a-zA-Z]{1,64}", asset_id):
+            add_warning(project, "asset", target_name, f"{what} '{clean_text(name)}' has no valid file and was left out.")
             continue
         if data_format not in formats or not isinstance(name, str):
+            add_warning(project, "asset", target_name,
+                        f"{what} '{clean_text(name)}' has an unsupported format ('{clean_text(data_format, 20)}') and was left out.")
             continue
         if asset_id not in registry:
             global_name, ext = unique_global_name(to_filename(name), data_format, global_names)
@@ -463,6 +517,21 @@ def _assets(target, key, formats, registry, global_names):
     return res
 
 
+def warn_about_blocks(project, name, reader):
+    '''
+    Reports what the reader found in the blocks of a target and did not convert.
+    '''
+    for opcode, count in reader.unsupported_hats.items():
+        times = f" ({count} scripts)" if count > 1 else ""
+        add_warning(project, "hat", name, f"Scripts with the hat block '{opcode}' are not supported and were left out{times}.")
+    if reader.loose:
+        add_warning(project, "loose_script", name,
+                    f"{reader.loose} script(s) without a hat block were left out (in Scratch they only run when clicked in the editor).")
+    lost = reader.lost_comments()
+    if lost:
+        add_warning(project, "comment", name, f"{lost} comment(s) belong to blocks that were left out.")
+
+
 def get_intermediate(data, name, limits=DEFAULT_LIMITS):
     project = DictClass()
     project.update({
@@ -470,6 +539,7 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
         "sprites": [],
         "costumes": {},
         "sounds": {},
+        "warnings": [],
     })
     # Used to check for duplicate file names
     global_names = set()
@@ -492,6 +562,7 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
                 "variables": {}, # name: value
                 "lists": {}, # name: [value, ...]
                 "monitors": [],
+                "comments": [],
                 "currentCostume": 0,
                 "layerOrder": number(target.get("layerOrder"), 0),
                 "visible": target.get("visible") is not False,
@@ -511,8 +582,10 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
                 project["sprites"].append(sprite)
             reader = BlockReader(target, is_stage, limits)
             sprite["blocks"] = reader.top_level_blocks()
-            sprite["costumes"] = _assets(target, "costumes", IMAGE_FORMATS, project["costumes"], global_names)
-            sprite["sounds"] = _assets(target, "sounds", SOUND_FORMATS, project["sounds"], global_names)
+            sprite["comments"] = reader.free_comments
+            warn_about_blocks(project, sprite["name"], reader)
+            sprite["costumes"] = _assets(project, sprite["name"], target, "costumes", IMAGE_FORMATS, project["costumes"], global_names)
+            sprite["sounds"] = _assets(project, sprite["name"], target, "sounds", SOUND_FORMATS, project["sounds"], global_names)
             current = number(target.get("currentCostume"), 0)
             if isinstance(current, int) and 0 <= current < len(sprite["costumes"]):
                 sprite["currentCostume"] = current
@@ -520,6 +593,9 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
             for v in variables.values() if isinstance(variables, dict) else []:
                 if isinstance(v, list) and len(v) >= 2 and isinstance(v[0], str):
                     sprite["variables"][v[0]] = v[1] if isinstance(v[1], (int, float, str, bool)) else 0
+                    if len(v) >= 3 and v[2] is True:
+                        add_warning(project, "cloud", sprite["name"],
+                                    f"Cloud variable '{clean_text(v[0])}' is a normal variable, it is not stored online.")
             lists = target.get("lists")
             for v in lists.values() if isinstance(lists, dict) else []:
                 if isinstance(v, list) and len(v) >= 2 and isinstance(v[0], str) and isinstance(v[1], list):
@@ -531,6 +607,13 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
         raise ConversionError("The project has no stage.")
     project["sprites"].sort(key=lambda sprite: sprite["layerOrder"])
 
+    extensions = data.get("extensions")
+    for extension in extensions if isinstance(extensions, list) else []:
+        if extension != "pen":
+            add_warning(project, "extension", None, f"The extension '{clean_text(extension)}' is not supported.")
+
+    # (target, opcode): count
+    unsupported_monitors = {}
     monitors = data.get("monitors")
     for m in monitors if isinstance(monitors, list) else []:
         if not isinstance(m, dict) or not m.get("visible") or not isinstance(m.get("params"), dict):
@@ -550,12 +633,21 @@ def get_intermediate(data, name, limits=DEFAULT_LIMITS):
         }
         if m.get("opcode") == "data_variable" and isinstance(m["params"].get("VARIABLE"), str):
             monitor["variable"] = m["params"]["VARIABLE"]
+            if monitor["style"] == "slider":
+                add_warning(project, "monitor", sprite["name"],
+                            f"The slider of variable '{clean_text(monitor['variable'])}' is shown as a normal monitor.")
         elif m.get("opcode") == "data_listcontents" and isinstance(m["params"].get("LIST"), str):
             monitor["list"] = m["params"]["LIST"]
         else:
             # Only monitors for variables and lists are implemented
+            opcode = m.get("opcode")
+            opcode = opcode if isinstance(opcode, str) and identifier.match(opcode) else "unknown"
+            unsupported_monitors[(sprite["name"], opcode)] = unsupported_monitors.get((sprite["name"], opcode), 0) + 1
             continue
         sprite["monitors"].append(monitor)
+    for (target, opcode), count in unsupported_monitors.items():
+        times = f" ({count} monitors)" if count > 1 else ""
+        add_warning(project, "monitor", target, f"The monitor for '{opcode}' is not supported and was left out{times}.")
 
     return project
 
@@ -581,11 +673,11 @@ def get_python(project, language="core", project_link=None):
     if writer.uses_no_refresh() and writer.get_no_refresh_name():
         imports.append(writer.get_no_refresh_name())
 
-    lines = []
+    header = []
     if project_link:
-        lines.append(f"# Online Converter, URL: {re.sub(r'[^A-Za-z0-9:/._?=&%-]', '', str(project_link))}")
-    lines += [
-        f"# {project['name']} (pyStage, converted from Scratch 3)",
+        header.append(f"# Online Converter, URL: {re.sub(r'[^A-Za-z0-9:/._?=&%-]', '', str(project_link))}")
+    header.append(f"# {project['name']} (pyStage, converted from Scratch 3)")
+    lines = [
         "",
         f"from pystage.{language} import {', '.join(imports)}",
         "",
@@ -637,6 +729,9 @@ def get_python(project, language="core", project_link=None):
         '''
         writer.set_sprite(sprite["name"])
         res = ""
+        # Comments that are not attached to a block
+        for comment in sprite.get("comments", []):
+            res += comment_lines(f"Comment: {comment}")
         blocks = sorted(sprite["blocks"], key=lambda block: block["opcode"] != "procedures_definition")
         for block in blocks:
             res += writer.process_stack(block)
@@ -686,11 +781,50 @@ def get_python(project, language="core", project_link=None):
     # At most two blank lines in a row
     res = re.sub(r"\n{4,}", "\n\n\n", res).rstrip("\n")
     res += f"\n\nstage.{fn('pystage_play', True)}()\n"
-    return res
+
+    # What could not be converted is reported in the header
+    writer.add_warnings()
+    return "\n".join(header) + "\n" + warning_comments(project) + res
+
+
+def format_warning(warning):
+    '''
+    A warning as single line of text.
+    '''
+    target = f" {warning['target']}:" if warning["target"] else ""
+    return f"[{warning['kind']}]{target} {warning['message']}"
+
+
+def warning_comments(project, limit=100):
+    '''
+    The warnings of the project as comment lines, an empty text if there are none.
+    '''
+    warnings = project.get("warnings", [])
+    if not warnings:
+        return ""
+    text = "#\n# Not everything of the Scratch project could be converted:\n"
+    for warning in warnings[:limit]:
+        text += comment_lines(f"- {format_warning(warning)}")
+    if len(warnings) > limit:
+        text += f"# - ... and {len(warnings) - limit} more.\n"
+    return text
 
 
 def print_python(project, language="core"):
     print(get_python(project, language))
+
+
+def print_warnings(project, file=None):
+    '''
+    Prints the warnings of a project to stderr.
+    '''
+    file = file or sys.stderr
+    warnings = project.get("warnings", [])
+    if warnings:
+        print(f"Not everything could be converted ({len(warnings)} warnings):", file=file)
+    for warning in warnings:
+        # The text can come from the project: no control characters in the terminal
+        print("  " + clean_text(format_warning(warning), 300), file=file)
 
 
 def create_project(file_name, project_name, project, directory, language="core", project_link=None, limits=DEFAULT_LIMITS):
@@ -700,6 +834,14 @@ def create_project(file_name, project_name, project, directory, language="core",
     logger.info(f"Creating project: {project_name}")
     logger.info(f"Exporting to: {directory}")
     project_name = to_filename(project_name)
+    # Missing files are reported in the generated code, so look for them first.
+    with zipfile.ZipFile(file_name, 'r') as archive:
+        names = set(archive.namelist())
+    for assets in (project["costumes"], project["sounds"]):
+        for key, asset in assets.items():
+            if f'{key}.{asset["extension"]}' not in names:
+                add_warning(project, "asset", None,
+                            f"The file {clean_text(asset['global_name'])}.{asset['extension']} is missing in the project file.")
     # Create the code first, so that nothing is written if this fails.
     code = get_python(project, language=language, project_link=project_link)
     dp = Path(directory)
@@ -768,6 +910,7 @@ def main(argv=None):
             return 0
         if args.python:
             print_python(project, args.language)
+            print_warnings(project)
             return 0
         directory = args.directory if args.directory else project_name
         print(f"Exporting to: {directory}")
@@ -781,6 +924,7 @@ def main(argv=None):
         if dp.exists():
             dp.rmdir()
         create_project(args.file, project_name, project, directory, args.language)
+        print_warnings(project)
     except ConversionError as e:
         print(f"Conversion failed: {e}")
         return 1

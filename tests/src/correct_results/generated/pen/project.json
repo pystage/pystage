@@ -1,0 +1,1011 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "stage_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "stage_2": {
+                    "opcode": "control_wait",
+                    "next": "stage_3",
+                    "parent": "stage_1",
+                    "inputs": {
+                        "DURATION": [
+                            1,
+                            [
+                                5,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_3": {
+                    "opcode": "pen_clear",
+                    "next": null,
+                    "parent": "stage_2",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_4": {
+                    "opcode": "event_whenstageclicked",
+                    "next": "stage_5",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 20
+                },
+                "stage_5": {
+                    "opcode": "pen_clear",
+                    "next": null,
+                    "parent": "stage_4",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "pen_clear",
+                    "next": "sprite1_3",
+                    "parent": "sprite1_1",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "motion_gotoxy",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "-150"
+                            ]
+                        ],
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "pen_setPenColorToColor",
+                    "next": "sprite1_5",
+                    "parent": "sprite1_3",
+                    "inputs": {
+                        "COLOR": [
+                            1,
+                            [
+                                9,
+                                "#ff0000"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "pen_setPenSizeTo",
+                    "next": "sprite1_6",
+                    "parent": "sprite1_4",
+                    "inputs": {
+                        "SIZE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "pen_penDown",
+                    "next": "sprite1_7",
+                    "parent": "sprite1_5",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "motion_movesteps",
+                    "next": "sprite1_8",
+                    "parent": "sprite1_6",
+                    "inputs": {
+                        "STEPS": [
+                            1,
+                            [
+                                4,
+                                "40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "pen_changePenColorParamBy",
+                    "next": "sprite1_10",
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_9"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_8",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "color",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_10": {
+                    "opcode": "pen_changePenColorParamBy",
+                    "next": "sprite1_12",
+                    "parent": "sprite1_8",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_11"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_11": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_10",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "saturation",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_12": {
+                    "opcode": "pen_changePenColorParamBy",
+                    "next": "sprite1_14",
+                    "parent": "sprite1_10",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_13"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_13": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_12",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "brightness",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_14": {
+                    "opcode": "pen_changePenColorParamBy",
+                    "next": "sprite1_16",
+                    "parent": "sprite1_12",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_15"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_15": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_14",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "transparency",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_16": {
+                    "opcode": "motion_movesteps",
+                    "next": "sprite1_17",
+                    "parent": "sprite1_14",
+                    "inputs": {
+                        "STEPS": [
+                            1,
+                            [
+                                4,
+                                "40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_17": {
+                    "opcode": "pen_setPenColorParamTo",
+                    "next": "sprite1_19",
+                    "parent": "sprite1_16",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_18"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "50"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_18": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_17",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "color",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_19": {
+                    "opcode": "pen_setPenColorParamTo",
+                    "next": "sprite1_21",
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_20"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "50"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_20": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_19",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "saturation",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_21": {
+                    "opcode": "pen_setPenColorParamTo",
+                    "next": "sprite1_23",
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_22"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "50"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_22": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_21",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "brightness",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_23": {
+                    "opcode": "pen_setPenColorParamTo",
+                    "next": "sprite1_25",
+                    "parent": "sprite1_21",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_24"
+                        ],
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "50"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_24": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_23",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "transparency",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_25": {
+                    "opcode": "pen_changePenSizeBy",
+                    "next": "sprite1_26",
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "SIZE": [
+                            1,
+                            [
+                                4,
+                                "3"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_26": {
+                    "opcode": "motion_movesteps",
+                    "next": "sprite1_27",
+                    "parent": "sprite1_25",
+                    "inputs": {
+                        "STEPS": [
+                            1,
+                            [
+                                4,
+                                "40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_27": {
+                    "opcode": "pen_stamp",
+                    "next": "sprite1_28",
+                    "parent": "sprite1_26",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_28": {
+                    "opcode": "pen_penUp",
+                    "next": "sprite1_29",
+                    "parent": "sprite1_27",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_29": {
+                    "opcode": "motion_movesteps",
+                    "next": "sprite1_30",
+                    "parent": "sprite1_28",
+                    "inputs": {
+                        "STEPS": [
+                            1,
+                            [
+                                4,
+                                "40"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_30": {
+                    "opcode": "pen_setPenColorToColor",
+                    "next": "sprite1_32",
+                    "parent": "sprite1_29",
+                    "inputs": {
+                        "COLOR": [
+                            3,
+                            "sprite1_31",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_31": {
+                    "opcode": "operator_random",
+                    "next": null,
+                    "parent": "sprite1_30",
+                    "inputs": {
+                        "FROM": [
+                            1,
+                            [
+                                4,
+                                "0"
+                            ]
+                        ],
+                        "TO": [
+                            1,
+                            [
+                                4,
+                                "16777215"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_32": {
+                    "opcode": "pen_setPenColorToColor",
+                    "next": "sprite1_34",
+                    "parent": "sprite1_30",
+                    "inputs": {
+                        "COLOR": [
+                            3,
+                            "sprite1_33",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_33": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_32",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "#00"
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                "ff00"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_34": {
+                    "opcode": "pen_setPenSizeTo",
+                    "next": "sprite1_36",
+                    "parent": "sprite1_32",
+                    "inputs": {
+                        "SIZE": [
+                            3,
+                            "sprite1_35",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_35": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_34",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "-1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "sqrt",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_36": {
+                    "opcode": "pen_changePenSizeBy",
+                    "next": "sprite1_38",
+                    "parent": "sprite1_34",
+                    "inputs": {
+                        "SIZE": [
+                            3,
+                            "sprite1_37",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_37": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_36",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "1"
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_38": {
+                    "opcode": "pen_setPenColorParamTo",
+                    "next": "sprite1_41",
+                    "parent": "sprite1_36",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_39"
+                        ],
+                        "VALUE": [
+                            3,
+                            "sprite1_40",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_39": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_38",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "color",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_40": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_38",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "2"
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_41": {
+                    "opcode": "pen_changePenColorParamBy",
+                    "next": "sprite1_44",
+                    "parent": "sprite1_38",
+                    "inputs": {
+                        "COLOR_PARAM": [
+                            1,
+                            "sprite1_42"
+                        ],
+                        "VALUE": [
+                            3,
+                            "sprite1_43",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_42": {
+                    "opcode": "pen_menu_colorParam",
+                    "next": null,
+                    "parent": "sprite1_41",
+                    "inputs": {},
+                    "fields": {
+                        "colorParam": [
+                            "brightness",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_43": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_41",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "-1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "sqrt",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_44": {
+                    "opcode": "pen_setPenColorToColor",
+                    "next": "sprite1_45",
+                    "parent": "sprite1_41",
+                    "inputs": {
+                        "COLOR": [
+                            1,
+                            [
+                                9,
+                                "#00aa44"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_45": {
+                    "opcode": "pen_penDown",
+                    "next": "sprite1_46",
+                    "parent": "sprite1_44",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_46": {
+                    "opcode": "control_repeat",
+                    "next": "sprite1_49",
+                    "parent": "sprite1_45",
+                    "inputs": {
+                        "TIMES": [
+                            1,
+                            [
+                                6,
+                                "4"
+                            ]
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "sprite1_47"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_47": {
+                    "opcode": "motion_movesteps",
+                    "next": "sprite1_48",
+                    "parent": "sprite1_46",
+                    "inputs": {
+                        "STEPS": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_48": {
+                    "opcode": "motion_turnright",
+                    "next": null,
+                    "parent": "sprite1_47",
+                    "inputs": {
+                        "DEGREES": [
+                            1,
+                            [
+                                8,
+                                "90"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_49": {
+                    "opcode": "pen_penUp",
+                    "next": null,
+                    "parent": "sprite1_46",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [
+        "pen"
+    ],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

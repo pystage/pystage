@@ -27,8 +27,8 @@ class _Operators():
 
     def operator_letter_of(self, letter, string):
         string = to_string(string)
-        index = int(to_number(letter))
-        if index < 1 or index > len(string):
+        index = to_number(letter)
+        if math.isinf(index) or index < 1 or index > len(string):
             return Text("")
         return Text(string[index - 1])
 
@@ -50,7 +50,10 @@ class _Operators():
 
     def operator_round(self, number):
         # Scratch always rounds .5 up, Python rounds to the even number.
-        return math.floor(to_number(number) + 0.5)
+        number = to_number(number)
+        if math.isinf(number):
+            return number
+        return math.floor(number + 0.5)
 
     def operator_mathop(self, operator, number): 
         ops = {

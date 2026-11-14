@@ -1,6 +1,7 @@
 import pygame
 from pystage.core.assets import SoundManager
 from pystage.core._base_sprite import BaseSprite
+from pystage.core.values import to_number
 
 
 class _Sound(BaseSprite):
@@ -64,7 +65,7 @@ class _Sound(BaseSprite):
             pygame.mixer.stop()
 
     def sound_changeeffectby_pitch(self, value):
-        self.sound_seteffectto_pitch(self.current_pitch + value)
+        self.sound_seteffectto_pitch(self.current_pitch + to_number(value))
 
     sound_changeeffectby_pitch.opcode = "sound_changeeffectby"
     sound_changeeffectby_pitch.param = "EFFECT"
@@ -72,7 +73,7 @@ class _Sound(BaseSprite):
     sound_changeeffectby_pitch.translation = "sound_effects_pitch"
 
     def sound_changeeffectby_pan(self, value):
-        self.sound_seteffectto_pan(self.current_pan + value)
+        self.sound_seteffectto_pan(self.current_pan + to_number(value))
 
     sound_changeeffectby_pan.opcode = "sound_changeeffectby"
     sound_changeeffectby_pan.param = "EFFECT"
@@ -82,7 +83,7 @@ class _Sound(BaseSprite):
     def sound_seteffectto_pitch(self, value):
         # -360 to 360, 10 is a half-step, 120 an octave.
         # The pitch is used for sounds that are started from now on.
-        self.current_pitch = min(360, max(-360, value))
+        self.current_pitch = min(360, max(-360, to_number(value)))
 
     sound_seteffectto_pitch.opcode = "sound_seteffectto"
     sound_seteffectto_pitch.param = "EFFECT"
@@ -91,7 +92,7 @@ class _Sound(BaseSprite):
 
     def sound_seteffectto_pan(self, value):
         # Values from -100 (left) to 100 (right)
-        self.current_pan = min(100, max(-100, value))
+        self.current_pan = min(100, max(-100, to_number(value)))
         self._apply()
 
     sound_seteffectto_pan.opcode = "sound_seteffectto"
@@ -114,10 +115,10 @@ class _Sound(BaseSprite):
             c.set_volume(left, right)
 
     def sound_changevolumeby(self, value):
-        self.sound_setvolumeto(self.current_volume + value)
+        self.sound_setvolumeto(self.current_volume + to_number(value))
 
     def sound_setvolumeto(self, value):
-        self.current_volume = min(100, max(0, value))
+        self.current_volume = min(100, max(0, to_number(value)))
         self._apply()
 
     def sound_volume(self):

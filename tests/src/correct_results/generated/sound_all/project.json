@@ -1,0 +1,542 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "var_stage_loud": [
+                    "loud",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "stage_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "stage_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "stage_2": {
+                    "opcode": "sound_playuntildone",
+                    "next": "stage_4",
+                    "parent": "stage_1",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "stage_3"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_3": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "stage_2",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "pop",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "stage_4": {
+                    "opcode": "sound_seteffectto",
+                    "next": "stage_5",
+                    "parent": "stage_2",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "20"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PAN",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_5": {
+                    "opcode": "sound_changeeffectby",
+                    "next": "stage_6",
+                    "parent": "stage_4",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PITCH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_6": {
+                    "opcode": "sound_cleareffects",
+                    "next": "stage_7",
+                    "parent": "stage_5",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_7": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "stage_8",
+                    "parent": "stage_6",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_8": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "stage_9",
+                    "parent": "stage_7",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "50"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_9": {
+                    "opcode": "data_setvariableto",
+                    "next": "stage_11",
+                    "parent": "stage_8",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "stage_10",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "loud",
+                            "var_stage_loud"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_10": {
+                    "opcode": "sound_volume",
+                    "next": null,
+                    "parent": "stage_9",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "stage_11": {
+                    "opcode": "sound_stopallsounds",
+                    "next": null,
+                    "parent": "stage_9",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "sound_play",
+                    "next": "sprite1_4",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "sprite1_3"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "sprite1_2",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "sound_playuntildone",
+                    "next": "sprite1_6",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "sprite1_5"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "sprite1_4",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "sound_seteffectto",
+                    "next": "sprite1_7",
+                    "parent": "sprite1_4",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "100"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PITCH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "sound_seteffectto",
+                    "next": "sprite1_8",
+                    "parent": "sprite1_6",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "-50"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PAN",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "sound_changeeffectby",
+                    "next": "sprite1_9",
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PITCH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "sound_changeeffectby",
+                    "next": "sprite1_10",
+                    "parent": "sprite1_8",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "EFFECT": [
+                            "PAN",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_10": {
+                    "opcode": "sound_cleareffects",
+                    "next": "sprite1_11",
+                    "parent": "sprite1_9",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_11": {
+                    "opcode": "sound_changevolumeby",
+                    "next": "sprite1_12",
+                    "parent": "sprite1_10",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "-10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_12": {
+                    "opcode": "sound_setvolumeto",
+                    "next": "sprite1_13",
+                    "parent": "sprite1_11",
+                    "inputs": {
+                        "VOLUME": [
+                            1,
+                            [
+                                4,
+                                "70"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_13": {
+                    "opcode": "looks_say",
+                    "next": "sprite1_15",
+                    "parent": "sprite1_12",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_14",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_14": {
+                    "opcode": "sound_volume",
+                    "next": null,
+                    "parent": "sprite1_13",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_15": {
+                    "opcode": "sound_play",
+                    "next": "sprite1_17",
+                    "parent": "sprite1_13",
+                    "inputs": {
+                        "SOUND_MENU": [
+                            1,
+                            "sprite1_16"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_16": {
+                    "opcode": "sound_sounds_menu",
+                    "next": null,
+                    "parent": "sprite1_15",
+                    "inputs": {},
+                    "fields": {
+                        "SOUND_MENU": [
+                            "meow",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_17": {
+                    "opcode": "sound_stopallsounds",
+                    "next": null,
+                    "parent": "sprite1_15",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

@@ -15,6 +15,7 @@ sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
 
 # Scratch Blocks for 'sprite1'
+# Comment: comment for sprite1
 
 def when_program_starts_1(self):
     # comment for say hello

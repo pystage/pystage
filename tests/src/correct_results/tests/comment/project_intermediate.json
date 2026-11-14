@@ -69,6 +69,10 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [
+                "comment for sprite1\nmultiline",
+                "comment2 for sprite1"
+            ],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -105,6 +109,7 @@
             "extension": "wav"
         }
     },
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -128,6 +133,9 @@
         },
         "lists": {},
         "monitors": [],
+        "comments": [
+            "comment for backdrop1"
+        ],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,

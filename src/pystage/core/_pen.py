@@ -1,5 +1,6 @@
 import pygame
 from pystage.core._base_sprite import BaseSprite
+from pystage.core.values import to_color, to_number
 
 
 
@@ -57,12 +58,13 @@ class _Pen(_PenStage):
 
     def pen_setPenColorToColor(self, color):
         # A new object, clones must not share the color with the original
-        self.pen_color = pygame.Color(color)
+        self.pen_color = to_color(color)
 
     pen_setPenColorToColor.translation = "pen_setcolor"
 
 
     def pen_changePenColorParamBy_color(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[0] = (hsva[0] + (value * 3.6)) % 360
         self.pen_color.hsva = hsva
@@ -77,6 +79,7 @@ class _Pen(_PenStage):
 
 
     def pen_changePenColorParamBy_saturation(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[1] = (hsva[1] + (value)) % 100
         self.pen_color.hsva = hsva
@@ -90,6 +93,7 @@ class _Pen(_PenStage):
     
 
     def pen_changePenColorParamBy_brightness(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[2] = (hsva[2] + (value)) % 100
         self.pen_color.hsva = hsva
@@ -103,6 +107,7 @@ class _Pen(_PenStage):
     
 
     def pen_changePenColorParamBy_transparency(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[3] = 100 - (((100 - hsva[3]) + (value)) % 100)
         self.pen_color.hsva = hsva
@@ -116,6 +121,7 @@ class _Pen(_PenStage):
 
 
     def pen_setPenColorParamTo_color(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[0] = (value * 3.6) % 360 
         self.pen_color.hsva = hsva
@@ -130,6 +136,7 @@ class _Pen(_PenStage):
 
 
     def pen_setPenColorParamTo_saturation(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[1] = value % 100
         self.pen_color.hsva = hsva
@@ -143,6 +150,7 @@ class _Pen(_PenStage):
     
 
     def pen_setPenColorParamTo_brightness(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[2] = value % 100
         self.pen_color.hsva = hsva
@@ -156,6 +164,7 @@ class _Pen(_PenStage):
     
 
     def pen_setPenColorParamTo_transparency(self, value):
+        value = to_number(value)
         hsva = list(self.pen_color.hsva)
         hsva[3] = 100 - (value % 100)
         self.pen_color.hsva = hsva
@@ -169,11 +178,11 @@ class _Pen(_PenStage):
 
 
     def pen_changePenSizeBy(self, value):
-        self.pen_size = max(1, self.pen_size + value)
+        self.pen_size = max(1, self.pen_size + to_number(value))
 
     pen_changePenSizeBy.translation = "pen_changesize"
 
     def pen_setPenSizeTo(self, value):
-        self.pen_size = max(1, value)
+        self.pen_size = max(1, to_number(value))
 
     pen_setPenSizeTo.translation = "pen_setsize"

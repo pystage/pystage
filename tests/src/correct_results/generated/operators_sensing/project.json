@@ -1,0 +1,3673 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "var_stage_zero": [
+                    "zero",
+                    0
+                ],
+                "var_stage_text": [
+                    "text",
+                    "abc"
+                ],
+                "var_stage_result": [
+                    "result",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "png",
+                    "assetId": "510da64cf172d53750dffd23fbf73563",
+                    "md5ext": "510da64cf172d53750dffd23fbf73563.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                },
+                {
+                    "name": "backdrop2",
+                    "dataFormat": "png",
+                    "assetId": "7e924ddd03ae82392a9ec023c9060504",
+                    "md5ext": "7e924ddd03ae82392a9ec023c9060504.png",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "8ed8c60cc88247a91bc9b4c1f0cfd800",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 500,
+                    "md5ext": "8ed8c60cc88247a91bc9b4c1f0cfd800.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {
+                "var_sprite1_copy": [
+                    "copy",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite1_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite1_2": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_5",
+                    "parent": "sprite1_1",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_3",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_3": {
+                    "opcode": "operator_add",
+                    "next": null,
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            "sprite1_4",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_4": {
+                    "opcode": "operator_subtract",
+                    "next": null,
+                    "parent": "sprite1_3",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_5": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_7",
+                    "parent": "sprite1_2",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_6",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_6": {
+                    "opcode": "operator_multiply",
+                    "next": null,
+                    "parent": "sprite1_5",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "3"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "4"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_7": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_9",
+                    "parent": "sprite1_5",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_8",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_8": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "4"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_9": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_11",
+                    "parent": "sprite1_7",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_10",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_10": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "sprite1_9",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_11": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_13",
+                    "parent": "sprite1_9",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_12",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_12": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "sprite1_11",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            [
+                                12,
+                                "zero",
+                                "var_zero"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_13": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_15",
+                    "parent": "sprite1_11",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_14",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_14": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "sprite1_13",
+                    "inputs": {
+                        "NUM1": [
+                            3,
+                            [
+                                12,
+                                "text",
+                                "var_text"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_15": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_17",
+                    "parent": "sprite1_13",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_16",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_16": {
+                    "opcode": "operator_mod",
+                    "next": null,
+                    "parent": "sprite1_15",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "3"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_17": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_19",
+                    "parent": "sprite1_15",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_18",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_18": {
+                    "opcode": "operator_mod",
+                    "next": null,
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "-7"
+                            ]
+                        ],
+                        "NUM2": [
+                            1,
+                            [
+                                4,
+                                "3"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_19": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_21",
+                    "parent": "sprite1_17",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_20",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_20": {
+                    "opcode": "operator_mod",
+                    "next": null,
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            [
+                                12,
+                                "zero",
+                                "var_zero"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_21": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_23",
+                    "parent": "sprite1_19",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_22",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_22": {
+                    "opcode": "operator_random",
+                    "next": null,
+                    "parent": "sprite1_21",
+                    "inputs": {
+                        "FROM": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "TO": [
+                            1,
+                            [
+                                4,
+                                "10"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_23": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_25",
+                    "parent": "sprite1_21",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_24",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_24": {
+                    "opcode": "operator_random",
+                    "next": null,
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "FROM": [
+                            1,
+                            [
+                                4,
+                                "0.5"
+                            ]
+                        ],
+                        "TO": [
+                            1,
+                            [
+                                4,
+                                "2.5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_25": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_27",
+                    "parent": "sprite1_23",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_26",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_26": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_25",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "apple "
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                "banana"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_27": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_29",
+                    "parent": "sprite1_25",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_28",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_28": {
+                    "opcode": "operator_letter_of",
+                    "next": null,
+                    "parent": "sprite1_27",
+                    "inputs": {
+                        "LETTER": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ],
+                        "STRING": [
+                            1,
+                            [
+                                10,
+                                "apple"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_29": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_31",
+                    "parent": "sprite1_27",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_30",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_30": {
+                    "opcode": "operator_length",
+                    "next": null,
+                    "parent": "sprite1_29",
+                    "inputs": {
+                        "STRING": [
+                            1,
+                            [
+                                10,
+                                "apple"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_31": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_33",
+                    "parent": "sprite1_29",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_32",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_32": {
+                    "opcode": "operator_contains",
+                    "next": null,
+                    "parent": "sprite1_31",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "apple"
+                            ]
+                        ],
+                        "STRING2": [
+                            1,
+                            [
+                                10,
+                                "PP"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_33": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_35",
+                    "parent": "sprite1_31",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_34",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_34": {
+                    "opcode": "operator_round",
+                    "next": null,
+                    "parent": "sprite1_33",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "2.5"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_35": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_37",
+                    "parent": "sprite1_33",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_36",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_36": {
+                    "opcode": "operator_gt",
+                    "next": null,
+                    "parent": "sprite1_35",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                4,
+                                "5"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                4,
+                                "3"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_37": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_39",
+                    "parent": "sprite1_35",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_38",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_38": {
+                    "opcode": "operator_lt",
+                    "next": null,
+                    "parent": "sprite1_37",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                10,
+                                "apple"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                10,
+                                "Banana"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_39": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_41",
+                    "parent": "sprite1_37",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_40",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_40": {
+                    "opcode": "operator_equals",
+                    "next": null,
+                    "parent": "sprite1_39",
+                    "inputs": {
+                        "OPERAND1": [
+                            3,
+                            [
+                                12,
+                                "text",
+                                "var_text"
+                            ],
+                            [
+                                10,
+                                ""
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                10,
+                                "ABC"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_41": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_45",
+                    "parent": "sprite1_39",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_42",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_42": {
+                    "opcode": "operator_and",
+                    "next": null,
+                    "parent": "sprite1_41",
+                    "inputs": {
+                        "OPERAND1": [
+                            2,
+                            "sprite1_43"
+                        ],
+                        "OPERAND2": [
+                            2,
+                            "sprite1_44"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_43": {
+                    "opcode": "operator_gt",
+                    "next": null,
+                    "parent": "sprite1_42",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_44": {
+                    "opcode": "operator_lt",
+                    "next": null,
+                    "parent": "sprite1_42",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_45": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_49",
+                    "parent": "sprite1_41",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_46",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_46": {
+                    "opcode": "operator_or",
+                    "next": null,
+                    "parent": "sprite1_45",
+                    "inputs": {
+                        "OPERAND1": [
+                            2,
+                            "sprite1_47"
+                        ],
+                        "OPERAND2": [
+                            2,
+                            "sprite1_48"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_47": {
+                    "opcode": "operator_equals",
+                    "next": null,
+                    "parent": "sprite1_46",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                4,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_48": {
+                    "opcode": "sensing_mousedown",
+                    "next": null,
+                    "parent": "sprite1_46",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_49": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_53",
+                    "parent": "sprite1_45",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_50",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_50": {
+                    "opcode": "operator_not",
+                    "next": null,
+                    "parent": "sprite1_49",
+                    "inputs": {
+                        "OPERAND": [
+                            2,
+                            "sprite1_51"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_51": {
+                    "opcode": "sensing_keypressed",
+                    "next": null,
+                    "parent": "sprite1_50",
+                    "inputs": {
+                        "KEY_OPTION": [
+                            1,
+                            "sprite1_52"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_52": {
+                    "opcode": "sensing_keyoptions",
+                    "next": null,
+                    "parent": "sprite1_51",
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_53": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_55",
+                    "parent": "sprite1_49",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_54",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_54": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_53",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "abs",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_55": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_57",
+                    "parent": "sprite1_53",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_56",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_56": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_55",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "floor",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_57": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_59",
+                    "parent": "sprite1_55",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_58",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_58": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_57",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "ceiling",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_59": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_61",
+                    "parent": "sprite1_57",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_60",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_60": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_59",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "sqrt",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_61": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_63",
+                    "parent": "sprite1_59",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_62",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_62": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_61",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "sin",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_63": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_65",
+                    "parent": "sprite1_61",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_64",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_64": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_63",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "cos",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_65": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_67",
+                    "parent": "sprite1_63",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_66",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_66": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_65",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "tan",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_67": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_69",
+                    "parent": "sprite1_65",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_68",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_68": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_67",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "asin",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_69": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_71",
+                    "parent": "sprite1_67",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_70",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_70": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_69",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "acos",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_71": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_73",
+                    "parent": "sprite1_69",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_72",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_72": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_71",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "atan",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_73": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_75",
+                    "parent": "sprite1_71",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_74",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_74": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_73",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "ln",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_75": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_77",
+                    "parent": "sprite1_73",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_76",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_76": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_75",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "log",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_77": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_79",
+                    "parent": "sprite1_75",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_78",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_78": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_77",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "e ^",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_79": {
+                    "opcode": "data_setvariableto",
+                    "next": null,
+                    "parent": "sprite1_77",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_80",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "result",
+                            "var_result"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_80": {
+                    "opcode": "operator_mathop",
+                    "next": null,
+                    "parent": "sprite1_79",
+                    "inputs": {
+                        "NUM": [
+                            1,
+                            [
+                                4,
+                                "30"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "OPERATOR": [
+                            "10 ^",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_81": {
+                    "opcode": "event_whenkeypressed",
+                    "next": "sprite1_82",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "any",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 320,
+                    "y": 20
+                },
+                "sprite1_82": {
+                    "opcode": "control_if",
+                    "next": null,
+                    "parent": "sprite1_81",
+                    "inputs": {
+                        "CONDITION": [
+                            2,
+                            "sprite1_83"
+                        ],
+                        "SUBSTACK": [
+                            2,
+                            "sprite1_85"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_83": {
+                    "opcode": "operator_not",
+                    "next": null,
+                    "parent": "sprite1_82",
+                    "inputs": {
+                        "OPERAND": [
+                            2,
+                            "sprite1_84"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_84": {
+                    "opcode": "operator_equals",
+                    "next": null,
+                    "parent": "sprite1_83",
+                    "inputs": {
+                        "OPERAND1": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ],
+                        "OPERAND2": [
+                            1,
+                            [
+                                4,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_85": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "sprite1_82",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "never"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_86": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite1_87",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 170
+                },
+                "sprite1_87": {
+                    "opcode": "sensing_setdragmode",
+                    "next": "sprite1_88",
+                    "parent": "sprite1_86",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "draggable",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_88": {
+                    "opcode": "sensing_setdragmode",
+                    "next": "sprite1_89",
+                    "parent": "sprite1_87",
+                    "inputs": {},
+                    "fields": {
+                        "DRAG_MODE": [
+                            "not draggable",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_89": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_92",
+                    "parent": "sprite1_88",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_90",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_90": {
+                    "opcode": "sensing_touchingobject",
+                    "next": null,
+                    "parent": "sprite1_89",
+                    "inputs": {
+                        "TOUCHINGOBJECTMENU": [
+                            1,
+                            "sprite1_91"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_91": {
+                    "opcode": "sensing_touchingobjectmenu",
+                    "next": null,
+                    "parent": "sprite1_90",
+                    "inputs": {},
+                    "fields": {
+                        "TOUCHINGOBJECTMENU": [
+                            "_mouse_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_92": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_95",
+                    "parent": "sprite1_89",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_93",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_93": {
+                    "opcode": "sensing_touchingobject",
+                    "next": null,
+                    "parent": "sprite1_92",
+                    "inputs": {
+                        "TOUCHINGOBJECTMENU": [
+                            1,
+                            "sprite1_94"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_94": {
+                    "opcode": "sensing_touchingobjectmenu",
+                    "next": null,
+                    "parent": "sprite1_93",
+                    "inputs": {},
+                    "fields": {
+                        "TOUCHINGOBJECTMENU": [
+                            "_edge_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_95": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_98",
+                    "parent": "sprite1_92",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_96",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_96": {
+                    "opcode": "sensing_touchingobject",
+                    "next": null,
+                    "parent": "sprite1_95",
+                    "inputs": {
+                        "TOUCHINGOBJECTMENU": [
+                            1,
+                            "sprite1_97"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_97": {
+                    "opcode": "sensing_touchingobjectmenu",
+                    "next": null,
+                    "parent": "sprite1_96",
+                    "inputs": {},
+                    "fields": {
+                        "TOUCHINGOBJECTMENU": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_98": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_100",
+                    "parent": "sprite1_95",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_99",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_99": {
+                    "opcode": "sensing_touchingcolor",
+                    "next": null,
+                    "parent": "sprite1_98",
+                    "inputs": {
+                        "COLOR": [
+                            1,
+                            [
+                                9,
+                                "#ff0000"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_100": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_102",
+                    "parent": "sprite1_98",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_101",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_101": {
+                    "opcode": "sensing_coloristouchingcolor",
+                    "next": null,
+                    "parent": "sprite1_100",
+                    "inputs": {
+                        "COLOR": [
+                            1,
+                            [
+                                9,
+                                "#ff8c00"
+                            ]
+                        ],
+                        "COLOR2": [
+                            1,
+                            [
+                                9,
+                                "#00a05a"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_102": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_105",
+                    "parent": "sprite1_100",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_103",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_103": {
+                    "opcode": "sensing_distanceto",
+                    "next": null,
+                    "parent": "sprite1_102",
+                    "inputs": {
+                        "DISTANCETOMENU": [
+                            1,
+                            "sprite1_104"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_104": {
+                    "opcode": "sensing_distancetomenu",
+                    "next": null,
+                    "parent": "sprite1_103",
+                    "inputs": {},
+                    "fields": {
+                        "DISTANCETOMENU": [
+                            "_mouse_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_105": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_108",
+                    "parent": "sprite1_102",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_106",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_106": {
+                    "opcode": "sensing_distanceto",
+                    "next": null,
+                    "parent": "sprite1_105",
+                    "inputs": {
+                        "DISTANCETOMENU": [
+                            1,
+                            "sprite1_107"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_107": {
+                    "opcode": "sensing_distancetomenu",
+                    "next": null,
+                    "parent": "sprite1_106",
+                    "inputs": {},
+                    "fields": {
+                        "DISTANCETOMENU": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_108": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_110",
+                    "parent": "sprite1_105",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_109",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_109": {
+                    "opcode": "sensing_mousex",
+                    "next": null,
+                    "parent": "sprite1_108",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_110": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_112",
+                    "parent": "sprite1_108",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_111",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_111": {
+                    "opcode": "sensing_mousey",
+                    "next": null,
+                    "parent": "sprite1_110",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_112": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_114",
+                    "parent": "sprite1_110",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_113",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_113": {
+                    "opcode": "sensing_mousedown",
+                    "next": null,
+                    "parent": "sprite1_112",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_114": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_117",
+                    "parent": "sprite1_112",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_115",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_115": {
+                    "opcode": "sensing_keypressed",
+                    "next": null,
+                    "parent": "sprite1_114",
+                    "inputs": {
+                        "KEY_OPTION": [
+                            1,
+                            "sprite1_116"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_116": {
+                    "opcode": "sensing_keyoptions",
+                    "next": null,
+                    "parent": "sprite1_115",
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "a",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_117": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_120",
+                    "parent": "sprite1_114",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_118",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_118": {
+                    "opcode": "sensing_keypressed",
+                    "next": null,
+                    "parent": "sprite1_117",
+                    "inputs": {
+                        "KEY_OPTION": [
+                            1,
+                            "sprite1_119"
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_119": {
+                    "opcode": "sensing_keyoptions",
+                    "next": null,
+                    "parent": "sprite1_118",
+                    "inputs": {},
+                    "fields": {
+                        "KEY_OPTION": [
+                            "space",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_120": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_122",
+                    "parent": "sprite1_117",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_121",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_121": {
+                    "opcode": "sensing_timer",
+                    "next": null,
+                    "parent": "sprite1_120",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_122": {
+                    "opcode": "sensing_resettimer",
+                    "next": "sprite1_123",
+                    "parent": "sprite1_120",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_123": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_125",
+                    "parent": "sprite1_122",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_124",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_124": {
+                    "opcode": "sensing_dayssince2000",
+                    "next": null,
+                    "parent": "sprite1_123",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_125": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_127",
+                    "parent": "sprite1_123",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_126",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_126": {
+                    "opcode": "sensing_username",
+                    "next": null,
+                    "parent": "sprite1_125",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_127": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_129",
+                    "parent": "sprite1_125",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_128",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_128": {
+                    "opcode": "sensing_loudness",
+                    "next": null,
+                    "parent": "sprite1_127",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_129": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_131",
+                    "parent": "sprite1_127",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_130",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_130": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_129",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "YEAR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_131": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_133",
+                    "parent": "sprite1_129",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_132",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_132": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_131",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "MONTH",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_133": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_135",
+                    "parent": "sprite1_131",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_134",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_134": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_133",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "DATE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_135": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_137",
+                    "parent": "sprite1_133",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_136",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_136": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_135",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "DAYOFWEEK",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_137": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_139",
+                    "parent": "sprite1_135",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_138",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_138": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_137",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "HOUR",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_139": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_141",
+                    "parent": "sprite1_137",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_140",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_140": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_139",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "MINUTE",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_141": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_143",
+                    "parent": "sprite1_139",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_142",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_142": {
+                    "opcode": "sensing_current",
+                    "next": null,
+                    "parent": "sprite1_141",
+                    "inputs": {},
+                    "fields": {
+                        "CURRENTMENU": [
+                            "SECOND",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_143": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_146",
+                    "parent": "sprite1_141",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_144",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_144": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_143",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_145"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "x position",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_145": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_144",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_146": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_149",
+                    "parent": "sprite1_143",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_147",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_147": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_146",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_148"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "y position",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_148": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_147",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_149": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_152",
+                    "parent": "sprite1_146",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_150",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_150": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_149",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_151"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "direction",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_151": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_150",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_152": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_155",
+                    "parent": "sprite1_149",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_153",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_153": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_152",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_154"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "costume #",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_154": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_153",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_155": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_158",
+                    "parent": "sprite1_152",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_156",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_156": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_155",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_157"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "costume name",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_157": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_156",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_158": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_161",
+                    "parent": "sprite1_155",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_159",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_159": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_158",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_160"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "size",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_160": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_159",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_161": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_164",
+                    "parent": "sprite1_158",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_162",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_162": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_161",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_163"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "volume",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_163": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_162",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_164": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_167",
+                    "parent": "sprite1_161",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_165",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_165": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_164",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_166"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "local",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_166": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_165",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "Sprite2",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_167": {
+                    "opcode": "data_setvariableto",
+                    "next": "sprite1_170",
+                    "parent": "sprite1_164",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "sprite1_168",
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "copy",
+                            "var_sprite1_copy"
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_168": {
+                    "opcode": "sensing_of",
+                    "next": null,
+                    "parent": "sprite1_167",
+                    "inputs": {
+                        "OBJECT": [
+                            1,
+                            "sprite1_169"
+                        ]
+                    },
+                    "fields": {
+                        "PROPERTY": [
+                            "x position",
+                            null
+                        ]
+                    },
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_169": {
+                    "opcode": "sensing_of_object_menu",
+                    "next": null,
+                    "parent": "sprite1_168",
+                    "inputs": {},
+                    "fields": {
+                        "OBJECT": [
+                            "_stage_",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sprite1_170": {
+                    "opcode": "sensing_askandwait",
+                    "next": "sprite1_171",
+                    "parent": "sprite1_167",
+                    "inputs": {
+                        "QUESTION": [
+                            1,
+                            [
+                                10,
+                                "What is your name?"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_171": {
+                    "opcode": "looks_say",
+                    "next": "sprite1_173",
+                    "parent": "sprite1_170",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_172",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_172": {
+                    "opcode": "sensing_answer",
+                    "next": null,
+                    "parent": "sprite1_171",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_173": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "sprite1_171",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "sprite1_174",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_174": {
+                    "opcode": "operator_join",
+                    "next": null,
+                    "parent": "sprite1_173",
+                    "inputs": {
+                        "STRING1": [
+                            1,
+                            [
+                                10,
+                                "Hello "
+                            ]
+                        ],
+                        "STRING2": [
+                            3,
+                            "sprite1_175",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "sprite1_175": {
+                    "opcode": "sensing_answer",
+                    "next": null,
+                    "parent": "sprite1_174",
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "dbbd297deb8f1e79e0657c1df52f182e",
+                    "md5ext": "dbbd297deb8f1e79e0657c1df52f182e.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "b56c6816a535aa4f98ff1e5b6d326d47",
+                    "md5ext": "b56c6816a535aa4f98ff1e5b6d326d47.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        },
+        {
+            "isStage": false,
+            "name": "Sprite2",
+            "variables": {
+                "var_sprite2_local": [
+                    "local",
+                    5
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "sprite2_1": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "sprite2_2",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 20,
+                    "y": 20
+                },
+                "sprite2_2": {
+                    "opcode": "motion_gotoxy",
+                    "next": null,
+                    "parent": "sprite2_1",
+                    "inputs": {
+                        "X": [
+                            1,
+                            [
+                                4,
+                                "60"
+                            ]
+                        ],
+                        "Y": [
+                            1,
+                            [
+                                4,
+                                "0"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "2c322913515e2fb8a51876fba3f836fb",
+                    "md5ext": "2c322913515e2fb8a51876fba3f836fb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "png",
+                    "assetId": "95d9743f5638aad2dabf7126cbf698cb",
+                    "md5ext": "95d9743f5638aad2dabf7126cbf698cb.png",
+                    "rotationCenterX": 20,
+                    "rotationCenterY": 20
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "meow",
+                    "assetId": "56fce12cd7e0ab5972da0e89daf1eb75",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 22050,
+                    "sampleCount": 800,
+                    "md5ext": "56fce12cd7e0ab5972da0e89daf1eb75.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "1.5.76",
+        "agent": "make_projects.py"
+    }
+}

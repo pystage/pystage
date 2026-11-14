@@ -14,7 +14,13 @@ sprite1.add_costume("costume1", center_x=48, center_y=50)
 sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
 
+# Scratch Blocks for 'stage'
+# Comment: comment for backdrop1
+
 # Scratch Blocks for 'sprite1'
+# Comment: comment for sprite1
+# multiline
+# Comment: comment2 for sprite1
 
 def when_program_starts_1(self):
     # comment for say hello

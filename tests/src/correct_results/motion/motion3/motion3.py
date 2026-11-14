@@ -1,4 +1,9 @@
 # motion3 (pyStage, converted from Scratch 3)
+#
+# Not everything of the Scratch project could be converted:
+# - [monitor] Sprite1: The monitor for 'motion_xposition' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'motion_yposition' is not supported and was left out.
+# - [monitor] Sprite1: The monitor for 'motion_direction' is not supported and was left out.
 
 from pystage.en import Sprite, Stage
 

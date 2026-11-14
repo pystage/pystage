@@ -6,6 +6,9 @@ blocks behave like in Scratch when they get "wrong" types, e.g. a text
 where a number is expected.
 """
 import math
+import re
+
+import pygame
 
 
 def to_number(value):
@@ -25,9 +28,19 @@ def to_number(value):
         return 0
     if math.isnan(number):
         return 0
-    if number == math.floor(number) and abs(number) < 1e15 and not math.isinf(number):
+    if math.isinf(number):
+        return number
+    if number == math.floor(number) and abs(number) < 1e15:
         return int(number)
     return number
+
+
+def to_int(value):
+    """Convert a value to a whole number (rounded down to zero), Infinity is very big."""
+    number = to_number(value)
+    if isinstance(number, float) and math.isinf(number):
+        return 10**9 if number > 0 else -10**9
+    return int(number)
 
 
 def is_number(value):
@@ -58,6 +71,32 @@ def to_string(value):
         if value == math.floor(value) and abs(value) < 1e15:
             return str(int(value))
     return str(value)
+
+
+_hex_color = re.compile(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\Z")
+
+
+def to_color(value):
+    """Convert a value to a pygame color like Scratch does.
+
+    Colors are tuples (red, green, blue) or texts like "#ff0000". Any other
+    value is a number that is decoded as 0xRRGGBB (or 0xAARRGGBB).
+    """
+    if isinstance(value, pygame.Color):
+        return pygame.Color(value)
+    if isinstance(value, (tuple, list)) and len(value) in (3, 4) and all(is_number(v) for v in value):
+        return pygame.Color(*(max(0, min(255, int(to_number(v)))) for v in value))
+    text = str(value).strip()
+    match = _hex_color.match(text)
+    if match:
+        digits = match.group(1)
+        if len(digits) == 3:
+            digits = "".join(c * 2 for c in digits)
+        return pygame.Color(int(digits[0:2], 16), int(digits[2:4], 16), int(digits[4:6], 16))
+    number = to_number(value)
+    number = 0 if math.isinf(number) else int(number) & 0xFFFFFFFF
+    alpha = (number >> 24) & 0xFF
+    return pygame.Color((number >> 16) & 0xFF, (number >> 8) & 0xFF, number & 0xFF, alpha or 255)
 
 
 def equals(a, b):

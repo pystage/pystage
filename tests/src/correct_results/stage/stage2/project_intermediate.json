@@ -87,6 +87,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -445,6 +446,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 4,
             "layerOrder": 2,
             "visible": true,
@@ -549,6 +551,7 @@
             "extension": "wav"
         }
     },
+    "warnings": [],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -600,6 +603,7 @@
         },
         "lists": {},
         "monitors": [],
+        "comments": [],
         "currentCostume": 3,
         "layerOrder": 0,
         "visible": true,

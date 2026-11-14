@@ -1,7 +1,7 @@
 import pygame
 from pystage.core.constants import KEY_MAPPINGS
 from pystage.core._base_sprite import BaseSprite
-from pystage.core.values import wrap
+from pystage.core.values import wrap, to_color
 import datetime
 
 
@@ -276,7 +276,7 @@ class _SensingSprite(BaseSprite):
 
     def _color_mask(self, surface, color):
         # Scratch is tolerant with colors, so are we.
-        return pygame.mask.from_threshold(surface, pygame.Color(color), (12, 12, 12, 255))
+        return pygame.mask.from_threshold(surface, to_color(color), (12, 12, 12, 255))
 
     def _touching_color(self, color, own_mask):
         """True, if own_mask (in the rect of the sprite) touches the color."""

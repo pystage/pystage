@@ -15,6 +15,7 @@ sprite1.add_costume("costume2", center_x=46, center_y=53)
 sprite1.add_sound("meow")
 
 # Scratch Blocks for 'sprite1'
+# Comment: Test for multiple cases
 
 def when_i_receive_message_1(self):
     self.broadcast("message1")

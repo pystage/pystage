@@ -318,6 +318,7 @@
             "variables": {},
             "lists": {},
             "monitors": [],
+            "comments": [],
             "currentCostume": 0,
             "layerOrder": 1,
             "visible": true,
@@ -354,6 +355,13 @@
             "extension": "wav"
         }
     },
+    "warnings": [
+        {
+            "kind": "monitor",
+            "target": "Sprite1",
+            "message": "The monitor for 'looks_size' is not supported and was left out."
+        }
+    ],
     "stage": {
         "name": "Stage",
         "blocks": [],
@@ -377,6 +385,7 @@
         },
         "lists": {},
         "monitors": [],
+        "comments": [],
         "currentCostume": 0,
         "layerOrder": 0,
         "visible": true,
