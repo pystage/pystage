@@ -7,132 +7,85 @@ class Sprite:
         self._core.facade = self
 
     def create_clone_of_sprite(self, sprite="_myself_"):
-        """create clone of %1
+        """Creates a clone of a sprite. A clone is a copy that starts at the same position, with the same costume and variables.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        At most 300 clones can exist at the same time. Further clones are not created.
 
-        
+        Scratch block: create clone of (sprite)
+
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            The name of the sprite to clone. Use "_myself_" to clone the sprite that runs this block.
         """
         return self._core.control_create_clone_of_sprite(sprite)
 
     def create_clone_of_myself(self):
-        """create clone of myself
+        """Creates a clone of this sprite. A clone is a copy that starts at the same position, with the same costume and variables.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        At most 300 clones can exist at the same time. Further clones are not created.
 
-        
-
-        Returns
-        -------
-
+        Scratch block: create clone of [myself]
         """
         return self._core.control_create_clone_of_myself()
         
     def delete_this_clone(self):
-        """delete this clone
+        """Deletes the clone that runs this block. A sprite that is not a clone is not deleted.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: delete this clone
         """
         return self._core.control_delete_this_clone()
 
     def when_i_start_as_a_clone(
         self, generator_function, name="", no_refresh=False
     ):
-        """when I start as a clone
+        """Runs the code each time a clone of this sprite is created.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: when I start as a clone
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            The function with the code to be executed.
+        name : str
+            A name to distinguish code blocks using the same function.
+        no_refresh : bool
+            If True, the code is executed in one go without screen refresh.
         """
         return self._core.control_start_as_clone(
             generator_function, name, no_refresh
         )
 
     def stop_all(self):
-        """stop all
+        """Stops all scripts of all sprites and the stage, removes all clones, and stops all sounds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [all]
         """
         return self._core.control_stop_all()
 
     def stop_other_scripts_in_sprite(self):
-        """stop other scripts in sprite
+        """Stops all other scripts of this sprite. The script that runs this block keeps running.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [other scripts in sprite]
         """
         return self._core.control_stop_other()
 
     def stop_this_script(self):
-        """stop this script
+        """Stops the script that runs this block. The other scripts keep running.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [this script]
         """
         return self._core.control_stop_this()
 
     def wait(self, secs):
-        """wait %1 seconds
+        """Waits the given number of seconds before the script continues. Other scripts keep running meanwhile.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: wait (1) seconds
 
-        
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The number of seconds to wait. Negative values are treated as 0.
         """
         return self._core.control_wait(secs)
 

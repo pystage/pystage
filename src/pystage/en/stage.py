@@ -17,85 +17,49 @@ class Stage():
         self._core.pystage_play()
 
     def create_clone_of_sprite(self, sprite='_myself_'):
-        """create clone of %1
+        """Creates a clone of a sprite. A clone is a copy that starts at the same position, with the same costume and variables.
 
-        Translation string: create clone of %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        At most 300 clones can exist at the same time. Further clones are not created.
 
-        
+        Scratch block: create clone of (sprite)
+
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            The name of the sprite to clone. Use "_myself_" to clone the sprite that runs this block.
         """
         return self._core.control_create_clone_of_sprite(sprite)
 
     def stop_all(self):
-        """stop all
+        """Stops all scripts of all sprites and the stage, removes all clones, and stops all sounds.
 
-        Translation string: stop all
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [all]
         """
         return self._core.control_stop_all()
 
     def stop_other_scripts_in_stage(self):
-        """stop other scripts in stage
+        """Stops all other scripts of the stage. The script that runs this block keeps running.
 
-        Translation string: stop other scripts in stage
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [other scripts in stage]
         """
         return self._core.control_stop_other()
 
     def stop_this_script(self):
-        """stop this script
+        """Stops the script that runs this block. The other scripts keep running.
 
-        Translation string: stop this script
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stop [this script]
         """
         return self._core.control_stop_this()
 
     def wait(self, secs):
-        """wait %1 seconds
+        """Waits the given number of seconds before the script continues. Other scripts keep running meanwhile.
 
-        Translation string: wait %1 seconds
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: wait (1) seconds
 
-        
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The number of seconds to wait. Negative values are treated as 0.
         """
         return self._core.control_wait(secs)
 

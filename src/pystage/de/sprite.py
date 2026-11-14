@@ -10,135 +10,81 @@ class Figur():
 
             
     def erzeuge_klon_von_mir(self):
-        """erzeuge Klon von mir selbst
+        """Erzeugt einen Klon dieser Figur. Ein Klon ist eine Kopie, die an derselben Position mit demselben Kostüm und denselben Variablen startet.
 
-        Translation string: erzeuge Klon von %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Es können höchstens 300 Klone gleichzeitig existieren. Weitere Klone werden nicht erzeugt.
 
-        
-        Returns
-        -------
-
+        Scratch-Block: erzeuge Klon von [mir selbst]
         """
         return self._core.control_create_clone_of_myself()
                 
     def erzeuge_klon_von_sprite(self, sprite):
-        """erzeuge Klon von %1
+        """Erzeugt einen Klon einer Figur. Ein Klon ist eine Kopie, die an derselben Position mit demselben Kostüm und denselben Variablen startet.
 
-        Translation string: erzeuge Klon von %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Es können höchstens 300 Klone gleichzeitig existieren. Weitere Klone werden nicht erzeugt.
 
-        
+        Scratch-Block: erzeuge Klon von (Figur)
+
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            Der Name der Figur, von der ein Klon erzeugt wird. "_myself_" steht für die Figur, in der dieser Block steht.
         """
         return self._core.control_create_clone_of_sprite(sprite)
 
     def lösche_diesen_klon(self):
-        """lösche diesen Klon
+        """Löscht den Klon, in dem dieser Block steht. Eine Figur, die kein Klon ist, wird nicht gelöscht.
 
-        Translation string: lösche diesen Klon
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: lösche diesen Klon
         """
         return self._core.control_delete_this_clone()
                 
     def wenn_ich_als_klon_entstehe(self, generator_function, name='', no_refresh=False):
-        """Wenn ich als Klon entstehe
+        """Führt den Code jedes Mal aus, wenn ein Klon dieser Figur entsteht.
 
-        Translation string: Wenn ich als Klon entstehe
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Wenn ich als Klon entstehe
 
-        
         Parameters
         ----------
-        generator_function : FILL
-        name : FILL
-        no_refresh : FILL
-        
-
-        Returns
-        -------
-
+        generator_function : function
+            Die Funktion mit dem Code, der ausgeführt werden soll.
+        name : str
+            Ein Name, um Skripte zu unterscheiden, die dieselbe Funktion verwenden.
+        no_refresh : bool
+            Wenn True, wird der Code in einem Durchgang ohne Bildschirmaktualisierung ausgeführt.
         """
         return self._core.control_start_as_clone(generator_function, name, no_refresh)
                 
     def stoppe_alles(self):
-        """stoppe alles
+        """Stoppt alle Skripte aller Figuren und der Bühne, löscht alle Klone und stoppt alle Klänge.
 
-        Translation string: stoppe alles
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [alles]
         """
         return self._core.control_stop_all()
                 
     def stoppe_andere_skripte_der_figur(self):
-        """stoppe andere Skripte der Figur
+        """Stoppt alle anderen Skripte dieser Figur. Das Skript, in dem dieser Block steht, läuft weiter.
 
-        Translation string: stoppe andere Skripte der Figur
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [andere Skripte der Figur]
         """
         return self._core.control_stop_other()
                 
     def stoppe_dieses_skript(self):
-        """stoppe dieses Skript
+        """Stoppt das Skript, in dem dieser Block steht. Die anderen Skripte laufen weiter.
 
-        Translation string: stoppe dieses Skript
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [dieses Skript]
         """
         return self._core.control_stop_this()
                 
     def warte_sekunden(self, secs):
-        """warte %1 Sekunden
+        """Wartet die angegebene Anzahl Sekunden, bevor das Skript weitermacht. Andere Skripte laufen währenddessen weiter.
 
-        Translation string: warte %1 Sekunden
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: warte (1) Sekunden
 
-        
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Anzahl Sekunden, die gewartet wird. Negative Werte zählen als 0.
         """
         return self._core.control_wait(secs)
                 

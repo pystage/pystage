@@ -19,85 +19,49 @@ class Bühne():
         
             
     def erzeuge_klon_von_sprite(self, sprite='_myself_'):
-        """erzeuge Klon von %1
+        """Erzeugt einen Klon einer Figur. Ein Klon ist eine Kopie, die an derselben Position mit demselben Kostüm und denselben Variablen startet.
 
-        Translation string: erzeuge Klon von %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Es können höchstens 300 Klone gleichzeitig existieren. Weitere Klone werden nicht erzeugt.
 
-        
+        Scratch-Block: erzeuge Klon von (Figur)
+
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            Der Name der Figur, von der ein Klon erzeugt wird. "_myself_" steht für die Figur, in der dieser Block steht.
         """
         return self._core.control_create_clone_of_sprite(sprite)
                 
     def stoppe_alles(self):
-        """stoppe alles
+        """Stoppt alle Skripte aller Figuren und der Bühne, löscht alle Klone und stoppt alle Klänge.
 
-        Translation string: stoppe alles
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [alles]
         """
         return self._core.control_stop_all()
                 
     def stoppe_andere_skripte_der_bühne(self):
-        """stoppe andere Skripte der Bühne
+        """Stoppt alle anderen Skripte der Bühne. Das Skript, in dem dieser Block steht, läuft weiter.
 
-        Translation string: stoppe andere Skripte der Bühne
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [andere Skripte der Bühne]
         """
         return self._core.control_stop_other()
                 
     def stoppe_dieses_skript(self):
-        """stoppe dieses Skript
+        """Stoppt das Skript, in dem dieser Block steht. Die anderen Skripte laufen weiter.
 
-        Translation string: stoppe dieses Skript
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: stoppe [dieses Skript]
         """
         return self._core.control_stop_this()
                 
     def warte_sekunden(self, secs):
-        """warte %1 Sekunden
+        """Wartet die angegebene Anzahl Sekunden, bevor das Skript weitermacht. Andere Skripte laufen währenddessen weiter.
 
-        Translation string: warte %1 Sekunden
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: warte (1) Sekunden
 
-        
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Anzahl Sekunden, die gewartet wird. Negative Werte zählen als 0.
         """
         return self._core.control_wait(secs)
                 
