@@ -1062,274 +1062,193 @@ class Sprite:
         return self._core.looks_thinkforsecs(text, secs)
 
     def change_x_by(self, value):
-        """change x by %1
+        """Moves the sprite horizontally by the given amount. Positive values move it to the right.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change x by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The number of steps to move horizontally.
         """
         return self._core.motion_changexby(value)
 
     def change_y_by(self, value):
-        """change y by %1
+        """Moves the sprite vertically by the given amount. Positive values move it up.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change y by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The number of steps to move vertically.
         """
         return self._core.motion_changeyby(value)
 
     def direction(self):
-        """direction
+        """Returns the direction the sprite is pointing in degrees. 90 is right, 0 is up, 180 is down and -90 is left.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (direction)
 
         Returns
         -------
-
+        number
+            The direction of the sprite, between -180 and 180.
         """
         return self._core.motion_direction()
 
     def glide_to_x_y(self, secs, x, y):
-        """glide %1 secs to x: %2 y: %3
+        """Glides the sprite to the given x and y position within the given number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the glide is finished.
 
-        
+        Scratch block: glide (1) secs to x: (0) y: (0)
+
         Parameters
         ----------
-        secs : FILL
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The duration of the glide in seconds. 0 moves the sprite at once.
+        x : number
+            The horizontal position to glide to.
+        y : number
+            The vertical position to glide to.
         """
         return self._core.motion_glidesecstoxy(secs, x, y)
 
     def glide_to_mouse_pointer(self, secs):
-        """glide %1 secs to mouse-pointer
+        """Glides the sprite to the position of the mouse pointer within the given number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the glide is finished.
 
-        
+        Scratch block: glide (1) secs to [mouse-pointer]
+
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The duration of the glide in seconds. 0 moves the sprite at once.
         """
         return self._core.motion_glideto_pointer(secs)
 
     def glide_to_random_position(self, secs):
-        """glide %1 secs to random position
+        """Glides the sprite to a random position within the given number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the glide is finished.
 
-        
+        Scratch block: glide (1) secs to [random position]
+
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The duration of the glide in seconds. 0 moves the sprite at once.
         """
         return self._core.motion_glideto_random(secs)
 
     def glide_to_sprite(self, secs, sprite):
-        """glide %1 secs to %2
+        """Glides the sprite to the position of another sprite within the given number of seconds.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The script waits until the glide is finished.
 
-        
+        Scratch block: glide (1) secs to [sprite]
+
         Parameters
         ----------
-        secs : FILL
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        secs : number
+            The duration of the glide in seconds. 0 moves the sprite at once.
+        sprite : str
+            The name of the sprite to glide to. Use "_mouse_" for the mouse pointer
+            or "_random_" for a random position.
         """
         return self._core.motion_glideto_sprite(secs, sprite)
 
     def go_to_mouse_pointer(self):
-        """go to mouse-pointer
+        """Moves the sprite to the position of the mouse pointer.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: go to [mouse-pointer]
         """
         return self._core.motion_goto_pointer()
 
     def go_to_random_position(self):
-        """go to random position
+        """Moves the sprite to a random position on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: go to [random position]
         """
         return self._core.motion_goto_random()
 
     def go_to_sprite(self, sprite):
-        """go to %1
+        """Moves the sprite to the position of another sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: go to [sprite]
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            The name of the sprite to go to. Use "_mouse_" for the mouse pointer
+            or "_random_" for a random position.
         """
         return self._core.motion_goto_sprite(sprite)
 
     def go_to_x_y(self, x, y):
-        """go to x: %1 y: %2
+        """Moves the sprite to the given x and y position. The center of the stage is x = 0, y = 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: go to x: (0) y: (0)
 
-        
         Parameters
         ----------
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        x : number
+            The horizontal position. On the default stage of 480 by 360 pixels, x goes from -240 (left) to 240 (right).
+        y : number
+            The vertical position. On the default stage, y goes from -180 (bottom) to 180 (top).
         """
         return self._core.motion_gotoxy(x, y)
 
     def if_on_edge_bounce(self):
-        """if on edge, bounce
+        """If the sprite touches the edge of the stage, it bounces back and stays on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: if on edge, bounce
         """
         return self._core.motion_ifonedgebounce()
 
     def move(self, steps):
-        """move %1 steps
+        """Moves the sprite forward by the given number of steps, in the direction it is pointing.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: move (10) steps
 
-        
         Parameters
         ----------
-        steps : FILL
-        
-
-        Returns
-        -------
-
+        steps : number
+            How many steps to move. Negative values move the sprite backwards.
         """
         return self._core.motion_movesteps(steps)
 
     def point_in_direction(self, direction):
-        """point in direction %1
+        """Turns the sprite to face the given direction.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: point in direction (90)
 
-        
         Parameters
         ----------
-        direction : FILL
-        
-
-        Returns
-        -------
-
+        direction : number
+            The direction in degrees. 0 is up, 90 is right, 180 is down and -90 is left.
         """
         return self._core.motion_pointindirection(direction)
 
     def point_towards_mouse_pointer(self):
-        """point towards mouse-pointer
+        """Turns the sprite to face the mouse pointer.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: point towards [mouse-pointer]
         """
         return self._core.motion_pointtowards_pointer()
 
     def point_towards_sprite(self, sprite):
-        """point towards %1
+        """Turns the sprite to face another sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: point towards [sprite]
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            The name of the sprite to face. Use "_mouse_" for the mouse pointer
+            or "_random_" for a random direction.
         """
         return self._core.motion_pointtowards_sprite(sprite)
 
@@ -1343,131 +1262,95 @@ class Sprite:
         return self._core.motion_pointtowards_random()
 
     def set_rotation_style_none(self):
-        """set rotation style %1
+        """Sets the rotation style to "don't rotate": the costume always looks the same, whatever direction the sprite points in.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
+        Scratch block: set rotation style [don't rotate]
         """
         return self._core.motion_setrotationstyle_dontrotate()
 
     def set_rotation_style_left_right(self):
-        """set rotation style %1
+        """Sets the rotation style to left-right: the costume only turns to face left or right and is never upside down.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-
+        Scratch block: set rotation style [left-right]
         """
         return self._core.motion_setrotationstyle_leftright()
 
     def set_rotation_style_around(self):
-        """set rotation style %1
+        """Sets the rotation style to "all around": the costume turns with the direction of the sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: set rotation style [all around]
         """
         return self._core.motion_setrotationstyle_allaround()
 
     def set_x(self, value):
-        """set x to %1
+        """Sets the horizontal position of the sprite. The center of the stage is x = 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set x to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new x position.
         """
         return self._core.motion_setx(value)
 
     def set_y(self, value):
-        """set y to %1
+        """Sets the vertical position of the sprite. The center of the stage is y = 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set y to (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new y position.
         """
         return self._core.motion_sety(value)
 
     def turn_left(self, deg):
-        """turn left %2 degrees
+        """Turns the sprite to the left (counter-clockwise) by the given number of degrees.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: turn ↺ (15) degrees
 
-        
         Parameters
         ----------
-        deg : FILL
-        
-
-        Returns
-        -------
-
+        deg : number
+            The number of degrees to turn. 90 is a quarter turn.
         """
         return self._core.motion_turnleft(deg)
 
     def turn_right(self, deg):
-        """turn right %2 degrees
+        """Turns the sprite to the right (clockwise) by the given number of degrees.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: turn ↻ (15) degrees
 
-        
         Parameters
         ----------
-        deg : FILL
-        
-
-        Returns
-        -------
-
+        deg : number
+            The number of degrees to turn. 90 is a quarter turn.
         """
         return self._core.motion_turnright(deg)
 
     def x_position(self):
-        """x position
+        """Returns the horizontal position of the sprite. The center of the stage is 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (x position)
 
         Returns
         -------
-
+        number
+            The x position of the sprite.
         """
         return self._core.motion_xposition()
 
     def y_position(self):
-        """y position
+        """Returns the vertical position of the sprite. The center of the stage is 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (y position)
 
         Returns
         -------
-
+        number
+            The y position of the sprite.
         """
         return self._core.motion_yposition()
 

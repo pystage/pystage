@@ -1101,290 +1101,193 @@ class Figur():
         return self._core.looks_thinkforsecs(text, secs)
                 
     def ändere_x_um(self, value):
-        """ändere x um %1
+        """Bewegt die Figur waagerecht um den angegebenen Wert. Positive Werte bewegen sie nach rechts.
 
-        Translation string: ändere x um %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere x um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Anzahl Schritte, um die waagerecht bewegt wird.
         """
         return self._core.motion_changexby(value)
                 
     def ändere_y_um(self, value):
-        """ändere y um %1
+        """Bewegt die Figur senkrecht um den angegebenen Wert. Positive Werte bewegen sie nach oben.
 
-        Translation string: ändere y um %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere y um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Anzahl Schritte, um die senkrecht bewegt wird.
         """
         return self._core.motion_changeyby(value)
                 
     def richtung(self):
-        """Richtung
+        """Gibt die Richtung der Figur in Grad zurück. 90 ist rechts, 0 ist oben, 180 ist unten und -90 ist links.
 
-        Translation string: Richtung
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Richtung)
 
         Returns
         -------
-
+        Zahl
+            Die Richtung der Figur, zwischen -180 und 180.
         """
         return self._core.motion_direction()
                 
     def gleite_in_sek_zu_x_y(self, secs, x, y):
-        """gleite in %1 Sek. zu x:%2  y:%3
+        """Lässt die Figur innerhalb der angegebenen Anzahl Sekunden zur angegebenen x- und y-Position gleiten.
 
-        Translation string: gleite in %1 Sek. zu x:%2  y:%3
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis das Gleiten beendet ist.
 
-        
+        Scratch-Block: gleite in (1) Sek. zu x: (0) y: (0)
+
         Parameters
         ----------
-        secs : FILL
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Dauer des Gleitens in Sekunden. 0 bewegt die Figur sofort.
+        x : Zahl
+            Die waagerechte Zielposition.
+        y : Zahl
+            Die senkrechte Zielposition.
         """
         return self._core.motion_glidesecstoxy(secs, x, y)
                 
     def gleite_in_sek_zu_mauszeiger(self, secs):
-        """gleite in %1 Sek. zu Mauszeiger
+        """Lässt die Figur innerhalb der angegebenen Anzahl Sekunden zur Position des Mauszeigers gleiten.
 
-        Translation string: gleite in %1 Sek. zu Mauszeiger
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis das Gleiten beendet ist.
 
-        
+        Scratch-Block: gleite in (1) Sek. zu [Mauszeiger]
+
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Dauer des Gleitens in Sekunden. 0 bewegt die Figur sofort.
         """
         return self._core.motion_glideto_pointer(secs)
                 
     def gleite_in_sek_zu_zufallsposition(self, secs):
-        """gleite in %1 Sek. zu Zufallsposition
+        """Lässt die Figur innerhalb der angegebenen Anzahl Sekunden zu einer zufälligen Position gleiten.
 
-        Translation string: gleite in %1 Sek. zu Zufallsposition
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis das Gleiten beendet ist.
 
-        
+        Scratch-Block: gleite in (1) Sek. zu [Zufallsposition]
+
         Parameters
         ----------
-        secs : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Dauer des Gleitens in Sekunden. 0 bewegt die Figur sofort.
         """
         return self._core.motion_glideto_random(secs)
                 
     def gleite_in_sek_zu(self, secs, sprite):
-        """gleite in %1 Sek. zu %2
+        """Lässt die Figur innerhalb der angegebenen Anzahl Sekunden zur Position einer anderen Figur gleiten.
 
-        Translation string: gleite in %1 Sek. zu %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Das Skript wartet, bis das Gleiten beendet ist.
 
-        
+        Scratch-Block: gleite in (1) Sek. zu [Figur]
+
         Parameters
         ----------
-        secs : FILL
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        secs : Zahl
+            Die Dauer des Gleitens in Sekunden. 0 bewegt die Figur sofort.
+        sprite : str
+            Der Name der Figur, zu der die Figur gleitet. "_mouse_" steht für den Mauszeiger,
+            "_random_" für eine zufällige Position.
         """
         return self._core.motion_glideto_sprite(secs, sprite)
                 
     def gehe_zu_mauszeiger(self):
-        """gehe zu Mauszeiger
+        """Bewegt die Figur an die Position des Mauszeigers.
 
-        Translation string: gehe zu Mauszeiger
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: gehe zu [Mauszeiger]
         """
         return self._core.motion_goto_pointer()
                 
     def gehe_zu_zufallsposition(self):
-        """gehe zu Zufallsposition
+        """Bewegt die Figur an eine zufällige Position auf der Bühne.
 
-        Translation string: gehe zu Zufallsposition
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: gehe zu [Zufallsposition]
         """
         return self._core.motion_goto_random()
                 
     def gehe_zu(self, sprite):
-        """gehe zu %1
+        """Bewegt die Figur an die Position einer anderen Figur.
 
-        Translation string: gehe zu %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: gehe zu [Figur]
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            Der Name der Figur, zu der gegangen wird. "_mouse_" steht für den Mauszeiger,
+            "_random_" für eine zufällige Position.
         """
         return self._core.motion_goto_sprite(sprite)
                 
     def gehe_zu_x_y(self, x, y):
-        """gehe zu x: %1 y: %2
+        """Bewegt die Figur an die angegebene x- und y-Position. Die Mitte der Bühne ist x = 0, y = 0.
 
-        Translation string: gehe zu x: %1 y: %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: gehe zu x: (0) y: (0)
 
-        
         Parameters
         ----------
-        x : FILL
-        y : FILL
-        
-
-        Returns
-        -------
-
+        x : Zahl
+            Die waagerechte Position. Auf der Standardbühne mit 480 mal 360 Pixeln reicht x von -240 (links) bis 240 (rechts).
+        y : Zahl
+            Die senkrechte Position. Auf der Standardbühne reicht y von -180 (unten) bis 180 (oben).
         """
         return self._core.motion_gotoxy(x, y)
                 
     def pralle_vom_rand_ab(self):
-        """pralle vom Rand ab
+        """Wenn die Figur den Rand der Bühne berührt, prallt sie ab und bleibt auf der Bühne.
 
-        Translation string: pralle vom Rand ab
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: pralle vom Rand ab
         """
         return self._core.motion_ifonedgebounce()
                 
     def gehe_schritte(self, steps):
-        """gehe %1 Schritte
+        """Bewegt die Figur um die angegebene Anzahl Schritte in die Richtung, in die sie zeigt.
 
-        Translation string: gehe %1 Schritte
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: gehe (10) er Schritt
 
-        
         Parameters
         ----------
-        steps : FILL
-        
-
-        Returns
-        -------
-
+        steps : Zahl
+            Die Anzahl Schritte. Negative Werte bewegen die Figur rückwärts.
         """
         return self._core.motion_movesteps(steps)
                 
     def setze_richtung_auf_grad(self, direction):
-        """setze Richtung auf %1 Grad
+        """Dreht die Figur in die angegebene Richtung.
 
-        Translation string: setze Richtung auf %1 Grad
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Richtung auf (90) Grad
 
-        
         Parameters
         ----------
-        direction : FILL
-        
-
-        Returns
-        -------
-
+        direction : Zahl
+            Die Richtung in Grad. 0 ist oben, 90 ist rechts, 180 ist unten und -90 ist links.
         """
         return self._core.motion_pointindirection(direction)
                 
     def drehe_dich_zu_mauszeiger(self):
-        """drehe dich zu Mauszeiger
+        """Dreht die Figur zum Mauszeiger.
 
-        Translation string: drehe dich zu Mauszeiger
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: drehe dich zu [Mauszeiger]
         """
         return self._core.motion_pointtowards_pointer()
                 
     def drehe_dich_zu(self, sprite):
-        """drehe dich zu %1
+        """Dreht die Figur zu einer anderen Figur.
 
-        Translation string: drehe dich zu %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: drehe dich zu [Figur]
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
-
-        Returns
-        -------
-
+        sprite : str
+            Der Name der Figur, zu der gedreht wird. "_mouse_" steht für den Mauszeiger,
+            "_random_" für eine zufällige Richtung.
         """
         return self._core.motion_pointtowards_sprite(sprite)
                 
@@ -1398,153 +1301,95 @@ class Figur():
         return self._core.motion_pointtowards_random()
 
     def setze_drehtyp_auf_rundherum(self):
-        """setze Drehtyp auf rundherum
+        """Setzt den Drehtyp auf "rundherum": Das Kostüm dreht sich mit der Richtung der Figur.
 
-        Translation string: setze Drehtyp auf rundherum
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Drehtyp auf [rundherum]
         """
         return self._core.motion_setrotationstyle_allaround()
                 
     def setze_drehtyp_auf_nicht_drehen(self):
-        """setze Drehtyp auf nicht drehen
+        """Setzt den Drehtyp auf "nicht drehen": Das Kostüm sieht immer gleich aus, egal in welche Richtung die Figur zeigt.
 
-        Translation string: setze Drehtyp auf nicht drehen
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Drehtyp auf [nicht drehen]
         """
         return self._core.motion_setrotationstyle_dontrotate()
                 
     def setze_drehtyp_auf_links_rechts(self):
-        """setze Drehtyp auf links-rechts
+        """Setzt den Drehtyp auf "links-rechts": Das Kostüm dreht sich nur nach links oder rechts und steht nie auf dem Kopf.
 
-        Translation string: setze Drehtyp auf links-rechts
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Drehtyp auf [links-rechts]
         """
         return self._core.motion_setrotationstyle_leftright()
                 
     def setze_x_auf(self, value):
-        """setze x auf %1
+        """Setzt die waagerechte Position der Figur. Die Mitte der Bühne ist x = 0.
 
-        Translation string: setze x auf %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze x auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue x-Position.
         """
         return self._core.motion_setx(value)
                 
     def setze_y_auf(self, value):
-        """setze y auf %1
+        """Setzt die senkrechte Position der Figur. Die Mitte der Bühne ist y = 0.
 
-        Translation string: setze y auf %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze y auf (0)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue y-Position.
         """
         return self._core.motion_sety(value)
                 
     def drehe_dich_nach_links_um_grad(self, deg):
-        """drehe dich nach links um %2 Grad
+        """Dreht die Figur um die angegebene Anzahl Grad nach links (gegen den Uhrzeigersinn).
 
-        Translation string: drehe dich nach links um %2 Grad
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: drehe dich ↺ um (15) Grad
 
-        
         Parameters
         ----------
-        deg : FILL
-        
-
-        Returns
-        -------
-
+        deg : Zahl
+            Die Anzahl Grad, um die gedreht wird. 90 ist eine Vierteldrehung.
         """
         return self._core.motion_turnleft(deg)
                 
     def drehe_dich_nach_rechts_um_grad(self, deg):
-        """drehe dich nach rechts um %2 Grad
+        """Dreht die Figur um die angegebene Anzahl Grad nach rechts (im Uhrzeigersinn).
 
-        Translation string: drehe dich nach rechts um %2 Grad
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: drehe dich ↻ um (15) Grad
 
-        
         Parameters
         ----------
-        deg : FILL
-        
-
-        Returns
-        -------
-
+        deg : Zahl
+            Die Anzahl Grad, um die gedreht wird. 90 ist eine Vierteldrehung.
         """
         return self._core.motion_turnright(deg)
                 
     def x_position(self):
-        """x-Position
+        """Gibt die waagerechte Position der Figur zurück. Die Mitte der Bühne ist 0.
 
-        Translation string: x-Position
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (x-Position)
 
         Returns
         -------
-
+        Zahl
+            Die x-Position der Figur.
         """
         return self._core.motion_xposition()
                 
     def y_position(self):
-        """y-Position
+        """Gibt die senkrechte Position der Figur zurück. Die Mitte der Bühne ist 0.
 
-        Translation string: y-Position
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (y-Position)
 
         Returns
         -------
-
+        Zahl
+            Die y-Position der Figur.
         """
         return self._core.motion_yposition()
                 
