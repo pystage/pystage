@@ -125,6 +125,7 @@ Use the autocompletion of your editor to see what methods are available. There a
 Some things work differently than in normal Python programs, because your code behaves like a Scratch script:
 
 * The screen is refreshed after each iteration of a loop and after blocks that take time, like `wait`. You do not have to care about a game loop.
+* Like in Scratch, a sprite can never leave the stage completely (at least 15 pixels of it stay visible); set `stage._core.fencing = False` if your game needs sprites fully off the stage.
 * Functions in the same file that you call from your code behave like custom blocks in Scratch, i.e. they can contain loops and `wait` as well:
 
 ```python

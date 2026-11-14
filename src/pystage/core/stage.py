@@ -132,6 +132,9 @@ class CoreStage(
         # The slider monitor that is dragged
         self._dragged_monitor = None
         self._drag_offset = pygame.Vector2(0, 0)
+        # Like in Scratch, sprites can't leave the stage completely. Set to
+        # False to allow moving sprites fully off the stage.
+        self.fencing = True
         self.show_sprite_boundaries = "--show-sprite-boundaries" in sys.argv
 
     @property
@@ -188,7 +191,6 @@ class CoreStage(
                 self.visible_sprites.add(sprite)
 
     def _update(self, dt):
-        self.code_manager._update(dt)
         # Update it so that the layering is correct while drawing
         # otherwise the no effect for to_front, to_back, etc.
         self._update_visible()
@@ -313,7 +315,13 @@ class CoreStage(
             code_manager.process_timer(self.timer)
 
         self._update(dt)
-        self.sprites.update(dt)
+        # Like in Scratch, the scripts of the sprite in front run first and
+        # the stage runs last. Scripts that start in the same frame depend
+        # on that order (e.g. one sets a variable another one tests).
+        for sprite in reversed(self.sprites.sprites()):
+            if sprite in self.sprites:  # not deleted by another script
+                sprite.update(dt)
+        self.code_manager._update(dt)
         self.bubbles.update()
         self.input_manager.update(dt)
         self.monitor_group.update()

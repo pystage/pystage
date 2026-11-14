@@ -31,9 +31,37 @@ class _Motion(_Sensing):
         old = pygame.Vector2(self._pos)
         # Infinity (e.g. from a division by 0) must not break the drawing
         limit = 1e6
-        self._pos.update(max(-limit, min(limit, pos[0])), max(-limit, min(limit, pos[1])))
+        x, y = max(-limit, min(limit, pos[0])), max(-limit, min(limit, pos[1]))
+        if self.stage.fencing:
+            x, y = self._fenced(x, y)
+        self._pos.update(x, y)
         if old != self._pos:
             self._pen_line(old, self._pos)
+
+    def _fenced(self, x, y):
+        """Like Scratch, a sprite can't leave the stage completely: of its
+        bounding box (with the current costume, size and direction) at least
+        15 pixels, or half of the smaller side if the sprite is smaller than
+        that, stay inside the stage. A sprite without costume has no bounding
+        box and is not fenced (a converted project positions its sprites
+        before it adds the costumes, and Scratch doesn't fence on loading)."""
+        manager = self.costume_manager
+        if manager.current_costume == -1:
+            return x, y
+        manager.update_sprite_image()
+        centre = manager._cached_center
+        width, height = self.image.get_size()
+        left, top = -centre.x, -centre.y
+        right, bottom = left + width, top + height
+        margin = min(15, math.floor(min(width, height) / 2))
+        # The position is the point of the sprite that moves with it
+        stage_w, stage_h = self.stage.width, self.stage.height
+        # Overhang on the right/bottom: the box starts too far inside
+        x -= max(0, x + left - (stage_w - margin))
+        x += max(0, margin - (x + right))
+        y -= max(0, y + top - (stage_h - margin))
+        y += max(0, margin - (y + bottom))
+        return x, y
 
     def _set_direction(self, direction):
         # Like Scratch, ignore Infinity (e.g. from a division by 0)

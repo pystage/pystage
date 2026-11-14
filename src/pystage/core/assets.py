@@ -112,7 +112,7 @@ class CostumeManager():
             direction = 0
         elif self.rotation_style == CostumeManager.LEFT_RIGHT:
             direction = 180 if 90 < direction < 270 else 0
-        key = (id(self.costumes[self.current_costume]), direction, owner.size, self._effects())
+        key = (self.costumes[self.current_costume], direction, owner.size, self._effects())
         if key != self._cache_key:
             image, new_center = self.process_image()
             self._cache_key = key
@@ -133,7 +133,7 @@ class CostumeManager():
         costume = self.get_costume()
         if costume is None:
             return None, (0, 0)
-        key = (id(costume), self._effects())
+        key = (costume, self._effects())
         if key != self._cache_key:
             self._cache_key = key
             self._cached_backdrop = self.run_processors(costume.image.copy())

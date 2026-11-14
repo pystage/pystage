@@ -717,3 +717,27 @@ def test_colors_like_in_scratch(sprite):
     assert tuple(sprite._core.pen_color) == (255, 0, 0, 255)
     sprite.set_pen_color("nonsense")
     assert tuple(sprite._core.pen_color) == (0, 0, 0, 255)
+
+
+# Scripts of the sprite in front run first, the stage last, like in Scratch
+
+def order_back(self):
+    log.append("back")
+
+
+def order_front(self):
+    log.append("front")
+
+
+def order_stage(self):
+    log.append("stage")
+
+
+def test_script_order_front_to_back(stage):
+    back = stage.add_a_sprite()
+    front = stage.add_a_sprite()
+    stage.when_program_starts(order_stage)
+    back.when_program_starts(order_back)
+    front.when_program_starts(order_front)
+    run(stage, frames=2)
+    assert log == ["front", "back", "stage"]
