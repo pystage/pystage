@@ -6,7 +6,7 @@ Scratch-like Python programming.
 
 PyStage bridges the gap between [Scratch](https://scratch.mit.edu/) and Python. This module implements all code blocks
 as available in scratch. With the PyStage command line converter Scratch projects can be easily
-transferred to Python executable Code. To run your game in Python, PyStage uses [PyGame](https://www.pygame.org/news).
+transferred to Python executable Code. To run your game in Python, PyStage uses [pygame-ce](https://pyga.me/), the community edition of PyGame.
 
 ![test](docs/pystage.png)
 
@@ -73,7 +73,7 @@ And here is the result:
 # Installation
 ```pip install pystage```
 
-PyStage needs Python 3.9 or newer. [PyGame](https://www.pygame.org/news) is installed automatically.
+PyStage needs Python 3.10 or newer. [pygame-ce](https://pyga.me/) is installed automatically. It cannot be installed alongside classic `pygame`, so if you have that installed, uninstall it first: `pip uninstall pygame`.
 
 # Getting started
 

@@ -19,11 +19,20 @@ from pystage.core.asking import InputManager
 from pystage.core.values import to_string
 
 
-class SpriteGroup(pygame.sprite.OrderedUpdates):
-    def __init__(self):
-        super().__init__()
-        # Be careful, we access a private variable here
-        self._spritelist = self._spritelist
+class SpriteGroup(pygame.sprite.RenderUpdates):
+    """Sprite group whose drawing order (back to front) can be changed.
+
+    pygame-ce keeps the order of sprites in the insertion-ordered dict
+    ``spritedict``, so reordering means rebuilding that dict.
+    """
+
+    def _reorder(self, sprites):
+        old = self.spritedict
+        self.spritedict = {sprite: old[sprite] for sprite in sprites}
+
+    def _check(self, sprite):
+        if sprite not in self.spritedict:
+            raise ValueError(f"Sprite {sprite} unknown.")
 
     def get_layer(self, sprite):
         try:
@@ -32,53 +41,44 @@ class SpriteGroup(pygame.sprite.OrderedUpdates):
             return -1
 
     def to_front(self, sprite):
-        if not sprite in self._spritelist:
-            raise ValueError(f"Sprite {sprite} unknown.")
-        self._spritelist.remove(sprite)
-        self._spritelist.append(sprite)
-        # print(self._spritelist)
+        self._check(sprite)
+        self.move_to(sprite, len(self.spritedict))
 
     def to_back(self, sprite):
-        if not sprite in self._spritelist:
-            raise ValueError(f"Sprite {sprite} unknown.")
-        self._spritelist.remove(sprite)
-        self._spritelist.insert(0, sprite)
-        # print(self._spritelist)
+        self._check(sprite)
+        self.move_to(sprite, 0)
 
     def layer_forward(self, sprite, value=1):
-        if not sprite in self._spritelist:
-            raise ValueError(f"Sprite {sprite} unknown.")
-        index = self._spritelist.index(sprite)
-        self._spritelist.remove(sprite)
-        new_index = index + value
-        if new_index < 0:
-            new_index = 0
-        # because the sprite was already removed above, so don't need to minus 1 for the length
-        if new_index > len(self._spritelist):
-            new_index = len(self._spritelist)
-        self._spritelist.insert(new_index, sprite)
-        # print(self._spritelist)
+        self._check(sprite)
+        sprites = self.sprites()
+        index = sprites.index(sprite)
+        sprites.remove(sprite)
+        # the sprite was already removed, so the upper bound is the length
+        new_index = max(0, min(index + value, len(sprites)))
+        sprites.insert(new_index, sprite)
+        self._reorder(sprites)
 
     def layer_backward(self, sprite, value=1):
         self.layer_forward(sprite, -value)
 
     def move_to(self, sprite, index):
-        if not sprite in self._spritelist:
-            raise ValueError(f"Sprite {sprite} unknown.")
-        self._spritelist.remove(sprite)
-        self._spritelist.insert(index, sprite)
+        self._check(sprite)
+        sprites = self.sprites()
+        sprites.remove(sprite)
+        sprites.insert(index, sprite)
+        self._reorder(sprites)
 
 
 class CoreStage(
     _LooksStage, _Sound, _Events, _Control, _Operators, _Sensing, _Variables
 ):
     def __init__(self, name="Welcome to pyStage!", width=480, height=360):
-        # Check pygame version
+        # Check pygame version (pygame-ce)
         pygame_major = int(pygame.ver.split(".")[0])
-        if pygame_major < 2:
-            print("pygame version 2 or higher is required for PyStage.")
-            print("Update with the following command:")
-            print("pip install --upgrade pygame")
+        if pygame_major < 2 or not getattr(pygame, "IS_CE", False):
+            print("pygame-ce version 2 or higher is required for PyStage.")
+            print("Remove classic pygame and install pygame-ce:")
+            print("pip uninstall pygame && pip install --upgrade pygame-ce")
             sys.exit(1)
 
         # This way, code blocks can consistently refer to the stage with self.stage:

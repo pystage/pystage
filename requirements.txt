@@ -1,5 +1,5 @@
 colored==1.4.4  # for running tests
 Jinja2==3.1.2
-pygame==2.5.0
+pygame-ce==2.5.8
 pytest==7.4.0  # for running tests
 windows-curses==2.3.1; sys_platform == 'win32'  # for tests/generate.py

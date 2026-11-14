@@ -1,6 +1,4 @@
 m2r2
 myst_parser
-pygame
-svglib
-reportlab
+pygame-ce
 sphinx_panels
