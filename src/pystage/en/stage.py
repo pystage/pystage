@@ -684,14 +684,16 @@ class Stage():
         return self._core.pystage_setmonitorstyle_normal(name)
 
     def set_monitor_style_slider(self, name, minimum=0, maximum=100, integer=True):
-        """Show the variable as a slider that can be dragged with the mouse.
+        """Shows the variable as a slider that can be dragged with the mouse.
 
         Parameters
         ----------
         name : str
             The name of the variable.
-        minimum, maximum : number
-            The range of the slider (0 to 100 by default, like in Scratch).
+        minimum : number
+            The lowest value of the slider. Like in Scratch, the default is 0.
+        maximum : number
+            The highest value of the slider. Like in Scratch, the default is 100.
         integer : bool
             If True, the slider only sets whole numbers, otherwise numbers with two decimals.
         """
@@ -1632,7 +1634,13 @@ class Stage():
         return self._core.pystage_showmonitor(reporter)
 
     def hide_monitor(self, reporter):
-        """Hide the monitor of a value. See show_monitor for the values."""
+        """Hides the monitor of a value.
+
+        Parameters
+        ----------
+        reporter : str
+            The value, e.g. "x position", "size", "timer" or "year". The same values as for show_monitor are allowed.
+        """
         return self._core.pystage_hidemonitor(reporter)
 
     def set_value_monitor_position(self, reporter, x, y):

@@ -1065,275 +1065,162 @@ class Figur():
         return self._core.operator_random(start, end)
                 
     def ändere_stift_helligkeit_um(self, value):
-        """ändere Stift Helligkeit um [VALUE]
+        """Ändert die Helligkeit der Stiftfarbe um den angegebenen Wert. 0 ist schwarz, 100 ist am hellsten.
 
-        Translation string: ändere Stift Helligkeit um [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Stift Helligkeit um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Helligkeit, von 0 bis 100.
         """
         return self._core.pen_changePenColorParamBy_brightness(value)
                 
     def ändere_stift_farbe_um(self, value):
-        """ändere Stift Farbe um [VALUE]
-        TODO TRANSLATORS: Needs to be distinguished from setPenColorToColor. This is only the hue value.
-        
+        """Ändert die Farbe (den Farbton) des Stifts um den angegebenen Wert. Die Farbe geht von 0 bis 100 und beginnt nach 100 wieder bei 0.
 
-        Translation string: ändere Stift Farbe um [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Stift Farbe um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Stiftfarbe.
         """
         return self._core.pen_changePenColorParamBy_color(value)
                 
     def ändere_stift_sättigung_um(self, value):
-        """ändere Stift Sättigung um [VALUE]
+        """Ändert die Sättigung der Stiftfarbe um den angegebenen Wert. Eine höhere Sättigung macht die Farbe kräftiger.
 
-        Translation string: ändere Stift Sättigung um [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Stift Sättigung um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Sättigung, von 0 bis 100.
         """
         return self._core.pen_changePenColorParamBy_saturation(value)
                 
     def ändere_stift_transparenz_um(self, value):
-        """ändere Stift Transparenz um [VALUE]
+        """Ändert die Transparenz der Stiftfarbe um den angegebenen Wert. 0 ist nicht transparent, höhere Werte machen die Linien durchsichtiger.
 
-        Translation string: ändere Stift Transparenz um [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Stift Transparenz um (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Transparenz, von 0 bis 100.
         """
         return self._core.pen_changePenColorParamBy_transparency(value)
                 
     def ändere_stiftdicke_um(self, value):
-        """ändere Stiftdicke um [SIZE]
+        """Ändert die Dicke des Stifts um den angegebenen Wert. Der Stift ist mindestens 1 dick.
 
-        Translation string: ändere Stiftdicke um [SIZE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: ändere Stiftdicke um (1)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die Änderung der Stiftdicke. Negative Werte machen den Stift dünner.
         """
         return self._core.pen_changePenSizeBy(value)
                 
     def lösche_alles(self):
-        """lösche alles
+        """Löscht alles, was die Stifte aller Figuren auf der Bühne gezeichnet haben.
 
-        Translation string: lösche alles
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: lösche alles
         """
         return self._core.pen_clear()
                 
     def schalte_stift_ein(self):
-        """schalte Stift ein
+        """Setzt den Stift auf die Bühne. Ab jetzt zeichnet die Figur beim Bewegen eine Linie.
 
-        Translation string: schalte Stift ein
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: schalte Stift ein
         """
         return self._core.pen_penDown()
                 
     def schalte_stift_aus(self):
-        """schalte Stift aus
+        """Hebt den Stift ab. Die Figur zeichnet beim Bewegen nicht mehr.
 
-        Translation string: schalte Stift aus
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: schalte Stift aus
         """
         return self._core.pen_penUp()
                 
     def setze_stift_helligkeit_auf(self, value):
-        """setze Stift Helligkeit auf [VALUE]
+        """Setzt die Helligkeit der Stiftfarbe. 0 ist schwarz, 100 ist am hellsten.
 
-        Translation string: setze Stift Helligkeit auf [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stift Helligkeit auf (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Helligkeit, von 0 bis 100.
         """
         return self._core.pen_setPenColorParamTo_brightness(value)
                 
     def setze_stift_farbe_auf(self, value):
-        """setze Stift Farbe auf [VALUE]
-        TODO TRANSLATORS: Needs to be distinguished from setPenColorToColor. This is only the hue value.
-        
+        """Setzt die Farbe (den Farbton) des Stifts. Die Farbe geht von 0 bis 100 und beginnt nach 100 wieder bei 0.
 
-        Translation string: setze Stift Farbe auf [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stift Farbe auf (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Stiftfarbe, von 0 bis 100.
         """
         return self._core.pen_setPenColorParamTo_color(value)
                 
     def setze_stift_sättigung_auf(self, value):
-        """setze Stift Sättigung auf [VALUE]
+        """Setzt die Sättigung der Stiftfarbe. Eine höhere Sättigung macht die Farbe kräftiger.
 
-        Translation string: setze Stift Sättigung auf [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stift Sättigung auf (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Sättigung, von 0 bis 100.
         """
         return self._core.pen_setPenColorParamTo_saturation(value)
                 
     def setze_stift_transparenz_auf(self, value):
-        """setze Stift Transparenz auf [VALUE]
+        """Setzt die Transparenz der Stiftfarbe. 0 ist nicht transparent, höhere Werte machen die Linien durchsichtiger.
 
-        Translation string: setze Stift Transparenz auf [VALUE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stift Transparenz auf (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Transparenz, von 0 bis 100.
         """
         return self._core.pen_setPenColorParamTo_transparency(value)
                 
     def setze_stiftfarbe_auf(self, color):
-        """setze Stiftfarbe auf [COLOR]
+        """Setzt die Farbe des Stifts.
 
-        Translation string: setze Stiftfarbe auf [COLOR]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stiftfarbe auf [Farbe]
 
-        
         Parameters
         ----------
-        color : FILL
-        
-
-        Returns
-        -------
-
+        color : str oder Tupel
+            Die Farbe, z. B. "#ff0000" für Rot, oder ein Tupel aus Rot-, Grün- und Blauwert von 0 bis 255.
         """
         return self._core.pen_setPenColorToColor(color)
                 
     def setze_stiftdicke_auf(self, value):
-        """setze Stiftdicke auf [SIZE]
+        """Setzt die Dicke des Stifts. Der Stift ist mindestens 1 dick.
 
-        Translation string: setze Stiftdicke auf [SIZE]
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: setze Stiftdicke auf (1)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : Zahl
+            Die neue Stiftdicke.
         """
         return self._core.pen_setPenSizeTo(value)
                 
     def hinterlasse_abdruck(self):
-        """hinterlasse Abdruck
+        """Stempelt eine Kopie des Kostüms der Figur auf die Bühne. Die Kopie bleibt dort, auch wenn sich die Figur bewegt.
 
-        Translation string: hinterlasse Abdruck
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: hinterlasse Abdruck
         """
         return self._core.pen_stamp()
                 
@@ -1455,11 +1342,13 @@ class Figur():
         Parameters
         ----------
         name : str
-            Der Name der Variablen.
-        minimum, maximum : number
-            Der Bereich des Reglers (wie in Scratch standardmäßig 0 bis 100).
+            Der Name der Variable.
+        minimum : Zahl
+            Der kleinste Wert des Reglers. Wie in Scratch ist der Standardwert 0.
+        maximum : Zahl
+            Der größte Wert des Reglers. Wie in Scratch ist der Standardwert 100.
         integer : bool
-            Bei True setzt der Regler nur ganze Zahlen, sonst Zahlen mit zwei Nachkommastellen.
+            Wenn True, stellt der Regler nur ganze Zahlen ein, sonst Zahlen mit zwei Nachkommastellen.
         """
         return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
                 
@@ -2100,21 +1989,12 @@ class Figur():
         return self._core.sound_volume()
                 
     def setze_name(self, name):
-        """
+        """Setzt den Namen der Figur. Andere Blöcke können die Figur über diesen Namen ansprechen.
 
-        Translation string: 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-
-
-        Returns
-        -------
-
+        name : str
+            Der neue Name der Figur.
         """
         return self._core.pystage_setname(name)
 
@@ -2498,7 +2378,13 @@ class Figur():
         return self._core.pystage_showmonitor(reporter)
 
     def verstecke_monitor(self, reporter):
-        """Versteckt den Monitor eines Werts. Die Werte stehen bei zeige_monitor."""
+        """Versteckt den Monitor eines Werts.
+
+        Parameters
+        ----------
+        reporter : str
+            Der Wert, z. B. "x-Position", "Größe", "Stoppuhr" oder "Jahr". Dieselben Werte wie bei zeige_monitor sind erlaubt.
+        """
         return self._core.pystage_hidemonitor(reporter)
 
     def setze_wertemonitor_position(self, reporter, x, y):

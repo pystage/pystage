@@ -1088,256 +1088,162 @@ class Sprite:
         return self._core.operator_random(start, end)
 
     def change_pen_brightness_by(self, value):
-        """change pen brightness by [VALUE]
+        """Changes the brightness of the pen color by the given amount. 0 is black and 100 is the brightest color.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pen brightness by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the brightness, from 0 to 100.
         """
         return self._core.pen_changePenColorParamBy_brightness(value)
 
     def change_pen_hue_by(self, value):
-        """change pen color by [VALUE]
+        """Changes the color (hue) of the pen by the given amount. The color goes from 0 to 100 and starts again at 0 after 100.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pen color by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the pen color.
         """
         return self._core.pen_changePenColorParamBy_color(value)
 
     def change_pen_saturation_by(self, value):
-        """change pen saturation by [VALUE]
+        """Changes the saturation of the pen color by the given amount. Higher saturation makes the color more colorful.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pen saturation by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the saturation, from 0 to 100.
         """
         return self._core.pen_changePenColorParamBy_saturation(value)
 
     def change_pen_transparency_by(self, value):
-        """change pen transparency by [VALUE]
+        """Changes the transparency of the pen color by the given amount. 0 is not transparent, higher values make the lines more see-through.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pen transparency by (10)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the transparency, from 0 to 100.
         """
         return self._core.pen_changePenColorParamBy_transparency(value)
 
     def change_pen_size_by(self, value):
-        """change pen size by [SIZE]
+        """Changes the thickness of the pen by the given amount. The pen is at least 1 thick.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: change pen size by (1)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The change of the pen thickness. Negative values make the pen thinner.
         """
         return self._core.pen_changePenSizeBy(value)
 
     def erase_all(self):
-        """erase all
+        """Erases everything that the pens of all sprites have drawn on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: erase all
         """
         return self._core.pen_clear()
 
     def pen_down(self):
-        """pen down
+        """Puts the pen down. From now on, the sprite draws a line on the stage while it moves.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: pen down
         """
         return self._core.pen_penDown()
 
     def pen_up(self):
-        """pen up
+        """Lifts the pen up. The sprite no longer draws while it moves.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: pen up
         """
         return self._core.pen_penUp()
 
     def set_pen_brightness_to(self, value):
-        """set pen brightness to [VALUE]
+        """Sets the brightness of the pen color. 0 is black and 100 is the brightest color.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen brightness to (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new brightness, from 0 to 100.
         """
         return self._core.pen_setPenColorParamTo_brightness(value)
 
     def set_pen_hue_to(self, value):
-        """set pen color to [VALUE]
+        """Sets the color (hue) of the pen. The color goes from 0 to 100 and starts again at 0 after 100.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen color to (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new pen color, from 0 to 100.
         """
         return self._core.pen_setPenColorParamTo_color(value)
 
     def set_pen_saturation_to(self, value):
-        """set pen saturation to [VALUE]
+        """Sets the saturation of the pen color. Higher saturation makes the color more colorful.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen saturation to (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new saturation, from 0 to 100.
         """
         return self._core.pen_setPenColorParamTo_saturation(value)
 
     def set_pen_transparency_to(self, value):
-        """set pen transparency to [VALUE]
+        """Sets the transparency of the pen color. 0 is not transparent, higher values make the lines more see-through.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen transparency to (50)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new transparency, from 0 to 100.
         """
         return self._core.pen_setPenColorParamTo_transparency(value)
 
     def set_pen_color(self, color):
-        """set pen color to [COLOR]
+        """Sets the color of the pen.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen color to [color]
 
-        
         Parameters
         ----------
-        color : FILL
-        
-
-        Returns
-        -------
-
+        color : str or tuple
+            The color, e.g. "#ff0000" for red, or a tuple of red, green and blue values from 0 to 255.
         """
         return self._core.pen_setPenColorToColor(color)
 
     def set_pen_size_to(self, value):
-        """set pen size to [SIZE]
+        """Sets the thickness of the pen. The pen is at least 1 thick.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: set pen size to (1)
 
-        
         Parameters
         ----------
-        value : FILL
-        
-
-        Returns
-        -------
-
+        value : number
+            The new pen thickness.
         """
         return self._core.pen_setPenSizeTo(value)
 
     def stamp(self):
-        """stamp
+        """Stamps a copy of the sprite's costume onto the stage. The copy stays there, even when the sprite moves.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: stamp
         """
         return self._core.pen_stamp()
 
@@ -1456,14 +1362,16 @@ class Sprite:
         return self._core.pystage_setmonitorstyle_normal(name)
 
     def set_monitor_style_slider(self, name, minimum=0, maximum=100, integer=True):
-        """Show the variable as a slider that can be dragged with the mouse.
+        """Shows the variable as a slider that can be dragged with the mouse.
 
         Parameters
         ----------
         name : str
             The name of the variable.
-        minimum, maximum : number
-            The range of the slider (0 to 100 by default, like in Scratch).
+        minimum : number
+            The lowest value of the slider. Like in Scratch, the default is 0.
+        maximum : number
+            The highest value of the slider. Like in Scratch, the default is 100.
         integer : bool
             If True, the slider only sets whole numbers, otherwise numbers with two decimals.
         """
@@ -2106,20 +2014,12 @@ class Sprite:
         return self._core.sound_volume()
 
     def set_name(self, name):
-        """set name of the sprite to %1%
+        """Sets the name of the sprite. Other blocks can refer to the sprite by this name.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
         Parameters
         ----------
-        name : FILL
-        
-
-        Returns
-        -------
-
+        name : str
+            The new name of the sprite.
         """
         return self._core.pystage_setname(name)
 
@@ -2503,7 +2403,13 @@ class Sprite:
         return self._core.pystage_showmonitor(reporter)
 
     def hide_monitor(self, reporter):
-        """Hide the monitor of a value. See show_monitor for the values."""
+        """Hides the monitor of a value.
+
+        Parameters
+        ----------
+        reporter : str
+            The value, e.g. "x position", "size", "timer" or "year". The same values as for show_monitor are allowed.
+        """
         return self._core.pystage_hidemonitor(reporter)
 
     def set_value_monitor_position(self, reporter, x, y):

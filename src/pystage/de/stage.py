@@ -691,11 +691,13 @@ class Bühne():
         Parameters
         ----------
         name : str
-            Der Name der Variablen.
-        minimum, maximum : number
-            Der Bereich des Reglers (wie in Scratch standardmäßig 0 bis 100).
+            Der Name der Variable.
+        minimum : Zahl
+            Der kleinste Wert des Reglers. Wie in Scratch ist der Standardwert 0.
+        maximum : Zahl
+            Der größte Wert des Reglers. Wie in Scratch ist der Standardwert 100.
         integer : bool
-            Bei True setzt der Regler nur ganze Zahlen, sonst Zahlen mit zwei Nachkommastellen.
+            Wenn True, stellt der Regler nur ganze Zahlen ein, sonst Zahlen mit zwei Nachkommastellen.
         """
         return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
                 
@@ -1634,7 +1636,13 @@ class Bühne():
         return self._core.pystage_showmonitor(reporter)
 
     def verstecke_monitor(self, reporter):
-        """Versteckt den Monitor eines Werts. Die Werte stehen bei zeige_monitor."""
+        """Versteckt den Monitor eines Werts.
+
+        Parameters
+        ----------
+        reporter : str
+            Der Wert, z. B. "x-Position", "Größe", "Stoppuhr" oder "Jahr". Dieselben Werte wie bei zeige_monitor sind erlaubt.
+        """
         return self._core.pystage_hidemonitor(reporter)
 
     def setze_wertemonitor_position(self, reporter, x, y):
