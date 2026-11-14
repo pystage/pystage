@@ -78,6 +78,18 @@ class Assets:
         return {"name": name, "bitmapResolution": 1, "dataFormat": "png", "assetId": md5,
                 "md5ext": f"{md5}.png", "rotationCenterX": size[0] // 2, "rotationCenterY": size[1] // 2}
 
+    def svg_costume(self, name, label="PLAY"):
+        """A vector costume like Scratch's paint editor writes it: a button with a text."""
+        svg = ('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="196" height="60" viewBox="0,0,196,60">'
+               '<g transform="translate(-140,-154.3125)"><g fill-rule="nonzero" stroke="none">'
+               '<path d="M140,214.3125v-60h196v60z" fill="#474252" stroke-width="0"/>'
+               '<text transform="translate(215,191.3125) scale(0.5,0.5)" font-size="40" xml:space="preserve" '
+               'fill="#dccbff" font-family="Sans Serif" font-weight="normal" text-anchor="start">'
+               f'<tspan x="0" dy="0">{label}</tspan></text></g></g></svg>').encode()
+        md5 = self.add("svg", svg)
+        return {"name": name, "bitmapResolution": 1, "dataFormat": "svg", "assetId": md5,
+                "md5ext": f"{md5}.svg", "rotationCenterX": 98, "rotationCenterY": 30}
+
     def backdrop(self, name, color):
         costume = self.costume(name, color, (480, 360))
         del costume["bitmapResolution"]
@@ -660,6 +672,16 @@ def motion_project():
     return p
 
 
+def svg_text_project():
+    """A button with a text that is a vector costume, the text must be rendered and clickable."""
+    p = Project()
+    sprite = p.sprites[0]
+    sprite.costumes = [p.assets.svg_costume("button")]
+    sprite.script(flag(b("motion_gotoxy", X=0, Y=0)))
+    sprite.script(b("event_whenthisspriteclicked"), say("clicked"))
+    return p
+
+
 def looks_project():
     p = Project(sprites=2)
     sprite, other = p.sprites
@@ -977,6 +999,7 @@ GENERATED = {
     "custom_blocks": procedures_project,
     "control_clones": control_project,
     "monitors": monitors_project,
+    "svg_text": svg_text_project,
 }
 
 

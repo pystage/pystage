@@ -8,6 +8,10 @@ import pygame
 from pystage.resources import resource_filename
 import pystage
 from pystage.core.values import is_number, to_number
+from pystage.core.svg_text import add_svg_text
+
+# The SVG warning is printed once per program run.
+_svg_notice_shown = False
 
 _round = lambda v: pygame.Vector2(round(v.x), round(v.y))
 
@@ -405,12 +409,20 @@ class Costume():
         if self.file is None:
             self.file = resource_filename("images/zombie_idle.png")
             self.image = pygame.image.load(self.file)
-        if self.file.endswith(".svg"):
+        global _svg_notice_shown
+        if self.file.endswith(".svg") and not _svg_notice_shown:
+            _svg_notice_shown = True
             print(tr("svg_notice"))
         if pygame.display.get_surface() is not None:
             self.image = self.image.convert_alpha()
         if factor!=1:
             self.image = pygame.transform.rotozoom(self.image, 0, 1.0/factor)
+        # Text of SVG files is not rendered by pygame. The image may grow
+        # by this much to the left and the top if the text reaches out.
+        pad_x = pad_y = 0
+        orig_w, orig_h = (max(1, n) for n in self.image.get_size())
+        if self.file.endswith(".svg"):
+            self.image, (pad_x, pad_y) = add_svg_text(self.image, self.file)
         bounding_rect = self.image.get_bounding_rect()
         if bounding_rect.width == 0 or bounding_rect.height == 0:
             # Completely transparent or empty image
@@ -420,8 +432,8 @@ class Costume():
         self.image = self.image.subsurface(bounding_rect)
         # The offset resulting from the image crop
         offset = pygame.Vector2(self.image.get_offset())
-        self.center_x = (float(self.image.get_parent().get_width()) / 2) - offset.x if center_x is None else (float(center_x) / factor) - offset.x 
-        self.center_y = (float(self.image.get_parent().get_height()) / 2) - offset.y if center_y is None else (float(center_y) / factor) - offset.y
+        self.center_x = (float(orig_w) / 2 if center_x is None else float(center_x) / factor) + pad_x - offset.x
+        self.center_y = (float(orig_h) / 2 if center_y is None else float(center_y) / factor) + pad_y - offset.y
 
 
     def __str__(self):
