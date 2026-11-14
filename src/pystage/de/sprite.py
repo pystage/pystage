@@ -1525,623 +1525,514 @@ class Figur():
         return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
                 
     def antwort(self):
-        """Antwort
+        """Gibt die letzte Antwort zurück, die der Benutzer bei einem Frage-Block eingegeben hat.
 
-        Translation string: Antwort
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Antwort)
 
         Returns
         -------
-
+        str
+            Die letzte Antwort. Vor der ersten Frage ist es ein leerer Text.
         """
         return self._core.sensing_answer()
                 
     def frage_und_warte(self, question):
-        """frage %1 und warte
+        """Zeigt eine Frage auf der Bühne in einem Textfeld und wartet, bis der Benutzer sie beantwortet hat.
 
-        Translation string: frage %1 und warte
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Die Antwort kann mit dem Block Antwort gelesen werden.
 
-        
+        Scratch-Block: frage (Wie heißt du?) und warte
+
         Parameters
         ----------
-        question : FILL
-        
-
-        Returns
-        -------
-
+        question : str
+            Die Frage, die dem Benutzer gezeigt wird.
         """
         return self._core.sensing_askandwait(question)
                 
     def farbe_berührt(self, sprite_color, color):
-        """Farbe %1 berührt %2?
+        """Prüft, ob eine Farbe der Figur eine andere Farbe auf der Bühne berührt.
 
-        Translation string: Farbe %1 berührt %2?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Farbe (Farbe) berührt (Farbe)?
 
-        
         Parameters
         ----------
-        sprite_color : FILL
-        color : FILL
-        
+        sprite_color : str oder Tupel
+            Die Farbe der Figur, z. B. "#ff0000" für Rot, oder ein Tupel aus Rot-, Grün- und Blauwert von 0 bis 255.
+        color : str oder Tupel
+            Die Farbe auf der Bühne, nach der gesucht wird, im gleichen Format.
 
         Returns
         -------
-
+        bool
+            True, wenn die Farbe der Figur die Farbe berührt, sonst False.
         """
         return self._core.sensing_coloristouchingcolor(sprite_color, color)
                 
     def datum_im_moment(self):
-        """Datum im Moment
+        """Gibt den aktuellen Tag des Monats zurück, von 1 bis 31.
 
-        Translation string: Datum im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Datum im Moment)
 
         Returns
         -------
-
+        int
+            Der aktuelle Tag des Monats.
         """
         return self._core.sensing_current_date()
                 
     def wochentag_im_moment(self):
-        """Wochentag im Moment
+        """Gibt den aktuellen Wochentag als Zahl zurück. 1 ist Sonntag, 2 ist Montag und 7 ist Samstag.
 
-        Translation string: Wochentag im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Wochentag im Moment)
 
         Returns
         -------
-
+        int
+            Der aktuelle Wochentag, von 1 (Sonntag) bis 7 (Samstag).
         """
         return self._core.sensing_current_dayofweek()
                 
     def stunde_im_moment(self):
-        """Stunde im Moment
+        """Gibt die aktuelle Stunde zurück, von 0 bis 23.
 
-        Translation string: Stunde im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Stunde im Moment)
 
         Returns
         -------
-
+        int
+            Die aktuelle Stunde.
         """
         return self._core.sensing_current_hour()
                 
     def minute_im_moment(self):
-        """Minute im Moment
+        """Gibt die aktuelle Minute zurück, von 0 bis 59.
 
-        Translation string: Minute im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Minute im Moment)
 
         Returns
         -------
-
+        int
+            Die aktuelle Minute.
         """
         return self._core.sensing_current_minute()
                 
     def monat_im_moment(self):
-        """Monat im Moment
+        """Gibt den aktuellen Monat als Zahl zurück, von 1 (Januar) bis 12 (Dezember).
 
-        Translation string: Monat im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Monat im Moment)
 
         Returns
         -------
-
+        int
+            Der aktuelle Monat.
         """
         return self._core.sensing_current_month()
                 
     def sekunde_im_moment(self):
-        """Sekunde im Moment
+        """Gibt die aktuelle Sekunde zurück, von 0 bis 59.
 
-        Translation string: Sekunde im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Sekunde im Moment)
 
         Returns
         -------
-
+        int
+            Die aktuelle Sekunde.
         """
         return self._core.sensing_current_second()
                 
     def jahr_im_moment(self):
-        """Jahr im Moment
+        """Gibt das aktuelle Jahr zurück.
 
-        Translation string: Jahr im Moment
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Jahr im Moment)
 
         Returns
         -------
-
+        int
+            Das aktuelle Jahr, z. B. 2026.
         """
         return self._core.sensing_current_year()
                 
     def tage_seit(self):
-        """Tage seit 2000
+        """Gibt die Anzahl Tage seit dem 1. Januar 2000 (in UTC) zurück, mit dem Bruchteil des aktuellen Tages.
 
-        Translation string: Tage seit 2000
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Tage seit 2000)
 
         Returns
         -------
-
+        Zahl
+            Die Anzahl Tage seit 2000, z. B. 9500,5.
         """
         return self._core.sensing_dayssince2000()
                 
     def entfernung_von_mauszeiger(self):
-        """Entfernung von Mauszeiger
+        """Gibt den Abstand zwischen der Figur und dem Mauszeiger in Pixeln zurück.
 
-        Translation string: Entfernung von Mauszeiger
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Entfernung von [Mauszeiger])
 
         Returns
         -------
-
+        Zahl
+            Der Abstand in Pixeln.
         """
         return self._core.sensing_distanceto_pointer()
                 
     def entfernung_von(self, sprite):
-        """Entfernung von %1
+        """Gibt den Abstand zwischen der Figur und einer anderen Figur in Pixeln zurück.
 
-        Translation string: Entfernung von %1
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Entfernung von (Figur))
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. "_mouse_" steht für den Mauszeiger. Gibt es keine solche Figur, wird 10000 zurückgegeben.
 
         Returns
         -------
-
+        Zahl
+            Der Abstand in Pixeln.
         """
         return self._core.sensing_distanceto_sprite(sprite)
                 
     def taste_gedrückt(self, key):
-        """Taste %1 gedrückt?
+        """Prüft, ob im Moment eine Taste gedrückt ist.
 
-        Translation string: Taste %1 gedrückt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: Taste (Leertaste) gedrückt?
 
-        
         Parameters
         ----------
-        key : FILL
-        
+        key : str
+            Die Taste, z. B. "a", "1", "Leertaste", "Pfeil nach links", "Pfeil nach rechts", "Pfeil nach oben", "Pfeil nach unten" oder "beliebiges" (jede Taste). Groß- und Kleinschreibung spielen keine Rolle.
 
         Returns
         -------
-
+        bool
+            True, wenn die Taste gedrückt ist, sonst False.
         """
         return self._core.sensing_keypressed(key)
                 
     def lautstärke_mikrofon(self):
-        """Lautstärke
+        """Gibt die Lautstärke des Mikrofons zurück.
 
-        Translation string: Lautstärke
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Dies ist nur ein Platzhalter: Das Mikrofon wird nicht unterstützt, deshalb ist der Wert immer -1.
 
-        
+        Scratch-Block: (Lautstärke)
 
         Returns
         -------
-
+        int
+            Immer -1.
         """
         return self._core.sensing_loudness()
                 
     def maustaste_gedrückt(self):
-        """Maustaste gedrückt?
+        """Prüft, ob im Moment eine Maustaste gedrückt ist.
 
-        Translation string: Maustaste gedrückt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: Maustaste gedrückt?
 
         Returns
         -------
-
+        bool
+            True, wenn eine beliebige Maustaste gedrückt ist, sonst False.
         """
         return self._core.sensing_mousedown()
                 
     def maus_x_position(self):
-        """Maus x-Position
+        """Gibt die waagerechte Position des Mauszeigers auf der Bühne zurück. Die Mitte der Bühne ist 0.
 
-        Translation string: Maus x-Position
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Maus x-Position)
 
         Returns
         -------
-
+        int
+            Die x-Position des Mauszeigers. Sie ist auf die Bühne begrenzt.
         """
         return self._core.sensing_mousex()
                 
     def maus_y_position(self):
-        """Maus y-Position
+        """Gibt die senkrechte Position des Mauszeigers auf der Bühne zurück. Die Mitte der Bühne ist 0.
 
-        Translation string: Maus y-Position
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Maus y-Position)
 
         Returns
         -------
-
+        int
+            Die y-Position des Mauszeigers. Sie ist auf die Bühne begrenzt.
         """
         return self._core.sensing_mousey()
                 
     def bühnenbildname_von(self, stage='_stage_'):
-        """Bühnenbildname von %2
+        """Gibt den Namen des aktuellen Bühnenbilds zurück. Nur die Bühne hat Bühnenbilder.
 
-        Translation string: Bühnenbildname von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Bühnenbild [Name]) von (Bühne)
 
-        
         Parameters
         ----------
-        stage : FILL
-        
+        stage : str
+            Der Name der Bühne, standardmäßig "_stage_". Bei einer Figur wird 0 zurückgegeben.
 
         Returns
         -------
-
+        str
+            Der Name des aktuellen Bühnenbilds.
         """
         return self._core.sensing_of_backdropname(stage)
                 
     def bühnenbildnummer_von(self, stage='_stage_'):
-        """Bühnenbildnummer von %2
+        """Gibt die Nummer des aktuellen Bühnenbilds zurück (ab 1). Nur die Bühne hat Bühnenbilder.
 
-        Translation string: Bühnenbildnummer von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Bühnenbild [Nummer]) von (Bühne)
 
-        
         Parameters
         ----------
-        stage : FILL
-        
+        stage : str
+            Der Name der Bühne, standardmäßig "_stage_". Bei einer Figur wird 0 zurückgegeben.
 
         Returns
         -------
-
+        int
+            Die Nummer des aktuellen Bühnenbilds.
         """
         return self._core.sensing_of_backdropnumber(stage)
                 
     def kostümname_von(self, sprite):
-        """Kostümname von %2
+        """Gibt den Namen des aktuellen Kostüms einer anderen Figur zurück.
 
-        Translation string: Kostümname von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Kostüm [Name]) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        str
+            Der Name des aktuellen Kostüms.
         """
         return self._core.sensing_of_costumename(sprite)
                 
     def kostümnummer_von(self, sprite):
-        """Kostümnummer von %2
+        """Gibt die Nummer des aktuellen Kostüms einer anderen Figur zurück (ab 1).
 
-        Translation string: Kostümnummer von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Kostüm [Nummer]) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        int
+            Die Nummer des aktuellen Kostüms.
         """
         return self._core.sensing_of_costumenumber(sprite)
                 
     def richtung_von(self, sprite):
-        """Richtung von %2
+        """Gibt die Richtung einer anderen Figur in Grad zurück. 90 ist rechts, 0 ist oben.
 
-        Translation string: Richtung von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Richtung) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        Zahl
+            Die Richtung der Figur, zwischen -180 und 180.
         """
         return self._core.sensing_of_direction(sprite)
                 
     def größe_von(self, sprite):
-        """Größe von %2
+        """Gibt die Größe einer anderen Figur in Prozent zurück. 100 ist die normale Größe.
 
-        Translation string: Größe von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Größe) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        Zahl
+            Die Größe der Figur in Prozent.
         """
         return self._core.sensing_of_size(sprite)
                 
     def gib_variable_von(self, variable, sprite='_stage_'):
-        """%1 von %2
+        """Gibt den Wert einer Variable einer Figur oder der Bühne zurück.
 
-        Translation string: %1 von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Variable) von (Figur)
 
-        
         Parameters
         ----------
-        variable : FILL
-        sprite : FILL
-        
+        variable : str
+            Der Name der Variable.
+        sprite : str
+            Der Name der Figur oder "_stage_" für die Bühne. Standardmäßig wird die Bühne genommen.
 
         Returns
         -------
-
+        object
+            Der Wert der Variable. Gibt es die Variable nicht, wird 0 zurückgegeben.
         """
         return self._core.sensing_of_variable(variable, sprite)
                 
     def lautstärke_von(self, sprite='_stage_'):
-        """Lautstärke von %2
+        """Gibt die Lautstärke der Klänge einer Figur oder der Bühne zurück, von 0 bis 100.
 
-        Translation string: Lautstärke von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (Lautstärke) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur oder "_stage_" für die Bühne. Standardmäßig wird die Bühne genommen.
 
         Returns
         -------
-
+        Zahl
+            Die Lautstärke, von 0 bis 100.
         """
         return self._core.sensing_of_volume(sprite)
                 
     def x_position_von(self, sprite):
-        """x-Position von %2
+        """Gibt die x-Position einer anderen Figur zurück.
 
-        Translation string: x-Position von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (x-Position) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        Zahl
+            Die x-Position der Figur.
         """
         return self._core.sensing_of_xposition(sprite)
                 
     def y_position_von(self, sprite):
-        """y-Position von %2
+        """Gibt die y-Position einer anderen Figur zurück.
 
-        Translation string: y-Position von %2
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: (y-Position) von (Figur)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. Gibt es keine solche Figur, wird 0 zurückgegeben.
 
         Returns
         -------
-
+        Zahl
+            Die y-Position der Figur.
         """
         return self._core.sensing_of_yposition(sprite)
                 
     def setze_stoppuhr_zurück(self):
-        """setze Stoppuhr zurück
+        """Setzt die Stoppuhr auf 0 zurück.
 
-        Translation string: setze Stoppuhr zurück
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Stoppuhr zurück
         """
         return self._core.sensing_resettimer()
                 
     def setze_ziehbarkeit_auf_ziehbar(self):
-        """setze Ziehbarkeit auf ziehbar
+        """Macht die Figur ziehbar: Der Benutzer kann sie während des Programms mit der Maus verschieben.
 
-        Translation string: setze Ziehbarkeit auf ziehbar
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Ziehbarkeit auf [ziehbar]
         """
         return self._core.sensing_setdragmode_draggable()
                 
     def setze_ziehbarkeit_auf_nicht_ziehbar(self):
-        """setze Ziehbarkeit auf nicht ziehbar
+        """Macht die Figur nicht ziehbar: Der Benutzer kann sie nicht mit der Maus verschieben.
 
-        Translation string: setze Ziehbarkeit auf nicht ziehbar
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch-Block: setze Ziehbarkeit auf [nicht ziehbar]
         """
         return self._core.sensing_setdragmode_notdraggable()
                 
     def stoppuhr(self):
-        """Stoppuhr
+        """Gibt die Zeit in Sekunden zurück, die seit dem Start des Programms oder seit dem letzten Zurücksetzen der Stoppuhr vergangen ist.
 
-        Translation string: Stoppuhr
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Stoppuhr)
 
         Returns
         -------
-
+        Zahl
+            Der Stand der Stoppuhr in Sekunden.
         """
         return self._core.sensing_timer()
                 
     def wird_farbe_berührt(self, color):
-        """wird Farbe %1 berührt?
+        """Prüft, ob die Figur eine Farbe auf der Bühne berührt.
 
-        Translation string: wird Farbe %1 berührt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wird Farbe (Farbe) berührt?
 
-        
         Parameters
         ----------
-        color : FILL
-        
+        color : str oder Tupel
+            Die Farbe, z. B. "#ff0000" für Rot, oder ein Tupel aus Rot-, Grün- und Blauwert von 0 bis 255.
 
         Returns
         -------
-
+        bool
+            True, wenn die Figur die Farbe berührt, sonst False.
         """
         return self._core.sensing_touchingcolor(color)
                 
     def wird_rand_berührt(self):
-        """wird Rand berührt?
+        """Prüft, ob die Figur den Rand der Bühne berührt.
 
-        Translation string: wird Rand berührt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: wird [Rand] berührt?
 
         Returns
         -------
-
+        bool
+            True, wenn die Figur über den Rand der Bühne hinausragt, sonst False.
         """
         return self._core.sensing_touchingobject_edge()
                 
     def wird_mauszeiger_berührt(self):
-        """wird Mauszeiger berührt?
+        """Prüft, ob die Figur den Mauszeiger berührt.
 
-        Translation string: wird Mauszeiger berührt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: wird [Mauszeiger] berührt?
 
         Returns
         -------
-
+        bool
+            True, wenn die Figur sichtbar ist und der Mauszeiger auf ihr liegt, sonst False.
         """
         return self._core.sensing_touchingobject_pointer()
                 
     def wird_berührt(self, sprite):
-        """wird %1 berührt?
+        """Prüft, ob die Figur eine andere Figur, den Mauszeiger oder den Rand berührt.
 
-        Translation string: wird %1 berührt?
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch-Block: wird (Figur) berührt?
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            Der Name der Figur. "_mouse_" steht für den Mauszeiger, "_edge_" für den Rand der Bühne.
 
         Returns
         -------
-
+        bool
+            True, wenn die Figur das Ziel berührt, sonst False.
         """
         return self._core.sensing_touchingobject_sprite(sprite)
                 
     def benutzername(self):
-        """Benutzername
+        """Gibt den Benutzernamen zurück. pystage kennt den Benutzernamen nicht, deshalb ist das Ergebnis immer ein leerer Text.
 
-        Translation string: Benutzername
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch-Block: (Benutzername)
 
         Returns
         -------
-
+        str
+            Immer ein leerer Text.
         """
         return self._core.sensing_username()
                 

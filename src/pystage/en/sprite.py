@@ -1522,586 +1522,514 @@ class Sprite:
         return self._core.pystage_setmonitorstyle_slider(name, minimum, maximum, integer)
 
     def answer(self):
-        """answer
+        """Returns the last answer that the user typed for an ask block.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (answer)
 
         Returns
         -------
-
+        str
+            The last answer. It is an empty text before the first question.
         """
         return self._core.sensing_answer()
 
     def ask_and_wait(self, question):
-        """ask %1 and wait
+        """Shows a question on the stage in a text box and waits until the user has answered it.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        The answer can be read with the answer block.
 
-        
+        Scratch block: ask (What's your name?) and wait
+
         Parameters
         ----------
-        question : FILL
-        
-
-        Returns
-        -------
-
+        question : str
+            The question to show to the user.
         """
         return self._core.sensing_askandwait(question)
 
     def color_is_touching(self, sprite_color, color):
-        """color %1 is touching %2?
+        """Checks whether a color of the sprite touches another color on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: color (color) is touching (color)?
 
-        
         Parameters
         ----------
-        sprite_color : FILL
-        color : FILL
-        
+        sprite_color : str or tuple
+            The color of the sprite, e.g. "#ff0000" for red, or a tuple of red, green and blue values from 0 to 255.
+        color : str or tuple
+            The color on the stage that is searched for, in the same format.
 
         Returns
         -------
-
+        bool
+            True if the sprite color touches the color, otherwise False.
         """
         return self._core.sensing_coloristouchingcolor(sprite_color, color)
 
     def current_date(self):
-        """current date
+        """Returns the current day of the month, from 1 to 31.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [date])
 
         Returns
         -------
-
+        int
+            The current day of the month.
         """
         return self._core.sensing_current_date()
 
     def current_day_of_week(self):
-        """current day of week
+        """Returns the current day of the week as a number. 1 is Sunday, 2 is Monday and 7 is Saturday.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [day of week])
 
         Returns
         -------
-
+        int
+            The current day of the week, from 1 (Sunday) to 7 (Saturday).
         """
         return self._core.sensing_current_dayofweek()
 
     def current_hour(self):
-        """current hour
+        """Returns the current hour, from 0 to 23.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [hour])
 
         Returns
         -------
-
+        int
+            The current hour.
         """
         return self._core.sensing_current_hour()
 
     def current_minute(self):
-        """current minute
+        """Returns the current minute, from 0 to 59.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [minute])
 
         Returns
         -------
-
+        int
+            The current minute.
         """
         return self._core.sensing_current_minute()
 
     def current_month(self):
-        """current month
+        """Returns the current month as a number, from 1 (January) to 12 (December).
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [month])
 
         Returns
         -------
-
+        int
+            The current month.
         """
         return self._core.sensing_current_month()
 
     def current_second(self):
-        """current second
+        """Returns the current second, from 0 to 59.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [second])
 
         Returns
         -------
-
+        int
+            The current second.
         """
         return self._core.sensing_current_second()
 
     def current_year(self):
-        """current year
+        """Returns the current year.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (current [year])
 
         Returns
         -------
-
+        int
+            The current year, e.g. 2026.
         """
         return self._core.sensing_current_year()
 
     def days_since(self):
-        """days since 2000
+        """Returns the number of days since 1 January 2000 (in UTC), including the fraction of the current day.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (days since 2000)
 
         Returns
         -------
-
+        number
+            The number of days since 2000, e.g. 9500.5.
         """
         return self._core.sensing_dayssince2000()
 
     def distance_to_mouse_pointer(self):
-        """distance to mouse-pointer
+        """Returns the distance between the sprite and the mouse pointer in pixels.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (distance to [mouse-pointer])
 
         Returns
         -------
-
+        number
+            The distance in pixels.
         """
         return self._core.sensing_distanceto_pointer()
 
     def distance_to_sprite(self, sprite):
-        """distance to %1
+        """Returns the distance between the sprite and another sprite in pixels.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (distance to (sprite))
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. Use "_mouse_" for the mouse pointer. If there is no such sprite, 10000 is returned.
 
         Returns
         -------
-
+        number
+            The distance in pixels.
         """
         return self._core.sensing_distanceto_sprite(sprite)
 
     def key_pressed(self, key):
-        """key %1 pressed?
+        """Checks whether a key is pressed at this moment.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: key (space) pressed?
 
-        
         Parameters
         ----------
-        key : FILL
-        
+        key : str
+            The key, e.g. "a", "1", "space", "left arrow", "right arrow", "up arrow", "down arrow" or "any" (any key). Upper and lower case do not matter.
 
         Returns
         -------
-
+        bool
+            True if the key is pressed, otherwise False.
         """
         return self._core.sensing_keypressed(key)
 
     def loudness(self):
-        """loudness
+        """Returns the loudness of the microphone.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        This is only a stub: the microphone is not supported, so the value is always -1.
 
-        
+        Scratch block: (loudness)
 
         Returns
         -------
-
+        int
+            Always -1.
         """
         return self._core.sensing_loudness()
 
     def mouse_down(self):
-        """mouse down?
+        """Checks whether a mouse button is pressed at this moment.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: mouse down?
 
         Returns
         -------
-
+        bool
+            True if any mouse button is pressed, otherwise False.
         """
         return self._core.sensing_mousedown()
 
     def mouse_x(self):
-        """mouse x
+        """Returns the horizontal position of the mouse pointer on the stage. The center of the stage is 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (mouse x)
 
         Returns
         -------
-
+        int
+            The x position of the mouse pointer. It is limited to the stage.
         """
         return self._core.sensing_mousex()
 
     def mouse_y(self):
-        """mouse y
+        """Returns the vertical position of the mouse pointer on the stage. The center of the stage is 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (mouse y)
 
         Returns
         -------
-
+        int
+            The y position of the mouse pointer. It is limited to the stage.
         """
         return self._core.sensing_mousey()
 
     def backdrop_name_of(self, stage="_stage_"):
-        """backdrop name of %2
+        """Returns the name of the current backdrop. Only the stage has backdrops.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (backdrop [name]) of (stage)
 
-        
         Parameters
         ----------
-        stage : FILL
-        
+        stage : str
+            The name of the stage, "_stage_" by default. For a sprite, 0 is returned.
 
         Returns
         -------
-
+        str
+            The name of the current backdrop.
         """
         return self._core.sensing_of_backdropname(stage="_stage_")
 
     def backdrop_of(self, stage="_stage_"):
-        """backdrop # of %2
+        """Returns the number of the current backdrop (starting with 1). Only the stage has backdrops.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (backdrop [number]) of (stage)
 
-        
         Parameters
         ----------
-        stage : FILL
-        
+        stage : str
+            The name of the stage, "_stage_" by default. For a sprite, 0 is returned.
 
         Returns
         -------
-
+        int
+            The number of the current backdrop.
         """
         return self._core.sensing_of_backdropnumber(stage="_stage_")
 
     def costume_name_of(self, sprite):
-        """costume name of %2
+        """Returns the name of the current costume of another sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (costume [name]) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        str
+            The name of the current costume.
         """
         return self._core.sensing_of_costumename(sprite)
 
     def costume_of(self, sprite):
-        """costume # of %2
+        """Returns the number of the current costume of another sprite (starting with 1).
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (costume [number]) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        int
+            The number of the current costume.
         """
         return self._core.sensing_of_costumenumber(sprite)
 
     def direction_of(self, sprite):
-        """direction of %2
+        """Returns the direction of another sprite in degrees. 90 is right, 0 is up.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (direction) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        number
+            The direction of the sprite, between -180 and 180.
         """
         return self._core.sensing_of_direction(sprite)
 
     def size_of(self, sprite):
-        """size of %2
+        """Returns the size of another sprite in percent. 100 is the normal size.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (size) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        number
+            The size of the sprite in percent.
         """
         return self._core.sensing_of_size(sprite)
 
     def get_variable_of(self, variable, sprite="_stage_"):
-        """%1 of %2
+        """Returns the value of a variable of a sprite or of the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (variable) of (sprite)
 
-        
         Parameters
         ----------
-        variable : FILL
-        sprite : FILL
-        
+        variable : str
+            The name of the variable.
+        sprite : str
+            The name of the sprite, or "_stage_" for the stage. Defaults to the stage.
 
         Returns
         -------
-
+        object
+            The value of the variable. If the variable does not exist, 0 is returned.
         """
         return self._core.sensing_of_variable(variable, sprite="_stage_")
 
     def volume_of(self, sprite="_stage_"):
-        """volume of %2
+        """Returns the volume of the sounds of a sprite or of the stage, from 0 to 100.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (volume) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite, or "_stage_" for the stage. Defaults to the stage.
 
         Returns
         -------
-
+        number
+            The volume, from 0 to 100.
         """
         return self._core.sensing_of_volume(sprite="_stage_")
 
     def x_position_of(self, sprite):
-        """x position of %2
+        """Returns the x position of another sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (x position) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        number
+            The x position of the sprite.
         """
         return self._core.sensing_of_xposition(sprite)
 
     def y_position_of(self, sprite):
-        """y position of %2
+        """Returns the y position of another sprite.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: (y position) of (sprite)
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. If there is no such sprite, 0 is returned.
 
         Returns
         -------
-
+        number
+            The y position of the sprite.
         """
         return self._core.sensing_of_yposition(sprite)
 
     def reset_timer(self):
-        """reset timer
+        """Resets the timer to 0.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: reset timer
         """
         return self._core.sensing_resettimer()
 
     def set_drag_mode_draggable(self):
-        """set drag mode draggable
+        """Makes the sprite draggable: the user can move it with the mouse while the program runs.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: set drag mode [draggable]
         """
         return self._core.sensing_setdragmode_draggable()
 
     def set_drag_mode_not_draggable(self):
-        """set drag mode not draggable
+        """Makes the sprite not draggable: the user cannot move it with the mouse.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
-
-        Returns
-        -------
-
+        Scratch block: set drag mode [not draggable]
         """
         return self._core.sensing_setdragmode_notdraggable()
 
     def timer(self):
-        """timer
+        """Returns the time in seconds since the program started or since the timer was last reset.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (timer)
 
         Returns
         -------
-
+        number
+            The time of the timer in seconds.
         """
         return self._core.sensing_timer()
 
     def touching_color(self, color):
-        """touching color %1?
+        """Checks whether the sprite touches a color on the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: touching color (color)?
 
-        
         Parameters
         ----------
-        color : FILL
-        
+        color : str or tuple
+            The color, e.g. "#ff0000" for red, or a tuple of red, green and blue values from 0 to 255.
 
         Returns
         -------
-
+        bool
+            True if the sprite touches the color, otherwise False.
         """
         return self._core.sensing_touchingcolor(color)
 
     def touching_edge(self):
-        """touching edge?
+        """Checks whether the sprite touches the edge of the stage.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: touching [edge]?
 
         Returns
         -------
-
+        bool
+            True if the sprite reaches beyond the edge of the stage, otherwise False.
         """
         return self._core.sensing_touchingobject_edge()
 
     def touching_mouse_pointer(self):
-        """touching mouse-pointer?
+        """Checks whether the sprite touches the mouse pointer.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: touching [mouse-pointer]?
 
         Returns
         -------
-
+        bool
+            True if the sprite is visible and the mouse pointer is on it, otherwise False.
         """
         return self._core.sensing_touchingobject_pointer()
 
     def touching(self, sprite):
-        """touching %1?
+        """Checks whether the sprite touches another sprite, the mouse pointer or the edge.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
+        Scratch block: touching (sprite)?
 
-        
         Parameters
         ----------
-        sprite : FILL
-        
+        sprite : str
+            The name of the sprite. Use "_mouse_" for the mouse pointer or "_edge_" for the edge of the stage.
 
         Returns
         -------
-
+        bool
+            True if the sprite touches it, otherwise False.
         """
         return self._core.sensing_touchingobject_sprite(sprite)
 
     def username(self):
-        """username
+        """Returns the user name. pystage does not know the user name, so the result is always an empty text.
 
-        Engl. Translation for your reference: ...
-        Engl. Documentation when available...
-
-        
+        Scratch block: (username)
 
         Returns
         -------
-
+        str
+            Always an empty text.
         """
         return self._core.sensing_username()
 
