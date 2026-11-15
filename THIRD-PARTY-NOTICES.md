@@ -22,3 +22,10 @@ under the SIL Open Font License, Version 1.1; the full licence texts are in
 
 Copyright 2011 Google Inc. All Rights Reserved., licensed under the Apache License, Version 2.0
 (http://www.apache.org/licenses/LICENSE-2.0); the licence text is in `src/pystage/fonts/LICENSE-Roboto.txt`. Used as fallback font.
+
+## scratchblocks (`docs/source/_static/scratchblocks/`)
+
+scratchblocks 3.7.1, Copyright 2013-2026 Tim Radvan, MIT licence (https://scratchblocks.github.io/), used in the
+documentation to render Scratch blocks in the browser. `scratchblocks.min.js` is the unmodified build from the npm
+package; `translations-de.js` wraps the package's German locale (`locales/de.json`) in a `loadLanguages` call. The
+licence text is in `docs/source/_static/scratchblocks/LICENSE`. Not part of the pystage package.

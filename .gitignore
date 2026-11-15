@@ -13,7 +13,7 @@ geckodriver.log
 
 
 # docs
-/docs/source/_static
+/docs/source/_static/images
 *.png
 images/
 sounds/
