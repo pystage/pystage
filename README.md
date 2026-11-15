@@ -203,7 +203,15 @@ Scripts, custom blocks, variables, lists, monitors and comments of your project 
 PyStage is MIT licensed. It bundles the original Scratch 3 text fonts (Noto Sans, Source Serif Pro, Handlee, Knewave and Griffy under the SIL Open Font License 1.1, and Grand9K Pixel under CC BY-SA 3.0; the font files are unmodified and the licence of a font does not affect your own code) so that text in SVG costumes looks like in Scratch, and Roboto (Apache License 2.0) as fallback; see `THIRD-PARTY-NOTICES.md`.
 
 
+# Maintainer
+
+* Kai Eckert, Mannheim Technical University
+
 # Contributors
 
-* Kai Eckert, Stuttgart Media University
-* Florian Rupp, Stuttgart Media University
+* Branden Husted, Calvin University
+* Neil Mitchell
+* Zhonglin Niu, Calvin University
+* Victor Norman, Calvin University
+* Florian Rupp
+* daolong (ahlongxp)
