@@ -13,11 +13,12 @@ Welcome to PyStage's documentation!
 
 .. make hidden section for nav bar left
 .. toctree::
-    :caption: PyStage API Translations
+    :caption: PyStage API
     :maxdepth: 2
     :hidden:
 
     languages
+    pystage
 
 
 .. include:: languages.rst

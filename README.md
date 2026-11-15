@@ -81,7 +81,7 @@ If you are interested in PyStage and want to get in touch, feel free to join us 
 
 Currently, only the English API is fully translated, the German API is automatically generated. All other languages will be added when PyStage gets more stable. Get in touch if you want to help maintain a translation.
 
-### Deutsch
+## Deutsch
 
 Die deutsche API heißt `pystage.de`. Auch die Werte aus den Auswahlmenüs von Scratch kannst du auf Deutsch angeben (Groß- und Kleinschreibung ist egal, die englischen Werte funktionieren weiterhin), und Fehlermeldungen und Hinweise erscheinen auf Deutsch:
 

@@ -6,39 +6,79 @@ pystage.core
 
 
 
+
+
+
+
+.. automodule:: pystage.core.asking
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+
 .. automodule:: pystage.core.assets
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.core.code_block
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.core.constants
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.core.gui
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
+
+
+.. automodule:: pystage.core.i18n
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+
+.. automodule:: pystage.core.messages
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+
+.. automodule:: pystage.core.monitors
+   :members:
+   :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.core.sprite
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.core.stage
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
+
+
+.. automodule:: pystage.core.svg_text
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+
+.. automodule:: pystage.core.values
+   :members:
+   :show-inheritance:
+   :undoc-members:
 
 

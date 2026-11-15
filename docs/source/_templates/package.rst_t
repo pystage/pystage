@@ -21,11 +21,11 @@
 
 {{ [".. _", pkgname, ":"] | join("") }}
 
-{%- if modulefirst and not is_namespace %}
+{% if modulefirst and not is_namespace %}
 {{ automodule(pkgname, automodule_options) }}
 {% endif %}
 
-{%- if subpackages %}
+{% if subpackages %}
 Subpackages
 -----------
 

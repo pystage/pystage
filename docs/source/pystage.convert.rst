@@ -6,21 +6,25 @@ pystage.convert
 
 
 
+
+
+
+
 .. automodule:: pystage.convert.code_writer
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.convert.sb3
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.convert.sb3_templates
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 

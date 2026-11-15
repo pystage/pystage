@@ -6,15 +6,19 @@ pystage.en
 
 
 
+
+
+
+
 .. automodule:: pystage.en.sprite
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
 .. automodule:: pystage.en.stage
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 

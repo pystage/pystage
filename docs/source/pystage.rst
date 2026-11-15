@@ -3,6 +3,10 @@ pystage
 
 
 .. _pystage:
+
+
+
+
 Subpackages
 -----------
 
@@ -18,9 +22,9 @@ Subpackages
 
 
 
-.. automodule:: pystage.util
+.. automodule:: pystage.resources
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 
