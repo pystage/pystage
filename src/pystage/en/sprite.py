@@ -11,7 +11,7 @@ class Sprite:
 
         At most 300 clones can exist at the same time. Further clones are not created.
 
-        Scratch block: create clone of (sprite)
+        Scratch block: create clone of (sprite v)
 
         Parameters
         ----------
@@ -25,7 +25,7 @@ class Sprite:
 
         At most 300 clones can exist at the same time. Further clones are not created.
 
-        Scratch block: create clone of [myself]
+        Scratch block: create clone of (myself v)
         """
         return self._core.control_create_clone_of_myself()
         
@@ -59,21 +59,21 @@ class Sprite:
     def stop_all(self):
         """Stops all scripts of all sprites and the stage, removes all clones, and stops all sounds.
 
-        Scratch block: stop [all]
+        Scratch block: stop [all v]
         """
         return self._core.control_stop_all()
 
     def stop_other_scripts_in_sprite(self):
         """Stops all other scripts of this sprite. The script that runs this block keeps running.
 
-        Scratch block: stop [other scripts in sprite]
+        Scratch block: stop [other scripts in sprite v]
         """
         return self._core.control_stop_other()
 
     def stop_this_script(self):
         """Stops the script that runs this block. The other scripts keep running.
 
-        Scratch block: stop [this script]
+        Scratch block: stop [this script v]
         """
         return self._core.control_stop_this()
 
@@ -187,7 +187,7 @@ class Sprite:
     ):
         """Runs the code when the stage switches to the given backdrop.
 
-        Scratch block: when backdrop switches to (backdrop1)
+        Scratch block: when backdrop switches to [backdrop1 v]
 
         Parameters
         ----------
@@ -229,7 +229,7 @@ class Sprite:
     def when_program_starts(self, generator_function, name="", no_refresh=False):
         """Runs the code when the green flag is clicked, i.e. when the program starts.
 
-        Scratch block: when [green flag] clicked
+        Scratch block: when flag clicked
 
         Parameters
         ----------
@@ -251,7 +251,7 @@ class Sprite:
 
         This is only a stub: the microphone is not supported, the loudness is always -1 and the code never runs.
 
-        Scratch block: when [loudness] > (10)
+        Scratch block: when [loudness v] > (10)
 
         Parameters
         ----------
@@ -275,7 +275,7 @@ class Sprite:
 
         The code runs once each time the timer becomes greater than the value. It runs again after the timer has been reset.
 
-        Scratch block: when [timer] > (10)
+        Scratch block: when [timer v] > (10)
 
         Parameters
         ----------
@@ -295,7 +295,7 @@ class Sprite:
     def when_key_pressed(self, key, generator_function, name="", no_refresh=False):
         """Runs the code when a key is pressed.
 
-        Scratch block: when (space) key pressed
+        Scratch block: when [space v] key pressed
 
         Parameters
         ----------
@@ -333,7 +333,7 @@ class Sprite:
     def backdrop_name(self):
         """Returns the name of the current backdrop of the stage.
 
-        Scratch block: (backdrop [name])
+        Scratch block: (backdrop [name v])
 
         Returns
         -------
@@ -345,7 +345,7 @@ class Sprite:
     def backdrop_number(self):
         """Returns the number of the current backdrop of the stage (starting with 1).
 
-        Scratch block: (backdrop [number])
+        Scratch block: (backdrop [number v])
 
         Returns
         -------
@@ -357,7 +357,7 @@ class Sprite:
     def change_brightness_effect_by(self, value):
         """Changes the brightness effect of the sprite by the given amount. Negative values make the costume darker.
 
-        Scratch block: change brightness effect by (25)
+        Scratch block: change [brightness v] effect by (25)
 
         Parameters
         ----------
@@ -369,7 +369,7 @@ class Sprite:
     def change_color_effect_by(self, value):
         """Changes the color effect of the sprite by the given amount. The color effect changes the colors of the costume.
 
-        Scratch block: change color effect by (25)
+        Scratch block: change [color v] effect by (25)
 
         Parameters
         ----------
@@ -381,7 +381,7 @@ class Sprite:
     def change_fisheye_effect_by(self, value):
         """Changes the fisheye effect of the sprite by the given amount. The fisheye effect bends the costume like a fish-eye lens.
 
-        Scratch block: change fisheye effect by (25)
+        Scratch block: change [fisheye v] effect by (25)
 
         Parameters
         ----------
@@ -393,7 +393,7 @@ class Sprite:
     def change_ghost_effect_by(self, value):
         """Changes the ghost effect of the sprite by the given amount. The higher the effect, the more transparent the sprite becomes.
 
-        Scratch block: change ghost effect by (25)
+        Scratch block: change [ghost v] effect by (25)
 
         Parameters
         ----------
@@ -405,7 +405,7 @@ class Sprite:
     def change_mosaic_effect_by(self, value):
         """Changes the mosaic effect of the sprite by the given amount. The mosaic effect repeats the costume as small tiles.
 
-        Scratch block: change mosaic effect by (25)
+        Scratch block: change [mosaic v] effect by (25)
 
         Parameters
         ----------
@@ -417,7 +417,7 @@ class Sprite:
     def change_pixelate_effect_by(self, value):
         """Changes the pixelate effect of the sprite by the given amount. The pixelate effect makes the costume look blocky.
 
-        Scratch block: change pixelate effect by (25)
+        Scratch block: change [pixelate v] effect by (25)
 
         Parameters
         ----------
@@ -429,7 +429,7 @@ class Sprite:
     def change_whirl_effect_by(self, value):
         """Changes the whirl effect of the sprite by the given amount. The whirl effect twists the costume.
 
-        Scratch block: change whirl effect by (25)
+        Scratch block: change [whirl v] effect by (25)
 
         Parameters
         ----------
@@ -460,7 +460,7 @@ class Sprite:
     def costume_name(self):
         """Returns the name of the current costume of the sprite.
 
-        Scratch block: (costume [name])
+        Scratch block: (costume [name v])
 
         Returns
         -------
@@ -472,7 +472,7 @@ class Sprite:
     def costume_number(self):
         """Returns the number of the current costume of the sprite (starting with 1).
 
-        Scratch block: (costume [number])
+        Scratch block: (costume [number v])
 
         Returns
         -------
@@ -484,7 +484,7 @@ class Sprite:
     def go_backward(self, value):
         """Moves the sprite backward by the given number of layers, so that it is shown behind other sprites.
 
-        Scratch block: go backward (1) layers
+        Scratch block: go [backward v] (1) layers
 
         Parameters
         ----------
@@ -496,7 +496,7 @@ class Sprite:
     def go_forward(self, value):
         """Moves the sprite forward by the given number of layers, so that it is shown in front of other sprites.
 
-        Scratch block: go forward (1) layers
+        Scratch block: go [forward v] (1) layers
 
         Parameters
         ----------
@@ -508,14 +508,14 @@ class Sprite:
     def go_to_back_layer(self):
         """Moves the sprite behind all other sprites.
 
-        Scratch block: go to back layer
+        Scratch block: go to [back v] layer
         """
         return self._core.looks_gotofrontback_back()
 
     def go_to_front_layer(self):
         """Moves the sprite in front of all other sprites.
 
-        Scratch block: go to front layer
+        Scratch block: go to [front v] layer
         """
         return self._core.looks_gotofrontback_front()
 
@@ -571,7 +571,7 @@ class Sprite:
     def set_brightness_effect_to(self, value):
         """Sets the brightness effect of the sprite. Negative values make the costume darker.
 
-        Scratch block: set brightness effect to (0)
+        Scratch block: set [brightness v] effect to (0)
 
         Parameters
         ----------
@@ -583,7 +583,7 @@ class Sprite:
     def set_color_effect_to(self, value):
         """Sets the color effect of the sprite. The color effect changes the colors of the costume.
 
-        Scratch block: set color effect to (0)
+        Scratch block: set [color v] effect to (0)
 
         Parameters
         ----------
@@ -595,7 +595,7 @@ class Sprite:
     def set_fisheye_effect_to(self, value):
         """Sets the fisheye effect of the sprite. The fisheye effect bends the costume like a fish-eye lens.
 
-        Scratch block: set fisheye effect to (0)
+        Scratch block: set [fisheye v] effect to (0)
 
         Parameters
         ----------
@@ -607,7 +607,7 @@ class Sprite:
     def set_ghost_effect_to(self, value):
         """Sets the ghost effect of the sprite. The higher the effect, the more transparent the sprite becomes.
 
-        Scratch block: set ghost effect to (0)
+        Scratch block: set [ghost v] effect to (0)
 
         Parameters
         ----------
@@ -619,7 +619,7 @@ class Sprite:
     def set_mosaic_effect_to(self, value):
         """Sets the mosaic effect of the sprite. The mosaic effect repeats the costume as small tiles.
 
-        Scratch block: set mosaic effect to (0)
+        Scratch block: set [mosaic v] effect to (0)
 
         Parameters
         ----------
@@ -631,7 +631,7 @@ class Sprite:
     def set_pixelate_effect_to(self, value):
         """Sets the pixelate effect of the sprite. The pixelate effect makes the costume look blocky.
 
-        Scratch block: set pixelate effect to (0)
+        Scratch block: set [pixelate v] effect to (0)
 
         Parameters
         ----------
@@ -643,7 +643,7 @@ class Sprite:
     def set_whirl_effect_to(self, value):
         """Sets the whirl effect of the sprite. The whirl effect twists the costume.
 
-        Scratch block: set whirl effect to (0)
+        Scratch block: set [whirl v] effect to (0)
 
         Parameters
         ----------
@@ -686,7 +686,7 @@ class Sprite:
     def switch_backdrop_to(self, backdrop):
         """Switches the stage to another backdrop.
 
-        Scratch block: switch backdrop to (backdrop1)
+        Scratch block: switch backdrop to (backdrop1 v)
 
         Parameters
         ----------
@@ -698,21 +698,21 @@ class Sprite:
     def switch_to_random_backdrop(self):
         """Switches the stage to a random backdrop.
 
-        Scratch block: switch backdrop to [random backdrop]
+        Scratch block: switch backdrop to (random backdrop v)
         """
         return self._core.looks_switchbackdropto_random()
 
     def switch_to_next_backdrop(self):
         """Switches the stage to the next backdrop. After the last backdrop, the first one is used again.
 
-        Scratch block: switch backdrop to [next backdrop]
+        Scratch block: switch backdrop to (next backdrop v)
         """
         return self._core.looks_switchbackdropto_next()
 
     def switch_to_previous_backdrop(self):
         """Switches the stage to the previous backdrop. Before the first backdrop, the last one is used.
 
-        Scratch block: switch backdrop to [previous backdrop]
+        Scratch block: switch backdrop to (previous backdrop v)
         """
         return self._core.looks_switchbackdropto_previous()
 
@@ -815,7 +815,7 @@ class Sprite:
 
         The script waits until the glide is finished.
 
-        Scratch block: glide (1) secs to [mouse-pointer]
+        Scratch block: glide (1) secs to (mouse-pointer v)
 
         Parameters
         ----------
@@ -829,7 +829,7 @@ class Sprite:
 
         The script waits until the glide is finished.
 
-        Scratch block: glide (1) secs to [random position]
+        Scratch block: glide (1) secs to (random position v)
 
         Parameters
         ----------
@@ -843,7 +843,7 @@ class Sprite:
 
         The script waits until the glide is finished.
 
-        Scratch block: glide (1) secs to [sprite]
+        Scratch block: glide (1) secs to (sprite v)
 
         Parameters
         ----------
@@ -858,21 +858,21 @@ class Sprite:
     def go_to_mouse_pointer(self):
         """Moves the sprite to the position of the mouse pointer.
 
-        Scratch block: go to [mouse-pointer]
+        Scratch block: go to (mouse-pointer v)
         """
         return self._core.motion_goto_pointer()
 
     def go_to_random_position(self):
         """Moves the sprite to a random position on the stage.
 
-        Scratch block: go to [random position]
+        Scratch block: go to (random position v)
         """
         return self._core.motion_goto_random()
 
     def go_to_sprite(self, sprite):
         """Moves the sprite to the position of another sprite.
 
-        Scratch block: go to [sprite]
+        Scratch block: go to (sprite v)
 
         Parameters
         ----------
@@ -930,14 +930,14 @@ class Sprite:
     def point_towards_mouse_pointer(self):
         """Turns the sprite to face the mouse pointer.
 
-        Scratch block: point towards [mouse-pointer]
+        Scratch block: point towards (mouse-pointer v)
         """
         return self._core.motion_pointtowards_pointer()
 
     def point_towards_sprite(self, sprite):
         """Turns the sprite to face another sprite.
 
-        Scratch block: point towards [sprite]
+        Scratch block: point towards (sprite v)
 
         Parameters
         ----------
@@ -959,21 +959,21 @@ class Sprite:
     def set_rotation_style_none(self):
         """Sets the rotation style to "don't rotate": the costume always looks the same, whatever direction the sprite points in.
 
-        Scratch block: set rotation style [don't rotate]
+        Scratch block: set rotation style [don't rotate v]
         """
         return self._core.motion_setrotationstyle_dontrotate()
 
     def set_rotation_style_left_right(self):
         """Sets the rotation style to left-right: the costume only turns to face left or right and is never upside down.
 
-        Scratch block: set rotation style [left-right]
+        Scratch block: set rotation style [left-right v]
         """
         return self._core.motion_setrotationstyle_leftright()
 
     def set_rotation_style_around(self):
         """Sets the rotation style to "all around": the costume turns with the direction of the sprite.
 
-        Scratch block: set rotation style [all around]
+        Scratch block: set rotation style [all around v]
         """
         return self._core.motion_setrotationstyle_allaround()
 
@@ -1052,7 +1052,7 @@ class Sprite:
     def math_function(self, operator, number):
         """Calculates a mathematical function of a number.
 
-        Scratch block: ((abs) of (-1))
+        Scratch block: ([abs v] of (-1))
 
         Parameters
         ----------
@@ -1090,7 +1090,7 @@ class Sprite:
     def change_pen_brightness_by(self, value):
         """Changes the brightness of the pen color by the given amount. 0 is black and 100 is the brightest color.
 
-        Scratch block: change pen brightness by (10)
+        Scratch block: change pen (brightness v) by (10)
 
         Parameters
         ----------
@@ -1102,7 +1102,7 @@ class Sprite:
     def change_pen_hue_by(self, value):
         """Changes the color (hue) of the pen by the given amount. The color goes from 0 to 100 and starts again at 0 after 100.
 
-        Scratch block: change pen color by (10)
+        Scratch block: change pen (color v) by (10)
 
         Parameters
         ----------
@@ -1114,7 +1114,7 @@ class Sprite:
     def change_pen_saturation_by(self, value):
         """Changes the saturation of the pen color by the given amount. Higher saturation makes the color more colorful.
 
-        Scratch block: change pen saturation by (10)
+        Scratch block: change pen (saturation v) by (10)
 
         Parameters
         ----------
@@ -1126,7 +1126,7 @@ class Sprite:
     def change_pen_transparency_by(self, value):
         """Changes the transparency of the pen color by the given amount. 0 is not transparent, higher values make the lines more see-through.
 
-        Scratch block: change pen transparency by (10)
+        Scratch block: change pen (transparency v) by (10)
 
         Parameters
         ----------
@@ -1171,7 +1171,7 @@ class Sprite:
     def set_pen_brightness_to(self, value):
         """Sets the brightness of the pen color. 0 is black and 100 is the brightest color.
 
-        Scratch block: set pen brightness to (50)
+        Scratch block: set pen (brightness v) to (50)
 
         Parameters
         ----------
@@ -1183,7 +1183,7 @@ class Sprite:
     def set_pen_hue_to(self, value):
         """Sets the color (hue) of the pen. The color goes from 0 to 100 and starts again at 0 after 100.
 
-        Scratch block: set pen color to (50)
+        Scratch block: set pen (color v) to (50)
 
         Parameters
         ----------
@@ -1195,7 +1195,7 @@ class Sprite:
     def set_pen_saturation_to(self, value):
         """Sets the saturation of the pen color. Higher saturation makes the color more colorful.
 
-        Scratch block: set pen saturation to (50)
+        Scratch block: set pen (saturation v) to (50)
 
         Parameters
         ----------
@@ -1207,7 +1207,7 @@ class Sprite:
     def set_pen_transparency_to(self, value):
         """Sets the transparency of the pen color. 0 is not transparent, higher values make the lines more see-through.
 
-        Scratch block: set pen transparency to (50)
+        Scratch block: set pen (transparency v) to (50)
 
         Parameters
         ----------
@@ -1425,7 +1425,7 @@ class Sprite:
     def current_date(self):
         """Returns the current day of the month, from 1 to 31.
 
-        Scratch block: (current [date])
+        Scratch block: (current [date v])
 
         Returns
         -------
@@ -1437,7 +1437,7 @@ class Sprite:
     def current_day_of_week(self):
         """Returns the current day of the week as a number. 1 is Sunday, 2 is Monday and 7 is Saturday.
 
-        Scratch block: (current [day of week])
+        Scratch block: (current [day of week v])
 
         Returns
         -------
@@ -1449,7 +1449,7 @@ class Sprite:
     def current_hour(self):
         """Returns the current hour, from 0 to 23.
 
-        Scratch block: (current [hour])
+        Scratch block: (current [hour v])
 
         Returns
         -------
@@ -1461,7 +1461,7 @@ class Sprite:
     def current_minute(self):
         """Returns the current minute, from 0 to 59.
 
-        Scratch block: (current [minute])
+        Scratch block: (current [minute v])
 
         Returns
         -------
@@ -1473,7 +1473,7 @@ class Sprite:
     def current_month(self):
         """Returns the current month as a number, from 1 (January) to 12 (December).
 
-        Scratch block: (current [month])
+        Scratch block: (current [month v])
 
         Returns
         -------
@@ -1485,7 +1485,7 @@ class Sprite:
     def current_second(self):
         """Returns the current second, from 0 to 59.
 
-        Scratch block: (current [second])
+        Scratch block: (current [second v])
 
         Returns
         -------
@@ -1497,7 +1497,7 @@ class Sprite:
     def current_year(self):
         """Returns the current year.
 
-        Scratch block: (current [year])
+        Scratch block: (current [year v])
 
         Returns
         -------
@@ -1521,7 +1521,7 @@ class Sprite:
     def distance_to_mouse_pointer(self):
         """Returns the distance between the sprite and the mouse pointer in pixels.
 
-        Scratch block: (distance to [mouse-pointer])
+        Scratch block: (distance to (mouse-pointer v))
 
         Returns
         -------
@@ -1533,7 +1533,7 @@ class Sprite:
     def distance_to_sprite(self, sprite):
         """Returns the distance between the sprite and another sprite in pixels.
 
-        Scratch block: (distance to (sprite))
+        Scratch block: (distance to (sprite v))
 
         Parameters
         ----------
@@ -1550,7 +1550,7 @@ class Sprite:
     def key_pressed(self, key):
         """Checks whether a key is pressed at this moment.
 
-        Scratch block: key (space) pressed?
+        Scratch block: key (space v) pressed?
 
         Parameters
         ----------
@@ -1617,7 +1617,7 @@ class Sprite:
     def backdrop_name_of(self, stage="_stage_"):
         """Returns the name of the current backdrop. Only the stage has backdrops.
 
-        Scratch block: (backdrop [name]) of (stage)
+        Scratch block: ([backdrop name v] of (Stage v))
 
         Parameters
         ----------
@@ -1634,7 +1634,7 @@ class Sprite:
     def backdrop_of(self, stage="_stage_"):
         """Returns the number of the current backdrop (starting with 1). Only the stage has backdrops.
 
-        Scratch block: (backdrop [number]) of (stage)
+        Scratch block: ([backdrop # v] of (Stage v))
 
         Parameters
         ----------
@@ -1651,7 +1651,7 @@ class Sprite:
     def costume_name_of(self, sprite):
         """Returns the name of the current costume of another sprite.
 
-        Scratch block: (costume [name]) of (sprite)
+        Scratch block: ([costume name v] of (sprite v))
 
         Parameters
         ----------
@@ -1668,7 +1668,7 @@ class Sprite:
     def costume_of(self, sprite):
         """Returns the number of the current costume of another sprite (starting with 1).
 
-        Scratch block: (costume [number]) of (sprite)
+        Scratch block: ([costume # v] of (sprite v))
 
         Parameters
         ----------
@@ -1685,7 +1685,7 @@ class Sprite:
     def direction_of(self, sprite):
         """Returns the direction of another sprite in degrees. 90 is right, 0 is up.
 
-        Scratch block: (direction) of (sprite)
+        Scratch block: ([direction v] of (sprite v))
 
         Parameters
         ----------
@@ -1702,7 +1702,7 @@ class Sprite:
     def size_of(self, sprite):
         """Returns the size of another sprite in percent. 100 is the normal size.
 
-        Scratch block: (size) of (sprite)
+        Scratch block: ([size v] of (sprite v))
 
         Parameters
         ----------
@@ -1719,7 +1719,7 @@ class Sprite:
     def get_variable_of(self, variable, sprite="_stage_"):
         """Returns the value of a variable of a sprite or of the stage.
 
-        Scratch block: (variable) of (sprite)
+        Scratch block: ([variable v] of (sprite v))
 
         Parameters
         ----------
@@ -1738,7 +1738,7 @@ class Sprite:
     def volume_of(self, sprite="_stage_"):
         """Returns the volume of the sounds of a sprite or of the stage, from 0 to 100.
 
-        Scratch block: (volume) of (sprite)
+        Scratch block: ([volume v] of (sprite v))
 
         Parameters
         ----------
@@ -1755,7 +1755,7 @@ class Sprite:
     def x_position_of(self, sprite):
         """Returns the x position of another sprite.
 
-        Scratch block: (x position) of (sprite)
+        Scratch block: ([x position v] of (sprite v))
 
         Parameters
         ----------
@@ -1772,7 +1772,7 @@ class Sprite:
     def y_position_of(self, sprite):
         """Returns the y position of another sprite.
 
-        Scratch block: (y position) of (sprite)
+        Scratch block: ([y position v] of (sprite v))
 
         Parameters
         ----------
@@ -1796,14 +1796,14 @@ class Sprite:
     def set_drag_mode_draggable(self):
         """Makes the sprite draggable: the user can move it with the mouse while the program runs.
 
-        Scratch block: set drag mode [draggable]
+        Scratch block: set drag mode [draggable v]
         """
         return self._core.sensing_setdragmode_draggable()
 
     def set_drag_mode_not_draggable(self):
         """Makes the sprite not draggable: the user cannot move it with the mouse.
 
-        Scratch block: set drag mode [not draggable]
+        Scratch block: set drag mode [not draggable v]
         """
         return self._core.sensing_setdragmode_notdraggable()
 
@@ -1839,7 +1839,7 @@ class Sprite:
     def touching_edge(self):
         """Checks whether the sprite touches the edge of the stage.
 
-        Scratch block: touching [edge]?
+        Scratch block: touching (edge v)?
 
         Returns
         -------
@@ -1851,7 +1851,7 @@ class Sprite:
     def touching_mouse_pointer(self):
         """Checks whether the sprite touches the mouse pointer.
 
-        Scratch block: touching [mouse-pointer]?
+        Scratch block: touching (mouse-pointer v)?
 
         Returns
         -------
@@ -1863,7 +1863,7 @@ class Sprite:
     def touching(self, sprite):
         """Checks whether the sprite touches another sprite, the mouse pointer or the edge.
 
-        Scratch block: touching (sprite)?
+        Scratch block: touching (sprite v)?
 
         Parameters
         ----------
@@ -1892,7 +1892,7 @@ class Sprite:
     def change_pan_left_right_effect_by(self, value):
         """Changes the pan effect of the sound by the given amount. The pan effect moves the sound between the left and the right speaker.
 
-        Scratch block: change pan left/right effect by (10)
+        Scratch block: change [pan left/right v] effect by (10)
 
         Parameters
         ----------
@@ -1904,7 +1904,7 @@ class Sprite:
     def change_pitch_effect_by(self, value):
         """Changes the pitch effect of the sound by the given amount. Positive values make the sound higher.
 
-        Scratch block: change pitch effect by (10)
+        Scratch block: change [pitch v] effect by (10)
 
         Parameters
         ----------
@@ -1935,7 +1935,7 @@ class Sprite:
     def start_sound(self, name, loop=0):
         """Starts playing a sound. The script does not wait until the sound is finished.
 
-        Scratch block: start sound (pop)
+        Scratch block: start sound (pop v)
 
         Parameters
         ----------
@@ -1949,7 +1949,7 @@ class Sprite:
     def play_sound_until_done(self, name):
         """Plays a sound and waits until it is finished.
 
-        Scratch block: play sound (pop) until done
+        Scratch block: play sound (pop v) until done
 
         Parameters
         ----------
@@ -1961,7 +1961,7 @@ class Sprite:
     def set_pan_left_right_effect_to(self, value):
         """Sets the pan effect of the sound. The pan effect moves the sound between the left and the right speaker.
 
-        Scratch block: set pan left/right effect to (0)
+        Scratch block: set [pan left/right v] effect to (0)
 
         Parameters
         ----------
@@ -1973,7 +1973,7 @@ class Sprite:
     def set_pitch_effect_to(self, value):
         """Sets the pitch effect of the sound. Higher values make the sound higher.
 
-        Scratch block: set pitch effect to (0)
+        Scratch block: set [pitch v] effect to (0)
 
         Parameters
         ----------
@@ -2285,7 +2285,7 @@ class Sprite:
     def greater_than(self, operand1, operand2):
         """Checks whether the first value is greater than the second. Numbers are compared as numbers, texts alphabetically without regard to upper and lower case.
 
-        Scratch block: ((a) > (b))
+        Scratch block: <(a) > (b)>
 
         Parameters
         ----------
@@ -2304,7 +2304,7 @@ class Sprite:
     def less_than(self, operand1, operand2):
         """Checks whether the first value is less than the second. Numbers are compared as numbers, texts alphabetically without regard to upper and lower case.
 
-        Scratch block: ((a) < (b))
+        Scratch block: <(a) < (b)>
 
         Parameters
         ----------
@@ -2323,7 +2323,7 @@ class Sprite:
     def equals(self, operand1, operand2):
         """Checks whether two values are equal. Numbers are compared as numbers, texts without regard to upper and lower case.
 
-        Scratch block: ((a) = (b))
+        Scratch block: <(a) = (b)>
 
         Parameters
         ----------

@@ -14,7 +14,7 @@ class Figur():
 
         Es können höchstens 300 Klone gleichzeitig existieren. Weitere Klone werden nicht erzeugt.
 
-        Scratch-Block: erzeuge Klon von [mir selbst]
+        Scratch-Block: erzeuge Klon von (mir selbst v)
         """
         return self._core.control_create_clone_of_myself()
                 
@@ -23,7 +23,7 @@ class Figur():
 
         Es können höchstens 300 Klone gleichzeitig existieren. Weitere Klone werden nicht erzeugt.
 
-        Scratch-Block: erzeuge Klon von (Figur)
+        Scratch-Block: erzeuge Klon von (Figur v)
 
         Parameters
         ----------
@@ -58,21 +58,21 @@ class Figur():
     def stoppe_alles(self):
         """Stoppt alle Skripte aller Figuren und der Bühne, löscht alle Klone und stoppt alle Klänge.
 
-        Scratch-Block: stoppe [alles]
+        Scratch-Block: stoppe [alles v]
         """
         return self._core.control_stop_all()
                 
     def stoppe_andere_skripte_der_figur(self):
         """Stoppt alle anderen Skripte dieser Figur. Das Skript, in dem dieser Block steht, läuft weiter.
 
-        Scratch-Block: stoppe [andere Skripte der Figur]
+        Scratch-Block: stoppe [andere Skripte der Figur v]
         """
         return self._core.control_stop_other()
                 
     def stoppe_dieses_skript(self):
         """Stoppt das Skript, in dem dieser Block steht. Die anderen Skripte laufen weiter.
 
-        Scratch-Block: stoppe [dieses Skript]
+        Scratch-Block: stoppe [dieses Skript v]
         """
         return self._core.control_stop_this()
                 
@@ -184,7 +184,7 @@ class Figur():
     def wenn_das_bühnenbild_wechselt_zu(self, backdrop, generator_function, name='', no_refresh=False):
         """Führt den Code aus, wenn die Bühne zu dem angegebenen Bühnenbild wechselt.
 
-        Scratch-Block: Wenn das Bühnenbild zu (Bühnenbild1) wechselt
+        Scratch-Block: Wenn das Bühnenbild zu [Bühnenbild1 v] wechselt
 
         Parameters
         ----------
@@ -220,7 +220,7 @@ class Figur():
     def wenn_programm_startet(self, generator_function, name='', no_refresh=False):
         """Führt den Code aus, wenn die grüne Flagge angeklickt wird, also wenn das Programm startet.
 
-        Scratch-Block: Wenn [grüne Flagge] angeklickt wird
+        Scratch-Block: Wenn @greenFlag angeklickt wird
 
         Parameters
         ----------
@@ -238,7 +238,7 @@ class Figur():
 
         Dies ist nur ein Platzhalter: Das Mikrofon wird nicht unterstützt, die Lautstärke ist immer -1 und der Code wird nie ausgeführt.
 
-        Scratch-Block: Wenn [Lautstärke] > (10)
+        Scratch-Block: Wenn [Lautstärke v] > (10)
 
         Parameters
         ----------
@@ -258,7 +258,7 @@ class Figur():
 
         Der Code wird jedes Mal einmal ausgeführt, wenn die Stoppuhr den Wert überschreitet. Er wird erneut ausgeführt, nachdem die Stoppuhr zurückgesetzt wurde.
 
-        Scratch-Block: Wenn [Stoppuhr] > (10)
+        Scratch-Block: Wenn [Stoppuhr v] > (10)
 
         Parameters
         ----------
@@ -276,7 +276,7 @@ class Figur():
     def wenn_taste_gedrückt_wird(self, key, generator_function, name='', no_refresh=False):
         """Führt den Code aus, wenn eine Taste gedrückt wird.
 
-        Scratch-Block: Wenn Taste (Leertaste) gedrückt wird
+        Scratch-Block: Wenn Taste [Leertaste v] gedrückt wird
 
         Parameters
         ----------
@@ -310,7 +310,7 @@ class Figur():
     def bühnenbild_name(self):
         """Gibt den Namen des aktuellen Bühnenbilds zurück.
 
-        Scratch-Block: (Bühnenbild [Name])
+        Scratch-Block: (Bühnenbild [Name v])
 
         Returns
         -------
@@ -322,7 +322,7 @@ class Figur():
     def bühnenbild_nummer(self):
         """Gibt die Nummer des aktuellen Bühnenbilds zurück (ab 1).
 
-        Scratch-Block: (Bühnenbild [Nummer])
+        Scratch-Block: (Bühnenbild [Nummer v])
 
         Returns
         -------
@@ -334,7 +334,7 @@ class Figur():
     def ändere_effekt_helligkeit_um(self, value):
         """Ändert den Helligkeit-Effekt der Figur um den angegebenen Wert. Negative Werte machen das Kostüm dunkler.
 
-        Scratch-Block: ändere Effekt Helligkeit um (25)
+        Scratch-Block: ändere Effekt [Helligkeit v] um (25)
 
         Parameters
         ----------
@@ -346,7 +346,7 @@ class Figur():
     def ändere_effekt_farbe_um(self, value):
         """Ändert den Farbeffekt der Figur um den angegebenen Wert. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Scratch-Block: ändere Effekt Farbe um (25)
+        Scratch-Block: ändere Effekt [Farbe v] um (25)
 
         Parameters
         ----------
@@ -358,7 +358,7 @@ class Figur():
     def ändere_effekt_fischauge_um(self, value):
         """Ändert den Fischauge-Effekt der Figur um den angegebenen Wert. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Scratch-Block: ändere Effekt Fischauge um (25)
+        Scratch-Block: ändere Effekt [Fischauge v] um (25)
 
         Parameters
         ----------
@@ -370,7 +370,7 @@ class Figur():
     def ändere_effekt_durchsichtigkeit_um(self, value):
         """Ändert den Durchsichtigkeit-Effekt der Figur um den angegebenen Wert. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Scratch-Block: ändere Effekt Durchsichtigkeit um (25)
+        Scratch-Block: ändere Effekt [Durchsichtigkeit v] um (25)
 
         Parameters
         ----------
@@ -382,7 +382,7 @@ class Figur():
     def ändere_effekt_mosaik_um(self, value):
         """Ändert den Mosaik-Effekt der Figur um den angegebenen Wert. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Scratch-Block: ändere Effekt Mosaik um (25)
+        Scratch-Block: ändere Effekt [Mosaik v] um (25)
 
         Parameters
         ----------
@@ -394,7 +394,7 @@ class Figur():
     def ändere_effekt_pixel_um(self, value):
         """Ändert den Pixel-Effekt der Figur um den angegebenen Wert. Das Kostüm sieht dann klotzig aus.
 
-        Scratch-Block: ändere Effekt Pixel um (25)
+        Scratch-Block: ändere Effekt [Pixel v] um (25)
 
         Parameters
         ----------
@@ -406,7 +406,7 @@ class Figur():
     def ändere_effekt_wirbel_um(self, value):
         """Ändert den Wirbel-Effekt der Figur um den angegebenen Wert. Das Kostüm wird verdreht.
 
-        Scratch-Block: ändere Effekt Wirbel um (25)
+        Scratch-Block: ändere Effekt [Wirbel v] um (25)
 
         Parameters
         ----------
@@ -437,7 +437,7 @@ class Figur():
     def kostüm_name(self):
         """Gibt den Namen des aktuellen Kostüms der Figur zurück.
 
-        Scratch-Block: (Kostüm [Name])
+        Scratch-Block: (Kostüm [Name v])
 
         Returns
         -------
@@ -449,7 +449,7 @@ class Figur():
     def kostüm_nummer(self):
         """Gibt die Nummer des aktuellen Kostüms der Figur zurück (ab 1).
 
-        Scratch-Block: (Kostüm [Nummer])
+        Scratch-Block: (Kostüm [Nummer v])
 
         Returns
         -------
@@ -461,7 +461,7 @@ class Figur():
     def gehe_ebenen_nach_hinten(self, value):
         """Bringt die Figur um die angegebene Anzahl Ebenen nach hinten, also hinter andere Figuren.
 
-        Scratch-Block: gehe (1) Ebenen nach hinten
+        Scratch-Block: gehe (1) Ebenen [nach hinten v]
 
         Parameters
         ----------
@@ -473,7 +473,7 @@ class Figur():
     def gehe_ebenen_nach_vorne(self, value):
         """Bringt die Figur um die angegebene Anzahl Ebenen nach vorne, also vor andere Figuren.
 
-        Scratch-Block: gehe (1) Ebenen nach vorne
+        Scratch-Block: gehe (1) Ebenen [nach vorne v]
 
         Parameters
         ----------
@@ -485,14 +485,14 @@ class Figur():
     def gehe_zu_hinterster_ebene(self):
         """Bringt die Figur hinter alle anderen Figuren.
 
-        Scratch-Block: gehe zu hinterster Ebene
+        Scratch-Block: gehe zu [hinterster v] Ebene
         """
         return self._core.looks_gotofrontback_back()
                 
     def gehe_zu_vorderster_ebene(self):
         """Bringt die Figur vor alle anderen Figuren.
 
-        Scratch-Block: gehe zu vorderster Ebene
+        Scratch-Block: gehe zu [vorderster v] Ebene
         """
         return self._core.looks_gotofrontback_front()
                 
@@ -506,7 +506,7 @@ class Figur():
     def nächstes_bühnenbild(self):
         """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-        Scratch-Block: nächstes Bühnenbild
+        Scratch-Block: wechsle zum nächsten Bühnenbild
         """
         return self._core.looks_nextbackdrop()
                 
@@ -548,7 +548,7 @@ class Figur():
     def setze_effekt_helligkeit_auf(self, value):
         """Setzt den Helligkeit-Effekt der Figur. Negative Werte machen das Kostüm dunkler.
 
-        Scratch-Block: setze Effekt Helligkeit auf (0)
+        Scratch-Block: setze Effekt [Helligkeit v] auf (0)
 
         Parameters
         ----------
@@ -560,7 +560,7 @@ class Figur():
     def setze_effekt_farbe_auf(self, value):
         """Setzt den Farbeffekt der Figur. Der Farbeffekt verändert die Farben des Kostüms.
 
-        Scratch-Block: setze Effekt Farbe auf (0)
+        Scratch-Block: setze Effekt [Farbe v] auf (0)
 
         Parameters
         ----------
@@ -572,7 +572,7 @@ class Figur():
     def setze_effekt_fischauge_auf(self, value):
         """Setzt den Fischauge-Effekt der Figur. Das Kostüm wird wie durch eine Fischaugenlinse verzerrt.
 
-        Scratch-Block: setze Effekt Fischauge auf (0)
+        Scratch-Block: setze Effekt [Fischauge v] auf (0)
 
         Parameters
         ----------
@@ -584,7 +584,7 @@ class Figur():
     def setze_effekt_durchsichtigkeit_auf(self, value):
         """Setzt den Durchsichtigkeit-Effekt der Figur. Je höher der Effekt, desto durchsichtiger wird die Figur.
 
-        Scratch-Block: setze Effekt Durchsichtigkeit auf (0)
+        Scratch-Block: setze Effekt [Durchsichtigkeit v] auf (0)
 
         Parameters
         ----------
@@ -596,7 +596,7 @@ class Figur():
     def setze_effekt_mosaik_auf(self, value):
         """Setzt den Mosaik-Effekt der Figur. Das Kostüm wird als kleine Kacheln wiederholt.
 
-        Scratch-Block: setze Effekt Mosaik auf (0)
+        Scratch-Block: setze Effekt [Mosaik v] auf (0)
 
         Parameters
         ----------
@@ -608,7 +608,7 @@ class Figur():
     def setze_effekt_pixel_auf(self, value):
         """Setzt den Pixel-Effekt der Figur. Das Kostüm sieht dann klotzig aus.
 
-        Scratch-Block: setze Effekt Pixel auf (0)
+        Scratch-Block: setze Effekt [Pixel v] auf (0)
 
         Parameters
         ----------
@@ -620,7 +620,7 @@ class Figur():
     def setze_effekt_wirbel_auf(self, value):
         """Setzt den Wirbel-Effekt der Figur. Das Kostüm wird verdreht.
 
-        Scratch-Block: setze Effekt Wirbel auf (0)
+        Scratch-Block: setze Effekt [Wirbel v] auf (0)
 
         Parameters
         ----------
@@ -663,7 +663,7 @@ class Figur():
     def wechsle_zu_bühnenbild(self, backdrop):
         """Wechselt zu einem anderen Bühnenbild.
 
-        Scratch-Block: wechsle zu Bühnenbild (Bühnenbild1)
+        Scratch-Block: wechsle zu Bühnenbild (Bühnenbild1 v)
 
         Parameters
         ----------
@@ -675,21 +675,21 @@ class Figur():
     def wechsle_zu_zufälligem_bühnenbild(self):
         """Wechselt zu einem zufälligen Bühnenbild.
 
-        Scratch-Block: wechsle zu [zufälliges Bühnenbild]
+        Scratch-Block: wechsle zu Bühnenbild (zufälliges Bühnenbild v)
         """
         return self._core.looks_switchbackdropto_random()
 
     def wechsle_zum_vorherigen_bühnenbild(self):
         """Wechselt zum vorherigen Bühnenbild. Vor dem ersten Bühnenbild wird das letzte benutzt.
 
-        Scratch-Block: wechsle zu [vorheriges Bühnenbild]
+        Scratch-Block: wechsle zu Bühnenbild (vorheriges Bühnenbild v)
         """
         return self._core.looks_switchbackdropto_previous()
 
     def wechsle_zum_nächsten_bühnenbild(self):
         """Wechselt zum nächsten Bühnenbild. Nach dem letzten Bühnenbild wird wieder das erste benutzt.
 
-        Scratch-Block: wechsle zu [nächstes Bühnenbild]
+        Scratch-Block: wechsle zu Bühnenbild (nächstes Bühnenbild v)
         """
         return self._core.looks_switchbackdropto_next()
 
@@ -792,7 +792,7 @@ class Figur():
 
         Das Skript wartet, bis das Gleiten beendet ist.
 
-        Scratch-Block: gleite in (1) Sek. zu [Mauszeiger]
+        Scratch-Block: gleite in (1) Sek. zu (Mauszeiger v)
 
         Parameters
         ----------
@@ -806,7 +806,7 @@ class Figur():
 
         Das Skript wartet, bis das Gleiten beendet ist.
 
-        Scratch-Block: gleite in (1) Sek. zu [Zufallsposition]
+        Scratch-Block: gleite in (1) Sek. zu (Zufallsposition v)
 
         Parameters
         ----------
@@ -820,7 +820,7 @@ class Figur():
 
         Das Skript wartet, bis das Gleiten beendet ist.
 
-        Scratch-Block: gleite in (1) Sek. zu [Figur]
+        Scratch-Block: gleite in (1) Sek. zu (Figur v)
 
         Parameters
         ----------
@@ -835,21 +835,21 @@ class Figur():
     def gehe_zu_mauszeiger(self):
         """Bewegt die Figur an die Position des Mauszeigers.
 
-        Scratch-Block: gehe zu [Mauszeiger]
+        Scratch-Block: gehe zu (Mauszeiger v)
         """
         return self._core.motion_goto_pointer()
                 
     def gehe_zu_zufallsposition(self):
         """Bewegt die Figur an eine zufällige Position auf der Bühne.
 
-        Scratch-Block: gehe zu [Zufallsposition]
+        Scratch-Block: gehe zu (Zufallsposition v)
         """
         return self._core.motion_goto_random()
                 
     def gehe_zu(self, sprite):
         """Bewegt die Figur an die Position einer anderen Figur.
 
-        Scratch-Block: gehe zu [Figur]
+        Scratch-Block: gehe zu (Figur v)
 
         Parameters
         ----------
@@ -907,14 +907,14 @@ class Figur():
     def drehe_dich_zu_mauszeiger(self):
         """Dreht die Figur zum Mauszeiger.
 
-        Scratch-Block: drehe dich zu [Mauszeiger]
+        Scratch-Block: drehe dich zu (Mauszeiger v)
         """
         return self._core.motion_pointtowards_pointer()
                 
     def drehe_dich_zu(self, sprite):
         """Dreht die Figur zu einer anderen Figur.
 
-        Scratch-Block: drehe dich zu [Figur]
+        Scratch-Block: drehe dich zu (Figur v)
 
         Parameters
         ----------
@@ -936,21 +936,21 @@ class Figur():
     def setze_drehtyp_auf_rundherum(self):
         """Setzt den Drehtyp auf "rundherum": Das Kostüm dreht sich mit der Richtung der Figur.
 
-        Scratch-Block: setze Drehtyp auf [rundherum]
+        Scratch-Block: setze Drehtyp auf [rundherum v]
         """
         return self._core.motion_setrotationstyle_allaround()
                 
     def setze_drehtyp_auf_nicht_drehen(self):
         """Setzt den Drehtyp auf "nicht drehen": Das Kostüm sieht immer gleich aus, egal in welche Richtung die Figur zeigt.
 
-        Scratch-Block: setze Drehtyp auf [nicht drehen]
+        Scratch-Block: setze Drehtyp auf [nicht drehen v]
         """
         return self._core.motion_setrotationstyle_dontrotate()
                 
     def setze_drehtyp_auf_links_rechts(self):
         """Setzt den Drehtyp auf "links-rechts": Das Kostüm dreht sich nur nach links oder rechts und steht nie auf dem Kopf.
 
-        Scratch-Block: setze Drehtyp auf [links-rechts]
+        Scratch-Block: setze Drehtyp auf [links-rechts v]
         """
         return self._core.motion_setrotationstyle_leftright()
                 
@@ -1029,7 +1029,7 @@ class Figur():
     def mathematische_funktion(self, operator, number):
         """Berechnet eine mathematische Funktion einer Zahl.
 
-        Scratch-Block: (Betrag) von (-1)
+        Scratch-Block: ([Betrag v] von (-1))
 
         Parameters
         ----------
@@ -1067,7 +1067,7 @@ class Figur():
     def ändere_stift_helligkeit_um(self, value):
         """Ändert die Helligkeit der Stiftfarbe um den angegebenen Wert. 0 ist schwarz, 100 ist am hellsten.
 
-        Scratch-Block: ändere Stift Helligkeit um (10)
+        Scratch-Block: ändere Stift (Helligkeit v) um (10)
 
         Parameters
         ----------
@@ -1079,7 +1079,7 @@ class Figur():
     def ändere_stift_farbe_um(self, value):
         """Ändert die Farbe (den Farbton) des Stifts um den angegebenen Wert. Die Farbe geht von 0 bis 100 und beginnt nach 100 wieder bei 0.
 
-        Scratch-Block: ändere Stift Farbe um (10)
+        Scratch-Block: ändere Stift (Farbe v) um (10)
 
         Parameters
         ----------
@@ -1091,7 +1091,7 @@ class Figur():
     def ändere_stift_sättigung_um(self, value):
         """Ändert die Sättigung der Stiftfarbe um den angegebenen Wert. Eine höhere Sättigung macht die Farbe kräftiger.
 
-        Scratch-Block: ändere Stift Sättigung um (10)
+        Scratch-Block: ändere Stift (Sättigung v) um (10)
 
         Parameters
         ----------
@@ -1103,7 +1103,7 @@ class Figur():
     def ändere_stift_transparenz_um(self, value):
         """Ändert die Transparenz der Stiftfarbe um den angegebenen Wert. 0 ist nicht transparent, höhere Werte machen die Linien durchsichtiger.
 
-        Scratch-Block: ändere Stift Transparenz um (10)
+        Scratch-Block: ändere Stift (Transparenz v) um (10)
 
         Parameters
         ----------
@@ -1148,7 +1148,7 @@ class Figur():
     def setze_stift_helligkeit_auf(self, value):
         """Setzt die Helligkeit der Stiftfarbe. 0 ist schwarz, 100 ist am hellsten.
 
-        Scratch-Block: setze Stift Helligkeit auf (50)
+        Scratch-Block: setze Stift (Helligkeit v) auf (50)
 
         Parameters
         ----------
@@ -1160,7 +1160,7 @@ class Figur():
     def setze_stift_farbe_auf(self, value):
         """Setzt die Farbe (den Farbton) des Stifts. Die Farbe geht von 0 bis 100 und beginnt nach 100 wieder bei 0.
 
-        Scratch-Block: setze Stift Farbe auf (50)
+        Scratch-Block: setze Stift (Farbe v) auf (50)
 
         Parameters
         ----------
@@ -1172,7 +1172,7 @@ class Figur():
     def setze_stift_sättigung_auf(self, value):
         """Setzt die Sättigung der Stiftfarbe. Eine höhere Sättigung macht die Farbe kräftiger.
 
-        Scratch-Block: setze Stift Sättigung auf (50)
+        Scratch-Block: setze Stift (Sättigung v) auf (50)
 
         Parameters
         ----------
@@ -1184,7 +1184,7 @@ class Figur():
     def setze_stift_transparenz_auf(self, value):
         """Setzt die Transparenz der Stiftfarbe. 0 ist nicht transparent, höhere Werte machen die Linien durchsichtiger.
 
-        Scratch-Block: setze Stift Transparenz auf (50)
+        Scratch-Block: setze Stift (Transparenz v) auf (50)
 
         Parameters
         ----------
@@ -1496,7 +1496,7 @@ class Figur():
     def entfernung_von_mauszeiger(self):
         """Gibt den Abstand zwischen der Figur und dem Mauszeiger in Pixeln zurück.
 
-        Scratch-Block: (Entfernung von [Mauszeiger])
+        Scratch-Block: (Entfernung von (Mauszeiger v))
 
         Returns
         -------
@@ -1508,7 +1508,7 @@ class Figur():
     def entfernung_von(self, sprite):
         """Gibt den Abstand zwischen der Figur und einer anderen Figur in Pixeln zurück.
 
-        Scratch-Block: (Entfernung von (Figur))
+        Scratch-Block: (Entfernung von (Figur v))
 
         Parameters
         ----------
@@ -1525,7 +1525,7 @@ class Figur():
     def taste_gedrückt(self, key):
         """Prüft, ob im Moment eine Taste gedrückt ist.
 
-        Scratch-Block: Taste (Leertaste) gedrückt?
+        Scratch-Block: Taste (Leertaste v) gedrückt?
 
         Parameters
         ----------
@@ -1592,7 +1592,7 @@ class Figur():
     def bühnenbildname_von(self, stage='_stage_'):
         """Gibt den Namen des aktuellen Bühnenbilds zurück. Nur die Bühne hat Bühnenbilder.
 
-        Scratch-Block: (Bühnenbild [Name]) von (Bühne)
+        Scratch-Block: ([Bühnenbildname v] von (Bühne v))
 
         Parameters
         ----------
@@ -1609,7 +1609,7 @@ class Figur():
     def bühnenbildnummer_von(self, stage='_stage_'):
         """Gibt die Nummer des aktuellen Bühnenbilds zurück (ab 1). Nur die Bühne hat Bühnenbilder.
 
-        Scratch-Block: (Bühnenbild [Nummer]) von (Bühne)
+        Scratch-Block: ([Bühnenbildnummer v] von (Bühne v))
 
         Parameters
         ----------
@@ -1626,7 +1626,7 @@ class Figur():
     def kostümname_von(self, sprite):
         """Gibt den Namen des aktuellen Kostüms einer anderen Figur zurück.
 
-        Scratch-Block: (Kostüm [Name]) von (Figur)
+        Scratch-Block: ([Kostümname v] von (Figur v))
 
         Parameters
         ----------
@@ -1643,7 +1643,7 @@ class Figur():
     def kostümnummer_von(self, sprite):
         """Gibt die Nummer des aktuellen Kostüms einer anderen Figur zurück (ab 1).
 
-        Scratch-Block: (Kostüm [Nummer]) von (Figur)
+        Scratch-Block: ([Kostümnummer v] von (Figur v))
 
         Parameters
         ----------
@@ -1660,7 +1660,7 @@ class Figur():
     def richtung_von(self, sprite):
         """Gibt die Richtung einer anderen Figur in Grad zurück. 90 ist rechts, 0 ist oben.
 
-        Scratch-Block: (Richtung) von (Figur)
+        Scratch-Block: ([Richtung v] von (Figur v))
 
         Parameters
         ----------
@@ -1677,7 +1677,7 @@ class Figur():
     def größe_von(self, sprite):
         """Gibt die Größe einer anderen Figur in Prozent zurück. 100 ist die normale Größe.
 
-        Scratch-Block: (Größe) von (Figur)
+        Scratch-Block: ([Größe v] von (Figur v))
 
         Parameters
         ----------
@@ -1694,7 +1694,7 @@ class Figur():
     def gib_variable_von(self, variable, sprite='_stage_'):
         """Gibt den Wert einer Variable einer Figur oder der Bühne zurück.
 
-        Scratch-Block: (Variable) von (Figur)
+        Scratch-Block: ([Variable v] von (Figur v))
 
         Parameters
         ----------
@@ -1713,7 +1713,7 @@ class Figur():
     def lautstärke_von(self, sprite='_stage_'):
         """Gibt die Lautstärke der Klänge einer Figur oder der Bühne zurück, von 0 bis 100.
 
-        Scratch-Block: (Lautstärke) von (Figur)
+        Scratch-Block: ([Lautstärke v] von (Figur v))
 
         Parameters
         ----------
@@ -1730,7 +1730,7 @@ class Figur():
     def x_position_von(self, sprite):
         """Gibt die x-Position einer anderen Figur zurück.
 
-        Scratch-Block: (x-Position) von (Figur)
+        Scratch-Block: ([x-Position v] von (Figur v))
 
         Parameters
         ----------
@@ -1747,7 +1747,7 @@ class Figur():
     def y_position_von(self, sprite):
         """Gibt die y-Position einer anderen Figur zurück.
 
-        Scratch-Block: (y-Position) von (Figur)
+        Scratch-Block: ([y-Position v] von (Figur v))
 
         Parameters
         ----------
@@ -1771,14 +1771,14 @@ class Figur():
     def setze_ziehbarkeit_auf_ziehbar(self):
         """Macht die Figur ziehbar: Der Benutzer kann sie während des Programms mit der Maus verschieben.
 
-        Scratch-Block: setze Ziehbarkeit auf [ziehbar]
+        Scratch-Block: setze Ziehbarkeit auf [ziehbar v]
         """
         return self._core.sensing_setdragmode_draggable()
                 
     def setze_ziehbarkeit_auf_nicht_ziehbar(self):
         """Macht die Figur nicht ziehbar: Der Benutzer kann sie nicht mit der Maus verschieben.
 
-        Scratch-Block: setze Ziehbarkeit auf [nicht ziehbar]
+        Scratch-Block: setze Ziehbarkeit auf [nicht ziehbar v]
         """
         return self._core.sensing_setdragmode_notdraggable()
                 
@@ -1814,7 +1814,7 @@ class Figur():
     def wird_rand_berührt(self):
         """Prüft, ob die Figur den Rand der Bühne berührt.
 
-        Scratch-Block: wird [Rand] berührt?
+        Scratch-Block: wird (Rand v) berührt?
 
         Returns
         -------
@@ -1826,7 +1826,7 @@ class Figur():
     def wird_mauszeiger_berührt(self):
         """Prüft, ob die Figur den Mauszeiger berührt.
 
-        Scratch-Block: wird [Mauszeiger] berührt?
+        Scratch-Block: wird (Mauszeiger v) berührt?
 
         Returns
         -------
@@ -1838,7 +1838,7 @@ class Figur():
     def wird_berührt(self, sprite):
         """Prüft, ob die Figur eine andere Figur, den Mauszeiger oder den Rand berührt.
 
-        Scratch-Block: wird (Figur) berührt?
+        Scratch-Block: wird (Figur v) berührt?
 
         Parameters
         ----------
@@ -1867,7 +1867,7 @@ class Figur():
     def ändere_effekt_aussteuern_links_rechts_um(self, value):
         """Ändert den Aussteuern-Effekt des Klangs um den angegebenen Wert. Der Effekt verschiebt den Klang zwischen linkem und rechtem Lautsprecher.
 
-        Scratch-Block: ändere Effekt Aussteuern links/rechts um (10)
+        Scratch-Block: ändere Effekt [Aussteuern links/rechts v] um (10)
 
         Parameters
         ----------
@@ -1879,7 +1879,7 @@ class Figur():
     def ändere_effekt_höhe_um(self, value):
         """Ändert den Höhe-Effekt des Klangs um den angegebenen Wert. Positive Werte machen den Klang höher.
 
-        Scratch-Block: ändere Effekt Höhe um (10)
+        Scratch-Block: ändere Effekt [Höhe v] um (10)
 
         Parameters
         ----------
@@ -1910,7 +1910,7 @@ class Figur():
     def spiele_klang(self, name, loop=0):
         """Startet das Abspielen eines Klangs. Das Skript wartet nicht, bis der Klang zu Ende ist.
 
-        Scratch-Block: spiele Klang (Pop)
+        Scratch-Block: spiele Klang (Pop v)
 
         Parameters
         ----------
@@ -1924,7 +1924,7 @@ class Figur():
     def spiele_klang_ganz(self, name):
         """Spielt einen Klang ab und wartet, bis er zu Ende ist.
 
-        Scratch-Block: spiele Klang (Pop) ganz
+        Scratch-Block: spiele Klang (Pop v) ganz
 
         Parameters
         ----------
@@ -1936,7 +1936,7 @@ class Figur():
     def setze_effekt_aussteuern_links_rechts_auf(self, value):
         """Setzt den Aussteuern-Effekt des Klangs. Der Effekt verschiebt den Klang zwischen linkem und rechtem Lautsprecher.
 
-        Scratch-Block: setze Effekt Aussteuern links/rechts auf (0)
+        Scratch-Block: setze Effekt [Aussteuern links/rechts v] auf (0)
 
         Parameters
         ----------
@@ -1948,7 +1948,7 @@ class Figur():
     def setze_effekt_höhe_auf(self, value):
         """Setzt den Höhe-Effekt des Klangs. Höhere Werte machen den Klang höher.
 
-        Scratch-Block: setze Effekt Höhe auf (0)
+        Scratch-Block: setze Effekt [Höhe v] auf (0)
 
         Parameters
         ----------
@@ -2260,7 +2260,7 @@ class Figur():
     def größer_als(self, operand1, operand2):
         """Prüft, ob der erste Wert größer als der zweite ist. Zahlen werden als Zahlen verglichen, Texte alphabetisch ohne Beachtung von Groß- und Kleinschreibung.
 
-        Scratch-Block: ((a) > (b))
+        Scratch-Block: <(a) > (b)>
 
         Parameters
         ----------
@@ -2279,7 +2279,7 @@ class Figur():
     def kleiner_als(self, operand1, operand2):
         """Prüft, ob der erste Wert kleiner als der zweite ist. Zahlen werden als Zahlen verglichen, Texte alphabetisch ohne Beachtung von Groß- und Kleinschreibung.
 
-        Scratch-Block: ((a) < (b))
+        Scratch-Block: <(a) < (b)>
 
         Parameters
         ----------
@@ -2298,7 +2298,7 @@ class Figur():
     def gleich(self, operand1, operand2):
         """Prüft, ob zwei Werte gleich sind. Zahlen werden als Zahlen verglichen, Texte ohne Beachtung von Groß- und Kleinschreibung.
 
-        Scratch-Block: ((a) = (b))
+        Scratch-Block: <(a) = (b)>
 
         Parameters
         ----------
