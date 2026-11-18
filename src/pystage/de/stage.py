@@ -748,7 +748,7 @@ class Bühne():
     def datum_im_moment(self):
         """Gibt den aktuellen Tag des Monats zurück, von 1 bis 31.
 
-        Scratch-Block: (Datum im Moment)
+        Scratch-Block: ([Datum v] im Moment)
 
         Returns
         -------
@@ -760,7 +760,7 @@ class Bühne():
     def wochentag_im_moment(self):
         """Gibt den aktuellen Wochentag als Zahl zurück. 1 ist Sonntag, 2 ist Montag und 7 ist Samstag.
 
-        Scratch-Block: (Wochentag im Moment)
+        Scratch-Block: ([Wochentag v] im Moment)
 
         Returns
         -------
@@ -772,7 +772,7 @@ class Bühne():
     def stunde_im_moment(self):
         """Gibt die aktuelle Stunde zurück, von 0 bis 23.
 
-        Scratch-Block: (Stunde im Moment)
+        Scratch-Block: ([Stunde v] im Moment)
 
         Returns
         -------
@@ -784,7 +784,7 @@ class Bühne():
     def minute_im_moment(self):
         """Gibt die aktuelle Minute zurück, von 0 bis 59.
 
-        Scratch-Block: (Minute im Moment)
+        Scratch-Block: ([Minute v] im Moment)
 
         Returns
         -------
@@ -796,7 +796,7 @@ class Bühne():
     def monat_im_moment(self):
         """Gibt den aktuellen Monat als Zahl zurück, von 1 (Januar) bis 12 (Dezember).
 
-        Scratch-Block: (Monat im Moment)
+        Scratch-Block: ([Monat v] im Moment)
 
         Returns
         -------
@@ -808,7 +808,7 @@ class Bühne():
     def sekunde_im_moment(self):
         """Gibt die aktuelle Sekunde zurück, von 0 bis 59.
 
-        Scratch-Block: (Sekunde im Moment)
+        Scratch-Block: ([Sekunde v] im Moment)
 
         Returns
         -------
@@ -820,7 +820,7 @@ class Bühne():
     def jahr_im_moment(self):
         """Gibt das aktuelle Jahr zurück.
 
-        Scratch-Block: (Jahr im Moment)
+        Scratch-Block: ([Jahr v] im Moment)
 
         Returns
         -------
@@ -863,7 +863,7 @@ class Bühne():
 
         Dies ist nur ein Platzhalter: Das Mikrofon wird nicht unterstützt, deshalb ist der Wert immer -1.
 
-        Scratch-Block: (Lautstärke)
+        Scratch-Block: (Lautstärke::sensing)
 
         Returns
         -------
@@ -1265,7 +1265,9 @@ class Bühne():
         return self._core.pystage_makelistvariable(name, values, all_sprites)
 
     def füge_zu_liste_hinzu(self, name, item):
-        """füge %1 zu Liste %2 hinzu
+        """Fügt ein Element am Ende einer Liste hinzu.
+
+        Scratch-Block: füge [Ding] zu [meine Liste v] hinzu
 
         Parameters
         ----------
@@ -1277,7 +1279,9 @@ class Bühne():
         return self._core.data_addtolist(name, item)
 
     def lösche_element_aus_liste(self, name, index):
-        """lösche %1 aus Liste %2
+        """Löscht ein Element einer Liste.
+
+        Scratch-Block: lösche (1) aus [meine Liste v]
 
         Parameters
         ----------
@@ -1289,7 +1293,9 @@ class Bühne():
         return self._core.data_deleteoflist(name, index)
 
     def lösche_alles_aus_liste(self, name):
-        """lösche alles aus Liste %1
+        """Löscht alle Elemente einer Liste.
+
+        Scratch-Block: lösche alles aus [meine Liste v]
 
         Parameters
         ----------
@@ -1299,7 +1305,9 @@ class Bühne():
         return self._core.data_deletealloflist(name)
 
     def füge_in_liste_ein(self, name, item, index):
-        """füge %1 bei %2 in Liste %3 ein
+        """Fügt ein Element an einer Stelle in eine Liste ein.
+
+        Scratch-Block: füge [Ding] bei (1) in [meine Liste v] ein
 
         Parameters
         ----------
@@ -1313,7 +1321,9 @@ class Bühne():
         return self._core.data_insertatlist(name, item, index)
 
     def ersetze_element_von_liste(self, name, index, item):
-        """ersetze Element %1 von Liste %2 durch %3
+        """Ersetzt ein Element einer Liste durch ein anderes.
+
+        Scratch-Block: ersetze Element (1) von [meine Liste v] durch [Ding]
 
         Parameters
         ----------
@@ -1327,7 +1337,9 @@ class Bühne():
         return self._core.data_replaceitemoflist(name, index, item)
 
     def element_von_liste(self, name, index):
-        """Element %1 von Liste %2
+        """Gibt ein Element einer Liste zurück.
+
+        Scratch-Block: (Element (1) von [meine Liste v])
 
         Parameters
         ----------
@@ -1343,7 +1355,9 @@ class Bühne():
         return self._core.data_itemoflist(name, index)
 
     def nummer_in_liste(self, name, item):
-        """Nummer von %1 in Liste %2
+        """Gibt die Stelle eines Elements in einer Liste zurück.
+
+        Scratch-Block: (Nummer von [Ding] in [meine Liste v])
 
         Parameters
         ----------
@@ -1360,7 +1374,9 @@ class Bühne():
         return self._core.data_itemnumoflist(name, item)
 
     def länge_von_liste(self, name):
-        """Länge von Liste %1
+        """Gibt die Anzahl der Elemente einer Liste zurück.
+
+        Scratch-Block: (Länge von [meine Liste v])
 
         Parameters
         ----------
@@ -1374,7 +1390,9 @@ class Bühne():
         return self._core.data_lengthoflist(name)
 
     def liste_enthält(self, name, item):
-        """Liste %1 enthält %2?
+        """Prüft, ob eine Liste ein Element enthält.
+
+        Scratch-Block: <[meine Liste v] enthält [Ding]?>
 
         Parameters
         ----------
@@ -1406,7 +1424,9 @@ class Bühne():
         return self._core.data_listvariable(name)
 
     def zeige_liste(self, name):
-        """zeige Liste %1
+        """Zeigt die Liste auf der Bühne an.
+
+        Scratch-Block: zeige Liste [meine Liste v]
 
         Parameters
         ----------
@@ -1416,7 +1436,9 @@ class Bühne():
         return self._core.data_showlist(name)
 
     def verstecke_liste(self, name):
-        """verstecke Liste %1
+        """Versteckt die Liste auf der Bühne.
+
+        Scratch-Block: verstecke Liste [meine Liste v]
 
         Parameters
         ----------
@@ -1444,7 +1466,9 @@ class Bühne():
         return self._core.pystage_setlistmonitorposition(name, x, y, width, height)
 
     def verbinde(self, string1, string2):
-        """verbinde %1 und %2
+        """Verbindet zwei Texte zu einem.
+
+        Scratch-Block: (verbinde [Apfel] und [Birne])
 
         Parameters
         ----------
@@ -1460,7 +1484,9 @@ class Bühne():
         return self._core.operator_join(string1, string2)
 
     def zeichen_von(self, letter, string):
-        """Zeichen %1 von %2
+        """Gibt einen Buchstaben eines Textes zurück.
+
+        Scratch-Block: (Zeichen (1) von [Welt])
 
         Parameters
         ----------
@@ -1477,7 +1503,9 @@ class Bühne():
         return self._core.operator_letter_of(letter, string)
 
     def länge_von(self, string):
-        """Länge von %1
+        """Gibt die Anzahl der Buchstaben eines Textes zurück.
+
+        Scratch-Block: (Länge von [Welt])
 
         Parameters
         ----------
@@ -1491,7 +1519,9 @@ class Bühne():
         return self._core.operator_length(string)
 
     def enthält(self, string1, string2):
-        """%1 enthält %2?
+        """Prüft, ob ein Text einen anderen Text enthält.
+
+        Scratch-Block: <[Apfel] enthält [A]?>
 
         Groß- und Kleinschreibung wird ignoriert.
 
@@ -1566,7 +1596,9 @@ class Bühne():
         return self._core.operator_equals(operand1, operand2)
 
     def runde(self, number):
-        """%1 gerundet
+        """Rundet eine Zahl auf die nächste ganze Zahl.
+
+        Scratch-Block: ((3.5) gerundet)
 
         Wie in Scratch wird .5 immer aufgerundet.
 
@@ -1581,7 +1613,9 @@ class Bühne():
         return self._core.operator_round(number)
 
     def wenn_bühne_angeklickt_wird(self, generator_function, name="", no_refresh=False):
-        """Wenn Bühne angeklickt wird
+        """Führt den Code jedes Mal aus, wenn die Bühne angeklickt wird.
+
+        Scratch-Block: Wenn die Bühne angeklickt wird
 
         Parameters
         ----------
@@ -1595,7 +1629,9 @@ class Bühne():
         return self._core.event_whenstageclicked(generator_function, name, no_refresh)
 
     def geteilt_durch(self, a, b):
-        """%1 / %2
+        """Teilt a durch b.
+
+        Scratch-Block: ((10) / (2))
 
         Wie in Scratch ergibt die Division durch 0 Infinity, -Infinity oder NaN
         statt eines Fehlers.
@@ -1612,7 +1648,9 @@ class Bühne():
         return self._core.operator_divide(a, b)
 
     def modulo(self, a, b):
-        """%1 modulo %2
+        """Gibt den Rest der Division von a durch b zurück.
+
+        Scratch-Block: ((10) mod (3))
 
         Der Rest einer Division, mit dem Vorzeichen des Teilers wie in
         Scratch. Modulo 0 ergibt NaN.

@@ -1263,7 +1263,9 @@ class Stage():
         return self._core.pystage_makelistvariable(name, values, all_sprites)
 
     def add_to_list(self, name, item):
-        """add %1 to list %2
+        """Adds an item to the end of a list.
+
+        Scratch block: add [thing] to [my list v]
 
         Parameters
         ----------
@@ -1275,7 +1277,9 @@ class Stage():
         return self._core.data_addtolist(name, item)
 
     def delete_item_of_list(self, name, index):
-        """delete %1 of list %2
+        """Deletes one item of a list.
+
+        Scratch block: delete (1) of [my list v]
 
         Parameters
         ----------
@@ -1287,7 +1291,9 @@ class Stage():
         return self._core.data_deleteoflist(name, index)
 
     def delete_all_of_list(self, name):
-        """delete all of list %1
+        """Deletes all items of a list.
+
+        Scratch block: delete all of [my list v]
 
         Parameters
         ----------
@@ -1297,7 +1303,9 @@ class Stage():
         return self._core.data_deletealloflist(name)
 
     def insert_at_list(self, name, item, index):
-        """insert %1 at %2 of list %3
+        """Inserts an item into a list at a position.
+
+        Scratch block: insert [thing] at (1) of [my list v]
 
         Parameters
         ----------
@@ -1311,7 +1319,9 @@ class Stage():
         return self._core.data_insertatlist(name, item, index)
 
     def replace_item_of_list(self, name, index, item):
-        """replace item %1 of list %2 with %3
+        """Replaces an item of a list by another one.
+
+        Scratch block: replace item (1) of [my list v] with [thing]
 
         Parameters
         ----------
@@ -1325,7 +1335,9 @@ class Stage():
         return self._core.data_replaceitemoflist(name, index, item)
 
     def item_of_list(self, name, index):
-        """item %1 of list %2
+        """Gives one item of a list.
+
+        Scratch block: (item (1) of [my list v])
 
         Parameters
         ----------
@@ -1341,7 +1353,9 @@ class Stage():
         return self._core.data_itemoflist(name, index)
 
     def item_number_in_list(self, name, item):
-        """item # of %1 in list %2
+        """Gives the position of an item in a list.
+
+        Scratch block: (item # of [thing] in [my list v])
 
         Parameters
         ----------
@@ -1358,7 +1372,9 @@ class Stage():
         return self._core.data_itemnumoflist(name, item)
 
     def length_of_list(self, name):
-        """length of list %1
+        """Gives the number of items in a list.
+
+        Scratch block: (length of [my list v])
 
         Parameters
         ----------
@@ -1372,7 +1388,9 @@ class Stage():
         return self._core.data_lengthoflist(name)
 
     def list_contains(self, name, item):
-        """list %1 contains %2?
+        """Tells whether a list contains an item.
+
+        Scratch block: <[my list v] contains [thing]?>
 
         Parameters
         ----------
@@ -1404,7 +1422,9 @@ class Stage():
         return self._core.data_listvariable(name)
 
     def show_list(self, name):
-        """show list %1
+        """Shows the list on the stage.
+
+        Scratch block: show list [my list v]
 
         Parameters
         ----------
@@ -1414,7 +1434,9 @@ class Stage():
         return self._core.data_showlist(name)
 
     def hide_list(self, name):
-        """hide list %1
+        """Hides the list from the stage.
+
+        Scratch block: hide list [my list v]
 
         Parameters
         ----------
@@ -1442,7 +1464,9 @@ class Stage():
         return self._core.pystage_setlistmonitorposition(name, x, y, width, height)
 
     def join(self, string1, string2):
-        """join %1 %2
+        """Joins two texts into one.
+
+        Scratch block: (join [apple] [banana])
 
         Parameters
         ----------
@@ -1458,7 +1482,9 @@ class Stage():
         return self._core.operator_join(string1, string2)
 
     def letter_of(self, letter, string):
-        """letter %1 of %2
+        """Gives one letter of a text.
+
+        Scratch block: (letter (1) of [world])
 
         Parameters
         ----------
@@ -1475,7 +1501,9 @@ class Stage():
         return self._core.operator_letter_of(letter, string)
 
     def length_of(self, string):
-        """length of %1
+        """Gives the number of letters of a text.
+
+        Scratch block: (length of [world])
 
         Parameters
         ----------
@@ -1489,7 +1517,9 @@ class Stage():
         return self._core.operator_length(string)
 
     def contains(self, string1, string2):
-        """%1 contains %2?
+        """Tells whether a text contains another text.
+
+        Scratch block: <[apple] contains [a]?>
 
         Upper and lower case is ignored.
 
@@ -1564,7 +1594,9 @@ class Stage():
         return self._core.operator_equals(operand1, operand2)
 
     def round(self, number):
-        """round %1
+        """Rounds a number to the nearest whole number.
+
+        Scratch block: (round (3.5))
 
         Like in Scratch, .5 is always rounded up.
 
@@ -1579,7 +1611,9 @@ class Stage():
         return self._core.operator_round(number)
 
     def when_stage_clicked(self, generator_function, name="", no_refresh=False):
-        """when stage clicked
+        """Runs the code each time the stage is clicked.
+
+        Scratch block: when stage clicked
 
         Parameters
         ----------
@@ -1593,7 +1627,9 @@ class Stage():
         return self._core.event_whenstageclicked(generator_function, name, no_refresh)
 
     def divide(self, a, b):
-        """%1 / %2
+        """Divides a by b.
+
+        Scratch block: ((10) / (2))
 
         Like in Scratch, dividing by 0 gives Infinity, -Infinity or NaN
         instead of an error.
@@ -1610,7 +1646,9 @@ class Stage():
         return self._core.operator_divide(a, b)
 
     def modulo(self, a, b):
-        """%1 mod %2
+        """Gives the remainder of dividing a by b.
+
+        Scratch block: ((10) mod (3))
 
         The remainder of a division, with the sign of the divisor like in
         Scratch. The modulo of 0 is NaN.
