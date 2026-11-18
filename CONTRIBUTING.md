@@ -1,5 +1,6 @@
 # Contributing to PyStage
 
+Translations of PyStage into other languages are reviewed and corrected via tab-separated tables, see [TRANSLATING.md](TRANSLATING.md).
 
 ## Making a Pull Request
 

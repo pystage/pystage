@@ -87,7 +87,7 @@ PyStage is available in these languages:
 - [Deutsch](https://www.pystage.org/de/)
 - [Lietuvių](https://www.pystage.org/lt/)
 
-Get in touch if you want to help maintain a translation or add another language.
+Get in touch if you want to help maintain a translation or add another language. How to review and correct a translation is described in [TRANSLATING.md](TRANSLATING.md).
 
 For the English API, you can start with the following example code:
 
