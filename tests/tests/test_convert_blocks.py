@@ -175,7 +175,9 @@ def test_german_names_are_fixed():
 
 def test_no_facade_method_is_defined_twice():
     import pystage.de.sprite, pystage.de.stage, pystage.en.sprite, pystage.en.stage
-    for module in (pystage.de.sprite, pystage.de.stage, pystage.en.sprite, pystage.en.stage):
+    import pystage.lt.sprite, pystage.lt.stage
+    for module in (pystage.de.sprite, pystage.de.stage, pystage.en.sprite, pystage.en.stage,
+                   pystage.lt.sprite, pystage.lt.stage):
         with open(module.__file__, encoding="utf-8") as f:
             tree = ast.parse(f.read())
         for cls in [n for n in tree.body if isinstance(n, ast.ClassDef)]:
@@ -188,8 +190,9 @@ def test_facades_delegate_directly_to_the_core():
     from pystage.l10n.api import _get_core_names
     from pystage.de import Figur, Bühne
     from pystage.en import Sprite, Stage
-    for cls in (Sprite, Stage, Figur, Bühne):
+    from pystage.lt import Veikėjas, Scena
+    for cls in (Sprite, Stage, Figur, Bühne, Veikėjas, Scena):
         names = _get_core_names(cls)
-        for name in ("divide", "modulo", "geteilt_durch"):
+        for name in ("divide", "modulo", "geteilt_durch", "padalinta_iš", "liekana"):
             if hasattr(cls, name):
                 assert names[name] in ("operator_divide", "operator_mod")

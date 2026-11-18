@@ -22,7 +22,7 @@ from pystage.core.stage import CoreStage
 
 BASE = Path(__file__).parent.parent / "src"
 PROJECTS = sorted((BASE / "scratch_projects").glob("*/*.sb3"))
-LANGUAGES = ["core", "en", "de"]
+LANGUAGES = ["core", "en", "de", "lt"]
 
 
 def project_id(path):

@@ -100,7 +100,7 @@ def test_texts_can_not_inject_code(tmp_path):
         },
         monitors=[{"opcode": "data_variable", "params": {"VARIABLE": EVIL}, "spriteName": EVIL, "visible": True, "mode": EVIL, "x": EVIL, "y": 3}],
     )
-    for language in ("en", "de", "core"):
+    for language in ("en", "de", "lt", "core"):
         code = convert(tmp_path, data, language)
         if language == "en":
             assert_harmless(code)

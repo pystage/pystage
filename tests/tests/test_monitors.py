@@ -115,7 +115,7 @@ def test_every_reporter_has_a_value_label_and_German_name(stage, sprite):
         target.pystage_setreportermonitorposition(reporter, 0, 0)
         run(stage)
         target.pystage_hidemonitor(reporter)
-        assert f"reporter:{reporter}" in i18n.MESSAGES["de"] and f"reporter:{reporter}" in i18n.MESSAGES["en"]
+        assert all(f"reporter:{reporter}" in i18n.MESSAGES[language] for language in ("en", "de", "lt"))
         for table in i18n.ALIASES["reporters"].values():
             assert reporter in table
     assert visible(stage) == []

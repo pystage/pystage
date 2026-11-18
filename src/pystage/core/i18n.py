@@ -16,7 +16,7 @@ This module is the only place that knows about other languages. It contains
    the language of the facade in use: ``CoreStage(language=...)`` calls
    :func:`set_language`, the English API is the default.
 
-The German strings are taken from Scratch's own translation (scratch-l10n,
+The German and Lithuanian strings are taken from Scratch's own translation (scratch-l10n,
 ``editor/blocks/de.json``) wherever Scratch has them; the rest is marked
 below. Messages and aliases that are missing for a language fall back to
 English, so a translation can be added step by step.
@@ -66,6 +66,19 @@ ALIASES = {
             "any": ["beliebiges", "beliebige", "beliebige Taste"],
             "enter": ["Eingabetaste"],
         },
+        # Scratch LT: EVENT_WHENKEYPRESSED_SPACE "tarpą", _LEFT "<--", _RIGHT "-->",
+        # _DOWN "⬇️", _UP "⬆️", _ANY "bet kurį". Not from Scratch: "tarpas",
+        # the word forms of the arrows, "bet kuris", "bet kuris klavišas"
+        # and "įvesties klavišas".
+        "lt": {
+            "space": ["tarpą", "tarpas"],
+            "left arrow": ["<--", "rodyklė kairėn"],
+            "right arrow": ["-->", "rodyklė dešinėn"],
+            "up arrow": ["⬆️", "rodyklė aukštyn"],
+            "down arrow": ["⬇️", "rodyklė žemyn"],
+            "any": ["bet kurį", "bet kuris", "bet kuris klavišas"],
+            "enter": ["įvesties klavišas"],
+        },
     },
 
     # Functions of the "[abs] of ()" operator, canonical values are the
@@ -82,6 +95,17 @@ ALIASES = {
             "ceiling": ["aufrunden"],
             "sqrt": ["Wurzel"],
         },
+        # Scratch LT: OPERATORS_MATHOP_*.
+        "lt": {
+            "abs": ["teigiama reikšmė"],
+            "floor": ["apvalinimas žemyn"],
+            "ceiling": ["apvalinimas aukštyn"],
+            "sqrt": ["kvadratinė šaknis"],
+            "tan": ["tg"],
+            "asin": ["arcsin"],
+            "acos": ["arccos"],
+            "atan": ["arctg"],
+        },
     },
 
     # Positions in lists. Scratch DE: DATA_INDEX_ALL/_LAST/_RANDOM.
@@ -93,6 +117,12 @@ ALIASES = {
             "last": ["letztes"],
             "random": ["zufälliges", "zufällig"],
         },
+        # Scratch LT: DATA_INDEX_ALL/_LAST/_RANDOM.
+        "lt": {
+            "all": ["viskas"],
+            "last": ["paskutinis"],
+            "random": ["atsitiktinis"],
+        },
     },
 
     # Special backdrops. Scratch DE: LOOKS_NEXTBACKDROP etc.
@@ -102,6 +132,13 @@ ALIASES = {
             "next backdrop": ["nächstes Bühnenbild"],
             "previous backdrop": ["vorheriges Bühnenbild"],
             "random backdrop": ["zufälliges Bühnenbild"],
+        },
+        # Scratch LT: LOOKS_NEXTBACKDROP etc. (the official text of the next
+        # backdrop has two blanks, "kitas  fonas"; both spellings work).
+        "lt": {
+            "next backdrop": ["kitas fonas", "kitas  fonas"],
+            "previous backdrop": ["ankstesnis fonas"],
+            "random backdrop": ["atsitiktinis fonas"],
         },
     },
 
@@ -117,6 +154,16 @@ ALIASES = {
             "_edge_": ["Rand"],
             "_myself_": ["mir selbst"],
             "_stage_": ["Bühne"],
+        },
+        # Scratch LT: *_POINTER (several cases), *_RANDOM,
+        # SENSING_TOUCHINGOBJECT_EDGE, CONTROL_CREATECLONEOF_MYSELF,
+        # SENSING_OF_STAGE. Not from Scratch: "kraštas" (nominative).
+        "lt": {
+            "_mouse_": ["pelės žymeklis", "pelės žymeklį", "pelės žymeklio"],
+            "_random_": ["atsitiktinė pozicija", "atsitiktinę kryptį"],
+            "_edge_": ["kraštą", "kraštas"],
+            "_myself_": ["savęs"],
+            "_stage_": ["Scena"],
         },
     },
 
@@ -170,6 +217,33 @@ ALIASES = {
             "sensing_current:MINUTE": ["Minute"],
             "sensing_current:SECOND": ["Sekunde"],
             "sensing_username": ["Benutzername"],
+        },
+        # Scratch LT: the words of MOTION_*, LOOKS_*, SENSING_CURRENT_* ...
+        # ("kaukė numeris" etc. are the blocks "kaukė [numeris]"). Scratch LT
+        # uses "garsumas" for the volume and the microphone; the microphone
+        # needs another name (not from Scratch). "x koordinatė" etc. are
+        # SENSING_OF_*, the monitor words are the same reporters.
+        "lt": {
+            "motion_xposition": ["x vieta", "x koordinatė"],
+            "motion_yposition": ["y vieta", "y koordinatė"],
+            "motion_direction": ["kryptis"],
+            "looks_costumenumbername:number": ["kaukė numeris", "kaukės nr."],
+            "looks_costumenumbername:name": ["kaukė vardas", "kaukės pavadinimas"],
+            "looks_backdropnumbername:number": ["fonas numeris", "fono nr."],
+            "looks_backdropnumbername:name": ["fonas vardas", "fono pavadinimas"],
+            "looks_size": ["dydis"],
+            "sound_volume": ["garsumas", "garsas"],
+            "sensing_answer": ["atsakas"],
+            "sensing_loudness": ["mikrofono garsumas"],
+            "sensing_timer": ["laikmatis"],
+            "sensing_current:YEAR": ["metai"],
+            "sensing_current:MONTH": ["mėnuo"],
+            "sensing_current:DATE": ["mėn. diena"],
+            "sensing_current:DAYOFWEEK": ["savaitės diena"],
+            "sensing_current:HOUR": ["valanda"],
+            "sensing_current:MINUTE": ["minutė"],
+            "sensing_current:SECOND": ["sekundė"],
+            "sensing_username": ["vartotojo vardas"],
         },
     },
 }
@@ -311,6 +385,59 @@ MESSAGES = {
         "reporter:sensing_current:MINUTE": "Minute",
         "reporter:sensing_current:SECOND": "Sekunde",
         "reporter:sensing_username": "Benutzername",
+    },
+    # Lithuanian: official Scratch texts for monitor_length (gui.monitor.listMonitor.listLength),
+    # monitor_empty, variable_exists (VARIABLE_ALREADY_EXISTS), list_exists
+    # (LIST_ALREADY_EXISTS), stage_name and the reporter labels; the rest is
+    # not from Scratch. "reporter:sensing_loudness" is "garsumas" like in Scratch.
+    "lt": {
+        "variable_missing": "Kintamojo {name} nėra.",
+        "list_missing": "Sąrašo {name} nėra.",
+        "variable_exists": "Kintamasis vardu \"{name}\" jau yra.",
+        "list_exists": "Jau egzistuoja sąrašas pavadintas \"{name}\".",
+        "bad_key": "Netinkamas klavišas: {key}. Leidžiami a-z, 0-9, tarpas, įvesties klavišas, rodyklių klavišai (pvz., 'rodyklė kairėn') ir bet kuris klavišas.",
+        "operator_unsupported": "Funkcija {operator} nepalaikoma.",
+        "sprite_unknown": "Veikėjas {sprite} nežinomas.",
+        "effect_range": "Netinkama reikšmė. Ji turi būti nuo 0 iki 200.",
+        "block_parameters": "Tavo kodo blokui '{name}' reikia nulio arba vieno parametro. Parametras paprastai vadinasi self.",
+        "block_no_refresh": "Tavo kodo blokas '{name}' nustatytas be ekrano atnaujinimo. Tuomet negalima naudoti yield.",
+        "block_not_def": "'{name}' turi būti paprasta funkcija, apibrėžta su def.",
+        "sound_unavailable": "ĮSPĖJIMAS: Garso nėra. ({error})",
+        "sound_no_channel": "ĮSPĖJIMAS: Nebėra laisvų garso kanalų. '{name}' negalima paleisti.",
+        "sound_not_found": "ĮSPĖJIMAS: Garso '{name}' nerasta.",
+        "sound_not_loaded": "ĮSPĖJIMAS: Garso '{name}' nepavyksta įkelti, pabandyk jį konvertuoti į wav arba ogg formatą. ({error})",
+        "svg_notice": "\nĮSPĖJIMAS: SVG konvertavimas skirtas tik patogumui\n"
+                      "ir gali veikti ne taip, kaip tikimasi. Geriausia\n"
+                      "pačiam konvertuoti į rastrinę grafiką (png arba jpg).\n",
+        "pygame_version": "PyStage reikalauja pygame-ce 2 ar naujesnės versijos.\n"
+                          "Pašalink klasikinį pygame ir įdiek pygame-ce:\n"
+                          "pip uninstall pygame && pip install --upgrade pygame-ce",
+        "error_in": "Klaida faile {file}, eilutėje {line}",
+        "monitor_length": "ilgis {length}",
+        "monitor_empty": "(tuščia)",
+        "reporter_unknown": "Nežinoma reikšmė: {reporter}.",
+        "reporter_unavailable": "Reikšmės {reporter} šiam veikėjui ar scenai nėra.",
+        "stage_name": "Scena",
+        "reporter:motion_xposition": "x vieta",
+        "reporter:motion_yposition": "y vieta",
+        "reporter:motion_direction": "kryptis",
+        "reporter:looks_costumenumbername:number": "kaukė numeris",
+        "reporter:looks_costumenumbername:name": "kaukė vardas",
+        "reporter:looks_backdropnumbername:number": "fonas numeris",
+        "reporter:looks_backdropnumbername:name": "fonas vardas",
+        "reporter:looks_size": "dydis",
+        "reporter:sound_volume": "garsumas",
+        "reporter:sensing_answer": "atsakas",
+        "reporter:sensing_loudness": "garsumas",
+        "reporter:sensing_timer": "laikmatis",
+        "reporter:sensing_current:YEAR": "metai",
+        "reporter:sensing_current:MONTH": "mėnuo",
+        "reporter:sensing_current:DATE": "mėn. diena",
+        "reporter:sensing_current:DAYOFWEEK": "savaitės diena",
+        "reporter:sensing_current:HOUR": "valanda",
+        "reporter:sensing_current:MINUTE": "minutė",
+        "reporter:sensing_current:SECOND": "sekundė",
+        "reporter:sensing_username": "vartotojo vardas",
     },
 }
 

@@ -97,7 +97,7 @@ def test_no_warnings_no_comment_block(tmp_path):
 
 def test_warnings_belong_to_one_conversion(tmp_path):
     first = intermediate(SPECIAL)
-    for language in ("core", "en", "de"):
+    for language in ("core", "en", "de", "lt"):
         sb3.get_python(first, language)
     count = len(first["warnings"])
     assert count > 10

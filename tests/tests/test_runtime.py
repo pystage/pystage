@@ -658,7 +658,7 @@ def test_all_keys_of_scratch_are_known():
     # The error message must not promise keys that do not work
     from pystage.core.i18n import MESSAGES
     for texts in MESSAGES.values():
-        assert "enter" in texts["bad_key"].lower() or "eingabetaste" in texts["bad_key"].lower()
+        assert any(word in texts["bad_key"].lower() for word in ("enter", "eingabetaste", "įvesties klavišas"))
     assert "enter" in KEY_MAPPINGS
 
 
