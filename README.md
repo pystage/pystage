@@ -62,7 +62,7 @@ And here is the result:
 ## Goals
 * Export your Scratch project to real executable Python code!
 * Helping coding beginners to learn Python "by Scratch".
-* Implementation of scratch blocks in several languages (ideal for kids). As of now en and de.
+* Implementation of scratch blocks in several languages (ideal for kids). As of now en, de and lt.
 
 
 [![A quick into video](https://img.youtube.com/vi/Bo3kUF9k0Vg/0.jpg)](https://www.youtube.com/watch?v=Bo3kUF9k0Vg)
@@ -79,27 +79,15 @@ PyStage needs Python 3.10 or newer. [pygame-ce](https://pyga.me/) is installed a
 
 If you are interested in PyStage and want to get in touch, feel free to join us on our [Discord Server](https://discord.gg/MSGrs3UCCz).
 
-Currently, only the English API is fully translated, the German API is automatically generated. All other languages will be added when PyStage gets more stable. Get in touch if you want to help maintain a translation.
+## Languages
 
-## Deutsch
+PyStage is available in these languages:
 
-Die deutsche API heißt `pystage.de`. Auch die Werte aus den Auswahlmenüs von Scratch kannst du auf Deutsch angeben (Groß- und Kleinschreibung ist egal, die englischen Werte funktionieren weiterhin), und Fehlermeldungen und Hinweise erscheinen auf Deutsch:
+- [English](https://www.pystage.org/)
+- [Deutsch](https://www.pystage.org/de/)
+- [Lietuvių](https://www.pystage.org/lt/)
 
-```python
-from pystage.de import Bühne, Figur
-
-bühne = Bühne(titel="Mein erstes Spiel")
-zombie = bühne.füge_eine_figur_hinzu()
-
-def nach_oben(zombie: Figur):
-    zombie.ändere_y_um(10)
-
-zombie.wenn_taste_gedrückt_wird("Pfeil nach oben", nach_oben)
-zombie.wenn_taste_gedrückt_wird("Leertaste", nach_oben)
-bühne.abspielen()
-```
-
-Weitere Werte: `"beliebiges"` (Taste), `"letztes"`, `"zufälliges"` und `"alles"` bei Listen, `"Betrag"`, `"abrunden"`, `"aufrunden"`, `"Wurzel"` bei der mathematischen Funktion, `"nächstes Bühnenbild"`, `"Mauszeiger"`, `"Rand"`, `"mir selbst"`.
+Get in touch if you want to help maintain a translation or add another language.
 
 For the English API, you can start with the following example code:
 
