@@ -1,0 +1,44 @@
+key	english	text	origin	status	comment
+variable_missing	The variable {name} does not exist.	Die Variable {name} gibt es nicht.	new	ok	
+list_missing	The list {name} does not exist.	Die Liste {name} gibt es nicht.	new	ok	
+variable_exists	The variable {name} already exists!	Die Variable {name} gibt es schon!	scratch	ok	
+list_exists	The list {name} already exists!	Die Liste {name} gibt es schon!	scratch	ok	
+bad_key	Bad key: {key}. Allowed are a-z, 0-9, space, enter, the arrow keys (e.g. 'left arrow') and any.	Ungültige Taste: {key}. Erlaubt sind a-z, 0-9, Leertaste, Eingabetaste, die Pfeiltasten (z. B. 'Pfeil nach links') und beliebige Taste.	new	ok	
+operator_unsupported	Operator {operator} not supported.	Die Funktion {operator} wird nicht unterstützt.	new	ok	
+sprite_unknown	Sprite {sprite} unknown.	Die Figur {sprite} ist unbekannt.	new	ok	
+effect_range	Invalid value. Must be between 0 and 200.	Ungültiger Wert. Er muss zwischen 0 und 200 liegen.	new	ok	
+block_parameters	Your code block '{name}' needs zero or one parameter. The parameter is usually called self.	Dein Codeblock '{name}' braucht keinen oder einen Parameter. Der Parameter heißt normalerweise self.	new	ok	
+block_no_refresh	Your code block '{name}' is set to no refresh. In this case, yield must not be used.	Dein Codeblock '{name}' ist auf "ohne Bildschirmaktualisierung" gesetzt. Dann darf yield nicht verwendet werden.	new	ok	
+block_not_def	'{name}' must be a normal function defined with def.	'{name}' muss eine normale, mit def definierte Funktion sein.	new	ok	
+sound_unavailable	WARNING: No sound available. ({error})	WARNUNG: Kein Ton verfügbar. ({error})	new	ok	
+sound_no_channel	WARNING: No more free sound channels. Can't play '{name}'.	WARNUNG: Keine freien Tonkanäle mehr. '{name}' kann nicht gespielt werden.	new	ok	
+sound_not_found	WARNING: Sound '{name}' not found.	WARNUNG: Der Klang '{name}' wurde nicht gefunden.	new	ok	
+sound_not_loaded	WARNING: Sound '{name}' can't be loaded, try to convert it to wav or ogg format. ({error})	WARNUNG: Der Klang '{name}' kann nicht geladen werden, versuche ihn in das wav- oder ogg-Format umzuwandeln. ({error})	new	ok	
+svg_notice	\nWARNING: SVG conversion is for convenience only\nand might not work as expected. It is recommended\nto manually convert to bitmap graphics (png or jpg).\n	\nWARNUNG: Die SVG-Umwandlung ist nur eine Hilfe\nund funktioniert vielleicht nicht wie erwartet. Am besten\nwandelst du die Grafik selbst in eine Bitmap-Grafik (png oder jpg) um.\n	new	ok	
+pygame_version	pygame-ce version 2 or higher is required for PyStage.\nRemove classic pygame and install pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	Für PyStage wird pygame-ce ab Version 2 benötigt.\nEntferne das klassische pygame und installiere pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	new	ok	
+error_in	Error in {file}, line {line}	Fehler in {file}, Zeile {line}	new	ok	
+monitor_length	length {length}	Länge {length}	scratch	ok	
+monitor_empty	(empty)	(leer)	scratch	ok	
+reporter_unknown	Unknown reporter: {reporter}.	Unbekannter Wert: {reporter}.	new	ok	
+reporter_unavailable	The reporter {reporter} does not exist for this sprite or stage.	Den Wert {reporter} gibt es für diese Figur oder Bühne nicht.	new	ok	
+stage_name	Stage	Bühne	scratch	ok	
+reporter:motion_xposition	x position	x-Position	scratch	ok	
+reporter:motion_yposition	y position	y-Position	scratch	ok	
+reporter:motion_direction	direction	Richtung	scratch	ok	
+reporter:looks_costumenumbername:number	costume number	Kostüm Nummer	scratch	ok	
+reporter:looks_costumenumbername:name	costume name	Kostüm Name	scratch	ok	
+reporter:looks_backdropnumbername:number	backdrop number	Bühnenbild Nummer	scratch	ok	
+reporter:looks_backdropnumbername:name	backdrop name	Bühnenbild Name	scratch	ok	
+reporter:looks_size	size	Größe	scratch	ok	
+reporter:sound_volume	volume	Lautstärke	scratch	ok	
+reporter:sensing_answer	answer	Antwort	scratch	ok	
+reporter:sensing_loudness	loudness	Lautstärke	scratch	ok	
+reporter:sensing_timer	timer	Stoppuhr	scratch	ok	
+reporter:sensing_current:YEAR	year	Jahr	scratch	ok	
+reporter:sensing_current:MONTH	month	Monat	scratch	ok	
+reporter:sensing_current:DATE	date	Datum	scratch	ok	
+reporter:sensing_current:DAYOFWEEK	day of week	Wochentag	scratch	ok	
+reporter:sensing_current:HOUR	hour	Stunde	scratch	ok	
+reporter:sensing_current:MINUTE	minute	Minute	scratch	ok	
+reporter:sensing_current:SECOND	second	Sekunde	scratch	ok	
+reporter:sensing_username	username	Benutzername	scratch	ok	

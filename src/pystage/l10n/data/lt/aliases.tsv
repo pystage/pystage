@@ -1,0 +1,66 @@
+table	canonical	alias	origin	status	comment
+keys	space	tarpą	scratch	ok	
+keys	space	tarpas	adapted	todo	Scratch has only the accusative "tarpą"
+keys	left arrow	<--	scratch	ok	
+keys	left arrow	rodyklė kairėn	adapted	todo	Scratch uses the symbol "<--"
+keys	right arrow	-->	scratch	ok	
+keys	right arrow	rodyklė dešinėn	adapted	todo	Scratch uses "-->"
+keys	up arrow	⬆️	scratch	ok	
+keys	up arrow	rodyklė aukštyn	adapted	todo	Scratch uses the emoji arrow
+keys	down arrow	⬇️	scratch	ok	
+keys	down arrow	rodyklė žemyn	adapted	todo	Scratch uses the emoji arrow
+keys	any	bet kurį	scratch	ok	
+keys	any	bet kuris	adapted	todo	Scratch has only "bet kurį" (accusative)
+keys	any	bet kuris klavišas	adapted	todo	Scratch has only "bet kurį" (accusative)
+keys	enter	įvesties klavišas	new	todo	Scratch editor has no entry for it
+math	abs	teigiama reikšmė	scratch	ok	
+math	floor	apvalinimas žemyn	scratch	ok	
+math	ceiling	apvalinimas aukštyn	scratch	ok	
+math	sqrt	kvadratinė šaknis	scratch	ok	
+math	tan	tg	scratch	ok	
+math	asin	arcsin	scratch	ok	
+math	acos	arccos	scratch	ok	
+math	atan	arctg	scratch	ok	
+list_positions	all	viskas	scratch	ok	
+list_positions	last	paskutinis	scratch	ok	
+list_positions	random	atsitiktinis	scratch	ok	
+backdrops	next backdrop	kitas fonas	adapted	todo	Scratch text has two blanks ("kitas  fonas"); both spellings are accepted
+backdrops	next backdrop	kitas  fonas	scratch	ok	
+backdrops	previous backdrop	ankstesnis fonas	scratch	ok	
+backdrops	random backdrop	atsitiktinis fonas	scratch	ok	
+sprites	_mouse_	pelės žymeklis	scratch	ok	
+sprites	_mouse_	pelės žymeklį	scratch	ok	
+sprites	_mouse_	pelės žymeklio	scratch	ok	
+sprites	_random_	atsitiktinė pozicija	scratch	ok	
+sprites	_random_	atsitiktinę kryptį	scratch	ok	
+sprites	_edge_	kraštą	scratch	ok	
+sprites	_edge_	kraštas	adapted	todo	Scratch has only "kraštą" (accusative)
+sprites	_myself_	savęs	scratch	ok	
+sprites	_stage_	Scena	scratch	ok	
+reporters	motion_xposition	x vieta	scratch	ok	
+reporters	motion_xposition	x koordinatė	adapted	todo	Scratch words of the "of" block (SENSING_OF_*), used here as extra aliases
+reporters	motion_yposition	y vieta	scratch	ok	
+reporters	motion_yposition	y koordinatė	adapted	todo	Scratch words of the "of" block (SENSING_OF_*), used here as extra aliases
+reporters	motion_direction	kryptis	scratch	ok	
+reporters	looks_costumenumbername:number	kaukė numeris	new	todo	composed of the block "kaukė %1" and the dropdown words (LOOKS_NUMBERNAME_*), no single Scratch string
+reporters	looks_costumenumbername:number	kaukės nr.	adapted	todo	SENSING_OF_COSTUMENUMBER/NAME, extra aliases
+reporters	looks_costumenumbername:name	kaukė vardas	new	todo	composed of the block "kaukė %1" and the dropdown words (LOOKS_NUMBERNAME_*), no single Scratch string
+reporters	looks_costumenumbername:name	kaukės pavadinimas	adapted	todo	SENSING_OF_COSTUMENUMBER/NAME, extra aliases
+reporters	looks_backdropnumbername:number	fonas numeris	new	todo	composed like the costume entries
+reporters	looks_backdropnumbername:number	fono nr.	adapted	todo	SENSING_OF_BACKDROPNUMBER/NAME, extra aliases
+reporters	looks_backdropnumbername:name	fonas vardas	new	todo	composed like the costume entries
+reporters	looks_backdropnumbername:name	fono pavadinimas	adapted	todo	SENSING_OF_BACKDROPNUMBER/NAME, extra aliases
+reporters	looks_size	dydis	scratch	ok	
+reporters	sound_volume	garsumas	scratch	ok	
+reporters	sound_volume	garsas	adapted	todo	SENSING_OF_VOLUME, extra alias (the block itself says "garsumas")
+reporters	sensing_answer	atsakas	scratch	ok	
+reporters	sensing_loudness	mikrofono garsumas	adapted	todo	Scratch LT uses "garsumas" for both volume and loudness, so loudness needs another name
+reporters	sensing_timer	laikmatis	scratch	ok	
+reporters	sensing_current:YEAR	metai	scratch	ok	
+reporters	sensing_current:MONTH	mėnuo	scratch	ok	
+reporters	sensing_current:DATE	mėn. diena	scratch	ok	
+reporters	sensing_current:DAYOFWEEK	savaitės diena	scratch	ok	
+reporters	sensing_current:HOUR	valanda	scratch	ok	
+reporters	sensing_current:MINUTE	minutė	scratch	ok	
+reporters	sensing_current:SECOND	sekundė	scratch	ok	
+reporters	sensing_username	vartotojo vardas	scratch	ok	

@@ -1,0 +1,51 @@
+table	canonical	alias	origin	status	comment
+keys	space	Leertaste	scratch	ok	
+keys	left arrow	Pfeil nach links	scratch	ok	
+keys	right arrow	Pfeil nach rechts	scratch	ok	
+keys	up arrow	Pfeil nach oben	scratch	ok	
+keys	down arrow	Pfeil nach unten	scratch	ok	
+keys	any	beliebiges	scratch	ok	
+keys	any	beliebige	adapted	ok	
+keys	any	beliebige Taste	adapted	ok	
+keys	enter	Eingabetaste	adapted	ok	
+math	abs	Betrag	scratch	ok	
+math	floor	abrunden	scratch	ok	
+math	ceiling	aufrunden	scratch	ok	
+math	sqrt	Wurzel	scratch	ok	
+list_positions	all	alles	scratch	ok	
+list_positions	last	letztes	scratch	ok	
+list_positions	random	zufälliges	scratch	ok	
+list_positions	random	zufällig	adapted	ok	
+backdrops	next backdrop	nächstes Bühnenbild	scratch	ok	
+backdrops	previous backdrop	vorheriges Bühnenbild	scratch	ok	
+backdrops	random backdrop	zufälliges Bühnenbild	scratch	ok	
+sprites	_mouse_	Mauszeiger	scratch	ok	
+sprites	_random_	Zufallsposition	scratch	ok	
+sprites	_random_	Zufallsrichtung	scratch	ok	
+sprites	_edge_	Rand	scratch	ok	
+sprites	_myself_	mir selbst	scratch	ok	
+sprites	_stage_	Bühne	scratch	ok	
+reporters	motion_xposition	x-Position	scratch	ok	
+reporters	motion_yposition	y-Position	scratch	ok	
+reporters	motion_direction	Richtung	scratch	ok	
+reporters	looks_costumenumbername:number	Kostümnummer	scratch	ok	
+reporters	looks_costumenumbername:number	Kostüm Nummer	adapted	ok	
+reporters	looks_costumenumbername:name	Kostümname	scratch	ok	
+reporters	looks_costumenumbername:name	Kostüm Name	adapted	ok	
+reporters	looks_backdropnumbername:number	Bühnenbildnummer	scratch	ok	
+reporters	looks_backdropnumbername:number	Bühnenbild Nummer	adapted	ok	
+reporters	looks_backdropnumbername:name	Bühnenbildname	scratch	ok	
+reporters	looks_backdropnumbername:name	Bühnenbild Name	adapted	ok	
+reporters	looks_size	Größe	scratch	ok	
+reporters	sound_volume	Lautstärke	scratch	ok	
+reporters	sensing_answer	Antwort	scratch	ok	
+reporters	sensing_loudness	Mikrofon-Lautstärke	adapted	ok	
+reporters	sensing_timer	Stoppuhr	scratch	ok	
+reporters	sensing_current:YEAR	Jahr	scratch	ok	
+reporters	sensing_current:MONTH	Monat	scratch	ok	
+reporters	sensing_current:DATE	Datum	scratch	ok	
+reporters	sensing_current:DAYOFWEEK	Wochentag	scratch	ok	
+reporters	sensing_current:HOUR	Stunde	scratch	ok	
+reporters	sensing_current:MINUTE	Minute	scratch	ok	
+reporters	sensing_current:SECOND	Sekunde	scratch	ok	
+reporters	sensing_username	Benutzername	scratch	ok	

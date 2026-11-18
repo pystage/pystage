@@ -1,0 +1,317 @@
+class	core_method	english	name	scratch	origin	status	comment
+sprite	control_create_clone_of_myself	create_clone_of_myself	erzeuge_klon_von_mir	erzeuge Klon von %1 + mir selbst	adapted	ok	
+sprite	control_create_clone_of_sprite	create_clone_of_sprite	erzeuge_klon_von_sprite	erzeuge Klon von %1	adapted	ok	
+sprite	control_delete_this_clone	delete_this_clone	lösche_diesen_klon	lösche diesen Klon	scratch	ok	
+sprite	control_start_as_clone	when_i_start_as_a_clone	wenn_ich_als_klon_entstehe	Wenn ich als Klon entstehe	scratch	ok	
+sprite	control_stop_all	stop_all	stoppe_alles	stoppe + alles	scratch	ok	
+sprite	control_stop_other	stop_other_scripts_in_sprite	stoppe_andere_skripte_der_figur	stoppe + andere Skripte der Figur	scratch	ok	
+sprite	control_stop_this	stop_this_script	stoppe_dieses_skript	stoppe + dieses Skript	scratch	ok	
+sprite	control_wait	wait	warte_sekunden	warte %1 Sekunden	scratch	ok	
+sprite	data_addtolist	add_to_list	füge_zu_liste_hinzu	füge %1 zu %2 hinzu	adapted	ok	
+sprite	data_changevariableby	change_variable_by	ändere_variable_um	ändere %1 um %2	adapted	ok	
+sprite	data_deletealloflist	delete_all_of_list	lösche_alles_aus_liste	lösche alles aus %1	adapted	ok	
+sprite	data_deleteoflist	delete_item_of_list	lösche_element_aus_liste	lösche %1 aus %2	adapted	ok	
+sprite	data_hidelist	hide_list	verstecke_liste	verstecke Liste %1	scratch	ok	
+sprite	data_hidevariable	hide_variable	verstecke_variable	verstecke Variable %1	scratch	ok	
+sprite	data_insertatlist	insert_at_list	füge_in_liste_ein	füge %1 bei %2 in %3 ein	adapted	ok	
+sprite	data_itemnumoflist	item_number_in_list	nummer_in_liste	Nummer von %1 in %2	adapted	ok	
+sprite	data_itemoflist	item_of_list	element_von_liste	Element %1 von %2	adapted	ok	
+sprite	data_lengthoflist	length_of_list	länge_von_liste	Länge von %1	adapted	ok	
+sprite	data_listcontainsitem	list_contains	liste_enthält	%1 enthält %2?	adapted	ok	
+sprite	data_listvariable	get_list	gib_liste		new	ok	
+sprite	data_replaceitemoflist	replace_item_of_list	ersetze_element_von_liste	ersetze Element %1 von %2 durch %3	adapted	ok	
+sprite	data_setvariableto	set_variable	setze_variable	setze %1 auf %2	adapted	ok	
+sprite	data_showlist	show_list	zeige_liste	zeige Liste %1	scratch	ok	
+sprite	data_showvariable	show_variable	zeige_variable	zeige Variable %1	scratch	ok	
+sprite	data_variable	get_variable	gib_variable		new	ok	
+sprite	event_broadcast	broadcast	sende_an_alle	sende %1 an alle	scratch	ok	
+sprite	event_broadcastandwait	broadcast_and_wait	sende_an_alle_und_warte	sende %1 an alle und warte	scratch	ok	
+sprite	event_whenbackdropswitchesto	when_backdrop_switches_to	wenn_das_bühnenbild_wechselt_zu	Wenn das Bühnenbild zu %1 wechselt	adapted	ok	
+sprite	event_whenbroadcastreceived	when_i_receive_message	wenn_ich_empfange	Wenn ich %1 empfange	scratch	ok	
+sprite	event_whenflagclicked	when_program_starts	wenn_programm_startet		adapted	ok	
+sprite	event_whengreaterthan_loudness	when_loudness_greater_than	wenn_lautstärke_größer_als	Wenn %1 > %2 + Lautstärke	adapted	ok	
+sprite	event_whengreaterthan_timer	when_timer_greater_than	wenn_stoppuhr_größer_als	Wenn %1 > %2 + Stoppuhr	adapted	ok	
+sprite	event_whenkeypressed	when_key_pressed	wenn_taste_gedrückt_wird	Wenn Taste %1 gedrückt wird	scratch	ok	
+sprite	event_whenthisspriteclicked	when_this_sprite_clicked	wenn_diese_figur_angeklickt_wird	Wenn diese Figur angeklickt wird	scratch	ok	
+sprite	looks_backdropnumbername_name	backdrop_name	bühnenbild_name	Bühnenbild %1 + Name	scratch	ok	
+sprite	looks_backdropnumbername_number	backdrop_number	bühnenbild_nummer	Bühnenbild %1 + Nummer	scratch	ok	
+sprite	looks_changeeffectby_brightness	change_brightness_effect_by	ändere_effekt_helligkeit_um	ändere Effekt %1 um %2 + Helligkeit	adapted	ok	
+sprite	looks_changeeffectby_color	change_color_effect_by	ändere_effekt_farbe_um	ändere Effekt %1 um %2 + Farbe	adapted	ok	
+sprite	looks_changeeffectby_fisheye	change_fisheye_effect_by	ändere_effekt_fischauge_um	ändere Effekt %1 um %2 + Fischauge	adapted	ok	
+sprite	looks_changeeffectby_ghost	change_ghost_effect_by	ändere_effekt_durchsichtigkeit_um	ändere Effekt %1 um %2 + Durchsichtigkeit	adapted	ok	
+sprite	looks_changeeffectby_mosaic	change_mosaic_effect_by	ändere_effekt_mosaik_um	ändere Effekt %1 um %2 + Mosaik	adapted	ok	
+sprite	looks_changeeffectby_pixelate	change_pixelate_effect_by	ändere_effekt_pixel_um	ändere Effekt %1 um %2 + Pixel	adapted	ok	
+sprite	looks_changeeffectby_whirl	change_whirl_effect_by	ändere_effekt_wirbel_um	ändere Effekt %1 um %2 + Wirbel	adapted	ok	
+sprite	looks_changesizeby	change_size_by	ändere_größe_um		adapted	ok	
+sprite	looks_cleargraphiceffects	clear_graphic_effects	schalte_grafikeffekte_aus	schalte Grafikeffekte aus	scratch	ok	
+sprite	looks_costumenumbername_name	costume_name	kostüm_name	Kostüm %1 + Name	scratch	ok	
+sprite	looks_costumenumbername_number	costume_number	kostüm_nummer	Kostüm %1 + Nummer	scratch	ok	
+sprite	looks_goforwardbackwardlayers_backward	go_backward	gehe_ebenen_nach_hinten	gehe %2 Ebenen %1 + nach hinten	scratch	ok	
+sprite	looks_goforwardbackwardlayers_forward	go_forward	gehe_ebenen_nach_vorne	gehe %2 Ebenen %1 + nach vorne	scratch	ok	
+sprite	looks_gotofrontback_back	go_to_back_layer	gehe_zu_hinterster_ebene	gehe zu %1 Ebene + hinterster	adapted	ok	
+sprite	looks_gotofrontback_front	go_to_front_layer	gehe_zu_vorderster_ebene	gehe zu %1 Ebene + vorderster	adapted	ok	
+sprite	looks_hide	hide	verstecke_dich	verstecke dich	scratch	ok	
+sprite	looks_nextbackdrop	next_backdrop	nächstes_bühnenbild	wechsle zum nächsten Bühnenbild	adapted	ok	
+sprite	looks_nextcostume	next_costume	wechsle_zum_nächsten_kostüm	wechsle zum nächsten Kostüm	scratch	ok	
+sprite	looks_say	say	sage	sage %1	scratch	ok	
+sprite	looks_sayforsecs	say_for_seconds	sage_für_sekunden	sage %1 für %2 Sekunden	scratch	ok	
+sprite	looks_seteffectto_brightness	set_brightness_effect_to	setze_effekt_helligkeit_auf	setze Effekt %1 auf %2 + Helligkeit	adapted	ok	
+sprite	looks_seteffectto_color	set_color_effect_to	setze_effekt_farbe_auf	setze Effekt %1 auf %2 + Farbe	adapted	ok	
+sprite	looks_seteffectto_fisheye	set_fisheye_effect_to	setze_effekt_fischauge_auf	setze Effekt %1 auf %2 + Fischauge	adapted	ok	
+sprite	looks_seteffectto_ghost	set_ghost_effect_to	setze_effekt_durchsichtigkeit_auf	setze Effekt %1 auf %2 + Durchsichtigkeit	adapted	ok	
+sprite	looks_seteffectto_mosaic	set_mosaic_effect_to	setze_effekt_mosaik_auf	setze Effekt %1 auf %2 + Mosaik	adapted	ok	
+sprite	looks_seteffectto_pixelate	set_pixelate_effect_to	setze_effekt_pixel_auf	setze Effekt %1 auf %2 + Pixel	adapted	ok	
+sprite	looks_seteffectto_whirl	set_whirl_effect_to	setze_effekt_wirbel_auf	setze Effekt %1 auf %2 + Wirbel	adapted	ok	
+sprite	looks_setsizeto	set_size_to	setze_größe_auf	setze Größe auf %1	scratch	ok	
+sprite	looks_show	show	zeige_dich	zeige dich	scratch	ok	
+sprite	looks_size	size	größe	Größe	scratch	ok	
+sprite	looks_switchbackdropto_backdrop	switch_backdrop_to	wechsle_zu_bühnenbild	wechsle zu Bühnenbild %1	scratch	ok	
+sprite	looks_switchbackdropto_next	switch_to_next_backdrop	wechsle_zum_nächsten_bühnenbild		adapted	ok	
+sprite	looks_switchbackdropto_previous	switch_to_previous_backdrop	wechsle_zum_vorherigen_bühnenbild	wechsle zu Bühnenbild %1 + vorheriges Bühnenbild	adapted	ok	
+sprite	looks_switchbackdropto_random	switch_to_random_backdrop	wechsle_zu_zufälligem_bühnenbild	wechsle zu Bühnenbild %1 + zufälliges Bühnenbild	adapted	ok	
+sprite	looks_switchcostumeto	switch_costume_to	wechsle_zu_kostüm	wechsle zu Kostüm %1	scratch	ok	
+sprite	looks_think	think	denke	denke %1	scratch	ok	
+sprite	looks_thinkforsecs	think_for_seconds	denke_für_sekunden	denke %1 für %2 Sekunden	scratch	ok	
+sprite	motion_changexby	change_x_by	ändere_x_um	ändere x um %1	scratch	ok	
+sprite	motion_changeyby	change_y_by	ändere_y_um	ändere y um %1	scratch	ok	
+sprite	motion_direction	direction	richtung	Richtung	scratch	ok	
+sprite	motion_glidesecstoxy	glide_to_x_y	gleite_in_sek_zu_x_y	gleite in %1 Sek. zu x:%2  y:%3	scratch	ok	
+sprite	motion_glideto_pointer	glide_to_mouse_pointer	gleite_in_sek_zu_mauszeiger	gleite in %1 Sek. zu %2 + Mauszeiger	scratch	ok	
+sprite	motion_glideto_random	glide_to_random_position	gleite_in_sek_zu_zufallsposition	gleite in %1 Sek. zu %2 + Zufallsposition	scratch	ok	
+sprite	motion_glideto_sprite	glide_to_sprite	gleite_in_sek_zu	gleite in %1 Sek. zu %2	scratch	ok	
+sprite	motion_goto_pointer	go_to_mouse_pointer	gehe_zu_mauszeiger	gehe zu %1 + Mauszeiger	scratch	ok	
+sprite	motion_goto_random	go_to_random_position	gehe_zu_zufallsposition	gehe zu %1 + Zufallsposition	scratch	ok	
+sprite	motion_goto_sprite	go_to_sprite	gehe_zu	gehe zu %1	scratch	ok	
+sprite	motion_gotoxy	go_to_x_y	gehe_zu_x_y	gehe zu x: %1 y: %2	scratch	ok	
+sprite	motion_ifonedgebounce	if_on_edge_bounce	pralle_vom_rand_ab	pralle vom Rand ab	scratch	ok	
+sprite	motion_movesteps	move	gehe_schritte	gehe %1 er Schritt	adapted	ok	
+sprite	motion_pointindirection	point_in_direction	setze_richtung_auf_grad	setze Richtung auf %1 Grad	scratch	ok	
+sprite	motion_pointtowards_pointer	point_towards_mouse_pointer	drehe_dich_zu_mauszeiger	drehe dich zu %1 + Mauszeiger	scratch	ok	
+sprite	motion_pointtowards_random	point_towards_random_direction	drehe_dich_zu_zufallsrichtung	drehe dich zu %1 + Zufallsrichtung	scratch	ok	
+sprite	motion_pointtowards_sprite	point_towards_sprite	drehe_dich_zu	drehe dich zu %1	scratch	ok	
+sprite	motion_setrotationstyle_allaround	set_rotation_style_around	setze_drehtyp_auf_rundherum	setze Drehtyp auf %1 + rundherum	scratch	ok	
+sprite	motion_setrotationstyle_dontrotate	set_rotation_style_none	setze_drehtyp_auf_nicht_drehen	setze Drehtyp auf %1 + nicht drehen	scratch	ok	
+sprite	motion_setrotationstyle_leftright	set_rotation_style_left_right	setze_drehtyp_auf_links_rechts	setze Drehtyp auf %1 + links-rechts	scratch	ok	
+sprite	motion_setx	set_x	setze_x_auf	setze x auf %1	scratch	ok	
+sprite	motion_sety	set_y	setze_y_auf	setze y auf %1	scratch	ok	
+sprite	motion_turnleft	turn_left	drehe_dich_nach_links_um_grad		adapted	ok	
+sprite	motion_turnright	turn_right	drehe_dich_nach_rechts_um_grad		adapted	ok	
+sprite	motion_xposition	x_position	x_position	x-Position	scratch	ok	
+sprite	motion_yposition	y_position	y_position	y-Position	scratch	ok	
+sprite	operator_contains	contains	enthält	%1 enthält %2?	scratch	ok	
+sprite	operator_divide	divide	geteilt_durch	%1 / %2	adapted	ok	
+sprite	operator_equals	equals	gleich	setze %1 auf %2	adapted	ok	
+sprite	operator_gt	greater_than	größer_als	%1 > %2	adapted	ok	
+sprite	operator_join	join	verbinde	verbinde %1 und %2	adapted	ok	
+sprite	operator_length	length_of	länge_von	Länge von %1	scratch	ok	
+sprite	operator_letter_of	letter_of	zeichen_von	Zeichen %1 von %2	scratch	ok	
+sprite	operator_lt	less_than	kleiner_als	%1 < %2	adapted	ok	
+sprite	operator_mathop	math_function	mathematische_funktion	%1 von %2	adapted	ok	
+sprite	operator_mod	modulo	modulo	%1 mod %2	adapted	ok	
+sprite	operator_random	pick_random	zufallszahl_von_bis	Zufallszahl von %1 bis %2	scratch	ok	
+sprite	operator_round	round	runde	%1 gerundet	adapted	ok	
+sprite	pen_changePenColorParamBy_brightness	change_pen_brightness_by	ändere_stift_helligkeit_um		adapted	ok	
+sprite	pen_changePenColorParamBy_color	change_pen_hue_by	ändere_stift_farbe_um		adapted	ok	
+sprite	pen_changePenColorParamBy_saturation	change_pen_saturation_by	ändere_stift_sättigung_um		adapted	ok	
+sprite	pen_changePenColorParamBy_transparency	change_pen_transparency_by	ändere_stift_transparenz_um		adapted	ok	
+sprite	pen_changePenSizeBy	change_pen_size_by	ändere_stiftdicke_um		adapted	ok	
+sprite	pen_clear	erase_all	lösche_alles		adapted	ok	
+sprite	pen_penDown	pen_down	schalte_stift_ein		adapted	ok	
+sprite	pen_penUp	pen_up	schalte_stift_aus		adapted	ok	
+sprite	pen_setPenColorParamTo_brightness	set_pen_brightness_to	setze_stift_helligkeit_auf		adapted	ok	
+sprite	pen_setPenColorParamTo_color	set_pen_hue_to	setze_stift_farbe_auf		adapted	ok	
+sprite	pen_setPenColorParamTo_saturation	set_pen_saturation_to	setze_stift_sättigung_auf		adapted	ok	
+sprite	pen_setPenColorParamTo_transparency	set_pen_transparency_to	setze_stift_transparenz_auf		adapted	ok	
+sprite	pen_setPenColorToColor	set_pen_color	setze_stiftfarbe_auf		adapted	ok	
+sprite	pen_setPenSizeTo	set_pen_size_to	setze_stiftdicke_auf		adapted	ok	
+sprite	pen_stamp	stamp	hinterlasse_abdruck		adapted	ok	
+sprite	pystage_addcostume	add_costume	füge_kostüm_hinzu		new	ok	
+sprite	pystage_addsound	add_sound	füge_klang_hinzu		new	ok	
+sprite	pystage_hidemonitor	hide_monitor	verstecke_monitor		new	ok	
+sprite	pystage_insertcostume	insert_costume	füge_kostüm_ein		new	ok	
+sprite	pystage_makelistvariable	create_list	erzeuge_liste		new	ok	
+sprite	pystage_makevariable	create_variable	erzeuge_variable		new	ok	
+sprite	pystage_replacecostume	replace_costume	ersetze_kostüm		new	ok	
+sprite	pystage_setlistmonitorposition	set_list_monitor_position	setze_listenmonitor_position		new	ok	
+sprite	pystage_setmonitorposition	set_monitor_position	setze_monitor_position		new	ok	
+sprite	pystage_setmonitorstyle_large	set_monitor_style_large	setze_monitor_stil_groß		new	ok	
+sprite	pystage_setmonitorstyle_normal	set_monitor_style_normal	setze_monitor_stil_normal		new	ok	
+sprite	pystage_setmonitorstyle_slider	set_monitor_style_slider	setze_monitor_stil_regler		new	ok	
+sprite	pystage_setname	set_name	setze_name		new	ok	
+sprite	pystage_setreportermonitorposition	set_value_monitor_position	setze_wertemonitor_position		new	ok	
+sprite	pystage_setreportermonitorstyle	set_value_monitor_style	setze_wertemonitor_stil		new	ok	
+sprite	pystage_showmonitor	show_monitor	zeige_monitor		new	ok	
+sprite	sensing_answer	answer	antwort	Antwort	scratch	ok	
+sprite	sensing_askandwait	ask_and_wait	frage_und_warte	frage %1 und warte	scratch	ok	
+sprite	sensing_coloristouchingcolor	color_is_touching	farbe_berührt	Farbe %1 berührt %2?	scratch	ok	
+sprite	sensing_current_date	current_date	datum_im_moment	%1 im Moment + Datum	adapted	ok	
+sprite	sensing_current_dayofweek	current_day_of_week	wochentag_im_moment	%1 im Moment + Wochentag	adapted	ok	
+sprite	sensing_current_hour	current_hour	stunde_im_moment	%1 im Moment + Stunde	adapted	ok	
+sprite	sensing_current_minute	current_minute	minute_im_moment	%1 im Moment + Minute	adapted	ok	
+sprite	sensing_current_month	current_month	monat_im_moment	%1 im Moment + Monat	adapted	ok	
+sprite	sensing_current_second	current_second	sekunde_im_moment	%1 im Moment + Sekunde	adapted	ok	
+sprite	sensing_current_year	current_year	jahr_im_moment	%1 im Moment + Jahr	adapted	ok	
+sprite	sensing_dayssince2000	days_since	tage_seit	Tage seit 2000	adapted	ok	
+sprite	sensing_distanceto_pointer	distance_to_mouse_pointer	entfernung_von_mauszeiger	Entfernung von %1 + Mauszeiger	scratch	ok	
+sprite	sensing_distanceto_sprite	distance_to_sprite	entfernung_von	Entfernung von %1	scratch	ok	
+sprite	sensing_keypressed	key_pressed	taste_gedrückt	Taste %1 gedrückt?	scratch	ok	
+sprite	sensing_loudness	loudness	lautstärke_mikrofon	Lautstärke	adapted	ok	
+sprite	sensing_mousedown	mouse_down	maustaste_gedrückt	Maustaste gedrückt?	scratch	ok	
+sprite	sensing_mousex	mouse_x	maus_x_position	Maus x-Position	scratch	ok	
+sprite	sensing_mousey	mouse_y	maus_y_position	Maus y-Position	scratch	ok	
+sprite	sensing_of_backdropname	backdrop_name_of	bühnenbildname_von	Bühnenbildname	adapted	ok	
+sprite	sensing_of_backdropnumber	backdrop_of	bühnenbildnummer_von	Bühnenbildnummer	adapted	ok	
+sprite	sensing_of_costumename	costume_name_of	kostümname_von	Kostümname	adapted	ok	
+sprite	sensing_of_costumenumber	costume_of	kostümnummer_von	Kostümnummer	adapted	ok	
+sprite	sensing_of_direction	direction_of	richtung_von	Richtung	adapted	ok	
+sprite	sensing_of_size	size_of	größe_von	Größe	adapted	ok	
+sprite	sensing_of_variable	get_variable_of	gib_variable_von		adapted	ok	
+sprite	sensing_of_volume	volume_of	lautstärke_von	Lautstärke	adapted	ok	
+sprite	sensing_of_xposition	x_position_of	x_position_von	x-Position	adapted	ok	
+sprite	sensing_of_yposition	y_position_of	y_position_von	y-Position	adapted	ok	
+sprite	sensing_resettimer	reset_timer	setze_stoppuhr_zurück	setze Stoppuhr zurück	scratch	ok	
+sprite	sensing_setdragmode_draggable	set_drag_mode_draggable	setze_ziehbarkeit_auf_ziehbar	setze Ziehbarkeit auf %1 + ziehbar	scratch	ok	
+sprite	sensing_setdragmode_notdraggable	set_drag_mode_not_draggable	setze_ziehbarkeit_auf_nicht_ziehbar	setze Ziehbarkeit auf %1 + nicht ziehbar	scratch	ok	
+sprite	sensing_timer	timer	stoppuhr	Stoppuhr	scratch	ok	
+sprite	sensing_touchingcolor	touching_color	wird_farbe_berührt	wird Farbe %1 berührt?	scratch	ok	
+sprite	sensing_touchingobject_edge	touching_edge	wird_rand_berührt	wird %1 berührt? + Rand	adapted	ok	
+sprite	sensing_touchingobject_pointer	touching_mouse_pointer	wird_mauszeiger_berührt	wird %1 berührt? + Mauszeiger	adapted	ok	
+sprite	sensing_touchingobject_sprite	touching	wird_berührt	wird %1 berührt?	scratch	ok	
+sprite	sensing_username	username	benutzername	Benutzername	scratch	ok	
+sprite	sound_changeeffectby_pan	change_pan_left_right_effect_by	ändere_effekt_aussteuern_links_rechts_um	ändere Effekt %1 um %2 + Aussteuern links/rechts	adapted	ok	
+sprite	sound_changeeffectby_pitch	change_pitch_effect_by	ändere_effekt_höhe_um	ändere Effekt %1 um %2 + Höhe	adapted	ok	
+sprite	sound_changevolumeby	change_volume_by	ändere_lautstärke_um	ändere Lautstärke um %1	scratch	ok	
+sprite	sound_cleareffects	clear_sound_effects	schalte_klangeffekte_aus	schalte Klangeffekte aus	scratch	ok	
+sprite	sound_play	start_sound	spiele_klang	spiele Klang %1	scratch	ok	
+sprite	sound_playuntildone	play_sound_until_done	spiele_klang_ganz	spiele Klang %1 ganz	scratch	ok	
+sprite	sound_seteffectto_pan	set_pan_left_right_effect_to	setze_effekt_aussteuern_links_rechts_auf	setze Effekt %1 auf %2 + Aussteuern links/rechts	adapted	ok	
+sprite	sound_seteffectto_pitch	set_pitch_effect_to	setze_effekt_höhe_auf	setze Effekt %1 auf %2 + Höhe	adapted	ok	
+sprite	sound_setvolumeto	set_volume_to	setze_lautstärke_auf	setze Lautstärke auf %1%	scratch	ok	
+sprite	sound_stopallsounds	stop_all_sounds	stoppe_alle_klänge	stoppe alle Klänge	scratch	ok	
+sprite	sound_volume	volume	lautstärke	Lautstärke	scratch	ok	
+stage	control_create_clone_of_sprite	create_clone_of_sprite	erzeuge_klon_von_sprite	erzeuge Klon von %1	adapted	ok	
+stage	control_stop_all	stop_all	stoppe_alles	stoppe + alles	scratch	ok	
+stage	control_stop_other	stop_other_scripts_in_stage	stoppe_andere_skripte_der_bühne		adapted	ok	
+stage	control_stop_this	stop_this_script	stoppe_dieses_skript	stoppe + dieses Skript	scratch	ok	
+stage	control_wait	wait	warte_sekunden	warte %1 Sekunden	scratch	ok	
+stage	data_addtolist	add_to_list	füge_zu_liste_hinzu	füge %1 zu %2 hinzu	adapted	ok	
+stage	data_changevariableby	change_variable_by	ändere_variable_um	ändere %1 um %2	adapted	ok	
+stage	data_deletealloflist	delete_all_of_list	lösche_alles_aus_liste	lösche alles aus %1	adapted	ok	
+stage	data_deleteoflist	delete_item_of_list	lösche_element_aus_liste	lösche %1 aus %2	adapted	ok	
+stage	data_hidelist	hide_list	verstecke_liste	verstecke Liste %1	scratch	ok	
+stage	data_hidevariable	hide_variable	verstecke_variable	verstecke Variable %1	scratch	ok	
+stage	data_insertatlist	insert_at_list	füge_in_liste_ein	füge %1 bei %2 in %3 ein	adapted	ok	
+stage	data_itemnumoflist	item_number_in_list	nummer_in_liste	Nummer von %1 in %2	adapted	ok	
+stage	data_itemoflist	item_of_list	element_von_liste	Element %1 von %2	adapted	ok	
+stage	data_lengthoflist	length_of_list	länge_von_liste	Länge von %1	adapted	ok	
+stage	data_listcontainsitem	list_contains	liste_enthält	%1 enthält %2?	adapted	ok	
+stage	data_listvariable	get_list	gib_liste		new	ok	
+stage	data_replaceitemoflist	replace_item_of_list	ersetze_element_von_liste	ersetze Element %1 von %2 durch %3	adapted	ok	
+stage	data_setvariableto	set_variable	setze_variable	setze %1 auf %2	adapted	ok	
+stage	data_showlist	show_list	zeige_liste	zeige Liste %1	scratch	ok	
+stage	data_showvariable	show_variable	zeige_variable	zeige Variable %1	scratch	ok	
+stage	data_variable	get_variable	gib_variable		new	ok	
+stage	event_broadcast	broadcast	sende_an_alle	sende %1 an alle	scratch	ok	
+stage	event_broadcastandwait	broadcast_and_wait	sende_an_alle_und_warte	sende %1 an alle und warte	scratch	ok	
+stage	event_whenbackdropswitchesto	when_backdrop_switches_to	wenn_das_bühnenbild_wechselt_zu	Wenn das Bühnenbild zu %1 wechselt	adapted	ok	
+stage	event_whenbroadcastreceived	when_i_receive_message	wenn_ich_empfange	Wenn ich %1 empfange	scratch	ok	
+stage	event_whenflagclicked	when_program_starts	wenn_programm_startet		adapted	ok	
+stage	event_whengreaterthan_loudness	when_loudness_greater_than	wenn_lautstärke_größer_als	Wenn %1 > %2 + Lautstärke	adapted	ok	
+stage	event_whengreaterthan_timer	when_timer_greater_than	wenn_stoppuhr_größer_als	Wenn %1 > %2 + Stoppuhr	adapted	ok	
+stage	event_whenkeypressed	when_key_pressed	wenn_taste_gedrückt_wird	Wenn Taste %1 gedrückt wird	scratch	ok	
+stage	event_whenstageclicked	when_stage_clicked	wenn_bühne_angeklickt_wird	Wenn die Bühne angeklickt wird	adapted	ok	
+stage	event_whenthisspriteclicked	when_this_sprite_clicked	wenn_diese_figur_angeklickt_wird	Wenn diese Figur angeklickt wird	scratch	ok	
+stage	looks_backdropnumbername_name	backdrop_name	bühnenbild_name	Bühnenbild %1 + Name	scratch	ok	
+stage	looks_backdropnumbername_number	backdrop_number	bühnenbild_nummer	Bühnenbild %1 + Nummer	scratch	ok	
+stage	looks_changeeffectby_brightness	change_brightness_effect_by	ändere_effekt_helligkeit_um	ändere Effekt %1 um %2 + Helligkeit	adapted	ok	
+stage	looks_changeeffectby_color	change_color_effect_by	ändere_effekt_farbe_um	ändere Effekt %1 um %2 + Farbe	adapted	ok	
+stage	looks_changeeffectby_fisheye	change_fisheye_effect_by	ändere_effekt_fischauge_um	ändere Effekt %1 um %2 + Fischauge	adapted	ok	
+stage	looks_changeeffectby_ghost	change_ghost_effect_by	ändere_effekt_durchsichtigkeit_um	ändere Effekt %1 um %2 + Durchsichtigkeit	adapted	ok	
+stage	looks_changeeffectby_mosaic	change_mosaic_effect_by	ändere_effekt_mosaik_um	ändere Effekt %1 um %2 + Mosaik	adapted	ok	
+stage	looks_changeeffectby_pixelate	change_pixelate_effect_by	ändere_effekt_pixel_um	ändere Effekt %1 um %2 + Pixel	adapted	ok	
+stage	looks_changeeffectby_whirl	change_whirl_effect_by	ändere_effekt_wirbel_um	ändere Effekt %1 um %2 + Wirbel	adapted	ok	
+stage	looks_cleargraphiceffects	clear_graphic_effects	schalte_grafikeffekte_aus	schalte Grafikeffekte aus	scratch	ok	
+stage	looks_nextbackdrop	next_backdrop	nächstes_bühnenbild	wechsle zum nächsten Bühnenbild	adapted	ok	
+stage	looks_seteffectto_brightness	set_brightness_effect_to	setze_effekt_helligkeit_auf	setze Effekt %1 auf %2 + Helligkeit	adapted	ok	
+stage	looks_seteffectto_color	set_color_effect_to	setze_effekt_farbe_auf	setze Effekt %1 auf %2 + Farbe	adapted	ok	
+stage	looks_seteffectto_fisheye	set_fisheye_effect_to	setze_effekt_fischauge_auf	setze Effekt %1 auf %2 + Fischauge	adapted	ok	
+stage	looks_seteffectto_ghost	set_ghost_effect_to	setze_effekt_durchsichtigkeit_auf	setze Effekt %1 auf %2 + Durchsichtigkeit	adapted	ok	
+stage	looks_seteffectto_mosaic	set_mosaic_effect_to	setze_effekt_mosaik_auf	setze Effekt %1 auf %2 + Mosaik	adapted	ok	
+stage	looks_seteffectto_pixelate	set_pixelate_effect_to	setze_effekt_pixel_auf	setze Effekt %1 auf %2 + Pixel	adapted	ok	
+stage	looks_seteffectto_whirl	set_whirl_effect_to	setze_effekt_wirbel_auf	setze Effekt %1 auf %2 + Wirbel	adapted	ok	
+stage	looks_switchbackdropto_backdrop	switch_backdrop_to	wechsle_zu_bühnenbild	wechsle zu Bühnenbild %1	scratch	ok	
+stage	looks_switchbackdropto_next	switch_to_next_backdrop	wechsle_zum_nächsten_bühnenbild		adapted	ok	
+stage	looks_switchbackdropto_previous	switch_to_previous_backdrop	wechsle_zum_vorherigen_bühnenbild	wechsle zu Bühnenbild %1 + vorheriges Bühnenbild	adapted	ok	
+stage	looks_switchbackdropto_random	switch_to_random_backdrop	wechsle_zu_zufälligem_bühnenbild	wechsle zu Bühnenbild %1 + zufälliges Bühnenbild	adapted	ok	
+stage	looks_switchbackdroptoandwait	switch_backdrop_to_and_wait	wechsle_zu_bühnenbild_und_warte	wechsle zu Bühnenbild %1 und warte	scratch	ok	
+stage	operator_contains	contains	enthält	%1 enthält %2?	scratch	ok	
+stage	operator_divide	divide	geteilt_durch	%1 / %2	adapted	ok	
+stage	operator_equals	equals	gleich	setze %1 auf %2	adapted	ok	
+stage	operator_gt	greater_than	größer_als	%1 > %2	adapted	ok	
+stage	operator_join	join	verbinde	verbinde %1 und %2	adapted	ok	
+stage	operator_length	length_of	länge_von	Länge von %1	scratch	ok	
+stage	operator_letter_of	letter_of	zeichen_von	Zeichen %1 von %2	scratch	ok	
+stage	operator_lt	less_than	kleiner_als	%1 < %2	adapted	ok	
+stage	operator_mathop	math_function	mathematische_funktion	%1 von %2	adapted	ok	
+stage	operator_mod	modulo	modulo	%1 mod %2	adapted	ok	
+stage	operator_random	pick_random	zufallszahl_von_bis	Zufallszahl von %1 bis %2	scratch	ok	
+stage	operator_round	round	runde	%1 gerundet	adapted	ok	
+stage	pen_clear	erase_all	lösche_alles		adapted	ok	
+stage	pystage_addbackdrop	add_backdrop	füge_bühnenbild_hinzu		new	ok	
+stage	pystage_addsound	add_sound	füge_klang_hinzu		new	ok	
+stage	pystage_createsprite	add_a_sprite	füge_eine_figur_hinzu		new	ok	
+stage	pystage_hidemonitor	hide_monitor	verstecke_monitor		new	ok	
+stage	pystage_insertbackdrop	insert_backdrop	füge_bühnenbild_ein		new	ok	
+stage	pystage_makelistvariable	create_list	erzeuge_liste		new	ok	
+stage	pystage_makevariable	create_variable	erzeuge_variable		new	ok	
+stage	pystage_play	play	abspielen		new	ok	
+stage	pystage_replacebackdrop	replace_backdrop	ersetze_bühnenbild		new	ok	
+stage	pystage_setlistmonitorposition	set_list_monitor_position	setze_listenmonitor_position		new	ok	
+stage	pystage_setmonitorposition	set_monitor_position	setze_monitor_position		new	ok	
+stage	pystage_setmonitorstyle_large	set_monitor_style_large	setze_monitor_stil_groß		new	ok	
+stage	pystage_setmonitorstyle_normal	set_monitor_style_normal	setze_monitor_stil_normal		new	ok	
+stage	pystage_setmonitorstyle_slider	set_monitor_style_slider	setze_monitor_stil_regler		new	ok	
+stage	pystage_setreportermonitorposition	set_value_monitor_position	setze_wertemonitor_position		new	ok	
+stage	pystage_setreportermonitorstyle	set_value_monitor_style	setze_wertemonitor_stil		new	ok	
+stage	pystage_showmonitor	show_monitor	zeige_monitor		new	ok	
+stage	sensing_answer	answer	antwort	Antwort	scratch	ok	
+stage	sensing_askandwait	ask_and_wait	frage_und_warte	frage %1 und warte	scratch	ok	
+stage	sensing_current_date	current_date	datum_im_moment	%1 im Moment + Datum	adapted	ok	
+stage	sensing_current_dayofweek	current_day_of_week	wochentag_im_moment	%1 im Moment + Wochentag	adapted	ok	
+stage	sensing_current_hour	current_hour	stunde_im_moment	%1 im Moment + Stunde	adapted	ok	
+stage	sensing_current_minute	current_minute	minute_im_moment	%1 im Moment + Minute	adapted	ok	
+stage	sensing_current_month	current_month	monat_im_moment	%1 im Moment + Monat	adapted	ok	
+stage	sensing_current_second	current_second	sekunde_im_moment	%1 im Moment + Sekunde	adapted	ok	
+stage	sensing_current_year	current_year	jahr_im_moment	%1 im Moment + Jahr	adapted	ok	
+stage	sensing_dayssince2000	days_since	tage_seit	Tage seit 2000	adapted	ok	
+stage	sensing_keypressed	key_pressed	taste_gedrückt	Taste %1 gedrückt?	scratch	ok	
+stage	sensing_loudness	loudness	lautstärke_mikrofon	Lautstärke	adapted	ok	
+stage	sensing_mousedown	mouse_down	maustaste_gedrückt	Maustaste gedrückt?	scratch	ok	
+stage	sensing_mousex	mouse_x	maus_x_position	Maus x-Position	scratch	ok	
+stage	sensing_mousey	mouse_y	maus_y_position	Maus y-Position	scratch	ok	
+stage	sensing_of_backdropname	backdrop_name_of	bühnenbildname_von	Bühnenbildname	adapted	ok	
+stage	sensing_of_backdropnumber	backdrop_of	bühnenbildnummer_von	Bühnenbildnummer	adapted	ok	
+stage	sensing_of_costumename	costume_name_of	kostümname_von	Kostümname	adapted	ok	
+stage	sensing_of_costumenumber	costume_of	kostümnummer_von	Kostümnummer	adapted	ok	
+stage	sensing_of_direction	direction_of	richtung_von	Richtung	adapted	ok	
+stage	sensing_of_size	size_of	größe_von	Größe	adapted	ok	
+stage	sensing_of_variable	get_variable_of	gib_variable_von		adapted	ok	
+stage	sensing_of_volume	volume_of	lautstärke_von	Lautstärke	adapted	ok	
+stage	sensing_of_xposition	x_position_of	x_position_von	x-Position	adapted	ok	
+stage	sensing_of_yposition	y_position_of	y_position_von	y-Position	adapted	ok	
+stage	sensing_resettimer	reset_timer	setze_stoppuhr_zurück	setze Stoppuhr zurück	scratch	ok	
+stage	sensing_setdragmode_draggable	set_drag_mode_draggable	setze_ziehbarkeit_auf_ziehbar	setze Ziehbarkeit auf %1 + ziehbar	scratch	ok	
+stage	sensing_setdragmode_notdraggable	set_drag_mode_not_draggable	setze_ziehbarkeit_auf_nicht_ziehbar	setze Ziehbarkeit auf %1 + nicht ziehbar	scratch	ok	
+stage	sensing_timer	timer	stoppuhr	Stoppuhr	scratch	ok	
+stage	sensing_username	username	benutzername	Benutzername	scratch	ok	
+stage	sound_changeeffectby_pan	change_pan_left_right_effect_by	ändere_effekt_aussteuern_links_rechts_um	ändere Effekt %1 um %2 + Aussteuern links/rechts	adapted	ok	
+stage	sound_changeeffectby_pitch	change_pitch_effect_by	ändere_effekt_höhe_um	ändere Effekt %1 um %2 + Höhe	adapted	ok	
+stage	sound_changevolumeby	change_volume_by	ändere_lautstärke_um	ändere Lautstärke um %1	scratch	ok	
+stage	sound_cleareffects	clear_sound_effects	schalte_klangeffekte_aus	schalte Klangeffekte aus	scratch	ok	
+stage	sound_play	start_sound	spiele_klang	spiele Klang %1	scratch	ok	
+stage	sound_playuntildone	play_sound_until_done	spiele_klang_ganz	spiele Klang %1 ganz	scratch	ok	
+stage	sound_seteffectto_pan	set_pan_left_right_effect_to	setze_effekt_aussteuern_links_rechts_auf	setze Effekt %1 auf %2 + Aussteuern links/rechts	adapted	ok	
+stage	sound_seteffectto_pitch	set_pitch_effect_to	setze_effekt_höhe_auf	setze Effekt %1 auf %2 + Höhe	adapted	ok	
+stage	sound_setvolumeto	set_volume_to	setze_lautstärke_auf	setze Lautstärke auf %1%	scratch	ok	
+stage	sound_stopallsounds	stop_all_sounds	stoppe_alle_klänge	stoppe alle Klänge	scratch	ok	
+stage	sound_volume	volume	lautstärke	Lautstärke	scratch	ok	
