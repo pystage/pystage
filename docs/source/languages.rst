@@ -7,5 +7,6 @@ The PyStage API is translated into several languages. Choose your language:
 
    * :doc:`English <pystage.en>`
    * :doc:`Deutsch <pystage.de>`
+   * :doc:`Lietuvių <pystage.lt>`
 
 Didn't find your language? Fork us on Github and translate the API.

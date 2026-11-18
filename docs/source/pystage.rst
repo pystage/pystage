@@ -18,6 +18,7 @@ Subpackages
    pystage.de
    pystage.en
    pystage.l10n
+   pystage.lt
 
 
 

@@ -44,14 +44,15 @@ html_static_path = ['_static']
 html_js_files = [
     "scratchblocks/scratchblocks.min.js",
     "scratchblocks/translations-de.js",
+    "scratchblocks/translations-lt.js",
     "scratchblocks/init.js",
 ]
 
 
 # -- Scratch block rendering -------------------------------------------------
 
-# Docstring line of the facade methods, English or German, e.g. "Scratch block: move (10) steps"
-BLOCK_LINE = re.compile(r"^\s*Scratch(?: block|-Block):\s*(.*\S)\s*$")
+# Docstring line of the facade methods, English, German or Lithuanian, e.g. "Scratch block: move (10) steps"
+BLOCK_LINE = re.compile(r"^\s*Scratch(?: block|-Block| blokas):\s*(.*\S)\s*$")
 
 
 def block_html_lines(text):
