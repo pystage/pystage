@@ -96,6 +96,18 @@ You can edit these files on GitHub in the same way (pencil icon). Only change th
 (everything with `def` and `return`) alone. If you prefer, write your remarks as comments in the review issue of your language, and the maintainer will include them.
 If you change a method *name* in `api.tsv`, you do not have to change the Python file; the maintainer does that with a tool (see below).
 
+## Naming rules for method names
+
+The method names in the tables follow these rules. The `comment` column of `api.tsv` refers to these rules as "naming rule N" (for example "naming rule 2").
+
+1. Start from the official Scratch block text in your language: remove the input slots, write in lower case, replace spaces, hyphens and slashes by `_`, drop punctuation. Keep letters with diacritics (they are valid Python names). Keep Scratch's word order and verb form.
+2. Blocks with a dropdown are split into one method per dropdown value; the official dropdown text is inserted where it appears in the block (e.g. `sukurk_savęs_kloną`).
+3. Abbreviations are written consistently (e.g. seconds: `sek`), and numbers are kept (`dienų_skaičius_nuo_2000`).
+4. If the Scratch text cannot become a name (e.g. Lithuanian Scratch writes "set" blocks as equations like `x = %1`), use a verb pattern that Scratch itself uses in your language (Lithuanian: `nustatyk_x_į`).
+5. Names must be unique within the sprite and within the stage. If the Scratch text is too short or the same for two blocks, add the smallest word that tells them apart (e.g. `slėpk` vs `slėpk_kintamąjį`).
+6. Blocks without words in Scratch (operators like `+`, `>`, the green flag icon) get a short, natural name.
+7. PyStage methods that are not Scratch blocks (adding costumes, monitors, …) get names built from Scratch's vocabulary in your language, as imperative verbs.
+
 ## For project maintainers
 
 ### Checking a pull request
