@@ -146,15 +146,17 @@ def read_table(path):
     return header, rows
 
 
-def _load_table(path):
-    """Like read_table, but returns a list of dicts and raises on damaged rows."""
+def _load_table(path, columns):
+    """Like read_table, but returns a list of dicts.
+
+    Damaged rows (and files without the needed columns) are skipped, so that a
+    wrong edit never makes pystage unimportable; ``python -m pystage.l10n.review
+    check`` reports them.
+    """
     header, rows = read_table(path)
-    result = []
-    for number, fields in rows:
-        if len(fields) != len(header):
-            raise ValueError(f"{path}, line {number}: expected {len(header)} columns, found {len(fields)}.")
-        result.append(dict(zip(header, fields)))
-    return result
+    if not set(columns) <= set(header):
+        return []
+    return [dict(zip(header, fields)) for number, fields in rows if len(fields) == len(header)]
 
 
 def _load_languages():
@@ -164,10 +166,12 @@ def _load_languages():
         folder = os.path.join(_DATA_DIR, lang)
         messages = os.path.join(folder, "messages.tsv")
         if os.path.isfile(messages):
-            MESSAGES[lang] = {row["key"]: row["text"].replace("\\n", "\n") for row in _load_table(messages)}
+            MESSAGES[lang] = {row["key"]: row["text"].replace("\\n", "\n") for row in _load_table(messages, ("key", "text"))}
         aliases = os.path.join(folder, "aliases.tsv")
         if os.path.isfile(aliases):
-            for row in _load_table(aliases):
+            for row in _load_table(aliases, ("table", "canonical", "alias")):
+                if row["table"] not in ALIASES:
+                    continue
                 table = ALIASES[row["table"]].setdefault(lang, {})
                 table.setdefault(row["canonical"], []).append(row["alias"])
 
