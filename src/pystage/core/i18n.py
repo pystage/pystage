@@ -30,6 +30,7 @@ Add the directory ``l10n/data/<lang>/`` with ``messages.tsv`` and
 ``aliases.tsv``. Nothing else needs to change (see TRANSLATING.md).
 """
 
+import csv
 import os
 
 # The language of the messages, see set_language().
@@ -129,21 +130,44 @@ _DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file_
 
 
 def read_table(path):
-    """Read a translation table.
+    """Read a translation table as standard tab-separated text.
 
-    Returns ``(header, rows)``; ``rows`` is a list of ``(line number, fields)``.
-    Fields are the raw tab-separated cells, ``\\n`` in texts is not yet resolved.
-    The file is UTF-8, the first line is the header, empty lines are skipped.
+    Returns ``(header, rows)``; ``rows`` is a list of ``(line number, fields)``
+    (the line number is where the row starts). ``\\n`` in texts is not yet resolved.
+    The file is UTF-8 (with or without BOM), lines end with LF or CRLF, and
+    fields may be quoted the way spreadsheets export them (``"..."`` with inner
+    quotes doubled). The first line is the header, empty lines are skipped.
+    Broken quoting never raises, the rows are returned as far as they can be read.
     """
-    with open(path, encoding="utf-8", newline="") as f:
-        lines = f.read().split("\n")
-    header = lines[0].rstrip("\r").lstrip("\ufeff").split("\t")
-    rows = []
-    for number, line in enumerate(lines[1:], start=2):
-        line = line.rstrip("\r")
-        if line.strip():
-            rows.append((number, line.split("\t")))
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.reader(f, delimiter="\t", quotechar='"')
+        records = []
+        start = 1
+        try:
+            for fields in reader:
+                records.append((start, fields))
+                start = reader.line_num + 1
+        except csv.Error:
+            pass
+    if not records:
+        return [], []
+    header = records[0][1]
+    rows = [(number, fields) for number, fields in records[1:] if any(c.strip() for c in fields)]
     return header, rows
+
+
+def format_table(header, rows):
+    """The canonical text of a table: LF, tab-separated, quotes only where needed.
+
+    A field is quoted only if it starts with a quote or contains a tab or a line
+    break, so that it reads back unchanged with :func:`read_table`.
+    """
+    def cell(field):
+        if field.startswith('"') or any(c in field for c in "\t\r\n"):
+            return '"' + field.replace('"', '""') + '"'
+        return field
+
+    return "".join("\t".join(cell(c) for c in fields) + "\n" for fields in [header] + [list(r) for r in rows])
 
 
 def _load_table(path, columns):

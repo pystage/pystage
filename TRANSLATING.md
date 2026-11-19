@@ -77,8 +77,9 @@ So you normally change **`text`, `alias` or `name`, plus `status` and `comment`*
 ### Editing in a spreadsheet
 
 You can also download a file and edit it in LibreOffice Calc, Excel or Google Sheets (File - Import).
-Open it as **UTF-8** text with **tab** as the only separator, and with **no text delimiter (no quotes)**; set all columns to *text* so that nothing is converted.
-When saving, use the same settings again: *text CSV*, UTF-8, separator tab, no quotes (in LibreOffice: untick *Quote all text cells*; in Google Sheets: *Download - Tab-separated values (.tsv)*).
+Open it as **UTF-8** text with **tab** as the separator, and set all columns to *text* so that nothing is converted.
+When saving, choose tab-separated text (*Text CSV* with tab in LibreOffice, *Download - Tab-separated values (.tsv)* in Google Sheets), UTF-8.
+The usual quotes that a spreadsheet adds are fine, the maintainer cleans them up (with `normalize`, see below).
 Then upload the file via a pull request (*Add file - Upload files* on GitHub), or send it to the maintainer.
 Check that the file still has the same number of lines and columns and that Lithuanian, German, ... letters look right.
 
@@ -115,6 +116,7 @@ The method names in the tables follow these rules. The `comment` column of `api.
 ```
 python -m pystage.l10n.review check <lang>     # or "all"
 python -m pystage.l10n.review todo <lang>      # the rows that are still todo, grouped by table
+python -m pystage.l10n.review normalize <lang> # saves the tables in the standard form (no BOM, LF, quotes only where needed)
 python -m pystage.l10n.review apply <lang>     # renames the methods in src/pystage/<lang>/sprite.py and stage.py to the names in api.tsv
 python -m pytest
 ```
@@ -122,6 +124,7 @@ python -m pytest
 `check` validates the tables: the number of columns, valid `origin` and `status` values, unknown or duplicate keys, placeholders identical to English,
 the `english` columns against the current English texts (if English changed, you get "English changed, translation may be outdated"), method names that are valid and unique, and
 that `api.tsv` agrees with the methods in the facade code. It also checks that an alias does not mean different things in different languages.
+It warns if a file is not in the standard form (for example saved by a spreadsheet; run `normalize` before committing) and reports texts that still look double-quoted.
 It prints the file and line of every problem and exits with code 1 if there are any. The test suite runs the same check for every language (`tests/tests/test_translations.py`), so a broken edit fails the CI.
 
 When a reviewer has changed a `name` in `api.tsv`, `check` reports that the code still uses the old name. Run `apply` to rename the methods

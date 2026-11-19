@@ -6,9 +6,10 @@ The translations of a language live in tab-separated tables in
     python -m pystage.l10n.review check <lang>   # find mistakes in the tables
     python -m pystage.l10n.review apply <lang>   # rename facade methods to the names in api.tsv
     python -m pystage.l10n.review todo <lang>    # list the rows that still need a review
+    python -m pystage.l10n.review normalize <lang>   # rewrite the tables in canonical form
 
 ``<lang>`` is a language code like ``de`` or ``lt``; ``check`` and ``todo``
-also accept ``all``. English is the authoritative source: the ``english``
+also accept ``all``, ``normalize`` as well. English is the authoritative source: the ``english``
 columns are compared with the current English texts and method names.
 """
 
@@ -75,6 +76,7 @@ def _read(lang, table, report):
     except UnicodeDecodeError:
         report.error(path, None, "the file is not saved as UTF-8. Please save it again as UTF-8 text.")
         return path, []
+    _check_format(path, report)
     expected = TABLES[table]
     if header != expected:
         report.error(path, 1, "the first line must be the column names: " + " <TAB> ".join(expected)
@@ -88,6 +90,45 @@ def _read(lang, table, report):
             continue
         result.append((number, dict(zip(expected, fields))))
     return path, result
+
+
+def _check_format(path, report):
+    """Warn if the file is not in canonical form (a spreadsheet may have saved it)."""
+    try:
+        with open(path, "rb") as f:
+            raw = f.read()
+        header, rows = i18n.read_table(path)
+    except (OSError, UnicodeDecodeError):
+        return
+    if raw != i18n.format_table(header, [fields for number, fields in rows]).encode("utf-8"):
+        report.warn(path, None, "the file is not in the canonical form (BOM, CRLF line endings, quotes or empty "
+                    "lines). Saved by a spreadsheet? Run 'python -m pystage.l10n.review normalize <lang>'.")
+
+
+def _check_quotes(path, number, text, column, report):
+    """Quotes around a whole text or doubled quotes are almost always an export artefact."""
+    if (len(text) > 1 and text.startswith('"') and text.endswith('"')) or '""' in text:
+        report.error(path, number, f"the {column} '{text}' looks double-quoted. This is probably an artefact of "
+                     "the spreadsheet export; run 'python -m pystage.l10n.review normalize <lang>' and "
+                     "check the text.")
+
+
+def normalize(lang):
+    """Rewrite the tables of a language in canonical form. Returns the paths that changed."""
+    changed = []
+    for table in TABLES:
+        path = os.path.join(DATA_DIR, lang, table + ".tsv")
+        if not os.path.isfile(path):
+            continue
+        with open(path, "rb") as f:
+            raw = f.read()
+        header, rows = i18n.read_table(path)
+        new = i18n.format_table(header, [fields for number, fields in rows]).encode("utf-8")
+        if new != raw:
+            with open(path, "wb") as f:
+                f.write(new)
+            changed.append(path)
+    return changed
 
 
 def _check_common(path, number, row, report):
@@ -120,6 +161,7 @@ def check_messages(lang, report):
             report.error(path, number, f"English changed, translation may be outdated. The table has "
                          f"'{row['english']}', the current English text is '{current}'. Check the translation, "
                          "then copy the new English text into the english column.")
+        _check_quotes(path, number, row["text"], "text", report)
         text = row["text"].replace("\\n", "\n")
         if not text.strip():
             report.error(path, number, "the text is empty.")
@@ -151,6 +193,7 @@ def check_aliases(lang, report):
         if not canonical.strip() or not alias.strip():
             report.error(path, number, "canonical and alias must not be empty.")
             continue
+        _check_quotes(path, number, alias, "alias", report)
         if alias != alias.strip():
             report.error(path, number, f"the alias '{alias}' starts or ends with a blank.")
         folded = (table, alias.strip().casefold())
@@ -328,12 +371,21 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="command", required=True)
     for name, text in (("check", "check the tables of a language (or 'all')"),
                        ("apply", "rename the facade methods to the names in api.tsv"),
-                       ("todo", "list the rows that still need a review")):
+                       ("todo", "list the rows that still need a review"),
+                       ("normalize", "rewrite the tables in canonical form")):
         p = sub.add_parser(name, help=text)
         p.add_argument("lang", help="language code, e.g. de or lt" + ("" if name == "apply" else ", or 'all'"))
     args = parser.parse_args(argv)
     langs = languages() if args.lang == "all" and args.command != "apply" else [args.lang]
     status = 0
+    if args.command == "normalize":
+        for lang in langs:
+            changed = normalize(lang)
+            for path in changed:
+                print("Rewrote " + _shown(path))
+            if not changed:
+                print(f"{lang}: nothing to change, the tables are already in canonical form.")
+        return 0
     if args.command == "check":
         for lang in langs:
             report = check(lang)

@@ -1,0 +1,3 @@
+key	english	text	origin	status	comment
+variable_exists	Variable "{name}" already exists.	"Kintamasis vardu ""{name}"" jau yra."	new	ok	"""quoted"" start"
+sprite_unknown	Unknown sprite {sprite}.	Žinomas {sprite}\nantra	new	ok	
