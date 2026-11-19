@@ -1,26 +1,26 @@
 key	english	text	origin	status	comment
-variable_missing	The variable {name} does not exist.	Kintamojo {name} nėra.	new	todo	
-list_missing	The list {name} does not exist.	Sąrašo {name} nėra.	new	todo	
+variable_missing	The variable {name} does not exist.	Kintamojo {name} nėra.	new	ok	
+list_missing	The list {name} does not exist.	Sąrašo {name} nėra.	new	ok	
 variable_exists	The variable {name} already exists!	Kintamasis vardu "{name}" jau yra.	scratch	ok	Scratch text with %1 replaced by {name}.
 list_exists	The list {name} already exists!	Jau egzistuoja sąrašas pavadintas "{name}".	scratch	ok	Scratch text with %1 replaced by {name}.
-bad_key	Bad key: {key}. Allowed are a-z, 0-9, space, enter, the arrow keys (e.g. 'left arrow') and any.	Netinkamas klavišas: {key}. Leidžiami a-z, 0-9, tarpas, įvesties klavišas, rodyklių klavišai (pvz., 'rodyklė kairėn') ir bet kuris klavišas.	new	todo	
-operator_unsupported	Operator {operator} not supported.	Funkcija {operator} nepalaikoma.	new	todo	
-sprite_unknown	Sprite {sprite} unknown.	Veikėjas {sprite} nežinomas.	new	todo	Is "veikėjas" the right word for sprite?
-effect_range	Invalid value. Must be between 0 and 200.	Netinkama reikšmė. Ji turi būti nuo 0 iki 200.	new	todo	
-block_parameters	Your code block '{name}' needs zero or one parameter. The parameter is usually called self.	Tavo kodo blokui '{name}' reikia nulio arba vieno parametro. Parametras paprastai vadinasi self.	new	todo	
-block_no_refresh	Your code block '{name}' is set to no refresh. In this case, yield must not be used.	Tavo kodo blokas '{name}' nustatytas be ekrano atnaujinimo. Tuomet negalima naudoti yield.	new	todo	
-block_not_def	'{name}' must be a normal function defined with def.	'{name}' turi būti paprasta funkcija, apibrėžta su def.	new	todo	
-sound_unavailable	WARNING: No sound available. ({error})	ĮSPĖJIMAS: Garso nėra. ({error})	new	todo	
-sound_no_channel	WARNING: No more free sound channels. Can't play '{name}'.	ĮSPĖJIMAS: Nebėra laisvų garso kanalų. '{name}' negalima paleisti.	new	todo	
-sound_not_found	WARNING: Sound '{name}' not found.	ĮSPĖJIMAS: Garso '{name}' nerasta.	new	todo	
-sound_not_loaded	WARNING: Sound '{name}' can't be loaded, try to convert it to wav or ogg format. ({error})	ĮSPĖJIMAS: Garso '{name}' nepavyksta įkelti, pabandyk jį konvertuoti į wav arba ogg formatą. ({error})	new	todo	
+bad_key	Bad key: {key}. Allowed are a-z, 0-9, space, enter, the arrow keys (e.g. 'left arrow') and any.	Netinkamas klavišas: {key}. Leidžiami a-z, 0-9, tarpas, įvesties klavišas, rodyklių klavišai (pvz., 'rodyklė kairėn') ir bet kuris klavišas.	new	ok	
+operator_unsupported	Operator {operator} not supported.	Funkcija {operator} nepalaikoma.	new	ok	
+sprite_unknown	Sprite {sprite} unknown.	Nežinomas veikėjas {sprite}.	new	ok	Is "veikėjas" the right word for sprite? Yeah, pretty much.
+effect_range	Invalid value. Must be between 0 and 200.	Netinkama reikšmė. Ji turi būti nuo 0 iki 200.	new	ok	
+block_parameters	Your code block '{name}' needs zero or one parameter. The parameter is usually called self.	Tavo kodo blokui '{name}' reikia nulio arba vieno parametro. Parametras paprastai vadinasi self.	new	ok	
+block_no_refresh	Your code block '{name}' is set to no refresh. In this case, yield must not be used.	Tavo kodo blokas '{name}' nustatytas be ekrano atnaujinimo. Tuomet negalima naudoti yield.	new	ok	
+block_not_def	'{name}' must be a normal function defined with def.	'{name}' turi būti paprasta funkcija, apibrėžta su def.	new	ok	
+sound_unavailable	WARNING: No sound available. ({error})	ĮSPĖJIMAS: Garso nėra. ({error})	new	ok	
+sound_no_channel	WARNING: No more free sound channels. Can't play '{name}'.	ĮSPĖJIMAS: Nebėra laisvų garso kanalų. '{name}' negalima paleisti.	new	ok	
+sound_not_found	WARNING: Sound '{name}' not found.	ĮSPĖJIMAS: Garso '{name}' nerasta.	new	ok	
+sound_not_loaded	WARNING: Sound '{name}' can't be loaded, try to convert it to wav or ogg format. ({error})	ĮSPĖJIMAS: Garso '{name}' nepavyksta įkelti, pabandyk jį konvertuoti į wav arba ogg formatą. ({error})	new	ok	
 svg_notice	\nWARNING: SVG conversion is for convenience only\nand might not work as expected. It is recommended\nto manually convert to bitmap graphics (png or jpg).\n	\nĮSPĖJIMAS: SVG konvertavimas skirtas tik patogumui\nir gali veikti ne taip, kaip tikimasi. Geriausia\npačiam konvertuoti į rastrinę grafiką (png arba jpg).\n	new	todo	Is "rastrinė grafika" right for bitmap graphics?
-pygame_version	pygame-ce version 2 or higher is required for PyStage.\nRemove classic pygame and install pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	PyStage reikalauja pygame-ce 2 ar naujesnės versijos.\nPašalink klasikinį pygame ir įdiek pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	new	todo	
-error_in	Error in {file}, line {line}	Klaida faile {file}, eilutėje {line}	new	todo	
+pygame_version	pygame-ce version 2 or higher is required for PyStage.\nRemove classic pygame and install pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	PyStage reikalauja pygame-ce 2 ar naujesnės versijos.\nPašalink paprastają pygame ir įdiek pygame-ce:\npip uninstall pygame && pip install --upgrade pygame-ce	new	ok	
+error_in	Error in {file}, line {line}	Klaida faile {file}, eilutėje {line}	new	ok	
 monitor_length	length {length}	ilgis {length}	scratch	ok	
 monitor_empty	(empty)	(tuščia)	scratch	ok	
-reporter_unknown	Unknown reporter: {reporter}.	Nežinoma reikšmė: {reporter}.	new	todo	
-reporter_unavailable	The reporter {reporter} does not exist for this sprite or stage.	Reikšmės {reporter} šiam veikėjui ar scenai nėra.	new	todo	
+reporter_unknown	Unknown reporter: {reporter}.	Nežinoma reikšmė: {reporter}.	new	ok	
+reporter_unavailable	The reporter {reporter} does not exist for this sprite or stage.	Reikšmės {reporter} šiam veikėjui ar scenai nėra.	new	ok	
 stage_name	Stage	Scena	scratch	ok	
 reporter:motion_xposition	x position	x vieta	scratch	ok	
 reporter:motion_yposition	y position	y vieta	scratch	ok	
