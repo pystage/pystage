@@ -6,31 +6,31 @@ sprite	control_start_as_clone	when_i_start_as_a_clone	kai_pradės_veikti_klonas	
 sprite	control_stop_all	stop_all	sustok_visiškai	sustok + visiškai	scratch	ok	dropdown value inserted (naming rule 2)
 sprite	control_stop_other	stop_other_scripts_in_sprite	sustok_kitus_veikėjo_scenarijus	sustok + kitus veikėjo scenarijus	scratch	ok	dropdown value inserted (naming rule 2)
 sprite	control_stop_this	stop_this_script	sustok_šį_scenarijų	sustok + šį scenarijų	scratch	ok	dropdown value inserted (naming rule 2)
-sprite	control_wait	wait	palauk_sek	palauk %1 sek.	scratch	ok	"""sek."" -> sek (naming rule 3)"
-sprite	data_addtolist	add_to_list	pridėk_į_sąrašą	pridėk %1 į %2	adapted	todo	"""sąrašą"" added for clarity (naming rule 5)"
-sprite	data_changevariableby	change_variable_by	padidink_kintamąjį	%1 padidink %2	adapted	todo	"""padidink"" alone too short; added ""kintamąjį"" (naming rule 5)"
-sprite	data_deletealloflist	delete_all_of_list	ištrinti_visus_iš_sąrašo	ištrinti visus iš %1	adapted	todo	"""sąrašo"" added for clarity (naming rule 5)"
-sprite	data_deleteoflist	delete_item_of_list	ištrinti_iš_sąrašo	ištrinti %1 iš %2	adapted	todo	"""sąrašo"" added for clarity (naming rule 5)"
+sprite	control_wait	wait	palauk_sek	palauk %1 sek.	scratch	ok	'sek.' -> sek (naming rule 3)
+sprite	data_addtolist	add_to_list	pridėk_į_sąrašą	pridėk %1 į %2	adapted	todo	'sąrašą' added for clarity (naming rule 5)
+sprite	data_changevariableby	change_variable_by	padidink_kintamąjį	%1 padidink %2	adapted	todo	'padidink' alone too short; added 'kintamąjį' (naming rule 5)
+sprite	data_deletealloflist	delete_all_of_list	ištrinti_visus_iš_sąrašo	ištrinti visus iš %1	adapted	todo	'sąrašo' added for clarity (naming rule 5)
+sprite	data_deleteoflist	delete_item_of_list	ištrinti_iš_sąrašo	ištrinti %1 iš %2	adapted	todo	'sąrašo' added for clarity (naming rule 5)
 sprite	data_hidelist	hide_list	slėpti_sąrašą	slėpti sąrašą %1	scratch	ok	
-sprite	data_hidevariable	hide_variable	slėpk_kintamąjį	slėpk %1	adapted	todo	"""slėpk"" collides with looks_hide; added ""kintamąjį"" (naming rule 5)"
+sprite	data_hidevariable	hide_variable	slėpk_kintamąjį	slėpk %1	adapted	todo	'slėpk' collides with looks_hide; added 'kintamąjį' (naming rule 5)
 sprite	data_insertatlist	insert_at_list	į_sąrašo_vietą_įterpti	į sąrašo %3 %2 vietą įterpti %1	scratch	ok	
 sprite	data_itemnumoflist	item_number_in_list	vieta_sąraše	%1 vieta sąraše %2	scratch	ok	
-sprite	data_itemoflist	item_of_list	sąrašo_elementas_nr	%2 nr. %1	adapted	todo	"""nr"" alone is meaningless; ""sąrašo elementas"" added (naming rule 5)"
-sprite	data_lengthoflist	length_of_list	sąrašo_ilgis	%1 ilgis	adapted	todo	"""ilgis"" collides with operator_length; ""sąrašo"" added (naming rule 5)"
-sprite	data_listcontainsitem	list_contains	sąrašas_turi	%1 turi %2?	adapted	todo	"""turi"" alone too short; ""sąrašas"" added (naming rule 5)"
+sprite	data_itemoflist	item_of_list	sąrašo_elementas_nr	%2 nr. %1	adapted	todo	'nr' alone is meaningless; 'sąrašo elementas' added (naming rule 5)
+sprite	data_lengthoflist	length_of_list	sąrašo_ilgis	%1 ilgis	adapted	todo	'ilgis' collides with operator_length; 'sąrašo' added (naming rule 5)
+sprite	data_listcontainsitem	list_contains	sąrašas_turi	%1 turi %2?	adapted	todo	'turi' alone too short; 'sąrašas' added (naming rule 5)
 sprite	data_listvariable	get_list	sąrašas		new	todo	reporter without words in Scratch (naming rule 5)
 sprite	data_replaceitemoflist	replace_item_of_list	sąrašo_vietai_priskirti	sąrašo %2  %1 vietai priskirti %3	scratch	ok	
 sprite	data_setvariableto	set_variable	nustatyk_kintamąjį_į	%1 = %2	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	data_showlist	show_list	rodyti_sąrašą	rodyti sąrašą %1	scratch	ok	
-sprite	data_showvariable	show_variable	rodyk_kintamąjį	rodyk %1	adapted	todo	"""rodyk"" collides with looks_show; added ""kintamąjį"" (naming rule 5)"
+sprite	data_showvariable	show_variable	rodyk_kintamąjį	rodyk %1	adapted	todo	'rodyk' collides with looks_show; added 'kintamąjį' (naming rule 5)
 sprite	data_variable	get_variable	kintamasis		new	todo	reporter without words in Scratch (naming rule 5)
 sprite	event_broadcast	broadcast	skelbti	skelbti %1	scratch	ok	Scratch uses infinitive
 sprite	event_broadcastandwait	broadcast_and_wait	skelbti_ir_palaukti	skelbti %1 ir palaukti	scratch	ok	
 sprite	event_whenbackdropswitchesto	when_backdrop_switches_to	kai_fonas_perjungiamas_į	kai fonas perjungiamas į %1	scratch	ok	
 sprite	event_whenbroadcastreceived	when_i_receive_message	kai_gausi_žinutę	kai gausi žinutę %1	scratch	ok	
 sprite	event_whenflagclicked	when_program_starts	kai_spusteli_žalią_vėliavėlę	kai spusteli @greenFlag	adapted	todo	flag icon replaced by words "žalią vėliavėlę" (naming rule 6)
-sprite	event_whengreaterthan_loudness	when_loudness_greater_than	kai_garsumas_didesnis_už	kai %1 > %2 + garsumas	adapted	todo	""">"" replaced by ""didesnis už"" (naming rule 6)"
-sprite	event_whengreaterthan_timer	when_timer_greater_than	kai_laikmatis_didesnis_už	kai %1 > %2 + laikmatis	adapted	todo	""">"" replaced by ""didesnis už"" (naming rule 6)"
+sprite	event_whengreaterthan_loudness	when_loudness_greater_than	kai_garsumas_didesnis_už	kai %1 > %2 + garsumas	adapted	todo	'>' replaced by 'didesnis už' (naming rule 6)
+sprite	event_whengreaterthan_timer	when_timer_greater_than	kai_laikmatis_didesnis_už	kai %1 > %2 + laikmatis	adapted	todo	'>' replaced by 'didesnis už' (naming rule 6)
 sprite	event_whenkeypressed	when_key_pressed	kai_paspaudi_klavišą	kai paspaudi %1	adapted	todo	added "klavišą" for the key slot (naming rule 6)
 sprite	event_whenthisspriteclicked	when_this_sprite_clicked	kai_spusteli_ant_šio_veikėjo	kai spusteli ant šio veikėjo	scratch	ok	
 sprite	looks_backdropnumbername_name	backdrop_name	fonas_vardas	fonas %1 + vardas	scratch	ok	dropdown value inserted (naming rule 2)
@@ -54,7 +54,7 @@ sprite	looks_hide	hide	slėpk	slėpk	scratch	ok
 sprite	looks_nextbackdrop	next_backdrop	kitas_fonas	kitas  fonas	scratch	ok	double blank in official text collapsed
 sprite	looks_nextcostume	next_costume	kita_kaukė	kita kaukė	scratch	ok	
 sprite	looks_say	say	sakyk	sakyk %1	scratch	ok	
-sprite	looks_sayforsecs	say_for_seconds	sakyk_sek	sakyk %1 %2 s.	scratch	ok	"""s."" -> sek (naming rule 3)"
+sprite	looks_sayforsecs	say_for_seconds	sakyk_sek	sakyk %1 %2 s.	scratch	ok	's.' -> sek (naming rule 3)
 sprite	looks_seteffectto_brightness	set_brightness_effect_to	nustatyk_efektą_šviesumas_į	efektas %1 = %2 + šviesumas	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	looks_seteffectto_color	set_color_effect_to	nustatyk_efektą_spalva_į	efektas %1 = %2 + spalva	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	looks_seteffectto_fisheye	set_fisheye_effect_to	nustatyk_efektą_lęšis_į	efektas %1 = %2 + lęšis	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
@@ -71,14 +71,14 @@ sprite	looks_switchbackdropto_previous	switch_to_previous_backdrop	nustatyk_anks
 sprite	looks_switchbackdropto_random	switch_to_random_backdrop	nustatyk_atsitiktinį_foną	fonas = %1 + atsitiktinis fonas	adapted	todo	equation block, dropdown value in accusative (naming rule 4)
 sprite	looks_switchcostumeto	switch_costume_to	nustatyk_kaukę_į	kaukė = %1	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	looks_think	think	galvok	galvok %1	scratch	ok	
-sprite	looks_thinkforsecs	think_for_seconds	galvok_sek	galvok %1 %2 s.	scratch	ok	"""s."" -> sek (naming rule 3)"
+sprite	looks_thinkforsecs	think_for_seconds	galvok_sek	galvok %1 %2 s.	scratch	ok	's.' -> sek (naming rule 3)
 sprite	motion_changexby	change_x_by	x_padidink	x padidink %1	scratch	ok	
 sprite	motion_changeyby	change_y_by	y_padidink	y padidink %1	scratch	ok	
 sprite	motion_direction	direction	kryptis	kryptis	scratch	ok	
-sprite	motion_glidesecstoxy	glide_to_x_y	slink_į_x_y_per_sek	slink į x: %2 y: %3 per %1 s.	scratch	ok	"""s."" -> sek (naming rule 3)"
+sprite	motion_glidesecstoxy	glide_to_x_y	slink_į_x_y_per_sek	slink į x: %2 y: %3 per %1 s.	scratch	ok	's.' -> sek (naming rule 3)
 sprite	motion_glideto_pointer	glide_to_mouse_pointer	slink_ten_kur_pelės_žymeklis_per_sek	slink ten, kur %2 per %1 s. + pelės žymeklis	scratch	ok	dropdown value inserted, "s." -> sek (naming rules 2, 3)
 sprite	motion_glideto_random	glide_to_random_position	slink_ten_kur_atsitiktinė_pozicija_per_sek	slink ten, kur %2 per %1 s. + atsitiktinė pozicija	scratch	ok	dropdown value inserted, "s." -> sek (naming rules 2, 3)
-sprite	motion_glideto_sprite	glide_to_sprite	slink_ten_kur_per_sek	slink ten, kur %2 per %1 s.	scratch	ok	"""s."" -> sek (naming rule 3)"
+sprite	motion_glideto_sprite	glide_to_sprite	slink_ten_kur_per_sek	slink ten, kur %2 per %1 s.	scratch	ok	's.' -> sek (naming rule 3)
 sprite	motion_goto_pointer	go_to_mouse_pointer	eik_ten_kur_pelės_žymeklis	eik ten, kur %1 + pelės žymeklis	scratch	ok	dropdown value inserted (naming rule 2)
 sprite	motion_goto_random	go_to_random_position	eik_ten_kur_atsitiktinė_pozicija	eik ten, kur %1 + atsitiktinė pozicija	scratch	ok	dropdown value inserted (naming rule 2)
 sprite	motion_goto_sprite	go_to_sprite	eik_ten_kur	eik ten, kur %1	scratch	ok	
@@ -102,13 +102,13 @@ sprite	operator_contains	contains	ar_turi	ar %1 turi %2?	scratch	ok
 sprite	operator_divide	divide	padalinta_iš	%1 / %2	adapted	todo	operator symbol has no words (naming rule 6)
 sprite	operator_equals	equals	lygu	%1 = %2	adapted	todo	operator symbol has no words (naming rule 6)
 sprite	operator_gt	greater_than	didesnis_už	%1 > %2	adapted	todo	operator symbol has no words (naming rule 6)
-sprite	operator_join	join	sujunk	sujunk %1 ir %2	adapted	todo	"""ir"" dropped (naming rule 6)"
+sprite	operator_join	join	sujunk	sujunk %1 ir %2	adapted	todo	'ir' dropped (naming rule 6)
 sprite	operator_length	length_of	ilgis	%1 ilgis	scratch	ok	
 sprite	operator_letter_of	letter_of	raidė_nr	%2 raidė nr. %1	scratch	ok	
 sprite	operator_lt	less_than	mažesnis_už	%1 < %2	adapted	todo	operator symbol has no words (naming rule 6)
 sprite	operator_mathop	math_function	matematinė_funkcija	%1 ( %2 )	adapted	todo	no words in Scratch (naming rule 6)
 sprite	operator_mod	modulo	liekana	%1 / %2 liekana	scratch	ok	
-sprite	operator_random	pick_random	atsitiktinis_skaičius_tarp	atsitiktinis sk. tarp %1 ir %2	adapted	todo	"""sk."" expanded to ""skaičius"", ""ir"" dropped (naming rule 6)"
+sprite	operator_random	pick_random	atsitiktinis_skaičius_tarp	atsitiktinis sk. tarp %1 ir %2	adapted	todo	'sk.' expanded to 'skaičius', 'ir' dropped (naming rule 6)
 sprite	operator_round	round	suapvalinta	suapvalinta %1	scratch	ok	
 sprite	pen_changePenColorParamBy_brightness	change_pen_brightness_by	keisk_pieštuko_šviesumą_per	keisk pieštuko %1per%2 + šviesumas	adapted	todo	dropdown value in accusative (naming rule 6)
 sprite	pen_changePenColorParamBy_color	change_pen_hue_by	keisk_pieštuko_spalvą_per	keisk pieštuko %1per%2 + spalva	adapted	todo	dropdown value in accusative (naming rule 6)
@@ -154,21 +154,21 @@ sprite	sensing_current_year	current_year	šio_momento_metai	šio momento %1 + me
 sprite	sensing_dayssince2000	days_since	dienų_skaičius_nuo_2000	dienų skaičius nuo 2000-ųjų	adapted	todo	suffix "-ųjų" dropped, digits kept (naming rule 2)
 sprite	sensing_distanceto_pointer	distance_to_mouse_pointer	atstumas_iki_pelės_žymeklio	atstumas iki %1 + pelės žymeklio	scratch	ok	dropdown value inserted (naming rule 2)
 sprite	sensing_distanceto_sprite	distance_to_sprite	atstumas_iki	atstumas iki %1	scratch	ok	
-sprite	sensing_keypressed	key_pressed	klavišas_paspaustas	%1 paspausta?	adapted	todo	"""paspausta"" alone too short; word order changed to ""klavišas paspaustas"" (naming rule 6)"
+sprite	sensing_keypressed	key_pressed	klavišas_paspaustas	%1 paspausta?	adapted	todo	'paspausta' alone too short; word order changed to 'klavišas paspaustas' (naming rule 6)
 sprite	sensing_loudness	loudness	mikrofono_garsumas	garsumas	adapted	todo	Scratch LT uses "garsumas" for both sound_volume and microphone loudness; "mikrofono" added (naming rule 5)
 sprite	sensing_mousedown	mouse_down	pelė_paspausta	pelė paspausta?	scratch	ok	
 sprite	sensing_mousex	mouse_x	pelės_x	pelės x	scratch	ok	
 sprite	sensing_mousey	mouse_y	pelės_y	pelės y	scratch	ok	
-sprite	sensing_of_backdropname	backdrop_name_of	scenos_fono_pavadinimas	fono pavadinimas	adapted	todo	"""scenos_"" prefix for stage-only attribute (naming rule 5)"
-sprite	sensing_of_backdropnumber	backdrop_of	scenos_fono_nr	fono nr.	adapted	todo	"""scenos_"" prefix for stage-only attribute (naming rule 5)"
-sprite	sensing_of_costumename	costume_name_of	veikėjo_kaukės_pavadinimas	kaukės pavadinimas	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-sprite	sensing_of_costumenumber	costume_of	veikėjo_kaukės_nr	kaukės nr.	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-sprite	sensing_of_direction	direction_of	veikėjo_kryptis	kryptis	adapted	todo	"""veikėjo_"" prefix; would collide with motion_direction (naming rule 5)"
-sprite	sensing_of_size	size_of	veikėjo_dydis	dydis	adapted	todo	"""veikėjo_"" prefix; would collide with looks_size (naming rule 5)"
+sprite	sensing_of_backdropname	backdrop_name_of	scenos_fono_pavadinimas	fono pavadinimas	adapted	todo	'scenos_' prefix for stage-only attribute (naming rule 5)
+sprite	sensing_of_backdropnumber	backdrop_of	scenos_fono_nr	fono nr.	adapted	todo	'scenos_' prefix for stage-only attribute (naming rule 5)
+sprite	sensing_of_costumename	costume_name_of	veikėjo_kaukės_pavadinimas	kaukės pavadinimas	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+sprite	sensing_of_costumenumber	costume_of	veikėjo_kaukės_nr	kaukės nr.	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+sprite	sensing_of_direction	direction_of	veikėjo_kryptis	kryptis	adapted	todo	'veikėjo_' prefix; would collide with motion_direction (naming rule 5)
+sprite	sensing_of_size	size_of	veikėjo_dydis	dydis	adapted	todo	'veikėjo_' prefix; would collide with looks_size (naming rule 5)
 sprite	sensing_of_variable	get_variable_of	kintamasis_iš	%2 : %1 (kintamasis)	adapted	todo	no Scratch word for "variable" in the "of" menu (naming rule 5)
-sprite	sensing_of_volume	volume_of	garsas_iš	garsas	adapted	todo	"""iš"" added; would collide with sound_volume/garsas (naming rule 5)"
-sprite	sensing_of_xposition	x_position_of	veikėjo_x_koordinatė	x koordinatė	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-sprite	sensing_of_yposition	y_position_of	veikėjo_y_koordinatė	y koordinatė	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
+sprite	sensing_of_volume	volume_of	garsas_iš	garsas	adapted	todo	'iš' added; would collide with sound_volume/garsas (naming rule 5)
+sprite	sensing_of_xposition	x_position_of	veikėjo_x_koordinatė	x koordinatė	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+sprite	sensing_of_yposition	y_position_of	veikėjo_y_koordinatė	y koordinatė	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
 sprite	sensing_resettimer	reset_timer	nustatyk_laikmatį_į_0	laikmatis = 0	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	sensing_setdragmode_draggable	set_drag_mode_draggable	nustatyk_vilkimą_pele_į_velkamas	vilkimas pele = %1 + velkamas	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 sprite	sensing_setdragmode_notdraggable	set_drag_mode_not_draggable	nustatyk_vilkimą_pele_į_nevelkamas	vilkimas pele = %1 + nevelkamas	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
@@ -193,31 +193,31 @@ stage	control_create_clone_of_sprite	create_clone_of_sprite	sukurk_kloną	sukurk
 stage	control_stop_all	stop_all	sustok_visiškai	sustok + visiškai	scratch	ok	dropdown value inserted (naming rule 2)
 stage	control_stop_other	stop_other_scripts_in_stage	sustok_kitus_scenos_scenarijus	— (Scratch LT has only "kitus veikėjo scenarijus")	adapted	todo	stage variant is not in official LT; veikėjo -> scenos (naming rule 6)
 stage	control_stop_this	stop_this_script	sustok_šį_scenarijų	sustok + šį scenarijų	scratch	ok	dropdown value inserted (naming rule 2)
-stage	control_wait	wait	palauk_sek	palauk %1 sek.	scratch	ok	"""sek."" -> sek (naming rule 3)"
-stage	data_addtolist	add_to_list	pridėk_į_sąrašą	pridėk %1 į %2	adapted	todo	"""sąrašą"" added for clarity (naming rule 5)"
-stage	data_changevariableby	change_variable_by	padidink_kintamąjį	%1 padidink %2	adapted	todo	"""padidink"" alone too short; added ""kintamąjį"" (naming rule 5)"
-stage	data_deletealloflist	delete_all_of_list	ištrinti_visus_iš_sąrašo	ištrinti visus iš %1	adapted	todo	"""sąrašo"" added for clarity (naming rule 5)"
-stage	data_deleteoflist	delete_item_of_list	ištrinti_iš_sąrašo	ištrinti %1 iš %2	adapted	todo	"""sąrašo"" added for clarity (naming rule 5)"
+stage	control_wait	wait	palauk_sek	palauk %1 sek.	scratch	ok	'sek.' -> sek (naming rule 3)
+stage	data_addtolist	add_to_list	pridėk_į_sąrašą	pridėk %1 į %2	adapted	todo	'sąrašą' added for clarity (naming rule 5)
+stage	data_changevariableby	change_variable_by	padidink_kintamąjį	%1 padidink %2	adapted	todo	'padidink' alone too short; added 'kintamąjį' (naming rule 5)
+stage	data_deletealloflist	delete_all_of_list	ištrinti_visus_iš_sąrašo	ištrinti visus iš %1	adapted	todo	'sąrašo' added for clarity (naming rule 5)
+stage	data_deleteoflist	delete_item_of_list	ištrinti_iš_sąrašo	ištrinti %1 iš %2	adapted	todo	'sąrašo' added for clarity (naming rule 5)
 stage	data_hidelist	hide_list	slėpti_sąrašą	slėpti sąrašą %1	scratch	ok	
-stage	data_hidevariable	hide_variable	slėpk_kintamąjį	slėpk %1	adapted	todo	"""slėpk"" collides with looks_hide; added ""kintamąjį"" (naming rule 5)"
+stage	data_hidevariable	hide_variable	slėpk_kintamąjį	slėpk %1	adapted	todo	'slėpk' collides with looks_hide; added 'kintamąjį' (naming rule 5)
 stage	data_insertatlist	insert_at_list	į_sąrašo_vietą_įterpti	į sąrašo %3 %2 vietą įterpti %1	scratch	ok	
 stage	data_itemnumoflist	item_number_in_list	vieta_sąraše	%1 vieta sąraše %2	scratch	ok	
-stage	data_itemoflist	item_of_list	sąrašo_elementas_nr	%2 nr. %1	adapted	todo	"""nr"" alone is meaningless; ""sąrašo elementas"" added (naming rule 5)"
-stage	data_lengthoflist	length_of_list	sąrašo_ilgis	%1 ilgis	adapted	todo	"""ilgis"" collides with operator_length; ""sąrašo"" added (naming rule 5)"
-stage	data_listcontainsitem	list_contains	sąrašas_turi	%1 turi %2?	adapted	todo	"""turi"" alone too short; ""sąrašas"" added (naming rule 5)"
+stage	data_itemoflist	item_of_list	sąrašo_elementas_nr	%2 nr. %1	adapted	todo	'nr' alone is meaningless; 'sąrašo elementas' added (naming rule 5)
+stage	data_lengthoflist	length_of_list	sąrašo_ilgis	%1 ilgis	adapted	todo	'ilgis' collides with operator_length; 'sąrašo' added (naming rule 5)
+stage	data_listcontainsitem	list_contains	sąrašas_turi	%1 turi %2?	adapted	todo	'turi' alone too short; 'sąrašas' added (naming rule 5)
 stage	data_listvariable	get_list	sąrašas		new	todo	reporter without words in Scratch (naming rule 5)
 stage	data_replaceitemoflist	replace_item_of_list	sąrašo_vietai_priskirti	sąrašo %2  %1 vietai priskirti %3	scratch	ok	
 stage	data_setvariableto	set_variable	nustatyk_kintamąjį_į	%1 = %2	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 stage	data_showlist	show_list	rodyti_sąrašą	rodyti sąrašą %1	scratch	ok	
-stage	data_showvariable	show_variable	rodyk_kintamąjį	rodyk %1	adapted	todo	"""rodyk"" collides with looks_show; added ""kintamąjį"" (naming rule 5)"
+stage	data_showvariable	show_variable	rodyk_kintamąjį	rodyk %1	adapted	todo	'rodyk' collides with looks_show; added 'kintamąjį' (naming rule 5)
 stage	data_variable	get_variable	kintamasis		new	todo	reporter without words in Scratch (naming rule 5)
 stage	event_broadcast	broadcast	skelbti	skelbti %1	scratch	ok	Scratch uses infinitive
 stage	event_broadcastandwait	broadcast_and_wait	skelbti_ir_palaukti	skelbti %1 ir palaukti	scratch	ok	
 stage	event_whenbackdropswitchesto	when_backdrop_switches_to	kai_fonas_perjungiamas_į	kai fonas perjungiamas į %1	scratch	ok	
 stage	event_whenbroadcastreceived	when_i_receive_message	kai_gausi_žinutę	kai gausi žinutę %1	scratch	ok	
 stage	event_whenflagclicked	when_program_starts	kai_spusteli_žalią_vėliavėlę	kai spusteli @greenFlag	adapted	todo	flag icon replaced by words "žalią vėliavėlę" (naming rule 6)
-stage	event_whengreaterthan_loudness	when_loudness_greater_than	kai_garsumas_didesnis_už	kai %1 > %2 + garsumas	adapted	todo	""">"" replaced by ""didesnis už"" (naming rule 6)"
-stage	event_whengreaterthan_timer	when_timer_greater_than	kai_laikmatis_didesnis_už	kai %1 > %2 + laikmatis	adapted	todo	""">"" replaced by ""didesnis už"" (naming rule 6)"
+stage	event_whengreaterthan_loudness	when_loudness_greater_than	kai_garsumas_didesnis_už	kai %1 > %2 + garsumas	adapted	todo	'>' replaced by 'didesnis už' (naming rule 6)
+stage	event_whengreaterthan_timer	when_timer_greater_than	kai_laikmatis_didesnis_už	kai %1 > %2 + laikmatis	adapted	todo	'>' replaced by 'didesnis už' (naming rule 6)
 stage	event_whenkeypressed	when_key_pressed	kai_paspaudi_klavišą	kai paspaudi %1	adapted	todo	added "klavišą" for the key slot (naming rule 6)
 stage	event_whenstageclicked	when_stage_clicked	kai_paspaudi_scenoje	kai paspaudi scenoje	scratch	ok	
 stage	event_whenthisspriteclicked	when_this_sprite_clicked	kai_spusteli_ant_šio_veikėjo	kai spusteli ant šio veikėjo	scratch	ok	
@@ -248,13 +248,13 @@ stage	operator_contains	contains	ar_turi	ar %1 turi %2?	scratch	ok
 stage	operator_divide	divide	padalinta_iš	%1 / %2	adapted	todo	operator symbol has no words (naming rule 6)
 stage	operator_equals	equals	lygu	%1 = %2	adapted	todo	operator symbol has no words (naming rule 6)
 stage	operator_gt	greater_than	didesnis_už	%1 > %2	adapted	todo	operator symbol has no words (naming rule 6)
-stage	operator_join	join	sujunk	sujunk %1 ir %2	adapted	todo	"""ir"" dropped (naming rule 6)"
+stage	operator_join	join	sujunk	sujunk %1 ir %2	adapted	todo	'ir' dropped (naming rule 6)
 stage	operator_length	length_of	ilgis	%1 ilgis	scratch	ok	
 stage	operator_letter_of	letter_of	raidė_nr	%2 raidė nr. %1	scratch	ok	
 stage	operator_lt	less_than	mažesnis_už	%1 < %2	adapted	todo	operator symbol has no words (naming rule 6)
 stage	operator_mathop	math_function	matematinė_funkcija	%1 ( %2 )	adapted	todo	no words in Scratch (naming rule 6)
 stage	operator_mod	modulo	liekana	%1 / %2 liekana	scratch	ok	
-stage	operator_random	pick_random	atsitiktinis_skaičius_tarp	atsitiktinis sk. tarp %1 ir %2	adapted	todo	"""sk."" expanded to ""skaičius"", ""ir"" dropped (naming rule 6)"
+stage	operator_random	pick_random	atsitiktinis_skaičius_tarp	atsitiktinis sk. tarp %1 ir %2	adapted	todo	'sk.' expanded to 'skaičius', 'ir' dropped (naming rule 6)
 stage	operator_round	round	suapvalinta	suapvalinta %1	scratch	ok	
 stage	pen_clear	erase_all	ištrinti_viską	ištrinti viską	scratch	ok	
 stage	pystage_addbackdrop	add_backdrop	pridėk_foną		new	todo	not a Scratch block; "Pridėk foną" from GUI (naming rule 7)
@@ -284,21 +284,21 @@ stage	sensing_current_month	current_month	šio_momento_mėnuo	šio momento %1 + 
 stage	sensing_current_second	current_second	šio_momento_sekundė	šio momento %1 + sekundė	scratch	ok	dropdown value inserted (naming rule 2)
 stage	sensing_current_year	current_year	šio_momento_metai	šio momento %1 + metai	scratch	ok	dropdown value inserted (naming rule 2)
 stage	sensing_dayssince2000	days_since	dienų_skaičius_nuo_2000	dienų skaičius nuo 2000-ųjų	adapted	todo	suffix "-ųjų" dropped, digits kept (naming rule 2)
-stage	sensing_keypressed	key_pressed	klavišas_paspaustas	%1 paspausta?	adapted	todo	"""paspausta"" alone too short; word order changed to ""klavišas paspaustas"" (naming rule 6)"
+stage	sensing_keypressed	key_pressed	klavišas_paspaustas	%1 paspausta?	adapted	todo	'paspausta' alone too short; word order changed to 'klavišas paspaustas' (naming rule 6)
 stage	sensing_loudness	loudness	mikrofono_garsumas	garsumas	adapted	todo	Scratch LT uses "garsumas" for both sound_volume and microphone loudness; "mikrofono" added (naming rule 5)
 stage	sensing_mousedown	mouse_down	pelė_paspausta	pelė paspausta?	scratch	ok	
 stage	sensing_mousex	mouse_x	pelės_x	pelės x	scratch	ok	
 stage	sensing_mousey	mouse_y	pelės_y	pelės y	scratch	ok	
-stage	sensing_of_backdropname	backdrop_name_of	scenos_fono_pavadinimas	fono pavadinimas	adapted	todo	"""scenos_"" prefix for stage-only attribute (naming rule 5)"
-stage	sensing_of_backdropnumber	backdrop_of	scenos_fono_nr	fono nr.	adapted	todo	"""scenos_"" prefix for stage-only attribute (naming rule 5)"
-stage	sensing_of_costumename	costume_name_of	veikėjo_kaukės_pavadinimas	kaukės pavadinimas	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-stage	sensing_of_costumenumber	costume_of	veikėjo_kaukės_nr	kaukės nr.	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-stage	sensing_of_direction	direction_of	veikėjo_kryptis	kryptis	adapted	todo	"""veikėjo_"" prefix; would collide with motion_direction (naming rule 5)"
-stage	sensing_of_size	size_of	veikėjo_dydis	dydis	adapted	todo	"""veikėjo_"" prefix; would collide with looks_size (naming rule 5)"
+stage	sensing_of_backdropname	backdrop_name_of	scenos_fono_pavadinimas	fono pavadinimas	adapted	todo	'scenos_' prefix for stage-only attribute (naming rule 5)
+stage	sensing_of_backdropnumber	backdrop_of	scenos_fono_nr	fono nr.	adapted	todo	'scenos_' prefix for stage-only attribute (naming rule 5)
+stage	sensing_of_costumename	costume_name_of	veikėjo_kaukės_pavadinimas	kaukės pavadinimas	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+stage	sensing_of_costumenumber	costume_of	veikėjo_kaukės_nr	kaukės nr.	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+stage	sensing_of_direction	direction_of	veikėjo_kryptis	kryptis	adapted	todo	'veikėjo_' prefix; would collide with motion_direction (naming rule 5)
+stage	sensing_of_size	size_of	veikėjo_dydis	dydis	adapted	todo	'veikėjo_' prefix; would collide with looks_size (naming rule 5)
 stage	sensing_of_variable	get_variable_of	kintamasis_iš	%2 : %1 (kintamasis)	adapted	todo	no Scratch word for "variable" in the "of" menu (naming rule 5)
-stage	sensing_of_volume	volume_of	garsas_iš	garsas	adapted	todo	"""iš"" added; would collide with sound_volume/garsas (naming rule 5)"
-stage	sensing_of_xposition	x_position_of	veikėjo_x_koordinatė	x koordinatė	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
-stage	sensing_of_yposition	y_position_of	veikėjo_y_koordinatė	y koordinatė	adapted	todo	"""veikėjo_"" prefix for sprite-only attribute (naming rule 5)"
+stage	sensing_of_volume	volume_of	garsas_iš	garsas	adapted	todo	'iš' added; would collide with sound_volume/garsas (naming rule 5)
+stage	sensing_of_xposition	x_position_of	veikėjo_x_koordinatė	x koordinatė	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
+stage	sensing_of_yposition	y_position_of	veikėjo_y_koordinatė	y koordinatė	adapted	todo	'veikėjo_' prefix for sprite-only attribute (naming rule 5)
 stage	sensing_resettimer	reset_timer	nustatyk_laikmatį_į_0	laikmatis = 0	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 stage	sensing_setdragmode_draggable	set_drag_mode_draggable	nustatyk_vilkimą_pele_į_velkamas	vilkimas pele = %1 + velkamas	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
 stage	sensing_setdragmode_notdraggable	set_drag_mode_not_draggable	nustatyk_vilkimą_pele_į_nevelkamas	vilkimas pele = %1 + nevelkamas	adapted	todo	equation block -> nustatyk ... į (naming rule 4)
